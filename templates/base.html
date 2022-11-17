@@ -1,0 +1,129 @@
+{% load static %}
+ {% load compress %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PES Road to World Cup</title>
+
+
+{% compress css %}
+    <link type="text/x-scss" href="{% static '/bootstrap5/scss/bootstrap.scss' %}" rel="stylesheet" media="screen">
+{% endcompress %}
+    <link rel="stylesheet" href="{% static 'base.scss' %}">
+  </head>
+  <body class="bg-primary">
+     <script src="{% static '/bootstrap5/js/bootstrap.bundle.js' %}"></script>
+    <div id="nav" >
+        <nav class="navbar navbar-expand-lg bg-light">
+          <div class="container-fluid">
+
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    World Cup
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Main Draw</a></li>
+                    <li><a class="dropdown-item" href="#">World Play-off</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    UEFA
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Final Round</a></li>
+                    <li><a class="dropdown-item" href="#">2nd Round</a></li>
+                    <li><a class="dropdown-item" href="#">1st Round</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+
+
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    CONMEBOL
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Final Round</a></li>
+                  </ul>
+                </li>
+              </ul>
+          </div>
+
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    CONCACAF
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Final Round</a></li>
+                    <li><a class="dropdown-item" href="#">1st Round</a></li>
+                  </ul>
+                </li>
+              </ul>
+          </div>
+
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    OFC
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Final Round</a></li>
+                  </ul>
+                </li>
+              </ul>
+          </div>
+
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    CAF
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Final Round</a></li>
+                    <li><a class="dropdown-item" href="#">2nd Round</a></li>
+                    <li><a class="dropdown-item" href="#">1st Round</a></li>
+                  </ul>
+                </li>
+              </ul>
+          </div>
+
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    AFC
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Final Round</a></li>
+                    <li><a class="dropdown-item" href="#">2nd Round</a></li>
+                    <li><a class="dropdown-item" href="#">1st Round</a></li>
+                  </ul>
+                </li>
+              </ul>
+          </div>
+        </div>
+        </nav>
+    </div>
+    <div class="container">
+        {% block container %}
+        {% endblock %}
+    </div>
+  </body>
+</html>
