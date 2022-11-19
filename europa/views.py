@@ -4,8 +4,11 @@ from django.shortcuts import render
 def finalround(request):
     return render(request,'europa/finalround.html')
 
+def thirdround(request):
+    return render(request, 'europa/thrround.html')
+
 def secondround(request):
-    return render(request,'europa/sndround.html')
+    return render(request, 'europa/sndround.html')
 
 def firstround(request):
     return render(request,'europa/fstround.html')

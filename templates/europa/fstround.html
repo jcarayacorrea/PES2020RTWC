@@ -1,5 +1,124 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block container %}
-    <h1 class="h1 text-center">European Qualifiers</h1>
-    <h2 class="h3 text-center">First Round</h2>
+    <div id="header">
+         <h1 class="h1 text-center">European Qualifiers</h1>
+         <h2 class="h3 text-center">First Round</h2>
+    </div>
+
+    <div id="section">
+        <div class="row ">
+           <div class="col-md-4 ">
+               <div class="card card-border">
+                   <div class="soccer-card-header ">Teams</div>
+                   <div class="card-body">
+                       <div class="row g-4 ">
+                           <div class="col-md-10 offset-md-1">
+
+                               <div class="team-card">
+                                   <div class="row">
+                                       <div class="flag-config">
+                                           <img src="{% static 'assets/images/flags/europa/kosovo.svg' %}" class="flag-circle">
+                                       </div>
+                                       <div class="name-config">
+                                           Kosovo
+                                       </div>
+                                   </div>
+                               </div>
+                               <div class="team-card">
+                                   <div class="row">
+                                       <div class="flag-config">
+                                           <img src="{% static 'assets/images/flags/europa/kazajastan.svg' %}" class="flag-circle">
+                                       </div>
+                                       <div class="name-config">
+                                           Kazajstan
+                                       </div>
+                                   </div>
+                               </div>
+                               <div class="team-card">
+                                   <div class="row">
+                                       <div class="flag-config">
+                                           <img src="{% static 'assets/images/flags/europa/lituania.svg' %}" class="flag-circle">
+                                       </div>
+                                       <div class="name-config">
+                                           Lituania
+                                       </div>
+                                   </div>
+                               </div>
+                               <div class="team-card">
+                                   <div class="row">
+                                       <div class="flag-config">
+                                           <img src="{% static 'assets/images/flags/europa/letonia.svg' %}" class="flag-circle">
+                                       </div>
+                                       <div class="name-config">
+                                           Letonia
+                                       </div>
+                                   </div>
+                               </div>
+                               <div class="team-card">
+                                   <div class="row">
+                                       <div class="flag-config">
+                                           <img src="{% static 'assets/images/flags/europa/andorra.svg' %}" class="flag-circle">
+                                       </div>
+                                       <div class="name-config">
+                                           Andorra
+                                       </div>
+                                   </div>
+                               </div>
+                               <div class="team-card">
+                                   <div class="row">
+                                       <div class="flag-config">
+                                           <img src="{% static 'assets/images/flags/europa/malta.svg' %}" class="flag-circle">
+                                       </div>
+                                       <div class="name-config">
+                                           Malta
+                                       </div>
+                                   </div>
+                               </div>
+                               <div class="team-card">
+                                   <div class="row">
+                                       <div class="flag-config">
+                                           <img src="{% static 'assets/images/flags/europa/moldavia.svg' %}" class="flag-circle">
+                                       </div>
+                                       <div class="name-config">
+                                           Moldavia
+                                       </div>
+                                   </div>
+                               </div>
+                               <div class="team-card">
+                                   <div class="row">
+                                       <div class="flag-config">
+                                           <img src="{% static 'assets/images/flags/europa/liechtenstein.svg' %}" class="flag-circle">
+                                       </div>
+                                       <div class="name-config">
+                                           Liechtenstein
+                                       </div>
+                                   </div>
+                               </div>
+                               <div class="team-card">
+                                   <div class="row">
+                                       <div class="flag-config">
+                                           <img src="{% static 'assets/images/flags/europa/gibraltar.svg' %}" class="flag-circle">
+                                       </div>
+                                       <div class="name-config">
+                                           Gibraltar
+                                       </div>
+                                   </div>
+                               </div>
+                               <div class="team-card">
+                                   <div class="row">
+                                       <div class="flag-config">
+                                           <img src="{% static 'assets/images/flags/europa/sanmarino.svg' %}" class="flag-circle">
+                                       </div>
+                                       <div class="name-config">
+                                           San Marino
+                                       </div>
+                                   </div>
+                               </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+        </div>
+  </div>
 {% endblock %}
