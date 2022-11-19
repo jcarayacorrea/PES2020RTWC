@@ -1,5 +1,7 @@
 {% load static %}
- {% load compress %}
+{% load compress %}
+
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -10,13 +12,14 @@
 
 {% compress css %}
     <link type="text/x-scss" href="{% static '/bootstrap5/scss/bootstrap.scss' %}" rel="stylesheet" media="screen">
+    <link type="text/x-scss" rel="stylesheet" href="{% static 'base.scss' %}" media="screen">
 {% endcompress %}
-    <link rel="stylesheet" href="{% static 'base.scss' %}">
+
   </head>
-  <body class="bg-primary">
+  <body>
      <script src="{% static '/bootstrap5/js/bootstrap.bundle.js' %}"></script>
     <div id="nav" >
-        <nav class="navbar navbar-expand-lg bg-light">
+        <nav class="navbar navbar-expand-lg ">
           <div class="container-fluid">
 
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
@@ -40,9 +43,9 @@
                     UEFA
                   </a>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Final Round</a></li>
-                    <li><a class="dropdown-item" href="#">2nd Round</a></li>
-                    <li><a class="dropdown-item" href="#">1st Round</a></li>
+                    <li><a class="dropdown-item" href="{% url 'europa.finalround' %}">Final Round</a></li>
+                    <li><a class="dropdown-item" href="{% url 'europa.secondround' %}">2nd Round</a></li>
+                    <li><a class="dropdown-item" href="{% url 'europa.finalround' %}">1st Round</a></li>
                   </ul>
                 </li>
               </ul>
@@ -56,7 +59,7 @@
                     CONMEBOL
                   </a>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Final Round</a></li>
+                    <li><a class="dropdown-item" href="{% url 'sudamerica.finalround' %}">Final Round</a></li>
                   </ul>
                 </li>
               </ul>
@@ -69,8 +72,8 @@
                     CONCACAF
                   </a>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Final Round</a></li>
-                    <li><a class="dropdown-item" href="#">1st Round</a></li>
+                    <li><a class="dropdown-item"  href="{% url 'ceno_america.finalround' %}">Final Round</a></li>
+                    <li><a class="dropdown-item"  href="{% url 'ceno_america.firstround' %}">1st Round</a></li>
                   </ul>
                 </li>
               </ul>
@@ -83,7 +86,8 @@
                     OFC
                   </a>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Final Round</a></li>
+                    <li><a class="dropdown-item"  href="{% url 'oceania.finalround' %}">Final Round</a></li>
+                    <li><a class="dropdown-item"   href="{% url 'oceania.firstround' %}">1st Round</a></li>
                   </ul>
                 </li>
               </ul>
@@ -96,9 +100,9 @@
                     CAF
                   </a>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Final Round</a></li>
-                    <li><a class="dropdown-item" href="#">2nd Round</a></li>
-                    <li><a class="dropdown-item" href="#">1st Round</a></li>
+                    <li><a class="dropdown-item"  href="{% url 'africa.finalround' %}">Final Round</a></li>
+                    <li><a class="dropdown-item"  href="{% url 'africa.secondround' %}">2nd Round</a></li>
+                    <li><a class="dropdown-item"  href="{% url 'africa.firstround' %}">1st Round</a></li>
                   </ul>
                 </li>
               </ul>
@@ -111,9 +115,9 @@
                     AFC
                   </a>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Final Round</a></li>
-                    <li><a class="dropdown-item" href="#">2nd Round</a></li>
-                    <li><a class="dropdown-item" href="#">1st Round</a></li>
+                    <li><a class="dropdown-item"  href="{% url 'asia.finalround' %}">Final Round</a></li>
+                    <li><a class="dropdown-item"  href="{% url 'asia.secondround' %}">2nd Round</a></li>
+                    <li><a class="dropdown-item"  href="{% url 'asia.firstround' %}">1st Round</a></li>
                   </ul>
                 </li>
               </ul>
@@ -121,7 +125,7 @@
         </div>
         </nav>
     </div>
-    <div class="container">
+    <div class="container-fluid">
         {% block container %}
         {% endblock %}
     </div>

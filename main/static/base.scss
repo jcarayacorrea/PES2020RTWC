@@ -1,5 +1,29 @@
-$primary:light-blue;
+// Required
+@import "bootstrap5/scss/functions";
+
+// Default variable overrides
+
+
+// Required
 @import "bootstrap5/scss/bootstrap";
+@import "bootstrap5/scss/variables";
+@import "bootstrap5/scss/maps";
+@import "bootstrap5/scss/mixins";
+@import "bootstrap5/scss/root";
 
-.bg-primary: $primary;
+// Optional Bootstrap components here
+@import "bootstrap5/scss/reboot";
+@import "bootstrap5/scss/type";
 
+nav, .dropdown-menu, .card-header, {
+  background-color: dodgerblue;
+}
+
+.nav-link, .dropdown-item, .card-title{
+  color: whitesmoke;
+}
+
+.card{
+  border-color: dodgerblue;
+  border-style: solid;
+}
