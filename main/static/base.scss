@@ -23,7 +23,8 @@ nav, .dropdown-menu, .card-header, {
   color: whitesmoke;
 }
 
-.card{
+.card-border{
+  @extend .card;
   border-color: dodgerblue;
   border-style: solid;
 }
@@ -32,4 +33,32 @@ img{
 
   max-width: 150%;
 
+}
+
+.soccer-card-header{
+ @extend .card-header;
+ @extend .card-title;
+ @extend .text-center
+}
+
+.flag-config{
+  @extend .m-1;
+  @extend .col-md-2;
+  @extend .justify-content-center;
+
+}
+.name-config{
+  @extend .m-1;
+  @extend .col-md-8;
+  @extend .text-center
+}
+
+.flag-circle {
+  @extend .rounded-circle;
+
+}
+
+.team-card{
+  @extend .card;
+  @extend .mb-1;
 }
