@@ -1,8 +1,34 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block container %}
-  <div class="">
+  <div id="header">
     <h1 class="h1 text-center">South American Qualifying</h1>
     <h2 class="h3 text-center">Final Round</h2>
+  </div>
+  <div id="section">
+    <div class="row ">
+       <div class="col-md-6 offset-md-3">
+           <div class="card">
+               <div class="card-header card-title text-center ">Teams</div>
+               <div class="card-body">
+                   <div class="row g-4">
+                       <div class="col-md-10 offset-md-1">
+                           <div class="card">
+                               <div class="row">
+                                   <div class="p- 2 col-md-3 justify-content-center">
+                                       <img src="{% static 'assets/images/flags/sudamerica/chile.svg' %}" class="rounded-circle">
+                                   </div>
+                                   <div class="col-md-7 text-center">
+                                       Chile
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </div>
+    </div>
   </div>
 
 {% endblock %}
