@@ -31,7 +31,7 @@ nav, .dropdown-menu, .card-header, {
 
 img{
 
-  max-width: 150%;
+  max-width: 200%;
 
 }
 
@@ -40,6 +40,11 @@ img{
  @extend .card-header;
  @extend .card-title;
  @extend .text-center
+}
+
+.soccer-card-body{
+  @extend .card-body;
+  @extend .container
 }
 
 .flag-config{
@@ -61,6 +66,7 @@ img{
 
 .team-card{
   @extend .card;
+  @extend .col-md-8;
   @extend .mb-1;
   border-color: slategray;
   border-style: ridge;
