@@ -4,6 +4,9 @@ from django.shortcuts import render
 def finalround(request):
     return render(request,'asia/finalround.html')
 
+def thirdround(request):
+    return render(request,'asia/thrround.html')
+
 def secondround(request):
     return render(request,'asia/sndround.html')
 
