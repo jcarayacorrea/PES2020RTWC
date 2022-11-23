@@ -25,5 +25,6 @@ urlpatterns = [
     path('oceania/', include('oceania.urls')),
     path('africa/', include('africa.urls')),
     path('asia/', include('asia.urls')),
+    path('worldcup/',include('worldcup.urls')),
     path('admin/', admin.site.urls),
 ]
