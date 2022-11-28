@@ -1,0 +1,435 @@
+[
+  {
+      "id" : "66",
+      "image_flag": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PG1hc2sgaWQ9ImEiPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjU2IiBmaWxsPSIjZmZmIi8+PC9tYXNrPjxnIG1hc2s9InVybCgjYSkiPjxwYXRoIGZpbGw9IiNmZmRhNDQiIGQ9Ik0xNDQuOCAwaDIyMi40bDMyIDI2MC0zMiAyNTJIMTQ0LjhsLTMyLjEtMjU2eiIvPjxwYXRoIGZpbGw9IiM0OTZlMmQiIGQ9Ik0wIDBoMTQ0Ljh2NTEySDB6Ii8+PHBhdGggZmlsbD0iI2Q4MDAyNyIgZD0iTTM2Ny4yIDBINTEydjUxMkgzNjcuMnoiLz48cGF0aCBmaWxsPSIjNDk2ZTJkIiBkPSJtMjU2LjEgMTY3IDIyLjEgNjhoNzEuNUwyOTIgMjc3bDIyIDY4LTU3LjgtNDItNTcuOSA0MiAyMi4xLTY4LTU3LjgtNDJIMjM0eiIvPjwvZz48L3N2Zz4=",
+      "nation_iso_code" : "SEN",
+      "nation_name" : "Senegal",
+      "conf_name": "CAF",
+      "fifa_nation_rank" : 18
+    },
+  {
+      "id" : "67",
+      "image_flag": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PG1hc2sgaWQ9ImEiPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjU2IiBmaWxsPSIjZmZmIi8+PC9tYXNrPjxnIG1hc2s9InVybCgjYSkiPjxwYXRoIGZpbGw9IiNkODAwMjciIGQ9Ik0wIDBoNTEydjUxMkgweiIvPjxwYXRoIGZpbGw9IiM0OTZlMmQiIGQ9Ik00MDcuMyAyMTBIMjkxLjdMMjU2IDEwMC4zIDIyMC4zIDIxMEgxMDQuN2w5My41IDY4LTM1LjcgMTA5LjhMMjU2IDMyMGw5My41IDY4LTM1LjctMTEwem0tMTgzIDU5LjUgMTIuMi0zNy4xaDM5bDEyLjEgMzcuMS0zMS42IDIzLTMxLjYtMjN6bTQ0LTU5LjRoLTI0LjZsMTIuMy0zNy45em0zOC4zIDQ1LjctNy43LTIzLjRoMzkuOXpNMjEzIDIzMi40bC03LjcgMjMuNC0zMi4yLTIzLjR6bS04LjMgOTcuMyAxMi4zLTM4IDIwIDE0LjV6bTcwLjEtMjMuNCAyMC0xNC41IDEyLjMgMzcuOXoiLz48L2c+PC9zdmc+",
+      "nation_iso_code" : "MAR",
+      "nation_name" : "Marruecos",
+      "conf_name": "CAF",
+      "fifa_nation_rank" : 22
+    },
+  {
+      "id" : "68",
+      "image_flag": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PG1hc2sgaWQ9ImEiPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjU2IiBmaWxsPSIjZmZmIi8+PC9tYXNrPjxnIG1hc2s9InVybCgjYSkiPjxwYXRoIGZpbGw9IiNkODAwMjciIGQ9Ik0wIDBoNTEydjUxMkgweiIvPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMTIyLjQiIGZpbGw9IiNlZWUiLz48ZyBmaWxsPSIjZDgwMDI3Ij48cGF0aCBkPSJtMjcxIDIwOS4yIDIxIDI5IDM0LjEtMTEuMS0yMSAyOSAyMSAyOC45LTM0LTExLjEtMjEgMjlWMjY3TDIzNyAyNTZsMzQtMTF6Ii8+PHBhdGggZD0iTTI4My44IDMyOC4zYTcyLjMgNzIuMyAwIDEgMSAzNC40LTEzNiA4OSA4OSAwIDEgMCAwIDEyNy4zIDcyIDcyIDAgMCAxLTM0LjQgOC43eiIvPjwvZz48L2c+PC9zdmc+",
+      "nation_iso_code" : "TUN",
+      "nation_name" : "Tunez",
+      "conf_name": "CAF",
+      "fifa_nation_rank" : 30
+    },
+  {
+      "id" : "69",
+      "image_flag": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PG1hc2sgaWQ9ImEiPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjU2IiBmaWxsPSIjZmZmIi8+PC9tYXNrPjxnIG1hc2s9InVybCgjYSkiPjxwYXRoIGZpbGw9IiM2ZGE1NDQiIGQ9Ik0wIDB2NTEyaDE2MGw5Ni02NCA5NiA2NGgxNjBWMEgzNTJsLTk2IDY0LTk2LTY0WiIvPjxwYXRoIGZpbGw9IiNlZWUiIGQ9Ik0xNjAgMGgxOTJ2NTEySDE2MFoiLz48L2c+PC9zdmc+",
+      "nation_iso_code" : "NGA",
+      "nation_name" : "Nigeria",
+      "conf_name": "CAF",
+      "fifa_nation_rank" : 32
+    },
+    {
+      "id" : "70",
+      "image_flag": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PG1hc2sgaWQ9ImEiPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjU2IiBmaWxsPSIjZmZmIi8+PC9tYXNrPjxnIG1hc2s9InVybCgjYSkiPjxwYXRoIGZpbGw9IiM0OTZlMmQiIGQ9Ik0wIDBoMjU2bDQ1LjMgMjUxLjhMMjU2IDUxMkgweiIvPjxwYXRoIGZpbGw9IiNlZWUiIGQ9Ik0yNTYgMGgyNTZ2NTEySDI1NnoiLz48ZyBmaWxsPSIjZDgwMDI3Ij48cGF0aCBkPSJtMzExIDIwNi45LTIxIDI5LTM0LTExIDIxIDI4LjgtMjEgMjkgMzQtMTEuMSAyMSAyOXYtMzUuOGwzNC0xMS4xLTM0LTExeiIvPjxwYXRoIGQ9Ik0yNzcuMiAzMjguM2E3Mi4zIDcyLjMgMCAxIDEgMzQuNS0xMzYgODkgODkgMCAxIDAgMCAxMjcuMyA3MiA3MiAwIDAgMS0zNC41IDguN3oiLz48L2c+PC9nPjwvc3ZnPg==",
+      "nation_iso_code" : "DZA",
+      "nation_name" : "Argelia",
+      "conf_name": "CAF",
+      "fifa_nation_rank" : 37
+    },
+  {
+      "id" : "71",
+      "image_flag": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PG1hc2sgaWQ9ImEiPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjU2IiBmaWxsPSIjZmZmIi8+PC9tYXNrPjxnIG1hc2s9InVybCgjYSkiPjxwYXRoIGZpbGw9IiNlZWUiIGQ9Im0wIDE0NCAyNTYtMzIgMjU2IDMydjIyNGwtMjU2IDMyTDAgMzY4WiIvPjxwYXRoIGZpbGw9IiNkODAwMjciIGQ9Ik0wIDBoNTEydjE0NEgwWiIvPjxwYXRoIGZpbGw9IiMzMzMiIGQ9Ik0wIDM2OGg1MTJ2MTQ0SDBaIi8+PHBhdGggZmlsbD0iI2ZmOTgxMSIgZD0iTTI1MCAxOTFjLTggMC0xNyA0LTIyIDE0IDUtMyAxNi0xIDE2IDEzIDAgNC0yIDgtNSAxMC04IDAtMTQtMTQtMjktMTQtMTAgMC0xOSA3LTE5IDE3djY5bDQ2LTctMTQgMjdoNjZsLTE0LTI3IDQ2IDd2LTY5YzAtMTAtOS0xNy0xOS0xNy0xNSAwLTIxIDE0LTI5IDE0IDgtMjMtNy0zNy0yMy0zN3oiLz48L2c+PC9zdmc+",
+      "nation_iso_code" : "EGY",
+      "nation_name" : "Egipto",
+      "conf_name": "CAF",
+      "fifa_nation_rank" : 39
+    },
+  {
+      "id" : "72",
+      "image_flag": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PG1hc2sgaWQ9ImEiPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjU2IiBmaWxsPSIjZmZmIi8+PC9tYXNrPjxnIG1hc2s9InVybCgjYSkiPjxwYXRoIGZpbGw9IiNkODAwMjciIGQ9Ik0xNDQuOCAwaDIyMi40bDMyIDI2MC0zMiAyNTJIMTQ0LjhsLTMyLjEtMjU2eiIvPjxwYXRoIGZpbGw9IiNmZmRhNDQiIGQ9Im0yNTYuMSAxNjcgMjIuMSA2OGg3MS41TDI5MiAyNzdsMjIgNjgtNTcuOC00Mi01Ny45IDQyIDIyLjEtNjgtNTcuOC00MkgyMzR6Ii8+PHBhdGggZmlsbD0iIzQ5NmUyZCIgZD0iTTAgMGgxNDQuOHY1MTJIMHoiLz48cGF0aCBmaWxsPSIjZmZkYTQ0IiBkPSJNMzY3LjIgMEg1MTJ2NTEySDM2Ny4yeiIvPjwvZz48L3N2Zz4=",
+      "nation_iso_code" : "CMR",
+      "nation_name" : "Camerun",
+      "conf_name": "CAF",
+      "fifa_nation_rank" : 43
+    },
+  {
+      "id" : "73",
+      "image_flag": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PG1hc2sgaWQ9ImEiPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjU2IiBmaWxsPSIjZmZmIi8+PC9tYXNrPjxnIG1hc2s9InVybCgjYSkiPjxwYXRoIGZpbGw9IiNmZmRhNDQiIGQ9Ik0xNjcgMGgxNzhsMjUuOSAyNTIuM0wzNDUgNTEySDE2N2wtMjkuOC0yNTMuNHoiLz48cGF0aCBmaWxsPSIjNmRhNTQ0IiBkPSJNMCAwaDE2N3Y1MTJIMHoiLz48cGF0aCBmaWxsPSIjZDgwMDI3IiBkPSJNMzQ1IDBoMTY3djUxMkgzNDV6Ii8+PC9nPjwvc3ZnPg==",
+      "nation_iso_code" : "MLI",
+      "nation_name" : "Mali",
+      "conf_name": "CAF",
+      "fifa_nation_rank" : 46
+    },
+  {
+      "id" : "74",
+      "image_flag": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PG1hc2sgaWQ9ImEiPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjU2IiBmaWxsPSIjZmZmIi8+PC9tYXNrPjxnIG1hc2s9InVybCgjYSkiPjxwYXRoIGZpbGw9IiNlZWUiIGQ9Ik0xNjcgMGgxNzhsMzEgMjUzLjJMMzQ1IDUxMkgxNjdsLTMzLjQtMjU3LjR6Ii8+PHBhdGggZmlsbD0iI2ZmOTgxMSIgZD0iTTAgMGgxNjd2NTEySDB6Ii8+PHBhdGggZmlsbD0iIzZkYTU0NCIgZD0iTTM0NSAwaDE2N3Y1MTJIMzQ1eiIvPjwvZz48L3N2Zz4=",
+      "nation_iso_code" : "CIV",
+      "nation_name" : "Costa de Marfil",
+      "conf_name": "CAF",
+      "fifa_nation_rank" : 48
+    },
+  {
+      "id" : "75",
+      "image_flag": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PG1hc2sgaWQ9ImEiPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjU2IiBmaWxsPSIjZmZmIi8+PC9tYXNrPjxnIG1hc2s9InVybCgjYSkiPjxwYXRoIGZpbGw9IiNkODAwMjciIGQ9Ik0wIDBoNTEydjI1NmwtMjU1LjIgNDhMMCAyNTZ6Ii8+PHBhdGggZmlsbD0iIzZkYTU0NCIgZD0iTTAgMjU2aDUxMnYyNTZIMHoiLz48cGF0aCBmaWxsPSIjZmZkYTQ0IiBkPSJtMjU2IDE2NyAxOS4zIDU5LjVIMzM4bC01MC42IDM2LjggMTkuMyA1OS41TDI1NiAyODZsLTUwLjYgMzYuOCAxOS4zLTU5LjUtNTAuNi0zNi44aDYyLjZ6Ii8+PC9nPjwvc3ZnPg==",
+      "nation_iso_code" : "BFA",
+      "nation_name" : "Burkina Faso",
+      "conf_name": "CAF",
+      "fifa_nation_rank" : 54
+    },
+  {
+      "id" : "76",
+      "image_flag": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PG1hc2sgaWQ9ImEiPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjU2IiBmaWxsPSIjZmZmIi8+PC9tYXNrPjxnIG1hc2s9InVybCgjYSkiPjxwYXRoIGZpbGw9IiNmZmRhNDQiIGQ9Im0wIDE2NyAyNTcuMy0zMS45TDUxMiAxNjd2MTc4bC0yNTYuMyAyOUwwIDM0NXoiLz48cGF0aCBmaWxsPSIjZDgwMDI3IiBkPSJNMCAwaDUxMnYxNjdIMHoiLz48cGF0aCBmaWxsPSIjNDk2ZTJkIiBkPSJNMCAzNDVoNTEydjE2N0gweiIvPjxwYXRoIGZpbGw9IiMzMzMiIGQ9Im0yNTYgMTY3IDIyLjEgNjhoNzEuNWwtNTcuOCA0MiAyMiA2OC01Ny44LTQyLTU3LjkgNDIgMjIuMS02OC01Ny44LTQyaDcxLjV6Ii8+PC9nPjwvc3ZnPg==",
+      "nation_iso_code" : "GHA",
+      "nation_name" : "Ghana",
+      "conf_name": "CAF",
+      "fifa_nation_rank" : 61
+    },
+  {
+      "id" : "77",
+      "image_flag": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PG1hc2sgaWQ9ImEiPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjU2IiBmaWxsPSIjZmZmIi8+PC9tYXNrPjxnIG1hc2s9InVybCgjYSkiPjxwYXRoIGZpbGw9IiNlZWUiIGQ9Im0wIDAgMTkyIDI1NkwwIDUxMmg0N2w0NjUtMTg5di0zNGwtMzItMzMgMzItMzN2LTM0TDQ3IDBaIi8+PHBhdGggZmlsbD0iIzMzMyIgZD0iTTAgMTQydjIyOGwxNDAtMTE0eiIvPjxwYXRoIGZpbGw9IiNmZmRhNDQiIGQ9Ik0xOTIgMjU2IDAgOTV2NDdsMTE0IDExNEwwIDM3MHY0N3oiLz48cGF0aCBmaWxsPSIjNmRhNTQ0IiBkPSJNNTEyIDIyM0gyMjNMMCAwdjk0bDE2MSAxNjJMMCA0MTh2OTRsMjIzLTIyM2gyODl6Ii8+PHBhdGggZmlsbD0iI2Q4MDAyNyIgZD0iTTUxMiAwSDQ3bDE4OSAxODloMjc2eiIvPjxwYXRoIGZpbGw9IiMwMDUyYjQiIGQ9Ik01MTIgNTEySDQ3bDE4OS0xODloMjc2eiIvPjwvZz48L3N2Zz4=",
+      "nation_iso_code" : "ZAF",
+      "nation_name" : "Sudafrica",
+      "conf_name": "CAF",
+      "fifa_nation_rank" : 67
+    },
+   {
+      "id" : "78",
+      "image_flag": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PG1hc2sgaWQ9ImEiPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjU2IiBmaWxsPSIjZmZmIi8+PC9tYXNrPjxnIG1hc2s9InVybCgjYSkiPjxwYXRoIGZpbGw9IiMwMDUyYjQiIGQ9Ik0wIDBoNTEydjI1Ni4ybC00MS45IDY0LjMgNDEuOSA2My43VjUxMkgwVjM4NC4yTDQxLjMgMzIwIDAgMjU2LjJ6Ii8+PHBhdGggZmlsbD0iI2VlZSIgZD0iTTAgMjU2LjJoNTEydjQyLjlsLTE1LjcgMjEuNiAxNS43IDIxdjQyLjVIMHYtNDIuNWwxNS4xLTIxLjVMMCAyOTl6Ii8+PHBhdGggZmlsbD0iI2Q4MDAyNyIgZD0iTTAgMjk5LjFoNTEydjQyLjZIMHoiLz48cGF0aCBmaWxsPSIjZmZkYTQ0IiBkPSJtMTgyLjggMTkwLjQgNS4yIDE2LjRoMTcuMWwtMTMuOCAxMCA1LjMgMTYuMy0xMy44LTEwLTE0IDEwIDUuNC0xNi4zLTEzLjktMTBoMTcuMXptMCAyMTMuM0wxODggNDIwaDE3LjFsLTEzLjggMTAgNS4zIDE2LjItMTMuOC0xMC0xNCAxMEwxNzQgNDMwbC0xNC0xMGgxNy4yem0tOTkuMi03Mi4xIDUuMiAxNi4yaDE3LjFMOTIuMSAzNThsNS4yIDE2LjItMTMuNy0xMC0xNCAxMEw3NSAzNThsLTE0LTEwLjFoMTcuMnptMzcuOS0xMTkuOCA1IDE2aDE3LjJsLTEzLjggMTAuMyA1LjIgMTYuMi0xMy43LTEwLTE0IDEwIDUuNC0xNi4zLTE0LTEwLjFIMTE2em0tNjAuNCA2N2gxN2w1LjUtMTYuMiA1LjIgMTYuMmgxNy4xTDkyLjEgMjg5bDUuMiAxNi40TDgzLjYgMjk1bC0xNCAxMC4zIDUuNC0xNi40em00Ni41IDE0MyA1LjMtMTYuMkw5OSAzOTUuNGgxNy4xbDUuNC0xNi4yIDUuMiAxNi4zaDE3LjFMMTMwIDQwNS42bDUuMyAxNi4yLTEzLjgtMTB6TTI4MiAzMzEuNmwtNS40IDE2LjJoLTE3bDEzLjggMTAuMi01LjMgMTYuMiAxMy45LTEwIDEzLjggMTAtNS4yLTE2LjMgMTMuNy0xMC4xaC0xN3ptLTM4LTExOS44LTUuMyAxNi4yaC0xNy4xbDE0IDEwLjItNS40IDE2LjIgMTMuOS0xMCAxMy44IDEwLTUuMy0xNi4zIDEzLjgtMTAuMWgtMTd6bTYwLjMgNjdoLTE3bC01LjMtMTYuMi01LjQgMTYuMmgtMTdsMTMuOCAxMC4xLTUuMyAxNi40TDI4MiAyOTVsMTMuOCAxMC4zLTUuMi0xNi40em0tNDYuNCAxNDMtNS4zLTE2LjIgMTMuOC0xMC4yaC0xN2wtNS4zLTE2LjItNS40IDE2LjNoLTE3LjFsMTQgMTAuMS01LjQgMTYuMiAxMy45LTEweiIvPjwvZz48L3N2Zz4=",
+      "nation_iso_code" : "CPV",
+      "nation_name" : "Cabo Verde",
+      "conf_name": "CAF",
+      "fifa_nation_rank" : 71
+    },
+  {
+      "id" : "79",
+      "image_flag": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PG1hc2sgaWQ9ImEiPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjU2IiBmaWxsPSIjZmZmIi8+PC9tYXNrPjxnIG1hc2s9InVybCgjYSkiPjxwYXRoIGZpbGw9IiMzMzhhZjMiIGQ9Ik0wIDBoNDAxLjlMNTEyIDExMC4zVjUxMkgxMTAuM0wwIDQwMS45eiIvPjxwYXRoIGZpbGw9IiNmZmRhNDQiIGQ9Ik00MDEuOSAwIDAgNDAxLjlWNDQ5bDYzIDYzaDQ3LjNMNTEyIDExMC4zVjYzTDQ0OSAweiIvPjxwYXRoIGZpbGw9IiNkODAwMjciIGQ9Ik00NDkgMCAwIDQ0OXY2M2g2M0w1MTIgNjNWMGgtNjN6Ii8+PHBhdGggZmlsbD0iI2ZmZGE0NCIgZD0ibTEzNi40IDc4IDEzLjggNDIuNEgxOTVsLTM2IDI2LjMgMTMuNyA0Mi41LTM2LjItMjYuMy0zNiAyNi4zIDEzLjctNDIuNUw3OCAxMjAuNGg0NC43eiIvPjwvZz48L3N2Zz4=",
+      "nation_iso_code" : "COD",
+      "nation_name" : "RD del Congo",
+      "conf_name": "CAF",
+      "fifa_nation_rank" : 73
+    },
+  {
+      "id" : "80",
+      "image_flag": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PG1hc2sgaWQ9ImEiPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjU2IiBmaWxsPSIjZmZmIi8+PC9tYXNrPjxnIG1hc2s9InVybCgjYSkiPjxwYXRoIGZpbGw9IiNmZmRhNDQiIGQ9Im0wIDE2NyAyNTMuOC0xOS4zTDUxMiAxNjd2MTc4bC0yNTQuOSAzMi4zTDAgMzQ1eiIvPjxwYXRoIGZpbGw9IiM2ZGE1NDQiIGQ9Ik0wIDBoNTEydjE2N0gweiIvPjxwYXRoIGZpbGw9IiMwMDUyYjQiIGQ9Ik0wIDM0NWg1MTJ2MTY3SDB6Ii8+PC9nPjwvc3ZnPg==",
+      "nation_iso_code" : "GAB",
+      "nation_name" : "Gabon",
+      "conf_name": "CAF",
+      "fifa_nation_rank" : 81
+    },
+  {
+      "id" : "81",
+      "image_flag": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PG1hc2sgaWQ9ImEiPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjU2IiBmaWxsPSIjZmZmIi8+PC9tYXNrPjxnIG1hc2s9InVybCgjYSkiPjxwYXRoIGZpbGw9IiNmZmRhNDQiIGQ9Ik0xNjcgMGgxNzhsMjUuOSAyNTIuM0wzNDUgNTEySDE2N2wtMjkuOC0yNTMuNHoiLz48cGF0aCBmaWxsPSIjZDgwMDI3IiBkPSJNMCAwaDE2N3Y1MTJIMHoiLz48cGF0aCBmaWxsPSIjNmRhNTQ0IiBkPSJNMzQ1IDBoMTY3djUxMkgzNDV6Ii8+PC9nPjwvc3ZnPg==",
+      "nation_iso_code" : "GIN",
+      "nation_name" : "Guinea",
+      "conf_name": "CAF",
+      "fifa_nation_rank" : 83
+    },
+  {
+      "id" : "82",
+      "image_flag": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PG1hc2sgaWQ9ImEiPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjU2IiBmaWxsPSIjZmZmIi8+PC9tYXNrPjxnIG1hc2s9InVybCgjYSkiPjxwYXRoIGZpbGw9IiM0OTZlMmQiIGQ9Ik0wIDBoNTEydjI1NkwyNTYgNTEySDB6Ii8+PHBhdGggZmlsbD0iI2ZmOTgxMSIgZD0iTTQ3MyAxNjdoLTY2LjdhMjIuMyAyMi4zIDAgMCAwLTQ0LjYgMEgyOTVhMjMgMjMgMCAwIDAgMjMgMjIuMmgtLjhjMCAxMi4zIDEwIDIyLjMgMjIuMyAyMi4zIDAgMTIuMyAxMCAyMi4yIDIyLjIgMjIuMmg0NC42YzEyLjMgMCAyMi4yLTEwIDIyLjItMjIuMiAxMi4zIDAgMjIuMy0xMCAyMi4zLTIyLjNoLS44YTIzIDIzIDAgMCAwIDIzLTIyLjJ6Ii8+PHBhdGggZmlsbD0iIzMzMyIgZD0iTTM0MS4zIDI1Nmg4NS40bDIxLjEgMTI2LjNMNDI2LjcgNTEyaC04NS40bC0yMy41LTEyOHoiLz48cGF0aCBmaWxsPSIjZDgwMDI3IiBkPSJNMjU2IDI1Nmg4NS4zdjI1NkgyNTZ6Ii8+PHBhdGggZmlsbD0iI2ZmOTgxMSIgZD0iTTQyNi43IDI1Nkg1MTJ2MjU2aC04NS4zeiIvPjwvZz48L3N2Zz4=",
+      "nation_iso_code" : "ZMB",
+      "nation_name" : "Zambia",
+      "conf_name": "CAF",
+      "fifa_nation_rank" : 88
+    },
+  {
+      "id" : "83",
+      "image_flag": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PG1hc2sgaWQ9ImEiPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjU2IiBmaWxsPSIjZmZmIi8+PC9tYXNrPjxnIG1hc2s9InVybCgjYSkiPjxwYXRoIGZpbGw9IiNmZmRhNDQiIGQ9Ik0wIDg1djM0MmwyNTYgMzEgMjU2LTMxVjg1TDI1NiA1M1oiLz48cGF0aCBmaWxsPSIjMzMzIiBkPSJNMCAwaDUxMnY4NUgweiIvPjxwYXRoIGZpbGw9IiNkODAwMjciIGQ9Ik0wIDE3MWg1MTJ2ODVsLTI1NiAzMUwwIDI1NloiLz48cGF0aCBmaWxsPSIjMzMzIiBkPSJNMCAyNTZoNTEydjg1SDB6Ii8+PHBhdGggZmlsbD0iI2Q4MDAyNyIgZD0iTTAgNDI3aDUxMnY4NUgweiIvPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1NiIgcj0iODUuMyIgZmlsbD0iI2VlZSIvPjxwYXRoIGZpbGw9IiMzMzMiIGQ9Im0yODcgMjYwLTMxLTEzIDgtMjZhMTcgMTcgMCAwIDAtNS0xNmw4LThhMjggMjggMCAwIDAtMTktOCAyOCAyOCAwIDAgMC0yMCA4bDggOGExNyAxNyAwIDAgMC01IDEybDEgNS0xMiAxMmgyMXMtOSAxMy0xNCAyNGMtNCAxMSAwIDI1IDEyIDMwbDYgMiAxMSAxMHYxMmwtMTEgMTFoMjJ2LTIzbDEwLTEwaDIxYTIyIDIyIDAgMCAwLTExLTMweiIvPjwvZz48L3N2Zz4=",
+      "nation_iso_code" : "UGA",
+      "nation_name" : "Uganda",
+      "conf_name": "CAF",
+      "fifa_nation_rank" : 89
+    },
+  {
+      "id" : "84",
+      "image_flag": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PG1hc2sgaWQ9ImEiPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjU2IiBmaWxsPSIjZmZmIi8+PC9tYXNrPjxnIG1hc2s9InVybCgjYSkiPjxwYXRoIGZpbGw9IiM2ZGE1NDQiIGQ9Ik0wIDBoMTg5LjJsNTQgMjU3LjYtNTQgMjU0LjRIMHoiLz48cGF0aCBmaWxsPSIjZmZkYTQ0IiBkPSJNMTg5LjIgMEg1MTJ2MjU2bC0xNTkgNTMuNUwxODkuMSAyNTZ6Ii8+PHBhdGggZmlsbD0iI2Q4MDAyNyIgZD0iTTE4OS4yIDI1Nkg1MTJ2MjU2SDE4OS4yeiIvPjwvZz48L3N2Zz4=",
+      "nation_iso_code" : "BEN",
+      "nation_name" : "Benin",
+      "conf_name": "CAF",
+      "fifa_nation_rank" : 91
+    },
+  {
+      "id" : "85",
+      "image_flag": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PG1hc2sgaWQ9ImEiPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjU2IiBmaWxsPSIjZmZmIi8+PC9tYXNrPjxnIG1hc2s9InVybCgjYSkiPjxwYXRoIGZpbGw9IiNlZWUiIGQ9Ik00MS4zIDEyMS45IDUxMiAxNjd2MTc4TDQzLjggMzkxLjN6Ii8+PHBhdGggZmlsbD0iIzZkYTU0NCIgZD0iTTAgMGg1MTJ2MTY3SDExMXoiLz48cGF0aCBmaWxsPSIjZDgwMDI3IiBkPSJNMTExIDM0NWg0MDF2MTY3SDB6Ii8+PHBhdGggZmlsbD0iIzAwNTJiNCIgZD0iTTAgMHY1MTJsMjU2LTI1NnoiLz48cGF0aCBmaWxsPSIjZmY5ODExIiBkPSJNMzM0IDI1Ny4xaDIyLjJ2MzIuM2gtMjIuM3oiLz48cGF0aCBmaWxsPSIjNmRhNTQ0IiBkPSJNMzY3LjMgMjQ1YTIyLjMgMjIuMyAwIDEgMC00NC41IDAgMTEuMSAxMS4xIDAgMSAwIDAgMjIuMWg0NC41YTExLjEgMTEuMSAwIDEgMCAwLTIyLjJ6Ii8+PC9nPjwvc3ZnPg==",
+      "nation_iso_code" : "GNQ",
+      "nation_name" : "Guinea Eecuatorial",
+      "conf_name": "CAF",
+      "fifa_nation_rank" : 98
+    },
+  {
+      "id" : "86",
+      "image_flag": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PG1hc2sgaWQ9ImEiPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjU2IiBmaWxsPSIjZmZmIi8+PC9tYXNrPjxnIG1hc2s9InVybCgjYSkiPjxwYXRoIGZpbGw9IiNmZmRhNDQiIGQ9Ik0zODQgMGgxMjh2MTI4TDM1MiAzNTIgMTI4IDUxMkgwVjM4NGwxNjAtMjI0WiIvPjxwYXRoIGZpbGw9IiM2ZGE1NDQiIGQ9Ik0wIDM4NCAzODQgMEgwWiIvPjxwYXRoIGZpbGw9IiNkODAwMjciIGQ9Ik01MTIgMTI4IDEyOCA1MTJoMzg0eiIvPjwvZz48L3N2Zz4=",
+      "nation_iso_code" : "COG",
+      "nation_name" : "Congo",
+      "conf_name": "CAF",
+      "fifa_nation_rank" : 100
+    },
+    {
+      "id" : "87",
+      "image_flag": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PG1hc2sgaWQ9ImEiPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjU2IiBmaWxsPSIjZmZmIi8+PC9tYXNrPjxnIG1hc2s9InVybCgjYSkiPjxwYXRoIGZpbGw9IiNlZWUiIGQ9Im0wIDE0NC43IDI1My40LTI4LjJMNTEyIDE0NC43VjE3OGwtMzYgNzYuNCAzNiA3OS42djMzLjNMMjU0LjcgNDAwIDAgMzY3LjNWMzM0bDM5LTc4LTM5LTc4eiIvPjxwYXRoIGZpbGw9IiMzMzMiIGQ9Ik0wIDBoNTEydjE0NC43SDB6Ii8+PHBhdGggZmlsbD0iI2EyMDAxZCIgZD0iTTAgMTc4aDUxMnYxNTZIMHoiLz48cGF0aCBmaWxsPSIjNDk2ZTJkIiBkPSJNMCAzNjcuM2g1MTJWNTEySDB6Ii8+PHBhdGggZmlsbD0iI2VlZSIgZD0ibTMzNS45IDExOC4zLTMwLjMtMTQtNDkuNCAxMTEuOS00OS40LTExMS45LTMwLjMgMTRMMjM3LjggMjU2bC02MS4zIDEzNy43IDMwLjMgMTQgNDkuNC0xMTEuOSA0OS40IDExMS45IDMwLjMtMTRMMjc0LjYgMjU2eiIvPjxwYXRoIGZpbGw9IiNlZWUiIGQ9Ik0yNTYuMiAxMTEuM3MtNyA1LjgtMTYuNyAxNmwtMTYgMTI3LjYgMTYgMTI5LjhjOS43IDEwLjIgMTYuNyAxNiAxNi43IDE2czctNS44IDE2LjctMTZsMTUtMTMwLjctMTUtMTI2LjdjLTkuNy0xMC4yLTE2LjctMTYtMTYuNy0xNnoiLz48cGF0aCBmaWxsPSIjMzMzIiBkPSJtMzExLjkgMTc5LjItMTAgNzUuNSAxMCA3OC4xQTE1OC42IDE1OC42IDAgMCAwIDMzNCAyNTZjMC0yOC4yLTkuNy01NC41LTIyLjItNzYuOHptLTExMS40IDAgOC45IDc0LjMtOSA3OS4zYTE1OC42IDE1OC42IDAgMCAxLTIyLjEtNzYuOGMwLTI4LjIgOS43LTU0LjUgMjIuMi03Ni44eiIvPjxwYXRoIGZpbGw9IiNhMjAwMWQiIGQ9Ik0yMDAuNSAxNzkuMnYxNTMuNmEyNjkgMjY5IDAgMCAwIDM5IDUxLjlWMTI3LjNjLTExLjQgMTItMjYuNiAzMC0zOSA1MnptMTExLjQgMGEyNjkgMjY5IDAgMCAwLTM5LTUxLjl2MjU3LjRjMTEuNC0xMiAyNi41LTMwIDM5LTUyVjE3OS4zeiIvPjwvZz48L3N2Zz4=",
+      "nation_iso_code" : "KEN",
+      "nation_name" : "Kenia",
+      "conf_name": "CAF",
+      "fifa_nation_rank" : 101
+    },
+  {
+      "id" : "88",
+      "image_flag": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PG1hc2sgaWQ9ImEiPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjU2IiBmaWxsPSIjZmZmIi8+PC9tYXNrPjxnIG1hc2s9InVybCgjYSkiPjxwYXRoIGZpbGw9IiNlZWUiIGQ9Ik0wIDBoMTY3bDQ1LjYgMjU3LjZMMTY3LjEgNTEySDB6Ii8+PHBhdGggZmlsbD0iI2Q4MDAyNyIgZD0iTTE2NyAwaDM0NXYyNTZsLTE3Ni43IDUzLjVMMTY2LjkgMjU2eiIvPjxwYXRoIGZpbGw9IiM2ZGE1NDQiIGQ9Ik0xNjcgMjU2aDM0NXYyNTZIMTY3eiIvPjwvZz48L3N2Zz4=",
+      "nation_iso_code" : "MDG",
+      "nation_name" : "Madagascar",
+      "conf_name": "CAF",
+      "fifa_nation_rank" : 102
+    },
+  {
+      "id" : "89",
+      "image_flag": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PG1hc2sgaWQ9ImEiPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjU2IiBmaWxsPSIjZmZmIi8+PC9tYXNrPjxnIG1hc2s9InVybCgjYSkiPjxwYXRoIGZpbGw9IiM0OTZlMmQiIGQ9Ik0wIDBoNTEydjUxMkgweiIvPjxnIGZpbGw9IiNmZmRhNDQiPjxwYXRoIGQ9Ik0yNTYgMjk1LjhhODkgODkgMCAwIDEtODctNzAgODkuNCA4OS40IDAgMCAwLTIgMTkgODkgODkgMCAxIDAgMTc4IDAgODkuNCA4OS40IDAgMCAwLTItMTkgODkgODkgMCAwIDEtODcgNzB6Ii8+PHBhdGggZD0ibTI1NiAxNzggOC4zIDI1LjZIMjkxbC0yMS43IDE1LjggOC4zIDI1LjVMMjU2IDIyOWwtMjEuNyAxNS44IDguMy0yNS41LTIxLjctMTUuOGgyNi44eiIvPjwvZz48L2c+PC9zdmc+",
+      "nation_iso_code" : "MRT",
+      "nation_name" : "Mauritania",
+      "conf_name": "CAF",
+      "fifa_nation_rank" : 103
+    },
+  {
+      "id" : "90",
+      "image_flag": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PG1hc2sgaWQ9ImEiPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjU2IiBmaWxsPSIjZmZmIi8+PC9tYXNrPjxnIG1hc2s9InVybCgjYSkiPjxwYXRoIGZpbGw9IiNlZWUiIGQ9Im05OSAxMzYuOCA0MTMgMjB2MzEuNWwtMzUuOSA2Ni4xIDM2LjIgNjguNC0uMyAzMi40LTQxMyAyMnoiLz48cGF0aCBmaWxsPSIjNDk2ZTJkIiBkPSJNNTEyIDE1Ni44VjBIMGwxMjIgMTU2Ljh6Ii8+PHBhdGggZmlsbD0iIzMzMyIgZD0iTTE2NyAxODguM3YxMzQuNWgzNDUuM2wtLjMtMTM0LjV6Ii8+PHBhdGggZmlsbD0iI2ZmZGE0NCIgZD0iTTUxMiAzNTUuMlY1MTJIMGwxMjItMTU2Ljh6Ii8+PHBhdGggZmlsbD0iI2EyMDAxZCIgZD0iTTAgMHY1MTJsMjU2LTI1NnoiLz48cGF0aCBmaWxsPSIjZmZkYTQ0IiBkPSJtMTAzLjYgMTg5LjIgMTYuNiA1MWg1My42bC00My40IDMxLjYgMTYuNiA1MS00My40LTMxLjUtNDMuNCAzMS41IDE2LjYtNTEtNDMuNC0zMS42SDg3eiIvPjxwYXRoIGZpbGw9IiNlZWUiIGQ9Ik01NS4xIDI1Nmg5N3Y0NC41aC05N3oiLz48cGF0aCBmaWxsPSIjMzMzIiBkPSJtMTcwLjUgMjA1LTE1LjctMTUuOC01MS4yIDUxLjItNTEuMS01MS4yTDM2LjcgMjA1IDg4IDI1NmwtNTEuMiA1MS4zIDE1LjggMTUuNSA1MS4xLTUxIDUxLjIgNTEgMTUuNy0xNS41LTUxLjItNTEuMnoiLz48L2c+PC9zdmc+",
+      "nation_iso_code" : "MOZ",
+      "nation_name" : "Mozambique",
+      "conf_name": "CAF",
+      "fifa_nation_rank" : 114
+    },
+   {
+      "id" : "91",
+      "image_flag": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PG1hc2sgaWQ9ImEiPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjU2IiBmaWxsPSIjZmZmIi8+PC9tYXNrPjxnIG1hc2s9InVybCgjYSkiPjxwYXRoIGZpbGw9IiNlZWUiIGQ9Im0wIDQwMS45IDE2MC42LTIzNy4xTDQwMS45IDBINDQ5bDYzIDYzdjQ3LjNMMzUwLjMgMzM5LjIgMTEwLjMgNTEySDYzTDAgNDQ5eiIvPjxwYXRoIGZpbGw9IiNhMjAwMWQiIGQ9Ik0wIDUxMmg2M0w1MTIgNjNWMGgtNjNMMCA0NDl6Ii8+PHBhdGggZmlsbD0iIzAwNTJiNCIgZD0iTTAgMHY0MDEuOUw0MDEuOSAweiIvPjxwYXRoIGZpbGw9IiM0OTZlMmQiIGQ9Ik01MTIgNTEyVjExMC4zTDExMC4zIDUxMnoiLz48cGF0aCBmaWxsPSIjZmZkYTQ0IiBkPSJtMjExLjUgMTQ0LjctMjguNyAxMy41TDE5OCAxODZsLTMxLjItNi00IDMxLjUtMjEuNi0yMy4yLTIxLjcgMjMuMi00LTMxLjUtMzEgNiAxNS4yLTI3LjhMNzEgMTQ0LjdsMjguNy0xMy41LTE1LjMtMjcuOCAzMS4xIDYgNC0zMS41IDIxLjcgMjMuMkwxNjMgNzhsNCAzMS41IDMxLTYtMTUuMiAyNy44eiIvPjwvZz48L3N2Zz4=",
+      "nation_iso_code" : "NAM",
+      "nation_name" : "Namibia",
+      "conf_name": "CAF",
+      "fifa_nation_rank" : 115
+    },
+  {
+      "id" : "92",
+      "image_flag": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PG1hc2sgaWQ9ImEiPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjU2IiBmaWxsPSIjZmZmIi8+PC9tYXNrPjxnIG1hc2s9InVybCgjYSkiPjxwYXRoIGZpbGw9IiNkODAwMjciIGQ9Ik0wIDBoMTg5LjJsNTQgMjU3LjYtNTQgMjU0LjRIMHoiLz48cGF0aCBmaWxsPSIjZmZkYTQ0IiBkPSJNMTg5LjIgMEg1MTJ2MjU2bC0xNTkgNTMuNUwxODkuMSAyNTZ6Ii8+PHBhdGggZmlsbD0iIzZkYTU0NCIgZD0iTTE4OS4yIDI1Nkg1MTJ2MjU2SDE4OS4yeiIvPjxwYXRoIGZpbGw9IiMzMzMiIGQ9Im05Ni43IDE4OS4yIDE2LjYgNTFIMTY3bC00My40IDMxLjYgMTYuNSA1MS00My40LTMxLjUtNDMuNCAzMS41IDE2LjYtNTEtNDMuNC0zMS42aDUzLjd6Ii8+PC9nPjwvc3ZnPg==",
+      "nation_iso_code" : "GNB",
+      "nation_name" : "Guinea-Bissau",
+      "conf_name": "CAF",
+      "fifa_nation_rank" : 116
+    },
+  {
+      "id" : "93",
+      "image_flag": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PG1hc2sgaWQ9ImEiPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjU2IiBmaWxsPSIjZmZmIi8+PC9tYXNrPjxnIG1hc2s9InVybCgjYSkiPjxwYXRoIGZpbGw9IiNlZWUiIGQ9Im0wIDE2NyAyNTMuOC0xOS4zTDUxMiAxNjd2MTc4bC0yNTQuOSAzMi4zTDAgMzQ1eiIvPjxwYXRoIGZpbGw9IiM2ZGE1NDQiIGQ9Ik0wIDBoNTEydjE2N0gweiIvPjxwYXRoIGZpbGw9IiMzMzhhZjMiIGQ9Ik0wIDM0NWg1MTJ2MTY3SDB6Ii8+PC9nPjwvc3ZnPg==",
+      "nation_iso_code" : "SLE",
+      "nation_name" : "Sierra Leona",
+      "conf_name": "CAF",
+      "fifa_nation_rank" : 117
+    },
+  {
+      "id" : "94",
+      "image_flag": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PG1hc2sgaWQ9ImEiPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjU2IiBmaWxsPSIjZmZmIi8+PC9tYXNrPjxnIG1hc2s9InVybCgjYSkiPjxwYXRoIGZpbGw9IiNkODAwMjciIGQ9Ik0wIDBoNTEydjI1NmwtMjUzIDM2LjZMMCAyNTZ6Ii8+PHBhdGggZmlsbD0iIzMzMyIgZD0iTTAgMjU2aDUxMnYyNTZIMHoiLz48ZyBmaWxsPSIjZmZkYTQ0Ij48cGF0aCBkPSJtMjIwLjkgMjAzLjYgMjEuNyAxNS44LTguMyAyNS41TDI1NiAyMjlsMjEuNyAxNS43LTguMy0yNS41IDIxLjctMTUuN2gtMjYuOEwyNTYgMTc4bC04LjMgMjUuNXoiLz48cGF0aCBkPSJNMzIwIDE0NS4xYTEyNy4yIDEyNy4yIDAgMCAwLTY0LTE3djMzLjNhOTQgOTQgMCAwIDEgNDcuMyAxMi43IDk0LjcgOTQuNyAwIDAgMS05NC42IDE2My44IDk0IDk0IDAgMCAxLTMxLjYtMjkuOGwtMjcuOSAxOC40YTEyOC4xIDEyOC4xIDAgMCAwIDIxNy43LTYuNUExMjguMSAxMjguMSAwIDAgMCAzMjAgMTQ1LjF6Ii8+PHBhdGggZD0iTTE4Mi4yIDIzMy43YTMzLjQgMzMuNCAwIDAgMCAxMy4zIDQ1LjRsMTA4LjQgNTkuMmMtNy40IDEzLjUtMy40IDMwIDEwIDM3LjNsMjkuMyAxNmEyNy44IDI3LjggMCAwIDAgMzcuOC0xMWwxNi0yOS4zeiIvPjwvZz48L2c+PC9zdmc+",
+      "nation_iso_code" : "AGO",
+      "nation_name" : "Angola",
+      "conf_name": "CAF",
+      "fifa_nation_rank" : 119
+    },
+  {
+      "id" : "95",
+      "image_flag": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PG1hc2sgaWQ9ImEiPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjU2IiBmaWxsPSIjZmZmIi8+PC9tYXNrPjxnIG1hc2s9InVybCgjYSkiPjxwYXRoIGZpbGw9IiMzMzMiIGQ9Im0wIDE0NC43IDI1Ny0yMi40IDI1NSAyMi40djIyMi42bC0yNTQuOSAzMUwwIDM2Ny4zeiIvPjxwYXRoIGZpbGw9IiNkODAwMjciIGQ9Ik0wIDBoNTEydjE0NC43SDB6Ii8+PHBhdGggZmlsbD0iIzQ5NmUyZCIgZD0iTTAgMzY3LjNoNTEyVjUxMkgweiIvPjxnIGZpbGw9IiNlZWUiPjxwYXRoIGQ9Im0zMTUuNiAyMDkuMyAyMSAyOSAzNC0xMS0yMSAyOSAyMSAyOC44LTM0LTExLTIxIDI5di0zNmwtMzQtMTEgMzQtMTF6Ii8+PHBhdGggZD0iTTI1OC4zIDMyOC40YTcyLjMgNzIuMyAwIDEgMSAzNC40LTEzNiA4OSA4OSAwIDEgMCAwIDEyNy4zIDcyIDcyIDAgMCAxLTM0LjQgOC43eiIvPjwvZz48L2c+PC9zdmc+",
+      "nation_iso_code" : "LBY",
+      "nation_name" : "Libia",
+      "conf_name": "CAF",
+      "fifa_nation_rank" : 120
+    },
+  {
+      "id" : "96",
+      "image_flag": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PG1hc2sgaWQ9ImEiPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjU2IiBmaWxsPSIjZmZmIi8+PC9tYXNrPjxnIG1hc2s9InVybCgjYSkiPjxwYXRoIGZpbGw9IiNlZWUiIGQ9Im0wIDE0NC43IDI1NS4zLTM2LjVMNTEyIDE0NC43djIyMi42TDI1MC41IDQwNyAwIDM2Ny4zeiIvPjxwYXRoIGZpbGw9IiNmZjk4MTEiIGQ9Ik0wIDBoNTEydjE0NC43SDB6Ii8+PHBhdGggZmlsbD0iIzZkYTU0NCIgZD0iTTAgMzY3LjNoNTEyVjUxMkgweiIvPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1Ni4xIiByPSI4OSIgZmlsbD0iI2ZmOTgxMSIvPjwvZz48L3N2Zz4=",
+      "nation_iso_code" : "NER",
+      "nation_name" : "Niger",
+      "conf_name": "CAF",
+      "fifa_nation_rank" : 121
+    },
+  {
+      "id" : "97",
+      "image_flag": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PG1hc2sgaWQ9ImEiPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjU2IiBmaWxsPSIjZmZmIi8+PC9tYXNrPjxnIG1hc2s9InVybCgjYSkiPjxwYXRoIGZpbGw9IiNkODAwMjciIGQ9Im0wIDE2NyAyNTMuOC0xOS4zTDUxMiAxNjd2MTc4bC0yNTQuOSAzMi4zTDAgMzQ1eiIvPjxwYXRoIGZpbGw9IiMzMzMiIGQ9Ik0wIDBoNTEydjE2N0gweiIvPjxwYXRoIGZpbGw9IiM0OTZlMmQiIGQ9Ik0wIDM0NWg1MTJ2MTY3SDB6Ii8+PHBhdGggZmlsbD0iI2Q4MDAyNyIgZD0ibTMzMi41IDEyMi40LTMxLjItMTQuNyAxNi42LTMwLjMtMzQgNi41LTQuMy0zNC4zTDI1NiA3NWwtMjMuNi0yNS4zTDIyOCA4NGwtMzQtNi41IDE2LjcgMzAuMy0zMS4zIDE0Ljd6Ii8+PC9nPjwvc3ZnPg==",
+      "nation_iso_code" : "MWI",
+      "nation_name" : "Malaui",
+      "conf_name": "CAF",
+      "fifa_nation_rank" : 124
+    },
+  {
+      "id" : "98",
+      "image_flag": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PG1hc2sgaWQ9ImEiPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjU2IiBmaWxsPSIjZmZmIi8+PC9tYXNrPjxnIG1hc2s9InVybCgjYSkiPjxwYXRoIGZpbGw9IiM2ZGE1NDQiIGQ9Ik0zMS40IDBINTEydjUxMkgzMS40eiIvPjxwYXRoIGZpbGw9IiNmZmRhNDQiIGQ9Ik01Ny44IDczLjNINTEydjczLjNsLTY1LjEgMTEwIDY1LjEgMTEwdjczLjNINTcuOHoiLz48cGF0aCBmaWxsPSIjZDgwMDI3IiBkPSJNMTMyIDE0Ni42aDM4MHY3My4zbC0yNyAzNiAyNyAzNy4zdjczLjNIMTMyeiIvPjxwYXRoIGZpbGw9IiNlZWUiIGQ9Ik0wIDB2NTEybDI3OS44LTI1NnoiLz48cGF0aCBmaWxsPSIjZDgwMDI3IiBkPSJtMTAzIDE4OS4yIDE2LjUgNTFoNTMuNmwtNDMuNCAzMS42IDE2LjYgNTEtNDMuNC0zMS41LTQzLjQgMzEuNSAxNi42LTUxLTQzLjQtMzEuNmg1My42eiIvPjxwYXRoIGZpbGw9IiNmZmRhNDQiIGQ9Im0xNDguNSAyNjAuMi00My4yLTE1LjMtMy40LTMxYTE2LjcgMTYuNyAwIDEgMC0zMi41IDcuNmwtMTIgMTIuMWgyMS41YzAgMjIuNC0xNi43IDIyLjQtMTYuNyA0NC43bDkuMiAyMi4yaDU1LjdsOS4zLTIyLjJhMjIuMiAyMi4yIDAgMCAwIDEuNy02LjZjOC0zLjIgMTAuNC0xMS41IDEwLjQtMTEuNXoiLz48cGF0aCBmaWxsPSIjMzMzIiBkPSJtMzEuNCAwIDIyMCAyMjBINTEydjczLjJIMjUwLjJMMzEuNCA1MTJIMGwyNTYtMjU2TDAgMHoiLz48L2c+PC9zdmc+",
+      "nation_iso_code" : "ZWE",
+      "nation_name" : "Zimbabue",
+      "conf_name": "CAF",
+      "fifa_nation_rank" : 125
+    },
+  {
+      "id" : "99",
+      "image_flag": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PG1hc2sgaWQ9ImEiPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjU2IiBmaWxsPSIjZmZmIi8+PC9tYXNrPjxnIG1hc2s9InVybCgjYSkiPjxwYXRoIGZpbGw9IiNlZWUiIGQ9Im0wIDE1NS44IDI1NS0zMC42IDI1NyAzMC42djMzLjRsLTI3LjcgNjcuMiAyNy43IDY2LjR2MzMuNGwtMjU2IDMyLjRMMCAzNTYuMnYtMzMuNGwyOC44LTY4LjVMMCAxODkuMnoiLz48cGF0aCBmaWxsPSIjYTIwMDFkIiBkPSJNMCAwaDUxMnYxNTUuOEgweiIvPjxwYXRoIGZpbGw9IiMwMDUyYjQiIGQ9Ik0wIDE4OS4yaDUxMnYxMzMuNkgweiIvPjxwYXRoIGZpbGw9IiM0OTZlMmQiIGQ9Ik0wIDM1Ni4yaDUxMlY1MTJIMHoiLz48L2c+PC9zdmc+",
+      "nation_iso_code" : "GMB",
+      "nation_name" : "Gambia",
+      "conf_name": "CAF",
+      "fifa_nation_rank" : 126
+    },
+  {
+      "id" : "100",
+      "image_flag": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PG1hc2sgaWQ9ImEiPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjU2IiBmaWxsPSIjZmZmIi8+PC9tYXNrPjxnIG1hc2s9InVybCgjYSkiPjxwYXRoIGZpbGw9IiM0OTZlMmQiIGQ9Ik0yNTYgMGgyNTZ2MTAyLjRMNDgzLjggMTUxbDI4LjIgNTMuOHYxMDIuNGwtMzAuNSA1MC43IDMwLjUgNTEuN1Y1MTJIMFY0MDkuNmwzNC43LTUxTDAgMzA3LjF6Ii8+PHBhdGggZmlsbD0iI2ZmOTgxMSIgZD0iTTAgNDQuNXY0MjNWMjU2eiIvPjxwYXRoIGZpbGw9IiNmZmRhNDQiIGQ9Ik0yMzEuNyAxMDIuNHYxMDIuNEg1MTJWMTAyLjR6TTAgMzA3LjJ2MTAyLjRoNTEyVjMwNy4ySDI1NmwtMTI4LjItMjYuNHoiLz48cGF0aCBmaWxsPSIjZDgwMDI3IiBkPSJNMjU2IDMwNy4yVjBIMHYzMDcuMnoiLz48cGF0aCBmaWxsPSIjZWVlIiBkPSJtMTQxLjQgMTIyLjQgMTYuNSA1MWg1My43TDE2OCAyMDVsMTYuNiA1MS00My40LTMxLjVMOTggMjU2bDE2LjUtNTFMNzEgMTczLjVoNTMuN3oiLz48L2c+PC9zdmc+",
+      "nation_iso_code" : "TGO",
+      "nation_name" : "Togo",
+      "conf_name": "CAF",
+      "fifa_nation_rank" : 127
+    },
+    {
+      "id" : "101",
+      "image_flag": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PG1hc2sgaWQ9ImEiPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjU2IiBmaWxsPSIjZmZmIi8+PC9tYXNrPjxnIG1hc2s9InVybCgjYSkiPjxwYXRoIGZpbGw9IiNlZWUiIGQ9Ik00My42IDEwOS40IDUxMiAxNDQuN3YyMjIuNkw0My44IDM5Ny4yeiIvPjxwYXRoIGZpbGw9IiNkODAwMjciIGQ9Ik0wIDBoNTEydjE0NC43SDExMXoiLz48cGF0aCBmaWxsPSIjMzMzIiBkPSJNMTExIDM2Ny4zaDQwMVY1MTJIMHoiLz48cGF0aCBmaWxsPSIjNDk2ZTJkIiBkPSJNMCAwdjUxMmwyNTYtMjU2eiIvPjwvZz48L3N2Zz4=",
+      "nation_iso_code" : "SDN",
+      "nation_name" : "Sudan",
+      "conf_name": "CAF",
+      "fifa_nation_rank" : 128
+    },
+  {
+      "id" : "102",
+      "image_flag": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PG1hc2sgaWQ9ImEiPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjU2IiBmaWxsPSIjZmZmIi8+PC9tYXNrPjxnIG1hc2s9InVybCgjYSkiPjxwYXRoIGZpbGw9IiNmZmRhNDQiIGQ9Ik0xMjQuNCAxNDkuNyA1MTIgMTMyLjhWMEgweiIvPjxwYXRoIGZpbGw9IiNlZWUiIGQ9Ik0xMTIuNSAxMzIuOEg1MTJ2MTIyLjRsLTI5NC4yIDE2LjZ6Ii8+PHBhdGggZmlsbD0iI2Q4MDAyNyIgZD0iTTUxMiAyNTUuM0gyMzQuNWwtMTM2IDEzOS44TDUxMiAzNzcuN1YyNTZ6Ii8+PHBhdGggZmlsbD0iIzAwNTJiNCIgZD0iTTEwOC4yIDM3Ny43IDAgNTExLjJsNTEyIC44VjM3Ny43eiIvPjxwYXRoIGZpbGw9IiM2ZGE1NDQiIGQ9Ik0uOCAwIDAgNTExLjJsMjU2LTI1NnoiLz48ZyBmaWxsPSIjZWVlIj48cGF0aCBkPSJNNjcuNSAyNTUuM2E3OCA3OCAwIDAgMSA2MS4yLTc2IDc4LjIgNzguMiAwIDAgMC0xNi43LTIgNzggNzggMCAxIDAgMTYuNyAxNTQgNzggNzggMCAwIDEtNjEuMi03NnoiLz48cGF0aCBkPSJtMTI3LjkgMTg4LjUgNC4xIDEyLjdoMTMuNGwtMTAuOCA4IDQuMSAxMi43LTEwLjgtOC0xMC45IDggNC4yLTEyLjgtMTAuOS03LjloMTMuNHptMCAzMy40IDQuMSAxMi43aDEzLjRsLTEwLjggOCA0LjEgMTIuNy0xMC44LTgtMTAuOSA4IDQuMi0xMi44LTEwLjktNy45aDEzLjR6bTAgMzMuNEwxMzIgMjY4aDEzLjRsLTEwLjggOCA0LjEgMTIuNi0xMC44LTcuOC0xMC45IDcuOCA0LjItMTIuNy0xMC45LTcuOWgxMy40em0wIDMzLjMgNC4xIDEyLjhoMTMuNGwtMTAuOCA4IDQuMSAxMi42LTEwLjgtNy44TDExNyAzMjJsNC4yLTEyLjctMTAuOS03LjloMTMuNHoiLz48L2c+PC9nPjwvc3ZnPg==",
+      "nation_iso_code" : "COM",
+      "nation_name" : "Comoras",
+      "conf_name": "CAF",
+      "fifa_nation_rank" : 129
+    },
+  {
+      "id" : "103",
+      "image_flag": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PG1hc2sgaWQ9ImEiPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjU2IiBmaWxsPSIjZmZmIi8+PC9tYXNrPjxnIG1hc2s9InVybCgjYSkiPjxwYXRoIGZpbGw9IiNmZmRhNDQiIGQ9Ik00MDEuOCAwSDQ0OWw2MyA2M3Y0Ny4yTDM0Ny43IDMzNi4zIDExMC4yIDUxMkg2M0wwIDQ0OXYtNDcuMmwxNjcuMS0yMzguNnoiLz48cGF0aCBmaWxsPSIjMzMzIiBkPSJNMCA1MTJ2LTYzTDQ0OSAwaDYzdjYzTDYzIDUxMnoiLz48cGF0aCBmaWxsPSIjMzM4YWYzIiBkPSJNMTEwLjIgNTEyIDUxMiAxMTAuMlY1MTJ6Ii8+PHBhdGggZmlsbD0iIzZkYTU0NCIgZD0iTTAgNDAxLjggNDAxLjggMEgweiIvPjwvZz48L3N2Zz4=",
+      "nation_iso_code" : "TZA",
+      "nation_name" : "Tanzania",
+      "conf_name": "CAF",
+      "fifa_nation_rank" : 130
+    },
+  {
+      "id" : "104",
+      "image_flag": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PG1hc2sgaWQ9ImEiPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjU2IiBmaWxsPSIjZmZmIi8+PC9tYXNrPjxnIG1hc2s9InVybCgjYSkiPjxwYXRoIGZpbGw9IiNmZmRhNDQiIGQ9Im0wIDM3OC40IDI1Mi45LTI4LjhMNTEyIDM3OC40VjUxMkgzMjIuOEwyNTYgNDgxbC02Ni44IDMxSDB6Ii8+PHBhdGggZmlsbD0iIzZkYTU0NCIgZD0ibTAgMjU2IDI0OS44LTI4TDUxMiAyNTZ2MTIyLjRIMHoiLz48cGF0aCBmaWxsPSIjZWVlIiBkPSJtMCAxMzMuNiAyNTUuMy0yOC4zTDUxMiAxMzMuNlYyNTZIMHoiLz48cGF0aCBmaWxsPSIjMDA1MmI0IiBkPSJNMCAwaDE4OS4yTDI1NiAzMGw2Ni44LTMwSDUxMnYxMzMuNkgweiIvPjxwYXRoIGZpbGw9IiNmZmRhNDQiIGQ9Im0xMzcuNyA1NS43IDYuOSAyMS4ySDE2N0wxNDguOSA5MGw2LjkgMjEuMy0xOC4xLTEzLjEtMTggMTMuMSA2LjgtMjEuMy0xOC0xM2gyMi4zeiIvPjxwYXRoIGZpbGw9IiNkODAwMjciIGQ9Ik0xODkuMiAwaDEzMy42djUxMkgxODkuMnoiLz48L2c+PC9zdmc+",
+      "nation_iso_code" : "CAF",
+      "nation_name" : "Republica Centroafricana",
+      "conf_name": "CAF",
+      "fifa_nation_rank" : 132
+    },
+   {
+      "id" : "105",
+      "image_flag": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PG1hc2sgaWQ9ImEiPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjU2IiBmaWxsPSIjZmZmIi8+PC9tYXNrPjxnIG1hc2s9InVybCgjYSkiPjxwYXRoIGZpbGw9IiM0OTZlMmQiIGQ9Im0wIDM3OC41IDI1NC4xLTIyLjFMNTEyIDM3OC41VjUxMkgweiIvPjxwYXRoIGZpbGw9IiNmZmRhNDQiIGQ9Im0wIDI1Ni4xIDI1NS0zMC4zIDI1NyAzMC4zdjEyMi40SDB6Ii8+PHBhdGggZmlsbD0iIzMzOGFmMyIgZD0iTTAgMGg1MTJ2MjU2SDB6Ii8+PHBhdGggZmlsbD0iI2ZmZGE0NCIgZD0ibTI4OS40IDE1MCAzMS4zIDE0LjZMMzA0IDE5NWwzNC02LjUgNC4zIDM0LjMgMjMuNi0yNS4yIDIzLjcgMjUuMiA0LjMtMzQuMyAzNCA2LjUtMTYuNy0zMC4zIDMxLjItMTQuNy0zMS4yLTE0LjcgMTYuNi0zMC4zLTM0IDYuNS00LjItMzQuMy0yMy43IDI1LjMtMjMuNi0yNS4zLTQuMyAzNC4zLTM0LTYuNSAxNi43IDMwLjN6Ii8+PC9nPjwvc3ZnPg==",
+      "nation_iso_code" : "RWA",
+      "nation_name" : "Ruanda",
+      "conf_name": "CAF",
+      "fifa_nation_rank" : 137
+    },
+   {
+      "id" : "106",
+      "image_flag": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PG1hc2sgaWQ9ImEiPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjU2IiBmaWxsPSIjZmZmIi8+PC9tYXNrPjxnIG1hc2s9InVybCgjYSkiPjxwYXRoIGZpbGw9IiNkODAwMjciIGQ9Im0wIDM0NSAyNTUuNy0zMUw1MTIgMzQ1djE2N0gweiIvPjxwYXRoIGZpbGw9IiNmZmRhNDQiIGQ9Im0wIDE2NyAyNTgtNDAuN0w1MTIgMTY3djE3OEgweiIvPjxwYXRoIGZpbGw9IiM2ZGE1NDQiIGQ9Ik0wIDBoNTEydjE2N0gweiIvPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMTIyLjQiIGZpbGw9IiMwMDUyYjQiLz48ZyBmaWxsPSIjZmZkYTQ0Ij48cGF0aCBkPSJtMjU2IDE2MS4yIDIyIDY4aDcxLjdsLTU4IDQyIDIyLjMgNjguMy01OC00Mi4zLTU4IDQyLjIgMjIuMi02OC4xLTU4LTQySDIzNHoiLz48cGF0aCBkPSJtMzQ0LjEgMjczLTcwLTIyLjkgNDMuMi01OS42LTE4LTEzTDI1NiAyMzdsLTQzLjMtNTkuNy0xOCAxMy4xIDQzLjMgNTkuNy03MC4xIDIyLjcgNi45IDIxLjIgNzAtMjIuOFYzNDVoMjIuM3YtNzMuN2w3MC4xIDIyLjh6Ii8+PC9nPjwvZz48L3N2Zz4=",
+      "nation_iso_code" : "ETH",
+      "nation_name" : "Etiopia",
+      "conf_name": "CAF",
+      "fifa_nation_rank" : 138
+    },
+  {
+      "id" : "107",
+      "image_flag": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PG1hc2sgaWQ9ImEiPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjU2IiBmaWxsPSIjZmZmIi8+PC9tYXNrPjxnIG1hc2s9InVybCgjYSkiPjxwYXRoIGZpbGw9IiNlZWUiIGQ9Ik0wIDBoNDcuMmwyMDcuNSAzMEw0NjQuOCAwSDUxMnY0Ny4yTDQ3Ny40IDI1NiA1MTIgNDY0LjhWNTEyaC00Ny4ybC0yMDkuMS0zNS44TDQ3LjIgNTEySDB2LTQ3LjJsMzIuOC0yMDIuN0wwIDQ3LjJ6Ii8+PHBhdGggZmlsbD0iI2Q4MDAyNyIgZD0iTTQ3LjIgMCAyNTYgMjA4LjggNDY0LjggMEg0Ny4yek0yNTYgMzAzLjIgNDcuMiA1MTJoNDE3LjZMMjU2IDMwMy4yeiIvPjxwYXRoIGZpbGw9IiM2ZGE1NDQiIGQ9Ik0wIDQ3LjJ2NDE3LjZMMjA4LjggMjU2IDAgNDcuMnptNTEyIDBMMzAzLjIgMjU2IDUxMiA0NjQuOFY0Ny4yeiIvPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMTExLjMiIGZpbGw9IiNlZWUiLz48cGF0aCBmaWxsPSIjZDgwMDI3IiBkPSJtMjU2IDE3OCA5LjYgMTYuOEgyODVsLTkuNiAxNi43IDkuNiAxNi43aC0xOS4zbC05LjYgMTYuNy05LjYtMTYuN0gyMjdsOS42LTE2LjctOS42LTE2LjdoMTkuM3ptLTQ5IDc4IDkuNiAxNi43SDIzNmwtOS42IDE2LjcgOS42IDE2LjdoLTE5LjNsLTkuNiAxNi43LTkuNi0xNi43SDE3OGw5LjYtMTYuNy05LjYtMTYuN2gxOS4zem05OCAwIDkuNiAxNi43SDMzNGwtOS42IDE2LjcgOS42IDE2LjdoLTE5LjNsLTkuNiAxNi43LTkuNi0xNi43SDI3Nmw5LjYtMTYuNy05LjYtMTYuN2gxOS4zeiIvPjwvZz48L3N2Zz4=",
+      "nation_iso_code" : "BDI",
+      "nation_name" : "Burundi",
+      "conf_name": "CAF",
+      "fifa_nation_rank" : 141
+    },
+   {
+      "id" : "108",
+      "image_flag": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PG1hc2sgaWQ9ImEiPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjU2IiBmaWxsPSIjZmZmIi8+PC9tYXNrPjxnIG1hc2s9InVybCgjYSkiPjxwYXRoIGZpbGw9IiNmZmRhNDQiIGQ9Im0wIDE0NC43IDI1Ni0yMC41IDI1NiAyMC41VjE3OGwtMzcuNCA3OSAzNy40IDc3djMzLjNsLTI1NiAyNC4xTDAgMzY3LjNWMzM0bDM3LjctNzcuM0wwIDE3OHoiLz48cGF0aCBmaWxsPSIjMzMzIiBkPSJNMCAwaDUxMnYxNDQuN0gweiIvPjxwYXRoIGZpbGw9IiMwMDUyYjQiIGQ9Ik0wIDM2Ny4zaDUxMlY1MTJIMHoiLz48cGF0aCBmaWxsPSIjYTIwMDFkIiBkPSJNMCAxNzhoNTEydjE1NkgweiIvPjxwYXRoIGZpbGw9IiNmZmRhNDQiIGQ9Ik04OS4yIDI0NC45aDMzNFYyNjdoLTMzNHptNDQuNi00NC42aDI0NC44djIyLjNIMTMzLjh6Ii8+PHBhdGggZmlsbD0iI2VlZSIgZD0ibTI1Ni4yIDE4OS4yLTE4IDY1LjIgMTggNjguNGM2Ni44IDAgMTI0LTY2LjggMTI0LTY2LjhzLTU3LjItNjYuOC0xMjQtNjYuOHoiLz48cGF0aCBmaWxsPSIjMzMzIiBkPSJNMjU2LjIgMzIyLjhjLTY2LjggMC0xMjQtNjYuOC0xMjQtNjYuOHM1Ny4yLTY2LjggMTI0LTY2LjgiLz48cGF0aCBmaWxsPSIjZWVlIiBkPSJNMjExLjcgMjMzLjdoMjIuMnY0NC42aC0yMi4yeiIvPjxwYXRoIGZpbGw9IiMzMzMiIGQ9Ik0yNzguNSAyMzMuN2gyMi4ydjQ0LjZoLTIyLjJ6Ii8+PGcgZmlsbD0iIzAwNTJiNCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLjIpIj48Y2lyY2xlIGN4PSI4OSIgY3k9IjI1NiIgcj0iMjIuMyIvPjxjaXJjbGUgY3g9IjQyMyIgY3k9IjI1NiIgcj0iMjIuMyIvPjwvZz48L2c+PC9zdmc+",
+      "nation_iso_code" : "SWZ",
+      "nation_name" : "Esuatini",
+      "conf_name": "CAF",
+      "fifa_nation_rank" : 143
+    },
+  {
+      "id" : "109",
+      "image_flag": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PG1hc2sgaWQ9ImEiPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjU2IiBmaWxsPSIjZmZmIi8+PC9tYXNrPjxnIG1hc2s9InVybCgjYSkiPjxwYXRoIGZpbGw9IiNlZWUiIGQ9Im0wIDE0NC43IDI1NS4zLTM2LjVMNTEyIDE0NC43djIyMi42TDI1MC41IDQwNyAwIDM2Ny4zeiIvPjxwYXRoIGZpbGw9IiMwMDUyYjQiIGQ9Ik0wIDBoNTEydjE0NC43SDB6Ii8+PHBhdGggZmlsbD0iIzZkYTU0NCIgZD0iTTAgMzY3LjNoNTEyVjUxMkgweiIvPjxwYXRoIGZpbGw9IiMzMzMiIGQ9Ik0yNzIuNyAyNTAuNHYtNjEuMmgtMzMuNHY2MS4yTDE5OSAyOTAuOGE2Ni43IDY2LjcgMCAwIDAgMTE0IDB6Ii8+PC9nPjwvc3ZnPg==",
+      "nation_iso_code" : "LSO",
+      "nation_name" : "Lesoto",
+      "conf_name": "CAF",
+      "fifa_nation_rank" : 147
+    },
+  {
+      "id" : "110",
+      "image_flag": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PG1hc2sgaWQ9ImEiPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjU2IiBmaWxsPSIjZmZmIi8+PC9tYXNrPjxnIG1hc2s9InVybCgjYSkiPjxwYXRoIGZpbGw9IiMzMzhhZjMiIGQ9Ik0wIDBoNTEydjE3OGwtMzEgNzYuOSAzMSA3OS4xdjE3OEgwVjMzNGwzNy04MC43TDAgMTc4eiIvPjxwYXRoIGZpbGw9IiMzMzMiIGQ9Im0wIDIxMS41IDI1Ni0xOS4yIDI1NiAxOS4ydjg5bC0yNTQuNiAyMC43TDAgMzAwLjV6Ii8+PHBhdGggZmlsbD0iI2VlZSIgZD0iTTAgMTc4aDUxMnYzMy41SDB6bTAgMTIyLjVoNTEyVjMzNEgweiIvPjwvZz48L3N2Zz4=",
+      "nation_iso_code" : "BWA",
+      "nation_name" : "Botsuana",
+      "conf_name": "CAF",
+      "fifa_nation_rank" : 148
+    },
+  {
+      "id" : "111",
+      "image_flag": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PG1hc2sgaWQ9ImEiPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjU2IiBmaWxsPSIjZmZmIi8+PC9tYXNrPjxnIG1hc2s9InVybCgjYSkiPjxwYXRoIGZpbGw9IiNlZWUiIGQ9Ik0wIDIzMi43IDI1NiAwaDI1NmwtMTkuMiAyNEw1MTIgNDYuNHY0Ni43bC0xOS42IDIyLjYgMTkuNiAyMy45djQ2LjVMNDkzLjggMjA5bDE4LjIgMjMuN3Y0Ni42TDQ5MyAzMDRsMTkgMjEuOHY0Ni42bC0xOCAyMy41IDE4IDIzdjQ2LjZsLTI1My4zIDIxTDAgNDY1LjV2LTQ2LjZsMTguOC0yMS42TDAgMzcyLjR2LTQ2LjZsMTkuNi0yMS45TDAgMjc5LjN6Ii8+PHBhdGggZmlsbD0iI2Q4MDAyNyIgZD0ibTI1NiAwLTIyIDQ2LjVoMjc4VjB6bS0xNy4xIDkzLjJ2NDYuNUg1MTJWOTMuMnptLTQuOSA5MyAyMiA0Ni41aDI1NnYtNDYuNXpNMCAyNzkuM3Y0Ni41aDUxMnYtNDYuNXptMCA5My4xdjQ2LjVoNTEydi00Ni41em0wIDkzLjFWNTEyaDUxMnYtNDYuNXoiLz48cGF0aCBmaWxsPSIjMDA1MmI0IiBkPSJNMCAwaDI1NnYyMzIuN0gweiIvPjxwYXRoIGZpbGw9IiNlZWUiIGQ9Im0xNTIuNCA2Ni44IDE2LjYgNTFoNTMuNmwtNDMuNCAzMS41IDE2LjYgNTEtNDMuNC0zMS41LTQzLjQgMzEuNSAxNi42LTUxLTQzLjQtMzEuNWg1My42eiIvPjwvZz48L3N2Zz4=",
+      "nation_iso_code" : "LBR",
+      "nation_name" : "Liberia",
+      "conf_name": "CAF",
+      "fifa_nation_rank" : 150
+    },
+  {
+      "id" : "112",
+      "image_flag": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PG1hc2sgaWQ9ImEiPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjU2IiBmaWxsPSIjZmZmIi8+PC9tYXNrPjxnIG1hc2s9InVybCgjYSkiPjxwYXRoIGZpbGw9IiNlZWUiIGQ9Ik03NC4xIDExNSA1MTIgMTU2Ljl2MzEuNWwtNDIuNCA3MC4zIDQyLjQgNjQuMnYzMS41TDc0LjEgMzg2Ljh6Ii8+PHBhdGggZmlsbD0iIzMzMyIgZD0iTTAgMGg1MTJ2MTU2LjhINTB6Ii8+PHBhdGggZmlsbD0iI2EyMDAxZCIgZD0iTTE1MC42IDE4OC4zSDUxMnYxMzQuNUgxNTAuNnoiLz48cGF0aCBmaWxsPSIjNDk2ZTJkIiBkPSJNNTAgMzU0LjNoNDYyVjUxMkgweiIvPjxwYXRoIGZpbGw9IiMwMDUyYjQiIGQ9Ik0wIDB2NTEybDI1Ni0yNTZ6Ii8+PHBhdGggZmlsbD0iI2ZmZGE0NCIgZD0ibTgzLjQgMTkyLjQgMzEuMiA0My42IDUxLjItMTYuMy0zMS45IDQzLjIgMzEuMyA0My42LTUxLTE2LjktMzEuNyA0My4yLjMtNTMuN0wzMiAyNjIuMiA4MyAyNDZ6Ii8+PC9nPjwvc3ZnPg==",
+      "nation_iso_code" : "SSD",
+      "nation_name" : "Sudan del Sur",
+      "conf_name": "CAF",
+      "fifa_nation_rank" : 165
+    },
+   {
+      "id" : "113",
+      "image_flag": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PG1hc2sgaWQ9ImEiPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjU2IiBmaWxsPSIjZmZmIi8+PC9tYXNrPjxnIG1hc2s9InVybCgjYSkiPjxwYXRoIGZpbGw9IiM2ZGE1NDQiIGQ9Im0wIDM3OC4zIDI1NC0zNy4xIDI1OCAzN1Y1MTJIMHoiLz48cGF0aCBmaWxsPSIjZmZkYTQ0IiBkPSJtMCAyNTYuMSAyNTIuMi0zMy4zTDUxMiAyNTZ2MTIyLjRIMHoiLz48cGF0aCBmaWxsPSIjMDA1MmI0IiBkPSJNMCAxMzMuNyAyNDkuNyA5NyA1MTIgMTMzLjd2MTIyLjRIMHoiLz48cGF0aCBmaWxsPSIjZDgwMDI3IiBkPSJNMCAwaDUxMnYxMzMuN0gweiIvPjwvZz48L3N2Zz4=",
+      "nation_iso_code" : "MUS",
+      "nation_name" : "Mauricio",
+      "conf_name": "CAF",
+      "fifa_nation_rank" : 180
+    },
+  {
+      "id" : "114",
+      "image_flag": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PG1hc2sgaWQ9ImEiPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjU2IiBmaWxsPSIjZmZmIi8+PC9tYXNrPjxnIG1hc2s9InVybCgjYSkiPjxwYXRoIGZpbGw9IiNmZmRhNDQiIGQ9Ik0xNjcgMGgxNzhsMjUuOSAyNTIuM0wzNDUgNTEySDE2N2wtMjkuOC0yNTMuNHoiLz48cGF0aCBmaWxsPSIjMDI2IiBkPSJNMCAwaDE2N3Y1MTJIMHoiLz48cGF0aCBmaWxsPSIjZDgwMDI3IiBkPSJNMzQ1IDBoMTY3djUxMkgzNDV6Ii8+PC9nPjwvc3ZnPg==",
+      "nation_iso_code" : "TCD",
+      "nation_name" : "Chad",
+      "conf_name": "CAF",
+      "fifa_nation_rank" : 181
+    },
+  {
+      "id" : "115",
+      "image_flag": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PG1hc2sgaWQ9ImEiPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjU2IiBmaWxsPSIjZmZmIi8+PC9tYXNrPjxnIG1hc2s9InVybCgjYSkiPjxwYXRoIGZpbGw9IiM2ZGE1NDQiIGQ9Ik0wIDBoNTEydjE2N2wtNTIuNiA4My44TDUxMiAzNDV2MTY3SDBsNzItMjY0LjN6Ii8+PHBhdGggZmlsbD0iI2ZmZGE0NCIgZD0iTTExNC45IDE2Ni45SDUxMnYxNzhIMTE0Ljl6Ii8+PHBhdGggZmlsbD0iI2Q4MDAyNyIgZD0iTTAgMHY1MTJsMjU2LTI1NnoiLz48cGF0aCBmaWxsPSIjMzMzIiBkPSJtMzI1IDIxMS41IDExLjEgMzRIMzcybC0yOSAyMSAxMS4xIDM0LTI5LTIxLTI4LjkgMjEgMTEtMzQtMjguOC0yMUgzMTR6bTExMS40IDAgMTEgMzRoMzUuOGwtMjkgMjEgMTEuMSAzNC0yOS0yMS0yOC45IDIxIDExLjEtMzQtMjktMjFoMzUuOHoiLz48L2c+PC9zdmc+",
+      "nation_iso_code" : "STP",
+      "nation_name" : "Santo Tome y Principe",
+      "conf_name": "CAF",
+      "fifa_nation_rank" : 186
+    },
+  {
+      "id" : "116",
+      "image_flag": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PG1hc2sgaWQ9ImEiPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjU2IiBmaWxsPSIjZmZmIi8+PC9tYXNrPjxnIG1hc2s9InVybCgjYSkiPjxwYXRoIGZpbGw9IiMzMzhhZjMiIGQ9Ik0wIDBoNTEydjI1NmwtMTUzLjIgMzUuN0wyMTAgMjU2eiIvPjxwYXRoIGZpbGw9IiM2ZGE1NDQiIGQ9Ik0yMTAgMjU2aDMwMnYyNTZIMHoiLz48cGF0aCBmaWxsPSIjZWVlIiBkPSJNMCAwdjUxMmwyNTYtMjU2eiIvPjxwYXRoIGZpbGw9IiNkODAwMjciIGQ9Im0xMDMuNiAxODkuMiAxNi42IDUxaDUzLjZsLTQzLjQgMzEuNiAxNi42IDUxLTQzLjQtMzEuNS00My40IDMxLjUgMTYuNi01MS00My40LTMxLjZIODd6Ii8+PC9nPjwvc3ZnPg==",
+      "nation_iso_code" : "DJI",
+      "nation_name" : "Yibuti",
+      "conf_name": "CAF",
+      "fifa_nation_rank" : 193
+    },
+   {
+      "id" : "117",
+      "image_flag": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PG1hc2sgaWQ9ImEiPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjU2IiBmaWxsPSIjZmZmIi8+PC9tYXNrPjxnIG1hc2s9InVybCgjYSkiPjxwYXRoIGZpbGw9IiMwMDUyYjQiIGQ9Ik0wIDB2MzMybDE1MC45LTEzOC41TDIyNS4yIDB6Ii8+PHBhdGggZmlsbD0iI2ZmZGE0NCIgZD0iTTI3My4xIDI1My4zIDUxMiAwSDIyNS4yTDAgMzMydjgwLjJ6Ii8+PHBhdGggZmlsbD0iI2Q4MDAyNyIgZD0iTTUxMiAwIDAgNDEyLjJ2NTAuNEwyNzcuOSAzOTAgNTEyIDI1NnoiLz48cGF0aCBmaWxsPSIjZWVlIiBkPSJNMCA0NjIuNiA1MTIgMjU2djEzMy41bC0yMjMuOSA3OC44TDAgNDg4LjR6Ii8+PHBhdGggZmlsbD0iIzZkYTU0NCIgZD0ibTUxMiAzODkuNS01MTIgOTlWNTEyaDUxMnoiLz48L2c+PC9zdmc+",
+      "nation_iso_code" : "SYC",
+      "nation_name" : "Seychelles",
+      "conf_name": "CAF",
+      "fifa_nation_rank" : 199
+    },
+  {
+      "id" : "118",
+      "image_flag": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PG1hc2sgaWQ9ImEiPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjU2IiBmaWxsPSIjZmZmIi8+PC9tYXNrPjxnIG1hc2s9InVybCgjYSkiPjxwYXRoIGZpbGw9IiM2ZGE1NDQiIGQ9Ik0wIDBoNTEydjI1Nkg2MnoiLz48cGF0aCBmaWxsPSIjMzM4YWYzIiBkPSJNNjIgMjU2aDQ1MHYyNTZIMHoiLz48cGF0aCBmaWxsPSIjZDgwMDI3IiBkPSJNMCAwdjUxMmw1MTItMjU2eiIvPjxwYXRoIGZpbGw9IiNmZmRhNDQiIGQ9Ik0xMzMuNiAxNTAuM2MtNDkuMSAwLTg5IDQwLTg5IDg5djMzLjRhODkuMSA4OS4xIDAgMCAwIDE3OCAwdi0zMy40YzAtNDktNDAtODktODktODl6bTU1LjYgMTIyLjRjMCAyNC45LTE2LjQgNDYtMzkgNTN2LTM2LjNsMjMuNy0yMy42LTIzLjYtMjMuNnYtMTkuNmgtMzMuNFYyNTZsLTIzLjYgMjMuNiAyMy42IDIzLjZ2MjIuNmE1NS43IDU1LjcgMCAwIDEtMzktNTMuMXYtMzMuNGE1NS43IDU1LjcgMCAwIDEgMTExLjMgMHoiLz48L2c+PC9zdmc+",
+      "nation_iso_code" : "ERI",
+      "nation_name" : "Eritrea",
+      "conf_name": "CAF",
+      "fifa_nation_rank" : 200
+    },
+  {
+      "id" : "119",
+      "image_flag": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PG1hc2sgaWQ9ImEiPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjU2IiBmaWxsPSIjZmZmIi8+PC9tYXNrPjxnIG1hc2s9InVybCgjYSkiPjxwYXRoIGZpbGw9IiMzMzhhZjMiIGQ9Ik0wIDBoNTEydjUxMkgweiIvPjxwYXRoIGZpbGw9IiNlZWUiIGQ9Im0yNTYgMTMzLjYgMjcuNiA4NUgzNzNMMzAwLjcgMjcxbDI3LjYgODUtNzIuMy01Mi41LTcyLjMgNTIuNiAyNy42LTg1LTcyLjMtNTIuNmg4OS40eiIvPjwvZz48L3N2Zz4=",
+      "nation_iso_code" : "SOM",
+      "nation_name" : "Somalia",
+      "conf_name": "CAF",
+      "fifa_nation_rank" : 203
+    }
+
+]
