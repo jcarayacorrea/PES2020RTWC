@@ -3,5 +3,7 @@ from . import views
 
 urlpatterns = [
     path('finalround/', views.finalround, name='oceania.finalround'),
-    path('firstround/', views.firstround, name='oceania.firstround')
+    path('firstround/', views.firstround, name='oceania.firstround'),
+    path('teamlist/', views.teams, name='oceania.teams')
+
 ]
