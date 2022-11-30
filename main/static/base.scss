@@ -29,12 +29,17 @@ nav, .dropdown-menu, .card-header, {
   border-style: solid;
 }
 
-img{
+.img-card{
 
   max-width: 200%;
 
 }
 
+.img-card-table{
+
+  max-width: 35%;
+
+}
 
 .soccer-card-header{
  @extend .card-header;
@@ -54,9 +59,21 @@ img{
   @extend .justify-content-center;
 
 }
+
+.flag-config-table{
+  @extend .m-1;
+  @extend .col-3;
+  @extend .justify-content-center;
+}
 .name-config{
   @extend .m-1;
   @extend .col-md-8;
+  @extend .text-center
+}
+
+.name-config-table{
+  @extend .m-1;
+  @extend .col-5;
   @extend .text-center
 }
 
