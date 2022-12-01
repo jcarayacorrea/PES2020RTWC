@@ -6,12 +6,13 @@ from utils import updateStage, getTeams
 def finalround(request):
     context = {}
     context['teams'] = getTeams(conf_name='OFC', stage='finalRound')
-    return render(request,'oceania/finalround.html')
+    return render(request,'oceania/finalround.html',context)
 
 def firstround(request):
     context = {}
     context['teams'] = getTeams(conf_name='OFC', stage='firstRound')
-    return render(request,'oceania/fstround.html')
+    print(context['teams'])
+    return render(request,'oceania/fstround.html',context)
 
 def teams(request):
     context = {}

@@ -15,18 +15,25 @@ def getTeams(stage, conf_name):
     db = db_conexion()
 
     if conf_name is not None and stage is not None:
-        if stage == 'firstRound':
-            teams = db.get_collection('Teams').find({'conf_name': conf_name, 'stage.firstRound' : True}).sort(
-            'fifa_nation_rank', 1)
-        if stage == 'secondRound':
-            teams = db.get_collection('Teams').find({'conf_name': conf_name, 'stage.secondRound' : True}).sort(
-            'fifa_nation_rank', 1)
-        if stage == 'thirdRound':
-            teams = db.get_collection('Teams').find({'conf_name': conf_name, 'stage.thirdRound' : True}).sort(
-            'fifa_nation_rank', 1)
-        if stage == 'finalRound':
-            teams = db.get_collection('Teams').find({'conf_name': conf_name, 'stage.finalRound' : True}).sort(
-            'fifa_nation_rank', 1)
+
+        match stage:
+            case 'firstRound':
+                print(stage)
+                teams = db.get_collection('Teams').find(
+                {'conf_name': conf_name}, {'stage.firstRound': True}).sort(
+                'fifa_nation_rank', 1)
+            case 'secondRound':
+                teams = db.get_collection('Teams').find(
+                    {'$and': [{'conf_name': conf_name}, {'stage.secondRound': True}]}).sort(
+                    'fifa_nation_rank', 1)
+            case 'thirdRound':
+                teams = db.get_collection('Teams').find(
+                    {'$and': [{'conf_name': conf_name}, {'stage.thirdRound': True}]}).sort(
+                    'fifa_nation_rank', 1)
+            case 'finalRound':
+                teams = db.get_collection('Teams').find(
+                    {'$and': [{'conf_name': conf_name}, {'stage.finalRound': True}]}).sort(
+                    'fifa_nation_rank', 1)
     if conf_name is not None:
         teams = db.get_collection('Teams').find({'conf_name': conf_name}).sort('fifa_nation_rank', 1)
 
