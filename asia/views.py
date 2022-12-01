@@ -1,23 +1,32 @@
 from django.shortcuts import render, redirect
-from utils import db_conexion, getTeams, updateStage
+from utils import db_conexion, getTeams, updateStage, getTeamsFirstRound, getTeamsSecondRound, getTeamsThirdRound, \
+    getTeamsFinalRound
 
 
 # Create your views here.
 def finalround(request):
-    return render(request,'asia/finalround.html')
+    context = {}
+    context['teams'] = getTeamsFinalRound(conf_name='AFC')
+    return render(request,'asia/finalround.html',context)
 
 def thirdround(request):
-    return render(request,'asia/thrround.html')
+    context = {}
+    context['teams'] = getTeamsThirdRound(conf_name='AFC')
+    return render(request,'asia/thrround.html',context)
 
 def secondround(request):
-    return render(request,'asia/sndround.html')
+    context = {}
+    context['teams'] = getTeamsSecondRound(conf_name='AFC')
+    return render(request,'asia/sndround.html',context)
 
 def firstround(request):
-    return render(request,'asia/fstround.html')
+    context = {}
+    context['teams'] = getTeamsFirstRound(conf_name='AFC')
+    return render(request,'asia/fstround.html',context)
 
 def teams(request):
     context = {}
-    context['teams'] = getTeams(conf_name='AFC',stage=None)
+    context['teams'] = getTeams(conf_name='AFC')
     return render(request,'asia/teamlist.html',context)
 
 def updateProgress(request,id, stage):

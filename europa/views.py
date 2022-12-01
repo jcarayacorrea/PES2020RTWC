@@ -1,23 +1,33 @@
 from django.shortcuts import render, redirect
-from utils import db_conexion, getTeams, updateStage
+from utils import  getTeams, updateStage, getTeamsFinalRound, getTeamsThirdRound, getTeamsSecondRound, \
+    getTeamsFirstRound
 
 
 # Create your views here.
+
 def finalround(request):
-    return render(request,'europa/finalround.html')
+    context = {}
+    context['teams'] = getTeamsFinalRound(conf_name='UEFA')
+    return render(request,'europa/finalround.html',context)
 
 def thirdround(request):
-    return render(request, 'europa/thrround.html')
+    context = {}
+    context['teams'] = getTeamsThirdRound(conf_name='UEFA')
+    return render(request,'europa/thrround.html',context)
 
 def secondround(request):
-    return render(request, 'europa/sndround.html')
+    context = {}
+    context['teams'] = getTeamsSecondRound(conf_name='UEFA')
+    return render(request,'europa/sndround.html',context)
 
 def firstround(request):
-    return render(request,'europa/fstround.html')
+    context = {}
+    context['teams'] = getTeamsFirstRound(conf_name='UEFA')
+    return render(request,'europa/fstround.html',context)
 
 def teams(request):
     context = {}
-    context['teams'] = getTeams(conf_name='UEFA',stage=None)
+    context['teams'] = getTeams(conf_name='UEFA')
     return render(request,'europa/teamlist.html',context)
 
 def updateProgress(request,id, stage):
