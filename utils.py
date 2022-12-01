@@ -10,40 +10,46 @@ def db_conexion():
     return db
 
 
-def getTeams(stage, conf_name):
-
+def getTeams(conf_name):
     db = db_conexion()
+    return db.get_collection('Teams').find({'conf_name': conf_name}).sort('fifa_nation_rank', 1)
 
-    if conf_name is not None and stage is not None:
 
-        match stage:
-            case 'firstRound':
-                print(stage)
-                teams = db.get_collection('Teams').find(
-                {'conf_name': conf_name}, {'stage.firstRound': True}).sort(
+
+def getTeamsFirstRound(conf_name):
+    db = db_conexion()
+    return  db.get_collection('Teams').find(
+                    {'$and': [{'conf_name': conf_name}, {'stage.firstRound': True}]}).sort(
                 'fifa_nation_rank', 1)
-            case 'secondRound':
-                teams = db.get_collection('Teams').find(
+
+def getTeamsSecondRound(conf_name):
+    db = db_conexion()
+    return  db.get_collection('Teams').find(
                     {'$and': [{'conf_name': conf_name}, {'stage.secondRound': True}]}).sort(
                     'fifa_nation_rank', 1)
-            case 'thirdRound':
-                teams = db.get_collection('Teams').find(
+def getTeamsThirdRound(conf_name):
+    db = db_conexion()
+    return  db.get_collection('Teams').find(
                     {'$and': [{'conf_name': conf_name}, {'stage.thirdRound': True}]}).sort(
                     'fifa_nation_rank', 1)
-            case 'finalRound':
-                teams = db.get_collection('Teams').find(
+
+def getTeamsFinalRound(conf_name):
+    db = db_conexion()
+    return db.get_collection('Teams').find(
                     {'$and': [{'conf_name': conf_name}, {'stage.finalRound': True}]}).sort(
                     'fifa_nation_rank', 1)
-    if conf_name is not None:
-        teams = db.get_collection('Teams').find({'conf_name': conf_name}).sort('fifa_nation_rank', 1)
 
-    if stage == 'mainDraw':
-        teams = db.get_collection('Teams').find({'stage.mainDraw': True}).sort(
+
+def getTeamsPlayoff():
+    db = db_conexion()
+    return db.get_collection('Teams').find({'stage.playoff': True}).sort(
+        'fifa_nation_rank', 1)
+
+
+def getTeamsMainDraw():
+    db = db_conexion()
+    return db.get_collection('Teams').find({'stage.mainDraw': True}).sort(
             'fifa_nation_rank', 1)
-    if stage == 'playoff':
-        teams = db.get_collection('Teams').find({'stage.playoff': True}).sort(
-            'fifa_nation_rank', 1)
-    return teams
 
 def updateStage(id,stage):
     db = db_conexion()
