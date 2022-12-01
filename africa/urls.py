@@ -6,5 +6,6 @@ urlpatterns = [
     path('secondround/', views.secondround, name='africa.secondround'),
     path('thirdround/', views.thirdround, name='africa.thirdround'),
     path('firstround/', views.firstround, name='africa.firstround'),
-    path('teamlist/', views.teams, name='africa.teams')
+    path('teamlist/', views.teams, name='africa.teams'),
+    path('teamlist/updateProgress/<str:id>/<str:stage>', views.updateProgress, name= 'africa.updateProgress')
 ]

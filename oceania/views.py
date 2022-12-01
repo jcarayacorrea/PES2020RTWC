@@ -1,5 +1,6 @@
-from django.shortcuts import render
-from utils import db_conexion
+from django.shortcuts import render, redirect
+from utils import db_conexion, updateStage, getTeams
+
 
 # Create your views here.
 def finalround(request):
@@ -10,9 +11,10 @@ def firstround(request):
 
 def teams(request):
     context = {}
-    context['teams'] = getTeams()
+    context['teams'] = getTeams(conf_name='OFC',stage=None)
     return render(request,'oceania/teamlist.html',context)
 
-def getTeams():
-    db = db_conexion()
-    return db.get_collection('Teams').find({'conf_name':'OFC'}).sort('fifa_nation_rank',1)
+def updateProgress(request,id, stage):
+    if request.method == 'POST':
+        updateStage(id,stage)
+    return  redirect('oceania.teams')

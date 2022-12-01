@@ -1,34 +1,93 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block container %}
-  <div id="header">
-    <h1 class="h1 text-center">South American Qualifying</h1>
+    <div id="header">
+    <h1 class="h1 text-center">North & Central American Qualifying</h1>
     <h2 class="h3 text-center">Final Round</h2>
   </div>
   <div id="section">
     <div class="row ">
-       <div class="col-md-6 offset-md-3">
+       <div class="col-md-8 offset-md-2">
            <div class="card card-border">
                <div class="soccer-card-header ">Teams</div>
-               <div class="card-body">
-                   <div class="row g-4 ">
-                       <div class="col-md-6 offset-md-3">
-                           {% for team in teams %}
-                            <div class="team-card">
-                               <div class="row">
-                                   <div class="flag-config">
-                                       <img src="{{ team.image_flag }}" class="flag-circle">
-                                   </div>
-                                   <div class="name-config">
-                                       {{ team.nation_name }}
-                                   </div>
-                               </div>
-                           </div>
-                           {% endfor %}
 
+                 <table class="table">
+                     <tbody>
+                         <tr>
+                           <th class="col text-center">
+                              Name
+                          </th>
+                          <th class="col">
+                             Draw
+                          </th>
+                          <th class="col">
+                              Playoff
+                          </th>
+                          <th class="col">
+                             F Rnd.
+                          </th>
+                           <th class="col">
+                              3 Rnd.
+                          </th>
+                          <th class="col">
+                              2 Rnd.
+                          </th>
+                          <th class="col">
+                              1 Rnd.
+                          </th>
+                      </tr>
+                     {% for team in teams %}
+                         <tr>
+                         <td class="col-5">
+                             <div class="row">
+                                 <div class="flag-config-table">
+                                  <img src="{{ team.image_flag }}" class="img-card-table ">
+                             </div>
+                              <div class="name-config-table">
+                                    {{ team.nation_name }}
+                              </div>
+                                 <div class="name-config-table">
+                                    {{ team.stage.maindraw }}
+                              </div>
+                             </div>
 
+                         </td>
+                          <td class="col-1">
+                             <div class="form-check form-check-inline">
+                                <input name="{{ team.nation_iso_code }}" class="form-check-input" type="radio" value="mainDraw" onclick="changeTeamStage({{ team.id }},'mainDraw')" {% if team.stage.mainDraw == True %}checked{% endif %}>
+                            </div>
+                         </td>
+                         <td class="col-1">
+                             <div class="form-check form-check-inline">
+                                <input  name="{{ team.nation_iso_code }}" class="form-check-input" type="radio" value="playoff"  onclick="changeTeamStage({{ team.id }},'playoff')"  {% if team.stage.playoff == True %}checked{% endif %}>
+                            </div>
+                         </td>
+                         <td class="col-1">
+                             <div class="form-check form-check-inline">
+                                <input  name="{{ team.nation_iso_code }}" class="form-check-input" type="radio"  onclick="changeTeamStage({{ team.id }},'finalRound')"{% if team.stage.finalRound == True  %}checked{% endif %}>
+                            </div>
+                         </td>
+                         <td class="col-1">
+                             <div class="form-check form-check-inline">
+                                <input  name="{{ team.nation_iso_code }}" class="form-check-input" type="radio"  disabled>
+                            </div>
+                         </td>
+                         <td class="col-1">
+                             <div class="form-check form-check-inline">
+                                <input  name="{{ team.nation_iso_code }}" class="form-check-input" type="radio"  disabled>
+                            </div>
+                         </td>
+                         <td class="col-1">
+                             <div class="form-check form-check-inline">
+                                <input  name="{{ team.nation_iso_code }}" class="form-check-input" type="radio"  onclick="changeTeamStage({{ team.id }},'firstRound')"{% if team.stage.firstRound == True  %}checked{% endif %}>
+                            </div>
+                         </td>
+                         </tr>
 
-                       </div>
+                     {% endfor %}
+                     </tbody>
+
+                  </table>
                    </div>
                </div>
            </div>
