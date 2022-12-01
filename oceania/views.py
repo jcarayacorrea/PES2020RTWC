@@ -1,12 +1,16 @@
 from django.shortcuts import render, redirect
-from utils import db_conexion, updateStage, getTeams
+from utils import updateStage, getTeams
 
 
 # Create your views here.
 def finalround(request):
+    context = {}
+    context['teams'] = getTeams(conf_name='OFC', stage='finalRound')
     return render(request,'oceania/finalround.html')
 
 def firstround(request):
+    context = {}
+    context['teams'] = getTeams(conf_name='OFC', stage='firstRound')
     return render(request,'oceania/fstround.html')
 
 def teams(request):
