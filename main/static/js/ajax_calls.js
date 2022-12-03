@@ -6,3 +6,4 @@ function changeTeamStage(id,stage){
     xhttp.send();
 }
 
+

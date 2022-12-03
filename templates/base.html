@@ -18,7 +18,9 @@
   </head>
   <body>
      <script src="{% static '/bootstrap5/js/bootstrap.bundle.js' %}"></script>
-     <script src="{% static '/js/ajax_calls.js' %}"></script>
+     <script src="{% static 'js/ajax_calls.js' %}"></script>
+     <script src="https://unpkg.com/htmx.org@1.8.4"></script>
+
     <div id="nav" >
         <nav class="navbar navbar-expand-lg ">
           <div class="container-fluid">
@@ -134,7 +136,7 @@
         </div>
         </nav>
     </div>
-    <div class="container-fluid">
+    <div id="container" class="container-fluid">
         {% block container %}
         {% endblock %}
     </div>

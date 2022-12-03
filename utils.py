@@ -1,3 +1,4 @@
+from bson.json_util import dumps
 from pymongo import MongoClient
 
 
@@ -12,44 +13,57 @@ def db_conexion():
 
 def getTeams(conf_name):
     db = db_conexion()
-    return db.get_collection('Teams').find({'conf_name': conf_name}).sort('fifa_nation_rank', 1)
-
+    cursor = db.get_collection('Teams').find({'conf_name': conf_name}).sort('fifa_nation_rank', 1)
+    listData = list(cursor)
+    return listData
 
 
 def getTeamsFirstRound(conf_name):
     db = db_conexion()
-    return  db.get_collection('Teams').find(
+    cursor = db.get_collection('Teams').find(
                     {'$and': [{'conf_name': conf_name}, {'stage.firstRound': True}]}).sort(
                 'fifa_nation_rank', 1)
+    listData = list(cursor)
+    return listData
 
 def getTeamsSecondRound(conf_name):
     db = db_conexion()
-    return  db.get_collection('Teams').find(
+    cursor =  db.get_collection('Teams').find(
                     {'$and': [{'conf_name': conf_name}, {'stage.secondRound': True}]}).sort(
                     'fifa_nation_rank', 1)
+    listData = list(cursor)
+    return listData
 def getTeamsThirdRound(conf_name):
     db = db_conexion()
-    return  db.get_collection('Teams').find(
+    cursor =  db.get_collection('Teams').find(
                     {'$and': [{'conf_name': conf_name}, {'stage.thirdRound': True}]}).sort(
                     'fifa_nation_rank', 1)
+    listData = list(cursor)
+    return listData
 
 def getTeamsFinalRound(conf_name):
     db = db_conexion()
-    return db.get_collection('Teams').find(
+    cursor = db.get_collection('Teams').find(
                     {'$and': [{'conf_name': conf_name}, {'stage.finalRound': True}]}).sort(
                     'fifa_nation_rank', 1)
+    listData = list(cursor)
+    return listData
 
 
 def getTeamsPlayoff():
     db = db_conexion()
-    return db.get_collection('Teams').find({'stage.playoff': True}).sort(
+    cursor = db.get_collection('Teams').find({'stage.playoff': True}).sort(
         'fifa_nation_rank', 1)
+    listData = list(cursor)
+    return dumps(listData)
 
 
 def getTeamsMainDraw():
     db = db_conexion()
-    return db.get_collection('Teams').find({'stage.mainDraw': True}).sort(
+    cursor = db.get_collection('Teams').find({'stage.mainDraw': True}).sort(
             'fifa_nation_rank', 1)
+    listData = list(cursor)
+    return listData
 
 def updateStage(id,stage):
     db = db_conexion()
@@ -61,6 +75,4 @@ def updateStage(id,stage):
         'playoff': True if stage == 'playoff' else False,
         'mainDraw': True if stage == 'mainDraw' else False,
     }
-    print(stageObj)
-
     db.get_collection('Teams').update_one({'id': id}, {'$set': {'stage': stageObj}})

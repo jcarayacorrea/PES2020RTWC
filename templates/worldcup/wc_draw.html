@@ -1,0 +1,225 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block container %}
+    <div id="header">
+        <h1 class="h1 text-center">World Cup</h1>
+        <h2 class="h3 text-center">Group Stage</h2>
+    <div class="btn-group " role="group">
+        <button type="button" class="btn btn-primary">Draw</button>
+        <button type="button" class="btn btn-primary">Clear</button>
+    </div>
+    </div>
+
+    <div id="section">
+        <div class="row ">
+            <div class="col-md-3">
+                <div class="card card-border">
+                    <div class="soccer-card-header ">Teams</div>
+                    <div class="soccer-card-body h-75">
+                        <div class="row g-1 ">
+                            <div class="col-md-14 offset-md-2">
+                                {% for team in teams %}
+                                   <div class="team-card">
+                                    <div class="row">
+                                        <div class="flag-config">
+                                            <img src="{{ team.image_flag }}" class="img-card flag-circle">
+                                        </div>
+                                        <div class="name-config">
+                                            {{ team.nation_name }}
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-7 offset-md-1">
+                <div class="card card-border">
+                    <div class="soccer-card-header">Qualify Zones</div>
+
+                    <div class="soccer-card-body h-75">
+                        <div class="row mb-5">
+                            <div class="col-md-5">
+                                <div class="card card-border offset-md-2">
+                                    <div class="soccer-card-header">Zone A</div>
+                                    <div class="soccer-card-body offset-md-2">
+                                        {% for team in zoneA %}
+                                           <div class="team-card">
+                                            <div class="row">
+                                                <div class="flag-config">
+                                                    <img src="{{ team.image_flag }}" class="img-card-sm ">
+                                                </div>
+                                                <div class="name-config">
+                                                    {{ team.nation_iso_code }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                         {% endfor %}
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5 offset-md-1">
+                                <div class="card card-border offset-md-2">
+                                    <div class="soccer-card-header">Zone B</div>
+                                    <div class="soccer-card-body offset-md-2">
+
+                                          {% for team in zoneB %}
+                                           <div class="team-card">
+                                            <div class="row">
+                                                <div class="flag-config">
+                                                    <img src="{{ team.image_flag }}" class="img-card-sm">
+                                                </div>
+                                                <div class="name-config">
+                                                    {{ team.nation_iso_code }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                         {% endfor %}
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-5">
+                            <div class="col-md-5">
+                                <div class="card card-border offset-md-2">
+                                    <div class="soccer-card-header">Zone C</div>
+                                    <div class="soccer-card-body offset-md-2">
+                                        {% for team in zoneC %}
+                                           <div class="team-card">
+                                            <div class="row">
+                                                <div class="flag-config">
+                                                    <img src="{{ team.image_flag }}" class="img-card-sm">
+                                                </div>
+                                                <div class="name-config">
+                                                    {{ team.nation_iso_code }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                         {% endfor %}
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5 offset-md-1">
+                                <div class="card card-border offset-md-2">
+                                    <div class="soccer-card-header">Zone D</div>
+                                    <div class="soccer-card-body offset-md-2">
+
+                                          {% for team in zoneD %}
+                                           <div class="team-card">
+                                            <div class="row">
+                                                <div class="flag-config">
+                                                    <img src="{{ team.image_flag }}" class="img-card-sm">
+                                                </div>
+                                                <div class="name-config">
+                                                    {{ team.nation_iso_code }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                         {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                            <div class="row mb-5">
+                            <div class="col-md-5">
+                                <div class="card card-border offset-md-2">
+                                    <div class="soccer-card-header">Zone E</div>
+                                    <div class="soccer-card-body offset-md-2">
+
+                                          {% for team in zoneE %}
+                                           <div class="team-card">
+                                            <div class="row">
+                                                <div class="flag-config">
+                                                    <img src="{{ team.image_flag }}" class="img-card-sm">
+                                                </div>
+                                                <div class="name-config">
+                                                    {{ team.nation_iso_code }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                         {% endfor %}
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5 offset-md-1">
+                                <div class="card card-border offset-md-2">
+                                    <div class="soccer-card-header">Zone F</div>
+                                    <div class="soccer-card-body offset-md-2">
+
+                                          {% for team in zoneF %}
+                                           <div class="team-card">
+                                            <div class="row">
+                                                <div class="flag-config">
+                                                    <img src="{{ team.image_flag }}" class="img-card-sm">
+                                                </div>
+                                                <div class="name-config">
+                                                    {{ team.nation_iso_code }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                         {% endfor %}
+                                       </div>
+                                </div>
+                            </div>
+                            </div>
+                            <div class="row mb-5">
+                            <div class="col-md-5">
+                                <div class="card card-border offset-md-2">
+                                    <div class="soccer-card-header">Zone G</div>
+                                    <div class="soccer-card-body offset-md-2">
+
+                                          {% for team in zoneG %}
+                                           <div class="team-card">
+                                            <div class="row">
+                                                <div class="flag-config">
+                                                    <img src="{{ team.image_flag }}" class="img-card-sm">
+                                                </div>
+                                                <div class="name-config">
+                                                    {{ team.nation_iso_code }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                         {% endfor %}
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5 offset-md-1">
+                                <div class="card card-border offset-md-2">
+                                    <div class="soccer-card-header">Zone H</div>
+                                    <div class="soccer-card-body offset-md-2">
+                                          {% for team in zoneH %}
+                                           <div class="team-card">
+                                            <div class="row">
+                                                <div class="flag-config">
+                                                    <img src="{{ team.image_flag }}" class="img-card-sm">
+                                                </div>
+                                                <div class="name-config">
+                                                    {{ team.nation_iso_code }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                         {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
