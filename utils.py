@@ -76,3 +76,11 @@ def updateStage(id,stage):
         'mainDraw': True if stage == 'mainDraw' else False,
     }
     db.get_collection('Teams').update_one({'id': id}, {'$set': {'stage': stageObj}})
+
+def getTeamsJSON():
+    db = db_conexion()
+    cursor = db.get_collection('Teams').find({}).sort(
+        'fifa_nation_rank', 1)
+    listData = list(cursor)
+    json = dumps(listData)
+    return json
