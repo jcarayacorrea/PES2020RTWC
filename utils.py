@@ -55,7 +55,7 @@ def getTeamsPlayoff():
     cursor = db.get_collection('Teams').find({'stage.playoff': True}).sort(
         'fifa_nation_rank', 1)
     listData = list(cursor)
-    return dumps(listData)
+    return listData
 
 
 def getTeamsMainDraw():

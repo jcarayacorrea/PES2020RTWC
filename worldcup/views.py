@@ -42,6 +42,25 @@ def maindrawButton(request):
 
         return render(request,'worldcup/maindraw.html',context)
 
+def playoffButton(request):
+    if request.method == 'GET':
+        context = {}
+        context['teams'] = getTeamsPlayoff()
+        zone1, zone2, zone3, zone4, zone5 = playoffDraw(getTeamsPlayoff())
+        random.shuffle(zone1)
+        random.shuffle(zone2)
+        random.shuffle(zone3)
+        random.shuffle(zone4)
+        random.shuffle(zone5)
+        context['zone1'] = zone1
+        context['zone2'] = zone2
+        context['zone3'] = zone3
+        context['zone4'] = zone4
+        context['zone5'] = zone5
+
+        return render(request,'worldcup/playoff.html',context)
+
+
 def draw(teams):
 
     pool1= [teams[0],teams[1],teams[2],teams[3],teams[4],teams[5],teams[6],teams[7]]
@@ -164,3 +183,21 @@ def countTeams(conf_name,teamList):
         if conf_name == team['conf_name']:
             count += 1
     return count
+
+def playoffDraw(teams):
+
+    pool1=[teams[0],teams[1],teams[2],teams[3]]
+    pool2=[teams[4],teams[5],teams[6],teams[7]]
+    pool3=[teams[8],teams[9],teams[10],teams[11]]
+    pool4 = [teams[12], teams[13], teams[14], teams[15]]
+    pool5 = [teams[16], teams[17], teams[18], teams[19]]
+
+    random.shuffle(pool1)
+    random.shuffle(pool2)
+    random.shuffle(pool3)
+    random.shuffle(pool4)
+    random.shuffle(pool5)
+
+    return pool1, pool2, pool3, pool4, pool5
+
+
