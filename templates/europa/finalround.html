@@ -5,6 +5,16 @@
         <h1 class="h1 text-center">European Qualifiers</h1>
         <h2 class="h3 text-center">Final Round</h2>
     </div>
+    <div class="row p-2">
+        <div class="col-6 g-8 offset-md-5">
+            <button type="button" class="btn btn-primary" hx-get=" {% url 'europa.finalround.draw' %}"
+                    hx-trigger="click" hx-target="body">Draw
+            </button>
+            <button type="button" class="btn btn-primary" hx-get=" {% url 'europa.finalround' %}" hx-trigger="click"
+                    hx-target="body">Clear
+            </button>
+        </div>
+    </div>
 
     <div id="section">
         <div class="row ">
@@ -42,46 +52,61 @@
                                 <div class="card card-border offset-md-2">
                                     <div class="soccer-card-header">Zone A</div>
                                     <div class="soccer-card-body offset-md-2">
-                                        <div class="team-card">
-                                            <div class="row">
-                                                <div class="flag-config"></div>
-                                                <div class="name-config">
-                                                    A1
+                                        {% if zone1 is None %}
+                                            <div class="team-card">
+                                                <div class="row">
+                                                    <div class="flag-config"></div>
+                                                    <div class="name-config">
+                                                        A1
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="team-card">
-                                            <div class="row">
-                                                <div class="flag-config"></div>
-                                                <div class="name-config">
-                                                    A2
+                                            <div class="team-card">
+                                                <div class="row">
+                                                    <div class="flag-config"></div>
+                                                    <div class="name-config">
+                                                        A2
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="team-card">
-                                            <div class="row">
-                                                <div class="flag-config"></div>
-                                                <div class="name-config">
-                                                    A3
+                                            <div class="team-card">
+                                                <div class="row">
+                                                    <div class="flag-config"></div>
+                                                    <div class="name-config">
+                                                        A3
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="team-card">
-                                            <div class="row">
-                                                <div class="flag-config"></div>
-                                                <div class="name-config">
-                                                    A4
+                                            <div class="team-card">
+                                                <div class="row">
+                                                    <div class="flag-config"></div>
+                                                    <div class="name-config">
+                                                        A4
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="team-card">
-                                            <div class="row">
-                                                <div class="flag-config"></div>
-                                                <div class="name-config">
-                                                    A5
+                                            <div class="team-card">
+                                                <div class="row">
+                                                    <div class="flag-config"></div>
+                                                    <div class="name-config">
+                                                        A5
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        {% else %}
+                                            {% for team in zone1 %}
+                                                <div class="team-card">
+                                                    <div class="row">
+                                                        <div class="flag-config">
+                                                            <img src="{{ team.image_flag }}" class="img-card-sm">
+                                                        </div>
+                                                        <div class="name-config">
+                                                            {{ team.nation_iso_code }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            {% endfor %}
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>
@@ -89,46 +114,61 @@
                                 <div class="card card-border offset-md-2">
                                     <div class="soccer-card-header">Zone B</div>
                                     <div class="soccer-card-body offset-md-2">
-                                        <div class="team-card">
-                                            <div class="row">
-                                                <div class="flag-config"></div>
-                                                <div class="name-config">
-                                                    B1
+                                       {% if zone2 is None %}
+                                            <div class="team-card">
+                                                <div class="row">
+                                                    <div class="flag-config"></div>
+                                                    <div class="name-config">
+                                                        B1
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="team-card">
-                                            <div class="row">
-                                                <div class="flag-config"></div>
-                                                <div class="name-config">
-                                                    B2
+                                            <div class="team-card">
+                                                <div class="row">
+                                                    <div class="flag-config"></div>
+                                                    <div class="name-config">
+                                                        B2
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="team-card">
-                                            <div class="row">
-                                                <div class="flag-config"></div>
-                                                <div class="name-config">
-                                                    B3
+                                            <div class="team-card">
+                                                <div class="row">
+                                                    <div class="flag-config"></div>
+                                                    <div class="name-config">
+                                                        B3
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="team-card">
-                                            <div class="row">
-                                                <div class="flag-config"></div>
-                                                <div class="name-config">
-                                                    B4
+                                            <div class="team-card">
+                                                <div class="row">
+                                                    <div class="flag-config"></div>
+                                                    <div class="name-config">
+                                                        B4
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="team-card">
-                                            <div class="row">
-                                                <div class="flag-config"></div>
-                                                <div class="name-config">
-                                                    B5
+                                            <div class="team-card">
+                                                <div class="row">
+                                                    <div class="flag-config"></div>
+                                                    <div class="name-config">
+                                                        B5
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        {% else %}
+                                            {% for team in zone2 %}
+                                                <div class="team-card">
+                                                    <div class="row">
+                                                        <div class="flag-config">
+                                                            <img src="{{ team.image_flag }}" class="img-card-sm">
+                                                        </div>
+                                                        <div class="name-config">
+                                                            {{ team.nation_iso_code }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            {% endfor %}
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>
@@ -138,46 +178,61 @@
                                 <div class="card card-border offset-md-2">
                                     <div class="soccer-card-header">Zone C</div>
                                     <div class="soccer-card-body offset-md-2">
-                                        <div class="team-card">
-                                            <div class="row">
-                                                <div class="flag-config"></div>
-                                                <div class="name-config">
-                                                    C1
+                                        {% if zone3 is None %}
+                                            <div class="team-card">
+                                                <div class="row">
+                                                    <div class="flag-config"></div>
+                                                    <div class="name-config">
+                                                        C1
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="team-card">
-                                            <div class="row">
-                                                <div class="flag-config"></div>
-                                                <div class="name-config">
-                                                    C2
+                                            <div class="team-card">
+                                                <div class="row">
+                                                    <div class="flag-config"></div>
+                                                    <div class="name-config">
+                                                        C2
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="team-card">
-                                            <div class="row">
-                                                <div class="flag-config"></div>
-                                                <div class="name-config">
-                                                    C3
+                                            <div class="team-card">
+                                                <div class="row">
+                                                    <div class="flag-config"></div>
+                                                    <div class="name-config">
+                                                        C3
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="team-card">
-                                            <div class="row">
-                                                <div class="flag-config"></div>
-                                                <div class="name-config">
-                                                    C4
+                                            <div class="team-card">
+                                                <div class="row">
+                                                    <div class="flag-config"></div>
+                                                    <div class="name-config">
+                                                        C4
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="team-card">
-                                            <div class="row">
-                                                <div class="flag-config"></div>
-                                                <div class="name-config">
-                                                    C5
+                                            <div class="team-card">
+                                                <div class="row">
+                                                    <div class="flag-config"></div>
+                                                    <div class="name-config">
+                                                        C5
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        {% else %}
+                                            {% for team in zone3 %}
+                                                <div class="team-card">
+                                                    <div class="row">
+                                                        <div class="flag-config">
+                                                            <img src="{{ team.image_flag }}" class="img-card-sm">
+                                                        </div>
+                                                        <div class="name-config">
+                                                            {{ team.nation_iso_code }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            {% endfor %}
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>
@@ -185,46 +240,61 @@
                                 <div class="card card-border offset-md-2">
                                     <div class="soccer-card-header">Zone D</div>
                                     <div class="soccer-card-body offset-md-2">
-                                        <div class="team-card">
-                                            <div class="row">
-                                                <div class="flag-config"></div>
-                                                <div class="name-config">
-                                                    D1
+                                       {% if zone4 is None %}
+                                            <div class="team-card">
+                                                <div class="row">
+                                                    <div class="flag-config"></div>
+                                                    <div class="name-config">
+                                                        D1
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="team-card">
-                                            <div class="row">
-                                                <div class="flag-config"></div>
-                                                <div class="name-config">
-                                                    D2
+                                            <div class="team-card">
+                                                <div class="row">
+                                                    <div class="flag-config"></div>
+                                                    <div class="name-config">
+                                                        D2
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="team-card">
-                                            <div class="row">
-                                                <div class="flag-config"></div>
-                                                <div class="name-config">
-                                                    D3
+                                            <div class="team-card">
+                                                <div class="row">
+                                                    <div class="flag-config"></div>
+                                                    <div class="name-config">
+                                                        D3
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="team-card">
-                                            <div class="row">
-                                                <div class="flag-config"></div>
-                                                <div class="name-config">
-                                                    D4
+                                            <div class="team-card">
+                                                <div class="row">
+                                                    <div class="flag-config"></div>
+                                                    <div class="name-config">
+                                                        D4
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="team-card">
-                                            <div class="row">
-                                                <div class="flag-config"></div>
-                                                <div class="name-config">
-                                                    D5
+                                            <div class="team-card">
+                                                <div class="row">
+                                                    <div class="flag-config"></div>
+                                                    <div class="name-config">
+                                                        D5
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        {% else %}
+                                            {% for team in zone4 %}
+                                                <div class="team-card">
+                                                    <div class="row">
+                                                        <div class="flag-config">
+                                                            <img src="{{ team.image_flag }}" class="img-card-sm">
+                                                        </div>
+                                                        <div class="name-config">
+                                                            {{ team.nation_iso_code }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            {% endfor %}
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>
