@@ -79,8 +79,7 @@ def updateStage(id,stage):
 
 def getTeamsJSON():
     db = db_conexion()
-    cursor = db.get_collection('Teams').find({}).sort(
+    cursor = db.get_collection('Teams').find({},{"_id":0}).sort(
         'fifa_nation_rank', 1)
     listData = list(cursor)
-    json = dumps(listData)
-    return json
+    return listData

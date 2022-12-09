@@ -7,7 +7,7 @@ from utils import getTeams, updateStage
 # Create your views here.
 def finalround(request):
     context = {}
-    context['teams'] = getTeams(stage=None,conf_name='CONMEBOL')
+    context['teams'] = getTeams(conf_name='CONMEBOL')
     return render(request, 'sudamerica/finalround.html', context)
 
 

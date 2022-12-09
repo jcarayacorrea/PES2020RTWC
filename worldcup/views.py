@@ -162,20 +162,20 @@ def setTeamPosition(conf_name,a,b,c,d,e,f,g,h,maxlength,teamsCount):
             zones.remove('H')
         if len(zones)>0:
               random.shuffle(zones)
-        else:
-             setTeamPosition(conf_name, a, b, c, d, e, f, g, h, maxlength, teamsCount)
-
         return zones[0]
     except:
         print('Error al generar sorteo')
 
 def filterConfList(conf_name, list, count_teams):
+    count_conf = 0
     for team in list:
-        if conf_name == team['conf_name'] and count_teams<=8:
-            return True
-        elif count_teams > 8:
-            return False
-
+        if conf_name == team['conf_name']:
+            count_conf += 1
+    if count_teams <= 8 and count_conf == 1:
+        return True
+    elif count_teams > 8 and count_conf == 2:
+        return True
+    return False
 
 def countTeams(conf_name,teamList):
     count = 0
