@@ -54,7 +54,7 @@ def firstRoundDraw(teams):
     pool2 = [teams[5],teams[6],teams[7], teams[8],teams[9]]
     pool3 = [teams[10], teams[11],teams[12], teams[13],teams[14]]
     pool4 = [teams[15], teams[16],teams[17], teams[18],teams[19]]
-    pool5 = [teams[20], teams[20], teams[21], teams[22],teams[23]]
+    pool5 = [teams[20], teams[21], teams[22], teams[23],teams[24]]
 
 
     random.shuffle(pool1)
