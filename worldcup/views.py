@@ -144,23 +144,23 @@ def draw(teams):
 def setTeamPosition(conf_name,a,b,c,d,e,f,g,h,maxlength,teamsCount):
     zones = ['A','B','C','D','E','F','G','H']
     try:
-        if filterConfList(conf_name,a,teamsCount) == True or len(a)==maxlength:
+        if (filterConfList(conf_name,a,teamsCount) == True or len(a)==maxlength) and len(zones)>1:
             zones.remove('A')
-        if filterConfList(conf_name,b,teamsCount) == True or len(b)==maxlength:
+        if (filterConfList(conf_name,b,teamsCount) == True or len(b)==maxlength) and len(zones)>1:
             zones.remove('B')
-        if filterConfList(conf_name,c,teamsCount) == True or len(c)==maxlength:
+        if (filterConfList(conf_name,c,teamsCount) == True or len(c)==maxlength) and len(zones)>1:
             zones.remove('C')
-        if filterConfList(conf_name,d,teamsCount) == True or len(d)==maxlength:
+        if (filterConfList(conf_name,d,teamsCount) == True or len(d)==maxlength) and len(zones)>1:
             zones.remove('D')
-        if filterConfList(conf_name,e,teamsCount) == True or len(e)==maxlength:
+        if (filterConfList(conf_name,e,teamsCount) == True or len(e)==maxlength) and len(zones)>1:
             zones.remove('E')
-        if filterConfList(conf_name,f,teamsCount) == True or len(f)==maxlength:
+        if (filterConfList(conf_name,f,teamsCount) == True or len(f)==maxlength) and len(zones)>1:
             zones.remove('F')
-        if filterConfList(conf_name,g,teamsCount) == True or len(g)==maxlength:
+        if (filterConfList(conf_name,g,teamsCount) == True or len(g)==maxlength) and len(zones)>1:
             zones.remove('G')
-        if filterConfList(conf_name,h,teamsCount) == True or len(h)==maxlength:
+        if (filterConfList(conf_name,h,teamsCount) == True or len(h)==maxlength) and len(zones)>1:
             zones.remove('H')
-        if len(zones)>0:
+        if len(zones)>1:
               random.shuffle(zones)
         return zones[0]
     except:
