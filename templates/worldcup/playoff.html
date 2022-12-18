@@ -3,7 +3,7 @@
 {% block container %}
     <div id="header">
         <h1 class="h1 text-center">World Cup</h1>
-        <h4 class="h4 text-center">Group Stage</h4>
+        <h4 class="h4 text-center">Playoffs</h4>
         <div class="row p-2">
             <div class="col-6 g-8 offset-md-5">
                 <button type="button" class="btn btn-primary" hx-get=" {% url 'worldcup.playoff.draw' %}"
@@ -56,16 +56,25 @@
                                             <h6 class="h-6 text-center"> Match 1</h6>
                                             {% if zone4 is None %}
                                                 <div class="team-card">
-                                                    <div class="row">
+                                                    <div class="row form-check">
+                                                        <div class="col-sm-1 m-1">
+                                                            <input class="form-check-input" type="radio"
+                                                                   name="match1">
+                                                        </div>
                                                         <div class="flag-config"></div>
                                                         <div class="name-config">
                                                             Team 1
                                                         </div>
+
                                                     </div>
                                                 </div>
                                             {% else %}
                                                 <div class="team-card">
-                                                    <div class="row">
+                                                    <div class="row form-check">
+                                                        <div class="col-sm-1 m-1">
+                                                            <input class="form-check-input" type="radio"
+                                                                   name="match1">
+                                                        </div>
                                                         <div class="flag-config">
                                                             <img src="{{ zone4.0.image_flag }}" class="img-card-sm-2">
                                                         </div>
@@ -77,7 +86,11 @@
                                             {% endif %}
                                             {% if zone5 is None %}
                                                 <div class="team-card">
-                                                    <div class="row">
+                                                    <div class="row form-check">
+                                                        <div class="col-sm-1 m-1">
+                                                            <input class="form-check-input" type="radio"
+                                                                   name="match1">
+                                                        </div>
                                                         <div class="flag-config"></div>
                                                         <div class="name-config">
                                                             Team 2
@@ -86,7 +99,11 @@
                                                 </div>
                                             {% else %}
                                                 <div class="team-card">
-                                                    <div class="row">
+                                                    <div class="row form-check">
+                                                        <div class="col-sm-1 m-1">
+                                                            <input class="form-check-input" type="radio"
+                                                                   name="match1">
+                                                        </div>
                                                         <div class="flag-config">
                                                             <img src="{{ zone5.0.image_flag }}" class="img-card-sm-2">
                                                         </div>
@@ -101,7 +118,11 @@
                                             <h6 class="h-6 text-center"> Match 2</h6>
                                             {% if zone4 is None %}
                                                 <div class="team-card">
-                                                    <div class="row">
+                                                    <div class="row form-check">
+                                                        <div class="col-sm-1 m-1">
+                                                            <input class="form-check-input" type="radio"
+                                                                   name="match2">
+                                                        </div>
                                                         <div class="flag-config"></div>
                                                         <div class="name-config">
                                                             Team 3
@@ -110,7 +131,11 @@
                                                 </div>
                                             {% else %}
                                                 <div class="team-card">
-                                                    <div class="row">
+                                                    <div class="row form-check">
+                                                        <div class="col-sm-1 m-1">
+                                                            <input class="form-check-input" type="radio"
+                                                                   name="match2">
+                                                        </div>
                                                         <div class="flag-config">
                                                             <img src="{{ zone4.1.image_flag }}" class="img-card-sm-2">
                                                         </div>
@@ -122,7 +147,11 @@
                                             {% endif %}
                                             {% if zone5 is None %}
                                                 <div class="team-card">
-                                                    <div class="row">
+                                                    <div class="row form-check">
+                                                        <div class="col-sm-1 m-1">
+                                                            <input class="form-check-input" type="radio"
+                                                                   name="match2">
+                                                        </div>
                                                         <div class="flag-config"></div>
                                                         <div class="name-config">
                                                             Team 4
@@ -131,7 +160,11 @@
                                                 </div>
                                             {% else %}
                                                 <div class="team-card">
-                                                    <div class="row">
+                                                    <div class="row form-check">
+                                                        <div class="col-sm-1 m-1">
+                                                            <input class="form-check-input" type="radio"
+                                                                   name="match2">
+                                                        </div>
                                                         <div class="flag-config">
                                                             <img src="{{ zone5.1.image_flag }}" class="img-card-sm-2">
                                                         </div>
@@ -146,7 +179,11 @@
                                             <h6 class="h-6 text-center"> Match 3</h6>
                                             {% if zone4 is None %}
                                                 <div class="team-card">
-                                                    <div class="row">
+                                                    <div class="row form-check">
+                                                        <div class="col-sm-1 m-1">
+                                                            <input class="form-check-input" type="radio"
+                                                                   name="match3">
+                                                        </div>
                                                         <div class="flag-config"></div>
                                                         <div class="name-config">
                                                             Team 5
@@ -155,7 +192,11 @@
                                                 </div>
                                             {% else %}
                                                 <div class="team-card">
-                                                    <div class="row">
+                                                    <div class="row form-check">
+                                                         <div class="col-sm-1 m-1">
+                                                            <input class="form-check-input" type="radio"
+                                                                   name="match3">
+                                                        </div>
                                                         <div class="flag-config">
                                                             <img src="{{ zone4.2.image_flag }}" class="img-card-sm-2">
                                                         </div>
@@ -167,7 +208,11 @@
                                             {% endif %}
                                             {% if zone5 is None %}
                                                 <div class="team-card">
-                                                    <div class="row">
+                                                    <div class="row form-check">
+                                                         <div class="col-sm-1 m-1">
+                                                            <input class="form-check-input" type="radio"
+                                                                   name="match3">
+                                                        </div>
                                                         <div class="flag-config"></div>
                                                         <div class="name-config">
                                                             Team 6
@@ -176,7 +221,11 @@
                                                 </div>
                                             {% else %}
                                                 <div class="team-card">
-                                                    <div class="row">
+                                                    <div class="row form-check">
+                                                         <div class="col-sm-1 m-1">
+                                                            <input class="form-check-input" type="radio"
+                                                                   name="match3">
+                                                        </div>
                                                         <div class="flag-config">
                                                             <img src="{{ zone5.2.image_flag }}" class="img-card-sm-2">
                                                         </div>
@@ -191,7 +240,11 @@
                                             <h6 class="h-6 text-center"> Match 4</h6>
                                             {% if zone4 is None %}
                                                 <div class="team-card">
-                                                    <div class="row">
+                                                    <div class="row form-check">
+                                                         <div class="col-sm-1 m-1">
+                                                            <input class="form-check-input" type="radio"
+                                                                   name="match4">
+                                                        </div>
                                                         <div class="flag-config"></div>
                                                         <div class="name-config">
                                                             Team 7
@@ -200,7 +253,11 @@
                                                 </div>
                                             {% else %}
                                                 <div class="team-card">
-                                                    <div class="row">
+                                                    <div class="row form-check">
+                                                         <div class="col-sm-1 m-1">
+                                                            <input class="form-check-input" type="radio"
+                                                                   name="match4">
+                                                        </div>
                                                         <div class="flag-config">
                                                             <img src="{{ zone4.3.image_flag }}" class="img-card-sm-2">
                                                         </div>
@@ -210,9 +267,13 @@
                                                     </div>
                                                 </div>
                                             {% endif %}
-                                            {% if zone4 is None %}
+                                            {% if zone5 is None %}
                                                 <div class="team-card">
-                                                    <div class="row">
+                                                    <div class="row form-check">
+                                                        <div class="col-sm-1 m-1">
+                                                            <input class="form-check-input" type="radio"
+                                                                   name="match4">
+                                                        </div>
                                                         <div class="flag-config"></div>
                                                         <div class="name-config">
                                                             Team 8
@@ -221,7 +282,11 @@
                                                 </div>
                                             {% else %}
                                                 <div class="team-card">
-                                                    <div class="row">
+                                                    <div class="row form-check">
+                                                        <div class="col-sm-1 m-1">
+                                                            <input class="form-check-input" type="radio"
+                                                                   name="match4">
+                                                        </div>
                                                         <div class="flag-config">
                                                             <img src="{{ zone5.3.image_flag }}" class="img-card-sm-2">
                                                         </div>
