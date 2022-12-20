@@ -33,6 +33,12 @@ nav, .dropdown-menu, .card-header, {
   max-width: 250%;
 
 }
+
+.img-card-sm-3{
+
+  max-width: 250%;
+
+}
 .img-card-sm{
 
   max-width: 2000%;
@@ -69,6 +75,12 @@ nav, .dropdown-menu, .card-header, {
 
 }
 
+.flag-config-sm{
+  @extend .col-sm-2;
+  @extend .justify-content-center;
+
+}
+
 .flag-config-table{
   @extend .m-1;
   @extend .col-3;
@@ -80,6 +92,11 @@ nav, .dropdown-menu, .card-header, {
   @extend .text-center
 }
 
+.name-config-sm{
+  @extend .m-1;
+  @extend .col-5;
+  @extend .text-center
+}
 .name-config-table{
   @extend .m-1;
   @extend .col-5;
@@ -92,6 +109,14 @@ nav, .dropdown-menu, .card-header, {
 }
 
 .team-card{
+  @extend .card;
+  @extend .col-md-8;
+  @extend .mb-1;
+  border-color: slategray;
+  border-style: ridge;
+}
+
+.team-card-sm{
   @extend .card;
   @extend .col-md-8;
   @extend .mb-1;
