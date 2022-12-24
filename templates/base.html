@@ -16,9 +16,12 @@
 {% endcompress %}
     <script src="{% static '/bootstrap5/js/bootstrap.bundle.js' %}"></script>
      <script src="{% static 'js/ajax_calls.js' %}"></script>
+    <script src="{% static 'js/utils.js' %}"></script>
      <script src="https://unpkg.com/htmx.org@1.8.4"></script>
+    <script src="https://unpkg.com/htmx.org@1.8.4/dist/ext/loading-states.js"></script>
+
   </head>
-  <body>
+  <body hx-ext="loading-states">
 
 
     <div id="nav" >
@@ -136,7 +139,7 @@
         </div>
         </nav>
     </div>
-    <div id="container" class="container-fluid">
+    <div id="container " class="container-fluid">
         {% block container %}
         {% endblock %}
     </div>

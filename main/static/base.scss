@@ -3,7 +3,6 @@
 
 // Default variable overrides
 
-
 // Required
 @import "bootstrap5/scss/bootstrap";
 @import "bootstrap5/scss/variables";
@@ -19,85 +18,90 @@ nav, .dropdown-menu, .card-header, {
   background-color: dodgerblue;
 }
 
-.nav-link, .dropdown-item, .card-title{
+.nav-link, .dropdown-item, .card-title {
   color: whitesmoke;
 }
 
-.card-border{
+.card-border {
   @extend .card;
   border-color: dodgerblue;
   border-style: solid;
 }
-.img-card-sm-2{
+
+.img-card-sm-2 {
 
   max-width: 250%;
 
 }
 
-.img-card-sm-3{
+.img-card-sm-3 {
 
   max-width: 250%;
 
 }
-.img-card-sm{
+
+.img-card-sm {
 
   max-width: 2000%;
 
 }
 
-.img-card{
+.img-card {
 
   max-width: 200%;
 
 }
-.img-card-table{
+
+.img-card-table {
 
   max-width: 35%;
 
 }
 
-.soccer-card-header{
- @extend .card-header;
- @extend .card-title;
- @extend .text-center
+.soccer-card-header {
+  @extend .card-header;
+  @extend .card-title;
+  @extend .text-center
 }
 
-.soccer-card-body{
+.soccer-card-body {
   @extend .card-body;
   @extend .container;
 
 }
 
-.flag-config{
+.flag-config {
   @extend .m-1;
   @extend .col-md-2;
   @extend .justify-content-center;
 
 }
 
-.flag-config-sm{
+.flag-config-sm {
   @extend .col-sm-2;
   @extend .justify-content-center;
 
 }
 
-.flag-config-table{
+.flag-config-table {
   @extend .m-1;
   @extend .col-3;
   @extend .justify-content-center;
 }
-.name-config{
+
+.name-config {
   @extend .m-1;
   @extend .col-md-8;
   @extend .text-center
 }
 
-.name-config-sm{
+.name-config-sm {
   @extend .m-1;
   @extend .col-5;
   @extend .text-center
 }
-.name-config-table{
+
+.name-config-table {
   @extend .m-1;
   @extend .col-5;
   @extend .text-center
@@ -108,7 +112,7 @@ nav, .dropdown-menu, .card-header, {
 
 }
 
-.team-card{
+.team-card {
   @extend .card;
   @extend .col-md-8;
   @extend .mb-1;
@@ -116,11 +120,27 @@ nav, .dropdown-menu, .card-header, {
   border-style: ridge;
 }
 
-.team-card-sm{
+.team-card-sm {
   @extend .card;
   @extend .col-md-8;
   @extend .mb-1;
   border-color: slategray;
   border-style: ridge;
+}
+
+.htmx-indicator {
+  opacity: 0;
+  transition: opacity 500ms ease-in;
+}
+
+.htmx-request .htmx-indicator {
+  opacity: 1
+}
+
+.htmx-request.htmx-indicator {
+  opacity: 1
+}
+[data-loading]{
+  display: none;
 }
 

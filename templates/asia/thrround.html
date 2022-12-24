@@ -5,7 +5,7 @@
         <h1 class="h1 text-center">Asian Qualifiers</h1>
         <h2 class="h3 text-center">Third Round</h2>
     </div>
-    <div class="row p-2">
+    <div class="row p-4">
         <div class="col-6 g-8 offset-md-5">
             <button type="button" class="btn btn-primary" hx-get=" {% url 'asia.thirdround.draw' %}"
                     hx-trigger="click" hx-target="body">Draw
@@ -46,7 +46,17 @@
                     <div class="soccer-card-header">Qualify Zones</div>
 
                     <div class="soccer-card-body h-75">
-                        <div class="row mb-5">
+
+                           <div id="loading" class="col-md-5 offset-md-3" data-loading-aria-busy data-loading>
+                                <div class="spinner-grow text-info"></div>
+                                <div class="spinner-grow text-info"></div>
+                                <div class="spinner-grow text-info"></div>
+                                <div class="spinner-grow text-info"></div>
+
+                            </div>
+
+                            <div data-loading-aria-busy data-loading-class="d-none">
+                                <div class="row mb-5">
                             <div class="col-md-5">
                                 <div class="card card-border offset-md-2">
                                     <div class="soccer-card-header">Zone A</div>
@@ -421,6 +431,8 @@
                                     </div>
                                 </div>
                             </div>
+                            </div>
+
                         </div>
 
 
