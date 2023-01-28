@@ -59,6 +59,118 @@
                             <div class="row mb-5">
                                 <div class="col-md-5">
                                     <div class="card card-border offset-md-2">
+                                        <div class="soccer-card-header">Zone A</div>
+                                        <div class="soccer-card-body offset-md-2">
+                                            {% if zoneA is None %}
+                                                <div class="team-card">
+                                                    <div class="row">
+                                                        <div class="flag-config"></div>
+                                                        <div class="name-config">
+                                                            A1
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="team-card">
+                                                    <div class="row">
+                                                        <div class="flag-config"></div>
+                                                        <div class="name-config">
+                                                            A2
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="team-card">
+                                                    <div class="row">
+                                                        <div class="flag-config"></div>
+                                                        <div class="name-config">
+                                                            A3
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="team-card">
+                                                    <div class="row">
+                                                        <div class="flag-config"></div>
+                                                        <div class="name-config">
+                                                            A4
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            {% else %}
+                                                {% for team in zoneA %}
+                                                    <div class="team-card">
+                                                        <div class="row">
+                                                            <div class="flag-config">
+                                                                <img src="{{ team.image_flag }}" class="img-card-sm">
+                                                            </div>
+                                                            <div class="name-config">
+                                                                {{ team.nation_iso_code }}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                {% endfor %}
+                                            {% endif %}
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-5 offset-md-1">
+                                    <div class="card card-border offset-md-2">
+                                        <div class="soccer-card-header">Zone B</div>
+                                        <div class="soccer-card-body offset-md-2">
+                                            {% if zoneB is None %}
+                                                <div class="team-card">
+                                                    <div class="row">
+                                                        <div class="flag-config"></div>
+                                                        <div class="name-config">
+                                                            B1
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="team-card">
+                                                    <div class="row">
+                                                        <div class="flag-config"></div>
+                                                        <div class="name-config">
+                                                            B2
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="team-card">
+                                                    <div class="row">
+                                                        <div class="flag-config"></div>
+                                                        <div class="name-config">
+                                                            B3
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="team-card">
+                                                    <div class="row">
+                                                        <div class="flag-config"></div>
+                                                        <div class="name-config">
+                                                            B4
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            {% else %}
+                                                {% for team in zoneB %}
+                                                    <div class="team-card">
+                                                        <div class="row">
+                                                            <div class="flag-config">
+                                                                <img src="{{ team.image_flag }}" class="img-card-sm">
+                                                            </div>
+                                                            <div class="name-config">
+                                                                {{ team.nation_iso_code }}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                {% endfor %}
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-5">
+                                <div class="col-md-5">
+                                    <div class="card card-border offset-md-2">
                                         <div class="soccer-card-header">Zone C</div>
                                         <div class="soccer-card-body offset-md-2">
                                             {% if zoneC is None %}
