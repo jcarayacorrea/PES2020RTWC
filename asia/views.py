@@ -3,6 +3,7 @@ import random
 from django.shortcuts import render, redirect
 from utils import db_conexion, getTeams, updateStage, getTeamsFirstRound, getTeamsSecondRound, getTeamsThirdRound, \
     getTeamsFinalRound
+from fixtures import createFixture
 
 
 # Create your views here.
@@ -27,6 +28,7 @@ def secondround(request):
 def firstround(request):
     context = {}
     context['teams'] = getTeamsFirstRound(conf_name='AFC')
+    
     return render(request, 'asia/fstround.html', context)
 
 
@@ -48,9 +50,8 @@ def firstRoundButton(request):
         context['teams'] = getTeamsFirstRound('AFC')
         zone1= firstRoundDraw(getTeamsFirstRound('AFC'))
         random.shuffle(zone1)
-
+        createFixture(zone1, False, 'A', 'AFC', 'first')
         context['zone1'] = zone1
-
         return render(request,'asia/fstround.html',context)
 
 def firstRoundDraw(teams):
