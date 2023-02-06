@@ -9,76 +9,1033 @@
 
         {% if fixture|getItem:'fixture1' is not None %}
             <div class="row mb-2">
-                <div class="col-md-10 ">
+                <div class="col-10 ">
                     <div class="card card-border offset-md-2">
                         <div class="soccer-card-header">Fixture 1</div>
                         <div class="soccer-card-body">
-                            <div class="row">
-                                <div class="col-sm-5">
-                                    <div class="team-card ">
+                            <div class="row border-bottom border-info">
+
+                                <div class="col-4">
+                                    <div class="team-card-sm-fxt">
                                         <div class="row">
                                             <div class="flag-config">
                                                 <img src="{{ fixture.fixture1.match1.homeTeam.team.image_flag }}"
                                                      class="img-card-sm-4">
                                             </div>
-                                            <div class="name-config">
+                                            <div class="name-config-sm-fxt">
                                                 {{ fixture.fixture1.match1.homeTeam.team.nation_iso_code }}
                                             </div>
                                         </div>
-
-
                                     </div>
                                 </div>
-                                <div class="col">
 
-                                    <h3> 0 - 0</h3>
-
-
+                                <div class="col-2">
+                                    <h3>0 - 0</h3>
                                 </div>
-                                <div class="col-sm-5">
-                                    <div class="team-card">
+
+                                <div class="col-4">
+                                    <div class="team-card-sm-fxt">
                                         <div class="row">
                                             <div class="flag-config">
-                                            <img src="{{ fixture.fixture1.match1.awayTeam.team.image_flag }}"
-                                                 class="img-card-sm-4">
+                                                <img src="{{ fixture.fixture1.match1.awayTeam.team.image_flag }}"
+                                                     class="img-card-sm-4">
+                                            </div>
+                                            <div class="name-config-sm-fxt">
+                                                {{ fixture.fixture1.match1.awayTeam.team.nation_iso_code }}
+                                            </div>
                                         </div>
-                                        <div class="name-config">
-                                            {{ fixture.fixture1.match1.awayTeam.team.nation_iso_code }}
-                                        </div>
-
-                                        </div>
-
                                     </div>
+                                </div>
+
+                                <div class="col-2">
+                                    <button type="button" class="btn btn-primary w-25 h-75">
+                                        <i class="fa-regular fa-futbol"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-primary w-25 h-75">
+                                        <i class="fa-solid fa-floppy-disk"></i>
+                                    </button>
                                 </div>
                             </div>
 
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <div class="team-card">
+                            <div class="row border-bottom border-info">
+
+                                <div class="col-4">
+                                    <div class="team-card-sm-fxt">
                                         <div class="row">
                                             <div class="flag-config">
                                                 <img src="{{ fixture.fixture1.match2.homeTeam.team.image_flag }}"
                                                      class="img-card-sm-4">
                                             </div>
-                                            <div class="name-config">
+                                            <div class="name-config-sm-fxt">
                                                 {{ fixture.fixture1.match2.homeTeam.team.nation_iso_code }}
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-5">
-                                    <div class="team-card">
+
+                                <div class="col-2">
+                                    <h3>0 - 0</h3>
+                                </div>
+                                <div class="col-4">
+                                    <div class="team-card-sm-fxt">
                                         <div class="row">
                                             <div class="flag-config">
                                                 <img src="{{ fixture.fixture1.match2.awayTeam.team.image_flag }}"
                                                      class="img-card-sm-4">
                                             </div>
-                                            <div class="name-config">
+                                            <div class="name-config-sm-fxt">
                                                 {{ fixture.fixture1.match2.awayTeam.team.nation_iso_code }}
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="col-2">
+                                    <button type="button" class="btn btn-primary w-25 h-75">
+                                        <i class="fa-regular fa-futbol"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-primary w-25 h-75">
+                                        <i class="fa-solid fa-floppy-disk"></i>
+                                    </button>
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+        {% if fixture|getItem:'fixture2' is not None %}
+            <div class="row mb-2">
+                <div class="col-10 ">
+                    <div class="card card-border offset-md-2">
+                        <div class="soccer-card-header">Fixture 2</div>
+                        <div class="soccer-card-body">
+                            <div class="row border-bottom border-info">
+
+                                <div class="col-4">
+                                    <div class="team-card-sm-fxt">
+                                        <div class="row">
+                                            <div class="flag-config">
+                                                <img src="{{ fixture.fixture2.match1.homeTeam.team.image_flag }}"
+                                                     class="img-card-sm-4">
+                                            </div>
+                                            <div class="name-config-sm-fxt">
+                                                {{ fixture.fixture2.match1.homeTeam.team.nation_iso_code }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-2">
+                                    <h3>0 - 0</h3>
+                                </div>
+
+                                <div class="col-4">
+                                    <div class="team-card-sm-fxt">
+                                        <div class="row">
+                                            <div class="flag-config">
+                                                <img src="{{ fixture.fixture2.match1.awayTeam.team.image_flag }}"
+                                                     class="img-card-sm-4">
+                                            </div>
+                                            <div class="name-config-sm-fxt">
+                                                {{ fixture.fixture2.match1.awayTeam.team.nation_iso_code }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-2">
+                                    <button type="button" class="btn btn-primary w-25 h-75">
+                                        <i class="fa-regular fa-futbol"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-primary w-25 h-75">
+                                        <i class="fa-solid fa-floppy-disk"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="row border-bottom border-info">
+
+                                <div class="col-4">
+                                    <div class="team-card-sm-fxt">
+                                        <div class="row">
+                                            <div class="flag-config">
+                                                <img src="{{ fixture.fixture2.match2.homeTeam.team.image_flag }}"
+                                                     class="img-card-sm-4">
+                                            </div>
+                                            <div class="name-config-sm-fxt">
+                                                {{ fixture.fixture2.match2.homeTeam.team.nation_iso_code }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-2">
+                                    <h3>0 - 0</h3>
+                                </div>
+                                <div class="col-4">
+                                    <div class="team-card-sm-fxt">
+                                        <div class="row">
+                                            <div class="flag-config">
+                                                <img src="{{ fixture.fixture2.match2.awayTeam.team.image_flag }}"
+                                                     class="img-card-sm-4">
+                                            </div>
+                                            <div class="name-config-sm-fxt">
+                                                {{ fixture.fixture2.match2.awayTeam.team.nation_iso_code }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-2">
+                                    <button type="button" class="btn btn-primary w-25 h-75">
+                                        <i class="fa-regular fa-futbol"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-primary w-25 h-75">
+                                        <i class="fa-solid fa-floppy-disk"></i>
+                                    </button>
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+        {% if fixture|getItem:'fixture3' is not None %}
+            <div class="row mb-2">
+                <div class="col-10 ">
+                    <div class="card card-border offset-md-2">
+                        <div class="soccer-card-header">Fixture 3</div>
+                        <div class="soccer-card-body">
+                            <div class="row border-bottom border-info">
+
+                                <div class="col-4">
+                                    <div class="team-card-sm-fxt">
+                                        <div class="row">
+                                            <div class="flag-config">
+                                                <img src="{{ fixture.fixture3.match1.homeTeam.team.image_flag }}"
+                                                     class="img-card-sm-4">
+                                            </div>
+                                            <div class="name-config-sm-fxt">
+                                                {{ fixture.fixture3.match1.homeTeam.team.nation_iso_code }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-2">
+                                    <h3>0 - 0</h3>
+                                </div>
+
+                                <div class="col-4">
+                                    <div class="team-card-sm-fxt">
+                                        <div class="row">
+                                            <div class="flag-config">
+                                                <img src="{{ fixture.fixture3.match1.awayTeam.team.image_flag }}"
+                                                     class="img-card-sm-4">
+                                            </div>
+                                            <div class="name-config-sm-fxt">
+                                                {{ fixture.fixture3.match1.awayTeam.team.nation_iso_code }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-2">
+                                    <button type="button" class="btn btn-primary w-25 h-75">
+                                        <i class="fa-regular fa-futbol"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-primary w-25 h-75">
+                                        <i class="fa-solid fa-floppy-disk"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="row border-bottom border-info">
+
+                                <div class="col-4">
+                                    <div class="team-card-sm-fxt">
+                                        <div class="row">
+                                            <div class="flag-config">
+                                                <img src="{{ fixture.fixture3.match2.homeTeam.team.image_flag }}"
+                                                     class="img-card-sm-4">
+                                            </div>
+                                            <div class="name-config-sm-fxt">
+                                                {{ fixture.fixture3.match2.homeTeam.team.nation_iso_code }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-2">
+                                    <h3>0 - 0</h3>
+                                </div>
+                                <div class="col-4">
+                                    <div class="team-card-sm-fxt">
+                                        <div class="row">
+                                            <div class="flag-config">
+                                                <img src="{{ fixture.fixture3.match2.awayTeam.team.image_flag }}"
+                                                     class="img-card-sm-4">
+                                            </div>
+                                            <div class="name-config-sm-fxt">
+                                                {{ fixture.fixture3.match2.awayTeam.team.nation_iso_code }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-2">
+                                    <button type="button" class="btn btn-primary w-25 h-75">
+                                        <i class="fa-regular fa-futbol"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-primary w-25 h-75">
+                                        <i class="fa-solid fa-floppy-disk"></i>
+                                    </button>
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+        {% if fixture|getItem:'fixture4' is not None %}
+            <div class="row mb-2">
+                <div class="col-10 ">
+                    <div class="card card-border offset-md-2">
+                        <div class="soccer-card-header">Fixture 4</div>
+                        <div class="soccer-card-body">
+                            <div class="row border-bottom border-info">
+
+                                <div class="col-4">
+                                    <div class="team-card-sm-fxt">
+                                        <div class="row">
+                                            <div class="flag-config">
+                                                <img src="{{ fixture.fixture4.match1.homeTeam.team.image_flag }}"
+                                                     class="img-card-sm-4">
+                                            </div>
+                                            <div class="name-config-sm-fxt">
+                                                {{ fixture.fixture4.match1.homeTeam.team.nation_iso_code }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-2">
+                                    <h3>0 - 0</h3>
+                                </div>
+
+                                <div class="col-4">
+                                    <div class="team-card-sm-fxt">
+                                        <div class="row">
+                                            <div class="flag-config">
+                                                <img src="{{ fixture.fixture4.match1.awayTeam.team.image_flag }}"
+                                                     class="img-card-sm-4">
+                                            </div>
+                                            <div class="name-config-sm-fxt">
+                                                {{ fixture.fixture4.match1.awayTeam.team.nation_iso_code }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-2">
+                                    <button type="button" class="btn btn-primary w-25 h-75">
+                                        <i class="fa-regular fa-futbol"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-primary w-25 h-75">
+                                        <i class="fa-solid fa-floppy-disk"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="row border-bottom border-info">
+
+                                <div class="col-4">
+                                    <div class="team-card-sm-fxt">
+                                        <div class="row">
+                                            <div class="flag-config">
+                                                <img src="{{ fixture.fixture4.match2.homeTeam.team.image_flag }}"
+                                                     class="img-card-sm-4">
+                                            </div>
+                                            <div class="name-config-sm-fxt">
+                                                {{ fixture.fixture4.match2.homeTeam.team.nation_iso_code }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-2">
+                                    <h3>0 - 0</h3>
+                                </div>
+                                <div class="col-4">
+                                    <div class="team-card-sm-fxt">
+                                        <div class="row">
+                                            <div class="flag-config">
+                                                <img src="{{ fixture.fixture4.match2.awayTeam.team.image_flag }}"
+                                                     class="img-card-sm-4">
+                                            </div>
+                                            <div class="name-config-sm-fxt">
+                                                {{ fixture.fixture4.match2.awayTeam.team.nation_iso_code }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-2">
+                                    <button type="button" class="btn btn-primary w-25 h-75">
+                                        <i class="fa-regular fa-futbol"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-primary w-25 h-75">
+                                        <i class="fa-solid fa-floppy-disk"></i>
+                                    </button>
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+        {% if fixture|getItem:'fixture5' is not None %}
+            <div class="row mb-2">
+                <div class="col-10 ">
+                    <div class="card card-border offset-md-2">
+                        <div class="soccer-card-header">Fixture 5</div>
+                        <div class="soccer-card-body">
+                            <div class="row border-bottom border-info">
+
+                                <div class="col-4">
+                                    <div class="team-card-sm-fxt">
+                                        <div class="row">
+                                            <div class="flag-config">
+                                                <img src="{{ fixture.fixture5.match1.homeTeam.team.image_flag }}"
+                                                     class="img-card-sm-4">
+                                            </div>
+                                            <div class="name-config-sm-fxt">
+                                                {{ fixture.fixture5.match1.homeTeam.team.nation_iso_code }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-2">
+                                    <h3>0 - 0</h3>
+                                </div>
+
+                                <div class="col-4">
+                                    <div class="team-card-sm-fxt">
+                                        <div class="row">
+                                            <div class="flag-config">
+                                                <img src="{{ fixture.fixture5.match1.awayTeam.team.image_flag }}"
+                                                     class="img-card-sm-4">
+                                            </div>
+                                            <div class="name-config-sm-fxt">
+                                                {{ fixture.fixture5.match1.awayTeam.team.nation_iso_code }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-2">
+                                    <button type="button" class="btn btn-primary w-25 h-75">
+                                        <i class="fa-regular fa-futbol"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-primary w-25 h-75">
+                                        <i class="fa-solid fa-floppy-disk"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="row border-bottom border-info">
+
+                                <div class="col-4">
+                                    <div class="team-card-sm-fxt">
+                                        <div class="row">
+                                            <div class="flag-config">
+                                                <img src="{{ fixture.fixture5.match2.homeTeam.team.image_flag }}"
+                                                     class="img-card-sm-4">
+                                            </div>
+                                            <div class="name-config-sm-fxt">
+                                                {{ fixture.fixture5.match2.homeTeam.team.nation_iso_code }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-2">
+                                    <h3>0 - 0</h3>
+                                </div>
+                                <div class="col-4">
+                                    <div class="team-card-sm-fxt">
+                                        <div class="row">
+                                            <div class="flag-config">
+                                                <img src="{{ fixture.fixture5.match2.awayTeam.team.image_flag }}"
+                                                     class="img-card-sm-4">
+                                            </div>
+                                            <div class="name-config-sm-fxt">
+                                                {{ fixture.fixture5.match2.awayTeam.team.nation_iso_code }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-2">
+                                    <button type="button" class="btn btn-primary w-25 h-75">
+                                        <i class="fa-regular fa-futbol"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-primary w-25 h-75">
+                                        <i class="fa-solid fa-floppy-disk"></i>
+                                    </button>
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+        {% if fixture|getItem:'fixture6' is not None %}
+            <div class="row mb-2">
+                <div class="col-10 ">
+                    <div class="card card-border offset-md-2">
+                        <div class="soccer-card-header">Fixture 6</div>
+                        <div class="soccer-card-body">
+                            <div class="row border-bottom border-info">
+
+                                <div class="col-4">
+                                    <div class="team-card-sm-fxt">
+                                        <div class="row">
+                                            <div class="flag-config">
+                                                <img src="{{ fixture.fixture6.match1.homeTeam.team.image_flag }}"
+                                                     class="img-card-sm-4">
+                                            </div>
+                                            <div class="name-config-sm-fxt">
+                                                {{ fixture.fixture6.match1.homeTeam.team.nation_iso_code }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-2">
+                                    <h3>0 - 0</h3>
+                                </div>
+
+                                <div class="col-4">
+                                    <div class="team-card-sm-fxt">
+                                        <div class="row">
+                                            <div class="flag-config">
+                                                <img src="{{ fixture.fixture6.match1.awayTeam.team.image_flag }}"
+                                                     class="img-card-sm-4">
+                                            </div>
+                                            <div class="name-config-sm-fxt">
+                                                {{ fixture.fixture6.match1.awayTeam.team.nation_iso_code }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-2">
+                                    <button type="button" class="btn btn-primary w-25 h-75">
+                                        <i class="fa-regular fa-futbol"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-primary w-25 h-75">
+                                        <i class="fa-solid fa-floppy-disk"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="row border-bottom border-info">
+
+                                <div class="col-4">
+                                    <div class="team-card-sm-fxt">
+                                        <div class="row">
+                                            <div class="flag-config">
+                                                <img src="{{ fixture.fixture6.match2.homeTeam.team.image_flag }}"
+                                                     class="img-card-sm-4">
+                                            </div>
+                                            <div class="name-config-sm-fxt">
+                                                {{ fixture.fixture6.match2.homeTeam.team.nation_iso_code }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-2">
+                                    <h3>0 - 0</h3>
+                                </div>
+                                <div class="col-4">
+                                    <div class="team-card-sm-fxt">
+                                        <div class="row">
+                                            <div class="flag-config">
+                                                <img src="{{ fixture.fixture6.match2.awayTeam.team.image_flag }}"
+                                                     class="img-card-sm-4">
+                                            </div>
+                                            <div class="name-config-sm-fxt">
+                                                {{ fixture.fixture6.match2.awayTeam.team.nation_iso_code }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-2">
+                                    <button type="button" class="btn btn-primary w-25 h-75">
+                                        <i class="fa-regular fa-futbol"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-primary w-25 h-75">
+                                        <i class="fa-solid fa-floppy-disk"></i>
+                                    </button>
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+        {% if fixture|getItem:'fixture7' is not None %}
+            <div class="row mb-2">
+                <div class="col-10 ">
+                    <div class="card card-border offset-md-2">
+                        <div class="soccer-card-header">Fixture 7</div>
+                        <div class="soccer-card-body">
+                            <div class="row border-bottom border-info">
+
+                                <div class="col-4">
+                                    <div class="team-card-sm-fxt">
+                                        <div class="row">
+                                            <div class="flag-config">
+                                                <img src="{{ fixture.fixture7.match1.homeTeam.team.image_flag }}"
+                                                     class="img-card-sm-4">
+                                            </div>
+                                            <div class="name-config-sm-fxt">
+                                                {{ fixture.fixture7.match1.homeTeam.team.nation_iso_code }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-2">
+                                    <h3>0 - 0</h3>
+                                </div>
+
+                                <div class="col-4">
+                                    <div class="team-card-sm-fxt">
+                                        <div class="row">
+                                            <div class="flag-config">
+                                                <img src="{{ fixture.fixture7.match1.awayTeam.team.image_flag }}"
+                                                     class="img-card-sm-4">
+                                            </div>
+                                            <div class="name-config-sm-fxt">
+                                                {{ fixture.fixture7.match1.awayTeam.team.nation_iso_code }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-2">
+                                    <button type="button" class="btn btn-primary w-25 h-75">
+                                        <i class="fa-regular fa-futbol"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-primary w-25 h-75">
+                                        <i class="fa-solid fa-floppy-disk"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="row border-bottom border-info">
+
+                                <div class="col-4">
+                                    <div class="team-card-sm-fxt">
+                                        <div class="row">
+                                            <div class="flag-config">
+                                                <img src="{{ fixture.fixture7.match2.homeTeam.team.image_flag }}"
+                                                     class="img-card-sm-4">
+                                            </div>
+                                            <div class="name-config-sm-fxt">
+                                                {{ fixture.fixture7.match2.homeTeam.team.nation_iso_code }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-2">
+                                    <h3>0 - 0</h3>
+                                </div>
+                                <div class="col-4">
+                                    <div class="team-card-sm-fxt">
+                                        <div class="row">
+                                            <div class="flag-config">
+                                                <img src="{{ fixture.fixture7.match2.awayTeam.team.image_flag }}"
+                                                     class="img-card-sm-4">
+                                            </div>
+                                            <div class="name-config-sm-fxt">
+                                                {{ fixture.fixture7.match2.awayTeam.team.nation_iso_code }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-2">
+                                    <button type="button" class="btn btn-primary w-25 h-75">
+                                        <i class="fa-regular fa-futbol"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-primary w-25 h-75">
+                                        <i class="fa-solid fa-floppy-disk"></i>
+                                    </button>
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+        {% if fixture|getItem:'fixture8' is not None %}
+            <div class="row mb-2">
+                <div class="col-10 ">
+                    <div class="card card-border offset-md-2">
+                        <div class="soccer-card-header">Fixture 8</div>
+                        <div class="soccer-card-body">
+                            <div class="row border-bottom border-info">
+
+                                <div class="col-4">
+                                    <div class="team-card-sm-fxt">
+                                        <div class="row">
+                                            <div class="flag-config">
+                                                <img src="{{ fixture.fixture8.match1.homeTeam.team.image_flag }}"
+                                                     class="img-card-sm-4">
+                                            </div>
+                                            <div class="name-config-sm-fxt">
+                                                {{ fixture.fixture8.match1.homeTeam.team.nation_iso_code }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-2">
+                                    <h3>0 - 0</h3>
+                                </div>
+
+                                <div class="col-4">
+                                    <div class="team-card-sm-fxt">
+                                        <div class="row">
+                                            <div class="flag-config">
+                                                <img src="{{ fixture.fixture8.match1.awayTeam.team.image_flag }}"
+                                                     class="img-card-sm-4">
+                                            </div>
+                                            <div class="name-config-sm-fxt">
+                                                {{ fixture.fixture8.match1.awayTeam.team.nation_iso_code }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-2">
+                                    <button type="button" class="btn btn-primary w-25 h-75">
+                                        <i class="fa-regular fa-futbol"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-primary w-25 h-75">
+                                        <i class="fa-solid fa-floppy-disk"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="row border-bottom border-info">
+
+                                <div class="col-4">
+                                    <div class="team-card-sm-fxt">
+                                        <div class="row">
+                                            <div class="flag-config">
+                                                <img src="{{ fixture.fixture8.match2.homeTeam.team.image_flag }}"
+                                                     class="img-card-sm-4">
+                                            </div>
+                                            <div class="name-config-sm-fxt">
+                                                {{ fixture.fixture8.match2.homeTeam.team.nation_iso_code }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-2">
+                                    <h3>0 - 0</h3>
+                                </div>
+                                <div class="col-4">
+                                    <div class="team-card-sm-fxt">
+                                        <div class="row">
+                                            <div class="flag-config">
+                                                <img src="{{ fixture.fixture8.match2.awayTeam.team.image_flag }}"
+                                                     class="img-card-sm-4">
+                                            </div>
+                                            <div class="name-config-sm-fxt">
+                                                {{ fixture.fixture8.match2.awayTeam.team.nation_iso_code }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-2">
+                                    <button type="button" class="btn btn-primary w-25 h-75">
+                                        <i class="fa-regular fa-futbol"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-primary w-25 h-75">
+                                        <i class="fa-solid fa-floppy-disk"></i>
+                                    </button>
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+        {% if fixture|getItem:'fixture9' is not None %}
+            <div class="row mb-2">
+                <div class="col-10 ">
+                    <div class="card card-border offset-md-2">
+                        <div class="soccer-card-header">Fixture 9</div>
+                        <div class="soccer-card-body">
+                            <div class="row border-bottom border-info">
+
+                                <div class="col-4">
+                                    <div class="team-card-sm-fxt">
+                                        <div class="row">
+                                            <div class="flag-config">
+                                                <img src="{{ fixture.fixture9.match1.homeTeam.team.image_flag }}"
+                                                     class="img-card-sm-4">
+                                            </div>
+                                            <div class="name-config-sm-fxt">
+                                                {{ fixture.fixture9.match1.homeTeam.team.nation_iso_code }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-2">
+                                    <h3>0 - 0</h3>
+                                </div>
+
+                                <div class="col-4">
+                                    <div class="team-card-sm-fxt">
+                                        <div class="row">
+                                            <div class="flag-config">
+                                                <img src="{{ fixture.fixture9.match1.awayTeam.team.image_flag }}"
+                                                     class="img-card-sm-4">
+                                            </div>
+                                            <div class="name-config-sm-fxt">
+                                                {{ fixture.fixture9.match1.awayTeam.team.nation_iso_code }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-2">
+                                    <button type="button" class="btn btn-primary w-25 h-75">
+                                        <i class="fa-regular fa-futbol"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-primary w-25 h-75">
+                                        <i class="fa-solid fa-floppy-disk"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="row border-bottom border-info">
+
+                                <div class="col-4">
+                                    <div class="team-card-sm-fxt">
+                                        <div class="row">
+                                            <div class="flag-config">
+                                                <img src="{{ fixture.fixture9.match2.homeTeam.team.image_flag }}"
+                                                     class="img-card-sm-4">
+                                            </div>
+                                            <div class="name-config-sm-fxt">
+                                                {{ fixture.fixture9.match2.homeTeam.team.nation_iso_code }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-2">
+                                    <h3>0 - 0</h3>
+                                </div>
+                                <div class="col-4">
+                                    <div class="team-card-sm-fxt">
+                                        <div class="row">
+                                            <div class="flag-config">
+                                                <img src="{{ fixture.fixture9.match2.awayTeam.team.image_flag }}"
+                                                     class="img-card-sm-4">
+                                            </div>
+                                            <div class="name-config-sm-fxt">
+                                                {{ fixture.fixture9.match2.awayTeam.team.nation_iso_code }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-2">
+                                    <button type="button" class="btn btn-primary w-25 h-75">
+                                        <i class="fa-regular fa-futbol"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-primary w-25 h-75">
+                                        <i class="fa-solid fa-floppy-disk"></i>
+                                    </button>
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+        {% if fixture|getItem:'fixture10' is not None %}
+            <div class="row mb-2">
+                <div class="col-10 ">
+                    <div class="card card-border offset-md-2">
+                        <div class="soccer-card-header">Fixture 10</div>
+                        <div class="soccer-card-body">
+                            <div class="row border-bottom border-info">
+
+                                <div class="col-4">
+                                    <div class="team-card-sm-fxt">
+                                        <div class="row">
+                                            <div class="flag-config">
+                                                <img src="{{ fixture.fixture10.match1.homeTeam.team.image_flag }}"
+                                                     class="img-card-sm-4">
+                                            </div>
+                                            <div class="name-config-sm-fxt">
+                                                {{ fixture.fixture10.match1.homeTeam.team.nation_iso_code }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-2">
+                                    <h3>0 - 0</h3>
+                                </div>
+
+                                <div class="col-4">
+                                    <div class="team-card-sm-fxt">
+                                        <div class="row">
+                                            <div class="flag-config">
+                                                <img src="{{ fixture.fixture10.match1.awayTeam.team.image_flag }}"
+                                                     class="img-card-sm-4">
+                                            </div>
+                                            <div class="name-config-sm-fxt">
+                                                {{ fixture.fixture10.match1.awayTeam.team.nation_iso_code }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-2">
+                                    <button type="button" class="btn btn-primary w-25 h-75">
+                                        <i class="fa-regular fa-futbol"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-primary w-25 h-75">
+                                        <i class="fa-solid fa-floppy-disk"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="row border-bottom border-info">
+
+                                <div class="col-4">
+                                    <div class="team-card-sm-fxt">
+                                        <div class="row">
+                                            <div class="flag-config">
+                                                <img src="{{ fixture.fixture1.match2.homeTeam.team.image_flag }}"
+                                                     class="img-card-sm-4">
+                                            </div>
+                                            <div class="name-config-sm-fxt">
+                                                {{ fixture.fixture1.match2.homeTeam.team.nation_iso_code }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-2">
+                                    <h3>0 - 0</h3>
+                                </div>
+                                <div class="col-4">
+                                    <div class="team-card-sm-fxt">
+                                        <div class="row">
+                                            <div class="flag-config">
+                                                <img src="{{ fixture.fixture1.match2.awayTeam.team.image_flag }}"
+                                                     class="img-card-sm-4">
+                                            </div>
+                                            <div class="name-config-sm-fxt">
+                                                {{ fixture.fixture1.match2.awayTeam.team.nation_iso_code }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-2">
+                                    <button type="button" class="btn btn-primary w-25 h-75">
+                                        <i class="fa-regular fa-futbol"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-primary w-25 h-75">
+                                        <i class="fa-solid fa-floppy-disk"></i>
+                                    </button>
+                                </div>
+
+
                             </div>
 
 

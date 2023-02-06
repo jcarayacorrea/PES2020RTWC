@@ -42,7 +42,7 @@ nav, .dropdown-menu, .card-header, {
 
 .img-card-sm-4 {
 
-  max-width: 1500%;
+  max-width: 500%;
 
 }
 
@@ -89,6 +89,7 @@ nav, .dropdown-menu, .card-header, {
 
 }
 
+
 .flag-config-table {
   @extend .m-1;
   @extend .col-3;
@@ -104,6 +105,12 @@ nav, .dropdown-menu, .card-header, {
 .name-config-sm {
   @extend .m-1;
   @extend .col-5;
+  @extend .text-center
+}
+
+.name-config-sm-fxt {
+  @extend .m-1;
+  @extend .col-sm-5;
   @extend .text-center
 }
 
@@ -128,7 +135,15 @@ nav, .dropdown-menu, .card-header, {
 
 .team-card-sm {
   @extend .card;
-  @extend .col-md-8;
+  @extend .col;
+  @extend .mb-1;
+  border-color: slategray;
+  border-style: ridge;
+}
+
+.team-card-sm-fxt {
+  @extend .card;
+  @extend .col;
   @extend .mb-1;
   border-color: slategray;
   border-style: ridge;
