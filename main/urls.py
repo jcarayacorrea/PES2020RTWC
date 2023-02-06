@@ -3,5 +3,7 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('api/teams/', views.teamListApi, name='api.teams')
+    path('api/teams/', views.teamListApi, name='api.teams'),
+    path('fixtures/<str:conf>/<str:round>/<str:zone>', views.fixtureZone, name='zones.fixtures'),
+    path('standings/<str:conf>/<str:round>/<str:zone>', views.standingsZone, name='zones.standings')
 ]

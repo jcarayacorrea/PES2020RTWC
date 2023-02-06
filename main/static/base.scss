@@ -40,6 +40,12 @@ nav, .dropdown-menu, .card-header, {
 
 }
 
+.img-card-sm-4 {
+
+  max-width: 1500%;
+
+}
+
 .img-card-sm {
 
   max-width: 2000%;
@@ -144,3 +150,16 @@ nav, .dropdown-menu, .card-header, {
   display: none;
 }
 
+.table{
+  max-height: 500px;
+}
+
+.popup{
+  @extend .modal;
+  @extend .fade;
+}
+
+.popup-dialog{
+  @extend .modal-dialog;
+  @extend .modal-lg
+}

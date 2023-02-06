@@ -182,10 +182,9 @@ def updateFixture(teams,fixtures,zone,conf,round):
         'fixtures':fixtures
     }})
 
-def getZoneTeams(zone,conf,round):
+def getZoneData(zone,conf,round):
     db = db_conexion()
     cursor = db.get_collection('Fixtures').find(
-        {'$and': [{'conf_name': conf}, {'zone': zone},{'round':round}]}).sort(
-        'fifa_nation_rank', 1)
+        {'$and': [{'conf_name': conf}, {'zone': zone},{'round':round}]})
     listData = list(cursor)
-    return listData
+    return listData[0]

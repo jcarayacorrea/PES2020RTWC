@@ -3,7 +3,7 @@ import random
 from django.shortcuts import render, redirect
 from utils import db_conexion, getTeams, updateStage, getTeamsFirstRound, getTeamsSecondRound, getTeamsThirdRound, \
     getTeamsFinalRound
-from fixtures import createFixture
+from fixtures import createFixture, getZoneData
 
 
 # Create your views here.
@@ -26,9 +26,16 @@ def secondround(request):
 
 
 def firstround(request):
-    context = {}
+    context = {
+        'conf': 'AFC',
+        'round': 'first',
+        'zone': 'A'
+    }
     context['teams'] = getTeamsFirstRound(conf_name='AFC')
-    
+    zone1 = getZoneData('A', 'AFC', 'first')
+    if len(zone1['teams']) == 4:
+        context['zone1'] = zone1['teams']
+
     return render(request, 'asia/fstround.html', context)
 
 
@@ -48,23 +55,24 @@ def firstRoundButton(request):
     if request.method == 'GET':
         context = {}
         context['teams'] = getTeamsFirstRound('AFC')
-        zone1= firstRoundDraw(getTeamsFirstRound('AFC'))
+        zone1 = firstRoundDraw(getTeamsFirstRound('AFC'))
         random.shuffle(zone1)
         createFixture(zone1, False, 'A', 'AFC', 'first')
         context['zone1'] = zone1
-        return render(request,'asia/fstround.html',context)
+        return render(request, 'asia/fstround.html', context)
+
 
 def firstRoundDraw(teams):
-
     zone1 = teams
 
     return zone1
+
 
 def secondRoundButton(request):
     if request.method == 'GET':
         context = {}
         context['teams'] = getTeamsSecondRound('AFC')
-        zone1, zone2,zone3,zone4,zone5,zone6 = secondRoundDraw(getTeamsSecondRound('AFC'))
+        zone1, zone2, zone3, zone4, zone5, zone6 = secondRoundDraw(getTeamsSecondRound('AFC'))
         random.shuffle(zone1)
         random.shuffle(zone2)
         random.shuffle(zone3)
@@ -79,37 +87,35 @@ def secondRoundButton(request):
         context['zone5'] = zone5
         context['zone6'] = zone6
 
+        return render(request, 'asia/sndround.html', context)
 
-        return render(request,'asia/sndround.html',context)
 
 def secondRoundDraw(teams):
-
-    pool1 = [teams[0],teams[1],teams[2],teams[3],teams[4],teams[5]]
-    pool2 = [teams[6], teams[7],teams[8], teams[9],teams[10], teams[11]]
-    pool3 = [teams[12], teams[13],teams[14], teams[15],teams[16], teams[17]]
-    pool4 = [teams[18], teams[19],teams[20], teams[21],teams[22], teams[23]]
-
+    pool1 = [teams[0], teams[1], teams[2], teams[3], teams[4], teams[5]]
+    pool2 = [teams[6], teams[7], teams[8], teams[9], teams[10], teams[11]]
+    pool3 = [teams[12], teams[13], teams[14], teams[15], teams[16], teams[17]]
+    pool4 = [teams[18], teams[19], teams[20], teams[21], teams[22], teams[23]]
 
     random.shuffle(pool1)
     random.shuffle(pool2)
     random.shuffle(pool3)
     random.shuffle(pool4)
 
-
-    zone1 = [pool1[0],pool2[0],pool3[0],pool4[0]]
+    zone1 = [pool1[0], pool2[0], pool3[0], pool4[0]]
     zone2 = [pool1[1], pool2[1], pool3[1], pool4[1]]
     zone3 = [pool1[2], pool2[2], pool3[2], pool4[2]]
     zone4 = [pool1[3], pool2[3], pool3[3], pool4[3]]
     zone5 = [pool1[4], pool2[4], pool3[4], pool4[4]]
     zone6 = [pool1[5], pool2[5], pool3[5], pool4[5]]
 
-    return zone1, zone2,zone3,zone4,zone5,zone6
+    return zone1, zone2, zone3, zone4, zone5, zone6
+
 
 def thirdRoundButton(request):
     if request.method == 'GET':
         context = {}
         context['teams'] = getTeamsThirdRound('AFC')
-        zone1, zone2,zone3,zone4,zone5,zone6,zone7, zone8 = thirdRoundDraw(getTeamsThirdRound('AFC'))
+        zone1, zone2, zone3, zone4, zone5, zone6, zone7, zone8 = thirdRoundDraw(getTeamsThirdRound('AFC'))
         random.shuffle(zone1)
         random.shuffle(zone2)
         random.shuffle(zone3)
@@ -128,23 +134,19 @@ def thirdRoundButton(request):
         context['zone7'] = zone7
         context['zone8'] = zone8
 
+        return render(request, 'asia/thrround.html', context)
 
-        return render(request,'asia/thrround.html',context)
 
 def thirdRoundDraw(teams):
-
-    pool1 = [teams[0],teams[1],teams[2],teams[3],teams[4],teams[5],teams[6], teams[7]]
-    pool2 = [teams[8], teams[9],teams[10], teams[11],teams[12], teams[13],teams[14], teams[15]]
-    pool3 = [teams[16], teams[17],teams[18], teams[19],teams[20], teams[21],teams[22],teams[23]]
-
+    pool1 = [teams[0], teams[1], teams[2], teams[3], teams[4], teams[5], teams[6], teams[7]]
+    pool2 = [teams[8], teams[9], teams[10], teams[11], teams[12], teams[13], teams[14], teams[15]]
+    pool3 = [teams[16], teams[17], teams[18], teams[19], teams[20], teams[21], teams[22], teams[23]]
 
     random.shuffle(pool1)
     random.shuffle(pool2)
     random.shuffle(pool3)
 
-
-
-    zone1 = [pool1[0],pool2[0],pool3[0]]
+    zone1 = [pool1[0], pool2[0], pool3[0]]
     zone2 = [pool1[1], pool2[1], pool3[1]]
     zone3 = [pool1[2], pool2[2], pool3[2]]
     zone4 = [pool1[3], pool2[3], pool3[3]]
@@ -153,52 +155,41 @@ def thirdRoundDraw(teams):
     zone7 = [pool1[6], pool2[6], pool3[6]]
     zone8 = [pool1[7], pool2[7], pool3[7]]
 
-    return zone1, zone2,zone3,zone4,zone5,zone6,zone7,zone8
+    return zone1, zone2, zone3, zone4, zone5, zone6, zone7, zone8
+
 
 def finalRoundButton(request):
     if request.method == 'GET':
         context = {}
         context['teams'] = getTeamsFinalRound('AFC')
-        zone1, zone2,zone3,zone4 = finalRoundDraw(getTeamsFinalRound('AFC'))
+        zone1, zone2, zone3, zone4 = finalRoundDraw(getTeamsFinalRound('AFC'))
         random.shuffle(zone1)
         random.shuffle(zone2)
         random.shuffle(zone3)
         random.shuffle(zone4)
-
 
         context['zone1'] = zone1
         context['zone2'] = zone2
         context['zone3'] = zone3
         context['zone4'] = zone4
 
+        return render(request, 'asia/finalround.html', context)
 
-
-        return render(request,'asia/finalround.html',context)
 
 def finalRoundDraw(teams):
-
-    pool1 = [teams[0],teams[1],teams[2],teams[3]]
-    pool2 = [teams[4],teams[5],teams[6], teams[7]]
-    pool3 = [teams[8], teams[9],teams[10], teams[11]]
-    pool4 = [teams[12], teams[13],teams[14], teams[15]]
-
-
+    pool1 = [teams[0], teams[1], teams[2], teams[3]]
+    pool2 = [teams[4], teams[5], teams[6], teams[7]]
+    pool3 = [teams[8], teams[9], teams[10], teams[11]]
+    pool4 = [teams[12], teams[13], teams[14], teams[15]]
 
     random.shuffle(pool1)
     random.shuffle(pool2)
     random.shuffle(pool3)
     random.shuffle(pool4)
 
+    zone1 = [pool1[0], pool2[0], pool3[0], pool4[0]]
+    zone2 = [pool1[1], pool2[1], pool3[1], pool4[1]]
+    zone3 = [pool1[2], pool2[2], pool3[2], pool4[2]]
+    zone4 = [pool1[3], pool2[3], pool3[3], pool4[3]]
 
-
-
-    zone1 = [pool1[0],pool2[0],pool3[0],pool4[0]]
-    zone2 = [pool1[1], pool2[1], pool3[1],pool4[1]]
-    zone3 = [pool1[2], pool2[2], pool3[2],pool4[2]]
-    zone4 = [pool1[3], pool2[3], pool3[3],pool4[3]]
-
-
-    return zone1, zone2,zone3,zone4
-
-
-
+    return zone1, zone2, zone3, zone4
