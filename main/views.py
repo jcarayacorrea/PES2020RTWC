@@ -25,8 +25,9 @@ def fixtureZone(request,conf,round,zone):
 def standingsZone(request,conf,round,zone):
     context = {}
     fixtureDict = getZoneData(zone, conf, round)
-    context['fixture'] = fixtureDict['fixtures']
-    return render(request,'popups/fixtures/fixture.html',context)
+    context['teams'] = zip(fixtureDict['teams'],range(1,5))
+
+    return render(request,'popups/standings/standings.html',context)
 
 @register.filter
 def getItem(dict,key):

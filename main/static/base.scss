@@ -64,6 +64,11 @@ nav, .dropdown-menu, .card-header, {
 
 }
 
+.img-card-table-std {
+
+  max-width: 50%;
+
+}
 .soccer-card-header {
   @extend .card-header;
   @extend .card-title;

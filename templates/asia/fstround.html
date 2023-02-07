@@ -125,9 +125,9 @@
                                                         data-bs-target="#schedule">
                                                     <i class="fa-regular fa-calendar"></i>
                                                 </button>
-
+                                                {% url 'zones.standings' 'AFC' 'first' 'A' as standings %}
                                                 <button type="button" class="btn btn-primary"
-                                                        hx-get=" {% url 'asia.firstround.draw' %}"
+                                                        hx-get="{{ standings }}"
                                                         hx-trigger="click" hx-target="#stats-content"
                                                         data-bs-toggle="modal"
                                                         data-bs-target="#standings">

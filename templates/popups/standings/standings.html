@@ -1,18 +1,98 @@
 {% load static %}
 {% block modal_content %}
-     <div class="modal-header">
+    <div class="modal-header">
         <h5 class="modal-title">Standings</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p>Modal body text goes here.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
-            <i class="fa-regular fa-whistle"></i>
-        </button>
-        <button type="button" class="btn btn-primary">
-            <i class="fa-regular fa-floppy-disks"></i>
-        </button>
-      </div>
+    </div>
+    <div class="modal-body">
+        <div class="row ">
+            <div class="col-12">
+                <div class="card card-border">
+                    <div class="soccer-card-header ">Teams</div>
+
+                    <div class="soccer-card-body overflow-scroll mh-75">
+
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th class="col text-center">
+                                    Pos
+                                </th>
+                                <th class="col text-center">
+                                    Name
+                                </th>
+                                <th class="col">
+                                    Pts.
+                                </th>
+                                <th class="col">
+                                    GF
+                                </th>
+                                <th class="col">
+                                    GC
+                                </th>
+                                <th class="col">
+                                    GL
+                                </th>
+                                <th class="col">
+                                    GV
+                                </th>
+                                <th class="col">
+                                    Dif.
+                                </th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            {% for team, i in teams %}
+
+                                <tr>
+                                    <td class="col-1">
+                                        {{ i }}
+                                    </td>
+                                    <td class="col-10">
+                                        <div class="row">
+                                            <div class="flag-config-table">
+                                                <img src="{{ team.image_flag }}" class="img-card-table-std">
+                                            </div>
+                                            <div class="name-config-table">
+                                                {{ team.nation_name }}
+                                            </div>
+
+                                        </div>
+
+                                    </td>
+                                    <td class="col-1">
+
+                                    </td>
+                                    <td class="col-1">
+
+                                    </td>
+                                    <td class="col-1">
+
+                                    </td>
+                                    <td class="col-1">
+
+                                    </td>
+                                    <td class="col-1">
+
+                                    </td>
+                                    <td class="col-1">
+
+                                    </td>
+                                </tr>
+
+                            {% endfor %}
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+
+    </div>
 {% endblock %}
