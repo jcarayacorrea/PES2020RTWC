@@ -25,7 +25,8 @@ def fixtureZone(request,conf,round,zone):
 def standingsZone(request,conf,round,zone):
     context = {}
     fixtureDict = getZoneData(zone, conf, round)
-    context['teams'] = zip(fixtureDict['teams'],range(1,5))
+    lenght = len(fixtureDict['teams']) + 1
+    context['teams'] = zip(fixtureDict['teams'],range(1,lenght))
 
     return render(request,'popups/standings/standings.html',context)
 
