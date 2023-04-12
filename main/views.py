@@ -2,7 +2,7 @@ from django.http import JsonResponse
 from django.shortcuts import render
 from django.template.defaulttags import register
 
-from utils import getTeamsJSON
+from utils import getTeamsJSON, getQualyPlaces, getRoundPlaces
 from fixtures import getZoneData
 
 
@@ -25,8 +25,10 @@ def fixtureZone(request,conf,round,zone):
 def standingsZone(request,conf,round,zone):
     context = {}
     fixtureDict = getZoneData(zone, conf, round)
+    placesDict = getQualyPlaces(conf)
+    placesList = getRoundPlaces(placesDict,round)
     lenght = len(fixtureDict['teams']) + 1
-    context['teams'] = zip(fixtureDict['teams'],range(1,lenght))
+    context['teams'] = zip(fixtureDict['teams'],range(1,lenght),placesList)
 
     return render(request,'popups/standings/standings.html',context)
 

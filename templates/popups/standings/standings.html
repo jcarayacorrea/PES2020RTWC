@@ -43,12 +43,25 @@
                             </thead>
 
                             <tbody>
-                            {% for team, i in teams %}
+                            {% for team, i, p in teams %}
 
                                 <tr>
-                                    <td class="col-1 text-center">
-                                        <h5>{{ i }}</h5>
-                                    </td>
+                                    {% if p == 'Q' %}
+
+                                        <td class="bg-success col-1 text-center">
+                                            <h5>{{ i }}</h5>
+                                        </td>
+                                    {% elif p == 'P' %}
+                                        <td class=" bg-warning col-1 text-center">
+                                            <h5>{{ i }}</h5>
+                                        </td>
+                                    {% else %}
+                                        <td class="col-1 text-center">
+                                            <h5>{{ i }}</h5>
+                                        </td>
+                                    {% endif %}
+
+
                                     <td class="col-6">
                                         <div class="row">
                                             <div class="flag-config-table">

@@ -83,3 +83,23 @@ def getTeamsJSON():
         'fifa_nation_rank', 1)
     listData = list(cursor)
     return listData
+
+def getQualyPlaces(conf):
+    db = db_conexion()
+    cursor = db.get_collection('Places').find({"conf": conf})
+    listData = list(cursor)
+    return listData
+
+def getRoundPlaces(placesList,round):
+    list = None
+    listPlaces = placesList[0]
+    match round:
+        case 'first':
+            list = listPlaces['places']['firstRound']
+        case 'second':
+            list = listPlaces['places']['secondRound']
+        case 'third':
+            list = listPlaces['places']['thirdRound']
+        case 'final':
+            list = listPlaces['places']['finalRound']
+    return list
