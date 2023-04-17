@@ -43,6 +43,8 @@ def simular_partido(equipo_local, equipo_visitante):
     jsonVisita = getTeamById(equipo_visitante)
     ranking_local = jsonLocal[0]['fifa_nation_rank']
     ranking_visitante = jsonVisita[0]['fifa_nation_rank']
+    nombre_local = jsonLocal[0]['nation_name']
+    nombre_visita = jsonVisita[0]['nation_name']
 
     # Calcular la probabilidad de que el equipo con menor ranking gane
     probabilidad_local, probabilidad_visitante = calcular_probabilidad_ganador(ranking_local, ranking_visitante)
@@ -54,6 +56,7 @@ def simular_partido(equipo_local, equipo_visitante):
 
     # Simular el tiempo transcurrido en el partido (90 segundos)
     tiempo_transcurrido = 0
+    print('Comienza Partido  {} - {}'.format(nombre_local, nombre_visita))
     while tiempo_transcurrido < 90:
         # Generar un evento aleatorio basado en las probabilidades de los equipos
         evento = random.choices([0, 1, 2], [probabilidad_gol_local, probabilidad_gol_visita,
@@ -66,7 +69,7 @@ def simular_partido(equipo_local, equipo_visitante):
             # Incrementar el tiempo transcurrido en 1 segundo
             tiempo_transcurrido += 1
             # Mostrar el evento en el partido
-            print('Gol Local ({}) {} - {}'.format(tiempo_transcurrido,goles_local,goles_visitante))
+            print('Gol {} ({}) {} - {}'.format(nombre_local,tiempo_transcurrido,goles_local,goles_visitante))
 
         # Si el evento es un gol visitante
         elif evento == 1:
@@ -75,16 +78,16 @@ def simular_partido(equipo_local, equipo_visitante):
             # Incrementar el tiempo transcurrido en 1 segundo
             tiempo_transcurrido += 1
             # Mostrar el evento en el partido
-            print('Gol Visita ({}) {} - {}'.format(tiempo_transcurrido,goles_local,goles_visitante))
+            print('Gol {} ({}) {} - {}'.format(nombre_visita,tiempo_transcurrido,goles_local,goles_visitante))
 
         # Si el evento es un sin gol
         else:
             # Incrementar el tiempo transcurrido en 1 segundo
             tiempo_transcurrido += 1
             # Mostrar el evento en el partido
-            print('Sin gol. ({})'.format(tiempo_transcurrido))
+            print('Minuto ({})'.format(tiempo_transcurrido))
 
         # Dormir el programa por 0.9 segundos para simular el tiempo real del partido
-        time.sleep(0.9)
-
+        time.sleep(0.5)
+    print('Fin del Partido {} {} - {} {}'.format(nombre_local,goles_local,goles_visitante,nombre_visita))
     return {'local': goles_local, 'visita': goles_visitante}
