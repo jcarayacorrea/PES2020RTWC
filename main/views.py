@@ -4,7 +4,7 @@ from django.template.defaulttags import register
 
 from utils import getTeamsJSON, getQualyPlaces, getRoundPlaces
 from fixtures import getZoneData
-from PESSimulator import simular_partido
+from MatchSimulator import simular_partido
 
 
 # Create your views here.
