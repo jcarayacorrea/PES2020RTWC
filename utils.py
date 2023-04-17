@@ -103,3 +103,7 @@ def getRoundPlaces(placesList,round):
         case 'final':
             list = listPlaces['places']['finalRound']
     return list
+
+def getTeamById(team):
+    db = db_conexion()
+    return list(db.get_collection('Teams').find({'id':team}))

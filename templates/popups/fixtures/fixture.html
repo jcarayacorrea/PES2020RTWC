@@ -48,7 +48,11 @@
                                 </div>
 
                                 <div class="col-2">
-                                    <button type="button" class="btn btn-primary w-25 h-75">
+                                    {#                                    {% url 'zones.match' '1' '1' '{{ fixture.fixture1.match1.homeTeam.id }}' '{{ fixture.fixture1.match1.awayTeam.id }}' '{{ conf }}' '{{ round }}' '{{ zone }}' as match1_1 %}#}
+                                    {% url 'match_simulator'  as simmatch1_1 %}
+                                    <button type="button" class="btn btn-primary w-25 h-75"
+                                            hx-get="{{ simmatch1_1 }}"
+                                            hx-trigger="click">
                                         <i class="fa-regular fa-futbol"></i>
                                     </button>
                                     <button type="button" class="btn btn-primary w-25 h-75">
