@@ -13,7 +13,7 @@
                     <div class="card card-border offset-md-2">
                         <div class="soccer-card-header">Fixture 1</div>
                         <div class="soccer-card-body">
-                            <div class="row border-bottom border-info">
+                            <div class="row  border-info">
 
                                 <div class="col-4">
                                     <div class="team-card-sm-fxt">
@@ -48,19 +48,20 @@
                                 </div>
 
                                 <div class="col-2">
-                                    {% url 'match_simulator' '1' '1' '{{ fixture.fixture1.match1.homeTeam.id }}' '{{ fixture.fixture1.match1.awayTeam.id }}' '{{ conf }}' '{{ round }}' '{{ zone }}' as match1_1 %}
-                                    <button type="button" class="btn btn-primary w-25 h-75"
-                                            hx-get="{{ simmatch1_1 }}"
-                                            hx-trigger="click">
-                                        <i class="fa-regular fa-futbol"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-primary w-25 h-75">
-                                        <i class="fa-solid fa-floppy-disk"></i>
-                                    </button>
+                                    {% with homeId=fixture.fixture1.match1.homeTeam.team.id awayId=fixture.fixture1.match1.awayTeam.team.id %}
+                                        {% url 'match_simulator' 1 1 homeId awayId  conf  round zone as simmatch1_1 %}
+                                        <button type="button" class="btn btn-primary"
+                                                hx-get="{{ simmatch1_1 }}"
+                                                hx-trigger="click"
+                                                hx-target="#schedule-content">
+                                            <i class="fa-regular fa-futbol"></i>
+                                        </button>
+                                    {% endwith %}
+
                                 </div>
                             </div>
 
-                            <div class="row border-bottom border-info">
+                            <div class="row  border-info">
 
                                 <div class="col-4">
                                     <div class="team-card-sm-fxt">
@@ -94,12 +95,16 @@
                                 </div>
 
                                 <div class="col-2">
-                                    <button type="button" class="btn btn-primary w-25 h-75">
-                                        <i class="fa-regular fa-futbol"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-primary w-25 h-75">
-                                        <i class="fa-solid fa-floppy-disk"></i>
-                                    </button>
+                                    {% with homeId=fixture.fixture1.match2.homeTeam.team.id awayId=fixture.fixture1.match2.awayTeam.team.id %}
+                                        {% url 'match_simulator' 1 2 homeId awayId  conf  round zone as simmatch1_1 %}
+                                        <button type="button" class="btn btn-primary"
+                                                hx-get="{{ simmatch1_1 }}"
+                                                hx-trigger="click"
+                                                hx-target="#schedule-content">
+                                            <i class="fa-regular fa-futbol"></i>
+                                        </button>
+                                    {% endwith %}
+
                                 </div>
 
 
@@ -120,7 +125,7 @@
                     <div class="card card-border offset-md-2">
                         <div class="soccer-card-header">Fixture 2</div>
                         <div class="soccer-card-body">
-                            <div class="row border-bottom border-info">
+                            <div class="row  border-info">
 
                                 <div class="col-4">
                                     <div class="team-card-sm-fxt">
@@ -155,16 +160,20 @@
                                 </div>
 
                                 <div class="col-2">
-                                    <button type="button" class="btn btn-primary w-25 h-75">
-                                        <i class="fa-regular fa-futbol"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-primary w-25 h-75">
-                                        <i class="fa-solid fa-floppy-disk"></i>
-                                    </button>
+                                    {% with homeId=fixture.fixture2.match1.homeTeam.team.id awayId=fixture.fixture2.match1.awayTeam.team.id %}
+                                        {% url 'match_simulator' 2 1 homeId awayId  conf  round zone as simmatch1_1 %}
+                                        <button type="button" class="btn btn-primary"
+                                                hx-get="{{ simmatch1_1 }}"
+                                                hx-trigger="click"
+                                                hx-target="#schedule-content">
+                                            <i class="fa-regular fa-futbol"></i>
+                                        </button>
+                                    {% endwith %}
+
                                 </div>
                             </div>
 
-                            <div class="row border-bottom border-info">
+                            <div class="row  border-info">
 
                                 <div class="col-4">
                                     <div class="team-card-sm-fxt">
@@ -198,12 +207,16 @@
                                 </div>
 
                                 <div class="col-2">
-                                    <button type="button" class="btn btn-primary w-25 h-75">
-                                        <i class="fa-regular fa-futbol"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-primary w-25 h-75">
-                                        <i class="fa-solid fa-floppy-disk"></i>
-                                    </button>
+                                    {% with homeId=fixture.fixture2.match2.homeTeam.team.id awayId=fixture.fixture2.match2.awayTeam.team.id %}
+                                        {% url 'match_simulator' 2 2 homeId awayId  conf  round zone as simmatch1_1 %}
+                                        <button type="button" class="btn btn-primary"
+                                                hx-get="{{ simmatch1_1 }}"
+                                                hx-trigger="click"
+                                                hx-target="#schedule-content">
+                                            <i class="fa-regular fa-futbol"></i>
+                                        </button>
+                                    {% endwith %}
+
                                 </div>
 
 
@@ -224,7 +237,7 @@
                     <div class="card card-border offset-md-2">
                         <div class="soccer-card-header">Fixture 3</div>
                         <div class="soccer-card-body">
-                            <div class="row border-bottom border-info">
+                            <div class="row  border-info">
 
                                 <div class="col-4">
                                     <div class="team-card-sm-fxt">
@@ -259,16 +272,20 @@
                                 </div>
 
                                 <div class="col-2">
-                                    <button type="button" class="btn btn-primary w-25 h-75">
-                                        <i class="fa-regular fa-futbol"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-primary w-25 h-75">
-                                        <i class="fa-solid fa-floppy-disk"></i>
-                                    </button>
+                                    {% with homeId=fixture.fixture3.match1.homeTeam.team.id awayId=fixture.fixture3.match1.awayTeam.team.id %}
+                                        {% url 'match_simulator' 3 1 homeId awayId  conf  round zone as simmatch1_1 %}
+                                        <button type="button" class="btn btn-primary"
+                                                hx-get="{{ simmatch1_1 }}"
+                                                hx-trigger="click"
+                                                hx-target="#schedule-content">
+                                            <i class="fa-regular fa-futbol"></i>
+                                        </button>
+                                    {% endwith %}
+
                                 </div>
                             </div>
 
-                            <div class="row border-bottom border-info">
+                            <div class="row  border-info">
 
                                 <div class="col-4">
                                     <div class="team-card-sm-fxt">
@@ -302,12 +319,16 @@
                                 </div>
 
                                 <div class="col-2">
-                                    <button type="button" class="btn btn-primary w-25 h-75">
-                                        <i class="fa-regular fa-futbol"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-primary w-25 h-75">
-                                        <i class="fa-solid fa-floppy-disk"></i>
-                                    </button>
+                                    {% with homeId=fixture.fixture3.match2.homeTeam.team.id awayId=fixture.fixture3.match2.awayTeam.team.id %}
+                                        {% url 'match_simulator' 3 2 homeId awayId  conf  round zone as simmatch1_1 %}
+                                        <button type="button" class="btn btn-primary"
+                                                hx-get="{{ simmatch1_1 }}"
+                                                hx-trigger="click"
+                                                hx-target="#schedule-content">
+                                            <i class="fa-regular fa-futbol"></i>
+                                        </button>
+                                    {% endwith %}
+
                                 </div>
 
 
@@ -328,7 +349,7 @@
                     <div class="card card-border offset-md-2">
                         <div class="soccer-card-header">Fixture 4</div>
                         <div class="soccer-card-body">
-                            <div class="row border-bottom border-info">
+                            <div class="row  border-info">
 
                                 <div class="col-4">
                                     <div class="team-card-sm-fxt">
@@ -363,16 +384,20 @@
                                 </div>
 
                                 <div class="col-2">
-                                    <button type="button" class="btn btn-primary w-25 h-75">
-                                        <i class="fa-regular fa-futbol"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-primary w-25 h-75">
-                                        <i class="fa-solid fa-floppy-disk"></i>
-                                    </button>
+                                    {% with homeId=fixture.fixture4.match1.homeTeam.team.id awayId=fixture.fixture4.match1.awayTeam.team.id %}
+                                        {% url 'match_simulator' 4 1 homeId awayId  conf  round zone as simmatch1_1 %}
+                                        <button type="button" class="btn btn-primary"
+                                                hx-get="{{ simmatch1_1 }}"
+                                                hx-trigger="click"
+                                                hx-target="#schedule-content">
+                                            <i class="fa-regular fa-futbol"></i>
+                                        </button>
+                                    {% endwith %}
+
                                 </div>
                             </div>
 
-                            <div class="row border-bottom border-info">
+                            <div class="row  border-info">
 
                                 <div class="col-4">
                                     <div class="team-card-sm-fxt">
@@ -406,12 +431,16 @@
                                 </div>
 
                                 <div class="col-2">
-                                    <button type="button" class="btn btn-primary w-25 h-75">
-                                        <i class="fa-regular fa-futbol"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-primary w-25 h-75">
-                                        <i class="fa-solid fa-floppy-disk"></i>
-                                    </button>
+                                    {% with homeId=fixture.fixture4.match2.homeTeam.team.id awayId=fixture.fixture4.match2.awayTeam.team.id %}
+                                        {% url 'match_simulator' 4 2 homeId awayId  conf  round zone as simmatch1_1 %}
+                                        <button type="button" class="btn btn-primary"
+                                                hx-get="{{ simmatch1_1 }}"
+                                                hx-trigger="click"
+                                                hx-target="#schedule-content">
+                                            <i class="fa-regular fa-futbol"></i>
+                                        </button>
+                                    {% endwith %}
+
                                 </div>
 
 
@@ -432,7 +461,7 @@
                     <div class="card card-border offset-md-2">
                         <div class="soccer-card-header">Fixture 5</div>
                         <div class="soccer-card-body">
-                            <div class="row border-bottom border-info">
+                            <div class="row  border-info">
 
                                 <div class="col-4">
                                     <div class="team-card-sm-fxt">
@@ -467,16 +496,20 @@
                                 </div>
 
                                 <div class="col-2">
-                                    <button type="button" class="btn btn-primary w-25 h-75">
-                                        <i class="fa-regular fa-futbol"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-primary w-25 h-75">
-                                        <i class="fa-solid fa-floppy-disk"></i>
-                                    </button>
+                                    {% with homeId=fixture.fixture5.match1.homeTeam.team.id awayId=fixture.fixture5.match1.awayTeam.team.id %}
+                                        {% url 'match_simulator' 5 1 homeId awayId  conf  round zone as simmatch1_1 %}
+                                        <button type="button" class="btn btn-primary"
+                                                hx-get="{{ simmatch1_1 }}"
+                                                hx-trigger="click"
+                                                hx-target="#schedule-content">
+                                            <i class="fa-regular fa-futbol"></i>
+                                        </button>
+                                    {% endwith %}
+
                                 </div>
                             </div>
 
-                            <div class="row border-bottom border-info">
+                            <div class="row  border-info">
 
                                 <div class="col-4">
                                     <div class="team-card-sm-fxt">
@@ -510,12 +543,16 @@
                                 </div>
 
                                 <div class="col-2">
-                                    <button type="button" class="btn btn-primary w-25 h-75">
-                                        <i class="fa-regular fa-futbol"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-primary w-25 h-75">
-                                        <i class="fa-solid fa-floppy-disk"></i>
-                                    </button>
+                                    {% with homeId=fixture.fixture5.match2.homeTeam.team.id awayId=fixture.fixture5.match2.awayTeam.team.id %}
+                                        {% url 'match_simulator' 5 2 homeId awayId  conf  round zone as simmatch1_1 %}
+                                        <button type="button" class="btn btn-primary"
+                                                hx-get="{{ simmatch1_1 }}"
+                                                hx-trigger="click"
+                                                hx-target="#schedule-content">
+                                            <i class="fa-regular fa-futbol"></i>
+                                        </button>
+                                    {% endwith %}
+
                                 </div>
 
 
@@ -536,7 +573,7 @@
                     <div class="card card-border offset-md-2">
                         <div class="soccer-card-header">Fixture 6</div>
                         <div class="soccer-card-body">
-                            <div class="row border-bottom border-info">
+                            <div class="row  border-info">
 
                                 <div class="col-4">
                                     <div class="team-card-sm-fxt">
@@ -571,16 +608,20 @@
                                 </div>
 
                                 <div class="col-2">
-                                    <button type="button" class="btn btn-primary w-25 h-75">
-                                        <i class="fa-regular fa-futbol"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-primary w-25 h-75">
-                                        <i class="fa-solid fa-floppy-disk"></i>
-                                    </button>
+                                    {% with homeId=fixture.fixture6.match1.homeTeam.team.id awayId=fixture.fixture6.match1.awayTeam.team.id %}
+                                        {% url 'match_simulator' 6 1 homeId awayId  conf  round zone as simmatch1_1 %}
+                                        <button type="button" class="btn btn-primary"
+                                                hx-get="{{ simmatch1_1 }}"
+                                                hx-trigger="click"
+                                                hx-target="#schedule-content">
+                                            <i class="fa-regular fa-futbol"></i>
+                                        </button>
+                                    {% endwith %}
+
                                 </div>
                             </div>
 
-                            <div class="row border-bottom border-info">
+                            <div class="row  border-info">
 
                                 <div class="col-4">
                                     <div class="team-card-sm-fxt">
@@ -614,12 +655,16 @@
                                 </div>
 
                                 <div class="col-2">
-                                    <button type="button" class="btn btn-primary w-25 h-75">
-                                        <i class="fa-regular fa-futbol"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-primary w-25 h-75">
-                                        <i class="fa-solid fa-floppy-disk"></i>
-                                    </button>
+                                    {% with homeId=fixture.fixture6.match2.homeTeam.team.id awayId=fixture.fixture6.match2.awayTeam.team.id %}
+                                        {% url 'match_simulator' 6 2 homeId awayId  conf  round zone as simmatch1_1 %}
+                                        <button type="button" class="btn btn-primary"
+                                                hx-get="{{ simmatch1_1 }}"
+                                                hx-trigger="click"
+                                                hx-target="#schedule-content">
+                                            <i class="fa-regular fa-futbol"></i>
+                                        </button>
+                                    {% endwith %}
+
                                 </div>
 
 
@@ -640,7 +685,7 @@
                     <div class="card card-border offset-md-2">
                         <div class="soccer-card-header">Fixture 7</div>
                         <div class="soccer-card-body">
-                            <div class="row border-bottom border-info">
+                            <div class="row  border-info">
 
                                 <div class="col-4">
                                     <div class="team-card-sm-fxt">
@@ -675,16 +720,20 @@
                                 </div>
 
                                 <div class="col-2">
-                                    <button type="button" class="btn btn-primary w-25 h-75">
-                                        <i class="fa-regular fa-futbol"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-primary w-25 h-75">
-                                        <i class="fa-solid fa-floppy-disk"></i>
-                                    </button>
+                                    {% with homeId=fixture.fixture7.match1.homeTeam.team.id awayId=fixture.fixture7.match1.awayTeam.team.id %}
+                                        {% url 'match_simulator' 7 1 homeId awayId  conf  round zone as simmatch1_1 %}
+                                        <button type="button" class="btn btn-primary"
+                                                hx-get="{{ simmatch1_1 }}"
+                                                hx-trigger="click"
+                                                hx-target="#schedule-content">
+                                            <i class="fa-regular fa-futbol"></i>
+                                        </button>
+                                    {% endwith %}
+
                                 </div>
                             </div>
 
-                            <div class="row border-bottom border-info">
+                            <div class="row  border-info">
 
                                 <div class="col-4">
                                     <div class="team-card-sm-fxt">
@@ -718,12 +767,16 @@
                                 </div>
 
                                 <div class="col-2">
-                                    <button type="button" class="btn btn-primary w-25 h-75">
-                                        <i class="fa-regular fa-futbol"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-primary w-25 h-75">
-                                        <i class="fa-solid fa-floppy-disk"></i>
-                                    </button>
+                                    {% with homeId=fixture.fixture7.match2.homeTeam.team.id awayId=fixture.fixture7.match2.awayTeam.team.id %}
+                                        {% url 'match_simulator' 7 2 homeId awayId  conf  round zone as simmatch1_1 %}
+                                        <button type="button" class="btn btn-primary"
+                                                hx-get="{{ simmatch1_1 }}"
+                                                hx-trigger="click"
+                                                hx-target="#schedule-content">
+                                            <i class="fa-regular fa-futbol"></i>
+                                        </button>
+                                    {% endwith %}
+
                                 </div>
 
 
@@ -744,7 +797,7 @@
                     <div class="card card-border offset-md-2">
                         <div class="soccer-card-header">Fixture 8</div>
                         <div class="soccer-card-body">
-                            <div class="row border-bottom border-info">
+                            <div class="row  border-info">
 
                                 <div class="col-4">
                                     <div class="team-card-sm-fxt">
@@ -779,16 +832,20 @@
                                 </div>
 
                                 <div class="col-2">
-                                    <button type="button" class="btn btn-primary w-25 h-75">
-                                        <i class="fa-regular fa-futbol"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-primary w-25 h-75">
-                                        <i class="fa-solid fa-floppy-disk"></i>
-                                    </button>
+                                    {% with homeId=fixture.fixture8.match1.homeTeam.team.id awayId=fixture.fixture8.match1.awayTeam.team.id %}
+                                        {% url 'match_simulator' 8 1 homeId awayId  conf  round zone as simmatch1_1 %}
+                                        <button type="button" class="btn btn-primary"
+                                                hx-get="{{ simmatch1_1 }}"
+                                                hx-trigger="click"
+                                                hx-target="#schedule-content">
+                                            <i class="fa-regular fa-futbol"></i>
+                                        </button>
+                                    {% endwith %}
+
                                 </div>
                             </div>
 
-                            <div class="row border-bottom border-info">
+                            <div class="row  border-info">
 
                                 <div class="col-4">
                                     <div class="team-card-sm-fxt">
@@ -822,12 +879,16 @@
                                 </div>
 
                                 <div class="col-2">
-                                    <button type="button" class="btn btn-primary w-25 h-75">
-                                        <i class="fa-regular fa-futbol"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-primary w-25 h-75">
-                                        <i class="fa-solid fa-floppy-disk"></i>
-                                    </button>
+                                    {% with homeId=fixture.fixture8.match2.homeTeam.team.id awayId=fixture.fixture8.match2.awayTeam.team.id %}
+                                        {% url 'match_simulator' 8 2 homeId awayId  conf  round zone as simmatch1_1 %}
+                                        <button type="button" class="btn btn-primary"
+                                                hx-get="{{ simmatch1_1 }}"
+                                                hx-trigger="click"
+                                                hx-target="#schedule-content">
+                                            <i class="fa-regular fa-futbol"></i>
+                                        </button>
+                                    {% endwith %}
+
                                 </div>
 
 
@@ -848,7 +909,7 @@
                     <div class="card card-border offset-md-2">
                         <div class="soccer-card-header">Fixture 9</div>
                         <div class="soccer-card-body">
-                            <div class="row border-bottom border-info">
+                            <div class="row  border-info">
 
                                 <div class="col-4">
                                     <div class="team-card-sm-fxt">
@@ -883,16 +944,20 @@
                                 </div>
 
                                 <div class="col-2">
-                                    <button type="button" class="btn btn-primary w-25 h-75">
-                                        <i class="fa-regular fa-futbol"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-primary w-25 h-75">
-                                        <i class="fa-solid fa-floppy-disk"></i>
-                                    </button>
+                                    {% with homeId=fixture.fixture9.match1.homeTeam.team.id awayId=fixture.fixture9.match1.awayTeam.team.id %}
+                                        {% url 'match_simulator' 9 1 homeId awayId  conf  round zone as simmatch1_1 %}
+                                        <button type="button" class="btn btn-primary"
+                                                hx-get="{{ simmatch1_1 }}"
+                                                hx-trigger="click"
+                                                hx-target="#schedule-content">
+                                            <i class="fa-regular fa-futbol"></i>
+                                        </button>
+                                    {% endwith %}
+
                                 </div>
                             </div>
 
-                            <div class="row border-bottom border-info">
+                            <div class="row  border-info">
 
                                 <div class="col-4">
                                     <div class="team-card-sm-fxt">
@@ -926,12 +991,16 @@
                                 </div>
 
                                 <div class="col-2">
-                                    <button type="button" class="btn btn-primary w-25 h-75">
-                                        <i class="fa-regular fa-futbol"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-primary w-25 h-75">
-                                        <i class="fa-solid fa-floppy-disk"></i>
-                                    </button>
+                                    {% with homeId=fixture.fixture9.match2.homeTeam.team.id awayId=fixture.fixture9.match2.awayTeam.team.id %}
+                                        {% url 'match_simulator' 9 2 homeId awayId  conf  round zone as simmatch1_1 %}
+                                        <button type="button" class="btn btn-primary"
+                                                hx-get="{{ simmatch1_1 }}"
+                                                hx-trigger="click"
+                                                hx-target="#schedule-content">
+                                            <i class="fa-regular fa-futbol"></i>
+                                        </button>
+                                    {% endwith %}
+
                                 </div>
 
 
@@ -952,7 +1021,7 @@
                     <div class="card card-border offset-md-2">
                         <div class="soccer-card-header">Fixture 10</div>
                         <div class="soccer-card-body">
-                            <div class="row border-bottom border-info">
+                            <div class="row  border-info">
 
                                 <div class="col-4">
                                     <div class="team-card-sm-fxt">
@@ -987,16 +1056,20 @@
                                 </div>
 
                                 <div class="col-2">
-                                    <button type="button" class="btn btn-primary w-25 h-75">
-                                        <i class="fa-regular fa-futbol"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-primary w-25 h-75">
-                                        <i class="fa-solid fa-floppy-disk"></i>
-                                    </button>
+                                    {% with homeId=fixture.fixture10.match1.homeTeam.team.id awayId=fixture.fixture10.match1.awayTeam.team.id %}
+                                        {% url 'match_simulator' 10 1 homeId awayId  conf  round zone as simmatch1_1 %}
+                                        <button type="button" class="btn btn-primary"
+                                                hx-get="{{ simmatch1_1 }}"
+                                                hx-trigger="click"
+                                                hx-target="#schedule-content">
+                                            <i class="fa-regular fa-futbol"></i>
+                                        </button>
+                                    {% endwith %}
+
                                 </div>
                             </div>
 
-                            <div class="row border-bottom border-info">
+                            <div class="row  border-info">
 
                                 <div class="col-4">
                                     <div class="team-card-sm-fxt">
@@ -1030,12 +1103,16 @@
                                 </div>
 
                                 <div class="col-2">
-                                    <button type="button" class="btn btn-primary w-25 h-75">
-                                        <i class="fa-regular fa-futbol"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-primary w-25 h-75">
-                                        <i class="fa-solid fa-floppy-disk"></i>
-                                    </button>
+                                    {% with homeId=fixture.fixture10.match2.homeTeam.team.id awayId=fixture.fixture10.match2.awayTeam.team.id %}
+                                        {% url 'match_simulator' 10 2 homeId awayId  conf  round zone as simmatch1_1 %}
+                                        <button type="button" class="btn btn-primary"
+                                                hx-get="{{ simmatch1_1 }}"
+                                                hx-trigger="click"
+                                                hx-target="#schedule-content">
+                                            <i class="fa-regular fa-futbol"></i>
+                                        </button>
+                                    {% endwith %}
+
                                 </div>
 
 
@@ -1053,11 +1130,6 @@
 
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
-            <i class="fa-solid fa-check-double"></i>
-        </button>
-        <button type="button" class="btn btn-primary">
-            <i class="fa-solid fa-floppy-disk"></i>
-        </button>
+      
     </div>
 {% endblock %}
