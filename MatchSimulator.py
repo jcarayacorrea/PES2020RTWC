@@ -38,7 +38,7 @@ def calcular_probabilidad_ganador(ranking_local, ranking_visitante):
 def simular_partido(equipo_local, equipo_visitante):
     """Simula un partido entre dos equipos y determina el ganador."""
     # Obtener el ranking FIFA de los equipos
-    probalidad_gol = 0.01
+    probalidad_gol = 0.03
     jsonLocal = getTeamById(equipo_local)
     jsonVisita = getTeamById(equipo_visitante)
     ranking_local = jsonLocal[0]['fifa_nation_rank']
