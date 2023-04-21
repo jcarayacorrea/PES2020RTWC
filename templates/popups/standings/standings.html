@@ -21,6 +21,9 @@
                                 <th class="col text-center">
                                     Name
                                 </th>
+                                {% comment %}<th class="col">
+                                    PJ
+                                </th>{% endcomment %}
                                 <th class="col">
                                     Pts.
                                 </th>
@@ -65,32 +68,35 @@
                                     <td class="col-6">
                                         <div class="row">
                                             <div class="flag-config-table">
-                                                <img src="{{ team.image_flag }}" class="img-card-table-std">
+                                                <img src="{{ team.team.image_flag }}" class="img-card-table-std">
                                             </div>
                                             <div class="name-config-table">
-                                                {{ team.nation_name }}
+                                                {{ team.team.nation_name }}
                                             </div>
 
                                         </div>
 
                                     </td>
+                                    {% comment %}<td class="col-1">
+                                       {{ team.matches }}
+                                    </td>{% endcomment %}
                                     <td class="col-1">
-
+                                       <h5>{{ team.points }}</h5>
                                     </td>
                                     <td class="col-1">
-
+                                        {{ team.favor }}
                                     </td>
                                     <td class="col-1">
-
+                                        {{ team.against }}
                                     </td>
                                     <td class="col-1">
-
+                                        {{ team.local }}
                                     </td>
                                     <td class="col-1">
-
+                                        {{ team.away }}
                                     </td>
                                     <td class="col-1">
-
+                                        {{ team.difference }}
                                     </td>
                                 </tr>
 

@@ -1,4 +1,5 @@
 from fixtures import getZoneData
+from operator import itemgetter
 
 
 def getStandings(conf, round, zone):
@@ -7,7 +8,7 @@ def getStandings(conf, round, zone):
     fixture = getZoneData(zone, conf, round)
     teams = fixture['teams']
     fixtureList = fixtureArray(fixture['fixtures'])
-    print(createStandings(fixtureList,teams))
+    return createStandings(fixtureList, teams)
 
 
 def createStandings(list, teams):
@@ -16,16 +17,27 @@ def createStandings(list, teams):
         teamObj = {}
         teamId = team['id']
         teamObj['team'] = team
-        teamObj['points'] = countPoints(teamId, list)
+        points, matches = countPoints(teamId, list)
+        golFavor, golContra, golLocal, golVisita, diff = goaldifference(teamId, list)
+        teamObj['points'] = points
+        teamObj['matches'] = matches
+        teamObj['favor'] = golFavor
+        teamObj['against'] = golContra
+        teamObj['local'] = golLocal
+        teamObj['away'] = golVisita
+        teamObj['difference'] = diff
         teamsList.append(teamObj)
-    return teamsList
+
+    return sorted(teamsList, key=itemgetter('points', 'difference', 'favor', 'away'), reverse=True)
 
 
 def countPoints(teamId, list):
     points = 0
+    matches = 0
     for item in list:
         if item is not None:
             if item['match1']['played'] == True:
+                matches += 1
                 if item['match1']['homeTeam']['team']['id'] == teamId:
                     if item['match1']['homeTeam']['result'] == True and item['match1']['awayTeam']['result'] == False:
                         points += 3
@@ -39,6 +51,7 @@ def countPoints(teamId, list):
                         'result'] == False:
                         points += 1
             if item['match2']['played'] == True:
+                matches += 1
                 if item['match2']['homeTeam']['team']['id'] == teamId:
                     if item['match2']['homeTeam']['result'] == True and item['match2']['awayTeam']['result'] == False:
                         points += 3
@@ -51,15 +64,35 @@ def countPoints(teamId, list):
                     elif item['match2']['awayTeam']['result'] == False and item['match2']['homeTeam'][
                         'result'] == False:
                         points += 1
-    return points
+    return points, matches
 
 
-def localGolDiff(teamId, list):
-    return
+def goaldifference(teamId, list):
+    localGoalsF = 0
+    awayGoalsF = 0
+    localGoalsC = 0
+    awayGoalsC = 0
+    for item in list:
+        if item is not None:
+            if item['match1']['played'] == True:
 
+                if item['match1']['homeTeam']['team']['id'] == teamId:
+                    localGoalsF += item['match1']['homeTeam']['goals']
+                    localGoalsC += item['match1']['awayTeam']['goals']
+                if item['match1']['awayTeam']['team']['id'] == teamId:
+                    awayGoalsF += item['match1']['awayTeam']['goals']
+                    awayGoalsC += item['match1']['homeTeam']['goals']
 
-def awayGolDiff(teamId, list):
-    return
+            if item['match2']['played'] == True:
+                if item['match2']['homeTeam']['team']['id'] == teamId:
+                    localGoalsF += item['match2']['homeTeam']['goals']
+                    localGoalsC += item['match2']['awayTeam']['goals']
+                if item['match2']['awayTeam']['team']['id'] == teamId:
+                    awayGoalsF += item['match1']['awayTeam']['goals']
+                    awayGoalsC += item['match1']['homeTeam']['goals']
+    teamGoalsF = localGoalsF + awayGoalsF
+    teamGoalsC = localGoalsC + awayGoalsC
+    return teamGoalsF, teamGoalsC, localGoalsF, awayGoalsF, (teamGoalsF - teamGoalsC)
 
 
 def fixtureArray(fixtures):

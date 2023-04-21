@@ -34,9 +34,9 @@ def standingsZone(request, conf, round, zone):
     fixtureDict = getZoneData(zone, conf, round)
     placesDict = getQualyPlaces(conf)
     placesList = getRoundPlaces(placesDict, round)
-    getStandings(conf,round,zone)
-    lenght = len(fixtureDict['teams']) + 1
-    context['teams'] = zip(fixtureDict['teams'], range(1, lenght), placesList)
+    standings = getStandings(conf, round, zone)
+    lenght = len(standings) + 1
+    context['teams'] = zip(standings, range(1, lenght), placesList)
 
     return render(request, 'popups/standings/standings.html', context)
 
@@ -57,6 +57,3 @@ def sim_match(request, fixture, match, homeId, awayId, conf, round, zone):
 @register.filter
 def getItem(dict, key):
     return dict.get(key)
-
-
-
