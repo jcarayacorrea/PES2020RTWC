@@ -4,6 +4,7 @@ from django.template.defaulttags import register
 
 from utils import getTeamsJSON, getQualyPlaces, getRoundPlaces, saveMatchResult
 from fixtures import getZoneData
+from standings import getStandings
 from MatchSimulator import simular_partido
 
 
@@ -33,6 +34,7 @@ def standingsZone(request, conf, round, zone):
     fixtureDict = getZoneData(zone, conf, round)
     placesDict = getQualyPlaces(conf)
     placesList = getRoundPlaces(placesDict, round)
+    getStandings(conf,round,zone)
     lenght = len(fixtureDict['teams']) + 1
     context['teams'] = zip(fixtureDict['teams'], range(1, lenght), placesList)
 
