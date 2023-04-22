@@ -88,6 +88,6 @@ def simular_partido(equipo_local, equipo_visitante):
             print('Minuto ({})'.format(tiempo_transcurrido))
 
         # Dormir el programa por 0.9 segundos para simular el tiempo real del partido
-        time.sleep(0.5)
+        time.sleep(0.25)
     print('Fin del Partido {} {} - {} {}'.format(nombre_local,goles_local,goles_visitante,nombre_visita))
     return {'local': goles_local, 'visita': goles_visitante}

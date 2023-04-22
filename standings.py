@@ -59,7 +59,7 @@ def countPoints(teamId, list):
                         'result'] == False:
                         points += 1
                 if item['match2']['awayTeam']['team']['id'] == teamId:
-                    if item['match1']['awayTeam']['result'] == True and item['match2']['homeTeam']['result'] == False:
+                    if item['match2']['awayTeam']['result'] == True and item['match2']['homeTeam']['result'] == False:
                         points += 3
                     elif item['match2']['awayTeam']['result'] == False and item['match2']['homeTeam'][
                         'result'] == False:

@@ -66,7 +66,7 @@ def finalRoundButton(request):
         random.shuffle(zone1)
         random.shuffle(zone2)
         createFixture(zone1, True, 'A', 'OFC', 'final')
-        createFixture(zone1, True, 'B', 'OFC', 'final')
+        createFixture(zone2, True, 'B', 'OFC', 'final')
         context['zone1'] = zone1
         context['zone2'] = zone2
 
