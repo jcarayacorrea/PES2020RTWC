@@ -22,6 +22,24 @@ def thirdround(request):
 def secondround(request):
     context = {}
     context['teams'] = getTeamsSecondRound(conf_name='AFC')
+    zone1 = getZoneData('A', 'AFC', 'second')
+    zone2 = getZoneData('B', 'AFC', 'second')
+    zone3 = getZoneData('C', 'AFC', 'second')
+    zone4 = getZoneData('D', 'AFC', 'second')
+    zone5 = getZoneData('E', 'AFC', 'second')
+    zone6 = getZoneData('F', 'AFC', 'second')
+    if len(zone1['teams']) == 4:
+        context['zone1'] = zone1['teams']
+    if len(zone2['teams']) == 4:
+        context['zone2'] = zone2['teams']
+    if len(zone3['teams']) == 4:
+        context['zone3'] = zone3['teams']
+    if len(zone4['teams']) == 4:
+        context['zone4'] = zone4['teams']
+    if len(zone5['teams']) == 4:
+        context['zone5'] = zone5['teams']
+    if len(zone6['teams']) == 4:
+        context['zone6'] = zone6['teams']
     return render(request, 'asia/sndround.html', context)
 
 
@@ -79,6 +97,12 @@ def secondRoundButton(request):
         random.shuffle(zone4)
         random.shuffle(zone5)
         random.shuffle(zone6)
+        createFixture(zone1, True, 'A', 'AFC', 'second')
+        createFixture(zone2, True, 'B', 'AFC', 'second')
+        createFixture(zone3, True, 'C', 'AFC', 'second')
+        createFixture(zone4, True, 'D', 'AFC', 'second')
+        createFixture(zone5, True, 'E', 'AFC', 'second')
+        createFixture(zone6, True, 'F', 'AFC', 'second')
 
         context['zone1'] = zone1
         context['zone2'] = zone2
