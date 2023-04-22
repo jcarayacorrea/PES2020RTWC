@@ -10,12 +10,49 @@ from fixtures import createFixture, getZoneData
 def finalround(request):
     context = {}
     context['teams'] = getTeamsFinalRound(conf_name='AFC')
+    zone1 = getZoneData('A', 'AFC', 'third')
+    zone2 = getZoneData('B', 'AFC', 'third')
+    zone3 = getZoneData('C', 'AFC', 'third')
+    zone4 = getZoneData('D', 'AFC', 'third')
+    if len(zone1['teams']) == 4:
+        context['zone1'] = zone1['teams']
+    if len(zone2['teams']) == 4:
+        context['zone2'] = zone2['teams']
+    if len(zone3['teams']) == 4:
+        context['zone3'] = zone3['teams']
+    if len(zone4['teams']) == 4:
+        context['zone4'] = zone4['teams']
     return render(request, 'asia/finalround.html', context)
 
 
 def thirdround(request):
     context = {}
     context['teams'] = getTeamsThirdRound(conf_name='AFC')
+    zone1 = getZoneData('A', 'AFC', 'third')
+    zone2 = getZoneData('B', 'AFC', 'third')
+    zone3 = getZoneData('C', 'AFC', 'third')
+    zone4 = getZoneData('D', 'AFC', 'third')
+    zone5 = getZoneData('E', 'AFC', 'third')
+    zone6 = getZoneData('F', 'AFC', 'third')
+    zone7 = getZoneData('G', 'AFC', 'third')
+    zone8 = getZoneData('H', 'AFC', 'third')
+
+    if len(zone1['teams']) == 4:
+        context['zone1'] = zone1['teams']
+    if len(zone2['teams']) == 4:
+        context['zone2'] = zone2['teams']
+    if len(zone3['teams']) == 4:
+        context['zone3'] = zone3['teams']
+    if len(zone4['teams']) == 4:
+        context['zone4'] = zone4['teams']
+    if len(zone5['teams']) == 4:
+        context['zone5'] = zone5['teams']
+    if len(zone6['teams']) == 4:
+        context['zone6'] = zone6['teams']
+    if len(zone7['teams']) == 4:
+        context['zone7'] = zone7['teams']
+    if len(zone8['teams']) == 4:
+        context['zone8'] = zone8['teams']
     return render(request, 'asia/thrround.html', context)
 
 
@@ -148,6 +185,14 @@ def thirdRoundButton(request):
         random.shuffle(zone6)
         random.shuffle(zone7)
         random.shuffle(zone8)
+        createFixture(zone1, True, 'A', 'AFC', 'third')
+        createFixture(zone2, True, 'B', 'AFC', 'third')
+        createFixture(zone3, True, 'C', 'AFC', 'third')
+        createFixture(zone4, True, 'D', 'AFC', 'third')
+        createFixture(zone5, True, 'E', 'AFC', 'third')
+        createFixture(zone6, True, 'F', 'AFC', 'third')
+        createFixture(zone7, True, 'G', 'AFC', 'third')
+        createFixture(zone8, True, 'H', 'AFC', 'third')
 
         context['zone1'] = zone1
         context['zone2'] = zone2
@@ -191,6 +236,10 @@ def finalRoundButton(request):
         random.shuffle(zone2)
         random.shuffle(zone3)
         random.shuffle(zone4)
+        createFixture(zone1, True, 'A', 'AFC', 'final')
+        createFixture(zone2, True, 'B', 'AFC', 'final')
+        createFixture(zone3, True, 'C', 'AFC', 'final')
+        createFixture(zone4, True, 'D', 'AFC', 'final')
 
         context['zone1'] = zone1
         context['zone2'] = zone2
