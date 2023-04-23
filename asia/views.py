@@ -37,21 +37,21 @@ def thirdround(request):
     zone7 = getZoneData('G', 'AFC', 'third')
     zone8 = getZoneData('H', 'AFC', 'third')
 
-    if len(zone1['teams']) == 4:
+    if len(zone1['teams']) == 3:
         context['zone1'] = zone1['teams']
-    if len(zone2['teams']) == 4:
+    if len(zone2['teams']) == 3:
         context['zone2'] = zone2['teams']
-    if len(zone3['teams']) == 4:
+    if len(zone3['teams']) == 3:
         context['zone3'] = zone3['teams']
-    if len(zone4['teams']) == 4:
+    if len(zone4['teams']) == 3:
         context['zone4'] = zone4['teams']
-    if len(zone5['teams']) == 4:
+    if len(zone5['teams']) == 3:
         context['zone5'] = zone5['teams']
-    if len(zone6['teams']) == 4:
+    if len(zone6['teams']) == 3:
         context['zone6'] = zone6['teams']
-    if len(zone7['teams']) == 4:
+    if len(zone7['teams']) == 3:
         context['zone7'] = zone7['teams']
-    if len(zone8['teams']) == 4:
+    if len(zone8['teams']) == 3:
         context['zone8'] = zone8['teams']
     return render(request, 'asia/thrround.html', context)
 
