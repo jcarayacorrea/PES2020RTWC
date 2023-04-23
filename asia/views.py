@@ -10,10 +10,10 @@ from fixtures import createFixture, getZoneData
 def finalround(request):
     context = {}
     context['teams'] = getTeamsFinalRound(conf_name='AFC')
-    zone1 = getZoneData('A', 'AFC', 'third')
-    zone2 = getZoneData('B', 'AFC', 'third')
-    zone3 = getZoneData('C', 'AFC', 'third')
-    zone4 = getZoneData('D', 'AFC', 'third')
+    zone1 = getZoneData('A', 'AFC', 'final')
+    zone2 = getZoneData('B', 'AFC', 'final')
+    zone3 = getZoneData('C', 'AFC', 'final')
+    zone4 = getZoneData('D', 'AFC', 'final')
     if len(zone1['teams']) == 4:
         context['zone1'] = zone1['teams']
     if len(zone2['teams']) == 4:
