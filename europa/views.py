@@ -116,7 +116,7 @@ def firstRoundButton(request):
         random.shuffle(zone1)
         random.shuffle(zone2)
         createFixture(zone1, False, 'A', 'UEFA', 'first')
-        createFixture(zone1, False, 'B', 'UEFA', 'first')
+        createFixture(zone2, False, 'B', 'UEFA', 'first')
         context['zone1'] = zone1
         context['zone2'] = zone2
 
@@ -153,12 +153,12 @@ def secondRoundButton(request):
         random.shuffle(zone4)
         random.shuffle(zone5)
         random.shuffle(zone6)
-        createFixture(zone1, False, 'A', 'UEFA', 'second')
-        createFixture(zone2, False, 'B', 'UEFA', 'second')
-        createFixture(zone3, False, 'C', 'UEFA', 'second')
-        createFixture(zone4, False, 'D', 'UEFA', 'second')
-        createFixture(zone5, False, 'E', 'UEFA', 'second')
-        createFixture(zone6, False, 'F', 'UEFA', 'second')
+        createFixture(zone1, True, 'A', 'UEFA', 'second')
+        createFixture(zone2, True, 'B', 'UEFA', 'second')
+        createFixture(zone3, True, 'C', 'UEFA', 'second')
+        createFixture(zone4, True, 'D', 'UEFA', 'second')
+        createFixture(zone5, True, 'E', 'UEFA', 'second')
+        createFixture(zone6, True, 'F', 'UEFA', 'second')
 
         context['zone1'] = zone1
         context['zone2'] = zone2
@@ -205,14 +205,14 @@ def thirdRoundButton(request):
         random.shuffle(zone7)
         random.shuffle(zone8)
 
-        createFixture(zone1, False, 'A', 'UEFA', 'third')
-        createFixture(zone2, False, 'B', 'UEFA', 'third')
-        createFixture(zone3, False, 'C', 'UEFA', 'third')
-        createFixture(zone4, False, 'D', 'UEFA', 'third')
-        createFixture(zone5, False, 'E', 'UEFA', 'third')
-        createFixture(zone6, False, 'F', 'UEFA', 'third')
-        createFixture(zone6, False, 'G', 'UEFA', 'third')
-        createFixture(zone6, False, 'H', 'UEFA', 'third')
+        createFixture(zone1, True, 'A', 'UEFA', 'third')
+        createFixture(zone2, True, 'B', 'UEFA', 'third')
+        createFixture(zone3, True, 'C', 'UEFA', 'third')
+        createFixture(zone4, True, 'D', 'UEFA', 'third')
+        createFixture(zone5, True, 'E', 'UEFA', 'third')
+        createFixture(zone6, True, 'F', 'UEFA', 'third')
+        createFixture(zone7, True, 'G', 'UEFA', 'third')
+        createFixture(zone8, True, 'H', 'UEFA', 'third')
 
         context['zone1'] = zone1
         context['zone2'] = zone2
@@ -257,10 +257,10 @@ def finalRoundButton(request):
         random.shuffle(zone3)
         random.shuffle(zone4)
 
-        createFixture(zone1, False, 'A', 'UEFA', 'final')
-        createFixture(zone2, False, 'B', 'UEFA', 'final')
-        createFixture(zone3, False, 'C', 'UEFA', 'final')
-        createFixture(zone4, False, 'D', 'UEFA', 'final')
+        createFixture(zone1, True, 'A', 'UEFA', 'final')
+        createFixture(zone2, True, 'B', 'UEFA', 'final')
+        createFixture(zone3, True, 'C', 'UEFA', 'final')
+        createFixture(zone4, True, 'D', 'UEFA', 'final')
 
         context['zone1'] = zone1
         context['zone2'] = zone2

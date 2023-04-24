@@ -118,6 +118,28 @@
                                                 {% endfor %}
                                             {% endif %}
                                         </div>
+                                        <div class="row p-1">
+                                            <div class="col g-1 offset-md-4">
+                                                {% url 'zones.fixtures' 'CONCACAF' 'final' 'A' as fixtures %}
+                                                <button type="button" class="btn btn-primary"
+                                                        hx-get="{{ fixtures }} "
+                                                        hx-trigger="click" hx-target="#schedule-content"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#schedule">
+                                                    <i class="fa-regular fa-calendar"></i>
+                                                </button>
+                                                {% url 'zones.standings' 'CONCACAF' 'final' 'A' as standings %}
+                                                <button type="button" class="btn btn-primary"
+                                                        hx-get="{{ standings }}"
+                                                        hx-trigger="click" hx-target="#stats-content"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#standings">
+                                                    <i class="fa-solid fa-ranking-star"></i>
+                                                </button>
+
+
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-md-5 offset-md-1">
@@ -180,6 +202,28 @@
                                                 {% endfor %}
                                             {% endif %}
 
+                                        </div>
+                                        <div class="row p-1">
+                                            <div class="col g-1 offset-md-4">
+                                                {% url 'zones.fixtures' 'CONCACAF' 'final' 'B' as fixtures %}
+                                                <button type="button" class="btn btn-primary"
+                                                        hx-get="{{ fixtures }} "
+                                                        hx-trigger="click" hx-target="#schedule-content"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#schedule">
+                                                    <i class="fa-regular fa-calendar"></i>
+                                                </button>
+                                                {% url 'zones.standings' 'CONCACAF' 'final' 'B' as standings %}
+                                                <button type="button" class="btn btn-primary"
+                                                        hx-get="{{ standings }}"
+                                                        hx-trigger="click" hx-target="#stats-content"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#standings">
+                                                    <i class="fa-solid fa-ranking-star"></i>
+                                                </button>
+
+
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -246,6 +290,28 @@
                                                 {% endfor %}
                                             {% endif %}
                                         </div>
+                                        <div class="row p-1">
+                                            <div class="col g-1 offset-md-4">
+                                                {% url 'zones.fixtures' 'CONCACAF' 'final' 'C' as fixtures %}
+                                                <button type="button" class="btn btn-primary"
+                                                        hx-get="{{ fixtures }} "
+                                                        hx-trigger="click" hx-target="#schedule-content"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#schedule">
+                                                    <i class="fa-regular fa-calendar"></i>
+                                                </button>
+                                                {% url 'zones.standings' 'CONCACAF' 'final' 'C' as standings %}
+                                                <button type="button" class="btn btn-primary"
+                                                        hx-get="{{ standings }}"
+                                                        hx-trigger="click" hx-target="#stats-content"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#standings">
+                                                    <i class="fa-solid fa-ranking-star"></i>
+                                                </button>
+
+
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -262,4 +328,25 @@
 
         </div>
     </div>
+
+    <div id="schedule" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="Fixtures"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div id="schedule-content"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="standings" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="Standings"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div id="stats-content"></div>
+            </div>
+        </div>
+
+    </div>
+
 {% endblock %}
