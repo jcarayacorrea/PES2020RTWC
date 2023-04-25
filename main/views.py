@@ -41,9 +41,9 @@ def standingsZone(request, conf, round, zone):
     return render(request, 'popups/standings/standings.html', context)
 
 
-def sim_match(request, fixture, match, homeId, awayId, conf, round, zone):
+def sim_match(request, fixture, match, homeId, awayId, conf, round, zone, extraTime=False):
     context = {}
-    resultado = simular_partido(homeId, awayId)
+    resultado = simular_partido(homeId, awayId, extraTime)
     saveMatchResult(fixture, match, resultado['local'], resultado['visita'], conf, round, zone)
     fixtureDict = getZoneData(zone, conf, round)
     context['fixture'] = fixtureDict['fixtures']

@@ -35,7 +35,7 @@ def calcular_probabilidad_ganador(ranking_local, ranking_visitante):
     return probabilidad_local, probabilidad_visitante
 
 
-def simular_partido(equipo_local, equipo_visitante):
+def simular_partido(equipo_local, equipo_visitante, extraTime):
     """Simula un partido entre dos equipos y determina el ganador."""
     # Obtener el ranking FIFA de los equipos
     probalidad_gol = 0.03
@@ -69,7 +69,7 @@ def simular_partido(equipo_local, equipo_visitante):
             # Incrementar el tiempo transcurrido en 1 segundo
             tiempo_transcurrido += 1
             # Mostrar el evento en el partido
-            print('Gol {} ({}) {} - {}'.format(nombre_local,tiempo_transcurrido,goles_local,goles_visitante))
+            print('Gol {} ({}) {} - {}'.format(nombre_local, tiempo_transcurrido, goles_local, goles_visitante))
 
         # Si el evento es un gol visitante
         elif evento == 1:
@@ -78,7 +78,7 @@ def simular_partido(equipo_local, equipo_visitante):
             # Incrementar el tiempo transcurrido en 1 segundo
             tiempo_transcurrido += 1
             # Mostrar el evento en el partido
-            print('Gol {} ({}) {} - {}'.format(nombre_visita,tiempo_transcurrido,goles_local,goles_visitante))
+            print('Gol {} ({}) {} - {}'.format(nombre_visita, tiempo_transcurrido, goles_local, goles_visitante))
 
         # Si el evento es un sin gol
         else:
@@ -89,5 +89,88 @@ def simular_partido(equipo_local, equipo_visitante):
 
         # Dormir el programa por 0.9 segundos para simular el tiempo real del partido
         time.sleep(0.25)
-    print('Fin del Partido {} {} - {} {}'.format(nombre_local,goles_local,goles_visitante,nombre_visita))
+
+    print('Fin del Partido {} {} - {} {}'.format(nombre_local, goles_local, goles_visitante, nombre_visita))
+    if extraTime and goles_local == goles_visitante:
+        print('Comienza Alargue  {} - {}'.format(nombre_local, nombre_visita))
+        tiempo_transcurrido = 90
+        while tiempo_transcurrido < 120:
+            # Generar un evento aleatorio basado en las probabilidades de los equipos
+            evento = random.choices([0, 1, 2], [probabilidad_gol_local, probabilidad_gol_visita,
+                                                1 - (probabilidad_gol_local - probabilidad_gol_visita)])[0]
+
+            # Si el evento es un gol local
+            if evento == 0:
+                # Incrementar el marcador del equipo local
+                goles_local += 1
+                # Incrementar el tiempo transcurrido en 1 segundo
+                tiempo_transcurrido += 1
+                # Mostrar el evento en el partido
+                print('Gol {} ({}) {} - {}'.format(nombre_local, tiempo_transcurrido, goles_local, goles_visitante))
+
+            # Si el evento es un gol visitante
+            elif evento == 1:
+                # Incrementar el marcador del equipo visitante
+                goles_visitante += 1
+                # Incrementar el tiempo transcurrido en 1 segundo
+                tiempo_transcurrido += 1
+                # Mostrar el evento en el partido
+                print('Gol {} ({}) {} - {}'.format(nombre_visita, tiempo_transcurrido, goles_local, goles_visitante))
+
+            # Si el evento es un sin gol
+            else:
+                # Incrementar el tiempo transcurrido en 1 segundo
+                tiempo_transcurrido += 1
+                # Mostrar el evento en el partido
+                print('Minuto ({})'.format(tiempo_transcurrido))
+
+            # Dormir el programa por 0.9 segundos para simular el tiempo real del partido
+            time.sleep(0.25)
+            if goles_local == goles_visitante:
+                penales = False
+                penales_local = 0
+                penales_visita = 0
+                count_penales = 0
+                while penales == False:
+                    # Generar un evento aleatorio de penales basado en las probabilidades de los equipos
+                    eventoLocal = random.choices([0, 1], [probabilidad_local])[0]
+
+                    # Si el evento es un gol local
+                    if eventoLocal == 0:
+                        # Incrementar el marcador del equipo local
+                        penales_local += 1
+                        # Incrementar el tiempo transcurrido en 1 segundo
+
+                        # Mostrar el evento en el partido
+                        print('Penal asertado {}  {} - {}'.format(nombre_local, penales_local,
+                                                                  penales_visita))
+                    else:
+                        print('Penal errado {}  {} - {}'.format(nombre_local, penales_local,
+                                                                penales_visita))
+
+                    eventoVisita = random.choices([0, 1], [probabilidad_visitante])[0]
+
+                    # Si el evento es un gol visitante
+                    if eventoVisita == 1:
+                        # Incrementar el marcador del equipo visitante
+                        penales_visita += 1
+                        # Incrementar el tiempo transcurrido en 1 segundo
+
+                        # Mostrar el evento en el partido
+                        print('Penal asertado {} ({}) {} - {}'.format(nombre_visita, penales_local,
+                                                                      penales_visita))
+                    else:
+                        print('Penal errado {} ({}) {} - {}'.format(nombre_visita, penales_local,
+                                                                    penales_visita))
+
+                    # Si el evento es un sin gol
+                    count_penales += 1
+                    if count_penales >= 5:
+                        if penales_local != penales_visita:
+                            penales = True
+
+                    time.sleep(0.25)
+
+        return {'local': goles_local, 'penales_local': penales_local if penales_local is not None else None,
+                'visita': goles_visitante, 'penales_visita': penales_visita if penales_visita is not None else None}
     return {'local': goles_local, 'visita': goles_visitante}
