@@ -8,5 +8,8 @@ urlpatterns = [
     path('standings/<str:conf>/<str:round>/<str:zone>', views.standingsZone, name='zones.standings'),
     path('match_simulator/<int:fixture>/<int:match>/<str:homeId>/<str:awayId>/<str:conf>/<str:round>/<str:zone>',
          views.sim_match,
+         name='match_simulator'),
+    path('extra_time/<int:fixture>/<int:match>/<str:homeId>/<str:awayId>/<str:conf>/<str:round>/<str:zone>/<int:extraTime>',
+         views.sim_match,
          name='match_simulator')
 ]

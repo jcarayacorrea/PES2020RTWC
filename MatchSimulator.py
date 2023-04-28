@@ -126,51 +126,54 @@ def simular_partido(equipo_local, equipo_visitante, extraTime):
 
             # Dormir el programa por 0.9 segundos para simular el tiempo real del partido
             time.sleep(0.25)
-            if goles_local == goles_visitante:
-                penales = False
-                penales_local = 0
-                penales_visita = 0
-                count_penales = 0
-                while penales == False:
-                    # Generar un evento aleatorio de penales basado en las probabilidades de los equipos
-                    eventoLocal = random.choices([0, 1], [probabilidad_local])[0]
+        print('Fin del Alargue {} {} - {} {}'.format(nombre_local, goles_local, goles_visitante, nombre_visita))
 
-                    # Si el evento es un gol local
-                    if eventoLocal == 0:
-                        # Incrementar el marcador del equipo local
-                        penales_local += 1
-                        # Incrementar el tiempo transcurrido en 1 segundo
+        if goles_local == goles_visitante:
+            penales = False
+            penales_local = 0
+            penales_visita = 0
+            count_penales = 0
+            print('...::::: PENALES :::..')
+            while penales == False:
+                # Generar un evento aleatorio de penales basado en las probabilidades de los equipos
+                eventoLocal = random.choices([0, 1], [probabilidad_local, probabilidad_visitante])[0]
 
-                        # Mostrar el evento en el partido
-                        print('Penal asertado {}  {} - {}'.format(nombre_local, penales_local,
-                                                                  penales_visita))
-                    else:
-                        print('Penal errado {}  {} - {}'.format(nombre_local, penales_local,
-                                                                penales_visita))
+                # Si el evento es un gol local
+                if eventoLocal == 0:
+                    # Incrementar el marcador del equipo local
+                    penales_local += 1
+                    # Incrementar el tiempo transcurrido en 1 segundo
 
-                    eventoVisita = random.choices([0, 1], [probabilidad_visitante])[0]
+                    # Mostrar el evento en el partido
+                    print('Penal asertado {}  {} - {}'.format(nombre_local, penales_local,
+                                                              penales_visita))
+                else:
+                    print('Penal errado {}  {} - {}'.format(nombre_local, penales_local,
+                                                            penales_visita))
+                time.sleep(0.25)
+                eventoVisita = random.choices([0, 1], [probabilidad_visitante, probabilidad_local])[0]
 
-                    # Si el evento es un gol visitante
-                    if eventoVisita == 1:
-                        # Incrementar el marcador del equipo visitante
-                        penales_visita += 1
-                        # Incrementar el tiempo transcurrido en 1 segundo
+                # Si el evento es un gol visitante
+                if eventoVisita == 1:
+                    # Incrementar el marcador del equipo visitante
+                    penales_visita += 1
+                    # Incrementar el tiempo transcurrido en 1 segundo
 
-                        # Mostrar el evento en el partido
-                        print('Penal asertado {} ({}) {} - {}'.format(nombre_visita, penales_local,
-                                                                      penales_visita))
-                    else:
-                        print('Penal errado {} ({}) {} - {}'.format(nombre_visita, penales_local,
-                                                                    penales_visita))
+                    # Mostrar el evento en el partido
+                    print('Penal asertado {} {} - {}'.format(nombre_visita, penales_local,
+                                                             penales_visita))
+                else:
+                    print('Penal errado {}  {} - {}'.format(nombre_visita, penales_local,
+                                                            penales_visita))
 
-                    # Si el evento es un sin gol
-                    count_penales += 1
-                    if count_penales >= 5:
-                        if penales_local != penales_visita:
-                            penales = True
+                # Si el evento es un sin gol
+                count_penales += 1
+                if count_penales >= 5:
+                    if penales_local != penales_visita:
+                        penales = True
 
-                    time.sleep(0.25)
-
+                time.sleep(0.25)
+        print('Fin Penales {} {} - {} {}'.format(nombre_local, penales_local, penales_visita, nombre_visita))
         return {'local': goles_local, 'penales_local': penales_local if penales_local is not None else None,
                 'visita': goles_visitante, 'penales_visita': penales_visita if penales_visita is not None else None}
     return {'local': goles_local, 'visita': goles_visitante}
