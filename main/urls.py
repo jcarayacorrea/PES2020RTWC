@@ -11,5 +11,5 @@ urlpatterns = [
          name='match_simulator'),
     path('extra_time/<int:fixture>/<int:match>/<str:homeId>/<str:awayId>/<str:conf>/<str:round>/<str:zone>/<int:extraTime>',
          views.sim_match,
-         name='match_simulator')
+         name='one_match')
 ]

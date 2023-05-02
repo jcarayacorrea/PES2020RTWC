@@ -137,6 +137,9 @@ def draw(teams):
             case 'H':
                 zoneH.append(team)
 
+    if len(zoneA) != 4 or len(zoneB) != 4 or len(zoneC) != 4 or len(zoneD) != 4 or len(zoneE) != 4 or len(zoneF) != 4 or len(zoneG) != 4 or len(zoneH) != 4:
+        draw(getTeamsMainDraw())
+
     return zoneA, zoneB, zoneC, zoneD,zoneE,zoneF, zoneG, zoneH
 
 
