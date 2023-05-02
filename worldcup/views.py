@@ -64,92 +64,88 @@ def playoffButton(request):
 
 
 def draw(teams):
-    try:
-        pool1 = [teams[0], teams[1], teams[2], teams[3], teams[4], teams[5], teams[6], teams[7]]
-        pool2 = [teams[8], teams[9], teams[10], teams[11], teams[12], teams[13], teams[14], teams[15]]
-        pool3 = [teams[16], teams[17], teams[18], teams[19], teams[20], teams[21], teams[22], teams[23]]
-        pool4 = [teams[24], teams[25], teams[26], teams[27], teams[28], teams[29], teams[30], teams[31]]
-        random.shuffle(pool1)
-        zoneA = [pool1[0]]
-        zoneB = [pool1[1]]
-        zoneC = [pool1[2]]
-        zoneD = [pool1[3]]
-        zoneE = [pool1[4]]
-        zoneF = [pool1[5]]
-        zoneG = [pool1[6]]
-        zoneH = [pool1[7]]
-        random.shuffle(pool2)
-        for team in pool2:
-            result = setTeamPosition(team['conf_name'], zoneA, zoneB, zoneC, zoneD, zoneE, zoneF, zoneG, zoneH,
-                                     maxlength=2, teamsCount=countTeams(team['conf_name'], getTeamsMainDraw()))
-            match (result):
-                case 'A':
-                    zoneA.append(team)
-                case 'B':
-                    zoneB.append(team)
-                case 'C':
-                    zoneC.append(team)
-                case 'D':
-                    zoneD.append(team)
-                case 'E':
-                    zoneE.append(team)
-                case 'F':
-                    zoneF.append(team)
-                case 'G':
-                    zoneG.append(team)
-                case 'H':
-                    zoneH.append(team)
-        random.shuffle(pool3)
-        for team in pool3:
-            result = setTeamPosition(team['conf_name'], zoneA, zoneB, zoneC, zoneD, zoneE, zoneF, zoneG, zoneH,
-                                     maxlength=3, teamsCount=countTeams(team['conf_name'], getTeamsMainDraw()))
-            match (result):
-                case 'A':
-                    zoneA.append(team)
-                case 'B':
-                    zoneB.append(team)
-                case 'C':
-                    zoneC.append(team)
-                case 'D':
-                    zoneD.append(team)
-                case 'E':
-                    zoneE.append(team)
-                case 'F':
-                    zoneF.append(team)
-                case 'G':
-                    zoneG.append(team)
-                case 'H':
-                    zoneH.append(team)
-        random.shuffle(pool4)
-        for team in pool4:
-            result = setTeamPosition(team['conf_name'], zoneA, zoneB, zoneC, zoneD, zoneE, zoneF, zoneG, zoneH,
-                                     maxlength=4, teamsCount=countTeams(team['conf_name'], getTeamsMainDraw()))
-            match (result):
-                case 'A':
-                    zoneA.append(team)
-                case 'B':
-                    zoneB.append(team)
-                case 'C':
-                    zoneC.append(team)
-                case 'D':
-                    zoneD.append(team)
-                case 'E':
-                    zoneE.append(team)
-                case 'F':
-                    zoneF.append(team)
-                case 'G':
-                    zoneG.append(team)
-                case 'H':
-                    zoneH.append(team)
+    pool1 = [teams[0], teams[1], teams[2], teams[3], teams[4], teams[5], teams[6], teams[7]]
+    pool2 = [teams[8], teams[9], teams[10], teams[11], teams[12], teams[13], teams[14], teams[15]]
+    pool3 = [teams[16], teams[17], teams[18], teams[19], teams[20], teams[21], teams[22], teams[23]]
+    pool4 = [teams[24], teams[25], teams[26], teams[27], teams[28], teams[29], teams[30], teams[31]]
+    random.shuffle(pool1)
+    zoneA = [pool1[0]]
+    zoneB = [pool1[1]]
+    zoneC = [pool1[2]]
+    zoneD = [pool1[3]]
+    zoneE = [pool1[4]]
+    zoneF = [pool1[5]]
+    zoneG = [pool1[6]]
+    zoneH = [pool1[7]]
+    random.shuffle(pool2)
+    for team in pool2:
+        result = setTeamPosition(team['conf_name'], zoneA, zoneB, zoneC, zoneD, zoneE, zoneF, zoneG, zoneH,
+                                 maxlength=2, teamsCount=countTeams(team['conf_name'], getTeamsMainDraw()))
+        match (result):
+            case 'A':
+                zoneA.append(team)
+            case 'B':
+                zoneB.append(team)
+            case 'C':
+                zoneC.append(team)
+            case 'D':
+                zoneD.append(team)
+            case 'E':
+                zoneE.append(team)
+            case 'F':
+                zoneF.append(team)
+            case 'G':
+                zoneG.append(team)
+            case 'H':
+                zoneH.append(team)
+    random.shuffle(pool3)
+    for team in pool3:
+        result = setTeamPosition(team['conf_name'], zoneA, zoneB, zoneC, zoneD, zoneE, zoneF, zoneG, zoneH,
+                                 maxlength=3, teamsCount=countTeams(team['conf_name'], getTeamsMainDraw()))
+        match (result):
+            case 'A':
+                zoneA.append(team)
+            case 'B':
+                zoneB.append(team)
+            case 'C':
+                zoneC.append(team)
+            case 'D':
+                zoneD.append(team)
+            case 'E':
+                zoneE.append(team)
+            case 'F':
+                zoneF.append(team)
+            case 'G':
+                zoneG.append(team)
+            case 'H':
+                zoneH.append(team)
+    random.shuffle(pool4)
+    for team in pool4:
+        result = setTeamPosition(team['conf_name'], zoneA, zoneB, zoneC, zoneD, zoneE, zoneF, zoneG, zoneH,
+                                 maxlength=4, teamsCount=countTeams(team['conf_name'], getTeamsMainDraw()))
+        match (result):
+            case 'A':
+                zoneA.append(team)
+            case 'B':
+                zoneB.append(team)
+            case 'C':
+                zoneC.append(team)
+            case 'D':
+                zoneD.append(team)
+            case 'E':
+                zoneE.append(team)
+            case 'F':
+                zoneF.append(team)
+            case 'G':
+                zoneG.append(team)
+            case 'H':
+                zoneH.append(team)
 
-        if len(zoneA) != 4 or len(zoneB) != 4 or len(zoneC) != 4 or len(zoneD) != 4 or len(zoneE) != 4 or len(
-                zoneF) != 4 or len(zoneG) != 4 or len(zoneH) != 4:
-            draw(getTeamsMainDraw())
-        else:
-            return zoneA, zoneB, zoneC, zoneD, zoneE, zoneF, zoneG, zoneH
-
-    except:
-        draw(getTeamsMainDraw())
+    if len(zoneA) != 4 or len(zoneB) != 4 or len(zoneC) != 4 or len(zoneD) != 4 or len(zoneE) != 4 or len(
+            zoneF) != 4 or len(zoneG) != 4 or len(zoneH) != 4:
+        draw(teams)
+    else:
+        return zoneA, zoneB, zoneC, zoneD, zoneE, zoneF, zoneG, zoneH
 
 
 def setTeamPosition(conf_name, a, b, c, d, e, f, g, h, maxlength, teamsCount):
