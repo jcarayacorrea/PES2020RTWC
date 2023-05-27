@@ -225,6 +225,57 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="row mb-5">
+                                <div class="col-10">
+                                    <div class="card card-border offset-md-2">
+                                        <div class="soccer-card-header">Wild Card Match</div>
+                                        <div class="soccer-card-body ">
+                                            <div class="row mb-3">
+                                                <div class="col-5">
+                                                    <select class="form-select">
+                                                        {% if zone1 is None %}
+                                                            <option selected>Team 1</option>
+                                                        {% else %}
+                                                            {% for team in zone1 %}
+                                                                <option value="{{ team.id }}">
+                                                                    {{ team.nation_name }}
+                                                                </option>
+                                                            {% endfor %}
+                                                        {% endif %}
+                                                    </select>
+                                                </div>
+                                                <div class="col-2 justify-content-center">
+                                                    {% with homeId=fixture.fixture1.match1.homeTeam.team.id awayId=fixture.fixture1.match1.awayTeam.team.id %}
+                                                        {% url 'extra_time' 1 1 homeId awayId  conf  round zone 1 as match %}
+                                                        <button type="button" class="btn btn-primary"
+                                                                hx-get="{{ match }}"
+                                                                hx-trigger="click"
+                                                                hx-target="#schedule-content">
+                                                            <i class="fa-regular fa-futbol"></i>
+                                                        </button>
+                                                    {% endwith %}
+                                                </div>
+                                                <div class="col-5">
+                                                    <select class="form-select">
+                                                        {% if zone2 is None %}
+                                                            <option selected>Team 2</option>
+                                                        {% else %}
+                                                            {% for team in zone2 %}
+                                                                <option value="{{ team.id }}">
+                                                                    {{ team.nation_name }}
+                                                                </option>
+                                                            {% endfor %}
+                                                        {% endif %}
+                                                    </select>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
 
                         </div>
 
