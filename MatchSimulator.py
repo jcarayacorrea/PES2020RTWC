@@ -173,7 +173,9 @@ def simular_partido(equipo_local, equipo_visitante, extraTime):
                         penales = True
 
                 time.sleep(0.25)
-        print('Fin Penales {} {} - {} {}'.format(nombre_local, penales_local, penales_visita, nombre_visita))
+
+        print('Fin Penales {} {} - {} {}'.format(nombre_local, penales_local if penales_local > 0 else 0, penales_visita if penales_visita > 0 else 0, nombre_visita))
         return {'local': goles_local, 'penales_local': penales_local if penales_local is not None else None,
                 'visita': goles_visitante, 'penales_visita': penales_visita if penales_visita is not None else None}
+
     return {'local': goles_local, 'visita': goles_visitante}

@@ -2,7 +2,7 @@ from django.http import JsonResponse
 from django.shortcuts import render
 from django.template.defaulttags import register
 
-from utils import getTeamsJSON, getQualyPlaces, getRoundPlaces, saveMatchResult
+from utils import getTeamsJSON, getQualyPlaces, getRoundPlaces, saveMatchResult, saveExtraTimeResult
 from fixtures import getZoneData
 from standings import getStandings
 from MatchSimulator import simular_partido
@@ -45,7 +45,10 @@ def sim_match(request, fixture, match, homeId, awayId, conf, round, zone, extraT
     extra = False if extraTime == 0 else True
     context = {}
     resultado = simular_partido(homeId, awayId, extra)
-    saveMatchResult(fixture, match, resultado['local'], resultado['visita'], conf, round, zone)
+    if extraTime == 0:
+        saveMatchResult(fixture, match, resultado['local'], resultado['visita'], conf, round, zone)
+    else:
+        saveExtraTimeResult(fixture,match,resultado['local'], resultado['visita'],resultado['penales_local'], resultado['penales_visita'], conf, round, zone)
     fixtureDict = getZoneData(zone, conf, round)
     context['fixture'] = fixtureDict['fixtures']
     context['conf'] = conf
