@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 
 from fixtures import getZoneData, createFixture
 from utils import getTeams, updateStage, getTeamsFinalRound, getTeamsThirdRound, getTeamsSecondRound, \
-    getTeamsFirstRound
+    getTeamsFirstRound, db_conexion, getTeamById
 
 
 # Create your views here.
@@ -87,11 +87,13 @@ def firstround(request):
     context['teams'] = getTeamsFirstRound(conf_name='UEFA')
     zone1 = getZoneData('A', 'UEFA', 'first')
     zone2 = getZoneData('B', 'UEFA', 'first')
+    zoneWC = getZoneData('WC', 'UEFA', 'first')
 
     if len(zone1['teams']) == 5:
         context['zone1'] = zone1['teams']
     if len(zone2['teams']) == 5:
         context['zone2'] = zone2['teams']
+    context['fixture'] = zoneWC['fixtures']
 
     return render(request, 'europa/fstround.html', context)
 
@@ -289,3 +291,25 @@ def finalRoundDraw(teams):
     zone4 = [pool1[3], pool2[3], pool3[3], pool4[3], pool5[3]]
 
     return zone1, zone2, zone3, zone4
+
+
+def setHomeWildCardTeam(request):
+    db = db_conexion()
+    teamId = request.GET.get('home')
+    team = getTeamById(teamId)
+    db.get_collection('Fixtures').update_one({'$and': [{'conf_name': 'UEFA'}, {'zone': 'WC'}, {'round': 'first'}]},
+                                             {'$set': {
+                                                 'fixtures.wildCard.match1.homeTeam.team': team[0]
+                                             }})
+    return firstround(request)
+
+
+def setAwayWildCardTeam(request):
+    db = db_conexion()
+    teamId = request.GET.get('away')
+    team = getTeamById(teamId)
+    db.get_collection('Fixtures').update_one({'$and': [{'conf_name': 'UEFA'}, {'zone': 'WC'}, {'round': 'first'}]},
+                                             {'$set': {
+                                                 'fixtures.wildCard.match1.awayTeam.team': team[0]
+                                             }})
+    return firstround(request)
