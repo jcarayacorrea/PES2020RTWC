@@ -78,17 +78,23 @@
                                                                 </div>
                                                             </div>
                                                         {% else %}
-                                                            <div class="team-card">
-                                                                <div class="row ">
-
-                                                                    <div class="flag-config">
-                                                                        <img src="{{ fixture.first.match1.homeTeam.team.image_flag }}"
-                                                                             class="img-card-sm">
-                                                                    </div>
-                                                                    <div class="name-config">
-                                                                        {{ fixture.first.match1.homeTeam.team.nation_iso_code }}
+                                                            <div class="col">
+                                                                <div class="team-card-sm">
+                                                                    <div class="row ">
+                                                                        <div class="flag-config-sm">
+                                                                            <img src="{{ fixture.first.match1.homeTeam.team.image_flag }}"
+                                                                                 class="img-card">
+                                                                        </div>
+                                                                        <div class="name-config-sm">
+                                                                            {{ fixture.first.match1.homeTeam.team.nation_iso_code }}
+                                                                        </div>
+                                                                        <div class="col">
+                                                                            {{ fixture.first.match1.homeTeam.goals }}
+                                                                            ({% firstof fixture.first.match1.homeTeam.penalties 0 %})
+                                                                        </div>
                                                                     </div>
                                                                 </div>
+
                                                             </div>
                                                         {% endif %}
                                                         {% if fixture is None %}
@@ -102,17 +108,25 @@
                                                                 </div>
                                                             </div>
                                                         {% else %}
-                                                            <div class="team-card">
-                                                                <div class="row ">
-                                                                    <div class="flag-config">
-                                                                        <img src="{{ fixture.first.match1.awayTeam.team.image_flag }}"
-                                                                             class="img-card-sm">
-                                                                    </div>
-                                                                    <div class="name-config">
-                                                                        {{ fixture.first.match1.awayTeam.team.nation_iso_code }}
+                                                            <div class="col">
+                                                                <div class="team-card-sm">
+                                                                    <div class="row ">
+                                                                        <div class="flag-config-sm">
+                                                                            <img src="{{ fixture.first.match1.awayTeam.team.image_flag }}"
+                                                                                 class="img-card">
+                                                                        </div>
+                                                                        <div class="name-config-sm">
+                                                                            {{ fixture.first.match1.awayTeam.team.nation_iso_code }}
+                                                                        </div>
+                                                                        <div class="col">
+                                                                            {{ fixture.first.match1.awayTeam.goals }}
+                                                                            ({% firstof fixture.first.match1.awayTeam.penalties 0 %})
+                                                                        </div>
                                                                     </div>
                                                                 </div>
+
                                                             </div>
+
                                                         {% endif %}
                                                     </div>
                                                     <div class="col-1 align-self-center">
@@ -144,17 +158,23 @@
                                                                 </div>
                                                             </div>
                                                         {% else %}
-                                                            <div class="team-card">
-                                                                <div class="row ">
-
-                                                                    <div class="flag-config">
-                                                                        <img src="{{ fixture.first.match2.homeTeam.team.image_flag }}"
-                                                                             class="img-card-sm">
-                                                                    </div>
-                                                                    <div class="name-config">
-                                                                        {{ fixture.first.match2.homeTeam.team.nation_iso_code }}
+                                                            <div class="col">
+                                                                <div class="team-card-sm">
+                                                                    <div class="row ">
+                                                                        <div class="flag-config-sm">
+                                                                            <img src="{{ fixture.first.match2.homeTeam.team.image_flag }}"
+                                                                                 class="img-card">
+                                                                        </div>
+                                                                        <div class="name-config-sm">
+                                                                            {{ fixture.first.match2.homeTeam.team.nation_iso_code }}
+                                                                        </div>
+                                                                        <div class="col">
+                                                                            {{ fixture.first.match2.homeTeam.goals }}
+                                                                            ({% firstof fixture.first.match2.homeTeam.penalties 0 %})
+                                                                        </div>
                                                                     </div>
                                                                 </div>
+
                                                             </div>
                                                         {% endif %}
                                                         {% if fixture is None %}
@@ -168,18 +188,25 @@
                                                                 </div>
                                                             </div>
                                                         {% else %}
-                                                            <div class="team-card">
-                                                                <div class="row ">
-
-                                                                    <div class="flag-config">
-                                                                        <img src="{{ fixture.first.match2.awayTeam.team.image_flag }}"
-                                                                             class="img-card-sm">
-                                                                    </div>
-                                                                    <div class="name-config">
-                                                                        {{ fixture.first.match2.awayTeam.team.nation_iso_code }}
+                                                            <div class="col">
+                                                                <div class="team-card-sm">
+                                                                    <div class="row ">
+                                                                        <div class="flag-config-sm">
+                                                                            <img src="{{ fixture.first.match2.awayTeam.team.image_flag }}"
+                                                                                 class="img-card">
+                                                                        </div>
+                                                                        <div class="name-config-sm">
+                                                                            {{ fixture.first.match2.awayTeam.team.nation_iso_code }}
+                                                                        </div>
+                                                                        <div class="col">
+                                                                            {{ fixture.first.match2.awayTeam.goals }}
+                                                                            ({% firstof fixture.first.match2.awayTeam.penalties 0 %})
+                                                                        </div>
                                                                     </div>
                                                                 </div>
+
                                                             </div>
+
                                                         {% endif %}
                                                     </div>
                                                     <div class="col-1 align-self-center">
@@ -211,17 +238,23 @@
                                                                 </div>
                                                             </div>
                                                         {% else %}
-                                                            <div class="team-card">
-                                                                <div class="row ">
-
-                                                                    <div class="flag-config">
-                                                                        <img src="{{ fixture.first.match3.homeTeam.team.image_flag }}"
-                                                                             class="img-card-sm">
-                                                                    </div>
-                                                                    <div class="name-config">
-                                                                        {{ fixture.first.match3.homeTeam.team.nation_iso_code }}
+                                                            <div class="col">
+                                                                <div class="team-card-sm">
+                                                                    <div class="row ">
+                                                                        <div class="flag-config-sm">
+                                                                            <img src="{{ fixture.first.match3.homeTeam.team.image_flag }}"
+                                                                                 class="img-card">
+                                                                        </div>
+                                                                        <div class="name-config-sm">
+                                                                            {{ fixture.first.match3.homeTeam.team.nation_iso_code }}
+                                                                        </div>
+                                                                        <div class="col">
+                                                                            {{ fixture.first.match3.homeTeam.goals }}
+                                                                            ({% firstof fixture.first.match3.homeTeam.penalties 0 %})
+                                                                        </div>
                                                                     </div>
                                                                 </div>
+
                                                             </div>
                                                         {% endif %}
                                                         {% if fixture is None %}
@@ -235,18 +268,25 @@
                                                                 </div>
                                                             </div>
                                                         {% else %}
-                                                            <div class="team-card">
-                                                                <div class="row ">
-
-                                                                    <div class="flag-config">
-                                                                        <img src="{{ fixture.first.match3.awayTeam.team.image_flag }}"
-                                                                             class="img-card-sm">
-                                                                    </div>
-                                                                    <div class="name-config">
-                                                                        {{ fixture.first.match3.awayTeam.team.nation_iso_code }}
+                                                            <div class="col">
+                                                                <div class="team-card-sm">
+                                                                    <div class="row ">
+                                                                        <div class="flag-config-sm">
+                                                                            <img src="{{ fixture.first.match3.awayTeam.team.image_flag }}"
+                                                                                 class="img-card">
+                                                                        </div>
+                                                                        <div class="name-config-sm">
+                                                                            {{ fixture.first.match3.awayTeam.team.nation_iso_code }}
+                                                                        </div>
+                                                                        <div class="col">
+                                                                            {{ fixture.first.match3.awayTeam.goals }}
+                                                                            ({% firstof fixture.first.match3.awayTeam.penalties 0 %})
+                                                                        </div>
                                                                     </div>
                                                                 </div>
+
                                                             </div>
+
                                                         {% endif %}
                                                     </div>
                                                     <div class="col-1 align-self-center">
@@ -278,17 +318,23 @@
                                                                 </div>
                                                             </div>
                                                         {% else %}
-                                                            <div class="team-card">
-                                                                <div class="row ">
-
-                                                                    <div class="flag-config">
-                                                                        <img src="{{ fixture.first.match4.homeTeam.team.image_flag }}"
-                                                                             class="img-card-sm">
-                                                                    </div>
-                                                                    <div class="name-config">
-                                                                        {{ fixture.first.match4.homeTeam.team.nation_iso_code }}
+                                                            <div class="col">
+                                                                <div class="team-card-sm">
+                                                                    <div class="row ">
+                                                                        <div class="flag-config-sm">
+                                                                            <img src="{{ fixture.first.match4.homeTeam.team.image_flag }}"
+                                                                                 class="img-card">
+                                                                        </div>
+                                                                        <div class="name-config-sm">
+                                                                            {{ fixture.first.match4.homeTeam.team.nation_iso_code }}
+                                                                        </div>
+                                                                        <div class="col">
+                                                                            {{ fixture.first.match4.homeTeam.goals }}
+                                                                            ({% firstof fixture.first.match4.homeTeam.penalties 0 %})
+                                                                        </div>
                                                                     </div>
                                                                 </div>
+
                                                             </div>
                                                         {% endif %}
                                                         {% if fixture is None %}
@@ -302,22 +348,29 @@
                                                                 </div>
                                                             </div>
                                                         {% else %}
-                                                            <div class="team-card">
-                                                                <div class="row ">
-
-                                                                    <div class="flag-config">
-                                                                        <img src="{{ fixture.first.match4.awayTeam.team.image_flag }}"
-                                                                             class="img-card-sm">
-                                                                    </div>
-                                                                    <div class="name-config">
-                                                                        {{ fixture.first.match4.awayTeam.team.nation_iso_code }}
+                                                            <div class="col">
+                                                                <div class="team-card-sm">
+                                                                    <div class="row ">
+                                                                        <div class="flag-config-sm">
+                                                                            <img src="{{ fixture.first.match4.awayTeam.team.image_flag }}"
+                                                                                 class="img-card">
+                                                                        </div>
+                                                                        <div class="name-config-sm">
+                                                                            {{ fixture.first.match4.awayTeam.team.nation_iso_code }}
+                                                                        </div>
+                                                                        <div class="col">
+                                                                            {{ fixture.first.match4.awayTeam.goals }}
+                                                                            ({% firstof fixture.first.match4.awayTeam.penalties 0 %})
+                                                                        </div>
                                                                     </div>
                                                                 </div>
+
                                                             </div>
+
                                                         {% endif %}
                                                     </div>
                                                     <div class="col-1 align-self-center">
-                                                        {% with homeId=fixture.fixture1.match1.homeTeam.team.id awayId=fixture.fixture1.match1.awayTeam.team.id %}
+                                                        {% with homeId=fixture.first.match4.homeTeam.team.id awayId=fixture.first.match4.awayTeam.team.id %}
                                                             {% url 'one_match' 'first' 4 homeId awayId  'FIFA'  'playoff' 'P' 1 as match %}
                                                             <button type="button" class="btn btn-primary"
                                                                     hx-get="{{ match }}"
@@ -339,60 +392,71 @@
                                             <div class="p-2">
                                                 <div class="row">
                                                     <div class="col-3 w-75">
-
-                                                        {% if zone4 is None %}
-                                                            <div class="team-card">
+                                                        {% if fixture is None %}
+                                                            <div class="team-card-sm">
                                                                 <div class="row form-check">
 
-                                                                    <div class="flag-config"></div>
-                                                                    <div class="name-config">
-                                                                        Team 1
+                                                                    <div class="text-center">
+                                                                        Seed 1
                                                                     </div>
 
                                                                 </div>
                                                             </div>
                                                         {% else %}
-                                                            <div class="team-card">
-                                                                <div class="row ">
-
-                                                                    <div class="flag-config">
-                                                                        <img src="{{ zone4.0.image_flag }}"
-                                                                             class="img-card-sm">
-                                                                    </div>
-                                                                    <div class="name-config">
-                                                                        {{ zone4.0.nation_iso_code }}
+                                                            <div class="col">
+                                                                <div class="team-card-sm">
+                                                                    <div class="row ">
+                                                                        <div class="flag-config-sm">
+                                                                            <img src="{{ fixture.final.match1.homeTeam.team.image_flag }}"
+                                                                                 class="img-card">
+                                                                        </div>
+                                                                        <div class="name-config-sm">
+                                                                            {{ fixture.final.match1.homeTeam.team.nation_iso_code }}
+                                                                        </div>
+                                                                        <div class="col">
+                                                                            {{ fixture.final.match1.homeTeam.goals }}
+                                                                            ({% firstof fixture.final.match1.homeTeam.penalties 0 %})
+                                                                        </div>
                                                                     </div>
                                                                 </div>
+
                                                             </div>
                                                         {% endif %}
-                                                        {% if zone5 is None %}
-                                                            <div class="team-card">
-                                                                <div class="row form-check">
+                                                        {% if fixture.final.match1.awayTeam.team is None %}
+                                                            <div class="team-card-sm">
 
-                                                                    <div class="flag-config"></div>
-                                                                    <div class="name-config">
-                                                                        Team 2
-                                                                    </div>
+
+                                                                <div class="text-center">
+                                                                    Winner Match 1
                                                                 </div>
+
                                                             </div>
                                                         {% else %}
-                                                            <div class="team-card">
-                                                                <div class="row ">
-
-                                                                    <div class="flag-config">
-                                                                        <img src="{{ zone5.0.image_flag }}"
-                                                                             class="img-card-sm">
-                                                                    </div>
-                                                                    <div class="name-config">
-                                                                        {{ zone5.0.nation_iso_code }}
+                                                            <div class="col">
+                                                                <div class="team-card-sm">
+                                                                    <div class="row ">
+                                                                        <div class="flag-config-sm">
+                                                                            <img src="{{ fixture.final.match1.awayTeam.team.image_flag }}"
+                                                                                 class="img-card">
+                                                                        </div>
+                                                                        <div class="name-config-sm">
+                                                                            {{ fixture.final.match1.awayTeam.team.nation_iso_code }}
+                                                                        </div>
+                                                                        <div class="col">
+                                                                            {{ fixture.final.match1.awayTeam.goals }}
+                                                                            ({% firstof fixture.final.match1.awayTeam.penalties 0 %})
+                                                                        </div>
                                                                     </div>
                                                                 </div>
+
                                                             </div>
+
                                                         {% endif %}
+
                                                     </div>
                                                     <div class="col-1 align-self-center">
-                                                        {% with homeId=fixture.fixture1.match1.homeTeam.team.id awayId=fixture.fixture1.match1.awayTeam.team.id %}
-                                                            {% url 'match_simulator' 1 1 homeId awayId  conf  round zone as match %}
+                                                        {% with homeId=fixture.final.match1.homeTeam.team.id awayId=fixture.final.match1.awayTeam.team.id %}
+                                                            {% url 'one_match' 'final' 1 homeId awayId  'FIFA'  'playoff' 'P' 1 as match %}
                                                             <button type="button" class="btn btn-primary"
                                                                     hx-get="{{ match }}"
                                                                     hx-trigger="click"
@@ -406,60 +470,71 @@
                                             <div class="p-2">
                                                 <div class="row">
                                                     <div class="col-3 w-75">
-                                                        <h6 class="h-6 text-center"> Match 1</h6>
-                                                        {% if zone4 is None %}
-                                                            <div class="team-card">
+                                                        {% if fixture is None %}
+                                                            <div class="team-card-sm">
                                                                 <div class="row form-check">
 
-                                                                    <div class="flag-config"></div>
-                                                                    <div class="name-config">
-                                                                        Team 1
+                                                                    <div class="text-center">
+                                                                        Seed 2
                                                                     </div>
 
                                                                 </div>
                                                             </div>
                                                         {% else %}
-                                                            <div class="team-card">
-                                                                <div class="row ">
-
-                                                                    <div class="flag-config">
-                                                                        <img src="{{ zone4.0.image_flag }}"
-                                                                             class="img-card-sm">
-                                                                    </div>
-                                                                    <div class="name-config">
-                                                                        {{ zone4.0.nation_iso_code }}
+                                                            <div class="col">
+                                                                <div class="team-card-sm">
+                                                                    <div class="row ">
+                                                                        <div class="flag-config-sm">
+                                                                            <img src="{{ fixture.final.match2.homeTeam.team.image_flag }}"
+                                                                                 class="img-card">
+                                                                        </div>
+                                                                        <div class="name-config-sm">
+                                                                            {{ fixture.final.match2.homeTeam.team.nation_iso_code }}
+                                                                        </div>
+                                                                        <div class="col">
+                                                                            {{ fixture.final.match2.homeTeam.goals }}
+                                                                            ({% firstof fixture.final.match2.homeTeam.penalties 0 %})
+                                                                        </div>
                                                                     </div>
                                                                 </div>
+
                                                             </div>
                                                         {% endif %}
-                                                        {% if zone5 is None %}
-                                                            <div class="team-card">
-                                                                <div class="row form-check">
+                                                        {% if fixture.final.match2.awayTeam.team is None %}
+                                                            <div class="team-card-sm">
 
-                                                                    <div class="flag-config"></div>
-                                                                    <div class="name-config">
-                                                                        Team 2
-                                                                    </div>
+
+                                                                <div class="text-center">
+                                                                    Winner Match 2
                                                                 </div>
+
                                                             </div>
                                                         {% else %}
-                                                            <div class="team-card">
-                                                                <div class="row ">
-
-                                                                    <div class="flag-config">
-                                                                        <img src="{{ zone5.0.image_flag }}"
-                                                                             class="img-card-sm">
-                                                                    </div>
-                                                                    <div class="name-config">
-                                                                        {{ zone5.0.nation_iso_code }}
+                                                            <div class="col">
+                                                                <div class="team-card-sm">
+                                                                    <div class="row ">
+                                                                        <div class="flag-config-sm">
+                                                                            <img src="{{ fixture.final.match2.awayTeam.team.image_flag }}"
+                                                                                 class="img-card">
+                                                                        </div>
+                                                                        <div class="name-config-sm">
+                                                                            {{ fixture.final.match2.awayTeam.team.nation_iso_code }}
+                                                                        </div>
+                                                                        <div class="col">
+                                                                            {{ fixture.final.match2.awayTeam.goals }}
+                                                                            ({% firstof fixture.final.match2.awayTeam.penalties 0 %})
+                                                                        </div>
                                                                     </div>
                                                                 </div>
+
                                                             </div>
+
                                                         {% endif %}
+
                                                     </div>
                                                     <div class="col-1 align-self-center">
-                                                        {% with homeId=fixture.fixture1.match1.homeTeam.team.id awayId=fixture.fixture1.match1.awayTeam.team.id %}
-                                                            {% url 'match_simulator' 1 1 homeId awayId  conf  round zone as match %}
+                                                        {% with homeId=fixture.final.match2.homeTeam.team.id awayId=fixture.final.match2.awayTeam.team.id %}
+                                                            {% url 'one_match' 'final' 2 homeId awayId  'FIFA'  'playoff' 'P' 1 as match %}
                                                             <button type="button" class="btn btn-primary"
                                                                     hx-get="{{ match }}"
                                                                     hx-trigger="click"
@@ -473,60 +548,71 @@
                                             <div class="p-2">
                                                 <div class="row">
                                                     <div class="col-3 w-75">
-                                                        <h6 class="h-6 text-center"> Match 1</h6>
-                                                        {% if zone4 is None %}
-                                                            <div class="team-card">
+                                                        {% if fixture is None %}
+                                                            <div class="team-card-sm">
                                                                 <div class="row form-check">
 
-                                                                    <div class="flag-config"></div>
-                                                                    <div class="name-config">
-                                                                        Team 1
+                                                                    <div class="text-center">
+                                                                        Seed 3
                                                                     </div>
 
                                                                 </div>
                                                             </div>
                                                         {% else %}
-                                                            <div class="team-card">
-                                                                <div class="row ">
-
-                                                                    <div class="flag-config">
-                                                                        <img src="{{ zone4.0.image_flag }}"
-                                                                             class="img-card-sm">
-                                                                    </div>
-                                                                    <div class="name-config">
-                                                                        {{ zone4.0.nation_iso_code }}
+                                                            <div class="col">
+                                                                <div class="team-card-sm">
+                                                                    <div class="row ">
+                                                                        <div class="flag-config-sm">
+                                                                            <img src="{{ fixture.final.match3.homeTeam.team.image_flag }}"
+                                                                                 class="img-card">
+                                                                        </div>
+                                                                        <div class="name-config-sm">
+                                                                            {{ fixture.final.match3.homeTeam.team.nation_iso_code }}
+                                                                        </div>
+                                                                        <div class="col">
+                                                                            {{ fixture.final.match3.homeTeam.goals }}
+                                                                            ({% firstof fixture.final.match3.homeTeam.penalties 0 %})
+                                                                        </div>
                                                                     </div>
                                                                 </div>
+
                                                             </div>
                                                         {% endif %}
-                                                        {% if zone5 is None %}
-                                                            <div class="team-card">
-                                                                <div class="row form-check">
+                                                        {% if fixture.final.match3.awayTeam.team is None %}
+                                                            <div class="team-card-sm">
 
-                                                                    <div class="flag-config"></div>
-                                                                    <div class="name-config">
-                                                                        Team 2
-                                                                    </div>
+
+                                                                <div class="text-center">
+                                                                    Winner Match 3
                                                                 </div>
+
                                                             </div>
                                                         {% else %}
-                                                            <div class="team-card">
-                                                                <div class="row ">
-
-                                                                    <div class="flag-config">
-                                                                        <img src="{{ zone5.0.image_flag }}"
-                                                                             class="img-card-sm">
-                                                                    </div>
-                                                                    <div class="name-config">
-                                                                        {{ zone5.0.nation_iso_code }}
+                                                            <div class="col">
+                                                                <div class="team-card-sm">
+                                                                    <div class="row ">
+                                                                        <div class="flag-config-sm">
+                                                                            <img src="{{ fixture.final.match3.awayTeam.team.image_flag }}"
+                                                                                 class="img-card">
+                                                                        </div>
+                                                                        <div class="name-config-sm">
+                                                                            {{ fixture.final.match3.awayTeam.team.nation_iso_code }}
+                                                                        </div>
+                                                                        <div class="col">
+                                                                            {{ fixture.final.match3.awayTeam.goals }}
+                                                                            ({% firstof fixture.final.match3.awayTeam.penalties 0 %})
+                                                                        </div>
                                                                     </div>
                                                                 </div>
+
                                                             </div>
+
                                                         {% endif %}
+
                                                     </div>
                                                     <div class="col-1 align-self-center">
-                                                        {% with homeId=fixture.fixture1.match1.homeTeam.team.id awayId=fixture.fixture1.match1.awayTeam.team.id %}
-                                                            {% url 'match_simulator' 1 1 homeId awayId  conf  round zone as match %}
+                                                        {% with homeId=fixture.final.match3.homeTeam.team.id awayId=fixture.final.match3.awayTeam.team.id %}
+                                                            {% url 'one_match' 'final' 3 homeId awayId  'FIFA'  'playoff' 'P' 1 as match %}
                                                             <button type="button" class="btn btn-primary"
                                                                     hx-get="{{ match }}"
                                                                     hx-trigger="click"
@@ -540,60 +626,71 @@
                                             <div class="p-2">
                                                 <div class="row">
                                                     <div class="col-3 w-75">
-                                                        <h6 class="h-6 text-center"> Match 1</h6>
-                                                        {% if zone4 is None %}
-                                                            <div class="team-card">
+                                                        {% if fixture is None %}
+                                                            <div class="team-card-sm">
                                                                 <div class="row form-check">
 
-                                                                    <div class="flag-config"></div>
-                                                                    <div class="name-config">
-                                                                        Team 1
+                                                                    <div class="text-center">
+                                                                        Seed 4
                                                                     </div>
 
                                                                 </div>
                                                             </div>
                                                         {% else %}
-                                                            <div class="team-card">
-                                                                <div class="row ">
-
-                                                                    <div class="flag-config">
-                                                                        <img src="{{ zone4.0.image_flag }}"
-                                                                             class="img-card-sm">
-                                                                    </div>
-                                                                    <div class="name-config">
-                                                                        {{ zone4.0.nation_iso_code }}
+                                                            <div class="col">
+                                                                <div class="team-card-sm">
+                                                                    <div class="row ">
+                                                                        <div class="flag-config-sm">
+                                                                            <img src="{{ fixture.final.match4.homeTeam.team.image_flag }}"
+                                                                                 class="img-card">
+                                                                        </div>
+                                                                        <div class="name-config-sm">
+                                                                            {{ fixture.final.match4.homeTeam.team.nation_iso_code }}
+                                                                        </div>
+                                                                        <div class="col">
+                                                                            {{ fixture.final.match4.homeTeam.goals }}
+                                                                            ({% firstof fixture.final.match4.homeTeam.penalties 0 %})
+                                                                        </div>
                                                                     </div>
                                                                 </div>
+
                                                             </div>
                                                         {% endif %}
-                                                        {% if zone5 is None %}
-                                                            <div class="team-card">
-                                                                <div class="row form-check">
+                                                        {% if fixture.final.match4.awayTeam.team is None %}
+                                                            <div class="team-card-sm">
 
-                                                                    <div class="flag-config"></div>
-                                                                    <div class="name-config">
-                                                                        Team 2
-                                                                    </div>
+
+                                                                <div class="text-center">
+                                                                    Winner Match 4
                                                                 </div>
+
                                                             </div>
                                                         {% else %}
-                                                            <div class="team-card">
-                                                                <div class="row ">
-
-                                                                    <div class="flag-config">
-                                                                        <img src="{{ zone5.0.image_flag }}"
-                                                                             class="img-card-sm">
-                                                                    </div>
-                                                                    <div class="name-config">
-                                                                        {{ zone5.0.nation_iso_code }}
+                                                            <div class="col">
+                                                                <div class="team-card-sm">
+                                                                    <div class="row ">
+                                                                        <div class="flag-config-sm">
+                                                                            <img src="{{ fixture.final.match4.awayTeam.team.image_flag }}"
+                                                                                 class="img-card">
+                                                                        </div>
+                                                                        <div class="name-config-sm">
+                                                                            {{ fixture.final.match4.awayTeam.team.nation_iso_code }}
+                                                                        </div>
+                                                                        <div class="col">
+                                                                            {{ fixture.final.match4.awayTeam.goals }}
+                                                                            ({% firstof fixture.final.match4.awayTeam.penalties 0 %})
+                                                                        </div>
                                                                     </div>
                                                                 </div>
+
                                                             </div>
+
                                                         {% endif %}
+
                                                     </div>
                                                     <div class="col-1 align-self-center">
-                                                        {% with homeId=fixture.fixture1.match1.homeTeam.team.id awayId=fixture.fixture1.match1.awayTeam.team.id %}
-                                                            {% url 'match_simulator' 1 1 homeId awayId  conf  round zone as match %}
+                                                        {% with homeId=fixture.final.match4.homeTeam.team.id awayId=fixture.final.match4.awayTeam.team.id %}
+                                                            {% url 'one_match' 'final' 4 homeId awayId  'FIFA'  'playoff' 'P' 1 as match %}
                                                             <button type="button" class="btn btn-primary"
                                                                     hx-get="{{ match }}"
                                                                     hx-trigger="click"
@@ -604,63 +701,75 @@
                                                     </div>
                                                 </div>
                                             </div>
+
                                             <div class="p-2">
                                                 <div class="row">
                                                     <div class="col-3 w-75">
-                                                        <h6 class="h-6 text-center"> Match 1</h6>
-                                                        {% if zone4 is None %}
-                                                            <div class="team-card">
+                                                        {% if fixture is None %}
+                                                            <div class="team-card-sm">
                                                                 <div class="row form-check">
 
-                                                                    <div class="flag-config"></div>
-                                                                    <div class="name-config">
-                                                                        Team 1
+                                                                    <div class="text-center">
+                                                                        Team 9
                                                                     </div>
 
                                                                 </div>
                                                             </div>
                                                         {% else %}
-                                                            <div class="team-card">
-                                                                <div class="row ">
-
-                                                                    <div class="flag-config">
-                                                                        <img src="{{ zone4.0.image_flag }}"
-                                                                             class="img-card-sm">
-                                                                    </div>
-                                                                    <div class="name-config">
-                                                                        {{ zone4.0.nation_iso_code }}
+                                                            <div class="col">
+                                                                <div class="team-card-sm">
+                                                                    <div class="row ">
+                                                                        <div class="flag-config-sm">
+                                                                            <img src="{{ fixture.final.match5.homeTeam.team.image_flag }}"
+                                                                                 class="img-card">
+                                                                        </div>
+                                                                        <div class="name-config-sm">
+                                                                            {{ fixture.final.match5.homeTeam.team.nation_iso_code }}
+                                                                        </div>
+                                                                        <div class="col">
+                                                                            {{ fixture.final.match5.homeTeam.goals }}
+                                                                            ({% firstof fixture.final.match5.homeTeam.penalties 0 %})
+                                                                        </div>
                                                                     </div>
                                                                 </div>
+
                                                             </div>
                                                         {% endif %}
-                                                        {% if zone5 is None %}
-                                                            <div class="team-card">
-                                                                <div class="row form-check">
+                                                        {% if fixture.final.match5.awayTeam.team is None %}
+                                                            <div class="team-card-sm">
 
-                                                                    <div class="flag-config"></div>
-                                                                    <div class="name-config">
-                                                                        Team 2
-                                                                    </div>
+
+                                                                <div class="text-center">
+                                                                    Team 10
                                                                 </div>
+
                                                             </div>
                                                         {% else %}
-                                                            <div class="team-card">
-                                                                <div class="row ">
-
-                                                                    <div class="flag-config">
-                                                                        <img src="{{ zone5.0.image_flag }}"
-                                                                             class="img-card-sm">
-                                                                    </div>
-                                                                    <div class="name-config">
-                                                                        {{ zone5.0.nation_iso_code }}
+                                                            <div class="col">
+                                                                <div class="team-card-sm">
+                                                                    <div class="row ">
+                                                                        <div class="flag-config-sm">
+                                                                            <img src="{{ fixture.final.match5.awayTeam.team.image_flag }}"
+                                                                                 class="img-card">
+                                                                        </div>
+                                                                        <div class="name-config-sm">
+                                                                            {{ fixture.final.match5.awayTeam.team.nation_iso_code }}
+                                                                        </div>
+                                                                        <div class="col">
+                                                                            {{ fixture.final.match5.awayTeam.goals }}
+                                                                            ({% firstof fixture.final.match5.awayTeam.penalties 0 %})
+                                                                        </div>
                                                                     </div>
                                                                 </div>
+
                                                             </div>
+
                                                         {% endif %}
+
                                                     </div>
                                                     <div class="col-1 align-self-center">
-                                                        {% with homeId=fixture.fixture1.match1.homeTeam.team.id awayId=fixture.fixture1.match1.awayTeam.team.id %}
-                                                            {% url 'match_simulator' 1 1 homeId awayId  conf  round zone as match %}
+                                                        {% with homeId=fixture.final.match5.homeTeam.team.id awayId=fixture.final.match5.awayTeam.team.id %}
+                                                            {% url 'one_match' 'final' 5 homeId awayId  'FIFA'  'playoff' 'P' 1 as match %}
                                                             <button type="button" class="btn btn-primary"
                                                                     hx-get="{{ match }}"
                                                                     hx-trigger="click"
@@ -671,63 +780,75 @@
                                                     </div>
                                                 </div>
                                             </div>
+
                                             <div class="p-2">
                                                 <div class="row">
                                                     <div class="col-3 w-75">
-                                                        <h6 class="h-6 text-center"> Match 1</h6>
-                                                        {% if zone4 is None %}
-                                                            <div class="team-card">
+                                                        {% if fixture is None %}
+                                                            <div class="team-card-sm">
                                                                 <div class="row form-check">
 
-                                                                    <div class="flag-config"></div>
-                                                                    <div class="name-config">
-                                                                        Team 1
+                                                                    <div class="text-center">
+                                                                        Team 11
                                                                     </div>
 
                                                                 </div>
                                                             </div>
                                                         {% else %}
-                                                            <div class="team-card">
-                                                                <div class="row ">
-
-                                                                    <div class="flag-config">
-                                                                        <img src="{{ zone4.0.image_flag }}"
-                                                                             class="img-card-sm">
-                                                                    </div>
-                                                                    <div class="name-config">
-                                                                        {{ zone4.0.nation_iso_code }}
+                                                            <div class="col">
+                                                                <div class="team-card-sm">
+                                                                    <div class="row ">
+                                                                        <div class="flag-config-sm">
+                                                                            <img src="{{ fixture.final.match6.homeTeam.team.image_flag }}"
+                                                                                 class="img-card">
+                                                                        </div>
+                                                                        <div class="name-config-sm">
+                                                                            {{ fixture.final.match6.homeTeam.team.nation_iso_code }}
+                                                                        </div>
+                                                                        <div class="col">
+                                                                            {{ fixture.final.match6.homeTeam.goals }}
+                                                                            ({% firstof fixture.final.match6.homeTeam.penalties 0 %})
+                                                                        </div>
                                                                     </div>
                                                                 </div>
+
                                                             </div>
                                                         {% endif %}
-                                                        {% if zone5 is None %}
-                                                            <div class="team-card">
-                                                                <div class="row form-check">
+                                                        {% if fixture.final.match6.awayTeam.team is None %}
+                                                            <div class="team-card-sm">
 
-                                                                    <div class="flag-config"></div>
-                                                                    <div class="name-config">
-                                                                        Team 2
-                                                                    </div>
+
+                                                                <div class="text-center">
+                                                                    Team 12
                                                                 </div>
+
                                                             </div>
                                                         {% else %}
-                                                            <div class="team-card">
-                                                                <div class="row ">
-
-                                                                    <div class="flag-config">
-                                                                        <img src="{{ zone5.0.image_flag }}"
-                                                                             class="img-card-sm">
-                                                                    </div>
-                                                                    <div class="name-config">
-                                                                        {{ zone5.0.nation_iso_code }}
+                                                            <div class="col">
+                                                                <div class="team-card-sm">
+                                                                    <div class="row ">
+                                                                        <div class="flag-config-sm">
+                                                                            <img src="{{ fixture.final.match6.awayTeam.team.image_flag }}"
+                                                                                 class="img-card">
+                                                                        </div>
+                                                                        <div class="name-config-sm">
+                                                                            {{ fixture.final.match6.awayTeam.team.nation_iso_code }}
+                                                                        </div>
+                                                                        <div class="col">
+                                                                            {{ fixture.final.match6.awayTeam.goals }}
+                                                                            ({% firstof fixture.final.match6.awayTeam.penalties 0 %})
+                                                                        </div>
                                                                     </div>
                                                                 </div>
+
                                                             </div>
+
                                                         {% endif %}
+
                                                     </div>
                                                     <div class="col-1 align-self-center">
-                                                        {% with homeId=fixture.fixture1.match1.homeTeam.team.id awayId=fixture.fixture1.match1.awayTeam.team.id %}
-                                                            {% url 'match_simulator' 1 1 homeId awayId  conf  round zone as match %}
+                                                        {% with homeId=fixture.final.match6.homeTeam.team.id awayId=fixture.final.match6.awayTeam.team.id %}
+                                                            {% url 'one_match' 'final' 6 homeId awayId  'FIFA'  'playoff' 'P' 1 as match %}
                                                             <button type="button" class="btn btn-primary"
                                                                     hx-get="{{ match }}"
                                                                     hx-trigger="click"
@@ -738,63 +859,75 @@
                                                     </div>
                                                 </div>
                                             </div>
+
                                             <div class="p-2">
                                                 <div class="row">
                                                     <div class="col-3 w-75">
-                                                        <h6 class="h-6 text-center"> Match 1</h6>
-                                                        {% if zone4 is None %}
-                                                            <div class="team-card">
+                                                        {% if fixture is None %}
+                                                            <div class="team-card-sm">
                                                                 <div class="row form-check">
 
-                                                                    <div class="flag-config"></div>
-                                                                    <div class="name-config">
-                                                                        Team 1
+                                                                    <div class="text-center">
+                                                                        Team 13
                                                                     </div>
 
                                                                 </div>
                                                             </div>
                                                         {% else %}
-                                                            <div class="team-card">
-                                                                <div class="row ">
-
-                                                                    <div class="flag-config">
-                                                                        <img src="{{ zone4.0.image_flag }}"
-                                                                             class="img-card-sm">
-                                                                    </div>
-                                                                    <div class="name-config">
-                                                                        {{ zone4.0.nation_iso_code }}
+                                                            <div class="col">
+                                                                <div class="team-card-sm">
+                                                                    <div class="row ">
+                                                                        <div class="flag-config-sm">
+                                                                            <img src="{{ fixture.final.match7.homeTeam.team.image_flag }}"
+                                                                                 class="img-card">
+                                                                        </div>
+                                                                        <div class="name-config-sm">
+                                                                            {{ fixture.final.match7.homeTeam.team.nation_iso_code }}
+                                                                        </div>
+                                                                        <div class="col">
+                                                                            {{ fixture.final.match7.homeTeam.goals }}
+                                                                            ({% firstof fixture.final.match7.homeTeam.penalties 0 %})
+                                                                        </div>
                                                                     </div>
                                                                 </div>
+
                                                             </div>
                                                         {% endif %}
-                                                        {% if zone5 is None %}
-                                                            <div class="team-card">
-                                                                <div class="row form-check">
+                                                        {% if fixture.final.match7.awayTeam.team is None %}
+                                                            <div class="team-card-sm">
 
-                                                                    <div class="flag-config"></div>
-                                                                    <div class="name-config">
-                                                                        Team 2
-                                                                    </div>
+
+                                                                <div class="text-center">
+                                                                    Team 14
                                                                 </div>
+
                                                             </div>
                                                         {% else %}
-                                                            <div class="team-card">
-                                                                <div class="row ">
-
-                                                                    <div class="flag-config">
-                                                                        <img src="{{ zone5.0.image_flag }}"
-                                                                             class="img-card-sm">
-                                                                    </div>
-                                                                    <div class="name-config">
-                                                                        {{ zone5.0.nation_iso_code }}
+                                                            <div class="col">
+                                                                <div class="team-card-sm">
+                                                                    <div class="row ">
+                                                                        <div class="flag-config-sm">
+                                                                            <img src="{{ fixture.final.match7.awayTeam.team.image_flag }}"
+                                                                                 class="img-card">
+                                                                        </div>
+                                                                        <div class="name-config-sm">
+                                                                            {{ fixture.final.match7.awayTeam.team.nation_iso_code }}
+                                                                        </div>
+                                                                        <div class="col">
+                                                                            {{ fixture.final.match7.awayTeam.goals }}
+                                                                            ({% firstof fixture.final.match7.awayTeam.penalties 0 %})
+                                                                        </div>
                                                                     </div>
                                                                 </div>
+
                                                             </div>
+
                                                         {% endif %}
+
                                                     </div>
                                                     <div class="col-1 align-self-center">
-                                                        {% with homeId=fixture.fixture1.match1.homeTeam.team.id awayId=fixture.fixture1.match1.awayTeam.team.id %}
-                                                            {% url 'match_simulator' 1 1 homeId awayId  conf  round zone as match %}
+                                                        {% with homeId=fixture.final.match7.homeTeam.team.id awayId=fixture.final.match7.awayTeam.team.id %}
+                                                            {% url 'one_match' 'final' 7 homeId awayId  'FIFA'  'playoff' 'P' 1 as match %}
                                                             <button type="button" class="btn btn-primary"
                                                                     hx-get="{{ match }}"
                                                                     hx-trigger="click"
@@ -805,63 +938,75 @@
                                                     </div>
                                                 </div>
                                             </div>
+
                                             <div class="p-2">
                                                 <div class="row">
                                                     <div class="col-3 w-75">
-                                                        <h6 class="h-6 text-center"> Match 1</h6>
-                                                        {% if zone4 is None %}
-                                                            <div class="team-card">
+                                                        {% if fixture is None %}
+                                                            <div class="team-card-sm">
                                                                 <div class="row form-check">
 
-                                                                    <div class="flag-config"></div>
-                                                                    <div class="name-config">
-                                                                        Team 1
+                                                                    <div class="text-center">
+                                                                        Team 15
                                                                     </div>
 
                                                                 </div>
                                                             </div>
                                                         {% else %}
-                                                            <div class="team-card">
-                                                                <div class="row ">
-
-                                                                    <div class="flag-config">
-                                                                        <img src="{{ zone4.0.image_flag }}"
-                                                                             class="img-card-sm">
-                                                                    </div>
-                                                                    <div class="name-config">
-                                                                        {{ zone4.0.nation_iso_code }}
+                                                            <div class="col">
+                                                                <div class="team-card-sm">
+                                                                    <div class="row ">
+                                                                        <div class="flag-config-sm">
+                                                                            <img src="{{ fixture.final.match8.homeTeam.team.image_flag }}"
+                                                                                 class="img-card">
+                                                                        </div>
+                                                                        <div class="name-config-sm">
+                                                                            {{ fixture.final.match8.homeTeam.team.nation_iso_code }}
+                                                                        </div>
+                                                                        <div class="col">
+                                                                            {{ fixture.final.match8.homeTeam.goals }}
+                                                                            ({% firstof fixture.final.match8.homeTeam.penalties 0 %})
+                                                                        </div>
                                                                     </div>
                                                                 </div>
+
                                                             </div>
                                                         {% endif %}
-                                                        {% if zone5 is None %}
-                                                            <div class="team-card">
-                                                                <div class="row form-check">
+                                                        {% if fixture.final.match8.awayTeam.team is None %}
+                                                            <div class="team-card-sm">
 
-                                                                    <div class="flag-config"></div>
-                                                                    <div class="name-config">
-                                                                        Team 2
-                                                                    </div>
+
+                                                                <div class="text-center">
+                                                                    Team 16
                                                                 </div>
+
                                                             </div>
                                                         {% else %}
-                                                            <div class="team-card">
-                                                                <div class="row ">
-
-                                                                    <div class="flag-config">
-                                                                        <img src="{{ zone5.0.image_flag }}"
-                                                                             class="img-card-sm">
-                                                                    </div>
-                                                                    <div class="name-config">
-                                                                        {{ zone5.0.nation_iso_code }}
+                                                            <div class="col">
+                                                                <div class="team-card-sm">
+                                                                    <div class="row ">
+                                                                        <div class="flag-config-sm">
+                                                                            <img src="{{ fixture.final.match8.awayTeam.team.image_flag }}"
+                                                                                 class="img-card">
+                                                                        </div>
+                                                                        <div class="name-config-sm">
+                                                                            {{ fixture.final.match8.awayTeam.team.nation_iso_code }}
+                                                                        </div>
+                                                                        <div class="col">
+                                                                            {{ fixture.final.match8.awayTeam.goals }}
+                                                                            ({% firstof fixture.final.match8.awayTeam.penalties 0 %})
+                                                                        </div>
                                                                     </div>
                                                                 </div>
+
                                                             </div>
+
                                                         {% endif %}
+
                                                     </div>
                                                     <div class="col-1 align-self-center">
-                                                        {% with homeId=fixture.fixture1.match1.homeTeam.team.id awayId=fixture.fixture1.match1.awayTeam.team.id %}
-                                                            {% url 'match_simulator' 1 1 homeId awayId  conf  round zone as match %}
+                                                        {% with homeId=fixture.final.match8.homeTeam.team.id awayId=fixture.final.match8.awayTeam.team.id %}
+                                                            {% url 'one_match' 'final' 8 homeId awayId  'FIFA'  'playoff' 'P' 1 as match %}
                                                             <button type="button" class="btn btn-primary"
                                                                     hx-get="{{ match }}"
                                                                     hx-trigger="click"
@@ -891,5 +1036,5 @@
         </div>
 
     </div>
-    </div>
+
 {% endblock %}

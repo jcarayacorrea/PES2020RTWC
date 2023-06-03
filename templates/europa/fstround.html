@@ -249,7 +249,7 @@
                                                 </div>
                                                 <div class="col-2 justify-content-center">
                                                     {% with homeId=fixture.wildCard.match1.homeTeam.team.id awayId=fixture.wildCard.match1.awayTeam.team.id %}
-                                                        {% url 'one_match' 1 1 homeId awayId  'UEFA'  'first' 'WC' 1 as match %}
+                                                        {% url 'one_match' 'wildCard' 1 homeId awayId  'UEFA'  'first' 'WC' 1 as match %}
                                                         <button type="button" class="btn btn-primary"
                                                                 hx-get="{{ match }}"
                                                                 hx-trigger="click"
@@ -295,8 +295,8 @@
 
                                                 <div class="col-3">
                                                     {% with homePenalties=fixture.wildCard.match1.homeTeam.penalties awayPenalties=fixture.wildCard.match1.awayTeam.penalties %}
-                                                    <h6>({% firstof homePenalties 0 %}) {{ fixture.wildCard.match1.homeTeam.goals|default_if_none:"0" }}
-                                                        - {{ fixture.wildCard.match1.awayTeam.goals|default_if_none:"0" }} ({% firstof awayPenalties 0 %})</h6>
+                                                    <h6>({% firstof homePenalties 0 %}) {{ fixture.wildCard.match1.homeTeam.goals }}
+                                                        - {{ fixture.wildCard.match1.awayTeam.goals }} ({% firstof awayPenalties 0 %})</h6>
                                                     {% endwith %}
 
                                                 </div>
