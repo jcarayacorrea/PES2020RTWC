@@ -172,19 +172,67 @@ def createFixture(teams, homeAway, zone, conf, round):
                                          "byeTeam": teams[1]},
 
                             }
-    updateFixture(teams,fixtures,zone,conf,round)
+    updateFixture(teams, fixtures, zone, conf, round)
 
-def updateFixture(teams,fixtures,zone,conf,round):
+
+def updateFixture(teams, fixtures, zone, conf, round):
     db = db_conexion()
-    db.get_collection('Fixtures').update_one({'$and': [{'conf_name': conf}, {'zone': zone},{'round':round}]},
-    {'$set':{
-        'teams': teams,
-        'fixtures':fixtures
-    }})
+    db.get_collection('Fixtures').update_one({'$and': [{'conf_name': conf}, {'zone': zone}, {'round': round}]},
+                                             {'$set': {
+                                                 'teams': teams,
+                                                 'fixtures': fixtures
+                                             }})
 
-def getZoneData(zone,conf,round):
+
+def getZoneData(zone, conf, round):
     db = db_conexion()
     cursor = db.get_collection('Fixtures').find(
-        {'$and': [{'conf_name': conf}, {'zone': zone},{'round':round}]})
+        {'$and': [{'conf_name': conf}, {'zone': zone}, {'round': round}]})
     listData = list(cursor)
     return listData[0]
+
+
+def createPlayOffMatches(teamList, seeds, pool1, pool2, pool3, pool4):
+    firstPhasefixture = {"first": {
+        "match1": {"homeTeam": {"team": pool3[0], "goals": None, "penalties": None},
+                   "awayTeam": {"team": pool4[0], "goals": None, "penalties": None}, "result": False,
+                   "played": False},
+        "match2": {"homeTeam": {"team": pool3[1], "goals": None, "penalties": None},
+                   "awayTeam": {"team": pool4[1], "goals": None, "penalties": None}, "result": False,
+                   "played": False},
+        "match3": {"homeTeam": {"team": pool3[2], "goals": None, "penalties": None},
+                   "awayTeam": {"team": pool4[2], "goals": None, "penalties": None}, "result": False,
+                   "played": False},
+        "match4": {"homeTeam": {"team": pool3[3], "goals": None, "penalties": None},
+                   "awayTeam": {"team": pool4[3], "goals": None, "penalties": None}, "result": False,
+                   "played": False}
+    },
+        "final": {
+            "match1": {"homeTeam": {"team": seeds[0], "goals": None, "penalties": None},
+                       "awayTeam": {"team": None, "goals": None, "penalties": None}, "result": False,
+                       "played": False},
+            "match2": {"homeTeam": {"team": seeds[1], "goals": None, "penalties": None},
+                       "awayTeam": {"team": None, "goals": None, "penalties": None}, "result": False,
+                       "played": False},
+            "match3": {"homeTeam": {"team": seeds[2], "goals": None, "penalties": None},
+                       "awayTeam": {"team": None, "goals": None, "penalties": None}, "result": False,
+                       "played": False},
+            "match4": {"homeTeam": {"team": seeds[3], "goals": None, "penalties": None},
+                       "awayTeam": {"team": None, "goals": None, "penalties": None}, "result": False,
+                       "played": False},
+            "match5": {"homeTeam": {"team": pool1[0], "goals": None, "penalties": None},
+                       "awayTeam": {"team": pool2[0], "goals": None, "penalties": None}, "result": False,
+                       "played": False},
+            "match6": {"homeTeam": {"team": pool1[1], "goals": None, "penalties": None},
+                       "awayTeam": {"team": pool2[1], "goals": None, "penalties": None}, "result": False,
+                       "played": False},
+            "match7": {"homeTeam": {"team": pool1[2], "goals": None, "penalties": None},
+                       "awayTeam": {"team": pool2[2], "goals": None, "penalties": None}, "result": False,
+                       "played": False},
+            "match8": {"homeTeam": {"team": pool1[3], "goals": None, "penalties": None},
+                       "awayTeam": {"team": pool2[3], "goals": None, "penalties": None}, "result": False,
+                       "played": False}
+        }
+
+    }
+    updateFixture(teamList, firstPhasefixture, 'P', 'FIFA', 'playoff')

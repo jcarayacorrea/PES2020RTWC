@@ -66,7 +66,7 @@
                                                 <div class="row">
                                                     <div class="col-3 w-75">
                                                         <h6 class="h-6 text-center"> Match 1</h6>
-                                                        {% if zone4 is None %}
+                                                        {% if fixture is None %}
                                                             <div class="team-card">
                                                                 <div class="row form-check">
 
@@ -78,20 +78,20 @@
                                                                 </div>
                                                             </div>
                                                         {% else %}
-                                                            <div class="team-card-sm">
+                                                            <div class="team-card">
                                                                 <div class="row ">
 
-                                                                    <div class="flag-config-sm">
-                                                                        <img src="{{ zone4.0.image_flag }}"
-                                                                             class="img-card-sm-3">
+                                                                    <div class="flag-config">
+                                                                        <img src="{{ fixture.first.match1.homeTeam.team.image_flag }}"
+                                                                             class="img-card-sm">
                                                                     </div>
-                                                                    <div class="name-config-sm">
-                                                                        {{ zone4.0.nation_iso_code }}
+                                                                    <div class="name-config">
+                                                                        {{ fixture.first.match1.homeTeam.team.nation_iso_code }}
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         {% endif %}
-                                                        {% if zone5 is None %}
+                                                        {% if fixture is None %}
                                                             <div class="team-card">
                                                                 <div class="row form-check">
 
@@ -102,27 +102,26 @@
                                                                 </div>
                                                             </div>
                                                         {% else %}
-                                                            <div class="team-card-sm">
+                                                            <div class="team-card">
                                                                 <div class="row ">
-
-                                                                    <div class="flag-config-sm">
-                                                                        <img src="{{ zone5.0.image_flag }}"
-                                                                             class="img-card-sm-3">
+                                                                    <div class="flag-config">
+                                                                        <img src="{{ fixture.first.match1.awayTeam.team.image_flag }}"
+                                                                             class="img-card-sm">
                                                                     </div>
-                                                                    <div class="name-config-sm">
-                                                                        {{ zone5.0.nation_iso_code }}
+                                                                    <div class="name-config">
+                                                                        {{ fixture.first.match1.awayTeam.team.nation_iso_code }}
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         {% endif %}
                                                     </div>
                                                     <div class="col-1 align-self-center">
-                                                        {% with homeId=fixture.fixture1.match1.homeTeam.team.id awayId=fixture.fixture1.match1.awayTeam.team.id %}
-                                                            {% url 'match_simulator' 1 1 homeId awayId  conf  round zone as match %}
+                                                        {% with homeId=fixture.first.match1.homeTeam.team.id awayId=fixture.first.match1.awayTeam.team.id %}
+                                                            {% url 'one_match' 'first' 1 homeId awayId  'FIFA'  'playoff' 'P' 1 as match %}
                                                             <button type="button" class="btn btn-primary"
                                                                     hx-get="{{ match }}"
                                                                     hx-trigger="click"
-                                                                    hx-target="#schedule-content">
+                                                                    hx-target="body">
                                                                 <i class="fa-regular fa-futbol"></i>
                                                             </button>
                                                         {% endwith %}
@@ -132,64 +131,64 @@
                                             <div class="p-2">
                                                 <div class="row">
                                                     <div class="col-3 w-75">
-                                                        <h6 class="h-6 text-center"> Match 1</h6>
-                                                        {% if zone4 is None %}
+                                                        <h6 class="h-6 text-center"> Match 2</h6>
+                                                        {% if fixture is None %}
                                                             <div class="team-card">
                                                                 <div class="row form-check">
 
                                                                     <div class="flag-config"></div>
                                                                     <div class="name-config">
-                                                                        Team 1
+                                                                        Team 3
                                                                     </div>
 
                                                                 </div>
                                                             </div>
                                                         {% else %}
-                                                            <div class="team-card-sm">
+                                                            <div class="team-card">
                                                                 <div class="row ">
 
-                                                                    <div class="flag-config-sm">
-                                                                        <img src="{{ zone4.0.image_flag }}"
-                                                                             class="img-card-sm-3">
+                                                                    <div class="flag-config">
+                                                                        <img src="{{ fixture.first.match2.homeTeam.team.image_flag }}"
+                                                                             class="img-card-sm">
                                                                     </div>
-                                                                    <div class="name-config-sm">
-                                                                        {{ zone4.0.nation_iso_code }}
+                                                                    <div class="name-config">
+                                                                        {{ fixture.first.match2.homeTeam.team.nation_iso_code }}
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         {% endif %}
-                                                        {% if zone5 is None %}
+                                                        {% if fixture is None %}
                                                             <div class="team-card">
                                                                 <div class="row form-check">
 
                                                                     <div class="flag-config"></div>
                                                                     <div class="name-config">
-                                                                        Team 2
+                                                                        Team 4
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         {% else %}
-                                                            <div class="team-card-sm">
+                                                            <div class="team-card">
                                                                 <div class="row ">
 
-                                                                    <div class="flag-config-sm">
-                                                                        <img src="{{ zone5.0.image_flag }}"
-                                                                             class="img-card-sm-3">
+                                                                    <div class="flag-config">
+                                                                        <img src="{{ fixture.first.match2.awayTeam.team.image_flag }}"
+                                                                             class="img-card-sm">
                                                                     </div>
-                                                                    <div class="name-config-sm">
-                                                                        {{ zone5.0.nation_iso_code }}
+                                                                    <div class="name-config">
+                                                                        {{ fixture.first.match2.awayTeam.team.nation_iso_code }}
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         {% endif %}
                                                     </div>
                                                     <div class="col-1 align-self-center">
-                                                        {% with homeId=fixture.fixture1.match1.homeTeam.team.id awayId=fixture.fixture1.match1.awayTeam.team.id %}
-                                                            {% url 'match_simulator' 1 1 homeId awayId  conf  round zone as match %}
+                                                        {% with homeId=fixture.first.match2.homeTeam.team.id awayId=fixture.first.match2.awayTeam.team.id %}
+                                                            {% url 'one_match' 'first' 2 homeId awayId  'FIFA'  'playoff' 'P' 1 as match %}
                                                             <button type="button" class="btn btn-primary"
                                                                     hx-get="{{ match }}"
                                                                     hx-trigger="click"
-                                                                    hx-target="#schedule-content">
+                                                                    hx-target="body">
                                                                 <i class="fa-regular fa-futbol"></i>
                                                             </button>
                                                         {% endwith %}
@@ -199,64 +198,64 @@
                                             <div class="p-2">
                                                 <div class="row">
                                                     <div class="col-3 w-75">
-                                                        <h6 class="h-6 text-center"> Match 1</h6>
-                                                        {% if zone4 is None %}
+                                                        <h6 class="h-6 text-center"> Match 3</h6>
+                                                        {% if fixture is None %}
                                                             <div class="team-card">
                                                                 <div class="row form-check">
 
                                                                     <div class="flag-config"></div>
                                                                     <div class="name-config">
-                                                                        Team 1
+                                                                        Team 5
                                                                     </div>
 
                                                                 </div>
                                                             </div>
                                                         {% else %}
-                                                            <div class="team-card-sm">
+                                                            <div class="team-card">
                                                                 <div class="row ">
 
-                                                                    <div class="flag-config-sm">
-                                                                        <img src="{{ zone4.0.image_flag }}"
-                                                                             class="img-card-sm-3">
+                                                                    <div class="flag-config">
+                                                                        <img src="{{ fixture.first.match3.homeTeam.team.image_flag }}"
+                                                                             class="img-card-sm">
                                                                     </div>
-                                                                    <div class="name-config-sm">
-                                                                        {{ zone4.0.nation_iso_code }}
+                                                                    <div class="name-config">
+                                                                        {{ fixture.first.match3.homeTeam.team.nation_iso_code }}
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         {% endif %}
-                                                        {% if zone5 is None %}
+                                                        {% if fixture is None %}
                                                             <div class="team-card">
                                                                 <div class="row form-check">
 
                                                                     <div class="flag-config"></div>
                                                                     <div class="name-config">
-                                                                        Team 2
+                                                                        Team 6
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         {% else %}
-                                                            <div class="team-card-sm">
+                                                            <div class="team-card">
                                                                 <div class="row ">
 
-                                                                    <div class="flag-config-sm">
-                                                                        <img src="{{ zone5.0.image_flag }}"
-                                                                             class="img-card-sm-3">
+                                                                    <div class="flag-config">
+                                                                        <img src="{{ fixture.first.match3.awayTeam.team.image_flag }}"
+                                                                             class="img-card-sm">
                                                                     </div>
-                                                                    <div class="name-config-sm">
-                                                                        {{ zone5.0.nation_iso_code }}
+                                                                    <div class="name-config">
+                                                                        {{ fixture.first.match3.awayTeam.team.nation_iso_code }}
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         {% endif %}
                                                     </div>
                                                     <div class="col-1 align-self-center">
-                                                        {% with homeId=fixture.fixture1.match1.homeTeam.team.id awayId=fixture.fixture1.match1.awayTeam.team.id %}
-                                                            {% url 'match_simulator' 1 1 homeId awayId  conf  round zone as match %}
+                                                        {% with homeId=fixture.first.match3.homeTeam.team.id awayId=fixture.first.match3.awayTeam.team.id %}
+                                                            {% url 'one_match' 'first' 3 homeId awayId  'FIFA'  'playoff' 'P' 1 as match %}
                                                             <button type="button" class="btn btn-primary"
                                                                     hx-get="{{ match }}"
                                                                     hx-trigger="click"
-                                                                    hx-target="#schedule-content">
+                                                                    hx-target="body">
                                                                 <i class="fa-regular fa-futbol"></i>
                                                             </button>
                                                         {% endwith %}
@@ -266,52 +265,52 @@
                                             <div class="p-2">
                                                 <div class="row">
                                                     <div class="col-3 w-75">
-                                                        <h6 class="h-6 text-center"> Match 1</h6>
-                                                        {% if zone4 is None %}
+                                                        <h6 class="h-6 text-center"> Match 4</h6>
+                                                        {% if fixture is None %}
                                                             <div class="team-card">
                                                                 <div class="row form-check">
 
                                                                     <div class="flag-config"></div>
                                                                     <div class="name-config">
-                                                                        Team 1
+                                                                        Team 7
                                                                     </div>
 
                                                                 </div>
                                                             </div>
                                                         {% else %}
-                                                            <div class="team-card-sm">
+                                                            <div class="team-card">
                                                                 <div class="row ">
 
-                                                                    <div class="flag-config-sm">
-                                                                        <img src="{{ zone4.0.image_flag }}"
-                                                                             class="img-card-sm-3">
+                                                                    <div class="flag-config">
+                                                                        <img src="{{ fixture.first.match4.homeTeam.team.image_flag }}"
+                                                                             class="img-card-sm">
                                                                     </div>
-                                                                    <div class="name-config-sm">
-                                                                        {{ zone4.0.nation_iso_code }}
+                                                                    <div class="name-config">
+                                                                        {{ fixture.first.match4.homeTeam.team.nation_iso_code }}
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         {% endif %}
-                                                        {% if zone5 is None %}
+                                                        {% if fixture is None %}
                                                             <div class="team-card">
                                                                 <div class="row form-check">
 
                                                                     <div class="flag-config"></div>
                                                                     <div class="name-config">
-                                                                        Team 2
+                                                                        Team 8
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         {% else %}
-                                                            <div class="team-card-sm">
+                                                            <div class="team-card">
                                                                 <div class="row ">
 
-                                                                    <div class="flag-config-sm">
-                                                                        <img src="{{ zone5.0.image_flag }}"
-                                                                             class="img-card-sm-3">
+                                                                    <div class="flag-config">
+                                                                        <img src="{{ fixture.first.match4.awayTeam.team.image_flag }}"
+                                                                             class="img-card-sm">
                                                                     </div>
-                                                                    <div class="name-config-sm">
-                                                                        {{ zone5.0.nation_iso_code }}
+                                                                    <div class="name-config">
+                                                                        {{ fixture.first.match4.awayTeam.team.nation_iso_code }}
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -319,11 +318,11 @@
                                                     </div>
                                                     <div class="col-1 align-self-center">
                                                         {% with homeId=fixture.fixture1.match1.homeTeam.team.id awayId=fixture.fixture1.match1.awayTeam.team.id %}
-                                                            {% url 'match_simulator' 1 1 homeId awayId  conf  round zone as match %}
+                                                            {% url 'one_match' 'first' 4 homeId awayId  'FIFA'  'playoff' 'P' 1 as match %}
                                                             <button type="button" class="btn btn-primary"
                                                                     hx-get="{{ match }}"
                                                                     hx-trigger="click"
-                                                                    hx-target="#schedule-content">
+                                                                    hx-target="body">
                                                                 <i class="fa-regular fa-futbol"></i>
                                                             </button>
                                                         {% endwith %}
@@ -353,14 +352,14 @@
                                                                 </div>
                                                             </div>
                                                         {% else %}
-                                                            <div class="team-card-sm">
+                                                            <div class="team-card">
                                                                 <div class="row ">
 
-                                                                    <div class="flag-config-sm">
+                                                                    <div class="flag-config">
                                                                         <img src="{{ zone4.0.image_flag }}"
-                                                                             class="img-card-sm-3">
+                                                                             class="img-card-sm">
                                                                     </div>
-                                                                    <div class="name-config-sm">
+                                                                    <div class="name-config">
                                                                         {{ zone4.0.nation_iso_code }}
                                                                     </div>
                                                                 </div>
@@ -377,14 +376,14 @@
                                                                 </div>
                                                             </div>
                                                         {% else %}
-                                                            <div class="team-card-sm">
+                                                            <div class="team-card">
                                                                 <div class="row ">
 
-                                                                    <div class="flag-config-sm">
+                                                                    <div class="flag-config">
                                                                         <img src="{{ zone5.0.image_flag }}"
-                                                                             class="img-card-sm-3">
+                                                                             class="img-card-sm">
                                                                     </div>
-                                                                    <div class="name-config-sm">
+                                                                    <div class="name-config">
                                                                         {{ zone5.0.nation_iso_code }}
                                                                     </div>
                                                                 </div>
@@ -397,7 +396,7 @@
                                                             <button type="button" class="btn btn-primary"
                                                                     hx-get="{{ match }}"
                                                                     hx-trigger="click"
-                                                                    hx-target="#schedule-content">
+                                                                    hx-target="body">
                                                                 <i class="fa-regular fa-futbol"></i>
                                                             </button>
                                                         {% endwith %}
@@ -420,14 +419,14 @@
                                                                 </div>
                                                             </div>
                                                         {% else %}
-                                                            <div class="team-card-sm">
+                                                            <div class="team-card">
                                                                 <div class="row ">
 
-                                                                    <div class="flag-config-sm">
+                                                                    <div class="flag-config">
                                                                         <img src="{{ zone4.0.image_flag }}"
-                                                                             class="img-card-sm-3">
+                                                                             class="img-card-sm">
                                                                     </div>
-                                                                    <div class="name-config-sm">
+                                                                    <div class="name-config">
                                                                         {{ zone4.0.nation_iso_code }}
                                                                     </div>
                                                                 </div>
@@ -444,14 +443,14 @@
                                                                 </div>
                                                             </div>
                                                         {% else %}
-                                                            <div class="team-card-sm">
+                                                            <div class="team-card">
                                                                 <div class="row ">
 
-                                                                    <div class="flag-config-sm">
+                                                                    <div class="flag-config">
                                                                         <img src="{{ zone5.0.image_flag }}"
-                                                                             class="img-card-sm-3">
+                                                                             class="img-card-sm">
                                                                     </div>
-                                                                    <div class="name-config-sm">
+                                                                    <div class="name-config">
                                                                         {{ zone5.0.nation_iso_code }}
                                                                     </div>
                                                                 </div>
@@ -464,7 +463,7 @@
                                                             <button type="button" class="btn btn-primary"
                                                                     hx-get="{{ match }}"
                                                                     hx-trigger="click"
-                                                                    hx-target="#schedule-content">
+                                                                    hx-target="body">
                                                                 <i class="fa-regular fa-futbol"></i>
                                                             </button>
                                                         {% endwith %}
@@ -487,14 +486,14 @@
                                                                 </div>
                                                             </div>
                                                         {% else %}
-                                                            <div class="team-card-sm">
+                                                            <div class="team-card">
                                                                 <div class="row ">
 
-                                                                    <div class="flag-config-sm">
+                                                                    <div class="flag-config">
                                                                         <img src="{{ zone4.0.image_flag }}"
-                                                                             class="img-card-sm-3">
+                                                                             class="img-card-sm">
                                                                     </div>
-                                                                    <div class="name-config-sm">
+                                                                    <div class="name-config">
                                                                         {{ zone4.0.nation_iso_code }}
                                                                     </div>
                                                                 </div>
@@ -511,14 +510,14 @@
                                                                 </div>
                                                             </div>
                                                         {% else %}
-                                                            <div class="team-card-sm">
+                                                            <div class="team-card">
                                                                 <div class="row ">
 
-                                                                    <div class="flag-config-sm">
+                                                                    <div class="flag-config">
                                                                         <img src="{{ zone5.0.image_flag }}"
-                                                                             class="img-card-sm-3">
+                                                                             class="img-card-sm">
                                                                     </div>
-                                                                    <div class="name-config-sm">
+                                                                    <div class="name-config">
                                                                         {{ zone5.0.nation_iso_code }}
                                                                     </div>
                                                                 </div>
@@ -531,7 +530,7 @@
                                                             <button type="button" class="btn btn-primary"
                                                                     hx-get="{{ match }}"
                                                                     hx-trigger="click"
-                                                                    hx-target="#schedule-content">
+                                                                    hx-target="body">
                                                                 <i class="fa-regular fa-futbol"></i>
                                                             </button>
                                                         {% endwith %}
@@ -554,14 +553,14 @@
                                                                 </div>
                                                             </div>
                                                         {% else %}
-                                                            <div class="team-card-sm">
+                                                            <div class="team-card">
                                                                 <div class="row ">
 
-                                                                    <div class="flag-config-sm">
+                                                                    <div class="flag-config">
                                                                         <img src="{{ zone4.0.image_flag }}"
-                                                                             class="img-card-sm-3">
+                                                                             class="img-card-sm">
                                                                     </div>
-                                                                    <div class="name-config-sm">
+                                                                    <div class="name-config">
                                                                         {{ zone4.0.nation_iso_code }}
                                                                     </div>
                                                                 </div>
@@ -578,14 +577,14 @@
                                                                 </div>
                                                             </div>
                                                         {% else %}
-                                                            <div class="team-card-sm">
+                                                            <div class="team-card">
                                                                 <div class="row ">
 
-                                                                    <div class="flag-config-sm">
+                                                                    <div class="flag-config">
                                                                         <img src="{{ zone5.0.image_flag }}"
-                                                                             class="img-card-sm-3">
+                                                                             class="img-card-sm">
                                                                     </div>
-                                                                    <div class="name-config-sm">
+                                                                    <div class="name-config">
                                                                         {{ zone5.0.nation_iso_code }}
                                                                     </div>
                                                                 </div>
@@ -598,7 +597,7 @@
                                                             <button type="button" class="btn btn-primary"
                                                                     hx-get="{{ match }}"
                                                                     hx-trigger="click"
-                                                                    hx-target="#schedule-content">
+                                                                    hx-target="body">
                                                                 <i class="fa-regular fa-futbol"></i>
                                                             </button>
                                                         {% endwith %}
@@ -621,14 +620,14 @@
                                                                 </div>
                                                             </div>
                                                         {% else %}
-                                                            <div class="team-card-sm">
+                                                            <div class="team-card">
                                                                 <div class="row ">
 
-                                                                    <div class="flag-config-sm">
+                                                                    <div class="flag-config">
                                                                         <img src="{{ zone4.0.image_flag }}"
-                                                                             class="img-card-sm-3">
+                                                                             class="img-card-sm">
                                                                     </div>
-                                                                    <div class="name-config-sm">
+                                                                    <div class="name-config">
                                                                         {{ zone4.0.nation_iso_code }}
                                                                     </div>
                                                                 </div>
@@ -645,14 +644,14 @@
                                                                 </div>
                                                             </div>
                                                         {% else %}
-                                                            <div class="team-card-sm">
+                                                            <div class="team-card">
                                                                 <div class="row ">
 
-                                                                    <div class="flag-config-sm">
+                                                                    <div class="flag-config">
                                                                         <img src="{{ zone5.0.image_flag }}"
-                                                                             class="img-card-sm-3">
+                                                                             class="img-card-sm">
                                                                     </div>
-                                                                    <div class="name-config-sm">
+                                                                    <div class="name-config">
                                                                         {{ zone5.0.nation_iso_code }}
                                                                     </div>
                                                                 </div>
@@ -665,7 +664,7 @@
                                                             <button type="button" class="btn btn-primary"
                                                                     hx-get="{{ match }}"
                                                                     hx-trigger="click"
-                                                                    hx-target="#schedule-content">
+                                                                    hx-target="body">
                                                                 <i class="fa-regular fa-futbol"></i>
                                                             </button>
                                                         {% endwith %}
@@ -688,14 +687,14 @@
                                                                 </div>
                                                             </div>
                                                         {% else %}
-                                                            <div class="team-card-sm">
+                                                            <div class="team-card">
                                                                 <div class="row ">
 
-                                                                    <div class="flag-config-sm">
+                                                                    <div class="flag-config">
                                                                         <img src="{{ zone4.0.image_flag }}"
-                                                                             class="img-card-sm-3">
+                                                                             class="img-card-sm">
                                                                     </div>
-                                                                    <div class="name-config-sm">
+                                                                    <div class="name-config">
                                                                         {{ zone4.0.nation_iso_code }}
                                                                     </div>
                                                                 </div>
@@ -712,14 +711,14 @@
                                                                 </div>
                                                             </div>
                                                         {% else %}
-                                                            <div class="team-card-sm">
+                                                            <div class="team-card">
                                                                 <div class="row ">
 
-                                                                    <div class="flag-config-sm">
+                                                                    <div class="flag-config">
                                                                         <img src="{{ zone5.0.image_flag }}"
-                                                                             class="img-card-sm-3">
+                                                                             class="img-card-sm">
                                                                     </div>
-                                                                    <div class="name-config-sm">
+                                                                    <div class="name-config">
                                                                         {{ zone5.0.nation_iso_code }}
                                                                     </div>
                                                                 </div>
@@ -732,7 +731,7 @@
                                                             <button type="button" class="btn btn-primary"
                                                                     hx-get="{{ match }}"
                                                                     hx-trigger="click"
-                                                                    hx-target="#schedule-content">
+                                                                    hx-target="body">
                                                                 <i class="fa-regular fa-futbol"></i>
                                                             </button>
                                                         {% endwith %}
@@ -755,14 +754,14 @@
                                                                 </div>
                                                             </div>
                                                         {% else %}
-                                                            <div class="team-card-sm">
+                                                            <div class="team-card">
                                                                 <div class="row ">
 
-                                                                    <div class="flag-config-sm">
+                                                                    <div class="flag-config">
                                                                         <img src="{{ zone4.0.image_flag }}"
-                                                                             class="img-card-sm-3">
+                                                                             class="img-card-sm">
                                                                     </div>
-                                                                    <div class="name-config-sm">
+                                                                    <div class="name-config">
                                                                         {{ zone4.0.nation_iso_code }}
                                                                     </div>
                                                                 </div>
@@ -779,14 +778,14 @@
                                                                 </div>
                                                             </div>
                                                         {% else %}
-                                                            <div class="team-card-sm">
+                                                            <div class="team-card">
                                                                 <div class="row ">
 
-                                                                    <div class="flag-config-sm">
+                                                                    <div class="flag-config">
                                                                         <img src="{{ zone5.0.image_flag }}"
-                                                                             class="img-card-sm-3">
+                                                                             class="img-card-sm">
                                                                     </div>
-                                                                    <div class="name-config-sm">
+                                                                    <div class="name-config">
                                                                         {{ zone5.0.nation_iso_code }}
                                                                     </div>
                                                                 </div>
@@ -799,7 +798,7 @@
                                                             <button type="button" class="btn btn-primary"
                                                                     hx-get="{{ match }}"
                                                                     hx-trigger="click"
-                                                                    hx-target="#schedule-content">
+                                                                    hx-target="body">
                                                                 <i class="fa-regular fa-futbol"></i>
                                                             </button>
                                                         {% endwith %}
@@ -822,14 +821,14 @@
                                                                 </div>
                                                             </div>
                                                         {% else %}
-                                                            <div class="team-card-sm">
+                                                            <div class="team-card">
                                                                 <div class="row ">
 
-                                                                    <div class="flag-config-sm">
+                                                                    <div class="flag-config">
                                                                         <img src="{{ zone4.0.image_flag }}"
-                                                                             class="img-card-sm-3">
+                                                                             class="img-card-sm">
                                                                     </div>
-                                                                    <div class="name-config-sm">
+                                                                    <div class="name-config">
                                                                         {{ zone4.0.nation_iso_code }}
                                                                     </div>
                                                                 </div>
@@ -846,14 +845,14 @@
                                                                 </div>
                                                             </div>
                                                         {% else %}
-                                                            <div class="team-card-sm">
+                                                            <div class="team-card">
                                                                 <div class="row ">
 
-                                                                    <div class="flag-config-sm">
+                                                                    <div class="flag-config">
                                                                         <img src="{{ zone5.0.image_flag }}"
-                                                                             class="img-card-sm-3">
+                                                                             class="img-card-sm">
                                                                     </div>
-                                                                    <div class="name-config-sm">
+                                                                    <div class="name-config">
                                                                         {{ zone5.0.nation_iso_code }}
                                                                     </div>
                                                                 </div>
@@ -866,7 +865,7 @@
                                                             <button type="button" class="btn btn-primary"
                                                                     hx-get="{{ match }}"
                                                                     hx-trigger="click"
-                                                                    hx-target="#schedule-content">
+                                                                    hx-target="body">
                                                                 <i class="fa-regular fa-futbol"></i>
                                                             </button>
                                                         {% endwith %}

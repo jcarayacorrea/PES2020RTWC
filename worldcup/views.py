@@ -3,6 +3,7 @@ import random
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
+from fixtures import createPlayOffMatches, getZoneData
 from utils import getTeamsMainDraw, getTeamsPlayoff
 
 
@@ -16,6 +17,8 @@ def maindraw(request):
 def playoff(request):
     context = {}
     context['teams'] = getTeamsPlayoff()
+    playoffData = getZoneData('P', 'FIFA', 'playoff')
+    context['fixture'] = playoffData['fixtures']
     return render(request, 'worldcup/playoff.html', context)
 
 
@@ -54,11 +57,10 @@ def playoffButton(request):
         random.shuffle(zone3)
         random.shuffle(zone4)
         random.shuffle(zone5)
-        context['zone1'] = zone1
-        context['zone2'] = zone2
-        context['zone3'] = zone3
-        context['zone4'] = zone4
-        context['zone5'] = zone5
+        createPlayOffMatches(getTeamsPlayoff(),zone1,zone2,zone3,zone4,zone5)
+        playoffData = getZoneData('P','FIFA','playoff')
+        context['fixture'] = playoffData['fixtures']
+
 
         return render(request, 'worldcup/playoff.html', context)
 
