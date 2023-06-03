@@ -232,7 +232,8 @@
                                         <div class="soccer-card-body ">
                                             <div class="row mb-3">
                                                 <div class="col-5">
-                                                    <select name="home" class="form-select" hx-get="{% url 'europa.homewildcard' %}"
+                                                    <select name="home" class="form-select"
+                                                            hx-get="{% url 'europa.homewildcard' %}"
                                                             hx-trigger="change"
                                                             hx-target="body">
                                                         {% if zone1 is None %}
@@ -278,36 +279,38 @@
 
                                             </div>
                                             <div class="row mb-3">
-                                                <div class="col-5">
+                                                <div class="col-4">
                                                     <div class="team-card-sm-fxt">
                                                         <div class="row">
                                                             <div class="flag-config">
                                                                 <img src="{{ fixture.wildCard.match1.homeTeam.team.image_flag }}"
-                                                                     class="img-card-sm-4">
+                                                                     class="img-card-sm">
                                                             </div>
-                                                            <div class="name-config-sm-fxt">
-                                                                {{ fixture.wildCard.match1.homeTeam.team.nation_name }}
+                                                            <div class="name-config">
+                                                                {{ fixture.wildCard.match1.homeTeam.team.nation_iso_code }}
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
 
-                                                <div class="col-2">
-                                                    {#                                                    <h3>{{ fixture.fixture1.match1.homeTeam.goals|default_if_none:"0" }}#}
-                                                    {#                                                        - {{ fixture.fixture1.match1.awayTeam.goals|default_if_none:"0" }}</h3>#}
-                                                    <h3>0-0</h3>
+                                                <div class="col-3">
+                                                    {% with homePenalties=fixture.wildCard.match1.homeTeam.penalties awayPenalties=fixture.wildCard.match1.awayTeam.penalties %}
+                                                    <h6>({% firstof homePenalties 0 %}) {{ fixture.wildCard.match1.homeTeam.goals|default_if_none:"0" }}
+                                                        - {{ fixture.wildCard.match1.awayTeam.goals|default_if_none:"0" }} ({% firstof awayPenalties 0 %})</h6>
+                                                    {% endwith %}
+
                                                 </div>
 
-                                                <div class="col-5">
+                                                <div class="col-4">
                                                     <div class="team-card-sm-fxt">
                                                         <div class="row">
                                                             {% if fixture|getItem:'wildCard' is not None %}
                                                                 <div class="flag-config">
                                                                     <img src="{{ fixture.wildCard.match1.awayTeam.team.image_flag }}"
-                                                                         class="img-card-sm-4">
+                                                                         class="img-card-sm">
                                                                 </div>
-                                                                <div class="name-config-sm-fxt">
-                                                                    {{ fixture.wildCard.match1.awayTeam.team.nation_name }}
+                                                                <div class="name-config">
+                                                                    {{ fixture.wildCard.match1.awayTeam.team.nation_iso_code }}
                                                                 </div>
                                                             {% else %}
                                                                 Team 2

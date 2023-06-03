@@ -293,7 +293,7 @@ def saveMatchResult(fixture, match, localGoals, awayGoals, conf, round, zone):
                                                               'fixtures.fixture10.match2.played': True}})
 
 
-def saveExtraTimeResult(fixture, match, localGoals, awayGoals, conf, round, zone, localPenaltys=0, awayPenaltys=0):
+def saveExtraTimeResult(fixture, match, localGoals, awayGoals, localPenaltys, awayPenaltys, conf, round, zone ):
     db = db_conexion()
     match fixture:
         case 'first':

@@ -48,7 +48,7 @@ def sim_match(request, fixture, match, homeId, awayId, conf, round, zone, extraT
     if extraTime == 0:
         saveMatchResult(fixture, match, resultado['local'], resultado['visita'], conf, round, zone)
     else:
-        saveExtraTimeResult(fixture,match,resultado['local'], resultado['visita'],resultado['penales_local'], resultado['penales_visita'], conf, round, zone)
+        saveExtraTimeResult(fixture,match,resultado['local'], resultado['visita'],resultado['penales_local'] if resultado.get('penales_local') else 0 , resultado['penales_visita'] if resultado.get('penales_visita') else 0, conf, round, zone)
     fixtureDict = getZoneData(zone, conf, round)
     context['fixture'] = fixtureDict['fixtures']
     context['conf'] = conf
