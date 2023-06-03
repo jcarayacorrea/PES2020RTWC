@@ -295,8 +295,8 @@
 
                                                 <div class="col-3">
                                                     {% with homePenalties=fixture.wildCard.match1.homeTeam.penalties awayPenalties=fixture.wildCard.match1.awayTeam.penalties %}
-                                                    <h6>({% firstof homePenalties 0 %}) {{ fixture.wildCard.match1.homeTeam.goals }}
-                                                        - {{ fixture.wildCard.match1.awayTeam.goals }} ({% firstof awayPenalties 0 %})</h6>
+                                                    <h6>({% firstof homePenalties 0 %}) {{ fixture.wildCard.match1.homeTeam.goals|default_if_none:"N" }}
+                                                        - {{ fixture.wildCard.match1.awayTeam.goals|default_if_none:"N" }} ({% firstof awayPenalties 0 %})</h6>
                                                     {% endwith %}
 
                                                 </div>
