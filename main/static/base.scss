@@ -152,6 +152,14 @@ img-card-sm-5 {
   border-style: ridge;
 }
 
+team-card-sm-2 {
+  @extend .card;
+  @extend .col;
+  @extend .mb-1;
+  border-color: slategray;
+  border-style: ridge;
+}
+
 .team-card-sm-fxt {
   @extend .card;
   @extend .col;
