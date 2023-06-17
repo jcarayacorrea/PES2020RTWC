@@ -116,7 +116,7 @@ def firstRoundButton(request):
         context['zone2'] = zone2
         context['zone3'] = zone3
 
-        return render(request, 'africa/fstround.html', context)
+        return firstround(request)
 
 
 def firstRoundDraw(teams):
@@ -160,7 +160,7 @@ def secondRoundButton(request):
         context['zone4'] = zone4
         context['zone5'] = zone5
 
-        return render(request, 'africa/sndround.html', context)
+        return secondround(request)
 
 
 def secondRoundDraw(teams):
@@ -205,7 +205,7 @@ def thirdRoundButton(request):
         context['zone4'] = zone4
         context['zone5'] = zone5
 
-        return render(request, 'africa/thrround.html', context)
+        return thirdround(request)
 
 
 def thirdRoundDraw(teams):
@@ -250,7 +250,7 @@ def finalRoundButton(request):
         context['zone4'] = zone4
         context['zone5'] = zone5
 
-        return render(request, 'africa/finalround.html', context)
+        return finalround(request)
 
 
 def finalRoundDraw(teams):

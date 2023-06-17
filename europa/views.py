@@ -93,6 +93,8 @@ def firstround(request):
         context['zone1'] = zone1['teams']
     if len(zone2['teams']) == 5:
         context['zone2'] = zone2['teams']
+
+
     context['fixture'] = zoneWC['fixtures']
 
     return render(request, 'europa/fstround.html', context)
@@ -122,7 +124,7 @@ def firstRoundButton(request):
         context['zone1'] = zone1
         context['zone2'] = zone2
 
-        return render(request, 'europa/fstround.html', context)
+        return firstround(request)
 
 
 def firstRoundDraw(teams):
@@ -169,7 +171,7 @@ def secondRoundButton(request):
         context['zone5'] = zone5
         context['zone6'] = zone6
 
-        return render(request, 'europa/sndround.html', context)
+        return secondround(request)
 
 
 def secondRoundDraw(teams):
@@ -225,7 +227,7 @@ def thirdRoundButton(request):
         context['zone7'] = zone7
         context['zone8'] = zone8
 
-        return render(request, 'europa/thrround.html', context)
+        return thirdround(request)
 
 
 def thirdRoundDraw(teams):
@@ -269,7 +271,7 @@ def finalRoundButton(request):
         context['zone3'] = zone3
         context['zone4'] = zone4
 
-        return render(request, 'europa/finalround.html', context)
+        return finalround(request)
 
 
 def finalRoundDraw(teams):
@@ -298,11 +300,11 @@ def setHomeWildCardTeam(request):
     teamId = request.GET.get('home')
     team = getTeamById(teamId)
     db.get_collection('Fixtures').update_many({'$and': [{'conf_name': 'UEFA'}, {'zone': 'WC'}, {'round': 'first'}]},
-                                             {'$set': {
-                                                 'fixtures.wildCard.match1.homeTeam.team': team[0],
-                                                 'fixtures.wildCard.match1.homeTeam.goals': None,
-                                                 'fixtures.wildCard.match1.homeTeam.penalties': None
-                                             }})
+                                              {'$set': {
+                                                  'fixtures.wildCard.match1.homeTeam.team': team[0],
+                                                  'fixtures.wildCard.match1.homeTeam.goals': None,
+                                                  'fixtures.wildCard.match1.homeTeam.penalties': None
+                                              }})
     return firstround(request)
 
 

@@ -49,7 +49,7 @@ def firstRoundButton(request):
         createFixture(zone1, False, 'A', 'OFC', 'first')
         context['zone1'] = zone1
 
-        return render(request, 'oceania/fstround.html', context)
+        return firstround(request)
 
 
 def firstRoundDraw(teams):
@@ -70,7 +70,7 @@ def finalRoundButton(request):
         context['zone1'] = zone1
         context['zone2'] = zone2
 
-        return render(request, 'oceania/finalround.html', context)
+        return finalround(request)
 
 
 def finalRoundDraw(teams):

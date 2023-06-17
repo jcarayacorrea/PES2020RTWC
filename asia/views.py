@@ -114,7 +114,7 @@ def firstRoundButton(request):
         random.shuffle(zone1)
         createFixture(zone1, False, 'A', 'AFC', 'first')
         context['zone1'] = zone1
-        return render(request, 'asia/fstround.html', context)
+        return firstround(request)
 
 
 def firstRoundDraw(teams):
@@ -148,7 +148,7 @@ def secondRoundButton(request):
         context['zone5'] = zone5
         context['zone6'] = zone6
 
-        return render(request, 'asia/sndround.html', context)
+        return secondround(request)
 
 
 def secondRoundDraw(teams):
@@ -203,7 +203,7 @@ def thirdRoundButton(request):
         context['zone7'] = zone7
         context['zone8'] = zone8
 
-        return render(request, 'asia/thrround.html', context)
+        return thirdround(request)
 
 
 def thirdRoundDraw(teams):
@@ -246,7 +246,7 @@ def finalRoundButton(request):
         context['zone3'] = zone3
         context['zone4'] = zone4
 
-        return render(request, 'asia/finalround.html', context)
+        return finalround(request)
 
 
 def finalRoundDraw(teams):

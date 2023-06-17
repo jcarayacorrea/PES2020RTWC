@@ -78,7 +78,7 @@ def firstRoundButton(request):
         context['zone4'] = zone4
         context['zone5'] = zone5
 
-    return render(request, 'ncamerica/fstround.html', context)
+    return firstround(request)
 
 
 def firstRoundDraw(teams):
@@ -119,7 +119,7 @@ def finalRoundButton(request):
         context['zone2'] = zone2
         context['zone3'] = zone3
 
-        return render(request, 'ncamerica/finalround.html', context)
+        return finalround(request)
 
 
 def finalRoundDraw(teams):
