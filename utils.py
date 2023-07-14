@@ -70,6 +70,15 @@ def getTeamsMainDraw():
     return listData
 
 
+def getTeamsCopaAmerica():
+    db = db_conexion()
+    cursor = db.get_collection('Teams').find({'$or': [{'conf_name': 'CONMEBOL'}, {
+        '$and': [{'conf_name': 'CONCACAF'}, {'$or': [{'stage.mainDraw': True}, {'stage.playoff': True}]}]}]}).sort(
+        'fifa_nation_rank', 1)
+    listData = list(cursor)
+    return listData
+
+
 def updateStage(id, stage):
     db = db_conexion()
     stageObj = {
@@ -293,7 +302,8 @@ def saveMatchResult(fixture, match, localGoals, awayGoals, conf, round, zone):
                                                               'fixtures.fixture10.match2.played': True}})
 
 
-def saveExtraTimeResult(fixture, match, localGoals, awayGoals, localPenaltys, awayPenaltys, conf, round, zone, homeTeam=None, awayTeam=None ):
+def saveExtraTimeResult(fixture, match, localGoals, awayGoals, localPenaltys, awayPenaltys, conf, round, zone,
+                        homeTeam=None, awayTeam=None):
     db = db_conexion()
     match fixture:
         case 'first':
@@ -310,7 +320,8 @@ def saveExtraTimeResult(fixture, match, localGoals, awayGoals, localPenaltys, aw
                                                                       localGoals == awayGoals and localPenaltys < awayPenaltys) else False,
                                                               'fixtures.first.match1.played': True}})
                 db.get_collection('Fixtures').update_many({'conf_name': conf, 'round': round, 'zone': zone},
-                                                          {'$set':{'fixtures.final.match1.awayTeam.team': homeTeam if localGoals > awayGoals or (
+                                                          {'$set': {
+                                                              'fixtures.final.match1.awayTeam.team': homeTeam if localGoals > awayGoals or (
                                                                       localGoals == awayGoals and localPenaltys > awayPenaltys) else awayTeam}})
 
             if match == 2:
