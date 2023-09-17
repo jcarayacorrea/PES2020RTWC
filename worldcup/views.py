@@ -23,10 +23,16 @@ def playoff(request):
 
 
 def maindrawButton(request):
+
     if request.method == 'GET':
         context = {}
         context['teams'] = getTeamsMainDraw()
-        zoneA, zoneB, zoneC, zoneD, zoneE, zoneF, zoneG, zoneH = draw(getTeamsMainDraw())
+        try:
+            zoneA, zoneB, zoneC, zoneD, zoneE, zoneF, zoneG, zoneH = draw(getTeamsMainDraw())
+        except:
+            print("Error favor intentar nuevamente....")
+            return maindraw(request)
+
         random.shuffle(zoneA)
         random.shuffle(zoneB)
         random.shuffle(zoneC)
@@ -57,10 +63,9 @@ def playoffButton(request):
         random.shuffle(zone3)
         random.shuffle(zone4)
         random.shuffle(zone5)
-        createPlayOffMatches(getTeamsPlayoff(),zone1,zone2,zone3,zone4,zone5)
-        playoffData = getZoneData('P','FIFA','playoff')
+        createPlayOffMatches(getTeamsPlayoff(), zone1, zone2, zone3, zone4, zone5)
+        playoffData = getZoneData('P', 'FIFA', 'playoff')
         context['fixture'] = playoffData['fixtures']
-
 
         return render(request, 'worldcup/playoff.html', context)
 
@@ -143,8 +148,8 @@ def draw(teams):
             case 'H':
                 zoneH.append(team)
 
-    if len(zoneA) != 4 or len(zoneB) != 4 or len(zoneC) != 4 or len(zoneD) != 4 or len(zoneE) != 4 or len(
-            zoneF) != 4 or len(zoneG) != 4 or len(zoneH) != 4:
+    if (len(zoneA) != 4) or (len(zoneB) != 4) or (len(zoneC) != 4) or (len(zoneD) != 4) or (len(zoneE) != 4) \
+            or (len(zoneF) != 4) or (len(zoneG) != 4) or (len(zoneH) != 4):
         draw(teams)
     else:
         return zoneA, zoneB, zoneC, zoneD, zoneE, zoneF, zoneG, zoneH
@@ -171,6 +176,7 @@ def setTeamPosition(conf_name, a, b, c, d, e, f, g, h, maxlength, teamsCount):
             zones.remove('H')
         if len(zones) > 1:
             random.shuffle(zones)
+
         return zones[0]
     except:
         print('Error al generar sorteo')
