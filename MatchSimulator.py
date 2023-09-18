@@ -38,6 +38,7 @@ def calcular_probabilidad_ganador(ranking_local, ranking_visitante):
 def simular_partido(equipo_local, equipo_visitante, extraTime):
     """Simula un partido entre dos equipos y determina el ganador."""
     # Obtener el ranking FIFA de los equipos
+    sleepTime = 0.1
     probalidad_gol = 0.03
     jsonLocal = getTeamById(equipo_local)
     jsonVisita = getTeamById(equipo_visitante)
@@ -88,7 +89,7 @@ def simular_partido(equipo_local, equipo_visitante, extraTime):
             print('Minuto ({})'.format(tiempo_transcurrido))
 
         # Dormir el programa por 0.9 segundos para simular el tiempo real del partido
-        time.sleep(0.25)
+        time.sleep(sleepTime)
 
     print('Fin del Partido {} {} - {} {}'.format(nombre_local, goles_local, goles_visitante, nombre_visita))
     if extraTime and goles_local == goles_visitante:
@@ -127,7 +128,7 @@ def simular_partido(equipo_local, equipo_visitante, extraTime):
                 print('Minuto ({})'.format(tiempo_transcurrido))
 
             # Dormir el programa por 0.9 segundos para simular el tiempo real del partido
-            time.sleep(0.25)
+            time.sleep(sleepTime)
         print('Fin del Alargue {} {} - {} {}'.format(nombre_local, goles_local, goles_visitante, nombre_visita))
 
         if goles_local == goles_visitante:
@@ -150,7 +151,7 @@ def simular_partido(equipo_local, equipo_visitante, extraTime):
                 else:
                     print('Penal errado {}  {} - {}'.format(nombre_local, penales_local,
                                                             penales_visita))
-                time.sleep(0.25)
+                time.sleep(sleepTime)
                 eventoVisita = random.choices([0, 1], [probabilidad_visitante, probabilidad_local])[0]
 
                 # Si el evento es un gol visitante
@@ -172,7 +173,7 @@ def simular_partido(equipo_local, equipo_visitante, extraTime):
                     if penales_local != penales_visita:
                         penales = True
 
-                time.sleep(0.25)
+                time.sleep(sleepTime)
 
             print('Fin Penales {} {} - {} {}'.format(nombre_local, penales_local if penales_local > 0 else 0, penales_visita if penales_visita > 0 else 0, nombre_visita))
         return {'local': goles_local, 'penales_local': penales_local if penales_local is not None else None,

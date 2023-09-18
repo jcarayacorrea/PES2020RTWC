@@ -20,13 +20,12 @@
 {% endcompress %}
     <script src="{% static '/bootstrap5/js/bootstrap.bundle.js' %}"></script>
      <script src="{% static 'js/ajax_calls.js' %}"></script>
-    <script src="{% static 'js/utils.js' %}"></script>
-     <script src="https://unpkg.com/htmx.org@1.8.4"></script>
-    <script src="https://unpkg.com/htmx.org@1.8.4/dist/ext/loading-states.js"></script>
+     <script src="{% static 'htmx/htmx.min.js' %}"></script>
+    <script src="{% static 'htmx/loading-states.js' %}"></script>
 
 
   </head>
-  <body hx-ext="loading-states class-tools">
+  <body hx-ext="loading-states">
 
 
     <div id="nav" >
