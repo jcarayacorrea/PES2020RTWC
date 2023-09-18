@@ -239,6 +239,7 @@
                                                         {% if zone1 is None %}
                                                             <option selected>Team 1</option>
                                                         {% else %}
+                                                            <option selected>Team 1</option>
                                                             {% for team in zone1 %}
                                                                 <option value="{{ team.id }}">
                                                                     {{ team.nation_name }}
@@ -267,6 +268,7 @@
                                                         {% if zone2 is None %}
                                                             <option selected>Team 2</option>
                                                         {% else %}
+                                                            <option selected>Team 2</option>
                                                             {% for team in zone2 %}
                                                                 <option value="{{ team.id }}">
                                                                     {{ team.nation_name }}
