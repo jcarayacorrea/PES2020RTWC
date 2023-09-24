@@ -202,10 +202,10 @@ team-card-sm-2 {
   @extend .progress-bar;
   @extend .progress-bar-striped;
   @extend .progress-bar-animated;
-
+  width: 0%;
   animation: progressAnimation;
   animation-duration: 10s;
-  animation-delay: 50ms;
+  animation-delay: 150ms;
 }
 
 @keyframes progressAnimation {
