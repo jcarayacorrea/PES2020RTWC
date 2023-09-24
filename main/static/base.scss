@@ -197,3 +197,17 @@ team-card-sm-2 {
   @extend .modal-dialog;
   @extend .modal-lg
 }
+
+.match-progress-bar {
+  @extend .progress-bar;
+  @extend .progress-bar-striped;
+  @extend .progress-bar-animated;
+
+  animation: progressAnimation 10s;
+}
+
+@keyframes progressAnimation {
+  from { width: 0}
+  to { width: 100%}
+
+}

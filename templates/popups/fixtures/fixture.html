@@ -13,7 +13,8 @@
                     <div class="card card-border offset-md-2">
                         <div class="soccer-card-header">Fixture 1</div>
                         <div class="soccer-card-body">
-                            <div class="row  border-info">
+
+                            <div class="row  border-info" data-loading-states>
 
                                 <div class="col-4">
                                     <div class="team-card-sm-fxt">
@@ -29,10 +30,20 @@
                                     </div>
                                 </div>
 
-                                <div class="col-2">
-                                    <h3>{{ fixture.fixture1.match1.homeTeam.goals|default_if_none:"" }}
-                                        - {{ fixture.fixture1.match1.awayTeam.goals|default_if_none:"" }}</h3>
+                                <div class=" col-2" data-loading-aria-busy data-loading>
+                                    <div class="progress">
+                                        <div class="match-progress-bar"
+                                             role="progressbar" aria-label="Animated striped example"
+                                             aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
+                                             style="width: 0%"></div>
+                                    </div>
                                 </div>
+
+                                <div class="col-2" data-loading-aria-busy data-loading-class="d-none">
+                                    <h3>{{ fixture.fixture1.match1.homeTeam.goals|default_if_none:"?" }}
+                                        - {{ fixture.fixture1.match1.awayTeam.goals|default_if_none:"?" }}</h3>
+                                </div>
+
 
                                 <div class="col-4">
                                     <div class="team-card-sm-fxt">
@@ -50,9 +61,9 @@
 
                                 <div class="col-2">
                                     {% with homeId=fixture.fixture1.match1.homeTeam.team.id awayId=fixture.fixture1.match1.awayTeam.team.id %}
-                                        {% url 'match_simulator' 1 1 homeId awayId  conf  round zone as match %}
+                                        {% url 'match_simulator' 1 1 homeId awayId  conf  round zone as match_1_1 %}
                                         <button type="button" class="btn btn-primary"
-                                                hx-get="{{ match }}"
+                                                hx-get="{{ match_1_1 }}"
                                                 hx-trigger="click"
                                                 hx-target="#schedule-content">
                                             <i class="fa-regular fa-futbol"></i>
@@ -62,8 +73,10 @@
                                 </div>
                             </div>
 
+
+
                             {% if fixture.fixture1|getItem:'match2' is not None %}
-                                <div class="row  border-info">
+                                <div class="row  border-info" data-loading-states>
 
                                     <div class="col-4">
                                         <div class="team-card-sm-fxt">
@@ -79,9 +92,18 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-2">
-                                        <h3>{{ fixture.fixture1.match2.homeTeam.goals|default_if_none:"" }}
-                                            - {{ fixture.fixture1.match2.awayTeam.goals|default_if_none:"" }}</h3>
+                                    <div class=" col-2" data-loading-aria-busy data-loading>
+                                        <div class="progress">
+                                            <div class="match-progress-bar"
+                                                 role="progressbar" aria-label="Animated striped example"
+                                                 aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
+                                                 style="width: 0%"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-2" data-loading-aria-busy data-loading-class="d-none">
+                                        <h3>{{ fixture.fixture1.match2.homeTeam.goals|default_if_none:"?" }}
+                                            - {{ fixture.fixture1.match2.awayTeam.goals|default_if_none:"?" }}</h3>
                                     </div>
                                     <div class="col-4">
                                         <div class="team-card-sm-fxt">
@@ -99,9 +121,9 @@
 
                                     <div class="col-2">
                                         {% with homeId=fixture.fixture1.match2.homeTeam.team.id awayId=fixture.fixture1.match2.awayTeam.team.id %}
-                                            {% url 'match_simulator' 1 2 homeId awayId  conf  round zone as match %}
+                                            {% url 'match_simulator' 1 2 homeId awayId  conf  round zone as match_1_2 %}
                                             <button type="button" class="btn btn-primary"
-                                                    hx-get="{{ match }}"
+                                                    hx-get="{{ match_1_2 }}"
                                                     hx-trigger="click"
                                                     hx-target="#schedule-content">
                                                 <i class="fa-regular fa-futbol"></i>
@@ -129,7 +151,8 @@
                     <div class="card card-border offset-md-2">
                         <div class="soccer-card-header">Fixture 2</div>
                         <div class="soccer-card-body">
-                            <div class="row  border-info">
+
+                            <div class="row  border-info" data-loading-states>
 
                                 <div class="col-4">
                                     <div class="team-card-sm-fxt">
@@ -145,10 +168,20 @@
                                     </div>
                                 </div>
 
-                                <div class="col-2">
-                                    <h3>{{ fixture.fixture2.match1.homeTeam.goals|default_if_none:"" }}
-                                        - {{ fixture.fixture2.match1.awayTeam.goals|default_if_none:"" }}</h3>
+                                <div class=" col-2" data-loading-aria-busy data-loading>
+                                    <div class="progress">
+                                        <div class="match-progress-bar"
+                                             role="progressbar" aria-label="Animated striped example"
+                                             aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
+                                             style="width: 0%"></div>
+                                    </div>
                                 </div>
+
+                                <div class="col-2" data-loading-aria-busy data-loading-class="d-none">
+                                    <h3>{{ fixture.fixture2.match1.homeTeam.goals|default_if_none:"?" }}
+                                        - {{ fixture.fixture2.match1.awayTeam.goals|default_if_none:"?" }}</h3>
+                                </div>
+
 
                                 <div class="col-4">
                                     <div class="team-card-sm-fxt">
@@ -166,9 +199,9 @@
 
                                 <div class="col-2">
                                     {% with homeId=fixture.fixture2.match1.homeTeam.team.id awayId=fixture.fixture2.match1.awayTeam.team.id %}
-                                        {% url 'match_simulator' 2 1 homeId awayId  conf  round zone as match %}
+                                        {% url 'match_simulator' 2 1 homeId awayId  conf  round zone as match_2_1 %}
                                         <button type="button" class="btn btn-primary"
-                                                hx-get="{{ match }}"
+                                                hx-get="{{ match_2_1 }}"
                                                 hx-trigger="click"
                                                 hx-target="#schedule-content">
                                             <i class="fa-regular fa-futbol"></i>
@@ -179,56 +212,66 @@
                             </div>
 
                             {% if fixture.fixture2|getItem:'match2' is not None %}
-                                <div class="row  border-info">
+                                <div class="row  border-info" data-loading-states>
 
-                                    <div class="col-4">
-                                        <div class="team-card-sm-fxt">
-                                            <div class="row">
-                                                <div class="flag-config">
-                                                    <img src="{{ fixture.fixture2.match2.homeTeam.team.image_flag }}"
-                                                         class="img-card-sm-4">
-                                                </div>
-                                                <div class="name-config-sm-fxt">
-                                                    {{ fixture.fixture2.match2.homeTeam.team.nation_iso_code }}
-                                                </div>
+                                <div class="col-4">
+                                    <div class="team-card-sm-fxt">
+                                        <div class="row">
+                                            <div class="flag-config">
+                                                <img src="{{ fixture.fixture2.match2.homeTeam.team.image_flag }}"
+                                                     class="img-card-sm-4">
+                                            </div>
+                                            <div class="name-config-sm-fxt">
+                                                {{ fixture.fixture2.match2.homeTeam.team.nation_iso_code }}
                                             </div>
                                         </div>
                                     </div>
+                                </div>
 
-                                    <div class="col-2">
-                                        <h3>{{ fixture.fixture2.match2.homeTeam.goals|default_if_none:"" }}
-                                            - {{ fixture.fixture2.match2.awayTeam.goals|default_if_none:"" }}</h3>
+                                <div class=" col-2" data-loading-aria-busy data-loading>
+                                    <div class="progress">
+                                        <div class="match-progress-bar"
+                                             role="progressbar" aria-label="Animated striped example"
+                                             aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
+                                             style="width: 0%"></div>
                                     </div>
-                                    <div class="col-4">
-                                        <div class="team-card-sm-fxt">
-                                            <div class="row">
-                                                <div class="flag-config">
-                                                    <img src="{{ fixture.fixture2.match2.awayTeam.team.image_flag }}"
-                                                         class="img-card-sm-4">
-                                                </div>
-                                                <div class="name-config-sm-fxt">
-                                                    {{ fixture.fixture2.match2.awayTeam.team.nation_iso_code }}
-                                                </div>
+                                </div>
+
+                                <div class="col-2" data-loading-aria-busy data-loading-class="d-none">
+                                    <h3>{{ fixture.fixture2.match2.homeTeam.goals|default_if_none:"?" }}
+                                        - {{ fixture.fixture2.match2.awayTeam.goals|default_if_none:"?" }}</h3>
+                                </div>
+
+
+                                <div class="col-4">
+                                    <div class="team-card-sm-fxt">
+                                        <div class="row">
+                                            <div class="flag-config">
+                                                <img src="{{ fixture.fixture2.match2.awayTeam.team.image_flag }}"
+                                                     class="img-card-sm-4">
+                                            </div>
+                                            <div class="name-config-sm-fxt">
+                                                {{ fixture.fixture2.match2.awayTeam.team.nation_iso_code }}
                                             </div>
                                         </div>
                                     </div>
+                                </div>
 
-                                    <div class="col-2">
-                                        {% with homeId=fixture.fixture2.match2.homeTeam.team.id awayId=fixture.fixture2.match2.awayTeam.team.id %}
-                                            {% url 'match_simulator' 2 2 homeId awayId  conf  round zone as match %}
-                                            <button type="button" class="btn btn-primary"
-                                                    hx-get="{{ match }}"
-                                                    hx-trigger="click"
-                                                    hx-target="#schedule-content">
-                                                <i class="fa-regular fa-futbol"></i>
-                                            </button>
-                                        {% endwith %}
-
-                                    </div>
+                                <div class="col-2">
+                                    {% with homeId=fixture.fixture2.match2.homeTeam.team.id awayId=fixture.fixture2.match2.awayTeam.team.id %}
+                                        {% url 'match_simulator' 2 2 homeId awayId  conf  round zone as match_2_2 %}
+                                        <button type="button" class="btn btn-primary"
+                                                hx-get="{{ match_2_2 }}"
+                                                hx-trigger="click"
+                                                hx-target="#schedule-content">
+                                            <i class="fa-regular fa-futbol"></i>
+                                        </button>
+                                    {% endwith %}
 
 
                                 </div>
                             {% endif %}
+                            </div>
 
 
                         </div>
@@ -245,7 +288,8 @@
                     <div class="card card-border offset-md-2">
                         <div class="soccer-card-header">Fixture 3</div>
                         <div class="soccer-card-body">
-                            <div class="row  border-info">
+
+                            <div class="row  border-info" data-loading-states>
 
                                 <div class="col-4">
                                     <div class="team-card-sm-fxt">
@@ -261,10 +305,20 @@
                                     </div>
                                 </div>
 
-                                <div class="col-2">
-                                    <h3>{{ fixture.fixture3.match1.homeTeam.goals|default_if_none:"" }}
-                                        - {{ fixture.fixture3.match1.awayTeam.goals|default_if_none:"" }}</h3>
+                                <div class=" col-2" data-loading-aria-busy data-loading>
+                                    <div class="progress">
+                                        <div class="match-progress-bar"
+                                             role="progressbar" aria-label="Animated striped example"
+                                             aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
+                                             style="width: 0%"></div>
+                                    </div>
                                 </div>
+
+                                <div class="col-2" data-loading-aria-busy data-loading-class="d-none">
+                                    <h3>{{ fixture.fixture3.match1.homeTeam.goals|default_if_none:"?" }}
+                                        - {{ fixture.fixture3.match1.awayTeam.goals|default_if_none:"?" }}</h3>
+                                </div>
+
 
                                 <div class="col-4">
                                     <div class="team-card-sm-fxt">
@@ -282,9 +336,9 @@
 
                                 <div class="col-2">
                                     {% with homeId=fixture.fixture3.match1.homeTeam.team.id awayId=fixture.fixture3.match1.awayTeam.team.id %}
-                                        {% url 'match_simulator' 3 1 homeId awayId  conf  round zone as match %}
+                                        {% url 'match_simulator' 3 1 homeId awayId  conf  round zone as match_3_1 %}
                                         <button type="button" class="btn btn-primary"
-                                                hx-get="{{ match }}"
+                                                hx-get="{{ match_3_1 }}"
                                                 hx-trigger="click"
                                                 hx-target="#schedule-content">
                                             <i class="fa-regular fa-futbol"></i>
@@ -295,7 +349,7 @@
                             </div>
 
                             {% if fixture.fixture3|getItem:'match2' is not None %}
-                                <div class="row  border-info">
+                                <div class="row  border-info" data-loading-states>
 
                                     <div class="col-4">
                                         <div class="team-card-sm-fxt">
@@ -311,10 +365,21 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-2">
-                                        <h3>{{ fixture.fixture3.match2.homeTeam.goals|default_if_none:"" }}
-                                            - {{ fixture.fixture3.match2.awayTeam.goals|default_if_none:"" }}</h3>
+                                    <div class=" col-2" data-loading-aria-busy data-loading>
+                                        <div class="progress">
+                                            <div class="match-progress-bar"
+                                                 role="progressbar" aria-label="Animated striped example"
+                                                 aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
+                                                 style="width: 0%"></div>
+                                        </div>
                                     </div>
+
+                                    <div class="col-2" data-loading-aria-busy data-loading-class="d-none">
+                                        <h3>{{ fixture.fixture3.match2.homeTeam.goals|default_if_none:"?" }}
+                                            - {{ fixture.fixture3.match2.awayTeam.goals|default_if_none:"?" }}</h3>
+                                    </div>
+
+
                                     <div class="col-4">
                                         <div class="team-card-sm-fxt">
                                             <div class="row">
@@ -331,9 +396,9 @@
 
                                     <div class="col-2">
                                         {% with homeId=fixture.fixture3.match2.homeTeam.team.id awayId=fixture.fixture3.match2.awayTeam.team.id %}
-                                            {% url 'match_simulator' 3 2 homeId awayId  conf  round zone as match %}
+                                            {% url 'match_simulator' 3 2 homeId awayId  conf  round zone as match_3_2 %}
                                             <button type="button" class="btn btn-primary"
-                                                    hx-get="{{ match }}"
+                                                    hx-get="{{ match_3_2 }}"
                                                     hx-trigger="click"
                                                     hx-target="#schedule-content">
                                                 <i class="fa-regular fa-futbol"></i>
@@ -361,7 +426,7 @@
                     <div class="card card-border offset-md-2">
                         <div class="soccer-card-header">Fixture 4</div>
                         <div class="soccer-card-body">
-                            <div class="row  border-info">
+                            <div class="row  border-info" data-loading-states>
 
                                 <div class="col-4">
                                     <div class="team-card-sm-fxt">
@@ -377,12 +442,20 @@
                                     </div>
                                 </div>
 
-                                <div class="col-2">
-
-                                    <h3>{{ fixture.fixture4.match1.homeTeam.goals|default_if_none:"" }}
-                                        - {{ fixture.fixture4.match1.awayTeam.goals|default_if_none:"" }}</h3>
-
+                                <div class=" col-2" data-loading-aria-busy data-loading>
+                                    <div class="progress">
+                                        <div class="match-progress-bar"
+                                             role="progressbar" aria-label="Animated striped example"
+                                             aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
+                                             style="width: 0%"></div>
+                                    </div>
                                 </div>
+
+                                <div class="col-2" data-loading-aria-busy data-loading-class="d-none">
+                                    <h3>{{ fixture.fixture4.match1.homeTeam.goals|default_if_none:"?" }}
+                                        - {{ fixture.fixture4.match1.awayTeam.goals|default_if_none:"?" }}</h3>
+                                </div>
+
 
                                 <div class="col-4">
                                     <div class="team-card-sm-fxt">
@@ -400,9 +473,9 @@
 
                                 <div class="col-2">
                                     {% with homeId=fixture.fixture4.match1.homeTeam.team.id awayId=fixture.fixture4.match1.awayTeam.team.id %}
-                                        {% url 'match_simulator' 4 1 homeId awayId  conf  round zone as match %}
+                                        {% url 'match_simulator' 4 1 homeId awayId  conf  round zone as match_4_1 %}
                                         <button type="button" class="btn btn-primary"
-                                                hx-get="{{ match }}"
+                                                hx-get="{{ match_4_1 }}"
                                                 hx-trigger="click"
                                                 hx-target="#schedule-content">
                                             <i class="fa-regular fa-futbol"></i>
@@ -413,7 +486,7 @@
                             </div>
 
                             {% if fixture.fixture4|getItem:'match2' is not None %}
-                                <div class="row  border-info">
+                                <div class="row  border-info" data-loading-states>
 
                                     <div class="col-4">
                                         <div class="team-card-sm-fxt">
@@ -429,10 +502,21 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-2">
-                                        <h3>{{ fixture.fixture4.match2.homeTeam.goals|default_if_none:"" }}
-                                            - {{ fixture.fixture4.match2.awayTeam.goals|default_if_none:"" }}</h3>
+                                    <div class=" col-2" data-loading-aria-busy data-loading>
+                                        <div class="progress">
+                                            <div class="match-progress-bar"
+                                                 role="progressbar" aria-label="Animated striped example"
+                                                 aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
+                                                 style="width: 0%"></div>
+                                        </div>
                                     </div>
+
+                                    <div class="col-2" data-loading-aria-busy data-loading-class="d-none">
+                                        <h3>{{ fixture.fixture4.match2.homeTeam.goals|default_if_none:"?" }}
+                                            - {{ fixture.fixture4.match2.awayTeam.goals|default_if_none:"?" }}</h3>
+                                    </div>
+
+
                                     <div class="col-4">
                                         <div class="team-card-sm-fxt">
                                             <div class="row">
@@ -449,9 +533,9 @@
 
                                     <div class="col-2">
                                         {% with homeId=fixture.fixture4.match2.homeTeam.team.id awayId=fixture.fixture4.match2.awayTeam.team.id %}
-                                            {% url 'match_simulator' 4 2 homeId awayId  conf  round zone as match %}
+                                            {% url 'match_simulator' 4 2 homeId awayId  conf  round zone as match_4_2 %}
                                             <button type="button" class="btn btn-primary"
-                                                    hx-get="{{ match }}"
+                                                    hx-get="{{ match_4_2 }}"
                                                     hx-trigger="click"
                                                     hx-target="#schedule-content">
                                                 <i class="fa-regular fa-futbol"></i>
@@ -479,7 +563,7 @@
                     <div class="card card-border offset-md-2">
                         <div class="soccer-card-header">Fixture 5</div>
                         <div class="soccer-card-body">
-                            <div class="row  border-info">
+                            <div class="row  border-info" data-loading-states>
 
                                 <div class="col-4">
                                     <div class="team-card-sm-fxt">
@@ -495,10 +579,20 @@
                                     </div>
                                 </div>
 
-                                <div class="col-2">
-                                    <h3>{{ fixture.fixture5.match1.homeTeam.goals|default_if_none:"" }}
-                                        - {{ fixture.fixture5.match1.awayTeam.goals|default_if_none:"" }}</h3>
+                                <div class=" col-2" data-loading-aria-busy data-loading>
+                                    <div class="progress">
+                                        <div class="match-progress-bar"
+                                             role="progressbar" aria-label="Animated striped example"
+                                             aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
+                                             style="width: 0%"></div>
+                                    </div>
                                 </div>
+
+                                <div class="col-2" data-loading-aria-busy data-loading-class="d-none">
+                                    <h3>{{ fixture.fixture5.match1.homeTeam.goals|default_if_none:"?" }}
+                                        - {{ fixture.fixture5.match1.awayTeam.goals|default_if_none:"?" }}</h3>
+                                </div>
+
 
                                 <div class="col-4">
                                     <div class="team-card-sm-fxt">
@@ -516,9 +610,9 @@
 
                                 <div class="col-2">
                                     {% with homeId=fixture.fixture5.match1.homeTeam.team.id awayId=fixture.fixture5.match1.awayTeam.team.id %}
-                                        {% url 'match_simulator' 5 1 homeId awayId  conf  round zone as match %}
+                                        {% url 'match_simulator' 5 1 homeId awayId  conf  round zone as match_5_1 %}
                                         <button type="button" class="btn btn-primary"
-                                                hx-get="{{ match }}"
+                                                hx-get="{{ match_5_1 }}"
                                                 hx-trigger="click"
                                                 hx-target="#schedule-content">
                                             <i class="fa-regular fa-futbol"></i>
@@ -528,7 +622,7 @@
                                 </div>
                             </div>
                             {% if fixture.fixture5|getItem:'match2' is not None %}
-                                <div class="row  border-info">
+                                <div class="row  border-info" data-loading-states>
 
                                     <div class="col-4">
                                         <div class="team-card-sm-fxt">
@@ -544,10 +638,21 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-2">
-                                        <h3>{{ fixture.fixture5.match2.homeTeam.goals|default_if_none:"" }}
-                                            - {{ fixture.fixture5.match2.awayTeam.goals|default_if_none:"" }}</h3>
+                                    <div class=" col-2" data-loading-aria-busy data-loading>
+                                        <div class="progress">
+                                            <div class="match-progress-bar"
+                                                 role="progressbar" aria-label="Animated striped example"
+                                                 aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
+                                                 style="width: 0%"></div>
+                                        </div>
                                     </div>
+
+                                    <div class="col-2" data-loading-aria-busy data-loading-class="d-none">
+                                        <h3>{{ fixture.fixture5.match2.homeTeam.goals|default_if_none:"?" }}
+                                            - {{ fixture.fixture5.match2.awayTeam.goals|default_if_none:"?" }}</h3>
+                                    </div>
+
+
                                     <div class="col-4">
                                         <div class="team-card-sm-fxt">
                                             <div class="row">
@@ -564,9 +669,9 @@
 
                                     <div class="col-2">
                                         {% with homeId=fixture.fixture5.match2.homeTeam.team.id awayId=fixture.fixture5.match2.awayTeam.team.id %}
-                                            {% url 'match_simulator' 5 2 homeId awayId  conf  round zone as match %}
+                                            {% url 'match_simulator' 5 2 homeId awayId  conf  round zone as match_5_2 %}
                                             <button type="button" class="btn btn-primary"
-                                                    hx-get="{{ match }}"
+                                                    hx-get="{{ match_5_2 }}"
                                                     hx-trigger="click"
                                                     hx-target="#schedule-content">
                                                 <i class="fa-regular fa-futbol"></i>
@@ -594,7 +699,7 @@
                     <div class="card card-border offset-md-2">
                         <div class="soccer-card-header">Fixture 6</div>
                         <div class="soccer-card-body">
-                            <div class="row  border-info">
+                            <div class="row  border-info" data-loading-states>
 
                                 <div class="col-4">
                                     <div class="team-card-sm-fxt">
@@ -610,10 +715,20 @@
                                     </div>
                                 </div>
 
-                                <div class="col-2">
-                                    <h3>{{ fixture.fixture6.match1.homeTeam.goals|default_if_none:"" }}
-                                        - {{ fixture.fixture6.match1.awayTeam.goals|default_if_none:"" }}</h3>
+                                <div class=" col-2" data-loading-aria-busy data-loading>
+                                    <div class="progress">
+                                        <div class="match-progress-bar"
+                                             role="progressbar" aria-label="Animated striped example"
+                                             aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
+                                             style="width: 0%"></div>
+                                    </div>
                                 </div>
+
+                                <div class="col-2" data-loading-aria-busy data-loading-class="d-none">
+                                    <h3>{{ fixture.fixture6.match1.homeTeam.goals|default_if_none:"?" }}
+                                        - {{ fixture.fixture6.match1.awayTeam.goals|default_if_none:"?" }}</h3>
+                                </div>
+
 
                                 <div class="col-4">
                                     <div class="team-card-sm-fxt">
@@ -631,9 +746,9 @@
 
                                 <div class="col-2">
                                     {% with homeId=fixture.fixture6.match1.homeTeam.team.id awayId=fixture.fixture6.match1.awayTeam.team.id %}
-                                        {% url 'match_simulator' 6 1 homeId awayId  conf  round zone as match %}
+                                        {% url 'match_simulator' 6 1 homeId awayId  conf  round zone as match_6_1 %}
                                         <button type="button" class="btn btn-primary"
-                                                hx-get="{{ match }}"
+                                                hx-get="{{ match_6_1 }}"
                                                 hx-trigger="click"
                                                 hx-target="#schedule-content">
                                             <i class="fa-regular fa-futbol"></i>
@@ -644,7 +759,7 @@
                             </div>
 
                             {% if fixture.fixture6|getItem:'match2' is not None %}
-                                <div class="row  border-info">
+                                <div class="row  border-info" data-loading-states>
 
                                     <div class="col-4">
                                         <div class="team-card-sm-fxt">
@@ -660,10 +775,21 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-2">
-                                        <h3>{{ fixture.fixture6.match2.homeTeam.goals|default_if_none:"" }}
-                                            - {{ fixture.fixture6.match2.awayTeam.goals|default_if_none:"" }}</h3>
+                                    <div class=" col-2" data-loading-aria-busy data-loading>
+                                        <div class="progress">
+                                            <div class="match-progress-bar"
+                                                 role="progressbar" aria-label="Animated striped example"
+                                                 aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
+                                                 style="width: 0%"></div>
+                                        </div>
                                     </div>
+
+                                    <div class="col-2" data-loading-aria-busy data-loading-class="d-none">
+                                        <h3>{{ fixture.fixture6.match2.homeTeam.goals|default_if_none:"?" }}
+                                            - {{ fixture.fixture6.match2.awayTeam.goals|default_if_none:"?" }}</h3>
+                                    </div>
+
+
                                     <div class="col-4">
                                         <div class="team-card-sm-fxt">
                                             <div class="row">
@@ -680,9 +806,9 @@
 
                                     <div class="col-2">
                                         {% with homeId=fixture.fixture6.match2.homeTeam.team.id awayId=fixture.fixture6.match2.awayTeam.team.id %}
-                                            {% url 'match_simulator' 6 2 homeId awayId  conf  round zone as match %}
+                                            {% url 'match_simulator' 6 2 homeId awayId  conf  round zone as match_6_2 %}
                                             <button type="button" class="btn btn-primary"
-                                                    hx-get="{{ match }}"
+                                                    hx-get="{{ match_6_2 }}"
                                                     hx-trigger="click"
                                                     hx-target="#schedule-content">
                                                 <i class="fa-regular fa-futbol"></i>
@@ -710,7 +836,7 @@
                     <div class="card card-border offset-md-2">
                         <div class="soccer-card-header">Fixture 7</div>
                         <div class="soccer-card-body">
-                            <div class="row  border-info">
+                            <div class="row  border-info" data-loading-states>
 
                                 <div class="col-4">
                                     <div class="team-card-sm-fxt">
@@ -726,10 +852,20 @@
                                     </div>
                                 </div>
 
-                                <div class="col-2">
-                                    <h3>{{ fixture.fixture7.match1.homeTeam.goals|default_if_none:"" }}
-                                        - {{ fixture.fixture7.match1.awayTeam.goals|default_if_none:"" }}</h3>
+                                <div class=" col-2" data-loading-aria-busy data-loading>
+                                    <div class="progress">
+                                        <div class="match-progress-bar"
+                                             role="progressbar" aria-label="Animated striped example"
+                                             aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
+                                             style="width: 0%"></div>
+                                    </div>
                                 </div>
+
+                                <div class="col-2" data-loading-aria-busy data-loading-class="d-none">
+                                    <h3>{{ fixture.fixture7.match1.homeTeam.goals|default_if_none:"?" }}
+                                        - {{ fixture.fixture7.match1.awayTeam.goals|default_if_none:"?" }}</h3>
+                                </div>
+
 
                                 <div class="col-4">
                                     <div class="team-card-sm-fxt">
@@ -747,9 +883,9 @@
 
                                 <div class="col-2">
                                     {% with homeId=fixture.fixture7.match1.homeTeam.team.id awayId=fixture.fixture7.match1.awayTeam.team.id %}
-                                        {% url 'match_simulator' 7 1 homeId awayId  conf  round zone as match %}
+                                        {% url 'match_simulator' 7 1 homeId awayId  conf  round zone as match_7_1 %}
                                         <button type="button" class="btn btn-primary"
-                                                hx-get="{{ match }}"
+                                                hx-get="{{ match_7_1 }}"
                                                 hx-trigger="click"
                                                 hx-target="#schedule-content">
                                             <i class="fa-regular fa-futbol"></i>
@@ -759,7 +895,7 @@
                                 </div>
                             </div>
 
-                            <div class="row  border-info">
+                            <div class="row  border-info" data-loading-states>
 
                                 <div class="col-4">
                                     <div class="team-card-sm-fxt">
@@ -775,10 +911,21 @@
                                     </div>
                                 </div>
 
-                                <div class="col-2">
-                                    <h3>{{ fixture.fixture7.match2.homeTeam.goals|default_if_none:"" }}
-                                        - {{ fixture.fixture7.match2.awayTeam.goals|default_if_none:"" }}</h3>
+                                <div class=" col-2" data-loading-aria-busy data-loading>
+                                    <div class="progress">
+                                        <div class="match-progress-bar"
+                                             role="progressbar" aria-label="Animated striped example"
+                                             aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
+                                             style="width: 0%"></div>
+                                    </div>
                                 </div>
+
+                                <div class="col-2" data-loading-aria-busy data-loading-class="d-none">
+                                    <h3>{{ fixture.fixture7.match2.homeTeam.goals|default_if_none:"?" }}
+                                        - {{ fixture.fixture7.match2.awayTeam.goals|default_if_none:"?" }}</h3>
+                                </div>
+
+
                                 <div class="col-4">
                                     <div class="team-card-sm-fxt">
                                         <div class="row">
@@ -795,9 +942,9 @@
 
                                 <div class="col-2">
                                     {% with homeId=fixture.fixture7.match2.homeTeam.team.id awayId=fixture.fixture7.match2.awayTeam.team.id %}
-                                        {% url 'match_simulator' 7 2 homeId awayId  conf  round zone as match %}
+                                        {% url 'match_simulator' 7 2 homeId awayId  conf  round zone as match_7_2 %}
                                         <button type="button" class="btn btn-primary"
-                                                hx-get="{{ match }}"
+                                                hx-get="{{ match_7_2 }}"
                                                 hx-trigger="click"
                                                 hx-target="#schedule-content">
                                             <i class="fa-regular fa-futbol"></i>
@@ -824,7 +971,7 @@
                     <div class="card card-border offset-md-2">
                         <div class="soccer-card-header">Fixture 8</div>
                         <div class="soccer-card-body">
-                            <div class="row  border-info">
+                            <div class="row  border-info" data-loading-states>
 
                                 <div class="col-4">
                                     <div class="team-card-sm-fxt">
@@ -840,10 +987,20 @@
                                     </div>
                                 </div>
 
-                                <div class="col-2">
-                                    <h3>{{ fixture.fixture8.match1.homeTeam.goals|default_if_none:"" }}
-                                        - {{ fixture.fixture8.match1.awayTeam.goals|default_if_none:"" }}</h3>
+                                <div class=" col-2" data-loading-aria-busy data-loading>
+                                    <div class="progress">
+                                        <div class="match-progress-bar"
+                                             role="progressbar" aria-label="Animated striped example"
+                                             aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
+                                             style="width: 0%"></div>
+                                    </div>
                                 </div>
+
+                                <div class="col-2" data-loading-aria-busy data-loading-class="d-none">
+                                    <h3>{{ fixture.fixture8.match1.homeTeam.goals|default_if_none:"?" }}
+                                        - {{ fixture.fixture8.match1.awayTeam.goals|default_if_none:"?" }}</h3>
+                                </div>
+
 
                                 <div class="col-4">
                                     <div class="team-card-sm-fxt">
@@ -861,9 +1018,9 @@
 
                                 <div class="col-2">
                                     {% with homeId=fixture.fixture8.match1.homeTeam.team.id awayId=fixture.fixture8.match1.awayTeam.team.id %}
-                                        {% url 'match_simulator' 8 1 homeId awayId  conf  round zone as match %}
+                                        {% url 'match_simulator' 8 1 homeId awayId  conf  round zone as match_8_1 %}
                                         <button type="button" class="btn btn-primary"
-                                                hx-get="{{ match }}"
+                                                hx-get="{{ match_8_1 }}"
                                                 hx-trigger="click"
                                                 hx-target="#schedule-content">
                                             <i class="fa-regular fa-futbol"></i>
@@ -873,7 +1030,7 @@
                                 </div>
                             </div>
 
-                            <div class="row  border-info">
+                            <div class="row  border-info" data-loading-states>
 
                                 <div class="col-4">
                                     <div class="team-card-sm-fxt">
@@ -889,10 +1046,21 @@
                                     </div>
                                 </div>
 
-                                <div class="col-2">
-                                    <h3>{{ fixture.fixture8.match2.homeTeam.goals|default_if_none:"" }}
-                                        - {{ fixture.fixture8.match2.awayTeam.goals|default_if_none:"" }}</h3>
+                                <div class=" col-2" data-loading-aria-busy data-loading>
+                                    <div class="progress">
+                                        <div class="match-progress-bar"
+                                             role="progressbar" aria-label="Animated striped example"
+                                             aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
+                                             style="width: 0%"></div>
+                                    </div>
                                 </div>
+
+                                <div class="col-2" data-loading-aria-busy data-loading-class="d-none">
+                                    <h3>{{ fixture.fixture8.match2.homeTeam.goals|default_if_none:"?" }}
+                                        - {{ fixture.fixture8.match2.awayTeam.goals|default_if_none:"?" }}</h3>
+                                </div>
+
+
                                 <div class="col-4">
                                     <div class="team-card-sm-fxt">
                                         <div class="row">
@@ -909,9 +1077,9 @@
 
                                 <div class="col-2">
                                     {% with homeId=fixture.fixture8.match2.homeTeam.team.id awayId=fixture.fixture8.match2.awayTeam.team.id %}
-                                        {% url 'match_simulator' 8 2 homeId awayId  conf  round zone as match %}
+                                        {% url 'match_simulator' 8 2 homeId awayId  conf  round zone as match_8_2 %}
                                         <button type="button" class="btn btn-primary"
-                                                hx-get="{{ match }}"
+                                                hx-get="{{ match_8_2 }}"
                                                 hx-trigger="click"
                                                 hx-target="#schedule-content">
                                             <i class="fa-regular fa-futbol"></i>
@@ -938,7 +1106,7 @@
                     <div class="card card-border offset-md-2">
                         <div class="soccer-card-header">Fixture 9</div>
                         <div class="soccer-card-body">
-                            <div class="row  border-info">
+                            <div class="row  border-info" data-loading-states>
 
                                 <div class="col-4">
                                     <div class="team-card-sm-fxt">
@@ -954,10 +1122,20 @@
                                     </div>
                                 </div>
 
-                                <div class="col-2">
-                                    <h3>{{ fixture.fixture9.match1.homeTeam.goals|default_if_none:"" }}
-                                        - {{ fixture.fixture9.match1.awayTeam.goals|default_if_none:"" }}</h3>
+                                <div class=" col-2" data-loading-aria-busy data-loading>
+                                    <div class="progress">
+                                        <div class="match-progress-bar"
+                                             role="progressbar" aria-label="Animated striped example"
+                                             aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
+                                             style="width: 0%"></div>
+                                    </div>
                                 </div>
+
+                                <div class="col-2" data-loading-aria-busy data-loading-class="d-none">
+                                    <h3>{{ fixture.fixture9.match1.homeTeam.goals|default_if_none:"?" }}
+                                        - {{ fixture.fixture9.match1.awayTeam.goals|default_if_none:"?" }}</h3>
+                                </div>
+
 
                                 <div class="col-4">
                                     <div class="team-card-sm-fxt">
@@ -975,9 +1153,9 @@
 
                                 <div class="col-2">
                                     {% with homeId=fixture.fixture9.match1.homeTeam.team.id awayId=fixture.fixture9.match1.awayTeam.team.id %}
-                                        {% url 'match_simulator' 9 1 homeId awayId  conf  round zone as match %}
+                                        {% url 'match_simulator' 9 1 homeId awayId  conf  round zone as match_9_1 %}
                                         <button type="button" class="btn btn-primary"
-                                                hx-get="{{ match }}"
+                                                hx-get="{{ match_9_1 }}"
                                                 hx-trigger="click"
                                                 hx-target="#schedule-content">
                                             <i class="fa-regular fa-futbol"></i>
@@ -987,7 +1165,7 @@
                                 </div>
                             </div>
 
-                            <div class="row  border-info">
+                            <div class="row  border-info" data-loading-states>
 
                                 <div class="col-4">
                                     <div class="team-card-sm-fxt">
@@ -1003,10 +1181,21 @@
                                     </div>
                                 </div>
 
-                                <div class="col-2">
-                                    <h3>{{ fixture.fixture9.match2.homeTeam.goals|default_if_none:"" }}
-                                        - {{ fixture.fixture9.match2.awayTeam.goals|default_if_none:"" }}</h3>
+                                <div class=" col-2" data-loading-aria-busy data-loading>
+                                    <div class="progress">
+                                        <div class="match-progress-bar"
+                                             role="progressbar" aria-label="Animated striped example"
+                                             aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
+                                             style="width: 0%"></div>
+                                    </div>
                                 </div>
+
+                                <div class="col-2" data-loading-aria-busy data-loading-class="d-none">
+                                    <h3>{{ fixture.fixture9.match2.homeTeam.goals|default_if_none:"?" }}
+                                        - {{ fixture.fixture9.match2.awayTeam.goals|default_if_none:"?" }}</h3>
+                                </div>
+
+
                                 <div class="col-4">
                                     <div class="team-card-sm-fxt">
                                         <div class="row">
@@ -1023,9 +1212,9 @@
 
                                 <div class="col-2">
                                     {% with homeId=fixture.fixture9.match2.homeTeam.team.id awayId=fixture.fixture9.match2.awayTeam.team.id %}
-                                        {% url 'match_simulator' 9 2 homeId awayId  conf  round zone as match %}
+                                        {% url 'match_simulator' 9 2 homeId awayId  conf  round zone as match_9_2 %}
                                         <button type="button" class="btn btn-primary"
-                                                hx-get="{{ match }}"
+                                                hx-get="{{ match_9_2 }}"
                                                 hx-trigger="click"
                                                 hx-target="#schedule-content">
                                             <i class="fa-regular fa-futbol"></i>
@@ -1052,7 +1241,7 @@
                     <div class="card card-border offset-md-2">
                         <div class="soccer-card-header">Fixture 10</div>
                         <div class="soccer-card-body">
-                            <div class="row  border-info">
+                            <div class="row  border-info" data-loading-states>
 
                                 <div class="col-4">
                                     <div class="team-card-sm-fxt">
@@ -1068,10 +1257,21 @@
                                     </div>
                                 </div>
 
-                                <div class="col-2">
-                                    <h3>{{ fixture.fixture10.match1.homeTeam.goals|default_if_none:"" }}
-                                        - {{ fixture.fixture10.match1.awayTeam.goals|default_if_none:"" }}</h3>
+                                <div class=" col-2" data-loading-aria-busy data-loading>
+                                    <div class="progress">
+                                        <div class="match-progress-bar"
+                                             role="progressbar" aria-label="Animated striped example"
+                                             aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
+                                             style="width: 0%"></div>
+                                    </div>
                                 </div>
+
+                                <div class="col-2" data-loading-aria-busy data-loading-class="d-none">
+                                    <h3>{{ fixture.fixture10.match1.homeTeam.goals|default_if_none:"?" }}
+                                        - {{ fixture.fixture10.match1.awayTeam.goals|default_if_none:"?" }}</h3>
+                                </div>
+
+
 
                                 <div class="col-4">
                                     <div class="team-card-sm-fxt">
@@ -1089,9 +1289,9 @@
 
                                 <div class="col-2">
                                     {% with homeId=fixture.fixture10.match1.homeTeam.team.id awayId=fixture.fixture10.match1.awayTeam.team.id %}
-                                        {% url 'match_simulator' 10 1 homeId awayId  conf  round zone as match %}
+                                        {% url 'match_simulator' 10 1 homeId awayId  conf  round zone as match_10_1 %}
                                         <button type="button" class="btn btn-primary"
-                                                hx-get="{{ match }}"
+                                                hx-get="{{ match_10_1 }}"
                                                 hx-trigger="click"
                                                 hx-target="#schedule-content">
                                             <i class="fa-regular fa-futbol"></i>
@@ -1101,7 +1301,7 @@
                                 </div>
                             </div>
 
-                            <div class="row  border-info">
+                            <div class="row  border-info" data-loading-states>
 
                                 <div class="col-4">
                                     <div class="team-card-sm-fxt">
@@ -1117,10 +1317,21 @@
                                     </div>
                                 </div>
 
-                                <div class="col-2">
-                                    <h3>{{ fixture.fixture10.match2.homeTeam.goals|default_if_none:"" }}
-                                        - {{ fixture.fixture10.match2.awayTeam.goals|default_if_none:"" }}</h3>
+                                <div class=" col-2" data-loading-aria-busy data-loading>
+                                    <div class="progress">
+                                        <div class="match-progress-bar"
+                                             role="progressbar" aria-label="Animated striped example"
+                                             aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
+                                             style="width: 0%"></div>
+                                    </div>
                                 </div>
+
+                                <div class="col-2" data-loading-aria-busy data-loading-class="d-none">
+                                    <h3>{{ fixture.fixture10.match2.homeTeam.goals|default_if_none:"?" }}
+                                        - {{ fixture.fixture10.match2.awayTeam.goals|default_if_none:"?" }}</h3>
+                                </div>
+
+
                                 <div class="col-4">
                                     <div class="team-card-sm-fxt">
                                         <div class="row">
@@ -1137,9 +1348,9 @@
 
                                 <div class="col-2">
                                     {% with homeId=fixture.fixture10.match2.homeTeam.team.id awayId=fixture.fixture10.match2.awayTeam.team.id %}
-                                        {% url 'match_simulator' 10 2 homeId awayId  conf  round zone as match %}
+                                        {% url 'match_simulator' 10 2 homeId awayId  conf  round zone as match_10_2 %}
                                         <button type="button" class="btn btn-primary"
-                                                hx-get="{{ match }}"
+                                                hx-get="{{ match_10_2 }}"
                                                 hx-trigger="click"
                                                 hx-target="#schedule-content">
                                             <i class="fa-regular fa-futbol"></i>
@@ -1162,7 +1373,7 @@
 
 
     </div>
-    <div class="modal-footer">
 
-    </div>
+
+
 {% endblock %}
