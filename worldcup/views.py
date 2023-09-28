@@ -29,8 +29,8 @@ def maindrawButton(request):
         try:
             zoneA, zoneB, zoneC, zoneD, zoneE, zoneF, zoneG, zoneH = draw(getTeamsMainDraw())
         except:
-            print("Error favor intentar nuevamente....")
-            return maindraw(request)
+            print("Intentando nuevamente....")
+            return maindrawButton(request)
 
         random.shuffle(zoneA)
         random.shuffle(zoneB)
