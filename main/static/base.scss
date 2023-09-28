@@ -216,4 +216,14 @@ team-card-sm-2 {
 
 }
 
+.container-card {
+  @extend .card;
+  @extend .card-border;
+  @extend .h-75;
+}
 
+.group-card {
+  @extend .card;
+  @extend .card-border;
+  @extend .offset-md-2;
+}
