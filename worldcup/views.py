@@ -23,7 +23,6 @@ def playoff(request):
 
 
 def maindrawButton(request):
-
     if request.method == 'GET':
         context = {}
         context['teams'] = getTeamsMainDraw()
@@ -71,10 +70,10 @@ def playoffButton(request):
 
 
 def draw(teams):
-    pool1 = [teams[0], teams[1], teams[2], teams[3], teams[4], teams[5], teams[6], teams[7]]
-    pool2 = [teams[8], teams[9], teams[10], teams[11], teams[12], teams[13], teams[14], teams[15]]
-    pool3 = [teams[16], teams[17], teams[18], teams[19], teams[20], teams[21], teams[22], teams[23]]
-    pool4 = [teams[24], teams[25], teams[26], teams[27], teams[28], teams[29], teams[30], teams[31]]
+    pool1 = teams[0:8]
+    pool2 = teams[8:16]
+    pool3 = teams[16:24]
+    pool4 = teams[24:32]
     random.shuffle(pool1)
     zoneA = [pool1[0]]
     zoneB = [pool1[1]]
@@ -84,102 +83,49 @@ def draw(teams):
     zoneF = [pool1[5]]
     zoneG = [pool1[6]]
     zoneH = [pool1[7]]
+
     random.shuffle(pool2)
-    for team in pool2:
-        result = setTeamPosition(team['conf_name'], zoneA, zoneB, zoneC, zoneD, zoneE, zoneF, zoneG, zoneH,
-                                 maxlength=2, teamsCount=countTeams(team['conf_name'], getTeamsMainDraw()))
-        match (result):
-            case 'A':
-                zoneA.append(team)
-            case 'B':
-                zoneB.append(team)
-            case 'C':
-                zoneC.append(team)
-            case 'D':
-                zoneD.append(team)
-            case 'E':
-                zoneE.append(team)
-            case 'F':
-                zoneF.append(team)
-            case 'G':
-                zoneG.append(team)
-            case 'H':
-                zoneH.append(team)
     random.shuffle(pool3)
-    for team in pool3:
-        result = setTeamPosition(team['conf_name'], zoneA, zoneB, zoneC, zoneD, zoneE, zoneF, zoneG, zoneH,
-                                 maxlength=3, teamsCount=countTeams(team['conf_name'], getTeamsMainDraw()))
-        match (result):
-            case 'A':
-                zoneA.append(team)
-            case 'B':
-                zoneB.append(team)
-            case 'C':
-                zoneC.append(team)
-            case 'D':
-                zoneD.append(team)
-            case 'E':
-                zoneE.append(team)
-            case 'F':
-                zoneF.append(team)
-            case 'G':
-                zoneG.append(team)
-            case 'H':
-                zoneH.append(team)
     random.shuffle(pool4)
-    for team in pool4:
-        result = setTeamPosition(team['conf_name'], zoneA, zoneB, zoneC, zoneD, zoneE, zoneF, zoneG, zoneH,
-                                 maxlength=4, teamsCount=countTeams(team['conf_name'], getTeamsMainDraw()))
-        match (result):
-            case 'A':
-                zoneA.append(team)
-            case 'B':
-                zoneB.append(team)
-            case 'C':
-                zoneC.append(team)
-            case 'D':
-                zoneD.append(team)
-            case 'E':
-                zoneE.append(team)
-            case 'F':
-                zoneF.append(team)
-            case 'G':
-                zoneG.append(team)
-            case 'H':
-                zoneH.append(team)
+    for i in range(2, 5):
+        match (i):
+            case 2:
+                for team in pool2:
+                    setTeamPosition(team, zoneA, zoneB, zoneC, zoneD, zoneE, zoneF, zoneG, zoneH, i - 1,
+                                    teamsCount=countTeams(team['conf_name'], getTeamsMainDraw()), maxLength=i)
+            case 3:
+                for team in pool3:
+                    setTeamPosition(team, zoneA, zoneB, zoneC, zoneD, zoneE, zoneF, zoneG, zoneH, i - 1,
+                                    teamsCount=countTeams(team['conf_name'], getTeamsMainDraw()), maxLength=i)
+            case 4:
+                for team in pool4:
+                    setTeamPosition(team, zoneA, zoneB, zoneC, zoneD, zoneE, zoneF, zoneG, zoneH, i - 1,
+                                    teamsCount=countTeams(team['conf_name'], getTeamsMainDraw()), maxLength=i)
 
-    if (len(zoneA) != 4) or (len(zoneB) != 4) or (len(zoneC) != 4) or (len(zoneD) != 4) \
-        or (len(zoneE) != 4) or (len(zoneF) != 4) or (len(zoneG) != 4) or (len(zoneH) != 4):
-        draw(teams)
-    else:
-        return zoneA, zoneB, zoneC, zoneD, zoneE, zoneF, zoneG, zoneH
+    return zoneA, zoneB, zoneC, zoneD, zoneE, zoneF, zoneG, zoneH
 
 
-def setTeamPosition(conf_name, a, b, c, d, e, f, g, h, maxlength, teamsCount):
+def setTeamPosition(team, a, b, c, d, e, f, g, h, position, teamsCount, maxLength):
     zones = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
-    try:
-        if (filterConfList(conf_name, a, teamsCount) == True or len(a) == maxlength) and len(zones) > 1:
-            zones.remove('A')
-        if (filterConfList(conf_name, b, teamsCount) == True or len(b) == maxlength) and len(zones) > 1:
-            zones.remove('B')
-        if (filterConfList(conf_name, c, teamsCount) == True or len(c) == maxlength) and len(zones) > 1:
-            zones.remove('C')
-        if (filterConfList(conf_name, d, teamsCount) == True or len(d) == maxlength) and len(zones) > 1:
-            zones.remove('D')
-        if (filterConfList(conf_name, e, teamsCount) == True or len(e) == maxlength) and len(zones) > 1:
-            zones.remove('E')
-        if (filterConfList(conf_name, f, teamsCount) == True or len(f) == maxlength) and len(zones) > 1:
-            zones.remove('F')
-        if (filterConfList(conf_name, g, teamsCount) == True or len(g) == maxlength) and len(zones) > 1:
-            zones.remove('G')
-        if (filterConfList(conf_name, h, teamsCount) == True or len(h) == maxlength) and len(zones) > 1:
-            zones.remove('H')
-        if len(zones) > 1:
-            random.shuffle(zones)
-
-        return zones[0]
-    except:
-        print('Error al generar sorteo')
+    if filterConfList(team['conf_name'], a, teamsCount) == True or len(a) == maxLength:
+        zones.remove('A')
+    if filterConfList(team['conf_name'], b, teamsCount) == True or len(b) == maxLength:
+        zones.remove('B')
+    if filterConfList(team['conf_name'], c, teamsCount) == True or len(c) == maxLength:
+        zones.remove('C')
+    if filterConfList(team['conf_name'], d, teamsCount) == True or len(d) == maxLength:
+        zones.remove('D')
+    if filterConfList(team['conf_name'], e, teamsCount) == True or len(e) == maxLength:
+        zones.remove('E')
+    if filterConfList(team['conf_name'], f, teamsCount) == True or len(f) == maxLength:
+        zones.remove('F')
+    if filterConfList(team['conf_name'], g, teamsCount) == True or len(g) == maxLength:
+        zones.remove('G')
+    if filterConfList(team['conf_name'], h, teamsCount) == True or len(h) == maxLength:
+        zones.remove('H')
+    if len(zones) > 1:
+        random.shuffle(zones)
+    insertTeam(team, zones[0], position, a, b, c, d, e, f, g, h)
 
 
 def filterConfList(conf_name, list, count_teams):
@@ -202,12 +148,32 @@ def countTeams(conf_name, teamList):
     return count
 
 
+def insertTeam(team, zone, pos, a, b, c, d, e, f, g, h):
+    match (zone):
+        case 'A':
+            a.insert(pos, team)
+        case 'B':
+            b.insert(pos, team)
+        case 'C':
+            c.insert(pos, team)
+        case 'D':
+            d.insert(pos, team)
+        case 'E':
+            e.insert(pos, team)
+        case 'F':
+            f.insert(pos, team)
+        case 'G':
+            g.insert(pos, team)
+        case 'H':
+            h.insert(pos, team)
+
+
 def playoffDraw(teams):
-    pool1 = [teams[0], teams[1], teams[2], teams[3]]
-    pool2 = [teams[4], teams[5], teams[6], teams[7]]
-    pool3 = [teams[8], teams[9], teams[10], teams[11]]
-    pool4 = [teams[12], teams[13], teams[14], teams[15]]
-    pool5 = [teams[16], teams[17], teams[18], teams[19]]
+    pool1 = [teams[0:3]]
+    pool2 = [teams[4:7]]
+    pool3 = [teams[8:11]]
+    pool4 = [teams[12:15]]
+    pool5 = [teams[16:19]]
 
     random.shuffle(pool1)
     random.shuffle(pool2)
