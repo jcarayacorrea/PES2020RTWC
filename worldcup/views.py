@@ -84,20 +84,20 @@ def draw(teams):
     zoneG = [pool1[6]]
     zoneH = [pool1[7]]
 
-    random.shuffle(pool2)
-    random.shuffle(pool3)
-    random.shuffle(pool4)
     for i in range(2, 5):
         match (i):
             case 2:
+                random.shuffle(pool2)
                 for team in pool2:
                     setTeamPosition(team, zoneA, zoneB, zoneC, zoneD, zoneE, zoneF, zoneG, zoneH, i - 1,
                                     teamsCount=countTeams(team['conf_name'], getTeamsMainDraw()), maxLength=i)
             case 3:
+                random.shuffle(pool3)
                 for team in pool3:
                     setTeamPosition(team, zoneA, zoneB, zoneC, zoneD, zoneE, zoneF, zoneG, zoneH, i - 1,
                                     teamsCount=countTeams(team['conf_name'], getTeamsMainDraw()), maxLength=i)
             case 4:
+                random.shuffle(pool4)
                 for team in pool4:
                     setTeamPosition(team, zoneA, zoneB, zoneC, zoneD, zoneE, zoneF, zoneG, zoneH, i - 1,
                                     teamsCount=countTeams(team['conf_name'], getTeamsMainDraw()), maxLength=i)
