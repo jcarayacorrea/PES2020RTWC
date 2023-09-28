@@ -227,3 +227,9 @@ team-card-sm-2 {
   @extend .card-border;
   @extend .offset-md-2;
 }
+
+.loading-grid{
+  @extend .col-auto;
+  @extend .offset-md-5;
+  padding-top: 60%;
+}
