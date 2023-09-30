@@ -62,7 +62,7 @@ nav, .dropdown-menu, .card-header, {
 
 .img-card {
 
-  max-width: 250%;
+  max-width: 200%;
 
 }
 
@@ -233,3 +233,11 @@ team-card-sm-2 {
   @extend .offset-md-5;
   padding-top: 60%;
 }
+
+.loading-grid-playoff{
+  @extend .col-auto;
+  @extend .offset-md-5;
+  padding-top: 30%;
+}
+
+

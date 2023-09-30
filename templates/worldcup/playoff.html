@@ -19,9 +19,9 @@
     <div id="section">
         <div class="row ">
             <div class="col-md-3">
-                <div class="card card-border">
+                <div class="container-card">
                     <div class="soccer-card-header ">Teams</div>
-                    <div class="soccer-card-body h-75">
+                    <div class="soccer-card-body overflow-scroll">
                         <div class="row g-1 ">
                             <div class="col-md-14 offset-md-2">
                                 {% for team in teams %}
@@ -43,12 +43,14 @@
                 </div>
             </div>
             <div class="col-md-8">
-                <div class="card card-border">
+                <div class="container-card">
                     <div class="soccer-card-header">Qualify Zones</div>
 
-                    <div class="soccer-card-body h-75">
+                    <div class="soccer-card-body overflow-scroll">
 
-                        <div id="loading" class="col-md-5 offset-md-3" data-loading-aria-busy data-loading>
+                        <div class="loading-grid-playoff" data-loading-aria-busy data-loading>
+                            <div class="display-6">Sorteando</div>
+                            <div class="spinner-grow text-info"></div>
                             <div class="spinner-grow text-info"></div>
                             <div class="spinner-grow text-info"></div>
                             <div class="spinner-grow text-info"></div>
@@ -62,7 +64,7 @@
                                     <div class="card card-border offset-md-2">
                                         <div class="soccer-card-header">First Stage</div>
                                         <div class="soccer-card-body">
-                                            <div class="p-2">
+                                            <div class="p-2" data-loading-states>
                                                 <div class="row">
                                                     <div class="col-3 w-75">
                                                         <h6 class="h-6 text-center"> Match 1</h6>
@@ -89,7 +91,7 @@
                                                                             {{ fixture.first.match1.homeTeam.team.nation_iso_code }}
                                                                         </div>
                                                                         <div class="col">
-                                                                            {{ fixture.first.match1.homeTeam.goals }}
+                                                                            {{ fixture.first.match1.homeTeam.goals|default_if_none:"?" }}
                                                                             ({% firstof fixture.first.match1.homeTeam.penalties 0 %})
                                                                         </div>
                                                                     </div>
@@ -119,7 +121,7 @@
                                                                             {{ fixture.first.match1.awayTeam.team.nation_iso_code }}
                                                                         </div>
                                                                         <div class="col">
-                                                                            {{ fixture.first.match1.awayTeam.goals }}
+                                                                            {{ fixture.first.match1.awayTeam.goals|default_if_none:"?" }}
                                                                             ({% firstof fixture.first.match1.awayTeam.penalties 0 %})
                                                                         </div>
                                                                     </div>
@@ -135,14 +137,21 @@
                                                             <button type="button" class="btn btn-primary"
                                                                     hx-get="{{ match }}"
                                                                     hx-trigger="click"
-                                                                    hx-target="body">
-                                                                <i class="fa-regular fa-futbol"></i>
+                                                                    hx-target="body"
+                                                            >
+                                                                <div data-loading-aria-busy data-loading>
+                                                                    <div class="spinner-border spinner-border-sm text-light "></div>
+                                                                </div>
+                                                                <div data-loading-aria-busy data-loading-class="d-none">
+                                                                    <i class="fa-regular fa-futbol"></i>
+                                                                </div>
+
                                                             </button>
                                                         {% endwith %}
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="p-2">
+                                            <div class="p-2" data-loading-states>
                                                 <div class="row">
                                                     <div class="col-3 w-75">
                                                         <h6 class="h-6 text-center"> Match 2</h6>
@@ -169,7 +178,7 @@
                                                                             {{ fixture.first.match2.homeTeam.team.nation_iso_code }}
                                                                         </div>
                                                                         <div class="col">
-                                                                            {{ fixture.first.match2.homeTeam.goals }}
+                                                                            {{ fixture.first.match2.homeTeam.goals|default_if_none:"?" }}
                                                                             ({% firstof fixture.first.match2.homeTeam.penalties 0 %})
                                                                         </div>
                                                                     </div>
@@ -199,7 +208,7 @@
                                                                             {{ fixture.first.match2.awayTeam.team.nation_iso_code }}
                                                                         </div>
                                                                         <div class="col">
-                                                                            {{ fixture.first.match2.awayTeam.goals }}
+                                                                            {{ fixture.first.match2.awayTeam.goals|default_if_none:"?" }}
                                                                             ({% firstof fixture.first.match2.awayTeam.penalties 0 %})
                                                                         </div>
                                                                     </div>
@@ -216,13 +225,18 @@
                                                                     hx-get="{{ match }}"
                                                                     hx-trigger="click"
                                                                     hx-target="body">
-                                                                <i class="fa-regular fa-futbol"></i>
+                                                                <div data-loading-aria-busy data-loading>
+                                                                    <div class="spinner-border spinner-border-sm text-light "></div>
+                                                                </div>
+                                                                <div data-loading-aria-busy data-loading-class="d-none">
+                                                                    <i class="fa-regular fa-futbol"></i>
+                                                                </div>
                                                             </button>
                                                         {% endwith %}
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="p-2">
+                                            <div class="p-2" data-loading-states>
                                                 <div class="row">
                                                     <div class="col-3 w-75">
                                                         <h6 class="h-6 text-center"> Match 3</h6>
@@ -249,7 +263,7 @@
                                                                             {{ fixture.first.match3.homeTeam.team.nation_iso_code }}
                                                                         </div>
                                                                         <div class="col">
-                                                                            {{ fixture.first.match3.homeTeam.goals }}
+                                                                            {{ fixture.first.match3.homeTeam.goals|default_if_none:"?" }}
                                                                             ({% firstof fixture.first.match3.homeTeam.penalties 0 %})
                                                                         </div>
                                                                     </div>
@@ -279,7 +293,7 @@
                                                                             {{ fixture.first.match3.awayTeam.team.nation_iso_code }}
                                                                         </div>
                                                                         <div class="col">
-                                                                            {{ fixture.first.match3.awayTeam.goals }}
+                                                                            {{ fixture.first.match3.awayTeam.goals|default_if_none:"?" }}
                                                                             ({% firstof fixture.first.match3.awayTeam.penalties 0 %})
                                                                         </div>
                                                                     </div>
@@ -296,13 +310,18 @@
                                                                     hx-get="{{ match }}"
                                                                     hx-trigger="click"
                                                                     hx-target="body">
-                                                                <i class="fa-regular fa-futbol"></i>
+                                                                <div data-loading-aria-busy data-loading>
+                                                                    <div class="spinner-border spinner-border-sm text-light "></div>
+                                                                </div>
+                                                                <div data-loading-aria-busy data-loading-class="d-none">
+                                                                    <i class="fa-regular fa-futbol"></i>
+                                                                </div>
                                                             </button>
                                                         {% endwith %}
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="p-2">
+                                            <div class="p-2" data-loading-states>
                                                 <div class="row">
                                                     <div class="col-3 w-75">
                                                         <h6 class="h-6 text-center"> Match 4</h6>
@@ -329,7 +348,7 @@
                                                                             {{ fixture.first.match4.homeTeam.team.nation_iso_code }}
                                                                         </div>
                                                                         <div class="col">
-                                                                            {{ fixture.first.match4.homeTeam.goals }}
+                                                                            {{ fixture.first.match4.homeTeam.goals|default_if_none:"?" }}
                                                                             ({% firstof fixture.first.match4.homeTeam.penalties 0 %})
                                                                         </div>
                                                                     </div>
@@ -359,7 +378,7 @@
                                                                             {{ fixture.first.match4.awayTeam.team.nation_iso_code }}
                                                                         </div>
                                                                         <div class="col">
-                                                                            {{ fixture.first.match4.awayTeam.goals }}
+                                                                            {{ fixture.first.match4.awayTeam.goals|default_if_none:"?" }}
                                                                             ({% firstof fixture.first.match4.awayTeam.penalties 0 %})
                                                                         </div>
                                                                     </div>
@@ -376,7 +395,12 @@
                                                                     hx-get="{{ match }}"
                                                                     hx-trigger="click"
                                                                     hx-target="body">
-                                                                <i class="fa-regular fa-futbol"></i>
+                                                                <div data-loading-aria-busy data-loading>
+                                                                    <div class="spinner-border spinner-border-sm text-light "></div>
+                                                                </div>
+                                                                <div data-loading-aria-busy data-loading-class="d-none">
+                                                                    <i class="fa-regular fa-futbol"></i>
+                                                                </div>
                                                             </button>
                                                         {% endwith %}
                                                     </div>
@@ -389,7 +413,7 @@
                                     <div class="card card-border offset-md-2">
                                         <div class="soccer-card-header">Final Stage</div>
                                         <div class="soccer-card-body">
-                                            <div class="p-2">
+                                            <div class="p-2" data-loading-states>
                                                 <div class="row">
                                                     <div class="col-3 w-75">
                                                         {% if fixture is None %}
@@ -414,7 +438,7 @@
                                                                             {{ fixture.final.match1.homeTeam.team.nation_iso_code }}
                                                                         </div>
                                                                         <div class="col">
-                                                                            {{ fixture.final.match1.homeTeam.goals }}
+                                                                            {{ fixture.final.match1.homeTeam.goals|default_if_none:"?" }}
                                                                             ({% firstof fixture.final.match1.homeTeam.penalties 0 %})
                                                                         </div>
                                                                     </div>
@@ -422,10 +446,10 @@
 
                                                             </div>
                                                         {% endif %}
+
                                                         {% if fixture.final.match1.awayTeam.team is None %}
+
                                                             <div class="team-card-sm">
-
-
                                                                 <div class="text-center">
                                                                     Winner Match 1
                                                                 </div>
@@ -443,7 +467,7 @@
                                                                             {{ fixture.final.match1.awayTeam.team.nation_iso_code }}
                                                                         </div>
                                                                         <div class="col">
-                                                                            {{ fixture.final.match1.awayTeam.goals }}
+                                                                            {{ fixture.final.match1.awayTeam.goals|default_if_none:"?" }}
                                                                             ({% firstof fixture.final.match1.awayTeam.penalties 0 %})
                                                                         </div>
                                                                     </div>
@@ -461,13 +485,18 @@
                                                                     hx-get="{{ match }}"
                                                                     hx-trigger="click"
                                                                     hx-target="body">
-                                                                <i class="fa-regular fa-futbol"></i>
+                                                                <div data-loading-aria-busy data-loading>
+                                                                    <div class="spinner-border spinner-border-sm text-light "></div>
+                                                                </div>
+                                                                <div data-loading-aria-busy data-loading-class="d-none">
+                                                                    <i class="fa-regular fa-futbol"></i>
+                                                                </div>
                                                             </button>
                                                         {% endwith %}
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="p-2">
+                                            <div class="p-2" data-loading-states>
                                                 <div class="row">
                                                     <div class="col-3 w-75">
                                                         {% if fixture is None %}
@@ -492,7 +521,7 @@
                                                                             {{ fixture.final.match2.homeTeam.team.nation_iso_code }}
                                                                         </div>
                                                                         <div class="col">
-                                                                            {{ fixture.final.match2.homeTeam.goals }}
+                                                                            {{ fixture.final.match2.homeTeam.goals|default_if_none:"?" }}
                                                                             ({% firstof fixture.final.match2.homeTeam.penalties 0 %})
                                                                         </div>
                                                                     </div>
@@ -521,7 +550,7 @@
                                                                             {{ fixture.final.match2.awayTeam.team.nation_iso_code }}
                                                                         </div>
                                                                         <div class="col">
-                                                                            {{ fixture.final.match2.awayTeam.goals }}
+                                                                            {{ fixture.final.match2.awayTeam.goals|default_if_none:"?" }}
                                                                             ({% firstof fixture.final.match2.awayTeam.penalties 0 %})
                                                                         </div>
                                                                     </div>
@@ -539,13 +568,18 @@
                                                                     hx-get="{{ match }}"
                                                                     hx-trigger="click"
                                                                     hx-target="body">
-                                                                <i class="fa-regular fa-futbol"></i>
+                                                                <div data-loading-aria-busy data-loading>
+                                                                    <div class="spinner-border spinner-border-sm text-light "></div>
+                                                                </div>
+                                                                <div data-loading-aria-busy data-loading-class="d-none">
+                                                                    <i class="fa-regular fa-futbol"></i>
+                                                                </div>
                                                             </button>
                                                         {% endwith %}
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="p-2">
+                                            <div class="p-2" data-loading-states>
                                                 <div class="row">
                                                     <div class="col-3 w-75">
                                                         {% if fixture is None %}
@@ -570,7 +604,7 @@
                                                                             {{ fixture.final.match3.homeTeam.team.nation_iso_code }}
                                                                         </div>
                                                                         <div class="col">
-                                                                            {{ fixture.final.match3.homeTeam.goals }}
+                                                                            {{ fixture.final.match3.homeTeam.goals|default_if_none:"?" }}
                                                                             ({% firstof fixture.final.match3.homeTeam.penalties 0 %})
                                                                         </div>
                                                                     </div>
@@ -599,7 +633,7 @@
                                                                             {{ fixture.final.match3.awayTeam.team.nation_iso_code }}
                                                                         </div>
                                                                         <div class="col">
-                                                                            {{ fixture.final.match3.awayTeam.goals }}
+                                                                            {{ fixture.final.match3.awayTeam.goals|default_if_none:"?" }}
                                                                             ({% firstof fixture.final.match3.awayTeam.penalties 0 %})
                                                                         </div>
                                                                     </div>
@@ -617,13 +651,18 @@
                                                                     hx-get="{{ match }}"
                                                                     hx-trigger="click"
                                                                     hx-target="body">
-                                                                <i class="fa-regular fa-futbol"></i>
+                                                                <div data-loading-aria-busy data-loading>
+                                                                    <div class="spinner-border spinner-border-sm text-light "></div>
+                                                                </div>
+                                                                <div data-loading-aria-busy data-loading-class="d-none">
+                                                                    <i class="fa-regular fa-futbol"></i>
+                                                                </div>
                                                             </button>
                                                         {% endwith %}
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="p-2">
+                                            <div class="p-2" data-loading-states>
                                                 <div class="row">
                                                     <div class="col-3 w-75">
                                                         {% if fixture is None %}
@@ -648,7 +687,7 @@
                                                                             {{ fixture.final.match4.homeTeam.team.nation_iso_code }}
                                                                         </div>
                                                                         <div class="col">
-                                                                            {{ fixture.final.match4.homeTeam.goals }}
+                                                                            {{ fixture.final.match4.homeTeam.goals|default_if_none:"?" }}
                                                                             ({% firstof fixture.final.match4.homeTeam.penalties 0 %})
                                                                         </div>
                                                                     </div>
@@ -677,7 +716,7 @@
                                                                             {{ fixture.final.match4.awayTeam.team.nation_iso_code }}
                                                                         </div>
                                                                         <div class="col">
-                                                                            {{ fixture.final.match4.awayTeam.goals }}
+                                                                            {{ fixture.final.match4.awayTeam.goals|default_if_none:"?" }}
                                                                             ({% firstof fixture.final.match4.awayTeam.penalties 0 %})
                                                                         </div>
                                                                     </div>
@@ -695,14 +734,19 @@
                                                                     hx-get="{{ match }}"
                                                                     hx-trigger="click"
                                                                     hx-target="body">
-                                                                <i class="fa-regular fa-futbol"></i>
+                                                                <div data-loading-aria-busy data-loading>
+                                                                    <div class="spinner-border spinner-border-sm text-light "></div>
+                                                                </div>
+                                                                <div data-loading-aria-busy data-loading-class="d-none">
+                                                                    <i class="fa-regular fa-futbol"></i>
+                                                                </div>
                                                             </button>
                                                         {% endwith %}
                                                     </div>
                                                 </div>
                                             </div>
 
-                                            <div class="p-2">
+                                            <div class="p-2" data-loading-states>
                                                 <div class="row">
                                                     <div class="col-3 w-75">
                                                         {% if fixture is None %}
@@ -727,7 +771,7 @@
                                                                             {{ fixture.final.match5.homeTeam.team.nation_iso_code }}
                                                                         </div>
                                                                         <div class="col">
-                                                                            {{ fixture.final.match5.homeTeam.goals }}
+                                                                            {{ fixture.final.match5.homeTeam.goals|default_if_none:"?" }}
                                                                             ({% firstof fixture.final.match5.homeTeam.penalties 0 %})
                                                                         </div>
                                                                     </div>
@@ -756,7 +800,7 @@
                                                                             {{ fixture.final.match5.awayTeam.team.nation_iso_code }}
                                                                         </div>
                                                                         <div class="col">
-                                                                            {{ fixture.final.match5.awayTeam.goals }}
+                                                                            {{ fixture.final.match5.awayTeam.goals|default_if_none:"?" }}
                                                                             ({% firstof fixture.final.match5.awayTeam.penalties 0 %})
                                                                         </div>
                                                                     </div>
@@ -774,14 +818,19 @@
                                                                     hx-get="{{ match }}"
                                                                     hx-trigger="click"
                                                                     hx-target="body">
-                                                                <i class="fa-regular fa-futbol"></i>
+                                                                <div data-loading-aria-busy data-loading>
+                                                                    <div class="spinner-border spinner-border-sm text-light "></div>
+                                                                </div>
+                                                                <div data-loading-aria-busy data-loading-class="d-none">
+                                                                    <i class="fa-regular fa-futbol"></i>
+                                                                </div>
                                                             </button>
                                                         {% endwith %}
                                                     </div>
                                                 </div>
                                             </div>
 
-                                            <div class="p-2">
+                                            <div class="p-2" data-loading-states>
                                                 <div class="row">
                                                     <div class="col-3 w-75">
                                                         {% if fixture is None %}
@@ -806,7 +855,7 @@
                                                                             {{ fixture.final.match6.homeTeam.team.nation_iso_code }}
                                                                         </div>
                                                                         <div class="col">
-                                                                            {{ fixture.final.match6.homeTeam.goals }}
+                                                                            {{ fixture.final.match6.homeTeam.goals|default_if_none:"?" }}
                                                                             ({% firstof fixture.final.match6.homeTeam.penalties 0 %})
                                                                         </div>
                                                                     </div>
@@ -835,7 +884,7 @@
                                                                             {{ fixture.final.match6.awayTeam.team.nation_iso_code }}
                                                                         </div>
                                                                         <div class="col">
-                                                                            {{ fixture.final.match6.awayTeam.goals }}
+                                                                            {{ fixture.final.match6.awayTeam.goals|default_if_none:"?" }}
                                                                             ({% firstof fixture.final.match6.awayTeam.penalties 0 %})
                                                                         </div>
                                                                     </div>
@@ -853,14 +902,19 @@
                                                                     hx-get="{{ match }}"
                                                                     hx-trigger="click"
                                                                     hx-target="body">
-                                                                <i class="fa-regular fa-futbol"></i>
+                                                                <div data-loading-aria-busy data-loading>
+                                                                    <div class="spinner-border spinner-border-sm text-light "></div>
+                                                                </div>
+                                                                <div data-loading-aria-busy data-loading-class="d-none">
+                                                                    <i class="fa-regular fa-futbol"></i>
+                                                                </div>
                                                             </button>
                                                         {% endwith %}
                                                     </div>
                                                 </div>
                                             </div>
 
-                                            <div class="p-2">
+                                            <div class="p-2" data-loading-states>
                                                 <div class="row">
                                                     <div class="col-3 w-75">
                                                         {% if fixture is None %}
@@ -885,7 +939,7 @@
                                                                             {{ fixture.final.match7.homeTeam.team.nation_iso_code }}
                                                                         </div>
                                                                         <div class="col">
-                                                                            {{ fixture.final.match7.homeTeam.goals }}
+                                                                            {{ fixture.final.match7.homeTeam.goals|default_if_none:"?" }}
                                                                             ({% firstof fixture.final.match7.homeTeam.penalties 0 %})
                                                                         </div>
                                                                     </div>
@@ -914,7 +968,7 @@
                                                                             {{ fixture.final.match7.awayTeam.team.nation_iso_code }}
                                                                         </div>
                                                                         <div class="col">
-                                                                            {{ fixture.final.match7.awayTeam.goals }}
+                                                                            {{ fixture.final.match7.awayTeam.goals|default_if_none:"?" }}
                                                                             ({% firstof fixture.final.match7.awayTeam.penalties 0 %})
                                                                         </div>
                                                                     </div>
@@ -932,14 +986,19 @@
                                                                     hx-get="{{ match }}"
                                                                     hx-trigger="click"
                                                                     hx-target="body">
-                                                                <i class="fa-regular fa-futbol"></i>
+                                                                <div data-loading-aria-busy data-loading>
+                                                                    <div class="spinner-border spinner-border-sm text-light "></div>
+                                                                </div>
+                                                                <div data-loading-aria-busy data-loading-class="d-none">
+                                                                    <i class="fa-regular fa-futbol"></i>
+                                                                </div>
                                                             </button>
                                                         {% endwith %}
                                                     </div>
                                                 </div>
                                             </div>
 
-                                            <div class="p-2">
+                                            <div class="p-2" data-loading-states>
                                                 <div class="row">
                                                     <div class="col-3 w-75">
                                                         {% if fixture is None %}
@@ -964,7 +1023,7 @@
                                                                             {{ fixture.final.match8.homeTeam.team.nation_iso_code }}
                                                                         </div>
                                                                         <div class="col">
-                                                                            {{ fixture.final.match8.homeTeam.goals }}
+                                                                            {{ fixture.final.match8.homeTeam.goals|default_if_none:"?" }}
                                                                             ({% firstof fixture.final.match8.homeTeam.penalties 0 %})
                                                                         </div>
                                                                     </div>
@@ -993,7 +1052,7 @@
                                                                             {{ fixture.final.match8.awayTeam.team.nation_iso_code }}
                                                                         </div>
                                                                         <div class="col">
-                                                                            {{ fixture.final.match8.awayTeam.goals }}
+                                                                            {{ fixture.final.match8.awayTeam.goals|default_if_none:"?" }}
                                                                             ({% firstof fixture.final.match8.awayTeam.penalties 0 %})
                                                                         </div>
                                                                     </div>
@@ -1011,7 +1070,12 @@
                                                                     hx-get="{{ match }}"
                                                                     hx-trigger="click"
                                                                     hx-target="body">
-                                                                <i class="fa-regular fa-futbol"></i>
+                                                                <div data-loading-aria-busy data-loading>
+                                                                    <div class="spinner-border spinner-border-sm text-light "></div>
+                                                                </div>
+                                                                <div data-loading-aria-busy data-loading-class="d-none">
+                                                                    <i class="fa-regular fa-futbol"></i>
+                                                                </div>
                                                             </button>
                                                         {% endwith %}
                                                     </div>

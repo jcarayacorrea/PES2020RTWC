@@ -169,11 +169,11 @@ def insertTeam(team, zone, pos, a, b, c, d, e, f, g, h):
 
 
 def playoffDraw(teams):
-    pool1 = [teams[0:3]]
-    pool2 = [teams[4:7]]
-    pool3 = [teams[8:11]]
-    pool4 = [teams[12:15]]
-    pool5 = [teams[16:19]]
+    pool1 = teams[0:4]
+    pool2 = teams[4:8]
+    pool3 = teams[8:12]
+    pool4 = teams[12:16]
+    pool5 = teams[16:20]
 
     random.shuffle(pool1)
     random.shuffle(pool2)
