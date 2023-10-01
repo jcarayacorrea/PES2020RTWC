@@ -240,7 +240,7 @@ team-card-sm-2 {
 .container-card {
   @extend .card;
   @extend .card-border;
-  max-height: 75vh;
+  height: 75vh;
 }
 
 .team-list-container-card {

@@ -3,18 +3,16 @@
 {% block container %}
     <div id="header">
         <h1 class="h1 text-center">African Qualifying</h1>
-        <h2 class="h3 text-center">Team List</h2>
+        <h2 class="h3 text-center">Teams List</h2>
     </div>
     <div id="section">
         <div class="row ">
             <div class="col-md-8 offset-md-2">
-                <div class="card card-border">
+                <div class="team-list-container-card">
                     <div class="soccer-card-header ">Teams</div>
-
-                    <div class="soccer-card-body overflow-scroll mh-75">
-
-                        <table class="table">
-                            <thead>
+                    <div class="soccer-card-body overflow-scroll">
+                        <table class="table overflow-scroll">
+                            <tbody>
                             <tr>
                                 <th class="col text-center">
                                     Name
@@ -38,15 +36,12 @@
                                     1 Rnd.
                                 </th>
                             </tr>
-                            </thead>
-
-                            <tbody>
                             {% for team in teams %}
                                 <tr>
                                     <td class="col-5">
                                         <div class="row">
                                             <div class="flag-config-table">
-                                                <img src="{{ team.image_flag }}" class="img-card-table">
+                                                <img src="{{ team.image_flag }}" class="img-card-table ">
                                             </div>
                                             <div class="name-config-table">
                                                 {{ team.nation_name }}
@@ -107,7 +102,6 @@
                             </tbody>
 
                         </table>
-
                     </div>
 
                 </div>
