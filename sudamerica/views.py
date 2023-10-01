@@ -7,10 +7,10 @@ from utils import getTeams, updateStage,getTeamsCopaAmerica
 
 
 # Create your views here.
-def finalround(request):
+def teams(request):
     context = {}
     context['teams'] = getTeams(conf_name='CONMEBOL')
-    return render(request, 'sudamerica/finalround.html', context)
+    return render(request, 'sudamerica/teamlist.html', context)
 
 def copaAmerica(request):
     context = {}

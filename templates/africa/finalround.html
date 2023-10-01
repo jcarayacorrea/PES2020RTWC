@@ -19,9 +19,9 @@
     <div id="section">
         <div class="row ">
             <div class="col-md-3">
-                <div class="card card-border">
+                <div class="container-card">
                     <div class="soccer-card-header ">Teams</div>
-                    <div class="soccer-card-body">
+                    <div class="soccer-card-body overflow-scroll">
                         <div class="row g-1 ">
                             <div class="col-md-14 offset-md-2">
                                 {% for team in teams %}
@@ -42,12 +42,14 @@
                 </div>
             </div>
             <div class="col-md-7 offset-md-1">
-                <div class="card card-border">
+                <div class="container-card">
                     <div class="soccer-card-header">Qualify Zones</div>
 
-                    <div class="soccer-card-body">
+                    <div class="soccer-card-body overflow-scroll">
 
-                        <div id="loading" class="col-md-5 offset-md-3" data-loading-aria-busy data-loading>
+                        <div class="loading-grid" data-loading-aria-busy data-loading>
+                            <div class="display-6">Sorteando</div>
+                            <div class="spinner-grow text-info"></div>
                             <div class="spinner-grow text-info"></div>
                             <div class="spinner-grow text-info"></div>
                             <div class="spinner-grow text-info"></div>
@@ -58,7 +60,7 @@
                         <div data-loading-aria-busy data-loading-class="d-none">
                             <div class="row mb-5">
                                 <div class="col-md-5">
-                                    <div class="card card-border offset-md-2">
+                                    <div class="group-card">
                                         <div class="soccer-card-header">Zone A</div>
                                         <div class="soccer-card-body offset-md-2">
                                             {% if zone1 is None %}
@@ -142,7 +144,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-5 offset-md-1">
-                                    <div class="card card-border offset-md-2">
+                                    <div class="group-card">
                                         <div class="soccer-card-header">Zone B</div>
                                         <div class="soccer-card-body offset-md-2">
                                             {% if zone2 is None %}
@@ -231,7 +233,7 @@
 
                             <div class="row">
                                 <div class="col-md-5 mb-5">
-                                    <div class="card card-border offset-md-2">
+                                    <div class="group-card">
                                         <div class="soccer-card-header">Zone C</div>
                                         <div class="soccer-card-body offset-md-2">
                                             {% if zone3 is None %}
@@ -315,7 +317,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-5 offset-md-1">
-                                    <div class="card card-border offset-md-2">
+                                    <div class="group-card">
                                         <div class="soccer-card-header">Zone D</div>
                                         <div class="soccer-card-body offset-md-2">
                                             {% if zone4 is None %}
@@ -403,7 +405,7 @@
 
                             <div class="row">
                                 <div class="col-md-5  offset-sm-3">
-                                    <div class="card card-border offset-md-2">
+                                    <div class="group-card">
                                         <div class="soccer-card-header">Zone E</div>
                                         <div class="soccer-card-body offset-md-2">
                                             {% if zone5 is None %}

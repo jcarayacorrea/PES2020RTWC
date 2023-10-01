@@ -10,8 +10,7 @@
             <button type="button" class="btn btn-primary" hx-get=" {% url 'cenoamerica.firstround.draw' %}"
                     hx-trigger="click" hx-target="body">Draw
             </button>
-            <button type="button" class="btn btn-primary" hx-get=" {% url 'cenoamerica.firstround' %}"
-                    hx-trigger="click"
+            <button type="button" class="btn btn-primary" hx-get=" {% url 'cenoamerica.firstround' %}" hx-trigger="click"
                     hx-target="body">Clear
             </button>
         </div>
@@ -20,9 +19,9 @@
     <div id="section">
         <div class="row ">
             <div class="col-md-3">
-                <div class="card card-border">
+                <div class="container-card">
                     <div class="soccer-card-header ">Teams</div>
-                    <div class="soccer-card-body">
+                    <div class="soccer-card-body overflow-scroll">
                         <div class="row g-1 ">
                             <div class="col-md-14 offset-md-2">
                                 {% for team in teams %}
@@ -43,486 +42,481 @@
                 </div>
             </div>
             <div class="col-md-7 offset-md-1">
-                <div class="card card-border">
+                <div class="container-card">
                     <div class="soccer-card-header">Qualify Zones</div>
 
-                    <div class="soccer-card-body">
+                    <div class="soccer-card-body overflow-scroll">
 
-                        <div class="soccer-card-body h-75">
-
-                            <div id="loading" class="col-md-5 offset-md-3" data-loading-aria-busy data-loading>
-                                <div class="spinner-grow text-info"></div>
-                                <div class="spinner-grow text-info"></div>
-                                <div class="spinner-grow text-info"></div>
-                                <div class="spinner-grow text-info"></div>
-
-                            </div>
-
-                            <div data-loading-aria-busy data-loading-class="d-none">
-                                <div class="row mb-5">
-                                    <div class="col-md-5">
-                                        <div class="card card-border offset-md-2">
-                                            <div class="soccer-card-header">Zone A</div>
-                                            <div class="soccer-card-body offset-md-1">
-                                                {% if zone1 is None %}
-                                                    <div class="team-card-sm w-75">
-                                                        <div class="row">
-                                                            <div class="flag-config-sm"></div>
-                                                            <div class="name-config-sm">
-                                                                A1
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="team-card-sm w-75">
-                                                        <div class="row">
-                                                            <div class="flag-config-sm"></div>
-                                                            <div class="name-config-sm">
-                                                                A2
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="team-card-sm w-75">
-                                                        <div class="row">
-                                                            <div class="flag-config-sm"></div>
-                                                            <div class="name-config-sm">
-                                                                A3
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="team-card-sm w-75">
-                                                        <div class="row">
-                                                            <div class="flag-config-sm"></div>
-                                                            <div class="name-config-sm">
-                                                                A4
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="team-card-sm w-75">
-                                                        <div class="row">
-                                                            <div class="flag-config-sm"></div>
-                                                            <div class="name-config-sm">
-                                                                A5
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                {% else %}
-                                                    {% for team in zone1 %}
-                                                        <div class="team-card-sm w-75">
-                                                            <div class="row">
-                                                                <div class="flag-config-sm">
-                                                                    <img src="{{ team.image_flag }}"
-                                                                         class="img-card-sm-5">
-                                                                </div>
-                                                                <div class="name-config-sm">
-                                                                    {{ team.nation_iso_code }}
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    {% endfor %}
-                                                {% endif %}
-                                            </div>
-                                            <div class="row p-1">
-                                                <div class="col g-1 offset-md-4">
-                                                    {% url 'zones.fixtures' 'CONCACAF' 'first' 'A' as fixtures %}
-                                                    <button type="button" class="btn btn-primary"
-                                                            hx-get="{{ fixtures }} "
-                                                            hx-trigger="click" hx-target="#schedule-content"
-                                                            data-bs-toggle="modal"
-                                                            data-bs-target="#schedule">
-                                                        <i class="fa-regular fa-calendar"></i>
-                                                    </button>
-                                                    {% url 'zones.standings' 'CONCACAF' 'first' 'A' as standings %}
-                                                    <button type="button" class="btn btn-primary"
-                                                            hx-get="{{ standings }}"
-                                                            hx-trigger="click" hx-target="#stats-content"
-                                                            data-bs-toggle="modal"
-                                                            data-bs-target="#standings">
-                                                        <i class="fa-solid fa-ranking-star"></i>
-                                                    </button>
-
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-5 offset-md-1">
-                                        <div class="card card-border offset-md-2">
-                                            <div class="soccer-card-header">Zone B</div>
-                                            <div class="soccer-card-body offset-md-1">
-                                                {% if zone2 is None %}
-                                                    <div class="team-card-sm w-75">
-                                                        <div class="row">
-                                                            <div class="flag-config-sm"></div>
-                                                            <div class="name-config-sm">
-                                                                B1
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="team-card-sm w-75">
-                                                        <div class="row">
-                                                            <div class="flag-config-sm"></div>
-                                                            <div class="name-config-sm">
-                                                                B2
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="team-card-sm w-75">
-                                                        <div class="row">
-                                                            <div class="flag-config-sm"></div>
-                                                            <div class="name-config-sm">
-                                                                B3
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="team-card-sm w-75">
-                                                        <div class="row">
-                                                            <div class="flag-config-sm"></div>
-                                                            <div class="name-config-sm">
-                                                                B4
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="team-card-sm w-75">
-                                                        <div class="row">
-                                                            <div class="flag-config-sm"></div>
-                                                            <div class="name-config-sm">
-                                                                B5
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                {% else %}
-                                                    {% for team in zone2 %}
-                                                        <div class="team-card-sm w-75">
-                                                            <div class="row">
-                                                                <div class="flag-config-sm">
-                                                                    <img src="{{ team.image_flag }}"
-                                                                         class="img-card-sm-5">
-                                                                </div>
-                                                                <div class="name-config-sm">
-                                                                    {{ team.nation_iso_code }}
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    {% endfor %}
-                                                {% endif %}
-
-                                            </div>
-                                            <div class="row p-1">
-                                                <div class="col g-1 offset-md-4">
-                                                    {% url 'zones.fixtures' 'CONCACAF' 'first' 'B' as fixtures %}
-                                                    <button type="button" class="btn btn-primary"
-                                                            hx-get="{{ fixtures }} "
-                                                            hx-trigger="click" hx-target="#schedule-content"
-                                                            data-bs-toggle="modal"
-                                                            data-bs-target="#schedule">
-                                                        <i class="fa-regular fa-calendar"></i>
-                                                    </button>
-                                                    {% url 'zones.standings' 'CONCACAF' 'first' 'B' as standings %}
-                                                    <button type="button" class="btn btn-primary"
-                                                            hx-get="{{ standings }}"
-                                                            hx-trigger="click" hx-target="#stats-content"
-                                                            data-bs-toggle="modal"
-                                                            data-bs-target="#standings">
-                                                        <i class="fa-solid fa-ranking-star"></i>
-                                                    </button>
-
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-md-5 mb-5">
-                                        <div class="card card-border offset-md-2">
-                                            <div class="soccer-card-header">Zone C</div>
-                                            <div class="soccer-card-body offset-md-1">
-                                                {% if zone3 is None %}
-                                                    <div class="team-card-sm w-75">
-                                                        <div class="row">
-                                                            <div class="flag-config-sm"></div>
-                                                            <div class="name-config-sm">
-                                                                C1
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="team-card-sm w-75">
-                                                        <div class="row">
-                                                            <div class="flag-config-sm"></div>
-                                                            <div class="name-config-sm">
-                                                                C2
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="team-card-sm w-75">
-                                                        <div class="row">
-                                                            <div class="flag-config-sm"></div>
-                                                            <div class="name-config-sm">
-                                                                C3
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="team-card-sm w-75">
-                                                        <div class="row">
-                                                            <div class="flag-config-sm"></div>
-                                                            <div class="name-config-sm">
-                                                                C4
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="team-card-sm w-75">
-                                                        <div class="row">
-                                                            <div class="flag-config-sm"></div>
-                                                            <div class="name-config-sm">
-                                                                C5
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                {% else %}
-                                                    {% for team in zone3 %}
-                                                        <div class="team-card-sm w-75">
-                                                            <div class="row">
-                                                                <div class="flag-config-sm">
-                                                                    <img src="{{ team.image_flag }}"
-                                                                         class="img-card-sm-5">
-                                                                </div>
-                                                                <div class="name-config-sm">
-                                                                    {{ team.nation_iso_code }}
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    {% endfor %}
-                                                {% endif %}
-                                            </div>
-                                            <div class="row p-1">
-                                                <div class="col g-1 offset-md-4">
-                                                    {% url 'zones.fixtures' 'CONCACAF' 'first' 'C' as fixtures %}
-                                                    <button type="button" class="btn btn-primary"
-                                                            hx-get="{{ fixtures }} "
-                                                            hx-trigger="click" hx-target="#schedule-content"
-                                                            data-bs-toggle="modal"
-                                                            data-bs-target="#schedule">
-                                                        <i class="fa-regular fa-calendar"></i>
-                                                    </button>
-                                                    {% url 'zones.standings' 'CONCACAF' 'first' 'C' as standings %}
-                                                    <button type="button" class="btn btn-primary"
-                                                            hx-get="{{ standings }}"
-                                                            hx-trigger="click" hx-target="#stats-content"
-                                                            data-bs-toggle="modal"
-                                                            data-bs-target="#standings">
-                                                        <i class="fa-solid fa-ranking-star"></i>
-                                                    </button>
-
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-5 offset-md-1">
-                                        <div class="card card-border offset-md-2">
-                                            <div class="soccer-card-header">Zone D</div>
-                                            <div class="soccer-card-body offset-md-1">
-                                                {% if zone4 is None %}
-                                                    <div class="team-card-sm w-75">
-                                                        <div class="row">
-                                                            <div class="flag-config-sm"></div>
-                                                            <div class="name-config-sm">
-                                                                D1
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="team-card-sm w-75">
-                                                        <div class="row">
-                                                            <div class="flag-config-sm"></div>
-                                                            <div class="name-config-sm">
-                                                                D2
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="team-card-sm w-75">
-                                                        <div class="row">
-                                                            <div class="flag-config-sm"></div>
-                                                            <div class="name-config-sm">
-                                                                D3
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="team-card-sm w-75">
-                                                        <div class="row">
-                                                            <div class="flag-config-sm"></div>
-                                                            <div class="name-config-sm">
-                                                                D4
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="team-card-sm w-75">
-                                                        <div class="row">
-                                                            <div class="flag-config-sm"></div>
-                                                            <div class="name-config-sm">
-                                                                D5
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                {% else %}
-                                                    {% for team in zone4 %}
-                                                        <div class="team-card-sm w-75">
-                                                            <div class="row">
-                                                                <div class="flag-config-sm">
-                                                                    <img src="{{ team.image_flag }}"
-                                                                         class="img-card-sm-5">
-                                                                </div>
-                                                                <div class="name-config-sm">
-                                                                    {{ team.nation_iso_code }}
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    {% endfor %}
-                                                {% endif %}
-                                            </div>
-                                            <div class="row p-1">
-                                                <div class="col g-1 offset-md-4">
-                                                    {% url 'zones.fixtures' 'CONCACAF' 'first' 'D' as fixtures %}
-                                                    <button type="button" class="btn btn-primary"
-                                                            hx-get="{{ fixtures }} "
-                                                            hx-trigger="click" hx-target="#schedule-content"
-                                                            data-bs-toggle="modal"
-                                                            data-bs-target="#schedule">
-                                                        <i class="fa-regular fa-calendar"></i>
-                                                    </button>
-                                                    {% url 'zones.standings' 'CONCACAF' 'first' 'D' as standings %}
-                                                    <button type="button" class="btn btn-primary"
-                                                            hx-get="{{ standings }}"
-                                                            hx-trigger="click" hx-target="#stats-content"
-                                                            data-bs-toggle="modal"
-                                                            data-bs-target="#standings">
-                                                        <i class="fa-solid fa-ranking-star"></i>
-                                                    </button>
-
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-md-5  offset-sm-3">
-                                        <div class="card card-border offset-md-2">
-                                            <div class="soccer-card-header">Zone E</div>
-                                            <div class="soccer-card-body offset-md-2">
-                                                {% if zone5 is None %}
-                                                    <div class="team-card-sm w-75">
-                                                        <div class="row">
-                                                            <div class="flag-config-sm"></div>
-                                                            <div class="name-config-sm">
-                                                                E1
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="team-card-sm w-75">
-                                                        <div class="row">
-                                                            <div class="flag-config-sm"></div>
-                                                            <div class="name-config-sm">
-                                                                E2
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="team-card-sm w-75">
-                                                        <div class="row">
-                                                            <div class="flag-config-sm"></div>
-                                                            <div class="name-config-sm">
-                                                                E3
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="team-card-sm w-75">
-                                                        <div class="row">
-                                                            <div class="flag-config-sm"></div>
-                                                            <div class="name-config-sm">
-                                                                E4
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="team-card-sm w-75">
-                                                        <div class="row">
-                                                            <div class="flag-config-sm"></div>
-                                                            <div class="name-config-sm">
-                                                                E5
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                {% else %}
-                                                    {% for team in zone5 %}
-                                                        <div class="team-card-sm w-75">
-                                                            <div class="row">
-                                                                <div class="flag-config-sm">
-                                                                    <img src="{{ team.image_flag }}"
-                                                                         class="img-card-sm-5">
-                                                                </div>
-                                                                <div class="name-config-sm">
-                                                                    {{ team.nation_iso_code }}
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    {% endfor %}
-                                                {% endif %}
-                                            </div>
-                                            <div class="row p-1">
-                                                <div class="col g-1 offset-md-4">
-                                                    {% url 'zones.fixtures' 'CONCACAF' 'first' 'E' as fixtures %}
-                                                    <button type="button" class="btn btn-primary"
-                                                            hx-get="{{ fixtures }} "
-                                                            hx-trigger="click" hx-target="#schedule-content"
-                                                            data-bs-toggle="modal"
-                                                            data-bs-target="#schedule">
-                                                        <i class="fa-regular fa-calendar"></i>
-                                                    </button>
-                                                    {% url 'zones.standings' 'CONCACAF' 'first' 'E' as standings %}
-                                                    <button type="button" class="btn btn-primary"
-                                                            hx-get="{{ standings }}"
-                                                            hx-trigger="click" hx-target="#stats-content"
-                                                            data-bs-toggle="modal"
-                                                            data-bs-target="#standings">
-                                                        <i class="fa-solid fa-ranking-star"></i>
-                                                    </button>
-
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-
+                        <div class="loading-grid" data-loading-aria-busy data-loading>
+                            <div class="display-6">Sorteando</div>
+                            <div class="spinner-grow text-info"></div>
+                            <div class="spinner-grow text-info"></div>
+                            <div class="spinner-grow text-info"></div>
+                            <div class="spinner-grow text-info"></div>
+                            <div class="spinner-grow text-info"></div>
 
                         </div>
+
+                        <div data-loading-aria-busy data-loading-class="d-none">
+                            <div class="row mb-5">
+                                <div class="col-md-5">
+                                    <div class="group-card">
+                                        <div class="soccer-card-header">Group A</div>
+                                        <div class="soccer-card-body offset-md-2">
+                                            {% if zone1 is None %}
+                                                <div class="team-card">
+                                                    <div class="row">
+                                                        <div class="flag-config"></div>
+                                                        <div class="name-config">
+                                                            A1
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="team-card">
+                                                    <div class="row">
+                                                        <div class="flag-config"></div>
+                                                        <div class="name-config">
+                                                            A2
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="team-card">
+                                                    <div class="row">
+                                                        <div class="flag-config"></div>
+                                                        <div class="name-config">
+                                                            A3
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="team-card">
+                                                    <div class="row">
+                                                        <div class="flag-config"></div>
+                                                        <div class="name-config">
+                                                            A4
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="team-card">
+                                                    <div class="row">
+                                                        <div class="flag-config"></div>
+                                                        <div class="name-config">
+                                                            A5
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            {% else %}
+                                                {% for team in zone1 %}
+                                                    <div class="team-card">
+                                                        <div class="row">
+                                                            <div class="flag-config">
+                                                                <img src="{{ team.image_flag }}" class="img-card-sm">
+                                                            </div>
+                                                            <div class="name-config">
+                                                                {{ team.nation_iso_code }}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                {% endfor %}
+                                            {% endif %}
+                                        </div>
+                                        <div class="row p-1">
+                                            <div class="col g-1 offset-md-4">
+                                                {% url 'zones.fixtures' 'CAF' 'final' 'A' as fixtures %}
+                                                <button type="button" class="btn btn-primary"
+                                                        hx-get="{{ fixtures }} "
+                                                        hx-trigger="click" hx-target="#schedule-content"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#schedule">
+                                                    <i class="fa-regular fa-calendar"></i>
+                                                </button>
+                                                {% url 'zones.standings' 'CAF' 'final' 'A' as standings %}
+                                                <button type="button" class="btn btn-primary"
+                                                        hx-get="{{ standings }}"
+                                                        hx-trigger="click" hx-target="#stats-content"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#standings">
+                                                    <i class="fa-solid fa-ranking-star"></i>
+                                                </button>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-5 offset-md-1">
+                                    <div class="group-card">
+                                        <div class="soccer-card-header">Group B</div>
+                                        <div class="soccer-card-body offset-md-2">
+                                            {% if zone2 is None %}
+                                                <div class="team-card">
+                                                    <div class="row">
+                                                        <div class="flag-config"></div>
+                                                        <div class="name-config">
+                                                            B1
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="team-card">
+                                                    <div class="row">
+                                                        <div class="flag-config"></div>
+                                                        <div class="name-config">
+                                                            B2
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="team-card">
+                                                    <div class="row">
+                                                        <div class="flag-config"></div>
+                                                        <div class="name-config">
+                                                            B3
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="team-card">
+                                                    <div class="row">
+                                                        <div class="flag-config"></div>
+                                                        <div class="name-config">
+                                                            B4
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="team-card">
+                                                    <div class="row">
+                                                        <div class="flag-config"></div>
+                                                        <div class="name-config">
+                                                            B5
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            {% else %}
+                                                {% for team in zone2 %}
+                                                    <div class="team-card">
+                                                        <div class="row">
+                                                            <div class="flag-config">
+                                                                <img src="{{ team.image_flag }}" class="img-card-sm">
+                                                            </div>
+                                                            <div class="name-config">
+                                                                {{ team.nation_iso_code }}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                {% endfor %}
+                                            {% endif %}
+
+                                        </div>
+                                        <div class="row p-1">
+                                            <div class="col g-1 offset-md-4">
+                                                {% url 'zones.fixtures' 'CAF' 'final' 'B' as fixtures %}
+                                                <button type="button" class="btn btn-primary"
+                                                        hx-get="{{ fixtures }} "
+                                                        hx-trigger="click" hx-target="#schedule-content"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#schedule">
+                                                    <i class="fa-regular fa-calendar"></i>
+                                                </button>
+                                                {% url 'zones.standings' 'CAF' 'final' 'B' as standings %}
+                                                <button type="button" class="btn btn-primary"
+                                                        hx-get="{{ standings }}"
+                                                        hx-trigger="click" hx-target="#stats-content"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#standings">
+                                                    <i class="fa-solid fa-ranking-star"></i>
+                                                </button>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-5 mb-5">
+                                    <div class="group-card">
+                                        <div class="soccer-card-header">Group C</div>
+                                        <div class="soccer-card-body offset-md-2">
+                                            {% if zone3 is None %}
+                                                <div class="team-card">
+                                                    <div class="row">
+                                                        <div class="flag-config"></div>
+                                                        <div class="name-config">
+                                                            C1
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="team-card">
+                                                    <div class="row">
+                                                        <div class="flag-config"></div>
+                                                        <div class="name-config">
+                                                            C2
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="team-card">
+                                                    <div class="row">
+                                                        <div class="flag-config"></div>
+                                                        <div class="name-config">
+                                                            C3
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="team-card">
+                                                    <div class="row">
+                                                        <div class="flag-config"></div>
+                                                        <div class="name-config">
+                                                            C4
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="team-card">
+                                                    <div class="row">
+                                                        <div class="flag-config"></div>
+                                                        <div class="name-config">
+                                                            C5
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            {% else %}
+                                                {% for team in zone3 %}
+                                                    <div class="team-card">
+                                                        <div class="row">
+                                                            <div class="flag-config">
+                                                                <img src="{{ team.image_flag }}" class="img-card-sm">
+                                                            </div>
+                                                            <div class="name-config">
+                                                                {{ team.nation_iso_code }}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                {% endfor %}
+                                            {% endif %}
+                                        </div>
+                                        <div class="row p-1">
+                                            <div class="col g-1 offset-md-4">
+                                                {% url 'zones.fixtures' 'CAF' 'final' 'C' as fixtures %}
+                                                <button type="button" class="btn btn-primary"
+                                                        hx-get="{{ fixtures }} "
+                                                        hx-trigger="click" hx-target="#schedule-content"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#schedule">
+                                                    <i class="fa-regular fa-calendar"></i>
+                                                </button>
+                                                {% url 'zones.standings' 'CAF' 'final' 'C' as standings %}
+                                                <button type="button" class="btn btn-primary"
+                                                        hx-get="{{ standings }}"
+                                                        hx-trigger="click" hx-target="#stats-content"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#standings">
+                                                    <i class="fa-solid fa-ranking-star"></i>
+                                                </button>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-5 offset-md-1">
+                                    <div class="group-card">
+                                        <div class="soccer-card-header">Group D</div>
+                                        <div class="soccer-card-body offset-md-2">
+                                            {% if zone4 is None %}
+                                                <div class="team-card">
+                                                    <div class="row">
+                                                        <div class="flag-config"></div>
+                                                        <div class="name-config">
+                                                            D1
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="team-card">
+                                                    <div class="row">
+                                                        <div class="flag-config"></div>
+                                                        <div class="name-config">
+                                                            D2
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="team-card">
+                                                    <div class="row">
+                                                        <div class="flag-config"></div>
+                                                        <div class="name-config">
+                                                            D3
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="team-card">
+                                                    <div class="row">
+                                                        <div class="flag-config"></div>
+                                                        <div class="name-config">
+                                                            D4
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="team-card">
+                                                    <div class="row">
+                                                        <div class="flag-config"></div>
+                                                        <div class="name-config">
+                                                            D5
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            {% else %}
+                                                {% for team in zone4 %}
+                                                    <div class="team-card">
+                                                        <div class="row">
+                                                            <div class="flag-config">
+                                                                <img src="{{ team.image_flag }}" class="img-card-sm">
+                                                            </div>
+                                                            <div class="name-config">
+                                                                {{ team.nation_iso_code }}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                {% endfor %}
+                                            {% endif %}
+                                        </div>
+                                        <div class="row p-1">
+                                            <div class="col g-1 offset-md-4">
+                                                {% url 'zones.fixtures' 'CAF' 'final' 'D' as fixtures %}
+                                                <button type="button" class="btn btn-primary"
+                                                        hx-get="{{ fixtures }} "
+                                                        hx-trigger="click" hx-target="#schedule-content"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#schedule">
+                                                    <i class="fa-regular fa-calendar"></i>
+                                                </button>
+                                                {% url 'zones.standings' 'CAF' 'final' 'D' as standings %}
+                                                <button type="button" class="btn btn-primary"
+                                                        hx-get="{{ standings }}"
+                                                        hx-trigger="click" hx-target="#stats-content"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#standings">
+                                                    <i class="fa-solid fa-ranking-star"></i>
+                                                </button>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-5  offset-sm-3">
+                                    <div class="group-card">
+                                        <div class="soccer-card-header">Group E</div>
+                                        <div class="soccer-card-body offset-md-2">
+                                            {% if zone5 is None %}
+                                                <div class="team-card">
+                                                    <div class="row">
+                                                        <div class="flag-config"></div>
+                                                        <div class="name-config">
+                                                            E1
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="team-card">
+                                                    <div class="row">
+                                                        <div class="flag-config"></div>
+                                                        <div class="name-config">
+                                                            E2
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="team-card">
+                                                    <div class="row">
+                                                        <div class="flag-config"></div>
+                                                        <div class="name-config">
+                                                            E3
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="team-card">
+                                                    <div class="row">
+                                                        <div class="flag-config"></div>
+                                                        <div class="name-config">
+                                                            E4
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="team-card">
+                                                    <div class="row">
+                                                        <div class="flag-config"></div>
+                                                        <div class="name-config">
+                                                            E5
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            {% else %}
+                                                {% for team in zone5 %}
+                                                    <div class="team-card">
+                                                        <div class="row">
+                                                            <div class="flag-config">
+                                                                <img src="{{ team.image_flag }}" class="img-card-sm">
+                                                            </div>
+                                                            <div class="name-config">
+                                                                {{ team.nation_iso_code }}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                {% endfor %}
+                                            {% endif %}
+                                        </div>
+                                        <div class="row p-1">
+                                            <div class="col g-1 offset-md-4">
+                                                {% url 'zones.fixtures' 'CAF' 'final' 'E' as fixtures %}
+                                                <button type="button" class="btn btn-primary"
+                                                        hx-get="{{ fixtures }} "
+                                                        hx-trigger="click" hx-target="#schedule-content"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#schedule">
+                                                    <i class="fa-regular fa-calendar"></i>
+                                                </button>
+                                                {% url 'zones.standings' 'CAF' 'final' 'E' as standings %}
+                                                <button type="button" class="btn btn-primary"
+                                                        hx-get="{{ standings }}"
+                                                        hx-trigger="click" hx-target="#stats-content"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#standings">
+                                                    <i class="fa-solid fa-ranking-star"></i>
+                                                </button>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
 
                     </div>
 
                 </div>
 
             </div>
+
         </div>
     </div>
 
+    <!-- Modals -->
     <div id="schedule" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="Fixtures"
          aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable modal-lg ">
-
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
                 <div id="schedule-content"></div>
-
+            </div>
         </div>
 
     </div>
 
     <div id="standings" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="Standings"
          aria-hidden="true">
-        <div class="modal-dialog modal-lg ">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div id="stats-content"></div>
             </div>
