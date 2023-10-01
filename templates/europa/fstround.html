@@ -288,11 +288,11 @@
                                                         <div class="row">
                                                             {% if fixture|getItem:'wildCard' is not None %}
                                                                 <div class="flag-config">
-                                                                    <img src="{{ fixture.wildCard.match1.awayTeam.team.image_flag }}"
+                                                                    <img src="{{ fixture.wildCard.match1.homeTeam.team.image_flag }}"
                                                                          class="img-card-sm">
                                                                 </div>
                                                                 <div class="name-config">
-                                                                    {{ fixture.wildCard.match1.awayTeam.team.nation_iso_code }}
+                                                                    {{ fixture.wildCard.match1.homeTeam.team.nation_iso_code }}
                                                                 </div>
                                                             {% else %}
                                                                 <div class="name-config">
@@ -314,10 +314,10 @@
                                                 <div class="col-4 d-flex justify-content-center" data-loading-aria-busy
                                                      data-loading-class="d-none">
                                                     {% with homePenalties=fixture.wildCard.match1.homeTeam.penalties awayPenalties=fixture.wildCard.match1.awayTeam.penalties %}
-                                                        <h6>
+                                                        <h3>
                                                             ({% firstof homePenalties 0 %}) {{ fixture.wildCard.match1.homeTeam.goals|default_if_none:"?" }}
                                                             - {{ fixture.wildCard.match1.awayTeam.goals|default_if_none:"?" }}
-                                                            ({% firstof awayPenalties 0 %})</h6>
+                                                            ({% firstof awayPenalties 0 %})</h3>
                                                     {% endwith %}
 
                                                 </div>
