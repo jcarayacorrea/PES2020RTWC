@@ -105,7 +105,7 @@
                                                     <div class="team-card">
                                                         <div class="row">
                                                             <div class="flag-config">
-                                                                <img src="{{ team.image_flag }}" class="img-card-sm">
+                                                                <img src="{{ team.image_flag }}" class="img-card-sm-6">
                                                             </div>
                                                             <div class="name-config">
                                                                 {{ team.nation_iso_code }}
@@ -189,7 +189,7 @@
                                                     <div class="team-card">
                                                         <div class="row">
                                                             <div class="flag-config">
-                                                                <img src="{{ team.image_flag }}" class="img-card-sm">
+                                                                <img src="{{ team.image_flag }}" class="img-card-sm-6">
                                                             </div>
                                                             <div class="name-config">
                                                                 {{ team.nation_iso_code }}
@@ -284,21 +284,27 @@
                                                 <div class="col-4">
                                                     <div class="team-card-sm-fxt">
                                                         <div class="row">
-                                                            <div class="flag-config">
-                                                                <img src="{{ fixture.wildCard.match1.homeTeam.team.image_flag }}"
-                                                                     class="img-card-sm">
-                                                            </div>
-                                                            <div class="name-config">
-                                                                {{ fixture.wildCard.match1.homeTeam.team.nation_iso_code }}
-                                                            </div>
+                                                            {% if fixture|getItem:'wildCard' is not None %}
+                                                                <div class="flag-config">
+                                                                    <img src="{{ fixture.wildCard.match1.awayTeam.team.image_flag }}"
+                                                                         class="img-card-sm">
+                                                                </div>
+                                                                <div class="name-config">
+                                                                    {{ fixture.wildCard.match1.awayTeam.team.nation_iso_code }}
+                                                                </div>
+                                                            {% else %}
+                                                                <div class="name-config">
+                                                                    Team 1
+                                                                </div>
+                                                            {% endif %}
                                                         </div>
                                                     </div>
                                                 </div>
 
-                                                <div class="col-3">
+                                                <div class="col-4 d-flex justify-content-center">
                                                     {% with homePenalties=fixture.wildCard.match1.homeTeam.penalties awayPenalties=fixture.wildCard.match1.awayTeam.penalties %}
-                                                    <h6>({% firstof homePenalties 0 %}) {{ fixture.wildCard.match1.homeTeam.goals|default_if_none:"N" }}
-                                                        - {{ fixture.wildCard.match1.awayTeam.goals|default_if_none:"N" }} ({% firstof awayPenalties 0 %})</h6>
+                                                    <h6>({% firstof homePenalties 0 %}) {{ fixture.wildCard.match1.homeTeam.goals|default_if_none:"?" }}
+                                                        - {{ fixture.wildCard.match1.awayTeam.goals|default_if_none:"?" }} ({% firstof awayPenalties 0 %})</h6>
                                                     {% endwith %}
 
                                                 </div>
@@ -315,7 +321,10 @@
                                                                     {{ fixture.wildCard.match1.awayTeam.team.nation_iso_code }}
                                                                 </div>
                                                             {% else %}
-                                                                Team 2
+                                                                <div class="name-config">
+                                                                    Team 2
+                                                                </div>
+
                                                             {% endif %}
                                                         </div>
                                                     </div>
