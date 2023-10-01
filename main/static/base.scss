@@ -228,6 +228,12 @@ team-card-sm-2 {
   @extend .h-75;
 }
 
+.team-list-container-card {
+  @extend .card;
+  @extend .card-border;
+  @extend .h-25;
+}
+
 .group-card {
   @extend .card;
   @extend .card-border;
