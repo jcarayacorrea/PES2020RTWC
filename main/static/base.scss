@@ -82,6 +82,11 @@ nav, .dropdown-menu, .card-header, {
 
 }
 
+.img-card-rank-table {
+
+  max-width: 20%;
+
+}
 .img-card-table-std {
 
   max-width: 45%;
@@ -235,14 +240,15 @@ team-card-sm-2 {
 .container-card {
   @extend .card;
   @extend .card-border;
-  @extend .h-75;
+  max-height: 75vh;
 }
 
 .team-list-container-card {
   @extend .card;
   @extend .card-border;
-  @extend .h-25;
+  max-height: 70vh;
 }
+
 
 .group-card {
   @extend .card;

@@ -12,7 +12,10 @@ from worldcup.views import playoff
 
 # Create your views here.
 def index(request):
-    return render(request, 'main/index.html')
+    context = {}
+    teams = getTeamsJSON()
+    context['teams'] = teams
+    return render(request, 'main/index.html', context)
 
 
 def teamListApi(request):
@@ -52,7 +55,10 @@ def sim_match(request, fixture, match, homeId, awayId, conf, round, zone, extraT
     else:
         homeTeam = getTeamById(homeId)
         awayTeam = getTeamById(awayId)
-        saveExtraTimeResult(fixture,match,resultado['local'], resultado['visita'],resultado['penales_local'] if resultado.get('penales_local') else 0 , resultado['penales_visita'] if resultado.get('penales_visita') else 0, conf, round, zone,homeTeam[0],awayTeam[0])
+        saveExtraTimeResult(fixture, match, resultado['local'], resultado['visita'],
+                            resultado['penales_local'] if resultado.get('penales_local') else 0,
+                            resultado['penales_visita'] if resultado.get('penales_visita') else 0, conf, round, zone,
+                            homeTeam[0], awayTeam[0])
     fixtureDict = getZoneData(zone, conf, round)
     context['fixture'] = fixtureDict['fixtures']
     context['conf'] = conf
