@@ -45,7 +45,9 @@
 
                     <div class="soccer-card-body">
 
-                        <div id="loading" class="col-md-5 offset-md-3" data-loading-aria-busy data-loading>
+                        <div class="loading-grid-25" data-loading-aria-busy data-loading>
+                            <div class="display-6">Sorteando</div>
+                            <div class="spinner-grow text-info"></div>
                             <div class="spinner-grow text-info"></div>
                             <div class="spinner-grow text-info"></div>
                             <div class="spinner-grow text-info"></div>
@@ -229,7 +231,7 @@
                                 <div class="col-10">
                                     <div class="card card-border offset-md-2">
                                         <div class="soccer-card-header">Wild Card Match</div>
-                                        <div class="soccer-card-body ">
+                                        <div class="soccer-card-body " data-loading-states>
                                             <div class="row mb-3">
                                                 <div class="col-5">
                                                     <select name="home" class="form-select"
@@ -300,11 +302,22 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <div class="col-4" data-loading-aria-busy data-loading>
+                                                    <div class="col-auto d-flex justify-content-center">
+                                                        <div class="spinner-border text-info" role="status">
+                                                            <span class="visually-hidden">Loading...</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
-                                                <div class="col-4 d-flex justify-content-center">
+
+                                                <div class="col-4 d-flex justify-content-center" data-loading-aria-busy
+                                                     data-loading-class="d-none">
                                                     {% with homePenalties=fixture.wildCard.match1.homeTeam.penalties awayPenalties=fixture.wildCard.match1.awayTeam.penalties %}
-                                                    <h6>({% firstof homePenalties 0 %}) {{ fixture.wildCard.match1.homeTeam.goals|default_if_none:"?" }}
-                                                        - {{ fixture.wildCard.match1.awayTeam.goals|default_if_none:"?" }} ({% firstof awayPenalties 0 %})</h6>
+                                                        <h6>
+                                                            ({% firstof homePenalties 0 %}) {{ fixture.wildCard.match1.homeTeam.goals|default_if_none:"?" }}
+                                                            - {{ fixture.wildCard.match1.awayTeam.goals|default_if_none:"?" }}
+                                                            ({% firstof awayPenalties 0 %})</h6>
                                                     {% endwith %}
 
                                                 </div>

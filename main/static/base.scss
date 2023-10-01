@@ -246,4 +246,10 @@ team-card-sm-2 {
   padding-top: 30%;
 }
 
+.loading-grid-25{
+  @extend .col-auto;
+  @extend .offset-md-5;
+  padding-top: 25%;
+}
+
 
