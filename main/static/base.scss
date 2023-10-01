@@ -14,7 +14,11 @@
 @import "bootstrap5/scss/reboot";
 @import "bootstrap5/scss/type";
 
-html, body {margin: 0; height: 100%; overflow: hidden}
+html, body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden
+}
 
 nav, .dropdown-menu, .card-header, {
   background-color: dodgerblue;
@@ -83,6 +87,7 @@ nav, .dropdown-menu, .card-header, {
   max-width: 45%;
 
 }
+
 .soccer-card-header {
   @extend .card-header;
   @extend .card-title;
@@ -188,20 +193,21 @@ team-card-sm-2 {
 .htmx-request.htmx-indicator {
   opacity: 1
 }
-[data-loading]{
+
+[data-loading] {
   display: none;
 }
 
-.table{
+.table {
   max-height: 500px;
 }
 
-.popup{
+.popup {
   @extend .modal;
   @extend .fade;
 }
 
-.popup-dialog{
+.popup-dialog {
   @extend .modal-dialog;
   @extend .modal-lg
 }
@@ -217,8 +223,12 @@ team-card-sm-2 {
 }
 
 @keyframes progressAnimation {
-  from { width: 0}
-  to { width: 100%}
+  from {
+    width: 0
+  }
+  to {
+    width: 100%
+  }
 
 }
 
@@ -240,22 +250,33 @@ team-card-sm-2 {
   @extend .offset-md-2;
 }
 
-.loading-grid{
+.loading-grid {
   @extend .col-auto;
   @extend .offset-md-5;
   padding-top: 60%;
 }
 
-.loading-grid-playoff{
+.loading-grid-playoff {
   @extend .col-auto;
   @extend .offset-md-5;
   padding-top: 30%;
 }
 
-.loading-grid-25{
+.loading-grid-25 {
   @extend .col-auto;
   @extend .offset-md-5;
   padding-top: 25%;
+}
+
+.fixture-content {
+  @extend .modal-content;
+  height: 1200px;
+}
+
+.fixture-body {
+  @extend .modal-body;
+  overflow-y: scroll !important;
+
 }
 
 
