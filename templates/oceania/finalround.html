@@ -20,9 +20,9 @@
     <div id="section">
         <div class="row ">
             <div class="col-md-3">
-                <div class="card card-border">
+                <div class="container-card">
                     <div class="soccer-card-header ">Teams</div>
-                    <div class="soccer-card-body h-75">
+                    <div class="soccer-card-body overflow-auto">
                         <div class="row g-1 ">
                             <div class="col-md-14 offset-md-2">
                                 {% for team in teams %}
@@ -43,12 +43,14 @@
                 </div>
             </div>
             <div class="col-md-7 offset-md-1">
-                <div class="card card-border">
+                <div class="container-card">
                     <div class="soccer-card-header">Qualify Zones</div>
 
-                    <div class="soccer-card-body h-75">
+                    <div class="soccer-card-body overflow-auto">
 
-                        <div id="loading" class="col-md-5 offset-md-3" data-loading-aria-busy data-loading>
+                        <div class="loading-grid" data-loading-aria-busy data-loading>
+                            <div class="display-6">Sorteando</div>
+                            <div class="spinner-grow text-info"></div>
                             <div class="spinner-grow text-info"></div>
                             <div class="spinner-grow text-info"></div>
                             <div class="spinner-grow text-info"></div>

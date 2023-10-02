@@ -19,9 +19,9 @@
     <div id="section">
         <div class="row ">
             <div class="col-md-3">
-                <div class="card card-border">
+                <div class="container-card">
                     <div class="soccer-card-header ">Teams</div>
-                    <div class="soccer-card-body h-75">
+                    <div class="soccer-card-body overflow-auto">
                         <div class="row g-1 ">
                             <div class="col-md-14 offset-md-2">
                                 {% for team in teams %}
@@ -43,23 +43,26 @@
                 </div>
             </div>
             <div class="col-md-7 offset-md-1">
-                <div class="card card-border">
+                <div class="container-card">
                     <div class="soccer-card-header">Qualify Zones</div>
 
-                    <div class="soccer-card-body h-75">
+                    <div class="soccer-card-body overflow-auto">
 
                         <div id="loading" class="col-md-5 offset-md-3" data-loading-aria-busy data-loading>
+                            <div class="display-6">Sorteando</div>
                             <div class="spinner-grow text-info"></div>
                             <div class="spinner-grow text-info"></div>
                             <div class="spinner-grow text-info"></div>
                             <div class="spinner-grow text-info"></div>
+                            <div class="spinner-grow text-info"></div>
+
 
                         </div>
 
                         <div data-loading-aria-busy data-loading-class="d-none">
                             <div class="row mb-5">
                                 <div class="col-md-5">
-                                    <div class="card card-border offset-md-2">
+                                    <div class="group-card">
                                         <div class="soccer-card-header">Zone A</div>
                                         <div class="soccer-card-body offset-md-2">
                                             {% if zone1 is None %}
@@ -111,7 +114,7 @@
                                                 {% endfor %}
                                             {% endif %}
                                         </div>
-                                    <div class="row p-1">
+                                        <div class="row p-1">
                                             <div class="col g-1 offset-md-4">
                                                 {% url 'zones.fixtures' 'AFC' 'final' 'A' as fixtures %}
                                                 <button type="button" class="btn btn-primary"
@@ -136,7 +139,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-5 offset-md-1">
-                                    <div class="card card-border offset-md-2">
+                                    <div class="group-card">
                                         <div class="soccer-card-header">Zone B</div>
                                         <div class="soccer-card-body offset-md-2">
                                             {% if zone2 is None %}
@@ -188,7 +191,7 @@
                                                 {% endfor %}
                                             {% endif %}
                                         </div>
-                                    <div class="row p-1">
+                                        <div class="row p-1">
                                             <div class="col g-1 offset-md-4">
                                                 {% url 'zones.fixtures' 'AFC' 'final' 'B' as fixtures %}
                                                 <button type="button" class="btn btn-primary"
@@ -216,7 +219,7 @@
 
                             <div class="row mb-5">
                                 <div class="col-md-5">
-                                    <div class="card card-border offset-md-2">
+                                    <div class="group-card">
                                         <div class="soccer-card-header">Zone C</div>
                                         <div class="soccer-card-body offset-md-2">
                                             {% if zone3 is None %}
@@ -268,7 +271,7 @@
                                                 {% endfor %}
                                             {% endif %}
                                         </div>
-                                    <div class="row p-1">
+                                        <div class="row p-1">
                                             <div class="col g-1 offset-md-4">
                                                 {% url 'zones.fixtures' 'AFC' 'final' 'C' as fixtures %}
                                                 <button type="button" class="btn btn-primary"
@@ -293,7 +296,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-5 offset-md-1">
-                                    <div class="card card-border offset-md-2">
+                                    <div class="group-card">
                                         <div class="soccer-card-header">Zone D</div>
                                         <div class="soccer-card-body offset-md-2">
                                             {% if zone4 is None %}
@@ -344,7 +347,7 @@
                                                 {% endfor %}
                                             {% endif %}
                                         </div>
-                                    <div class="row p-1">
+                                        <div class="row p-1">
                                             <div class="col g-1 offset-md-4">
                                                 {% url 'zones.fixtures' 'AFC' 'final' 'D' as fixtures %}
                                                 <button type="button" class="btn btn-primary"
@@ -382,7 +385,7 @@
         </div>
     </div>
 
-     <!-- Modals -->
+    <!-- Modals -->
     <div id="schedule" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="Fixtures"
          aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-scrollable">
