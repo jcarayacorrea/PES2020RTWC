@@ -162,6 +162,14 @@ nav, .dropdown-menu, .card-header, {
   border-style: ridge;
 }
 
+.team-card-list {
+  @extend .card;
+  @extend .col-10;
+  @extend .mb-1;
+  border-color: slategray;
+  border-style: ridge;
+}
+
 .team-card-sm {
   @extend .card;
   @extend .col;
@@ -284,5 +292,6 @@ team-card-sm-2 {
   overflow-y: scroll !important;
 
 }
+
 
 
