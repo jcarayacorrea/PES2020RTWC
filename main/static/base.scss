@@ -70,6 +70,11 @@ nav, .dropdown-menu, .card-header, {
 
 }
 
+.img-card-sm-grp-wc {
+
+  max-width: 1.5vw;
+
+}
 .img-card-sm-wc {
 
   max-width: 2000%;
@@ -256,6 +261,12 @@ team-card-sm-2 {
   height: 75vh;
 }
 
+.container-card-wc {
+  @extend .card;
+  @extend .card-border;
+  height: 50vh;
+}
+
 .team-list-container-card {
   @extend .card;
   @extend .card-border;
@@ -269,11 +280,20 @@ team-card-sm-2 {
   @extend .offset-md-2;
 }
 
+.group-card-conf {
+  @extend .card;
+  @extend .card-border;
+  @extend .offset-md-2;
+  max-height: 6vh;
+  width: 10vw;
+}
+
 .loading-grid {
   @extend .col-auto;
   @extend .offset-md-5;
   padding-top: 60%;
 }
+
 
 .loading-grid-playoff {
   @extend .col-auto;

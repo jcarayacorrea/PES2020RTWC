@@ -2,7 +2,7 @@ import random
 
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-
+from django.template.defaulttags import register
 from fixtures import createPlayOffMatches, getZoneData
 from utils import getTeamsMainDraw, getTeamsPlayoff
 
@@ -182,3 +182,7 @@ def playoffDraw(teams):
     random.shuffle(pool5)
 
     return pool1, pool2, pool3, pool4, pool5
+
+@register.filter
+def teamsByConf(dict,conf):
+    return countTeams(conf,dict);

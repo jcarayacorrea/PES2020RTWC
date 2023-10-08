@@ -5,6 +5,86 @@
         <h1 class="h1 text-center">World Cup</h1>
         <h4 class="h4 text-center">Group Stage</h4>
         <div class="row p-4">
+            <div class="col-2 offset-sm-2">
+                <div class="group-card-conf">
+                    <div class="soccer-card-header">
+                        CONMEBOL
+                    </div>
+                    <div class="soccer-card-body text-center">
+                        <div class="h5">
+                            {{ teams|teamsByConf:'CONMEBOL' }}
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-2 offset-sm-2">
+                <div class="group-card-conf">
+                    <div class="soccer-card-header">
+                        UEFA
+                    </div>
+                    <div class="soccer-card-body text-center">
+                        <div class="h5">
+                            {{ teams|teamsByConf:'UEFA' }}
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-2 offset-sm-2">
+                <div class="group-card-conf">
+                    <div class="soccer-card-header">
+                        CONCACAF
+                    </div>
+                    <div class="soccer-card-body text-center">
+                        <div class="h5">
+                            {{ teams|teamsByConf:'CONCACAF' }}
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-2 offset-sm-2">
+                <div class="group-card-conf">
+                    <div class="soccer-card-header">
+                        OFC
+                    </div>
+                    <div class="soccer-card-body text-center">
+                        <div class="h5">
+                            {{ teams|teamsByConf:'OFC' }}
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-2 offset-sm-2">
+                <div class="group-card-conf">
+                    <div class="soccer-card-header">
+                        CAF
+                    </div>
+                    <div class="soccer-card-body text-center">
+                        <div class="h5">
+                            {{ teams|teamsByConf:'CAF' }}
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-2 offset-sm-2">
+                <div class="group-card-conf">
+                    <div class="soccer-card-header">
+                        AFC
+                    </div>
+                    <div class="soccer-card-body text-center">
+                        <div class="h5">
+                            {{ teams|teamsByConf:'AFC' }}
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row p-4">
             <div class="col-6 g-8 offset-md-5">
                 <button type="button" class="btn btn-primary" hx-get=" {% url 'worldcup.draw' %}" hx-trigger="click"
                         hx-target="body">Draw
@@ -17,9 +97,9 @@
     </div>
 
     <div id="section">
-        <div class="row ">
+        <div class="row p-2">
             <div class="col-md-3">
-                <div class="container-card">
+                <div class="container-card-wc">
                     <div class="soccer-card-header ">Teams</div>
                     <div class="soccer-card-body overflow-auto">
                         <div class="row g-1 ">
@@ -42,12 +122,12 @@
                 </div>
             </div>
             <div class="col-md-7 offset-md-1">
-                <div class="container-card">
+                <div class="container-card-wc">
                     <div class="soccer-card-header">Main Draw</div>
 
                     <div class="soccer-card-body overflow-auto">
 
-                        <div class="loading-grid" data-loading-aria-busy data-loading>
+                        <div class="loading-grid-playoff" data-loading-aria-busy data-loading>
                             <div class="display-6">Sorteando</div>
                             <div class="spinner-grow text-info"></div>
                             <div class="spinner-grow text-info"></div>
@@ -101,7 +181,7 @@
                                                     <div class="team-card">
                                                         <div class="row">
                                                             <div class="flag-config">
-                                                                <img src="{{ team.image_flag }}" class="img-card-sm">
+                                                                <img src="{{ team.image_flag }}" class="img-card-sm-grp-wc">
                                                             </div>
                                                             <div class="name-config">
                                                                 {{ team.nation_iso_code }}
@@ -157,7 +237,7 @@
                                                     <div class="team-card">
                                                         <div class="row">
                                                             <div class="flag-config">
-                                                                <img src="{{ team.image_flag }}" class="img-card-sm">
+                                                                <img src="{{ team.image_flag }}" class="img-card-sm-grp-wc">
                                                             </div>
                                                             <div class="name-config">
                                                                 {{ team.nation_iso_code }}
@@ -213,7 +293,7 @@
                                                     <div class="team-card">
                                                         <div class="row">
                                                             <div class="flag-config">
-                                                                <img src="{{ team.image_flag }}" class="img-card-sm">
+                                                                <img src="{{ team.image_flag }}" class="img-card-sm-grp-wc">
                                                             </div>
                                                             <div class="name-config">
                                                                 {{ team.nation_iso_code }}
@@ -269,7 +349,7 @@
                                                     <div class="team-card">
                                                         <div class="row">
                                                             <div class="flag-config">
-                                                                <img src="{{ team.image_flag }}" class="img-card-sm">
+                                                                <img src="{{ team.image_flag }}" class="img-card-sm-grp-wc">
                                                             </div>
                                                             <div class="name-config">
                                                                 {{ team.nation_iso_code }}
@@ -326,7 +406,7 @@
                                                     <div class="team-card">
                                                         <div class="row">
                                                             <div class="flag-config">
-                                                                <img src="{{ team.image_flag }}" class="img-card-sm">
+                                                                <img src="{{ team.image_flag }}" class="img-card-sm-grp-wc">
                                                             </div>
                                                             <div class="name-config">
                                                                 {{ team.nation_iso_code }}
@@ -380,7 +460,7 @@
                                                     <div class="team-card">
                                                         <div class="row">
                                                             <div class="flag-config">
-                                                                <img src="{{ team.image_flag }}" class="img-card-sm">
+                                                                <img src="{{ team.image_flag }}" class="img-card-sm-grp-wc">
                                                             </div>
                                                             <div class="name-config">
                                                                 {{ team.nation_iso_code }}
@@ -437,7 +517,7 @@
                                                     <div class="team-card">
                                                         <div class="row">
                                                             <div class="flag-config">
-                                                                <img src="{{ team.image_flag }}" class="img-card-sm">
+                                                                <img src="{{ team.image_flag }}" class="img-card-sm-grp-wc">
                                                             </div>
                                                             <div class="name-config">
                                                                 {{ team.nation_iso_code }}
@@ -491,7 +571,7 @@
                                                     <div class="team-card">
                                                         <div class="row">
                                                             <div class="flag-config">
-                                                                <img src="{{ team.image_flag }}" class="img-card-sm">
+                                                                <img src="{{ team.image_flag }}" class="img-card-sm-grp-wc">
                                                             </div>
                                                             <div class="name-config">
                                                                 {{ team.nation_iso_code }}
