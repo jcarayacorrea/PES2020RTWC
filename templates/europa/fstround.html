@@ -289,7 +289,7 @@
                                                             {% if fixture|getItem:'wildCard' is not None %}
                                                                 <div class="flag-config">
                                                                     <img src="{{ fixture.wildCard.match1.homeTeam.team.image_flag }}"
-                                                                         class="img-card-sm">
+                                                                         class="img-card-sm-wc">
                                                                 </div>
                                                                 <div class="name-config">
                                                                     {{ fixture.wildCard.match1.homeTeam.team.nation_iso_code }}
@@ -328,7 +328,7 @@
                                                             {% if fixture|getItem:'wildCard' is not None %}
                                                                 <div class="flag-config">
                                                                     <img src="{{ fixture.wildCard.match1.awayTeam.team.image_flag }}"
-                                                                         class="img-card-sm">
+                                                                         class="img-card-sm-wc">
                                                                 </div>
                                                                 <div class="name-config">
                                                                     {{ fixture.wildCard.match1.awayTeam.team.nation_iso_code }}
