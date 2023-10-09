@@ -203,7 +203,7 @@ team-card-sm-2 {
 .container-card-wc {
   @extend .card;
   @extend .card-border;
-  height: 50vh;
+  height: 60vh;
 }
 
 .team-list-container-card {
@@ -222,9 +222,14 @@ team-card-sm-2 {
 .group-card-conf {
   @extend .card;
   @extend .card-border;
-  @extend .offset-md-2;
-  max-height: 6vh;
+  @extend .offset-md-1;
+  height: 8vh;
   width: 10vw;
+}
+
+.col-conf {
+  @extend .col-1;
+  margin: 2rem;
 }
 
 .loading-grid {
@@ -256,6 +261,8 @@ team-card-sm-2 {
   overflow-y: scroll !important;
 
 }
+
+
 
 
 
