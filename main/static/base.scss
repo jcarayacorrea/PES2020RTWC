@@ -34,74 +34,13 @@ nav, .dropdown-menu, .card-header, {
   border-style: solid;
 }
 
-.img-card-sm-2 {
 
-  max-width: 250%;
-
-}
-
-.img-card-sm-3 {
-
-  max-width: 250%;
-
-}
-
-.img-card-sm-4 {
-
-  max-width: 500%;
-
-}
-
-.img-card-sm-5 {
-
-  max-width: 1000%;
-
-}
-
-.img-card-sm-6 {
-
-  max-width: 1500%;
-
-}
-
-.img-card-sm {
-
-  max-width: 2750%;
-
-}
-
-.img-card-sm-grp-wc {
+.img-card {
 
   max-width: 1.5vw;
 
 }
-.img-card-sm-wc {
 
-  max-width: 2000%;
-
-}
-.img-card {
-
-  max-width: 150%;
-
-}
-
-.img-card-table {
-
-  max-width: 35%;
-
-}
-
-.img-card-rank-table {
-
-  max-width: 20%;
-
-}
-.img-card-table-std {
-
-  max-width: 45%;
-
-}
 
 .soccer-card-header {
   @extend .card-header;
