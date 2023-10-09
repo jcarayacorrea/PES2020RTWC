@@ -56,13 +56,14 @@ nav, .dropdown-menu, .card-header, {
 
 .flag-config {
   @extend .m-1;
-  @extend .col-md-2;
+  @extend .col-auto;
   @extend .justify-content-center;
 
 }
 
 .flag-config-sm {
-  @extend .col-sm-2;
+  @extend .m-1;
+  @extend .col-auto;
   @extend .justify-content-center;
 
 }
@@ -76,7 +77,7 @@ nav, .dropdown-menu, .card-header, {
 
 .name-config {
   @extend .m-1;
-  @extend .col-md-8;
+  @extend .col-auto;
   @extend .text-center
 }
 
@@ -86,11 +87,6 @@ nav, .dropdown-menu, .card-header, {
   @extend .text-center
 }
 
-.name-config-sm-fxt {
-  @extend .m-1;
-  @extend .col-sm-5;
-  @extend .text-center
-}
 
 .name-config-table {
   @extend .m-1;
@@ -105,7 +101,7 @@ nav, .dropdown-menu, .card-header, {
 
 .team-card {
   @extend .card;
-  @extend .col-md-8;
+  @extend .col-8;
   @extend .mb-1;
   border-color: slategray;
   border-style: ridge;
@@ -121,27 +117,12 @@ nav, .dropdown-menu, .card-header, {
 
 .team-card-sm {
   @extend .card;
-  @extend .col;
-  @extend .mb-1;
-  border-color: slategray;
-  border-style: ridge;
-}
-
-team-card-sm-2 {
-  @extend .card;
-  @extend .col;
-  @extend .mb-1;
-  border-color: slategray;
-  border-style: ridge;
-}
-
-.team-card-sm-fxt {
-  @extend .card;
   @extend .col-auto;
   @extend .mb-1;
   border-color: slategray;
   border-style: ridge;
 }
+
 
 .htmx-indicator {
   opacity: 0;
@@ -161,7 +142,7 @@ team-card-sm-2 {
 }
 
 .table {
-  max-height: 500px;
+  max-height: 70vh;
 }
 
 .popup {
