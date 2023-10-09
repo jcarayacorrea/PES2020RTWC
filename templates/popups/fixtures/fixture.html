@@ -15,16 +15,16 @@
                                 <div class="soccer-card-header">Fixture 1</div>
                                 <div class="soccer-card-body">
 
-                                    <div class="row  border-info" data-loading-states>
+                                    <div class="row  border-info mb-2" data-loading-states>
 
                                         <div class="col-4">
-                                            <div class="team-card-sm-fxt">
+                                            <div class="team-card-sm">
                                                 <div class="row">
                                                     <div class="flag-config">
                                                         <img src="{{ fixture.fixture1.match1.homeTeam.team.image_flag }}"
                                                              class="img-card">
                                                     </div>
-                                                    <div class="name-config-sm-fxt">
+                                                    <div class="name-config-sm">
                                                         {{ fixture.fixture1.match1.homeTeam.team.nation_iso_code }}
                                                     </div>
                                                 </div>
@@ -47,13 +47,13 @@
 
 
                                         <div class="col-4">
-                                            <div class="team-card-sm-fxt">
+                                            <div class="team-card-sm">
                                                 <div class="row">
                                                     <div class="flag-config">
                                                         <img src="{{ fixture.fixture1.match1.awayTeam.team.image_flag }}"
                                                              class="img-card">
                                                     </div>
-                                                    <div class="name-config-sm-fxt">
+                                                    <div class="name-config-sm">
                                                         {{ fixture.fixture1.match1.awayTeam.team.nation_iso_code }}
                                                     </div>
                                                 </div>
@@ -82,16 +82,16 @@
 
 
                                     {% if fixture.fixture1|getItem:'match2' is not None %}
-                                        <div class="row  border-info" data-loading-states>
+                                        <div class="row  border-info mb-2" data-loading-states>
 
                                             <div class="col-4">
-                                                <div class="team-card-sm-fxt">
+                                                <div class="team-card-sm">
                                                     <div class="row">
                                                         <div class="flag-config">
                                                             <img src="{{ fixture.fixture1.match2.homeTeam.team.image_flag }}"
                                                                  class="img-card">
                                                         </div>
-                                                        <div class="name-config-sm-fxt">
+                                                        <div class="name-config-sm">
                                                             {{ fixture.fixture1.match2.homeTeam.team.nation_iso_code }}
                                                         </div>
                                                     </div>
@@ -112,13 +112,13 @@
                                                     - {{ fixture.fixture1.match2.awayTeam.goals|default_if_none:"?" }}</h4>
                                             </div>
                                             <div class="col-4">
-                                                <div class="team-card-sm-fxt">
+                                                <div class="team-card-sm">
                                                     <div class="row">
                                                         <div class="flag-config">
                                                             <img src="{{ fixture.fixture1.match2.awayTeam.team.image_flag }}"
                                                                  class="img-card">
                                                         </div>
-                                                        <div class="name-config-sm-fxt">
+                                                        <div class="name-config-sm">
                                                             {{ fixture.fixture1.match2.awayTeam.team.nation_iso_code }}
                                                         </div>
                                                     </div>
@@ -163,16 +163,16 @@
                                 <div class="soccer-card-header">Fixture 2</div>
                                 <div class="soccer-card-body">
 
-                                    <div class="row  border-info" data-loading-states>
+                                    <div class="row  border-info mb-2" data-loading-states>
 
                                         <div class="col-4">
-                                            <div class="team-card-sm-fxt">
+                                            <div class="team-card-sm">
                                                 <div class="row">
                                                     <div class="flag-config">
                                                         <img src="{{ fixture.fixture2.match1.homeTeam.team.image_flag }}"
                                                              class="img-card">
                                                     </div>
-                                                    <div class="name-config-sm-fxt">
+                                                    <div class="name-config-sm">
                                                         {{ fixture.fixture2.match1.homeTeam.team.nation_iso_code }}
                                                     </div>
                                                 </div>
@@ -195,13 +195,13 @@
 
 
                                         <div class="col-4">
-                                            <div class="team-card-sm-fxt">
+                                            <div class="team-card-sm">
                                                 <div class="row">
                                                     <div class="flag-config">
                                                         <img src="{{ fixture.fixture2.match1.awayTeam.team.image_flag }}"
                                                              class="img-card">
                                                     </div>
-                                                    <div class="name-config-sm-fxt">
+                                                    <div class="name-config-sm">
                                                         {{ fixture.fixture2.match1.awayTeam.team.nation_iso_code }}
                                                     </div>
                                                 </div>
@@ -228,16 +228,16 @@
                                     </div>
 
                                     {% if fixture.fixture2|getItem:'match2' is not None %}
-                                        <div class="row  border-info" data-loading-states>
+                                        <div class="row  border-info mb-2" data-loading-states>
 
                                         <div class="col-4">
-                                            <div class="team-card-sm-fxt">
+                                            <div class="team-card-sm">
                                                 <div class="row">
                                                     <div class="flag-config">
                                                         <img src="{{ fixture.fixture2.match2.homeTeam.team.image_flag }}"
                                                              class="img-card">
                                                     </div>
-                                                    <div class="name-config-sm-fxt">
+                                                    <div class="name-config-sm">
                                                         {{ fixture.fixture2.match2.homeTeam.team.nation_iso_code }}
                                                     </div>
                                                 </div>
@@ -260,13 +260,13 @@
 
 
                                         <div class="col-4">
-                                            <div class="team-card-sm-fxt">
+                                            <div class="team-card-sm">
                                                 <div class="row">
                                                     <div class="flag-config">
                                                         <img src="{{ fixture.fixture2.match2.awayTeam.team.image_flag }}"
                                                              class="img-card">
                                                     </div>
-                                                    <div class="name-config-sm-fxt">
+                                                    <div class="name-config-sm">
                                                         {{ fixture.fixture2.match2.awayTeam.team.nation_iso_code }}
                                                     </div>
                                                 </div>
@@ -310,16 +310,16 @@
                                 <div class="soccer-card-header">Fixture 3</div>
                                 <div class="soccer-card-body">
 
-                                    <div class="row  border-info" data-loading-states>
+                                    <div class="row  border-info mb-2" data-loading-states>
 
                                         <div class="col-4">
-                                            <div class="team-card-sm-fxt">
+                                            <div class="team-card-sm">
                                                 <div class="row">
                                                     <div class="flag-config">
                                                         <img src="{{ fixture.fixture3.match1.homeTeam.team.image_flag }}"
                                                              class="img-card">
                                                     </div>
-                                                    <div class="name-config-sm-fxt">
+                                                    <div class="name-config-sm">
                                                         {{ fixture.fixture3.match1.homeTeam.team.nation_iso_code }}
                                                     </div>
                                                 </div>
@@ -342,13 +342,13 @@
 
 
                                         <div class="col-4">
-                                            <div class="team-card-sm-fxt">
+                                            <div class="team-card-sm">
                                                 <div class="row">
                                                     <div class="flag-config">
                                                         <img src="{{ fixture.fixture3.match1.awayTeam.team.image_flag }}"
                                                              class="img-card">
                                                     </div>
-                                                    <div class="name-config-sm-fxt">
+                                                    <div class="name-config-sm">
                                                         {{ fixture.fixture3.match1.awayTeam.team.nation_iso_code }}
                                                     </div>
                                                 </div>
@@ -375,16 +375,16 @@
                                     </div>
 
                                     {% if fixture.fixture3|getItem:'match2' is not None %}
-                                        <div class="row  border-info" data-loading-states>
+                                        <div class="row  border-info mb-2" data-loading-states>
 
                                             <div class="col-4">
-                                                <div class="team-card-sm-fxt">
+                                                <div class="team-card-sm">
                                                     <div class="row">
                                                         <div class="flag-config">
                                                             <img src="{{ fixture.fixture3.match2.homeTeam.team.image_flag }}"
                                                                  class="img-card">
                                                         </div>
-                                                        <div class="name-config-sm-fxt">
+                                                        <div class="name-config-sm">
                                                             {{ fixture.fixture3.match2.homeTeam.team.nation_iso_code }}
                                                         </div>
                                                     </div>
@@ -407,13 +407,13 @@
 
 
                                             <div class="col-4">
-                                                <div class="team-card-sm-fxt">
+                                                <div class="team-card-sm">
                                                     <div class="row">
                                                         <div class="flag-config">
                                                             <img src="{{ fixture.fixture3.match2.awayTeam.team.image_flag }}"
                                                                  class="img-card">
                                                         </div>
-                                                        <div class="name-config-sm-fxt">
+                                                        <div class="name-config-sm">
                                                             {{ fixture.fixture3.match2.awayTeam.team.nation_iso_code }}
                                                         </div>
                                                     </div>
@@ -457,16 +457,16 @@
                             <div class="card card-border offset-md-2">
                                 <div class="soccer-card-header">Fixture 4</div>
                                 <div class="soccer-card-body">
-                                    <div class="row  border-info" data-loading-states>
+                                    <div class="row  border-info mb-2" data-loading-states>
 
                                         <div class="col-4">
-                                            <div class="team-card-sm-fxt">
+                                            <div class="team-card-sm">
                                                 <div class="row">
                                                     <div class="flag-config">
                                                         <img src="{{ fixture.fixture4.match1.homeTeam.team.image_flag }}"
                                                              class="img-card">
                                                     </div>
-                                                    <div class="name-config-sm-fxt">
+                                                    <div class="name-config-sm">
                                                         {{ fixture.fixture4.match1.homeTeam.team.nation_iso_code }}
                                                     </div>
                                                 </div>
@@ -489,13 +489,13 @@
 
 
                                         <div class="col-4">
-                                            <div class="team-card-sm-fxt">
+                                            <div class="team-card-sm">
                                                 <div class="row">
                                                     <div class="flag-config">
                                                         <img src="{{ fixture.fixture4.match1.awayTeam.team.image_flag }}"
                                                              class="img-card">
                                                     </div>
-                                                    <div class="name-config-sm-fxt">
+                                                    <div class="name-config-sm">
                                                         {{ fixture.fixture4.match1.awayTeam.team.nation_iso_code }}
                                                     </div>
                                                 </div>
@@ -522,16 +522,16 @@
                                     </div>
 
                                     {% if fixture.fixture4|getItem:'match2' is not None %}
-                                        <div class="row  border-info" data-loading-states>
+                                        <div class="row  border-info mb-2" data-loading-states>
 
                                             <div class="col-4">
-                                                <div class="team-card-sm-fxt">
+                                                <div class="team-card-sm">
                                                     <div class="row">
                                                         <div class="flag-config">
                                                             <img src="{{ fixture.fixture4.match2.homeTeam.team.image_flag }}"
                                                                  class="img-card">
                                                         </div>
-                                                        <div class="name-config-sm-fxt">
+                                                        <div class="name-config-sm">
                                                             {{ fixture.fixture4.match2.homeTeam.team.nation_iso_code }}
                                                         </div>
                                                     </div>
@@ -554,13 +554,13 @@
 
 
                                             <div class="col-4">
-                                                <div class="team-card-sm-fxt">
+                                                <div class="team-card-sm">
                                                     <div class="row">
                                                         <div class="flag-config">
                                                             <img src="{{ fixture.fixture4.match2.awayTeam.team.image_flag }}"
                                                                  class="img-card">
                                                         </div>
-                                                        <div class="name-config-sm-fxt">
+                                                        <div class="name-config-sm">
                                                             {{ fixture.fixture4.match2.awayTeam.team.nation_iso_code }}
                                                         </div>
                                                     </div>
@@ -604,16 +604,16 @@
                             <div class="card card-border offset-md-2">
                                 <div class="soccer-card-header">Fixture 5</div>
                                 <div class="soccer-card-body">
-                                    <div class="row  border-info" data-loading-states>
+                                    <div class="row  border-info mb-2" data-loading-states>
 
                                         <div class="col-4">
-                                            <div class="team-card-sm-fxt">
+                                            <div class="team-card-sm">
                                                 <div class="row">
                                                     <div class="flag-config">
                                                         <img src="{{ fixture.fixture5.match1.homeTeam.team.image_flag }}"
                                                              class="img-card">
                                                     </div>
-                                                    <div class="name-config-sm-fxt">
+                                                    <div class="name-config-sm">
                                                         {{ fixture.fixture5.match1.homeTeam.team.nation_iso_code }}
                                                     </div>
                                                 </div>
@@ -636,13 +636,13 @@
 
 
                                         <div class="col-4">
-                                            <div class="team-card-sm-fxt">
+                                            <div class="team-card-sm">
                                                 <div class="row">
                                                     <div class="flag-config">
                                                         <img src="{{ fixture.fixture5.match1.awayTeam.team.image_flag }}"
                                                              class="img-card">
                                                     </div>
-                                                    <div class="name-config-sm-fxt">
+                                                    <div class="name-config-sm">
                                                         {{ fixture.fixture5.match1.awayTeam.team.nation_iso_code }}
                                                     </div>
                                                 </div>
@@ -668,16 +668,16 @@
                                         </div>
                                     </div>
                                     {% if fixture.fixture5|getItem:'match2' is not None %}
-                                        <div class="row  border-info" data-loading-states>
+                                        <div class="row  border-info mb-2" data-loading-states>
 
                                             <div class="col-4">
-                                                <div class="team-card-sm-fxt">
+                                                <div class="team-card-sm">
                                                     <div class="row">
                                                         <div class="flag-config">
                                                             <img src="{{ fixture.fixture5.match2.homeTeam.team.image_flag }}"
                                                                  class="img-card">
                                                         </div>
-                                                        <div class="name-config-sm-fxt">
+                                                        <div class="name-config-sm">
                                                             {{ fixture.fixture5.match2.homeTeam.team.nation_iso_code }}
                                                         </div>
                                                     </div>
@@ -700,13 +700,13 @@
 
 
                                             <div class="col-4">
-                                                <div class="team-card-sm-fxt">
+                                                <div class="team-card-sm">
                                                     <div class="row">
                                                         <div class="flag-config">
                                                             <img src="{{ fixture.fixture5.match2.awayTeam.team.image_flag }}"
                                                                  class="img-card">
                                                         </div>
-                                                        <div class="name-config-sm-fxt">
+                                                        <div class="name-config-sm">
                                                             {{ fixture.fixture5.match2.awayTeam.team.nation_iso_code }}
                                                         </div>
                                                     </div>
@@ -750,16 +750,16 @@
                             <div class="card card-border offset-md-2">
                                 <div class="soccer-card-header">Fixture 6</div>
                                 <div class="soccer-card-body">
-                                    <div class="row  border-info" data-loading-states>
+                                    <div class="row  border-info mb-2" data-loading-states>
 
                                         <div class="col-4">
-                                            <div class="team-card-sm-fxt">
+                                            <div class="team-card-sm">
                                                 <div class="row">
                                                     <div class="flag-config">
                                                         <img src="{{ fixture.fixture6.match1.homeTeam.team.image_flag }}"
                                                              class="img-card">
                                                     </div>
-                                                    <div class="name-config-sm-fxt">
+                                                    <div class="name-config-sm">
                                                         {{ fixture.fixture6.match1.homeTeam.team.nation_iso_code }}
                                                     </div>
                                                 </div>
@@ -782,13 +782,13 @@
 
 
                                         <div class="col-4">
-                                            <div class="team-card-sm-fxt">
+                                            <div class="team-card-sm">
                                                 <div class="row">
                                                     <div class="flag-config">
                                                         <img src="{{ fixture.fixture6.match1.awayTeam.team.image_flag }}"
                                                              class="img-card">
                                                     </div>
-                                                    <div class="name-config-sm-fxt">
+                                                    <div class="name-config-sm">
                                                         {{ fixture.fixture6.match1.awayTeam.team.nation_iso_code }}
                                                     </div>
                                                 </div>
@@ -815,16 +815,16 @@
                                     </div>
 
                                     {% if fixture.fixture6|getItem:'match2' is not None %}
-                                        <div class="row  border-info" data-loading-states>
+                                        <div class="row  border-info mb-2" data-loading-states>
 
                                             <div class="col-4">
-                                                <div class="team-card-sm-fxt">
+                                                <div class="team-card-sm">
                                                     <div class="row">
                                                         <div class="flag-config">
                                                             <img src="{{ fixture.fixture6.match2.homeTeam.team.image_flag }}"
                                                                  class="img-card">
                                                         </div>
-                                                        <div class="name-config-sm-fxt">
+                                                        <div class="name-config-sm">
                                                             {{ fixture.fixture6.match2.homeTeam.team.nation_iso_code }}
                                                         </div>
                                                     </div>
@@ -847,13 +847,13 @@
 
 
                                             <div class="col-4">
-                                                <div class="team-card-sm-fxt">
+                                                <div class="team-card-sm">
                                                     <div class="row">
                                                         <div class="flag-config">
                                                             <img src="{{ fixture.fixture6.match2.awayTeam.team.image_flag }}"
                                                                  class="img-card">
                                                         </div>
-                                                        <div class="name-config-sm-fxt">
+                                                        <div class="name-config-sm">
                                                             {{ fixture.fixture6.match2.awayTeam.team.nation_iso_code }}
                                                         </div>
                                                     </div>
@@ -897,16 +897,16 @@
                             <div class="card card-border offset-md-2">
                                 <div class="soccer-card-header">Fixture 7</div>
                                 <div class="soccer-card-body">
-                                    <div class="row  border-info" data-loading-states>
+                                    <div class="row  border-info mb-2" data-loading-states>
 
                                         <div class="col-4">
-                                            <div class="team-card-sm-fxt">
+                                            <div class="team-card-sm">
                                                 <div class="row">
                                                     <div class="flag-config">
                                                         <img src="{{ fixture.fixture7.match1.homeTeam.team.image_flag }}"
                                                              class="img-card">
                                                     </div>
-                                                    <div class="name-config-sm-fxt">
+                                                    <div class="name-config-sm">
                                                         {{ fixture.fixture7.match1.homeTeam.team.nation_iso_code }}
                                                     </div>
                                                 </div>
@@ -929,13 +929,13 @@
 
 
                                         <div class="col-4">
-                                            <div class="team-card-sm-fxt">
+                                            <div class="team-card-sm">
                                                 <div class="row">
                                                     <div class="flag-config">
                                                         <img src="{{ fixture.fixture7.match1.awayTeam.team.image_flag }}"
                                                              class="img-card">
                                                     </div>
-                                                    <div class="name-config-sm-fxt">
+                                                    <div class="name-config-sm">
                                                         {{ fixture.fixture7.match1.awayTeam.team.nation_iso_code }}
                                                     </div>
                                                 </div>
@@ -961,16 +961,16 @@
                                         </div>
                                     </div>
 
-                                    <div class="row  border-info" data-loading-states>
+                                    <div class="row  border-info mb-2" data-loading-states>
 
                                         <div class="col-4">
-                                            <div class="team-card-sm-fxt">
+                                            <div class="team-card-sm">
                                                 <div class="row">
                                                     <div class="flag-config">
                                                         <img src="{{ fixture.fixture7.match2.homeTeam.team.image_flag }}"
                                                              class="img-card">
                                                     </div>
-                                                    <div class="name-config-sm-fxt">
+                                                    <div class="name-config-sm">
                                                         {{ fixture.fixture7.match2.homeTeam.team.nation_iso_code }}
                                                     </div>
                                                 </div>
@@ -993,13 +993,13 @@
 
 
                                         <div class="col-4">
-                                            <div class="team-card-sm-fxt">
+                                            <div class="team-card-sm">
                                                 <div class="row">
                                                     <div class="flag-config">
                                                         <img src="{{ fixture.fixture7.match2.awayTeam.team.image_flag }}"
                                                              class="img-card">
                                                     </div>
-                                                    <div class="name-config-sm-fxt">
+                                                    <div class="name-config-sm">
                                                         {{ fixture.fixture7.match2.awayTeam.team.nation_iso_code }}
                                                     </div>
                                                 </div>
@@ -1042,16 +1042,16 @@
                             <div class="card card-border offset-md-2">
                                 <div class="soccer-card-header">Fixture 8</div>
                                 <div class="soccer-card-body">
-                                    <div class="row  border-info" data-loading-states>
+                                    <div class="row  border-info mb-2" data-loading-states>
 
                                         <div class="col-4">
-                                            <div class="team-card-sm-fxt">
+                                            <div class="team-card-sm">
                                                 <div class="row">
                                                     <div class="flag-config">
                                                         <img src="{{ fixture.fixture8.match1.homeTeam.team.image_flag }}"
                                                              class="img-card">
                                                     </div>
-                                                    <div class="name-config-sm-fxt">
+                                                    <div class="name-config-sm">
                                                         {{ fixture.fixture8.match1.homeTeam.team.nation_iso_code }}
                                                     </div>
                                                 </div>
@@ -1074,13 +1074,13 @@
 
 
                                         <div class="col-4">
-                                            <div class="team-card-sm-fxt">
+                                            <div class="team-card-sm">
                                                 <div class="row">
                                                     <div class="flag-config">
                                                         <img src="{{ fixture.fixture8.match1.awayTeam.team.image_flag }}"
                                                              class="img-card">
                                                     </div>
-                                                    <div class="name-config-sm-fxt">
+                                                    <div class="name-config-sm">
                                                         {{ fixture.fixture8.match1.awayTeam.team.nation_iso_code }}
                                                     </div>
                                                 </div>
@@ -1106,16 +1106,16 @@
                                         </div>
                                     </div>
 
-                                    <div class="row  border-info" data-loading-states>
+                                    <div class="row  border-info mb-2" data-loading-states>
 
                                         <div class="col-4">
-                                            <div class="team-card-sm-fxt">
+                                            <div class="team-card-sm">
                                                 <div class="row">
                                                     <div class="flag-config">
                                                         <img src="{{ fixture.fixture8.match2.homeTeam.team.image_flag }}"
                                                              class="img-card">
                                                     </div>
-                                                    <div class="name-config-sm-fxt">
+                                                    <div class="name-config-sm">
                                                         {{ fixture.fixture8.match2.homeTeam.team.nation_iso_code }}
                                                     </div>
                                                 </div>
@@ -1138,13 +1138,13 @@
 
 
                                         <div class="col-4">
-                                            <div class="team-card-sm-fxt">
+                                            <div class="team-card-sm">
                                                 <div class="row">
                                                     <div class="flag-config">
                                                         <img src="{{ fixture.fixture8.match2.awayTeam.team.image_flag }}"
                                                              class="img-card">
                                                     </div>
-                                                    <div class="name-config-sm-fxt">
+                                                    <div class="name-config-sm">
                                                         {{ fixture.fixture8.match2.awayTeam.team.nation_iso_code }}
                                                     </div>
                                                 </div>
@@ -1187,16 +1187,16 @@
                             <div class="card card-border offset-md-2">
                                 <div class="soccer-card-header">Fixture 9</div>
                                 <div class="soccer-card-body">
-                                    <div class="row  border-info" data-loading-states>
+                                    <div class="row  border-info mb-2" data-loading-states>
 
                                         <div class="col-4">
-                                            <div class="team-card-sm-fxt">
+                                            <div class="team-card-sm">
                                                 <div class="row">
                                                     <div class="flag-config">
                                                         <img src="{{ fixture.fixture9.match1.homeTeam.team.image_flag }}"
                                                              class="img-card">
                                                     </div>
-                                                    <div class="name-config-sm-fxt">
+                                                    <div class="name-config-sm">
                                                         {{ fixture.fixture9.match1.homeTeam.team.nation_iso_code }}
                                                     </div>
                                                 </div>
@@ -1219,13 +1219,13 @@
 
 
                                         <div class="col-4">
-                                            <div class="team-card-sm-fxt">
+                                            <div class="team-card-sm">
                                                 <div class="row">
                                                     <div class="flag-config">
                                                         <img src="{{ fixture.fixture9.match1.awayTeam.team.image_flag }}"
                                                              class="img-card">
                                                     </div>
-                                                    <div class="name-config-sm-fxt">
+                                                    <div class="name-config-sm">
                                                         {{ fixture.fixture9.match1.awayTeam.team.nation_iso_code }}
                                                     </div>
                                                 </div>
@@ -1251,16 +1251,16 @@
                                         </div>
                                     </div>
 
-                                    <div class="row  border-info" data-loading-states>
+                                    <div class="row  border-info mb-2" data-loading-states>
 
                                         <div class="col-4">
-                                            <div class="team-card-sm-fxt">
+                                            <div class="team-card-sm">
                                                 <div class="row">
                                                     <div class="flag-config">
                                                         <img src="{{ fixture.fixture9.match2.homeTeam.team.image_flag }}"
                                                              class="img-card">
                                                     </div>
-                                                    <div class="name-config-sm-fxt">
+                                                    <div class="name-config-sm">
                                                         {{ fixture.fixture9.match2.homeTeam.team.nation_iso_code }}
                                                     </div>
                                                 </div>
@@ -1283,13 +1283,13 @@
 
 
                                         <div class="col-4">
-                                            <div class="team-card-sm-fxt">
+                                            <div class="team-card-sm">
                                                 <div class="row">
                                                     <div class="flag-config">
                                                         <img src="{{ fixture.fixture9.match2.awayTeam.team.image_flag }}"
                                                              class="img-card">
                                                     </div>
-                                                    <div class="name-config-sm-fxt">
+                                                    <div class="name-config-sm">
                                                         {{ fixture.fixture9.match2.awayTeam.team.nation_iso_code }}
                                                     </div>
                                                 </div>
@@ -1332,16 +1332,16 @@
                             <div class="card card-border offset-md-2">
                                 <div class="soccer-card-header">Fixture 10</div>
                                 <div class="soccer-card-body">
-                                    <div class="row  border-info" data-loading-states>
+                                    <div class="row  border-info mb-2" data-loading-states>
 
                                         <div class="col-4">
-                                            <div class="team-card-sm-fxt">
+                                            <div class="team-card-sm">
                                                 <div class="row">
                                                     <div class="flag-config">
                                                         <img src="{{ fixture.fixture10.match1.homeTeam.team.image_flag }}"
                                                              class="img-card">
                                                     </div>
-                                                    <div class="name-config-sm-fxt">
+                                                    <div class="name-config-sm">
                                                         {{ fixture.fixture10.match1.homeTeam.team.nation_iso_code }}
                                                     </div>
                                                 </div>
@@ -1364,13 +1364,13 @@
 
 
                                         <div class="col-4">
-                                            <div class="team-card-sm-fxt">
+                                            <div class="team-card-sm">
                                                 <div class="row">
                                                     <div class="flag-config">
                                                         <img src="{{ fixture.fixture10.match1.awayTeam.team.image_flag }}"
                                                              class="img-card">
                                                     </div>
-                                                    <div class="name-config-sm-fxt">
+                                                    <div class="name-config-sm">
                                                         {{ fixture.fixture10.match1.awayTeam.team.nation_iso_code }}
                                                     </div>
                                                 </div>
@@ -1396,16 +1396,16 @@
                                         </div>
                                     </div>
 
-                                    <div class="row  border-info" data-loading-states>
+                                    <div class="row  border-info mb-2" data-loading-states>
 
                                         <div class="col-4">
-                                            <div class="team-card-sm-fxt">
+                                            <div class="team-card-sm">
                                                 <div class="row">
                                                     <div class="flag-config">
                                                         <img src="{{ fixture.fixture10.match2.homeTeam.team.image_flag }}"
                                                              class="img-card">
                                                     </div>
-                                                    <div class="name-config-sm-fxt">
+                                                    <div class="name-config-sm">
                                                         {{ fixture.fixture10.match2.homeTeam.team.nation_iso_code }}
                                                     </div>
                                                 </div>
@@ -1428,13 +1428,13 @@
 
 
                                         <div class="col-4">
-                                            <div class="team-card-sm-fxt">
+                                            <div class="team-card-sm">
                                                 <div class="row">
                                                     <div class="flag-config">
                                                         <img src="{{ fixture.fixture10.match2.awayTeam.team.image_flag }}"
                                                              class="img-card">
                                                     </div>
-                                                    <div class="name-config-sm-fxt">
+                                                    <div class="name-config-sm">
                                                         {{ fixture.fixture10.match2.awayTeam.team.nation_iso_code }}
                                                     </div>
                                                 </div>
