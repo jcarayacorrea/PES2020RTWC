@@ -243,6 +243,12 @@ nav, .dropdown-menu, .card-header, {
 
 }
 
+.match-border {
+  @extend .row;
+  @extend .border-info;
+  @extend .mb-2;
+}
+
 
 
 
