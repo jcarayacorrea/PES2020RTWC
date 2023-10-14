@@ -66,7 +66,10 @@
                                                 <button type="button" class="btn btn-primary"
                                                         hx-get="{{ match_1_1 }}"
                                                         hx-trigger="click"
-                                                        hx-target="#schedule-content">
+                                                        hx-target="#schedule-content"
+                                                        data-loading-disable
+                                                        {% if fixture.fixture1.match1.played is True %}
+                                                        disabled {% endif %}>
                                                     <div data-loading-aria-busy data-loading>
                                                         <div class="spinner-border spinner-border-sm text-light "></div>
                                                     </div>
@@ -131,7 +134,10 @@
                                                     <button type="button" class="btn btn-primary"
                                                             hx-get="{{ match_1_2 }}"
                                                             hx-trigger="click"
-                                                            hx-target="#schedule-content">
+                                                            hx-target="#schedule-content"
+                                                            data-loading-disable
+                                                            {% if fixture.fixture1.match2.played is True %}
+                                                            disabled {% endif %}>
                                                         <div data-loading-aria-busy data-loading>
                                                             <div class="spinner-border spinner-border-sm text-light "></div>
                                                         </div>
@@ -214,7 +220,10 @@
                                                 <button type="button" class="btn btn-primary"
                                                         hx-get="{{ match_2_1 }}"
                                                         hx-trigger="click"
-                                                        hx-target="#schedule-content">
+                                                        hx-target="#schedule-content"
+                                                        data-loading-disable
+                                                        {% if fixture.fixture2.match1.played is True %}
+                                                        disabled {% endif %}>
                                                     <div data-loading-aria-busy data-loading>
                                                         <div class="spinner-border spinner-border-sm text-light "></div>
                                                     </div>
@@ -279,7 +288,10 @@
                                                 <button type="button" class="btn btn-primary"
                                                         hx-get="{{ match_2_2 }}"
                                                         hx-trigger="click"
-                                                        hx-target="#schedule-content">
+                                                        hx-target="#schedule-content"
+                                                        data-loading-disable
+                                                        {% if fixture.fixture2.match2.played is True %}
+                                                        disabled {% endif %}>
                                                     <div data-loading-aria-busy data-loading>
                                                         <div class="spinner-border spinner-border-sm text-light "></div>
                                                     </div>
@@ -361,7 +373,10 @@
                                                 <button type="button" class="btn btn-primary"
                                                         hx-get="{{ match_3_1 }}"
                                                         hx-trigger="click"
-                                                        hx-target="#schedule-content">
+                                                        hx-target="#schedule-content"
+                                                        data-loading-disable
+                                                        {% if fixture.fixture3.match1.played is True %}
+                                                        disabled {% endif %}>
                                                     <div data-loading-aria-busy data-loading>
                                                         <div class="spinner-border spinner-border-sm text-light "></div>
                                                     </div>
@@ -426,7 +441,10 @@
                                                     <button type="button" class="btn btn-primary"
                                                             hx-get="{{ match_3_2 }}"
                                                             hx-trigger="click"
-                                                            hx-target="#schedule-content">
+                                                            hx-target="#schedule-content"
+                                                            data-loading-disable
+                                                            {% if fixture.fixture3.match2.played is True %}
+                                                            disabled {% endif %}>
                                                         <div data-loading-aria-busy data-loading>
                                                             <div class="spinner-border spinner-border-sm text-light "></div>
                                                         </div>
@@ -508,7 +526,10 @@
                                                 <button type="button" class="btn btn-primary"
                                                         hx-get="{{ match_4_1 }}"
                                                         hx-trigger="click"
-                                                        hx-target="#schedule-content">
+                                                        hx-target="#schedule-content"
+                                                        data-loading-disable
+                                                        {% if fixture.fixture4.match1.played is True %}
+                                                        disabled {% endif %}>
                                                     <div data-loading-aria-busy data-loading>
                                                         <div class="spinner-border spinner-border-sm text-light "></div>
                                                     </div>
@@ -573,7 +594,10 @@
                                                     <button type="button" class="btn btn-primary"
                                                             hx-get="{{ match_4_2 }}"
                                                             hx-trigger="click"
-                                                            hx-target="#schedule-content">
+                                                            hx-target="#schedule-content"
+                                                            data-loading-disable
+                                                            {% if fixture.fixture4.match2.played is True %}
+                                                            disabled {% endif %}>
                                                         <div data-loading-aria-busy data-loading>
                                                             <div class="spinner-border spinner-border-sm text-light "></div>
                                                         </div>
@@ -655,7 +679,10 @@
                                                 <button type="button" class="btn btn-primary"
                                                         hx-get="{{ match_5_1 }}"
                                                         hx-trigger="click"
-                                                        hx-target="#schedule-content">
+                                                        hx-target="#schedule-content"
+                                                        data-loading-disable
+                                                        {% if fixture.fixture5.match1.played is True %}
+                                                        disabled {% endif %}>
                                                     <div data-loading-aria-busy data-loading>
                                                         <div class="spinner-border spinner-border-sm text-light "></div>
                                                     </div>
@@ -719,7 +746,10 @@
                                                     <button type="button" class="btn btn-primary"
                                                             hx-get="{{ match_5_2 }}"
                                                             hx-trigger="click"
-                                                            hx-target="#schedule-content">
+                                                            hx-target="#schedule-content"
+                                                            data-loading-disable
+                                                            {% if fixture.fixture5.match2.played is True %}
+                                                            disabled {% endif %}>
                                                         <div data-loading-aria-busy data-loading>
                                                             <div class="spinner-border spinner-border-sm text-light "></div>
                                                         </div>
@@ -801,7 +831,10 @@
                                                 <button type="button" class="btn btn-primary"
                                                         hx-get="{{ match_6_1 }}"
                                                         hx-trigger="click"
-                                                        hx-target="#schedule-content">
+                                                        hx-target="#schedule-content"
+                                                        data-loading-disable
+                                                        {% if fixture.fixture6.match1.played is True %}
+                                                        disabled {% endif %}>
                                                     <div data-loading-aria-busy data-loading>
                                                         <div class="spinner-border spinner-border-sm text-light "></div>
                                                     </div>
@@ -866,7 +899,10 @@
                                                     <button type="button" class="btn btn-primary"
                                                             hx-get="{{ match_6_2 }}"
                                                             hx-trigger="click"
-                                                            hx-target="#schedule-content">
+                                                            hx-target="#schedule-content"
+                                                            data-loading-disable
+                                                            {% if fixture.fixture6.match2.played is True %}
+                                                            disabled {% endif %}>
                                                         <div data-loading-aria-busy data-loading>
                                                             <div class="spinner-border spinner-border-sm text-light "></div>
                                                         </div>
@@ -948,7 +984,10 @@
                                                 <button type="button" class="btn btn-primary"
                                                         hx-get="{{ match_7_1 }}"
                                                         hx-trigger="click"
-                                                        hx-target="#schedule-content">
+                                                        hx-target="#schedule-content"
+                                                        data-loading-disable
+                                                        {% if fixture.fixture7.match1.played is True %}
+                                                        disabled {% endif %}>
                                                     <div data-loading-aria-busy data-loading>
                                                         <div class="spinner-border spinner-border-sm text-light "></div>
                                                     </div>
@@ -1012,7 +1051,10 @@
                                                 <button type="button" class="btn btn-primary"
                                                         hx-get="{{ match_7_2 }}"
                                                         hx-trigger="click"
-                                                        hx-target="#schedule-content">
+                                                        hx-target="#schedule-content"
+                                                        data-loading-disable
+                                                        {% if fixture.fixture7.match2.played is True %}
+                                                        disabled {% endif %}>
                                                     <div data-loading-aria-busy data-loading>
                                                         <div class="spinner-border spinner-border-sm text-light "></div>
                                                     </div>
@@ -1093,7 +1135,10 @@
                                                 <button type="button" class="btn btn-primary"
                                                         hx-get="{{ match_8_1 }}"
                                                         hx-trigger="click"
-                                                        hx-target="#schedule-content">
+                                                        hx-target="#schedule-content"
+                                                        data-loading-disable
+                                                        {% if fixture.fixture8.match1.played is True %}
+                                                        disabled {% endif %}>
                                                     <div data-loading-aria-busy data-loading>
                                                         <div class="spinner-border spinner-border-sm text-light "></div>
                                                     </div>
@@ -1157,7 +1202,10 @@
                                                 <button type="button" class="btn btn-primary"
                                                         hx-get="{{ match_8_2 }}"
                                                         hx-trigger="click"
-                                                        hx-target="#schedule-content">
+                                                        hx-target="#schedule-content"
+                                                        data-loading-disable
+                                                        {% if fixture.fixture8.match2.played is True %}
+                                                        disabled {% endif %}>
                                                     <div data-loading-aria-busy data-loading>
                                                         <div class="spinner-border spinner-border-sm text-light "></div>
                                                     </div>
@@ -1238,7 +1286,10 @@
                                                 <button type="button" class="btn btn-primary"
                                                         hx-get="{{ match_9_1 }}"
                                                         hx-trigger="click"
-                                                        hx-target="#schedule-content">
+                                                        hx-target="#schedule-content"
+                                                        data-loading-disable
+                                                        {% if fixture.fixture9.match1.played is True %}
+                                                        disabled {% endif %}>
                                                     <div data-loading-aria-busy data-loading>
                                                         <div class="spinner-border spinner-border-sm text-light "></div>
                                                     </div>
@@ -1302,7 +1353,10 @@
                                                 <button type="button" class="btn btn-primary"
                                                         hx-get="{{ match_9_2 }}"
                                                         hx-trigger="click"
-                                                        hx-target="#schedule-content">
+                                                        hx-target="#schedule-content"
+                                                        data-loading-disable
+                                                        {% if fixture.fixture9.match2.played is True %}
+                                                        disabled {% endif %}>
                                                     <div data-loading-aria-busy data-loading>
                                                         <div class="spinner-border spinner-border-sm text-light "></div>
                                                     </div>
@@ -1383,7 +1437,10 @@
                                                 <button type="button" class="btn btn-primary"
                                                         hx-get="{{ match_10_1 }}"
                                                         hx-trigger="click"
-                                                        hx-target="#schedule-content">
+                                                        hx-target="#schedule-content"
+                                                        data-loading-disable
+                                                        {% if fixture.fixture10.match1.played is True %}
+                                                        disabled {% endif %}>
                                                     <div data-loading-aria-busy data-loading>
                                                         <div class="spinner-border spinner-border-sm text-light "></div>
                                                     </div>
@@ -1447,7 +1504,10 @@
                                                 <button type="button" class="btn btn-primary"
                                                         hx-get="{{ match_10_2 }}"
                                                         hx-trigger="click"
-                                                        hx-target="#schedule-content">
+                                                        hx-target="#schedule-content"
+                                                        data-loading-disable
+                                                        {% if fixture.fixture10.match2.played is True %}
+                                                        disabled {% endif %}>
                                                     <div data-loading-aria-busy data-loading>
                                                         <div class="spinner-border spinner-border-sm text-light "></div>
                                                     </div>
