@@ -36,7 +36,6 @@ def fixtureZone(request, conf, round, zone):
 
 def standingsZone(request, conf, round, zone):
     context = {}
-    fixtureDict = getZoneData(zone, conf, round)
     placesDict = getQualyPlaces(conf)
     placesList = getRoundPlaces(placesDict, round)
     standings = getStandings(conf, round, zone)
@@ -78,3 +77,8 @@ def getItem(dict, key):
     return dict.get(key)
 
 
+@register.filter
+def enableDrawButton(dict,length):
+    if(len(dict)== length):
+        return False
+    return True
