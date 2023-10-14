@@ -257,6 +257,9 @@
                                                                 hx-get="{{ match }}"
                                                                 hx-trigger="click"
                                                                 hx-target="body"
+                                                                data-loading-disable
+                                                                {% if fixture.wildCard.match1.played is True %}
+                                                                disabled {% endif %}
                                                         >
                                                             <i class="fa-regular fa-futbol"></i>
                                                         </button>
