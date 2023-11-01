@@ -92,9 +92,10 @@
                                             <div class="col-4">
                                                 <div class="team-card-sm">
                                                     <div class="row">
+                                                        {% resultbghome fixture.fixture1.match2 as homeborder %}
                                                         <div class="flag-config">
                                                             <img src="{{ fixture.fixture1.match2.homeTeam.team.image_flag }}"
-                                                                 class="img-card">
+                                                                 class="img-card {{ homeborder }}">
                                                         </div>
                                                         <div class="name-config-sm">
                                                             {{ fixture.fixture1.match2.homeTeam.team.nation_iso_code }}
@@ -119,9 +120,10 @@
                                             <div class="col-4">
                                                 <div class="team-card-sm">
                                                     <div class="row">
+                                                        {% resultbgaway fixture.fixture1.match2 as awayborder %}
                                                         <div class="flag-config">
                                                             <img src="{{ fixture.fixture1.match2.awayTeam.team.image_flag }}"
-                                                                 class="img-card">
+                                                                 class="img-card {{ awayborder }}">
                                                         </div>
                                                         <div class="name-config-sm">
                                                             {{ fixture.fixture1.match2.awayTeam.team.nation_iso_code }}
@@ -176,9 +178,10 @@
                                         <div class="col-4">
                                             <div class="team-card-sm">
                                                 <div class="row">
+                                                    {% resultbghome fixture.fixture2.match1 as homeborder %}
                                                     <div class="flag-config">
                                                         <img src="{{ fixture.fixture2.match1.homeTeam.team.image_flag }}"
-                                                             class="img-card">
+                                                             class="img-card {{ homeborder }}">
                                                     </div>
                                                     <div class="name-config-sm">
                                                         {{ fixture.fixture2.match1.homeTeam.team.nation_iso_code }}
@@ -204,10 +207,11 @@
 
                                         <div class="col-4">
                                             <div class="team-card-sm">
+                                                {% resultbgaway fixture.fixture2.match1 as awayborder %}
                                                 <div class="row">
                                                     <div class="flag-config">
                                                         <img src="{{ fixture.fixture2.match1.awayTeam.team.image_flag }}"
-                                                             class="img-card">
+                                                             class="img-card {{ awayborder }}">
                                                     </div>
                                                     <div class="name-config-sm">
                                                         {{ fixture.fixture2.match1.awayTeam.team.nation_iso_code }}
@@ -245,8 +249,9 @@
                                             <div class="team-card-sm">
                                                 <div class="row">
                                                     <div class="flag-config">
+                                                        {% resultbghome fixture.fixture2.match2 as homeborder %}
                                                         <img src="{{ fixture.fixture2.match2.homeTeam.team.image_flag }}"
-                                                             class="img-card">
+                                                             class="img-card {{ homeborder }}">
                                                     </div>
                                                     <div class="name-config-sm">
                                                         {{ fixture.fixture2.match2.homeTeam.team.nation_iso_code }}
@@ -273,9 +278,10 @@
                                         <div class="col-4">
                                             <div class="team-card-sm">
                                                 <div class="row">
+                                                    {% resultbgaway fixture.fixture2.match2 as awayborder %}
                                                     <div class="flag-config">
                                                         <img src="{{ fixture.fixture2.match2.awayTeam.team.image_flag }}"
-                                                             class="img-card">
+                                                             class="img-card {{ awayborder }}">
                                                     </div>
                                                     <div class="name-config-sm">
                                                         {{ fixture.fixture2.match2.awayTeam.team.nation_iso_code }}
@@ -330,8 +336,9 @@
                                             <div class="team-card-sm">
                                                 <div class="row">
                                                     <div class="flag-config">
+                                                        {% resultbghome fixture.fixture3.match1 as homeborder %}
                                                         <img src="{{ fixture.fixture3.match1.homeTeam.team.image_flag }}"
-                                                             class="img-card">
+                                                             class="img-card {{ homeborder }}">
                                                     </div>
                                                     <div class="name-config-sm">
                                                         {{ fixture.fixture3.match1.homeTeam.team.nation_iso_code }}
@@ -358,9 +365,10 @@
                                         <div class="col-4">
                                             <div class="team-card-sm">
                                                 <div class="row">
+                                                    {% resultbgaway fixture.fixture3.match1 as awayborder %}
                                                     <div class="flag-config">
                                                         <img src="{{ fixture.fixture3.match1.awayTeam.team.image_flag }}"
-                                                             class="img-card">
+                                                             class="img-card {{ awayborder }}">
                                                     </div>
                                                     <div class="name-config-sm">
                                                         {{ fixture.fixture3.match1.awayTeam.team.nation_iso_code }}
@@ -398,8 +406,9 @@
                                                 <div class="team-card-sm">
                                                     <div class="row">
                                                         <div class="flag-config">
+                                                            {% resultbghome fixture.fixture3.match2 as homeborder %}
                                                             <img src="{{ fixture.fixture3.match2.homeTeam.team.image_flag }}"
-                                                                 class="img-card">
+                                                                 class="img-card {{ homeborder }}">
                                                         </div>
                                                         <div class="name-config-sm">
                                                             {{ fixture.fixture3.match2.homeTeam.team.nation_iso_code }}
@@ -426,9 +435,10 @@
                                             <div class="col-4">
                                                 <div class="team-card-sm">
                                                     <div class="row">
+                                                        {% resultbgaway fixture.fixture3.match2 as awayborder %}
                                                         <div class="flag-config">
                                                             <img src="{{ fixture.fixture3.match2.awayTeam.team.image_flag }}"
-                                                                 class="img-card">
+                                                                 class="img-card {{ awayborder }}">
                                                         </div>
                                                         <div class="name-config-sm">
                                                             {{ fixture.fixture3.match2.awayTeam.team.nation_iso_code }}
@@ -483,8 +493,9 @@
                                             <div class="team-card-sm">
                                                 <div class="row">
                                                     <div class="flag-config">
+                                                        {% resultbghome fixture.fixture4.match1 as homeborder %}
                                                         <img src="{{ fixture.fixture4.match1.homeTeam.team.image_flag }}"
-                                                             class="img-card">
+                                                             class="img-card {{ homeborder }}">
                                                     </div>
                                                     <div class="name-config-sm">
                                                         {{ fixture.fixture4.match1.homeTeam.team.nation_iso_code }}
@@ -512,8 +523,9 @@
                                             <div class="team-card-sm">
                                                 <div class="row">
                                                     <div class="flag-config">
+                                                        {% resultbgaway fixture.fixture4.match1 as awayborder %}
                                                         <img src="{{ fixture.fixture4.match1.awayTeam.team.image_flag }}"
-                                                             class="img-card">
+                                                             class="img-card {{ awayborder }}">
                                                     </div>
                                                     <div class="name-config-sm">
                                                         {{ fixture.fixture4.match1.awayTeam.team.nation_iso_code }}
@@ -551,8 +563,9 @@
                                                 <div class="team-card-sm">
                                                     <div class="row">
                                                         <div class="flag-config">
+                                                            {% resultbghome fixture.fixture4.match2 as homeborder %}
                                                             <img src="{{ fixture.fixture4.match2.homeTeam.team.image_flag }}"
-                                                                 class="img-card">
+                                                                 class="img-card {{ homeborder }}">
                                                         </div>
                                                         <div class="name-config-sm">
                                                             {{ fixture.fixture4.match2.homeTeam.team.nation_iso_code }}
@@ -580,8 +593,9 @@
                                                 <div class="team-card-sm">
                                                     <div class="row">
                                                         <div class="flag-config">
+                                                            {% resultbgaway fixture.fixture4.match2 as awayborder %}
                                                             <img src="{{ fixture.fixture4.match2.awayTeam.team.image_flag }}"
-                                                                 class="img-card">
+                                                                 class="img-card {{ awayborder }}" >
                                                         </div>
                                                         <div class="name-config-sm">
                                                             {{ fixture.fixture4.match2.awayTeam.team.nation_iso_code }}
@@ -636,8 +650,9 @@
                                             <div class="team-card-sm">
                                                 <div class="row">
                                                     <div class="flag-config">
+                                                        {% resultbghome fixture.fixture5.match1 as homeborder %}
                                                         <img src="{{ fixture.fixture5.match1.homeTeam.team.image_flag }}"
-                                                             class="img-card">
+                                                             class="img-card {{ homeborder }}">
                                                     </div>
                                                     <div class="name-config-sm">
                                                         {{ fixture.fixture5.match1.homeTeam.team.nation_iso_code }}
@@ -665,8 +680,9 @@
                                             <div class="team-card-sm">
                                                 <div class="row">
                                                     <div class="flag-config">
+                                                        {% resultbgaway fixture.fixture5.match1 as awayborder %}
                                                         <img src="{{ fixture.fixture5.match1.awayTeam.team.image_flag }}"
-                                                             class="img-card">
+                                                             class="img-card {{ awayborder }}">
                                                     </div>
                                                     <div class="name-config-sm">
                                                         {{ fixture.fixture5.match1.awayTeam.team.nation_iso_code }}
@@ -703,8 +719,9 @@
                                                 <div class="team-card-sm">
                                                     <div class="row">
                                                         <div class="flag-config">
+                                                            {% resultbghome fixture.fixture5.match2 as homeborder %}
                                                             <img src="{{ fixture.fixture5.match2.homeTeam.team.image_flag }}"
-                                                                 class="img-card">
+                                                                 class="img-card {{ homeborder }}">
                                                         </div>
                                                         <div class="name-config-sm">
                                                             {{ fixture.fixture5.match2.homeTeam.team.nation_iso_code }}
@@ -732,8 +749,9 @@
                                                 <div class="team-card-sm">
                                                     <div class="row">
                                                         <div class="flag-config">
+                                                            {% resultbgaway fixture.fixture5.match2 as awayborder %}
                                                             <img src="{{ fixture.fixture5.match2.awayTeam.team.image_flag }}"
-                                                                 class="img-card">
+                                                                 class="img-card {{ awayborder }}">
                                                         </div>
                                                         <div class="name-config-sm">
                                                             {{ fixture.fixture5.match2.awayTeam.team.nation_iso_code }}
@@ -788,8 +806,9 @@
                                             <div class="team-card-sm">
                                                 <div class="row">
                                                     <div class="flag-config">
+                                                        {% resultbghome fixture.fixture6.match1 as homeborder %}
                                                         <img src="{{ fixture.fixture6.match1.homeTeam.team.image_flag }}"
-                                                             class="img-card">
+                                                             class="img-card {{ homeborder }}">
                                                     </div>
                                                     <div class="name-config-sm">
                                                         {{ fixture.fixture6.match1.homeTeam.team.nation_iso_code }}
@@ -817,8 +836,9 @@
                                             <div class="team-card-sm">
                                                 <div class="row">
                                                     <div class="flag-config">
+                                                        {% resultbgaway fixture.fixture6.match1 as awayborder %}
                                                         <img src="{{ fixture.fixture6.match1.awayTeam.team.image_flag }}"
-                                                             class="img-card">
+                                                             class="img-card {{ awayborder }}">
                                                     </div>
                                                     <div class="name-config-sm">
                                                         {{ fixture.fixture6.match1.awayTeam.team.nation_iso_code }}
@@ -856,8 +876,9 @@
                                                 <div class="team-card-sm">
                                                     <div class="row">
                                                         <div class="flag-config">
+                                                            {% resultbghome fixture.fixture6.match2 as homeborder %}
                                                             <img src="{{ fixture.fixture6.match2.homeTeam.team.image_flag }}"
-                                                                 class="img-card">
+                                                                 class="img-card {{ homeborder }}">
                                                         </div>
                                                         <div class="name-config-sm">
                                                             {{ fixture.fixture6.match2.homeTeam.team.nation_iso_code }}
@@ -885,8 +906,9 @@
                                                 <div class="team-card-sm">
                                                     <div class="row">
                                                         <div class="flag-config">
+                                                            {% resultbgaway fixture.fixture6.match2 as awayborder %}
                                                             <img src="{{ fixture.fixture6.match2.awayTeam.team.image_flag }}"
-                                                                 class="img-card">
+                                                                 class="img-card {{ awayborder }}">
                                                         </div>
                                                         <div class="name-config-sm">
                                                             {{ fixture.fixture6.match2.awayTeam.team.nation_iso_code }}
@@ -941,8 +963,9 @@
                                             <div class="team-card-sm">
                                                 <div class="row">
                                                     <div class="flag-config">
+                                                        {% resultbghome fixture.fixture7.match1 as homeborder %}
                                                         <img src="{{ fixture.fixture7.match1.homeTeam.team.image_flag }}"
-                                                             class="img-card">
+                                                             class="img-card {{ homeborder }}">
                                                     </div>
                                                     <div class="name-config-sm">
                                                         {{ fixture.fixture7.match1.homeTeam.team.nation_iso_code }}
@@ -970,8 +993,9 @@
                                             <div class="team-card-sm">
                                                 <div class="row">
                                                     <div class="flag-config">
+                                                        {% resultbgaway fixture.fixture7.match1 as awayborder %}
                                                         <img src="{{ fixture.fixture7.match1.awayTeam.team.image_flag }}"
-                                                             class="img-card">
+                                                             class="img-card {{ awayborder }}">
                                                     </div>
                                                     <div class="name-config-sm">
                                                         {{ fixture.fixture7.match1.awayTeam.team.nation_iso_code }}
@@ -1008,8 +1032,9 @@
                                             <div class="team-card-sm">
                                                 <div class="row">
                                                     <div class="flag-config">
+                                                        {% resultbghome fixture.fixture7.match2 as homeborder %}
                                                         <img src="{{ fixture.fixture7.match2.homeTeam.team.image_flag }}"
-                                                             class="img-card">
+                                                             class="img-card {{ homeborder }}">
                                                     </div>
                                                     <div class="name-config-sm">
                                                         {{ fixture.fixture7.match2.homeTeam.team.nation_iso_code }}
@@ -1037,8 +1062,9 @@
                                             <div class="team-card-sm">
                                                 <div class="row">
                                                     <div class="flag-config">
+                                                        {% resultbgaway fixture.fixture7.match2 as awayborder %}
                                                         <img src="{{ fixture.fixture7.match2.awayTeam.team.image_flag }}"
-                                                             class="img-card">
+                                                             class="img-card {{ awayborder }}">
                                                     </div>
                                                     <div class="name-config-sm">
                                                         {{ fixture.fixture7.match2.awayTeam.team.nation_iso_code }}
@@ -1092,8 +1118,9 @@
                                             <div class="team-card-sm">
                                                 <div class="row">
                                                     <div class="flag-config">
+                                                        {% resultbghome fixture.fixture8.match1 as homeborder %}
                                                         <img src="{{ fixture.fixture8.match1.homeTeam.team.image_flag }}"
-                                                             class="img-card">
+                                                             class="img-card {{ homeborder }}">
                                                     </div>
                                                     <div class="name-config-sm">
                                                         {{ fixture.fixture8.match1.homeTeam.team.nation_iso_code }}
@@ -1121,8 +1148,9 @@
                                             <div class="team-card-sm">
                                                 <div class="row">
                                                     <div class="flag-config">
+                                                        {% resultbgaway fixture.fixture8.match1 as awayborder %}
                                                         <img src="{{ fixture.fixture8.match1.awayTeam.team.image_flag }}"
-                                                             class="img-card">
+                                                             class="img-card {{ awayborder }}">
                                                     </div>
                                                     <div class="name-config-sm">
                                                         {{ fixture.fixture8.match1.awayTeam.team.nation_iso_code }}
@@ -1159,8 +1187,9 @@
                                             <div class="team-card-sm">
                                                 <div class="row">
                                                     <div class="flag-config">
+                                                        {% resultbghome fixture.fixture8.match2 as homeborder %}
                                                         <img src="{{ fixture.fixture8.match2.homeTeam.team.image_flag }}"
-                                                             class="img-card">
+                                                             class="img-card {{ homeborder }}">
                                                     </div>
                                                     <div class="name-config-sm">
                                                         {{ fixture.fixture8.match2.homeTeam.team.nation_iso_code }}
@@ -1188,8 +1217,9 @@
                                             <div class="team-card-sm">
                                                 <div class="row">
                                                     <div class="flag-config">
+                                                        {% resultbghome fixture.fixture8.match2 as awayborder %}
                                                         <img src="{{ fixture.fixture8.match2.awayTeam.team.image_flag }}"
-                                                             class="img-card">
+                                                             class="img-card {{ awayborder }}">
                                                     </div>
                                                     <div class="name-config-sm">
                                                         {{ fixture.fixture8.match2.awayTeam.team.nation_iso_code }}
@@ -1243,8 +1273,9 @@
                                             <div class="team-card-sm">
                                                 <div class="row">
                                                     <div class="flag-config">
+                                                        {% resultbghome fixture.fixture9.match1 as homeborder %}
                                                         <img src="{{ fixture.fixture9.match1.homeTeam.team.image_flag }}"
-                                                             class="img-card">
+                                                             class="img-card {{ homeborder }}">
                                                     </div>
                                                     <div class="name-config-sm">
                                                         {{ fixture.fixture9.match1.homeTeam.team.nation_iso_code }}
@@ -1272,8 +1303,9 @@
                                             <div class="team-card-sm">
                                                 <div class="row">
                                                     <div class="flag-config">
+                                                        {% resultbgaway fixture.fixture9.match1 as awayborder %}
                                                         <img src="{{ fixture.fixture9.match1.awayTeam.team.image_flag }}"
-                                                             class="img-card">
+                                                             class="img-card {{ awayborder }}">
                                                     </div>
                                                     <div class="name-config-sm">
                                                         {{ fixture.fixture9.match1.awayTeam.team.nation_iso_code }}
@@ -1310,8 +1342,9 @@
                                             <div class="team-card-sm">
                                                 <div class="row">
                                                     <div class="flag-config">
+                                                        {% resultbghome fixture.fixture9.match2 as homeborder %}
                                                         <img src="{{ fixture.fixture9.match2.homeTeam.team.image_flag }}"
-                                                             class="img-card">
+                                                             class="img-card {{ homeborder }}">
                                                     </div>
                                                     <div class="name-config-sm">
                                                         {{ fixture.fixture9.match2.homeTeam.team.nation_iso_code }}
@@ -1339,8 +1372,9 @@
                                             <div class="team-card-sm">
                                                 <div class="row">
                                                     <div class="flag-config">
+                                                        {% resultbgaway fixture.fixture1.match1 as awayborder %}
                                                         <img src="{{ fixture.fixture9.match2.awayTeam.team.image_flag }}"
-                                                             class="img-card">
+                                                             class="img-card {{ awayborder }}">
                                                     </div>
                                                     <div class="name-config-sm">
                                                         {{ fixture.fixture9.match2.awayTeam.team.nation_iso_code }}
@@ -1394,8 +1428,9 @@
                                             <div class="team-card-sm">
                                                 <div class="row">
                                                     <div class="flag-config">
+                                                        {% resultbghome fixture.fixture10.match1 as homeborder %}
                                                         <img src="{{ fixture.fixture10.match1.homeTeam.team.image_flag }}"
-                                                             class="img-card">
+                                                             class="img-card {{ homeborder }}">
                                                     </div>
                                                     <div class="name-config-sm">
                                                         {{ fixture.fixture10.match1.homeTeam.team.nation_iso_code }}
@@ -1423,8 +1458,9 @@
                                             <div class="team-card-sm">
                                                 <div class="row">
                                                     <div class="flag-config">
+                                                        {% resultbgaway fixture.fixture10.match1 as awayborder %}
                                                         <img src="{{ fixture.fixture10.match1.awayTeam.team.image_flag }}"
-                                                             class="img-card">
+                                                             class="img-card {{ awayborder }}">
                                                     </div>
                                                     <div class="name-config-sm">
                                                         {{ fixture.fixture10.match1.awayTeam.team.nation_iso_code }}
@@ -1461,8 +1497,9 @@
                                             <div class="team-card-sm">
                                                 <div class="row">
                                                     <div class="flag-config">
+                                                        {% resultbghome fixture.fixture10.match2 as homeborder %}
                                                         <img src="{{ fixture.fixture10.match2.homeTeam.team.image_flag }}"
-                                                             class="img-card">
+                                                             class="img-card {{ homeborder }}">
                                                     </div>
                                                     <div class="name-config-sm">
                                                         {{ fixture.fixture10.match2.homeTeam.team.nation_iso_code }}
@@ -1490,8 +1527,9 @@
                                             <div class="team-card-sm">
                                                 <div class="row">
                                                     <div class="flag-config">
+                                                        {% resultbgaway fixture.fixture10.match2 as awayborder %}
                                                         <img src="{{ fixture.fixture10.match2.awayTeam.team.image_flag }}"
-                                                             class="img-card">
+                                                             class="img-card {{ awayborder }}">
                                                     </div>
                                                     <div class="name-config-sm">
                                                         {{ fixture.fixture10.match2.awayTeam.team.nation_iso_code }}

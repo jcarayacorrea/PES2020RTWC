@@ -84,7 +84,8 @@ nav, .dropdown-menu, .card-header, {
 .name-config-sm {
   @extend .m-1;
   @extend .col-5;
-  @extend .text-center
+  @extend .text-center;
+  padding: 0.25rem;
 }
 
 
@@ -269,6 +270,16 @@ nav, .dropdown-menu, .card-header, {
 .draw{
   @extend .img-border;
   border-color: #FAFF89;
+}
+
+h6 {
+  font-size: 0.75rem;
+}
+
+.goal {
+  @extend .col-auto;
+  padding: 0.3rem;
+
 }
 
 

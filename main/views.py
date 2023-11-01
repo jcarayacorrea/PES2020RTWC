@@ -93,27 +93,40 @@ def enableDrawButton(dict, length):
         return False
     return True
 
+
 @register.simple_tag
 def resultbghome(dict):
     if dict['played']:
-        if dict['homeTeam']['result'] is True and dict['awayTeam']['result'] is False:
-            return 'win'
-        elif dict['homeTeam']['result'] is False and dict['awayTeam']['result'] is True:
-            return 'lose'
+        if (dict['homeTeam']).get('result') is True:
+            if dict['homeTeam']['result'] is True and dict['awayTeam']['result'] is False:
+                return 'win'
+            elif dict['homeTeam']['result'] is False and dict['awayTeam']['result'] is True:
+                return 'lose'
+            else:
+                return 'draw'
         else:
-            return 'draw'
+            if (dict['homeTeam']['goals'] > dict['awayTeam']['goals']) or ( (dict['homeTeam']['penalties'] is not None) and
+                    (dict['homeTeam']['penalties'] > dict['awayTeam']['penalties'])):
+                return 'win'
+            else:
+                return 'lose'
     return 'non-played'
 
 
 @register.simple_tag
 def resultbgaway(dict):
     if dict['played']:
-        if dict['homeTeam']['result'] is False and dict['awayTeam']['result'] is True:
-            return 'win'
-        elif dict['homeTeam']['result'] is True and dict['awayTeam']['result'] is False:
-            return 'lose'
+        if (dict['homeTeam']).get('result') is True:
+            if dict['homeTeam']['result'] is False and dict['awayTeam']['result'] is True:
+                return 'win'
+            elif dict['homeTeam']['result'] is True and dict['awayTeam']['result'] is False:
+                return 'lose'
+            else:
+                return 'draw'
         else:
-            return 'draw'
+            if (dict['homeTeam']['goals'] < dict['awayTeam']['goals']) or ( (dict['awayTeam']['penalties'] is not None) and
+                    (dict['homeTeam']['penalties'] < dict['awayTeam']['penalties'])):
+                return 'win'
+            else:
+                return 'lose'
     return ''
-
-

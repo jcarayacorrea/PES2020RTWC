@@ -85,13 +85,14 @@
                                                                 <div class="team-card-sm">
                                                                     <div class="row ">
                                                                         <div class="flag-config-sm">
+                                                                            {% resultbghome fixture.first.match1 as homeborder %}
                                                                             <img src="{{ fixture.first.match1.homeTeam.team.image_flag }}"
-                                                                                 class="img-card">
+                                                                                 class="img-card {{ homeborder }}">
                                                                         </div>
                                                                         <div class="name-config-sm">
                                                                             {{ fixture.first.match1.homeTeam.team.nation_iso_code }}
                                                                         </div>
-                                                                        <div class="col">
+                                                                        <div class="goal">
                                                                             {{ fixture.first.match1.homeTeam.goals|default_if_none:"?" }}
                                                                             ({% firstof fixture.first.match1.homeTeam.penalties 0 %})
                                                                         </div>
@@ -115,13 +116,14 @@
                                                                 <div class="team-card-sm">
                                                                     <div class="row ">
                                                                         <div class="flag-config-sm">
+                                                                            {% resultbgaway fixture.first.match1 as awayborder %}
                                                                             <img src="{{ fixture.first.match1.awayTeam.team.image_flag }}"
-                                                                                 class="img-card">
+                                                                                 class="img-card {{ awayborder }}">
                                                                         </div>
                                                                         <div class="name-config-sm">
                                                                             {{ fixture.first.match1.awayTeam.team.nation_iso_code }}
                                                                         </div>
-                                                                        <div class="col">
+                                                                        <div class="goal">
                                                                             {{ fixture.first.match1.awayTeam.goals|default_if_none:"?" }}
                                                                             ({% firstof fixture.first.match1.awayTeam.penalties 0 %})
                                                                         </div>
@@ -175,13 +177,14 @@
                                                                 <div class="team-card-sm">
                                                                     <div class="row ">
                                                                         <div class="flag-config-sm">
+                                                                            {% resultbghome fixture.first.match2 as homeborder %}
                                                                             <img src="{{ fixture.first.match2.homeTeam.team.image_flag }}"
-                                                                                 class="img-card">
+                                                                                 class="img-card {{ homeborder }}">
                                                                         </div>
                                                                         <div class="name-config-sm">
                                                                             {{ fixture.first.match2.homeTeam.team.nation_iso_code }}
                                                                         </div>
-                                                                        <div class="col">
+                                                                        <div class="goal">
                                                                             {{ fixture.first.match2.homeTeam.goals|default_if_none:"?" }}
                                                                             ({% firstof fixture.first.match2.homeTeam.penalties 0 %})
                                                                         </div>
@@ -205,13 +208,14 @@
                                                                 <div class="team-card-sm">
                                                                     <div class="row ">
                                                                         <div class="flag-config-sm">
+                                                                            {% resultbgaway fixture.first.match2 as awayborder %}
                                                                             <img src="{{ fixture.first.match2.awayTeam.team.image_flag }}"
-                                                                                 class="img-card">
+                                                                                 class="img-card {{ awayborder }}">
                                                                         </div>
                                                                         <div class="name-config-sm">
                                                                             {{ fixture.first.match2.awayTeam.team.nation_iso_code }}
                                                                         </div>
-                                                                        <div class="col">
+                                                                        <div class="goal">
                                                                             {{ fixture.first.match2.awayTeam.goals|default_if_none:"?" }}
                                                                             ({% firstof fixture.first.match2.awayTeam.penalties 0 %})
                                                                         </div>
@@ -263,13 +267,14 @@
                                                                 <div class="team-card-sm">
                                                                     <div class="row ">
                                                                         <div class="flag-config-sm">
+                                                                            {% resultbghome fixture.first.match3 as homeborder %}
                                                                             <img src="{{ fixture.first.match3.homeTeam.team.image_flag }}"
-                                                                                 class="img-card">
+                                                                                 class="img-card {{ homeborder }}">
                                                                         </div>
                                                                         <div class="name-config-sm">
                                                                             {{ fixture.first.match3.homeTeam.team.nation_iso_code }}
                                                                         </div>
-                                                                        <div class="col">
+                                                                        <div class="goal">
                                                                             {{ fixture.first.match3.homeTeam.goals|default_if_none:"?" }}
                                                                             ({% firstof fixture.first.match3.homeTeam.penalties 0 %})
                                                                         </div>
@@ -293,13 +298,14 @@
                                                                 <div class="team-card-sm">
                                                                     <div class="row ">
                                                                         <div class="flag-config-sm">
+                                                                            {% resultbgaway fixture.first.match3 as awayborder %}
                                                                             <img src="{{ fixture.first.match3.awayTeam.team.image_flag }}"
-                                                                                 class="img-card">
+                                                                                 class="img-card {{ awayborder }}">
                                                                         </div>
                                                                         <div class="name-config-sm">
                                                                             {{ fixture.first.match3.awayTeam.team.nation_iso_code }}
                                                                         </div>
-                                                                        <div class="col">
+                                                                        <div class="goal">
                                                                             {{ fixture.first.match3.awayTeam.goals|default_if_none:"?" }}
                                                                             ({% firstof fixture.first.match3.awayTeam.penalties 0 %})
                                                                         </div>
@@ -351,13 +357,14 @@
                                                                 <div class="team-card-sm">
                                                                     <div class="row ">
                                                                         <div class="flag-config-sm">
+                                                                            {% resultbghome fixture.first.match4 as homeborder %}
                                                                             <img src="{{ fixture.first.match4.homeTeam.team.image_flag }}"
-                                                                                 class="img-card">
+                                                                                 class="img-card {{ homeborder }}">
                                                                         </div>
                                                                         <div class="name-config-sm">
                                                                             {{ fixture.first.match4.homeTeam.team.nation_iso_code }}
                                                                         </div>
-                                                                        <div class="col">
+                                                                        <div class="goal">
                                                                             {{ fixture.first.match4.homeTeam.goals|default_if_none:"?" }}
                                                                             ({% firstof fixture.first.match4.homeTeam.penalties 0 %})
                                                                         </div>
@@ -381,13 +388,14 @@
                                                                 <div class="team-card-sm">
                                                                     <div class="row ">
                                                                         <div class="flag-config-sm">
+                                                                            {% resultbgaway fixture.first.match4 as awayborder %}
                                                                             <img src="{{ fixture.first.match4.awayTeam.team.image_flag }}"
-                                                                                 class="img-card">
+                                                                                 class="img-card {{ awayborder }}">
                                                                         </div>
                                                                         <div class="name-config-sm">
                                                                             {{ fixture.first.match4.awayTeam.team.nation_iso_code }}
                                                                         </div>
-                                                                        <div class="col">
+                                                                        <div class="goal">
                                                                             {{ fixture.first.match4.awayTeam.goals|default_if_none:"?" }}
                                                                             ({% firstof fixture.first.match4.awayTeam.penalties 0 %})
                                                                         </div>
@@ -444,13 +452,14 @@
                                                                 <div class="team-card-sm">
                                                                     <div class="row ">
                                                                         <div class="flag-config-sm">
+                                                                            {% resultbghome fixture.final.match1 as homeborder %}
                                                                             <img src="{{ fixture.final.match1.homeTeam.team.image_flag }}"
-                                                                                 class="img-card">
+                                                                                 class="img-card {{ homeborder }}">
                                                                         </div>
                                                                         <div class="name-config-sm">
                                                                             {{ fixture.final.match1.homeTeam.team.nation_iso_code }}
                                                                         </div>
-                                                                        <div class="col">
+                                                                        <div class="goal">
                                                                             {{ fixture.final.match1.homeTeam.goals|default_if_none:"?" }}
                                                                             ({% firstof fixture.final.match1.homeTeam.penalties 0 %})
                                                                         </div>
@@ -473,13 +482,14 @@
                                                                 <div class="team-card-sm">
                                                                     <div class="row ">
                                                                         <div class="flag-config-sm">
+                                                                            {% resultbgaway fixture.final.match1 as awayborder %}
                                                                             <img src="{{ fixture.final.match1.awayTeam.team.image_flag }}"
-                                                                                 class="img-card">
+                                                                                 class="img-card {{ awayborder }}">
                                                                         </div>
                                                                         <div class="name-config-sm">
                                                                             {{ fixture.final.match1.awayTeam.team.nation_iso_code }}
                                                                         </div>
-                                                                        <div class="col">
+                                                                        <div class="goal">
                                                                             {{ fixture.final.match1.awayTeam.goals|default_if_none:"?" }}
                                                                             ({% firstof fixture.final.match1.awayTeam.penalties 0 %})
                                                                         </div>
@@ -530,13 +540,14 @@
                                                                 <div class="team-card-sm">
                                                                     <div class="row ">
                                                                         <div class="flag-config-sm">
+                                                                            {% resultbghome fixture.final.match2 as homeborder %}
                                                                             <img src="{{ fixture.final.match2.homeTeam.team.image_flag }}"
-                                                                                 class="img-card">
+                                                                                 class="img-card {{ homeborder }}">
                                                                         </div>
                                                                         <div class="name-config-sm">
                                                                             {{ fixture.final.match2.homeTeam.team.nation_iso_code }}
                                                                         </div>
-                                                                        <div class="col">
+                                                                        <div class="goal">
                                                                             {{ fixture.final.match2.homeTeam.goals|default_if_none:"?" }}
                                                                             ({% firstof fixture.final.match2.homeTeam.penalties 0 %})
                                                                         </div>
@@ -559,13 +570,14 @@
                                                                 <div class="team-card-sm">
                                                                     <div class="row ">
                                                                         <div class="flag-config-sm">
+                                                                            {% resultbgaway fixture.final.match2 as awayborder %}
                                                                             <img src="{{ fixture.final.match2.awayTeam.team.image_flag }}"
-                                                                                 class="img-card">
+                                                                                 class="img-card {{ awayborder }}">
                                                                         </div>
                                                                         <div class="name-config-sm">
                                                                             {{ fixture.final.match2.awayTeam.team.nation_iso_code }}
                                                                         </div>
-                                                                        <div class="col">
+                                                                        <div class="goal">
                                                                             {{ fixture.final.match2.awayTeam.goals|default_if_none:"?" }}
                                                                             ({% firstof fixture.final.match2.awayTeam.penalties 0 %})
                                                                         </div>
@@ -616,13 +628,14 @@
                                                                 <div class="team-card-sm">
                                                                     <div class="row ">
                                                                         <div class="flag-config-sm">
+                                                                            {% resultbghome fixture.final.match3 as homeborder %}
                                                                             <img src="{{ fixture.final.match3.homeTeam.team.image_flag }}"
-                                                                                 class="img-card">
+                                                                                 class="img-card {{ homeborder }}">
                                                                         </div>
                                                                         <div class="name-config-sm">
                                                                             {{ fixture.final.match3.homeTeam.team.nation_iso_code }}
                                                                         </div>
-                                                                        <div class="col">
+                                                                        <div class="goal">
                                                                             {{ fixture.final.match3.homeTeam.goals|default_if_none:"?" }}
                                                                             ({% firstof fixture.final.match3.homeTeam.penalties 0 %})
                                                                         </div>
@@ -645,13 +658,14 @@
                                                                 <div class="team-card-sm">
                                                                     <div class="row ">
                                                                         <div class="flag-config-sm">
+                                                                            {% resultbgaway fixture.final.match3 as awayborder %}
                                                                             <img src="{{ fixture.final.match3.awayTeam.team.image_flag }}"
-                                                                                 class="img-card">
+                                                                                 class="img-card {{ awayborder }}">
                                                                         </div>
                                                                         <div class="name-config-sm">
                                                                             {{ fixture.final.match3.awayTeam.team.nation_iso_code }}
                                                                         </div>
-                                                                        <div class="col">
+                                                                        <div class="goal">
                                                                             {{ fixture.final.match3.awayTeam.goals|default_if_none:"?" }}
                                                                             ({% firstof fixture.final.match3.awayTeam.penalties 0 %})
                                                                         </div>
@@ -702,13 +716,14 @@
                                                                 <div class="team-card-sm">
                                                                     <div class="row ">
                                                                         <div class="flag-config-sm">
+                                                                            {% resultbghome fixture.final.match4 as homeborder %}
                                                                             <img src="{{ fixture.final.match4.homeTeam.team.image_flag }}"
-                                                                                 class="img-card">
+                                                                                 class="img-card {{ homeborder }}">
                                                                         </div>
                                                                         <div class="name-config-sm">
                                                                             {{ fixture.final.match4.homeTeam.team.nation_iso_code }}
                                                                         </div>
-                                                                        <div class="col">
+                                                                        <div class="goal">
                                                                             {{ fixture.final.match4.homeTeam.goals|default_if_none:"?" }}
                                                                             ({% firstof fixture.final.match4.homeTeam.penalties 0 %})
                                                                         </div>
@@ -731,13 +746,14 @@
                                                                 <div class="team-card-sm">
                                                                     <div class="row ">
                                                                         <div class="flag-config-sm">
+                                                                            {% resultbgaway fixture.final.match4 as awayborder %}
                                                                             <img src="{{ fixture.final.match4.awayTeam.team.image_flag }}"
-                                                                                 class="img-card">
+                                                                                 class="img-card {{ awayborder }}">
                                                                         </div>
                                                                         <div class="name-config-sm">
                                                                             {{ fixture.final.match4.awayTeam.team.nation_iso_code }}
                                                                         </div>
-                                                                        <div class="col">
+                                                                        <div class="goal">
                                                                             {{ fixture.final.match4.awayTeam.goals|default_if_none:"?" }}
                                                                             ({% firstof fixture.final.match4.awayTeam.penalties 0 %})
                                                                         </div>
@@ -789,13 +805,14 @@
                                                                 <div class="team-card-sm">
                                                                     <div class="row ">
                                                                         <div class="flag-config-sm">
+                                                                            {% resultbghome fixture.final.match5 as homeborder %}
                                                                             <img src="{{ fixture.final.match5.homeTeam.team.image_flag }}"
-                                                                                 class="img-card">
+                                                                                 class="img-card {{ homeborder }}">
                                                                         </div>
                                                                         <div class="name-config-sm">
                                                                             {{ fixture.final.match5.homeTeam.team.nation_iso_code }}
                                                                         </div>
-                                                                        <div class="col">
+                                                                        <div class="goal">
                                                                             {{ fixture.final.match5.homeTeam.goals|default_if_none:"?" }}
                                                                             ({% firstof fixture.final.match5.homeTeam.penalties 0 %})
                                                                         </div>
@@ -818,13 +835,14 @@
                                                                 <div class="team-card-sm">
                                                                     <div class="row ">
                                                                         <div class="flag-config-sm">
+                                                                            {% resultbgaway fixture.final.match5 as awayborder %}
                                                                             <img src="{{ fixture.final.match5.awayTeam.team.image_flag }}"
-                                                                                 class="img-card">
+                                                                                 class="img-card {{ awayborder }}">
                                                                         </div>
                                                                         <div class="name-config-sm">
                                                                             {{ fixture.final.match5.awayTeam.team.nation_iso_code }}
                                                                         </div>
-                                                                        <div class="col">
+                                                                        <div class="goal">
                                                                             {{ fixture.final.match5.awayTeam.goals|default_if_none:"?" }}
                                                                             ({% firstof fixture.final.match5.awayTeam.penalties 0 %})
                                                                         </div>
@@ -876,13 +894,14 @@
                                                                 <div class="team-card-sm">
                                                                     <div class="row ">
                                                                         <div class="flag-config-sm">
+                                                                            {% resultbghome fixture.final.match6 as homeborder %}
                                                                             <img src="{{ fixture.final.match6.homeTeam.team.image_flag }}"
-                                                                                 class="img-card">
+                                                                                 class="img-card {{ homeborder }}">
                                                                         </div>
                                                                         <div class="name-config-sm">
                                                                             {{ fixture.final.match6.homeTeam.team.nation_iso_code }}
                                                                         </div>
-                                                                        <div class="col">
+                                                                        <div class="goal">
                                                                             {{ fixture.final.match6.homeTeam.goals|default_if_none:"?" }}
                                                                             ({% firstof fixture.final.match6.homeTeam.penalties 0 %})
                                                                         </div>
@@ -905,13 +924,14 @@
                                                                 <div class="team-card-sm">
                                                                     <div class="row ">
                                                                         <div class="flag-config-sm">
+                                                                            {% resultbgaway fixture.final.match6 as awayborder %}
                                                                             <img src="{{ fixture.final.match6.awayTeam.team.image_flag }}"
-                                                                                 class="img-card">
+                                                                                 class="img-card {{ awayborder }}">
                                                                         </div>
                                                                         <div class="name-config-sm">
                                                                             {{ fixture.final.match6.awayTeam.team.nation_iso_code }}
                                                                         </div>
-                                                                        <div class="col">
+                                                                        <div class="goal">
                                                                             {{ fixture.final.match6.awayTeam.goals|default_if_none:"?" }}
                                                                             ({% firstof fixture.final.match6.awayTeam.penalties 0 %})
                                                                         </div>
@@ -963,13 +983,14 @@
                                                                 <div class="team-card-sm">
                                                                     <div class="row ">
                                                                         <div class="flag-config-sm">
+                                                                            {% resultbghome fixture.final.match7 as homeborder %}
                                                                             <img src="{{ fixture.final.match7.homeTeam.team.image_flag }}"
-                                                                                 class="img-card">
+                                                                                 class="img-card {{ homeborder }}">
                                                                         </div>
                                                                         <div class="name-config-sm">
                                                                             {{ fixture.final.match7.homeTeam.team.nation_iso_code }}
                                                                         </div>
-                                                                        <div class="col">
+                                                                        <div class="goal">
                                                                             {{ fixture.final.match7.homeTeam.goals|default_if_none:"?" }}
                                                                             ({% firstof fixture.final.match7.homeTeam.penalties 0 %})
                                                                         </div>
@@ -992,13 +1013,14 @@
                                                                 <div class="team-card-sm">
                                                                     <div class="row ">
                                                                         <div class="flag-config-sm">
+                                                                            {% resultbgaway fixture.final.match7 as awayborder %}
                                                                             <img src="{{ fixture.final.match7.awayTeam.team.image_flag }}"
-                                                                                 class="img-card">
+                                                                                 class="img-card {{ awayborder }}">
                                                                         </div>
                                                                         <div class="name-config-sm">
                                                                             {{ fixture.final.match7.awayTeam.team.nation_iso_code }}
                                                                         </div>
-                                                                        <div class="col">
+                                                                        <div class="goal">
                                                                             {{ fixture.final.match7.awayTeam.goals|default_if_none:"?" }}
                                                                             ({% firstof fixture.final.match7.awayTeam.penalties 0 %})
                                                                         </div>
@@ -1050,13 +1072,14 @@
                                                                 <div class="team-card-sm">
                                                                     <div class="row ">
                                                                         <div class="flag-config-sm">
+                                                                            {% resultbghome fixture.final.match8 as homeborder %}
                                                                             <img src="{{ fixture.final.match8.homeTeam.team.image_flag }}"
-                                                                                 class="img-card">
+                                                                                 class="img-card {{ homeborder }}">
                                                                         </div>
                                                                         <div class="name-config-sm">
                                                                             {{ fixture.final.match8.homeTeam.team.nation_iso_code }}
                                                                         </div>
-                                                                        <div class="col">
+                                                                        <div class="goal">
                                                                             {{ fixture.final.match8.homeTeam.goals|default_if_none:"?" }}
                                                                             ({% firstof fixture.final.match8.homeTeam.penalties 0 %})
                                                                         </div>
@@ -1079,13 +1102,14 @@
                                                                 <div class="team-card-sm">
                                                                     <div class="row ">
                                                                         <div class="flag-config-sm">
+                                                                            {% resultbgaway fixture.final.match8 as awayborder %}
                                                                             <img src="{{ fixture.final.match8.awayTeam.team.image_flag }}"
-                                                                                 class="img-card">
+                                                                                 class="img-card {{ awayborder }}">
                                                                         </div>
                                                                         <div class="name-config-sm">
                                                                             {{ fixture.final.match8.awayTeam.team.nation_iso_code }}
                                                                         </div>
-                                                                        <div class="col">
+                                                                        <div class="goal">
                                                                             {{ fixture.final.match8.awayTeam.goals|default_if_none:"?" }}
                                                                             ({% firstof fixture.final.match8.awayTeam.penalties 0 %})
                                                                         </div>
