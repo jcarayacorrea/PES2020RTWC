@@ -102,7 +102,7 @@ def resultbghome(dict):
             return 'lose'
         else:
             return 'draw'
-    return ''
+    return 'non-played'
 
 
 @register.simple_tag
@@ -114,6 +114,6 @@ def resultbgaway(dict):
             return 'lose'
         else:
             return 'draw'
-    return ''
+    return 'non-played'
 
 

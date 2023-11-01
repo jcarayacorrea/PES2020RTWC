@@ -20,13 +20,10 @@
                                         <div class="col-4">
                                             <div class="team-card-sm">
                                                 <div class="row">
-                                                    {% resultbghome fixture.fixture1.match1 as homebg %}
-                                                    <div class="flag-config">
-                                                        <div class="{{ homebg }}">
-                                                          <img src="{{ fixture.fixture1.match1.homeTeam.team.image_flag }}"
-                                                             class="img-card">
-                                                        </div>
-
+                                                    {% resultbghome fixture.fixture1.match1 as homeborder %}
+                                                    <div class="flag-config ">
+                                                        <img src="{{ fixture.fixture1.match1.homeTeam.team.image_flag }}"
+                                                             class="img-card {{ homeborder }}">
                                                     </div>
                                                     <div class="name-config-sm">
                                                         {{ fixture.fixture1.match1.homeTeam.team.nation_iso_code }}
@@ -53,13 +50,10 @@
                                         <div class="col-4">
                                             <div class="team-card-sm">
                                                 <div class="row">
-                                                    {% resultbgaway fixture.fixture1.match1 as awaybg %}
+                                                    {% resultbgaway fixture.fixture1.match1 as awayborder %}
                                                     <div class="flag-config">
-                                                        <div class=" {{ awaybg }}">
-                                                            <img src="{{ fixture.fixture1.match1.awayTeam.team.image_flag }}"
-                                                             class="img-card">
-                                                        </div>
-
+                                                        <img src="{{ fixture.fixture1.match1.awayTeam.team.image_flag }}"
+                                                             class="img-card {{ awayborder }}">
                                                     </div>
                                                     <div class="name-config-sm">
                                                         {{ fixture.fixture1.match1.awayTeam.team.nation_iso_code }}

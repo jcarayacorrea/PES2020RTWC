@@ -37,7 +37,7 @@ nav, .dropdown-menu, .card-header, {
 
 .img-card {
 
-  max-width: 1.5vw;
+  max-width: 2vw;
 
 }
 
@@ -249,16 +249,30 @@ nav, .dropdown-menu, .card-header, {
   @extend .mb-2;
 }
 
+.img-border{
+  border-image: fill ;
+  border-radius: 1.5rem;
+  border-style: solid;
+}
+
 .lose{
-  background-color: #FF8989;
+  @extend .img-border;
+  border-color: #FF8989;
 }
 
 .win{
-  background-color: #89FFB7;
+  @extend .img-border;
+  border-color: #89FFB7;
 }
 
 .draw{
-  background-color: #FAFF89;
+  @extend .img-border;
+  border-color: #FAFF89;
+}
+
+.non-played{
+  @extend .img-border;
+  border-color: transparent;
 }
 
 
