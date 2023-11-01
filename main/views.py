@@ -120,18 +120,22 @@ def resultbgaway(dict):
 
 @register.simple_tag
 def rstonemtchhome(dict):
-    if (dict['homeTeam']['goals'] > dict['awayTeam']['goals']) or (
-             (dict['homeTeam']['penalties'] is not None) and
-            (dict['homeTeam']['penalties'] > dict['awayTeam']['penalties'])):
-        return 'win'
-    else:
-        return 'lose'
+    if dict['played']:
+        if (dict['homeTeam']['goals'] > dict['awayTeam']['goals']) or (
+                 (dict['homeTeam']['penalties'] is not None) and
+                (dict['homeTeam']['penalties'] > dict['awayTeam']['penalties'])):
+            return 'win'
+        else:
+            return 'lose'
+    return ''
 
 @register.simple_tag
 def rstonemtchaway(dict):
-    if (dict['homeTeam']['goals'] < dict['awayTeam']['goals']) or (
-             (dict['homeTeam']['penalties'] is not None) and
-            (dict['homeTeam']['penalties'] < dict['awayTeam']['penalties'])):
-        return 'win'
-    else:
-        return 'lose'
+    if dict['played']:
+        if (dict['homeTeam']['goals'] < dict['awayTeam']['goals']) or (
+                 (dict['homeTeam']['penalties'] is not None) and
+                (dict['homeTeam']['penalties'] < dict['awayTeam']['penalties'])):
+            return 'win'
+        else:
+            return 'lose'
+    return ''
