@@ -105,7 +105,8 @@ def resultbghome(dict):
             else:
                 return 'draw'
         else:
-            if (dict['homeTeam']['goals'] > dict['awayTeam']['goals']) or ( (dict['homeTeam']['penalties'] is not None) and
+            if (dict['homeTeam']['goals'] > dict['awayTeam']['goals']) or (
+                    ((dict['homeTeam']).get('penalties') is True) and (dict['homeTeam']['penalties'] is not None) and
                     (dict['homeTeam']['penalties'] > dict['awayTeam']['penalties'])):
                 return 'win'
             else:
@@ -124,7 +125,8 @@ def resultbgaway(dict):
             else:
                 return 'draw'
         else:
-            if (dict['homeTeam']['goals'] < dict['awayTeam']['goals']) or ( (dict['awayTeam']['penalties'] is not None) and
+            if (dict['homeTeam']['goals'] < dict['awayTeam']['goals']) or (
+                    ((dict['homeTeam']).get('penalties') is True) and (dict['homeTeam']['penalties'] is not None) and
                     (dict['homeTeam']['penalties'] < dict['awayTeam']['penalties'])):
                 return 'win'
             else:
