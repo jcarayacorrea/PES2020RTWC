@@ -1,6 +1,8 @@
-from django.http import JsonResponse
+from django.http import JsonResponse, FileResponse
 from django.shortcuts import render
 from django.template.defaulttags import register
+from django.contrib.staticfiles import finders
+from html2image import Html2Image
 
 from europa.views import firstround
 from utils import getTeamsJSON, getQualyPlaces, getRoundPlaces, saveMatchResult, saveExtraTimeResult, getTeamById
@@ -72,13 +74,46 @@ def sim_match(request, fixture, match, homeId, awayId, conf, round, zone, extraT
     return render(request, 'popups/fixtures/fixture.html', context)
 
 
+def downloadDraw(request):
+    html2png = Html2Image()
+    baseCSS = finders.find('base.scss')
+    if request.method == 'POST':
+        body = request.body
+        return FileResponse(html2png.screenshot(html_str=body, css_file=baseCSS, save_as='worldCup.png'))
+
+
 @register.filter
 def getItem(dict, key):
     return dict.get(key)
 
 
 @register.filter
-def enableDrawButton(dict,length):
-    if(len(dict)== length):
+def enableDrawButton(dict, length):
+    if (len(dict) == length):
         return False
     return True
+
+@register.simple_tag
+def resultbghome(dict):
+    if dict['played']:
+        if dict['homeTeam']['result'] is True and dict['awayTeam']['result'] is False:
+            return 'win'
+        elif dict['homeTeam']['result'] is False and dict['awayTeam']['result'] is True:
+            return 'lose'
+        else:
+            return 'draw'
+    return ''
+
+
+@register.simple_tag
+def resultbgaway(dict):
+    if dict['played']:
+        if dict['homeTeam']['result'] is False and dict['awayTeam']['result'] is True:
+            return 'win'
+        elif dict['homeTeam']['result'] is True and dict['awayTeam']['result'] is False:
+            return 'lose'
+        else:
+            return 'draw'
+    return ''
+
+

@@ -4,149 +4,156 @@
 
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>PES Road to World Cup</title>
 
 
-{% compress css %}
-    <link type="text/x-scss" href="{% static '/bootstrap5/scss/bootstrap.scss' %}" rel="stylesheet" media="screen">
-    <link type="text/x-scss" rel="stylesheet" href="{% static 'base.scss' %}" media="screen">
-    <link type="text/x-scss" rel="stylesheet" href="{% static 'fontawesome/css/fontawesome.css' %}">
-    <link type="text/x-scss" rel="stylesheet" href="{% static 'fontawesome/css/brands.css' %}">
-    <link type="text/x-scss" rel="stylesheet" href="{% static 'fontawesome/css/regular.css' %}">
-    <link type="text/x-scss" rel="stylesheet" href="{% static 'fontawesome/css/solid.css' %}">
-{% endcompress %}
+    {% compress css %}
+        <link type="text/x-scss" href="{% static '/bootstrap5/scss/bootstrap.scss' %}" rel="stylesheet" media="screen">
+        <link type="text/x-scss" rel="stylesheet" href="{% static 'base.scss' %}" media="screen">
+        <link type="text/x-scss" rel="stylesheet" href="{% static 'fontawesome/css/fontawesome.css' %}">
+        <link type="text/x-scss" rel="stylesheet" href="{% static 'fontawesome/css/brands.css' %}">
+        <link type="text/x-scss" rel="stylesheet" href="{% static 'fontawesome/css/regular.css' %}">
+        <link type="text/x-scss" rel="stylesheet" href="{% static 'fontawesome/css/solid.css' %}">
+    {% endcompress %}
     <script src="{% static '/bootstrap5/js/bootstrap.bundle.js' %}"></script>
-     <script src="{% static 'js/ajax_calls.js' %}"></script>
-     <script src="{% static 'htmx/htmx.min.js' %}"></script>
+    <script src="{% static 'js/ajax_calls.js' %}"></script>
+    <script src="{% static 'htmx/htmx.min.js' %}"></script>
     <script src="{% static 'htmx/loading-states.js' %}"></script>
 
 
-  </head>
-  <body hx-ext="loading-states">
+</head>
+<body hx-ext="loading-states">
 
 
-    <div id="nav" >
-        <nav class="navbar navbar-expand-lg ">
-          <div class="container-fluid">
+<div id="nav">
+    <nav class="navbar navbar-expand-lg ">
+        <div class="container-fluid">
 
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
-              <ul class="navbar-nav">
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    World Cup
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="{% url 'worldcup.maindraw' %}">Main Draw</a></li>
-                    <li><a class="dropdown-item" href="{% url 'worldcup.playoff' %}">World Play-off</a></li>
-                  </ul>
-                </li>
-              </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                           aria-expanded="false">
+                            World Cup
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'worldcup.maindraw' %}">Main Draw</a></li>
+                            <li><a class="dropdown-item" href="{% url 'worldcup.playoff' %}">World Play-off</a></li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
 
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
-              <ul class="navbar-nav">
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    UEFA
-                  </a>
-                  <ul class="dropdown-menu">
-                     <li><a class="dropdown-item" href="{% url 'europa.teams' %}">Team List</a></li>
-                    <li><a class="dropdown-item" href="{% url 'europa.finalround' %}">Final Round</a></li>
-                    <li><a class="dropdown-item" href="{% url 'europa.thirdround' %}">3rd Round</a></li>
-                    <li><a class="dropdown-item" href="{% url 'europa.secondround' %}">2nd Round</a></li>
-                    <li><a class="dropdown-item" href="{% url 'europa.firstround' %}">1st Round</a></li>
-                  </ul>
-                </li>
-              </ul>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                           aria-expanded="false">
+                            UEFA
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'europa.teams' %}">Team List</a></li>
+                            <li><a class="dropdown-item" href="{% url 'europa.finalround' %}">Final Round</a></li>
+                            <li><a class="dropdown-item" href="{% url 'europa.thirdround' %}">3rd Round</a></li>
+                            <li><a class="dropdown-item" href="{% url 'europa.secondround' %}">2nd Round</a></li>
+                            <li><a class="dropdown-item" href="{% url 'europa.firstround' %}">1st Round</a></li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
 
 
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
-              <ul class="navbar-nav">
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    CONMEBOL
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="{% url 'sudamerica.teams' %}">Team List</a></li>
-                      <li><a class="dropdown-item" href="{% url 'sudamerica.copaamerica' %}">Copa America</a></li>
-                  </ul>
-                </li>
-              </ul>
-          </div>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                           aria-expanded="false">
+                            CONMEBOL
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'sudamerica.teams' %}">Team List</a></li>
+                            <li><a class="dropdown-item" href="{% url 'sudamerica.copaamerica' %}">Copa America</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
 
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
-              <ul class="navbar-nav">
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    CONCACAF
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="{% url 'cenoamerica.teams' %}">Team List</a></li>
-                    <li><a class="dropdown-item"  href="{% url 'cenoamerica.finalround' %}">Final Round</a></li>
-                    <li><a class="dropdown-item"  href="{% url 'cenoamerica.firstround' %}">1st Round</a></li>
-                  </ul>
-                </li>
-              </ul>
-          </div>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                           aria-expanded="false">
+                            CONCACAF
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'cenoamerica.teams' %}">Team List</a></li>
+                            <li><a class="dropdown-item" href="{% url 'cenoamerica.finalround' %}">Final Round</a></li>
+                            <li><a class="dropdown-item" href="{% url 'cenoamerica.firstround' %}">1st Round</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
 
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
-              <ul class="navbar-nav">
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    OFC
-                  </a>
-                  <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="{% url 'oceania.teams' %}">Team List</a></li>
-                    <li><a class="dropdown-item"  href="{% url 'oceania.finalround' %}">Final Round</a></li>
-                    <li><a class="dropdown-item"   href="{% url 'oceania.firstround' %}">1st Round</a></li>
-                  </ul>
-                </li>
-              </ul>
-          </div>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                           aria-expanded="false">
+                            OFC
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'oceania.teams' %}">Team List</a></li>
+                            <li><a class="dropdown-item" href="{% url 'oceania.finalround' %}">Final Round</a></li>
+                            <li><a class="dropdown-item" href="{% url 'oceania.firstround' %}">1st Round</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
 
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
-              <ul class="navbar-nav">
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    CAF
-                  </a>
-                  <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="{% url 'africa.teams' %}">Team List</a></li>
-                    <li><a class="dropdown-item"  href="{% url 'africa.finalround' %}">Final Round</a></li>
-                     <li><a class="dropdown-item"  href="{% url 'africa.thirdround' %}">3rd Round</a></li>
-                     <li><a class="dropdown-item"  href="{% url 'africa.secondround' %}">2nd Round</a></li>
-                    <li><a class="dropdown-item"  href="{% url 'africa.firstround' %}">1st Round</a></li>
-                  </ul>
-                </li>
-              </ul>
-          </div>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                           aria-expanded="false">
+                            CAF
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'africa.teams' %}">Team List</a></li>
+                            <li><a class="dropdown-item" href="{% url 'africa.finalround' %}">Final Round</a></li>
+                            <li><a class="dropdown-item" href="{% url 'africa.thirdround' %}">3rd Round</a></li>
+                            <li><a class="dropdown-item" href="{% url 'africa.secondround' %}">2nd Round</a></li>
+                            <li><a class="dropdown-item" href="{% url 'africa.firstround' %}">1st Round</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
 
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
-              <ul class="navbar-nav">
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    AFC
-                  </a>
-                  <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="{% url 'asia.teams' %}">Team List</a></li>
-                    <li><a class="dropdown-item"  href="{% url 'asia.finalround' %}">Final Round</a></li>
-                     <li><a class="dropdown-item"  href="{% url 'asia.thirdround' %}">3rd Round</a></li>
-                    <li><a class="dropdown-item"  href="{% url 'asia.secondround' %}">2nd Round</a></li>
-                    <li><a class="dropdown-item"  href="{% url 'asia.firstround' %}">1st Round</a></li>
-                  </ul>
-                </li>
-              </ul>
-          </div>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                           aria-expanded="false">
+                            AFC
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'asia.teams' %}">Team List</a></li>
+                            <li><a class="dropdown-item" href="{% url 'asia.finalround' %}">Final Round</a></li>
+                            <li><a class="dropdown-item" href="{% url 'asia.thirdround' %}">3rd Round</a></li>
+                            <li><a class="dropdown-item" href="{% url 'asia.secondround' %}">2nd Round</a></li>
+                            <li><a class="dropdown-item" href="{% url 'asia.firstround' %}">1st Round</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
-        </nav>
-    </div>
-    <div id="container " class="container-fluid">
-        {% block container %}
-        {% endblock %}
-    </div>
-  </body>
+    </nav>
+</div>
+<div id="container " class="container-fluid">
+    {% block container %}
+    {% endblock %}
+</div>
+</body>
 </html>

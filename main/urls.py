@@ -9,7 +9,9 @@ urlpatterns = [
     path('match_simulator/<int:fixture>/<int:match>/<str:homeId>/<str:awayId>/<str:conf>/<str:round>/<str:zone>',
          views.sim_match,
          name='match_simulator'),
-    path('extra_time/<str:fixture>/<int:match>/<str:homeId>/<str:awayId>/<str:conf>/<str:round>/<str:zone>/<int:extraTime>',
-         views.sim_match,
-         name='one_match')
+    path(
+        'extra_time/<str:fixture>/<int:match>/<str:homeId>/<str:awayId>/<str:conf>/<str:round>/<str:zone>/<int:extraTime>',
+        views.sim_match,
+        name='one_match'),
+    path('api/download_draw/', views.downloadDraw, name='api.download')
 ]

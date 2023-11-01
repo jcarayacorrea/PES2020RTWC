@@ -249,6 +249,18 @@ nav, .dropdown-menu, .card-header, {
   @extend .mb-2;
 }
 
+.lose{
+  background-color: #FF8989;
+}
+
+.win{
+  background-color: #89FFB7;
+}
+
+.draw{
+  background-color: #FAFF89;
+}
+
 
 
 

@@ -6,4 +6,10 @@ function changeTeamStage(id,stage){
     xhttp.send();
 }
 
+function downloadDraw(html){
+    const xhttp = new XMLHttpRequest();
+    xhttp.open('POST','/api/download_draw/', true);
+    xhttp.send(html);
+}
+
 
