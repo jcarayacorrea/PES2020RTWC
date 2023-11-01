@@ -291,7 +291,7 @@
                                                         <div class="row">
                                                             {% if fixture|getItem:'wildCard' is not None %}
                                                                 <div class="flag-config">
-                                                                    {% resultbghome fixture.wildCard.match1 as homeborder %}
+                                                                    {% rstonemtchhome fixture.wildCard.match1 as homeborder %}
                                                                     <img src="{{ fixture.wildCard.match1.homeTeam.team.image_flag }}"
                                                                          class="img-card {{ homeborder }}">
                                                                 </div>
@@ -331,7 +331,7 @@
                                                         <div class="row">
                                                             {% if fixture|getItem:'wildCard' is not None %}
                                                                 <div class="flag-config">
-                                                                {% resultbgaway fixture.wildCard.match1 as awayborder %}
+                                                                {% rstonemtchaway fixture.wildCard.match1 as awayborder %}
                                                                     <img src="{{ fixture.wildCard.match1.awayTeam.team.image_flag }}"
                                                                          class="img-card {{ awayborder }}">
                                                                 </div>
