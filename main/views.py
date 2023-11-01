@@ -114,6 +114,6 @@ def resultbgaway(dict):
             return 'lose'
         else:
             return 'draw'
-    return 'non-played'
+    return ''
 
 

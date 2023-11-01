@@ -36,8 +36,8 @@ nav, .dropdown-menu, .card-header, {
 
 
 .img-card {
-
-  max-width: 2vw;
+  @extend .img-border;
+  max-width: 2.25vw;
 
 }
 
@@ -251,6 +251,7 @@ nav, .dropdown-menu, .card-header, {
 
 .img-border{
   border-image: fill ;
+  border-color: transparent;
   border-radius: 1rem;
   border-style: solid;
 }
@@ -270,10 +271,7 @@ nav, .dropdown-menu, .card-header, {
   border-color: #FAFF89;
 }
 
-.non-played{
-  @extend .img-border;
-  border-color: transparent;
-}
+
 
 
 
