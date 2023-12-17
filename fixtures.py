@@ -177,7 +177,7 @@ def createFixture(teams, homeAway, zone, conf, round):
 
 def updateFixture(teams, fixtures, zone, conf, round):
     db = db_conexion()
-    db.get_collection('Fixtures').update_one({'$and': [{'conf_name': conf}, {'zone': zone}, {'round': round}]},
+    db.get_collection('Fixtures').update_one({'$and': [{'conf': conf}, {'zone': zone}, {'round': round}]},
                                              {'$set': {
                                                  'teams': teams,
                                                  'fixtures': fixtures
@@ -187,7 +187,7 @@ def updateFixture(teams, fixtures, zone, conf, round):
 def getZoneData(zone, conf, round):
     db = db_conexion()
     cursor = db.get_collection('Fixtures').find(
-        {'$and': [{'conf_name': conf}, {'zone': zone}, {'round': round}]})
+        {'$and': [{'conf': conf}, {'zone': zone}, {'round': round}]})
     listData = list(cursor)
     return listData[0]
 

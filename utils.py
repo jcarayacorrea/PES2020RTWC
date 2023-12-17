@@ -3,7 +3,7 @@ from pymongo import MongoClient
 
 
 def db_conexion():
-    client = MongoClient(host='localhost',
+    client = MongoClient(host='192.168.1.101',
                          port=27017,
                          username='admin',
                          password='mongo')
