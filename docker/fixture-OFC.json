@@ -1,0 +1,25 @@
+[
+   
+    {
+        "conf": "OFC",
+        "zone": "A",
+        "round": "first",
+        "teams": {},
+        "fixtures": {} 
+    },
+    
+    {
+        "conf": "OFC",
+        "zone": "A",
+        "round": "final",
+        "teams": {},
+        "fixtures": {} 
+    },
+    {
+        "conf": "OFC",
+        "zone": "B",
+        "round": "final",
+        "teams": {},
+        "fixtures": {} 
+    }
+]

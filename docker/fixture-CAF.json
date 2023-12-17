@@ -1,0 +1,133 @@
+[
+    {
+        "conf": "CAF",
+        "zone": "B",
+        "round": "first",
+        "teams": {},
+        "fixtures": {} 
+    }, 
+    {
+        "conf": "CAF",
+        "zone": "B",
+        "round": "first",
+        "teams": {},
+        "fixtures": {} 
+    }, 
+    {
+        "conf": "CAF",
+        "zone": "C",
+        "round": "first",
+        "teams": {},
+        "fixtures": {} 
+    },   
+    {
+        "conf": "CAF",
+        "zone": "A",
+        "round": "second",
+        "teams": {},
+        "fixtures": {} 
+    },
+    {
+        "conf": "CAF",
+        "zone": "B",
+        "round": "second",
+        "teams": {},
+        "fixtures": {} 
+    },
+    {
+        "conf": "CAF",
+        "zone": "C",
+        "round": "second",
+        "teams": {},
+        "fixtures": {} 
+    },
+    {
+        "conf": "CAF",
+        "zone": "D",
+        "round": "second",
+        "teams": {},
+        "fixtures": {} 
+    },
+    {
+        "conf": "CAF",
+        "zone": "E",
+        "round": "second",
+        "teams": {},
+        "fixtures": {} 
+    },
+    
+    {
+        "conf": "CAF",
+        "zone": "A",
+        "round": "third",
+        "teams": {},
+        "fixtures": {} 
+    },
+    {
+        "conf": "CAF",
+        "zone": "B",
+        "round": "third",
+        "teams": {},
+        "fixtures": {} 
+    },
+    {
+        "conf": "CAF",
+        "zone": "C",
+        "round": "third",
+        "teams": {},
+        "fixtures": {} 
+    },
+    {
+        "conf": "CAF",
+        "zone": "D",
+        "round": "third",
+        "teams": {},
+        "fixtures": {} 
+    },
+    {
+        "conf": "CAF",
+        "zone": "E",
+        "round": "third",
+        "teams": {},
+        "fixtures": {} 
+    },
+    
+    {
+        "conf": "CAF",
+        "zone": "A",
+        "round": "final",
+        "teams": {},
+        "fixtures": {} 
+    },
+    {
+        "conf": "CAF",
+        "zone": "B",
+        "round": "final",
+        "teams": {},
+        "fixtures": {} 
+    },
+    {
+        "conf": "CAF",
+        "zone": "C",
+        "round": "final",
+        "teams": {},
+        "fixtures": {} 
+    },
+    {
+        "conf": "CAF",
+        "zone": "D",
+        "round": "final",
+        "teams": {},
+        "fixtures": {} 
+    },
+    
+    {
+        "conf": "CAF",
+        "zone": "E",
+        "round": "final",
+        "teams": {},
+        "fixtures": {} 
+    }
+
+
+]
