@@ -91,7 +91,7 @@ nav, .dropdown-menu, .card-header, {
 
 .name-config-table {
   @extend .m-1;
-  @extend .col-5;
+  @extend .col-auto;
   @extend .text-center
 }
 
