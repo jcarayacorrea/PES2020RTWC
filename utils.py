@@ -132,7 +132,7 @@ def saveMatchResult(fixture, match, localGoals, awayGoals, conf, round, zone):
     match fixture:
         case 1:
             if match == 1:
-                db.get_collection('Fixtures').update_many({'conf_name': conf, 'round': round, 'zone': zone},
+                db.get_collection('Fixtures').update_many({'conf': conf, 'round': round, 'zone': zone},
                                                           {'$set': {
                                                               'fixtures.fixture1.match1.homeTeam.goals': localGoals,
                                                               'fixtures.fixture1.match1.awayTeam.goals': awayGoals,
@@ -140,7 +140,7 @@ def saveMatchResult(fixture, match, localGoals, awayGoals, conf, round, zone):
                                                               'fixtures.fixture1.match1.awayTeam.result': True if localGoals < awayGoals else False,
                                                               'fixtures.fixture1.match1.played': True}})
             else:
-                db.get_collection('Fixtures').update_many({'conf_name': conf, 'round': round, 'zone': zone},
+                db.get_collection('Fixtures').update_many({'conf': conf, 'round': round, 'zone': zone},
                                                           {'$set': {
                                                               'fixtures.fixture1.match2.homeTeam.goals': localGoals,
                                                               'fixtures.fixture1.match2.awayTeam.goals': awayGoals,
@@ -149,7 +149,7 @@ def saveMatchResult(fixture, match, localGoals, awayGoals, conf, round, zone):
                                                               'fixtures.fixture1.match2.played': True}})
         case 2:
             if match == 1:
-                db.get_collection('Fixtures').update_many({'conf_name': conf, 'round': round, 'zone': zone},
+                db.get_collection('Fixtures').update_many({'conf': conf, 'round': round, 'zone': zone},
                                                           {'$set': {
                                                               'fixtures.fixture2.match1.homeTeam.goals': localGoals,
                                                               'fixtures.fixture2.match1.awayTeam.goals': awayGoals,
@@ -157,7 +157,7 @@ def saveMatchResult(fixture, match, localGoals, awayGoals, conf, round, zone):
                                                               'fixtures.fixture2.match1.awayTeam.result': True if localGoals < awayGoals else False,
                                                               'fixtures.fixture2.match1.played': True}})
             else:
-                db.get_collection('Fixtures').update_many({'conf_name': conf, 'round': round, 'zone': zone},
+                db.get_collection('Fixtures').update_many({'conf': conf, 'round': round, 'zone': zone},
                                                           {'$set': {
                                                               'fixtures.fixture2.match2.homeTeam.goals': localGoals,
                                                               'fixtures.fixture2.match2.awayTeam.goals': awayGoals,
@@ -166,7 +166,7 @@ def saveMatchResult(fixture, match, localGoals, awayGoals, conf, round, zone):
                                                               'fixtures.fixture2.match2.played': True}})
         case 3:
             if match == 1:
-                db.get_collection('Fixtures').update_many({'conf_name': conf, 'round': round, 'zone': zone},
+                db.get_collection('Fixtures').update_many({'conf': conf, 'round': round, 'zone': zone},
                                                           {'$set': {
                                                               'fixtures.fixture3.match1.homeTeam.goals': localGoals,
                                                               'fixtures.fixture3.match1.awayTeam.goals': awayGoals,
@@ -174,7 +174,7 @@ def saveMatchResult(fixture, match, localGoals, awayGoals, conf, round, zone):
                                                               'fixtures.fixture3.match1.awayTeam.result': True if localGoals < awayGoals else False,
                                                               'fixtures.fixture3.match1.played': True}})
             else:
-                db.get_collection('Fixtures').update_many({'conf_name': conf, 'round': round, 'zone': zone},
+                db.get_collection('Fixtures').update_many({'conf': conf, 'round': round, 'zone': zone},
                                                           {'$set': {
                                                               'fixtures.fixture3.match2.homeTeam.goals': localGoals,
                                                               'fixtures.fixture3.match2.awayTeam.goals': awayGoals,
@@ -183,7 +183,7 @@ def saveMatchResult(fixture, match, localGoals, awayGoals, conf, round, zone):
                                                               'fixtures.fixture3.match2.played': True}})
         case 4:
             if match == 1:
-                db.get_collection('Fixtures').update_many({'conf_name': conf, 'round': round, 'zone': zone},
+                db.get_collection('Fixtures').update_many({'conf': conf, 'round': round, 'zone': zone},
                                                           {'$set': {
                                                               'fixtures.fixture4.match1.homeTeam.goals': localGoals,
                                                               'fixtures.fixture4.match1.awayTeam.goals': awayGoals,
@@ -191,7 +191,7 @@ def saveMatchResult(fixture, match, localGoals, awayGoals, conf, round, zone):
                                                               'fixtures.fixture4.match1.awayTeam.result': True if localGoals < awayGoals else False,
                                                               'fixtures.fixture4.match1.played': True}})
             else:
-                db.get_collection('Fixtures').update_many({'conf_name': conf, 'round': round, 'zone': zone},
+                db.get_collection('Fixtures').update_many({'conf': conf, 'round': round, 'zone': zone},
                                                           {'$set': {
                                                               'fixtures.fixture4.match2.homeTeam.goals': localGoals,
                                                               'fixtures.fixture4.match2.awayTeam.goals': awayGoals,
@@ -200,7 +200,7 @@ def saveMatchResult(fixture, match, localGoals, awayGoals, conf, round, zone):
                                                               'fixtures.fixture4.match2.played': True}})
         case 5:
             if match == 1:
-                db.get_collection('Fixtures').update_many({'conf_name': conf, 'round': round, 'zone': zone},
+                db.get_collection('Fixtures').update_many({'conf': conf, 'round': round, 'zone': zone},
                                                           {'$set': {
                                                               'fixtures.fixture5.match1.homeTeam.goals': localGoals,
                                                               'fixtures.fixture5.match1.awayTeam.goals': awayGoals,
@@ -208,7 +208,7 @@ def saveMatchResult(fixture, match, localGoals, awayGoals, conf, round, zone):
                                                               'fixtures.fixture5.match1.awayTeam.result': True if localGoals < awayGoals else False,
                                                               'fixtures.fixture5.match1.played': True}})
             else:
-                db.get_collection('Fixtures').update_many({'conf_name': conf, 'round': round, 'zone': zone},
+                db.get_collection('Fixtures').update_many({'conf': conf, 'round': round, 'zone': zone},
                                                           {'$set': {
                                                               'fixtures.fixture5.match2.homeTeam.goals': localGoals,
                                                               'fixtures.fixture5.match2.awayTeam.goals': awayGoals,
@@ -217,7 +217,7 @@ def saveMatchResult(fixture, match, localGoals, awayGoals, conf, round, zone):
                                                               'fixtures.fixture5.match2.played': True}})
         case 6:
             if match == 1:
-                db.get_collection('Fixtures').update_many({'conf_name': conf, 'round': round, 'zone': zone},
+                db.get_collection('Fixtures').update_many({'conf': conf, 'round': round, 'zone': zone},
                                                           {'$set': {
                                                               'fixtures.fixture6.match1.homeTeam.goals': localGoals,
                                                               'fixtures.fixture6.match1.awayTeam.goals': awayGoals,
@@ -225,7 +225,7 @@ def saveMatchResult(fixture, match, localGoals, awayGoals, conf, round, zone):
                                                               'fixtures.fixture6.match1.awayTeam.result': True if localGoals < awayGoals else False,
                                                               'fixtures.fixture6.match1.played': True}})
             else:
-                db.get_collection('Fixtures').update_many({'conf_name': conf, 'round': round, 'zone': zone},
+                db.get_collection('Fixtures').update_many({'conf': conf, 'round': round, 'zone': zone},
                                                           {'$set': {
                                                               'fixtures.fixture6.match2.homeTeam.goals': localGoals,
                                                               'fixtures.fixture6.match2.awayTeam.goals': awayGoals,
@@ -234,7 +234,7 @@ def saveMatchResult(fixture, match, localGoals, awayGoals, conf, round, zone):
                                                               'fixtures.fixture6.match2.played': True}})
         case 7:
             if match == 1:
-                db.get_collection('Fixtures').update_many({'conf_name': conf, 'round': round, 'zone': zone},
+                db.get_collection('Fixtures').update_many({'conf': conf, 'round': round, 'zone': zone},
                                                           {'$set': {
                                                               'fixtures.fixture7.match1.homeTeam.goals': localGoals,
                                                               'fixtures.fixture7.match1.awayTeam.goals': awayGoals,
@@ -242,7 +242,7 @@ def saveMatchResult(fixture, match, localGoals, awayGoals, conf, round, zone):
                                                               'fixtures.fixture7.match1.awayTeam.result': True if localGoals < awayGoals else False,
                                                               'fixtures.fixture7.match1.played': True}})
             else:
-                db.get_collection('Fixtures').update_many({'conf_name': conf, 'round': round, 'zone': zone},
+                db.get_collection('Fixtures').update_many({'conf': conf, 'round': round, 'zone': zone},
                                                           {'$set': {
                                                               'fixtures.fixture7.match2.homeTeam.goals': localGoals,
                                                               'fixtures.fixture7.match2.awayTeam.goals': awayGoals,
@@ -251,7 +251,7 @@ def saveMatchResult(fixture, match, localGoals, awayGoals, conf, round, zone):
                                                               'fixtures.fixture7.match2.played': True}})
         case 8:
             if match == 1:
-                db.get_collection('Fixtures').update_many({'conf_name': conf, 'round': round, 'zone': zone},
+                db.get_collection('Fixtures').update_many({'conf': conf, 'round': round, 'zone': zone},
                                                           {'$set': {
                                                               'fixtures.fixture8.match1.homeTeam.goals': localGoals,
                                                               'fixtures.fixture8.match1.awayTeam.goals': awayGoals,
@@ -259,7 +259,7 @@ def saveMatchResult(fixture, match, localGoals, awayGoals, conf, round, zone):
                                                               'fixtures.fixture8.match1.awayTeam.result': True if localGoals < awayGoals else False,
                                                               'fixtures.fixture8.match1.played': True}})
             else:
-                db.get_collection('Fixtures').update_many({'conf_name': conf, 'round': round, 'zone': zone},
+                db.get_collection('Fixtures').update_many({'conf': conf, 'round': round, 'zone': zone},
                                                           {'$set': {
                                                               'fixtures.fixture8.match2.homeTeam.goals': localGoals,
                                                               'fixtures.fixture8.match2.awayTeam.goals': awayGoals,
@@ -268,7 +268,7 @@ def saveMatchResult(fixture, match, localGoals, awayGoals, conf, round, zone):
                                                               'fixtures.fixture8.match2.played': True}})
         case 9:
             if match == 1:
-                db.get_collection('Fixtures').update_many({'conf_name': conf, 'round': round, 'zone': zone},
+                db.get_collection('Fixtures').update_many({'conf': conf, 'round': round, 'zone': zone},
                                                           {'$set': {
                                                               'fixtures.fixture9.match1.homeTeam.goals': localGoals,
                                                               'fixtures.fixture9.match1.awayTeam.goals': awayGoals,
@@ -276,7 +276,7 @@ def saveMatchResult(fixture, match, localGoals, awayGoals, conf, round, zone):
                                                               'fixtures.fixture9.match1.awayTeam.result': True if localGoals < awayGoals else False,
                                                               'fixtures.fixture9.match1.played': True}})
             else:
-                db.get_collection('Fixtures').update_many({'conf_name': conf, 'round': round, 'zone': zone},
+                db.get_collection('Fixtures').update_many({'conf': conf, 'round': round, 'zone': zone},
                                                           {'$set': {
                                                               'fixtures.fixture9.match2.homeTeam.goals': localGoals,
                                                               'fixtures.fixture9.match2.awayTeam.goals': awayGoals,
@@ -285,7 +285,7 @@ def saveMatchResult(fixture, match, localGoals, awayGoals, conf, round, zone):
                                                               'fixtures.fixture9.match2.played': True}})
         case _:
             if match == 1:
-                db.get_collection('Fixtures').update_many({'conf_name': conf, 'round': round, 'zone': zone},
+                db.get_collection('Fixtures').update_many({'conf': conf, 'round': round, 'zone': zone},
                                                           {'$set': {
                                                               'fixtures.fixture10.match1.homeTeam.goals': localGoals,
                                                               'fixtures.fixture10.match1.awayTeam.goals': awayGoals,
@@ -293,7 +293,7 @@ def saveMatchResult(fixture, match, localGoals, awayGoals, conf, round, zone):
                                                               'fixtures.fixture10.match1.awayTeam.result': True if localGoals < awayGoals else False,
                                                               'fixtures.fixture10.match1.played': True}})
             else:
-                db.get_collection('Fixtures').update_many({'conf_name': conf, 'round': round, 'zone': zone},
+                db.get_collection('Fixtures').update_many({'conf': conf, 'round': round, 'zone': zone},
                                                           {'$set': {
                                                               'fixtures.fixture10.match2.homeTeam.goals': localGoals,
                                                               'fixtures.fixture10.match2.awayTeam.goals': awayGoals,
@@ -308,7 +308,7 @@ def saveExtraTimeResult(fixture, match, localGoals, awayGoals, localPenaltys, aw
     match fixture:
         case 'first':
             if match == 1:
-                db.get_collection('Fixtures').update_many({'conf_name': conf, 'round': round, 'zone': zone},
+                db.get_collection('Fixtures').update_many({'conf': conf, 'round': round, 'zone': zone},
                                                           {'$set': {
                                                               'fixtures.first.match1.homeTeam.goals': localGoals,
                                                               'fixtures.first.match1.awayTeam.goals': awayGoals,
@@ -319,13 +319,13 @@ def saveExtraTimeResult(fixture, match, localGoals, awayGoals, localPenaltys, aw
                                                               'fixtures.first.match1.awayTeam.result': True if localGoals < awayGoals or (
                                                                       localGoals == awayGoals and localPenaltys < awayPenaltys) else False,
                                                               'fixtures.first.match1.played': True}})
-                db.get_collection('Fixtures').update_many({'conf_name': conf, 'round': round, 'zone': zone},
+                db.get_collection('Fixtures').update_many({'conf': conf, 'round': round, 'zone': zone},
                                                           {'$set': {
                                                               'fixtures.final.match1.awayTeam.team': homeTeam if localGoals > awayGoals or (
                                                                       localGoals == awayGoals and localPenaltys > awayPenaltys) else awayTeam}})
 
             if match == 2:
-                db.get_collection('Fixtures').update_many({'conf_name': conf, 'round': round, 'zone': zone},
+                db.get_collection('Fixtures').update_many({'conf': conf, 'round': round, 'zone': zone},
                                                           {'$set': {
                                                               'fixtures.first.match2.homeTeam.goals': localGoals,
                                                               'fixtures.first.match2.awayTeam.goals': awayGoals,
@@ -336,12 +336,12 @@ def saveExtraTimeResult(fixture, match, localGoals, awayGoals, localPenaltys, aw
                                                               'fixtures.first.match2.awayTeam.result': True if localGoals < awayGoals or (
                                                                       localGoals == awayGoals and localPenaltys < awayPenaltys) else False,
                                                               'fixtures.first.match2.played': True}})
-                db.get_collection('Fixtures').update_many({'conf_name': conf, 'round': round, 'zone': zone},
+                db.get_collection('Fixtures').update_many({'conf': conf, 'round': round, 'zone': zone},
                                                           {'$set': {
                                                               'fixtures.final.match2.awayTeam.team': homeTeam if localGoals > awayGoals or (
                                                                       localGoals == awayGoals and localPenaltys > awayPenaltys) else awayTeam}})
             if match == 3:
-                db.get_collection('Fixtures').update_many({'conf_name': conf, 'round': round, 'zone': zone},
+                db.get_collection('Fixtures').update_many({'conf': conf, 'round': round, 'zone': zone},
                                                           {'$set': {
                                                               'fixtures.first.match3.homeTeam.goals': localGoals,
                                                               'fixtures.first.match3.awayTeam.goals': awayGoals,
@@ -352,12 +352,12 @@ def saveExtraTimeResult(fixture, match, localGoals, awayGoals, localPenaltys, aw
                                                               'fixtures.first.match3.awayTeam.result': True if localGoals < awayGoals or (
                                                                       localGoals == awayGoals and localPenaltys < awayPenaltys) else False,
                                                               'fixtures.first.match3.played': True}})
-                db.get_collection('Fixtures').update_many({'conf_name': conf, 'round': round, 'zone': zone},
+                db.get_collection('Fixtures').update_many({'conf': conf, 'round': round, 'zone': zone},
                                                           {'$set': {
                                                               'fixtures.final.match3.awayTeam.team': homeTeam if localGoals > awayGoals or (
                                                                       localGoals == awayGoals and localPenaltys > awayPenaltys) else awayTeam}})
             if match == 4:
-                db.get_collection('Fixtures').update_many({'conf_name': conf, 'round': round, 'zone': zone},
+                db.get_collection('Fixtures').update_many({'conf': conf, 'round': round, 'zone': zone},
                                                           {'$set': {
                                                               'fixtures.first.match4.homeTeam.goals': localGoals,
                                                               'fixtures.first.match4.awayTeam.goals': awayGoals,
@@ -368,14 +368,14 @@ def saveExtraTimeResult(fixture, match, localGoals, awayGoals, localPenaltys, aw
                                                               'fixtures.first.match4.awayTeam.result': True if localGoals < awayGoals or (
                                                                       localGoals == awayGoals and localPenaltys < awayPenaltys) else False,
                                                               'fixtures.first.match4.played': True}})
-                db.get_collection('Fixtures').update_many({'conf_name': conf, 'round': round, 'zone': zone},
+                db.get_collection('Fixtures').update_many({'conf': conf, 'round': round, 'zone': zone},
                                                           {'$set': {
                                                               'fixtures.final.match4.awayTeam.team': homeTeam if localGoals > awayGoals or (
                                                                       localGoals == awayGoals and localPenaltys > awayPenaltys) else awayTeam}})
 
         case 'final':
             if match == 1:
-                db.get_collection('Fixtures').update_many({'conf_name': conf, 'round': round, 'zone': zone},
+                db.get_collection('Fixtures').update_many({'conf': conf, 'round': round, 'zone': zone},
                                                           {'$set': {
                                                               'fixtures.final.match1.homeTeam.goals': localGoals,
                                                               'fixtures.final.match1.awayTeam.goals': awayGoals,
@@ -388,7 +388,7 @@ def saveExtraTimeResult(fixture, match, localGoals, awayGoals, localPenaltys, aw
                                                               'fixtures.final.match1.played': True}})
 
             if match == 2:
-                db.get_collection('Fixtures').update_many({'conf_name': conf, 'round': round, 'zone': zone},
+                db.get_collection('Fixtures').update_many({'conf': conf, 'round': round, 'zone': zone},
                                                           {'$set': {
                                                               'fixtures.final.match2.homeTeam.goals': localGoals,
                                                               'fixtures.final.match2.awayTeam.goals': awayGoals,
@@ -400,7 +400,7 @@ def saveExtraTimeResult(fixture, match, localGoals, awayGoals, localPenaltys, aw
                                                                       localGoals == awayGoals and localPenaltys < awayPenaltys) else False,
                                                               'fixtures.final.match2.played': True}})
             if match == 3:
-                db.get_collection('Fixtures').update_many({'conf_name': conf, 'round': round, 'zone': zone},
+                db.get_collection('Fixtures').update_many({'conf': conf, 'round': round, 'zone': zone},
                                                           {'$set': {
                                                               'fixtures.final.match3.homeTeam.goals': localGoals,
                                                               'fixtures.final.match3.awayTeam.goals': awayGoals,
@@ -412,7 +412,7 @@ def saveExtraTimeResult(fixture, match, localGoals, awayGoals, localPenaltys, aw
                                                                       localGoals == awayGoals and localPenaltys < awayPenaltys) else False,
                                                               'fixtures.final.match3.played': True}})
             if match == 4:
-                db.get_collection('Fixtures').update_many({'conf_name': conf, 'round': round, 'zone': zone},
+                db.get_collection('Fixtures').update_many({'conf': conf, 'round': round, 'zone': zone},
                                                           {'$set': {
                                                               'fixtures.final.match4.homeTeam.goals': localGoals,
                                                               'fixtures.final.match4.awayTeam.goals': awayGoals,
@@ -424,7 +424,7 @@ def saveExtraTimeResult(fixture, match, localGoals, awayGoals, localPenaltys, aw
                                                                       localGoals == awayGoals and localPenaltys < awayPenaltys) else False,
                                                               'fixtures.final.match4.played': True}})
             if match == 5:
-                db.get_collection('Fixtures').update_many({'conf_name': conf, 'round': round, 'zone': zone},
+                db.get_collection('Fixtures').update_many({'conf': conf, 'round': round, 'zone': zone},
                                                           {'$set': {
                                                               'fixtures.final.match5.homeTeam.goals': localGoals,
                                                               'fixtures.final.match5.awayTeam.goals': awayGoals,
@@ -437,7 +437,7 @@ def saveExtraTimeResult(fixture, match, localGoals, awayGoals, localPenaltys, aw
                                                               'fixtures.final.match5.played': True}})
 
             if match == 6:
-                db.get_collection('Fixtures').update_many({'conf_name': conf, 'round': round, 'zone': zone},
+                db.get_collection('Fixtures').update_many({'conf': conf, 'round': round, 'zone': zone},
                                                           {'$set': {
                                                               'fixtures.final.match6.homeTeam.goals': localGoals,
                                                               'fixtures.final.match6.awayTeam.goals': awayGoals,
@@ -449,7 +449,7 @@ def saveExtraTimeResult(fixture, match, localGoals, awayGoals, localPenaltys, aw
                                                                       localGoals == awayGoals and localPenaltys < awayPenaltys) else False,
                                                               'fixtures.final.match6.played': True}})
             if match == 7:
-                db.get_collection('Fixtures').update_many({'conf_name': conf, 'round': round, 'zone': zone},
+                db.get_collection('Fixtures').update_many({'conf': conf, 'round': round, 'zone': zone},
                                                           {'$set': {
                                                               'fixtures.final.match7.homeTeam.goals': localGoals,
                                                               'fixtures.final.match7.awayTeam.goals': awayGoals,
@@ -461,7 +461,7 @@ def saveExtraTimeResult(fixture, match, localGoals, awayGoals, localPenaltys, aw
                                                                       localGoals == awayGoals and localPenaltys < awayPenaltys) else False,
                                                               'fixtures.final.match7.played': True}})
             if match == 8:
-                db.get_collection('Fixtures').update_many({'conf_name': conf, 'round': round, 'zone': zone},
+                db.get_collection('Fixtures').update_many({'conf': conf, 'round': round, 'zone': zone},
                                                           {'$set': {
                                                               'fixtures.final.match8.homeTeam.goals': localGoals,
                                                               'fixtures.final.match8.awayTeam.goals': awayGoals,
@@ -473,7 +473,7 @@ def saveExtraTimeResult(fixture, match, localGoals, awayGoals, localPenaltys, aw
                                                                       localGoals == awayGoals and localPenaltys < awayPenaltys) else False,
                                                               'fixtures.final.match8.played': True}})
         case _:
-            db.get_collection('Fixtures').update_many({'conf_name': conf, 'round': round, 'zone': zone},
+            db.get_collection('Fixtures').update_many({'conf': conf, 'round': round, 'zone': zone},
                                                       {'$set': {
                                                           'fixtures.wildCard.match1.homeTeam.goals': localGoals,
                                                           'fixtures.wildCard.match1.awayTeam.goals': awayGoals,
