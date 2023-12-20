@@ -299,7 +299,7 @@ def setHomeWildCardTeam(request):
     db = db_conexion()
     teamId = request.GET.get('home')
     team = getTeamById(teamId)
-    db.get_collection('Fixtures').update_many({'$and': [{'conf_name': 'UEFA'}, {'zone': 'WC'}, {'round': 'first'}]},
+    db.get_collection('Fixtures').update_many({'$and': [{'conf': 'UEFA'}, {'zone': 'WC'}, {'round': 'first'}]},
                                               {'$set': {
                                                   'fixtures.wildCard.match1.played': False,
                                                   'fixtures.wildCard.match1.homeTeam.team': team[0],
@@ -313,7 +313,7 @@ def setAwayWildCardTeam(request):
     db = db_conexion()
     teamId = request.GET.get('away')
     team = getTeamById(teamId)
-    db.get_collection('Fixtures').update_one({'$and': [{'conf_name': 'UEFA'}, {'zone': 'WC'}, {'round': 'first'}]},
+    db.get_collection('Fixtures').update_one({'$and': [{'conf': 'UEFA'}, {'zone': 'WC'}, {'round': 'first'}]},
                                              {'$set': {
                                                  'fixtures.wildCard.match1.played': False,
                                                  'fixtures.wildCard.match1.awayTeam.team': team[0],
