@@ -122,9 +122,8 @@ def setTeamPosition(team, a, b, c, d, e, f, g, h, position, teamsCount, maxLengt
         zones.remove('G')
     if filterConfList(team['conf_name'], h, teamsCount) == True or len(h) == maxLength:
         zones.remove('H')
-    if len(zones) > 1:
-        random.shuffle(zones)
-    insertTeam(team, zones[0], position, a, b, c, d, e, f, g, h)
+
+    insertTeam(team, random.choice(zones), position, a, b, c, d, e, f, g, h)
 
 
 def filterConfList(conf_name, list, count_teams):
