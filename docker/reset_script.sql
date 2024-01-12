@@ -161,3 +161,5 @@ db.Teams.find({conf_name:"OFC"}).sort({fifa_nation_rank: -1}).limit(5).map((team
     }
     db.Teams.updateOne({id: team.id},{$set:{stage:stage}})
 });
+
+d
