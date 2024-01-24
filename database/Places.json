@@ -1,0 +1,27 @@
+[
+  {
+    "_id": {"$oid": "657e49588626ce6b78b996c4"},
+    "conf": "AFC",
+    "places": "{firstRound=[Q, Q, X, X], secondRound=[Q, Q, X, X], thirdRound=[Q, X, X], finalRound=[Q, P, X, x]}"
+  },
+  {
+    "_id": {"$oid": "657e49588626ce6b78b996c5"},
+    "conf": "OFC",
+    "places": "{firstRound=[Q, Q, X, X, X], finalRound=[P, X, X, X]}"
+  },
+  {
+    "_id": {"$oid": "657e49588626ce6b78b996c6"},
+    "conf": "CONCACAF",
+    "places": "{firstRound=[Q, X, X, X, X], finalRound=[Q, P, X, X, X]}"
+  },
+  {
+    "_id": {"$oid": "657e49588626ce6b78b996c7"},
+    "conf": "CAF",
+    "places": "{firstRound=[Q, X, X, X], secondRound=[Q, Q, X, X], thirdRound=[Q, Q, X, X], finalRound=[Q, P, X, X, X]}"
+  },
+  {
+    "_id": {"$oid": "657e49588626ce6b78b996c8"},
+    "conf": "UEFA",
+    "places": "{firstRound=[Q, P, X, X, X], secondRound=[Q, Q, X, X], thirdRound=[Q, X, X], finalRound=[Q, Q, P, X, X]}"
+  }
+]
