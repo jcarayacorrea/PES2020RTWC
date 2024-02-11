@@ -133,7 +133,7 @@ db.Teams.find({conf_name:"CONCACAF"}).sort({fifa_nation_rank: 1}).limit(10).map(
     }
     db.Teams.updateOne({id: team.id},{$set:{stage:stage}})
 });
-db.Teams.find({conf_name:"CONCACAF"}).sort({fifa_nation_rank: -1}).limit(25).map((team)=>{
+db.Teams.find({conf_name:"CONCACAF"}).sort({fifa_nation_rank: 1}).skip(10).map((team)=>{
     let stage = {
         firstRound: true,
         secondRound: false,
@@ -142,7 +142,7 @@ db.Teams.find({conf_name:"CONCACAF"}).sort({fifa_nation_rank: -1}).limit(25).map
     }
     db.Teams.updateOne({id: team.id},{$set:{stage:stage}})
 });
-#CONCACAF
+#OFC
 db.Teams.find({conf_name:"OFC"}).sort({fifa_nation_rank: 1}).limit(6).map((team)=>{
     let stage = {
         firstRound: false,
@@ -162,4 +162,4 @@ db.Teams.find({conf_name:"OFC"}).sort({fifa_nation_rank: -1}).limit(5).map((team
     db.Teams.updateOne({id: team.id},{$set:{stage:stage}})
 });
 
-d
+db.Fixtures.updateMany({},{$set:{teams:{},fixtures:{}}})
