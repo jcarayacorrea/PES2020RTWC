@@ -8,21 +8,7 @@ services:
        MONGO_INITDB_ROOT_USERNAME: admin
        MONGO_INITDB_ROOT_PASSWORD: mongo
        MONGO_INITDB_DATABASE: pesrtwc
-  node:
-    image: node
-    working_dir: /rest
-    volumes:
-      - ./restAPI:/rest
-    ports:
-      - 3000:3000
-    depends_on:
-      - mongo
-  redis:
-    image: redis/redis-stack:latest
-    ports:
-      - 6379:6379
-      - 8001:8001
-
+  
 
 
 
