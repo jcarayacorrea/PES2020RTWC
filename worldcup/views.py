@@ -5,6 +5,7 @@ from django.shortcuts import render, redirect
 from django.template.defaulttags import register
 from fixtures import createPlayOffMatches, getZoneData
 from utils import getTeamsMainDraw, getTeamsPlayoff
+from functools import reduce
 
 
 # Create your views here.
@@ -127,10 +128,7 @@ def setTeamPosition(team, a, b, c, d, e, f, g, h, position, teamsCount, maxLengt
 
 
 def filterConfList(conf_name, list, count_teams):
-    count_conf = 0
-    for team in list:
-        if conf_name == team['conf_name']:
-            count_conf += 1
+    count_conf = len([team for team in list if conf_name == team['conf_name']])
     if count_teams <= 8 and count_conf == 1:
         return True
     elif count_teams > 8 and count_conf == 2:
@@ -139,11 +137,7 @@ def filterConfList(conf_name, list, count_teams):
 
 
 def countTeams(conf_name, teamList):
-    count = 0
-    for team in teamList:
-        if conf_name == team['conf_name']:
-            count += 1
-    return count
+    return len([team for team in teamList if conf_name == team['conf_name']])
 
 
 def insertTeam(team, zone, pos, a, b, c, d, e, f, g, h):
@@ -181,6 +175,7 @@ def playoffDraw(teams):
 
     return pool1, pool2, pool3, pool4, pool5
 
+
 @register.filter
-def teamsByConf(dict,conf):
-    return countTeams(conf,dict);
+def teamsByConf(dict, conf):
+    return countTeams(conf, dict);
