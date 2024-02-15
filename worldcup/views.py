@@ -129,9 +129,7 @@ def setTeamPosition(team, a, b, c, d, e, f, g, h, position, teamsCount, maxLengt
 
 def filterConfList(conf_name, list, count_teams):
     count_conf = len([team for team in list if conf_name == team['conf_name']])
-    if count_teams <= 8 and count_conf == 1:
-        return True
-    elif count_teams > 8 and count_conf == 2:
+    if (count_teams <= 8 and count_conf == 1) or (count_teams > 8 and count_conf == 2):
         return True
     return False
 
