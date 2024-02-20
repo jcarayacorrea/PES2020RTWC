@@ -65,7 +65,7 @@
                                         <div class="col-2">
                                             {% with homeId=fixture.fixture1.match1.homeTeam.team.id awayId=fixture.fixture1.match1.awayTeam.team.id %}
                                                 {% url 'match_simulator' 1 1 homeId awayId  conf  round zone as match_1_1 %}
-                                                <button type="button" class="btn btn-primary"
+                                                <button type="button" class="btn btn-primary matches"
                                                         hx-get="{{ match_1_1 }}"
                                                         hx-trigger="click"
                                                         hx-target="#schedule-content"
@@ -135,7 +135,7 @@
                                             <div class="col-2">
                                                 {% with homeId=fixture.fixture1.match2.homeTeam.team.id awayId=fixture.fixture1.match2.awayTeam.team.id %}
                                                     {% url 'match_simulator' 1 2 homeId awayId  conf  round zone as match_1_2 %}
-                                                    <button type="button" class="btn btn-primary"
+                                                    <button type="button" class="btn btn-primary matches"
                                                             hx-get="{{ match_1_2 }}"
                                                             hx-trigger="click"
                                                             hx-target="#schedule-content"
@@ -223,7 +223,7 @@
                                         <div class="col-2">
                                             {% with homeId=fixture.fixture2.match1.homeTeam.team.id awayId=fixture.fixture2.match1.awayTeam.team.id %}
                                                 {% url 'match_simulator' 2 1 homeId awayId  conf  round zone as match_2_1 %}
-                                                <button type="button" class="btn btn-primary"
+                                                <button type="button" class="btn btn-primary matches"
                                                         hx-get="{{ match_2_1 }}"
                                                         hx-trigger="click"
                                                         hx-target="#schedule-content"
@@ -293,7 +293,7 @@
                                         <div class="col-2">
                                             {% with homeId=fixture.fixture2.match2.homeTeam.team.id awayId=fixture.fixture2.match2.awayTeam.team.id %}
                                                 {% url 'match_simulator' 2 2 homeId awayId  conf  round zone as match_2_2 %}
-                                                <button type="button" class="btn btn-primary"
+                                                <button type="button" class="btn btn-primary matches"
                                                         hx-get="{{ match_2_2 }}"
                                                         hx-trigger="click"
                                                         hx-target="#schedule-content"
@@ -380,7 +380,7 @@
                                         <div class="col-2">
                                             {% with homeId=fixture.fixture3.match1.homeTeam.team.id awayId=fixture.fixture3.match1.awayTeam.team.id %}
                                                 {% url 'match_simulator' 3 1 homeId awayId  conf  round zone as match_3_1 %}
-                                                <button type="button" class="btn btn-primary"
+                                                <button type="button" class="btn btn-primary matches"
                                                         hx-get="{{ match_3_1 }}"
                                                         hx-trigger="click"
                                                         hx-target="#schedule-content"
@@ -450,7 +450,7 @@
                                             <div class="col-2">
                                                 {% with homeId=fixture.fixture3.match2.homeTeam.team.id awayId=fixture.fixture3.match2.awayTeam.team.id %}
                                                     {% url 'match_simulator' 3 2 homeId awayId  conf  round zone as match_3_2 %}
-                                                    <button type="button" class="btn btn-primary"
+                                                    <button type="button" class="btn btn-primary matches"
                                                             hx-get="{{ match_3_2 }}"
                                                             hx-trigger="click"
                                                             hx-target="#schedule-content"
@@ -537,7 +537,7 @@
                                         <div class="col-2">
                                             {% with homeId=fixture.fixture4.match1.homeTeam.team.id awayId=fixture.fixture4.match1.awayTeam.team.id %}
                                                 {% url 'match_simulator' 4 1 homeId awayId  conf  round zone as match_4_1 %}
-                                                <button type="button" class="btn btn-primary"
+                                                <button type="button" class="btn btn-primary matches"
                                                         hx-get="{{ match_4_1 }}"
                                                         hx-trigger="click"
                                                         hx-target="#schedule-content"
@@ -607,7 +607,7 @@
                                             <div class="col-2">
                                                 {% with homeId=fixture.fixture4.match2.homeTeam.team.id awayId=fixture.fixture4.match2.awayTeam.team.id %}
                                                     {% url 'match_simulator' 4 2 homeId awayId  conf  round zone as match_4_2 %}
-                                                    <button type="button" class="btn btn-primary"
+                                                    <button type="button" class="btn btn-primary matches"
                                                             hx-get="{{ match_4_2 }}"
                                                             hx-trigger="click"
                                                             hx-target="#schedule-content"
@@ -694,7 +694,7 @@
                                         <div class="col-2">
                                             {% with homeId=fixture.fixture5.match1.homeTeam.team.id awayId=fixture.fixture5.match1.awayTeam.team.id %}
                                                 {% url 'match_simulator' 5 1 homeId awayId  conf  round zone as match_5_1 %}
-                                                <button type="button" class="btn btn-primary"
+                                                <button type="button" class="btn btn-primary matches"
                                                         hx-get="{{ match_5_1 }}"
                                                         hx-trigger="click"
                                                         hx-target="#schedule-content"
@@ -763,7 +763,7 @@
                                             <div class="col-2">
                                                 {% with homeId=fixture.fixture5.match2.homeTeam.team.id awayId=fixture.fixture5.match2.awayTeam.team.id %}
                                                     {% url 'match_simulator' 5 2 homeId awayId  conf  round zone as match_5_2 %}
-                                                    <button type="button" class="btn btn-primary"
+                                                    <button type="button" class="btn btn-primary matches"
                                                             hx-get="{{ match_5_2 }}"
                                                             hx-trigger="click"
                                                             hx-target="#schedule-content"
@@ -850,7 +850,7 @@
                                         <div class="col-2">
                                             {% with homeId=fixture.fixture6.match1.homeTeam.team.id awayId=fixture.fixture6.match1.awayTeam.team.id %}
                                                 {% url 'match_simulator' 6 1 homeId awayId  conf  round zone as match_6_1 %}
-                                                <button type="button" class="btn btn-primary"
+                                                <button type="button" class="btn btn-primary matches"
                                                         hx-get="{{ match_6_1 }}"
                                                         hx-trigger="click"
                                                         hx-target="#schedule-content"
@@ -920,7 +920,7 @@
                                             <div class="col-2">
                                                 {% with homeId=fixture.fixture6.match2.homeTeam.team.id awayId=fixture.fixture6.match2.awayTeam.team.id %}
                                                     {% url 'match_simulator' 6 2 homeId awayId  conf  round zone as match_6_2 %}
-                                                    <button type="button" class="btn btn-primary"
+                                                    <button type="button" class="btn btn-primary matches"
                                                             hx-get="{{ match_6_2 }}"
                                                             hx-trigger="click"
                                                             hx-target="#schedule-content"
@@ -1007,7 +1007,7 @@
                                         <div class="col-2">
                                             {% with homeId=fixture.fixture7.match1.homeTeam.team.id awayId=fixture.fixture7.match1.awayTeam.team.id %}
                                                 {% url 'match_simulator' 7 1 homeId awayId  conf  round zone as match_7_1 %}
-                                                <button type="button" class="btn btn-primary"
+                                                <button type="button" class="btn btn-primary matches"
                                                         hx-get="{{ match_7_1 }}"
                                                         hx-trigger="click"
                                                         hx-target="#schedule-content"
@@ -1076,7 +1076,7 @@
                                         <div class="col-2">
                                             {% with homeId=fixture.fixture7.match2.homeTeam.team.id awayId=fixture.fixture7.match2.awayTeam.team.id %}
                                                 {% url 'match_simulator' 7 2 homeId awayId  conf  round zone as match_7_2 %}
-                                                <button type="button" class="btn btn-primary"
+                                                <button type="button" class="btn btn-primary matches"
                                                         hx-get="{{ match_7_2 }}"
                                                         hx-trigger="click"
                                                         hx-target="#schedule-content"
@@ -1162,7 +1162,7 @@
                                         <div class="col-2">
                                             {% with homeId=fixture.fixture8.match1.homeTeam.team.id awayId=fixture.fixture8.match1.awayTeam.team.id %}
                                                 {% url 'match_simulator' 8 1 homeId awayId  conf  round zone as match_8_1 %}
-                                                <button type="button" class="btn btn-primary"
+                                                <button type="button" class="btn btn-primary matches"
                                                         hx-get="{{ match_8_1 }}"
                                                         hx-trigger="click"
                                                         hx-target="#schedule-content"
@@ -1231,7 +1231,7 @@
                                         <div class="col-2">
                                             {% with homeId=fixture.fixture8.match2.homeTeam.team.id awayId=fixture.fixture8.match2.awayTeam.team.id %}
                                                 {% url 'match_simulator' 8 2 homeId awayId  conf  round zone as match_8_2 %}
-                                                <button type="button" class="btn btn-primary"
+                                                <button type="button" class="btn btn-primary matches"
                                                         hx-get="{{ match_8_2 }}"
                                                         hx-trigger="click"
                                                         hx-target="#schedule-content"
@@ -1317,7 +1317,7 @@
                                         <div class="col-2">
                                             {% with homeId=fixture.fixture9.match1.homeTeam.team.id awayId=fixture.fixture9.match1.awayTeam.team.id %}
                                                 {% url 'match_simulator' 9 1 homeId awayId  conf  round zone as match_9_1 %}
-                                                <button type="button" class="btn btn-primary"
+                                                <button type="button" class="btn btn-primary matches"
                                                         hx-get="{{ match_9_1 }}"
                                                         hx-trigger="click"
                                                         hx-target="#schedule-content"
@@ -1386,7 +1386,7 @@
                                         <div class="col-2">
                                             {% with homeId=fixture.fixture9.match2.homeTeam.team.id awayId=fixture.fixture9.match2.awayTeam.team.id %}
                                                 {% url 'match_simulator' 9 2 homeId awayId  conf  round zone as match_9_2 %}
-                                                <button type="button" class="btn btn-primary"
+                                                <button type="button" class="btn btn-primary matches"
                                                         hx-get="{{ match_9_2 }}"
                                                         hx-trigger="click"
                                                         hx-target="#schedule-content"
@@ -1472,7 +1472,7 @@
                                         <div class="col-2">
                                             {% with homeId=fixture.fixture10.match1.homeTeam.team.id awayId=fixture.fixture10.match1.awayTeam.team.id %}
                                                 {% url 'match_simulator' 10 1 homeId awayId  conf  round zone as match_10_1 %}
-                                                <button type="button" class="btn btn-primary"
+                                                <button type="button" class="btn btn-primary matches"
                                                         hx-get="{{ match_10_1 }}"
                                                         hx-trigger="click"
                                                         hx-target="#schedule-content"
@@ -1541,7 +1541,7 @@
                                         <div class="col-2">
                                             {% with homeId=fixture.fixture10.match2.homeTeam.team.id awayId=fixture.fixture10.match2.awayTeam.team.id %}
                                                 {% url 'match_simulator' 10 2 homeId awayId  conf  round zone as match_10_2 %}
-                                                <button type="button" class="btn btn-primary"
+                                                <button type="button" class="btn btn-primary matches"
                                                         hx-get="{{ match_10_2 }}"
                                                         hx-trigger="click"
                                                         hx-target="#schedule-content"
@@ -1575,6 +1575,7 @@
 
         </div>
         <div class="modal-footer">
+             <button type="button" class="btn btn-primary" onclick="playMatches()"><i class="fa-solid fa-play"></i></button>
             <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
         </div>
     </div>
