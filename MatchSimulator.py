@@ -6,12 +6,11 @@ from utils import getTeamById, diferencia_alta, diferencia_extrema, diferencia_m
 def calcular_probabilidad_ganador(ranking_local, ranking_visitante):
     """Calcula la probabilidad de que el equipo con menor ranking gane."""
 
-
     if ranking_local < ranking_visitante:
-        if diferencia_media(ranking_local,ranking_visitante):
+        if diferencia_media(ranking_local, ranking_visitante):
             probabilidad_local = 0.7  # Probabilidad de gol local más alta
             probabilidad_visitante = 0.3  # Probabilidad de gol visitante más baja
-        elif diferencia_alta(ranking_local,ranking_visitante):
+        elif diferencia_alta(ranking_local, ranking_visitante):
             probabilidad_local = 0.8  # Probabilidad de gol local más alta
             probabilidad_visitante = 0.2  # Probabilidad de gol visitante más baja
         elif diferencia_extrema(ranking_local, ranking_visitante):
@@ -23,10 +22,10 @@ def calcular_probabilidad_ganador(ranking_local, ranking_visitante):
 
 
     elif ranking_local > ranking_visitante:
-        if diferencia_media(ranking_local,ranking_visitante):
+        if diferencia_media(ranking_local, ranking_visitante):
             probabilidad_local = 0.3  # Probabilidad de gol local más alta
             probabilidad_visitante = 0.7  # Probabilidad de gol visitante más baja
-        elif diferencia_alta(ranking_local,ranking_visitante):
+        elif diferencia_alta(ranking_local, ranking_visitante):
             probabilidad_local = 0.2  # Probabilidad de gol local más alta
             probabilidad_visitante = 0.8  # Probabilidad de gol visitante más baja
         elif diferencia_extrema(ranking_local, ranking_visitante):
@@ -153,10 +152,10 @@ def simular_partido(equipo_local, equipo_visitante, extraTime):
 
                     # Mostrar el evento en el partido
                     print('Penal anotado {}  {} - {}'.format(nombre_local, penales_local,
-                                                              penales_visita))
+                                                             penales_visita))
                 else:
                     print('Penal fallado {}  {} - {}'.format(nombre_local, penales_local,
-                                                            penales_visita))
+                                                             penales_visita))
                 time.sleep(sleepTime)
                 eventoVisita = random.choices([0, 1], [probabilidad_visitante, probabilidad_local])[0]
 
@@ -168,10 +167,10 @@ def simular_partido(equipo_local, equipo_visitante, extraTime):
 
                     # Mostrar el evento en el partido
                     print('Penal anotado {} {} - {}'.format(nombre_visita, penales_local,
-                                                             penales_visita))
+                                                            penales_visita))
                 else:
                     print('Penal fallado {}  {} - {}'.format(nombre_visita, penales_local,
-                                                            penales_visita))
+                                                             penales_visita))
 
                 # Si el evento es un sin gol
                 count_penales += 1
@@ -181,7 +180,8 @@ def simular_partido(equipo_local, equipo_visitante, extraTime):
 
                 time.sleep(sleepTime)
 
-            print('Fin Penales {} {} - {} {}'.format(nombre_local, penales_local if penales_local > 0 else 0, penales_visita if penales_visita > 0 else 0, nombre_visita))
+            print('Fin Penales {} {} - {} {}'.format(nombre_local, penales_local if penales_local > 0 else 0,
+                                                     penales_visita if penales_visita > 0 else 0, nombre_visita))
         return {'local': goles_local, 'penales_local': penales_local if penales_local is not None else None,
                 'visita': goles_visitante, 'penales_visita': penales_visita if penales_visita is not None else None}
 
