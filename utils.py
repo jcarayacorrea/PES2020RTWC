@@ -484,3 +484,10 @@ def saveExtraTimeResult(fixture, match, localGoals, awayGoals, localPenaltys, aw
                                                           'fixtures.wildCard.match1.awayTeam.result': True if localGoals < awayGoals or (
                                                                   localGoals == awayGoals and localPenaltys < awayPenaltys) else False,
                                                           'fixtures.wildCard.match1.played': True}})
+
+def diferencia_media(local,visita):
+    return True if (abs(local -visita) > 10) and (abs(local - visita) < 21) else False
+def diferencia_alta(local,visita):
+    return True if (abs(local -visita) > 20) and (abs(local - visita) < 31) else False
+def diferencia_extrema(local,visita):
+    return True if (abs(local - visita) > 30) else False

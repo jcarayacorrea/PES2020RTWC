@@ -1,20 +1,20 @@
 import random
 import time
-from utils import getTeamById
+from utils import getTeamById, diferencia_alta, diferencia_extrema, diferencia_media
 
 
 def calcular_probabilidad_ganador(ranking_local, ranking_visitante):
     """Calcula la probabilidad de que el equipo con menor ranking gane."""
-    diferencia_ranking = ranking_local - ranking_visitante
+
 
     if ranking_local < ranking_visitante:
-        if (abs(diferencia_ranking) > 5) and (abs(diferencia_ranking) < 11):
+        if diferencia_media(ranking_local,ranking_visitante):
             probabilidad_local = 0.7  # Probabilidad de gol local más alta
             probabilidad_visitante = 0.3  # Probabilidad de gol visitante más baja
-        elif (abs(diferencia_ranking) > 10) and (abs(diferencia_ranking) < 11):
+        elif diferencia_alta(ranking_local,ranking_visitante):
             probabilidad_local = 0.8  # Probabilidad de gol local más alta
             probabilidad_visitante = 0.2  # Probabilidad de gol visitante más baja
-        elif abs(diferencia_ranking) > 19:
+        elif diferencia_extrema(ranking_local, ranking_visitante):
             probabilidad_local = 0.88  # Probabilidad de gol local más alta
             probabilidad_visitante = 0.12  # Probabilidad de gol visitante más baja
         else:
@@ -23,13 +23,13 @@ def calcular_probabilidad_ganador(ranking_local, ranking_visitante):
 
 
     elif ranking_local > ranking_visitante:
-        if (abs(diferencia_ranking) > 5) and (abs(diferencia_ranking) < 11):
+        if diferencia_media(ranking_local,ranking_visitante):
             probabilidad_local = 0.3  # Probabilidad de gol local más alta
             probabilidad_visitante = 0.7  # Probabilidad de gol visitante más baja
-        elif (abs(diferencia_ranking) > 10) and (abs(diferencia_ranking) < 20) :
+        elif diferencia_alta(ranking_local,ranking_visitante):
             probabilidad_local = 0.2  # Probabilidad de gol local más alta
             probabilidad_visitante = 0.8  # Probabilidad de gol visitante más baja
-        elif abs(diferencia_ranking) > 19:
+        elif diferencia_extrema(ranking_local, ranking_visitante):
             probabilidad_local = 0.12  # Probabilidad de gol local más alta
             probabilidad_visitante = 0.88  # Probabilidad de gol visitante más baja
         else:
@@ -63,7 +63,7 @@ def simular_partido(equipo_local, equipo_visitante, extraTime):
 
     # Simular el tiempo transcurrido en el partido (90 segundos)
     tiempo_transcurrido = 0
-    print('Comienza Partido  {} ({}%) - {} ({}%)'.format(nombre_local,int(probabilidad_local * 100), nombre_visita, int(probabilidad_visitante * 100)))
+    print('Comienza Partido  {}  - {} '.format(nombre_local, nombre_visita))
     while tiempo_transcurrido < 90:
         # Generar un evento aleatorio basado en las probabilidades de los equipos
         evento = random.choices([0, 1, 2], [probabilidad_gol_local, probabilidad_gol_visita,
