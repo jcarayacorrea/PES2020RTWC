@@ -595,7 +595,7 @@
                                                         <div class="flag-config">
                                                             {% resultbgaway fixture.fixture4.match2 as awayborder %}
                                                             <img src="{{ fixture.fixture4.match2.awayTeam.team.image_flag }}"
-                                                                 class="img-card {{ awayborder }}" >
+                                                                 class="img-card {{ awayborder }}">
                                                         </div>
                                                         <div class="name-config-sm">
                                                             {{ fixture.fixture4.match2.awayTeam.team.nation_iso_code }}
@@ -1575,7 +1575,18 @@
 
         </div>
         <div class="modal-footer">
-             <button type="button" class="btn btn-primary" onclick="playMatches()"><i class="fa-solid fa-play"></i></button>
+            <button type="button" class="btn btn-primary" onclick="playMatches()" 
+                    hx-trigger="click"
+                    hx-target="#schedule-content"
+                    data-loading-disable>
+                <div data-loading-aria-busy data-loading>
+                    <div class="spinner-border spinner-border-sm text-light "></div>
+                </div>
+                <div data-loading-aria-busy data-loading-class="d-none">
+                    <i class="fa-solid fa-arrows-rotate"></i>
+                </div>
+
+            </button>
             <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
         </div>
     </div>

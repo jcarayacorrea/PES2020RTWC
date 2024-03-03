@@ -8,10 +8,10 @@ def calcular_probabilidad_ganador(ranking_local, ranking_visitante):
     diferencia_ranking = ranking_local - ranking_visitante
 
     if ranking_local < ranking_visitante:
-        if abs(diferencia_ranking) > 5:
+        if (abs(diferencia_ranking) > 5) and (abs(diferencia_ranking) < 11):
             probabilidad_local = 0.7  # Probabilidad de gol local más alta
             probabilidad_visitante = 0.3  # Probabilidad de gol visitante más baja
-        elif abs(diferencia_ranking) > 10:
+        elif (abs(diferencia_ranking) > 10) and (abs(diferencia_ranking) < 11):
             probabilidad_local = 0.8  # Probabilidad de gol local más alta
             probabilidad_visitante = 0.2  # Probabilidad de gol visitante más baja
         elif abs(diferencia_ranking) > 19:
@@ -23,10 +23,10 @@ def calcular_probabilidad_ganador(ranking_local, ranking_visitante):
 
 
     elif ranking_local > ranking_visitante:
-        if abs(diferencia_ranking) > 5:
+        if (abs(diferencia_ranking) > 5) and (abs(diferencia_ranking) < 11):
             probabilidad_local = 0.3  # Probabilidad de gol local más alta
             probabilidad_visitante = 0.7  # Probabilidad de gol visitante más baja
-        elif abs(diferencia_ranking) > 10:
+        elif (abs(diferencia_ranking) > 10) and (abs(diferencia_ranking) < 20) :
             probabilidad_local = 0.2  # Probabilidad de gol local más alta
             probabilidad_visitante = 0.8  # Probabilidad de gol visitante más baja
         elif abs(diferencia_ranking) > 19:
