@@ -152,25 +152,25 @@ def simular_partido(equipo_local, equipo_visitante, extraTime):
                     # Incrementar el tiempo transcurrido en 1 segundo
 
                     # Mostrar el evento en el partido
-                    print('Penal asertado {}  {} - {}'.format(nombre_local, penales_local,
+                    print('Penal anotado {}  {} - {}'.format(nombre_local, penales_local,
                                                               penales_visita))
                 else:
-                    print('Penal errado {}  {} - {}'.format(nombre_local, penales_local,
+                    print('Penal fallado {}  {} - {}'.format(nombre_local, penales_local,
                                                             penales_visita))
                 time.sleep(sleepTime)
                 eventoVisita = random.choices([0, 1], [probabilidad_visitante, probabilidad_local])[0]
 
                 # Si el evento es un gol visitante
-                if eventoVisita == 1:
+                if eventoVisita == 0:
                     # Incrementar el marcador del equipo visitante
                     penales_visita += 1
                     # Incrementar el tiempo transcurrido en 1 segundo
 
                     # Mostrar el evento en el partido
-                    print('Penal asertado {} {} - {}'.format(nombre_visita, penales_local,
+                    print('Penal anotado {} {} - {}'.format(nombre_visita, penales_local,
                                                              penales_visita))
                 else:
-                    print('Penal errado {}  {} - {}'.format(nombre_visita, penales_local,
+                    print('Penal fallado {}  {} - {}'.format(nombre_visita, penales_local,
                                                             penales_visita))
 
                 # Si el evento es un sin gol
