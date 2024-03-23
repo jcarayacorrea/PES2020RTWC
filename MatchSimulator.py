@@ -100,8 +100,8 @@ def simular_partido(equipo_local, equipo_visitante, extraTime):
     if extraTime and goles_local == goles_visitante:
         print('Comienza Alargue  {} - {}'.format(nombre_local, nombre_visita))
         tiempo_transcurrido = 90
-        penales_local = 0
-        penales_visita = 0
+        penales_local = None
+        penales_visita = None
         while tiempo_transcurrido < 120:
             # Generar un evento aleatorio basado en las probabilidades de los equipos
             evento = random.choices([0, 1, 2], [probabilidad_gol_local, probabilidad_gol_visita,
@@ -139,6 +139,8 @@ def simular_partido(equipo_local, equipo_visitante, extraTime):
         if goles_local == goles_visitante:
             penales = False
             count_penales = 0
+            penales_local = 0
+            penales_visita = 0
             print('...::::: PENALES :::..')
             while penales == False:
                 # Generar un evento aleatorio de penales basado en las probabilidades de los equipos

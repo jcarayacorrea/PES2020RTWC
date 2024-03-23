@@ -312,8 +312,8 @@ def saveExtraTimeResult(fixture, match, localGoals, awayGoals, localPenaltys, aw
                                                           {'$set': {
                                                               'fixtures.first.match1.homeTeam.goals': localGoals,
                                                               'fixtures.first.match1.awayTeam.goals': awayGoals,
-                                                              'fixtures.first.match1.homeTeam.penalties': localPenaltys if localPenaltys > 0 else None,
-                                                              'fixtures.first.match1.awayTeam.penalties': awayPenaltys if awayPenaltys > 0 else None,
+                                                              'fixtures.first.match1.homeTeam.penalties': localPenaltys if localPenaltys is not None else None,
+                                                              'fixtures.first.match1.awayTeam.penalties': awayPenaltys if awayPenaltys is not None else None,
                                                               'fixtures.first.match1.homeTeam.result': True if localGoals > awayGoals or (
                                                                       localGoals == awayGoals and localPenaltys > awayPenaltys) else False,
                                                               'fixtures.first.match1.awayTeam.result': True if localGoals < awayGoals or (
@@ -329,8 +329,8 @@ def saveExtraTimeResult(fixture, match, localGoals, awayGoals, localPenaltys, aw
                                                           {'$set': {
                                                               'fixtures.first.match2.homeTeam.goals': localGoals,
                                                               'fixtures.first.match2.awayTeam.goals': awayGoals,
-                                                              'fixtures.first.match2.homeTeam.penalties': localPenaltys if localPenaltys > 0 else None,
-                                                              'fixtures.first.match2.awayTeam.penalties': awayPenaltys if awayPenaltys > 0 else None,
+                                                              'fixtures.first.match2.homeTeam.penalties': localPenaltys if localPenaltys is not None else None,
+                                                              'fixtures.first.match2.awayTeam.penalties': awayPenaltys if awayPenaltys is not None else None,
                                                               'fixtures.first.match2.homeTeam.result': True if localGoals > awayGoals or (
                                                                       localGoals == awayGoals and localPenaltys > awayPenaltys) else False,
                                                               'fixtures.first.match2.awayTeam.result': True if localGoals < awayGoals or (
@@ -345,8 +345,8 @@ def saveExtraTimeResult(fixture, match, localGoals, awayGoals, localPenaltys, aw
                                                           {'$set': {
                                                               'fixtures.first.match3.homeTeam.goals': localGoals,
                                                               'fixtures.first.match3.awayTeam.goals': awayGoals,
-                                                              'fixtures.first.match3.homeTeam.penalties': localPenaltys if localPenaltys > 0 else None,
-                                                              'fixtures.first.match3.awayTeam.penalties': awayPenaltys if awayPenaltys > 0 else None,
+                                                              'fixtures.first.match3.homeTeam.penalties': localPenaltys if localPenaltys is not None else None,
+                                                              'fixtures.first.match3.awayTeam.penalties': awayPenaltys if awayPenaltys is not None else None,
                                                               'fixtures.first.match3.homeTeam.result': True if localGoals > awayGoals or (
                                                                       localGoals == awayGoals and localPenaltys > awayPenaltys) else False,
                                                               'fixtures.first.match3.awayTeam.result': True if localGoals < awayGoals or (
@@ -361,8 +361,8 @@ def saveExtraTimeResult(fixture, match, localGoals, awayGoals, localPenaltys, aw
                                                           {'$set': {
                                                               'fixtures.first.match4.homeTeam.goals': localGoals,
                                                               'fixtures.first.match4.awayTeam.goals': awayGoals,
-                                                              'fixtures.first.match4.homeTeam.penalties': localPenaltys if localPenaltys > 0 else None,
-                                                              'fixtures.first.match4.awayTeam.penalties': awayPenaltys if awayPenaltys > 0 else None,
+                                                              'fixtures.first.match4.homeTeam.penalties': localPenaltys if localPenaltys is not None else None,
+                                                              'fixtures.first.match4.awayTeam.penalties': awayPenaltys if awayPenaltys is not None else None,
                                                               'fixtures.first.match4.homeTeam.result': True if localGoals > awayGoals or (
                                                                       localGoals == awayGoals and localPenaltys > awayPenaltys) else False,
                                                               'fixtures.first.match4.awayTeam.result': True if localGoals < awayGoals or (
@@ -379,8 +379,8 @@ def saveExtraTimeResult(fixture, match, localGoals, awayGoals, localPenaltys, aw
                                                           {'$set': {
                                                               'fixtures.final.match1.homeTeam.goals': localGoals,
                                                               'fixtures.final.match1.awayTeam.goals': awayGoals,
-                                                              'fixtures.final.match1.homeTeam.penalties': localPenaltys if localPenaltys > 0 else None,
-                                                              'fixtures.final.match1.awayTeam.penalties': awayPenaltys if awayPenaltys > 0 else None,
+                                                              'fixtures.final.match1.homeTeam.penalties': localPenaltys if localPenaltys is not None else None,
+                                                              'fixtures.final.match1.awayTeam.penalties': awayPenaltys if awayPenaltys is not None else None,
                                                               'fixtures.final.match1.homeTeam.result': True if localGoals > awayGoals or (
                                                                       localGoals == awayGoals and localPenaltys > awayPenaltys) else False,
                                                               'fixtures.final.match1.awayTeam.result': True if localGoals < awayGoals or (
@@ -392,8 +392,8 @@ def saveExtraTimeResult(fixture, match, localGoals, awayGoals, localPenaltys, aw
                                                           {'$set': {
                                                               'fixtures.final.match2.homeTeam.goals': localGoals,
                                                               'fixtures.final.match2.awayTeam.goals': awayGoals,
-                                                              'fixtures.final.match2.homeTeam.penalties': localPenaltys if localPenaltys > 0 else None,
-                                                              'fixtures.final.match2.awayTeam.penalties': awayPenaltys if awayPenaltys > 0 else None,
+                                                              'fixtures.final.match2.homeTeam.penalties': localPenaltys if localPenaltys is not None else None,
+                                                              'fixtures.final.match2.awayTeam.penalties': awayPenaltys if awayPenaltys is not None else None,
                                                               'fixtures.final.match2.homeTeam.result': True if localGoals > awayGoals or (
                                                                       localGoals == awayGoals and localPenaltys > awayPenaltys) else False,
                                                               'fixtures.final.match2.awayTeam.result': True if localGoals < awayGoals or (
@@ -404,8 +404,8 @@ def saveExtraTimeResult(fixture, match, localGoals, awayGoals, localPenaltys, aw
                                                           {'$set': {
                                                               'fixtures.final.match3.homeTeam.goals': localGoals,
                                                               'fixtures.final.match3.awayTeam.goals': awayGoals,
-                                                              'fixtures.final.match3.homeTeam.penalties': localPenaltys if localPenaltys > 0 else None,
-                                                              'fixtures.final.match3.awayTeam.penalties': awayPenaltys if awayPenaltys > 0 else None,
+                                                              'fixtures.final.match3.homeTeam.penalties': localPenaltys if localPenaltys is not None else None,
+                                                              'fixtures.final.match3.awayTeam.penalties': awayPenaltys if awayPenaltys is not None else None,
                                                               'fixtures.final.match3.homeTeam.result': True if localGoals > awayGoals or (
                                                                       localGoals == awayGoals and localPenaltys > awayPenaltys) else False,
                                                               'fixtures.final.match3.awayTeam.result': True if localGoals < awayGoals or (
@@ -416,8 +416,8 @@ def saveExtraTimeResult(fixture, match, localGoals, awayGoals, localPenaltys, aw
                                                           {'$set': {
                                                               'fixtures.final.match4.homeTeam.goals': localGoals,
                                                               'fixtures.final.match4.awayTeam.goals': awayGoals,
-                                                              'fixtures.final.match4.homeTeam.penalties': localPenaltys if localPenaltys > 0 else None,
-                                                              'fixtures.final.match4.awayTeam.penalties': awayPenaltys if awayPenaltys > 0 else None,
+                                                              'fixtures.final.match4.homeTeam.penalties': localPenaltys if localPenaltys is not None else None,
+                                                              'fixtures.final.match4.awayTeam.penalties': awayPenaltys if awayPenaltys is not None else None,
                                                               'fixtures.final.match4.homeTeam.result': True if localGoals > awayGoals or (
                                                                       localGoals == awayGoals and localPenaltys > awayPenaltys) else False,
                                                               'fixtures.final.match4.awayTeam.result': True if localGoals < awayGoals or (
@@ -428,8 +428,8 @@ def saveExtraTimeResult(fixture, match, localGoals, awayGoals, localPenaltys, aw
                                                           {'$set': {
                                                               'fixtures.final.match5.homeTeam.goals': localGoals,
                                                               'fixtures.final.match5.awayTeam.goals': awayGoals,
-                                                              'fixtures.final.match5.homeTeam.penalties': localPenaltys if localPenaltys > 0 else None,
-                                                              'fixtures.final.match5.awayTeam.penalties': awayPenaltys if awayPenaltys > 0 else None,
+                                                              'fixtures.final.match5.homeTeam.penalties': localPenaltys if localPenaltys is not None else None,
+                                                              'fixtures.final.match5.awayTeam.penalties': awayPenaltys if awayPenaltys is not None else None,
                                                               'fixtures.final.match5.homeTeam.result': True if localGoals > awayGoals or (
                                                                       localGoals == awayGoals and localPenaltys > awayPenaltys) else False,
                                                               'fixtures.final.match5.awayTeam.result': True if localGoals < awayGoals or (
@@ -441,8 +441,8 @@ def saveExtraTimeResult(fixture, match, localGoals, awayGoals, localPenaltys, aw
                                                           {'$set': {
                                                               'fixtures.final.match6.homeTeam.goals': localGoals,
                                                               'fixtures.final.match6.awayTeam.goals': awayGoals,
-                                                              'fixtures.final.match6.homeTeam.penalties': localPenaltys if localPenaltys > 0 else None,
-                                                              'fixtures.final.match6.awayTeam.penalties': awayPenaltys if awayPenaltys > 0 else None,
+                                                              'fixtures.final.match6.homeTeam.penalties': localPenaltys if localPenaltys is not None else None,
+                                                              'fixtures.final.match6.awayTeam.penalties': awayPenaltys if awayPenaltys is not None else None,
                                                               'fixtures.final.match6.homeTeam.result': True if localGoals > awayGoals or (
                                                                       localGoals == awayGoals and localPenaltys > awayPenaltys) else False,
                                                               'fixtures.final.match6.awayTeam.result': True if localGoals < awayGoals or (
@@ -453,8 +453,8 @@ def saveExtraTimeResult(fixture, match, localGoals, awayGoals, localPenaltys, aw
                                                           {'$set': {
                                                               'fixtures.final.match7.homeTeam.goals': localGoals,
                                                               'fixtures.final.match7.awayTeam.goals': awayGoals,
-                                                              'fixtures.final.match7.homeTeam.penalties': localPenaltys if localPenaltys > 0 else None,
-                                                              'fixtures.final.match7.awayTeam.penalties': awayPenaltys if awayPenaltys > 0 else None,
+                                                              'fixtures.final.match7.homeTeam.penalties': localPenaltys if localPenaltys is not None else None,
+                                                              'fixtures.final.match7.awayTeam.penalties': awayPenaltys if awayPenaltys is not None else None,
                                                               'fixtures.final.match7.homeTeam.result': True if localGoals > awayGoals or (
                                                                       localGoals == awayGoals and localPenaltys > awayPenaltys) else False,
                                                               'fixtures.final.match7.awayTeam.result': True if localGoals < awayGoals or (
@@ -465,8 +465,8 @@ def saveExtraTimeResult(fixture, match, localGoals, awayGoals, localPenaltys, aw
                                                           {'$set': {
                                                               'fixtures.final.match8.homeTeam.goals': localGoals,
                                                               'fixtures.final.match8.awayTeam.goals': awayGoals,
-                                                              'fixtures.final.match8.homeTeam.penalties': localPenaltys if localPenaltys > 0 else None,
-                                                              'fixtures.final.match8.awayTeam.penalties': awayPenaltys if awayPenaltys > 0 else None,
+                                                              'fixtures.final.match8.homeTeam.penalties': localPenaltys if localPenaltys is not None else None,
+                                                              'fixtures.final.match8.awayTeam.penalties': awayPenaltys if awayPenaltys is not None else None,
                                                               'fixtures.final.match8.homeTeam.result': True if localGoals > awayGoals or (
                                                                       localGoals == awayGoals and localPenaltys > awayPenaltys) else False,
                                                               'fixtures.final.match8.awayTeam.result': True if localGoals < awayGoals or (
@@ -477,8 +477,8 @@ def saveExtraTimeResult(fixture, match, localGoals, awayGoals, localPenaltys, aw
                                                       {'$set': {
                                                           'fixtures.wildCard.match1.homeTeam.goals': localGoals,
                                                           'fixtures.wildCard.match1.awayTeam.goals': awayGoals,
-                                                          'fixtures.wildCard.match1.homeTeam.penalties': localPenaltys if localPenaltys > 0 else None,
-                                                          'fixtures.wildCard.match1.awayTeam.penalties': awayPenaltys if awayPenaltys > 0 else None,
+                                                          'fixtures.wildCard.match1.homeTeam.penalties': localPenaltys if localPenaltys is not None else None,
+                                                          'fixtures.wildCard.match1.awayTeam.penalties': awayPenaltys if awayPenaltys is not None else None,
                                                           'fixtures.first.match1.homeTeam.result': True if localGoals > awayGoals or (
                                                                   localGoals == awayGoals and localPenaltys > awayPenaltys) else False,
                                                           'fixtures.wildCard.match1.awayTeam.result': True if localGoals < awayGoals or (
