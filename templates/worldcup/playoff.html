@@ -94,7 +94,7 @@
                                                                         </div>
                                                                         <div class="goal">
                                                                             {{ fixture.first.match1.homeTeam.goals|default_if_none:"?" }}
-                                                                            ({% firstof fixture.first.match1.homeTeam.penalties 0 %})
+                                                                            ({{ fixture.first.match1.homeTeam.penalties|default_if_none:"?" }})
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -125,7 +125,7 @@
                                                                         </div>
                                                                         <div class="goal">
                                                                             {{ fixture.first.match1.awayTeam.goals|default_if_none:"?" }}
-                                                                            ({% firstof fixture.first.match1.awayTeam.penalties 0 %})
+                                                                            ({{ fixture.first.match1.awayTeam.penalties|default_if_none:"?" }})
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -186,7 +186,7 @@
                                                                         </div>
                                                                         <div class="goal">
                                                                             {{ fixture.first.match2.homeTeam.goals|default_if_none:"?" }}
-                                                                            ({% firstof fixture.first.match2.homeTeam.penalties 0 %})
+                                                                            ({{ fixture.first.match2.homeTeam.penalties|default_if_none:"?" }})
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -217,7 +217,7 @@
                                                                         </div>
                                                                         <div class="goal">
                                                                             {{ fixture.first.match2.awayTeam.goals|default_if_none:"?" }}
-                                                                            ({% firstof fixture.first.match2.awayTeam.penalties 0 %})
+                                                                            ({{ fixture.first.match2.awayTeam.penalties|default_if_none:"?" }})
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -276,7 +276,8 @@
                                                                         </div>
                                                                         <div class="goal">
                                                                             {{ fixture.first.match3.homeTeam.goals|default_if_none:"?" }}
-                                                                            ({% firstof fixture.first.match3.homeTeam.penalties 0 %})
+                                                                            (
+                                                                            {{ fixture.first.match3.homeTeam.penalties|default_if_none:"?" }})
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -307,7 +308,7 @@
                                                                         </div>
                                                                         <div class="goal">
                                                                             {{ fixture.first.match3.awayTeam.goals|default_if_none:"?" }}
-                                                                            ({% firstof fixture.first.match3.awayTeam.penalties 0 %})
+                                                                            ({{ fixture.first.match3.awayTeam.penalties|default_if_none:"?" }})
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -329,7 +330,8 @@
                                                                 <div data-loading-aria-busy data-loading>
                                                                     <div class="spinner-border spinner-border-sm text-light "></div>
                                                                 </div>
-                                                                <div data-loading-aria-busy data-loading-class="d-none">
+                                                                <div data-loading-aria-busy
+                                                                     data-loading-class="d-none">
                                                                     <i class="fa-regular fa-futbol"></i>
                                                                 </div>
                                                             </button>
@@ -366,7 +368,7 @@
                                                                         </div>
                                                                         <div class="goal">
                                                                             {{ fixture.first.match4.homeTeam.goals|default_if_none:"?" }}
-                                                                            ({% firstof fixture.first.match4.homeTeam.penalties 0 %})
+                                                                            ({{ fixture.first.match4.homeTeam.penalties|default_if_none:"?" }})
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -397,7 +399,7 @@
                                                                         </div>
                                                                         <div class="goal">
                                                                             {{ fixture.first.match4.awayTeam.goals|default_if_none:"?" }}
-                                                                            ({% firstof fixture.first.match4.awayTeam.penalties 0 %})
+                                                                            ({{ fixture.first.match4.awayTeam.penalties|default_if_none:"?" }})
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -419,7 +421,8 @@
                                                                 <div data-loading-aria-busy data-loading>
                                                                     <div class="spinner-border spinner-border-sm text-light "></div>
                                                                 </div>
-                                                                <div data-loading-aria-busy data-loading-class="d-none">
+                                                                <div data-loading-aria-busy
+                                                                     data-loading-class="d-none">
                                                                     <i class="fa-regular fa-futbol"></i>
                                                                 </div>
                                                             </button>
@@ -461,7 +464,7 @@
                                                                         </div>
                                                                         <div class="goal">
                                                                             {{ fixture.final.match1.homeTeam.goals|default_if_none:"?" }}
-                                                                            ({% firstof fixture.final.match1.homeTeam.penalties 0 %})
+                                                                            ({{ fixture.final.match1.homeTeam.penalties|default_if_none:"?" }})
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -491,7 +494,7 @@
                                                                         </div>
                                                                         <div class="goal">
                                                                             {{ fixture.final.match1.awayTeam.goals|default_if_none:"?" }}
-                                                                            ({% firstof fixture.final.match1.awayTeam.penalties 0 %})
+                                                                            ({{ fixture.final.match1.awayTeam.penalties|default_if_none:"?" }})
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -504,17 +507,20 @@
                                                     <div class="col-1 align-self-center">
                                                         {% with homeId=fixture.final.match1.homeTeam.team.id awayId=fixture.final.match1.awayTeam.team.id %}
                                                             {% url 'one_match' 'final' 1 homeId awayId  'FIFA'  'playoff' 'P' 1 as match %}
-                                                            <button type="button" class="btn btn-primary"
+                                                            <button type="button"
+                                                                    class="btn btn-primary"
                                                                     hx-get="{{ match }}"
                                                                     hx-trigger="click"
                                                                     hx-target="body"
                                                                     data-loading-disable
                                                                     {% if fixture.final.match1.played is True %}
                                                                     disabled {% endif %}>
-                                                                <div data-loading-aria-busy data-loading>
+                                                                <div data-loading-aria-busy
+                                                                     data-loading>
                                                                     <div class="spinner-border spinner-border-sm text-light "></div>
                                                                 </div>
-                                                                <div data-loading-aria-busy data-loading-class="d-none">
+                                                                <div data-loading-aria-busy
+                                                                     data-loading-class="d-none">
                                                                     <i class="fa-regular fa-futbol"></i>
                                                                 </div>
                                                             </button>
@@ -549,7 +555,7 @@
                                                                         </div>
                                                                         <div class="goal">
                                                                             {{ fixture.final.match2.homeTeam.goals|default_if_none:"?" }}
-                                                                            ({% firstof fixture.final.match2.homeTeam.penalties 0 %})
+                                                                            ({{ fixture.final.match2.homeTeam.penalties|default_if_none:"?" }})
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -579,7 +585,7 @@
                                                                         </div>
                                                                         <div class="goal">
                                                                             {{ fixture.final.match2.awayTeam.goals|default_if_none:"?" }}
-                                                                            ({% firstof fixture.final.match2.awayTeam.penalties 0 %})
+                                                                            ({{ fixture.final.match2.awayTeam.penalties|default_if_none:"?" }})
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -592,17 +598,20 @@
                                                     <div class="col-1 align-self-center">
                                                         {% with homeId=fixture.final.match2.homeTeam.team.id awayId=fixture.final.match2.awayTeam.team.id %}
                                                             {% url 'one_match' 'final' 2 homeId awayId  'FIFA'  'playoff' 'P' 1 as match %}
-                                                            <button type="button" class="btn btn-primary"
+                                                            <button type="button"
+                                                                    class="btn btn-primary"
                                                                     hx-get="{{ match }}"
                                                                     hx-trigger="click"
                                                                     hx-target="body"
                                                                     data-loading-disable
                                                                     {% if fixture.final.match2.played is True %}
                                                                     disabled {% endif %}>
-                                                                <div data-loading-aria-busy data-loading>
+                                                                <div data-loading-aria-busy
+                                                                     data-loading>
                                                                     <div class="spinner-border spinner-border-sm text-light "></div>
                                                                 </div>
-                                                                <div data-loading-aria-busy data-loading-class="d-none">
+                                                                <div data-loading-aria-busy
+                                                                     data-loading-class="d-none">
                                                                     <i class="fa-regular fa-futbol"></i>
                                                                 </div>
                                                             </button>
@@ -637,7 +646,7 @@
                                                                         </div>
                                                                         <div class="goal">
                                                                             {{ fixture.final.match3.homeTeam.goals|default_if_none:"?" }}
-                                                                            ({% firstof fixture.final.match3.homeTeam.penalties 0 %})
+                                                                            ({{ fixture.final.match3.homeTeam.penalties|default_if_none:"?" }})
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -667,7 +676,7 @@
                                                                         </div>
                                                                         <div class="goal">
                                                                             {{ fixture.final.match3.awayTeam.goals|default_if_none:"?" }}
-                                                                            ({% firstof fixture.final.match3.awayTeam.penalties 0 %})
+                                                                            ({{ fixture.final.match3.awayTeam.penalties|default_if_none:"?" }})
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -680,17 +689,20 @@
                                                     <div class="col-1 align-self-center">
                                                         {% with homeId=fixture.final.match3.homeTeam.team.id awayId=fixture.final.match3.awayTeam.team.id %}
                                                             {% url 'one_match' 'final' 3 homeId awayId  'FIFA'  'playoff' 'P' 1 as match %}
-                                                            <button type="button" class="btn btn-primary"
+                                                            <button type="button"
+                                                                    class="btn btn-primary"
                                                                     hx-get="{{ match }}"
                                                                     hx-trigger="click"
                                                                     hx-target="body"
                                                                     data-loading-disable
                                                                     {% if fixture.final.match3.played is True %}
                                                                     disabled {% endif %}>
-                                                                <div data-loading-aria-busy data-loading>
+                                                                <div data-loading-aria-busy
+                                                                     data-loading>
                                                                     <div class="spinner-border spinner-border-sm text-light "></div>
                                                                 </div>
-                                                                <div data-loading-aria-busy data-loading-class="d-none">
+                                                                <div data-loading-aria-busy
+                                                                     data-loading-class="d-none">
                                                                     <i class="fa-regular fa-futbol"></i>
                                                                 </div>
                                                             </button>
@@ -725,7 +737,7 @@
                                                                         </div>
                                                                         <div class="goal">
                                                                             {{ fixture.final.match4.homeTeam.goals|default_if_none:"?" }}
-                                                                            ({% firstof fixture.final.match4.homeTeam.penalties 0 %})
+                                                                            ({{ fixture.final.match4.homeTeam.penalties|default_if_none:"?" }})
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -755,7 +767,7 @@
                                                                         </div>
                                                                         <div class="goal">
                                                                             {{ fixture.final.match4.awayTeam.goals|default_if_none:"?" }}
-                                                                            ({% firstof fixture.final.match4.awayTeam.penalties 0 %})
+                                                                            ({{ fixture.final.match4.awayTeam.penalties|default_if_none:"?" }})
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -768,17 +780,20 @@
                                                     <div class="col-1 align-self-center">
                                                         {% with homeId=fixture.final.match4.homeTeam.team.id awayId=fixture.final.match4.awayTeam.team.id %}
                                                             {% url 'one_match' 'final' 4 homeId awayId  'FIFA'  'playoff' 'P' 1 as match %}
-                                                            <button type="button" class="btn btn-primary"
+                                                            <button type="button"
+                                                                    class="btn btn-primary"
                                                                     hx-get="{{ match }}"
                                                                     hx-trigger="click"
                                                                     hx-target="body"
                                                                     data-loading-disable
                                                                     {% if fixture.final.match4.played is True %}
                                                                     disabled {% endif %}>
-                                                                <div data-loading-aria-busy data-loading>
+                                                                <div data-loading-aria-busy
+                                                                     data-loading>
                                                                     <div class="spinner-border spinner-border-sm text-light "></div>
                                                                 </div>
-                                                                <div data-loading-aria-busy data-loading-class="d-none">
+                                                                <div data-loading-aria-busy
+                                                                     data-loading-class="d-none">
                                                                     <i class="fa-regular fa-futbol"></i>
                                                                 </div>
                                                             </button>
@@ -814,7 +829,7 @@
                                                                         </div>
                                                                         <div class="goal">
                                                                             {{ fixture.final.match5.homeTeam.goals|default_if_none:"?" }}
-                                                                            ({% firstof fixture.final.match5.homeTeam.penalties 0 %})
+                                                                            ({{ fixture.final.match5.homeTeam.penalties|default_if_none:"?" }})
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -826,7 +841,7 @@
 
 
                                                                 <div class="text-center">
-                                                                    Team 10
+                                                                    Team 1None
                                                                 </div>
 
                                                             </div>
@@ -844,7 +859,7 @@
                                                                         </div>
                                                                         <div class="goal">
                                                                             {{ fixture.final.match5.awayTeam.goals|default_if_none:"?" }}
-                                                                            ({% firstof fixture.final.match5.awayTeam.penalties 0 %})
+                                                                            ({{ fixture.final.match5.awayTeam.penalties|default_if_none:"?" }})
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -857,17 +872,20 @@
                                                     <div class="col-1 align-self-center">
                                                         {% with homeId=fixture.final.match5.homeTeam.team.id awayId=fixture.final.match5.awayTeam.team.id %}
                                                             {% url 'one_match' 'final' 5 homeId awayId  'FIFA'  'playoff' 'P' 1 as match %}
-                                                            <button type="button" class="btn btn-primary"
+                                                            <button type="button"
+                                                                    class="btn btn-primary"
                                                                     hx-get="{{ match }}"
                                                                     hx-trigger="click"
                                                                     hx-target="body"
                                                                     data-loading-disable
                                                                     {% if fixture.final.match5.played is True %}
                                                                     disabled {% endif %}>
-                                                                <div data-loading-aria-busy data-loading>
+                                                                <div data-loading-aria-busy
+                                                                     data-loading>
                                                                     <div class="spinner-border spinner-border-sm text-light "></div>
                                                                 </div>
-                                                                <div data-loading-aria-busy data-loading-class="d-none">
+                                                                <div data-loading-aria-busy
+                                                                     data-loading-class="d-none">
                                                                     <i class="fa-regular fa-futbol"></i>
                                                                 </div>
                                                             </button>
@@ -903,7 +921,7 @@
                                                                         </div>
                                                                         <div class="goal">
                                                                             {{ fixture.final.match6.homeTeam.goals|default_if_none:"?" }}
-                                                                            ({% firstof fixture.final.match6.homeTeam.penalties 0 %})
+                                                                            ({{ fixture.final.match6.homeTeam.penalties|default_if_none:"?" }})
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -933,7 +951,7 @@
                                                                         </div>
                                                                         <div class="goal">
                                                                             {{ fixture.final.match6.awayTeam.goals|default_if_none:"?" }}
-                                                                            ({% firstof fixture.final.match6.awayTeam.penalties 0 %})
+                                                                            ({{ fixture.final.match6.awayTeam.penalties|default_if_none:"?" }})
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -946,17 +964,20 @@
                                                     <div class="col-1 align-self-center">
                                                         {% with homeId=fixture.final.match6.homeTeam.team.id awayId=fixture.final.match6.awayTeam.team.id %}
                                                             {% url 'one_match' 'final' 6 homeId awayId  'FIFA'  'playoff' 'P' 1 as match %}
-                                                            <button type="button" class="btn btn-primary"
+                                                            <button type="button"
+                                                                    class="btn btn-primary"
                                                                     hx-get="{{ match }}"
                                                                     hx-trigger="click"
                                                                     hx-target="body"
                                                                     data-loading-disable
                                                                     {% if fixture.final.match6.played is True %}
                                                                     disabled {% endif %}>
-                                                                <div data-loading-aria-busy data-loading>
+                                                                <div data-loading-aria-busy
+                                                                     data-loading>
                                                                     <div class="spinner-border spinner-border-sm text-light "></div>
                                                                 </div>
-                                                                <div data-loading-aria-busy data-loading-class="d-none">
+                                                                <div data-loading-aria-busy
+                                                                     data-loading-class="d-none">
                                                                     <i class="fa-regular fa-futbol"></i>
                                                                 </div>
                                                             </button>
@@ -992,7 +1013,7 @@
                                                                         </div>
                                                                         <div class="goal">
                                                                             {{ fixture.final.match7.homeTeam.goals|default_if_none:"?" }}
-                                                                            ({% firstof fixture.final.match7.homeTeam.penalties 0 %})
+                                                                            ({{ fixture.final.match7.homeTeam.penalties|default_if_none:"?" }})
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -1022,7 +1043,7 @@
                                                                         </div>
                                                                         <div class="goal">
                                                                             {{ fixture.final.match7.awayTeam.goals|default_if_none:"?" }}
-                                                                            ({% firstof fixture.final.match7.awayTeam.penalties 0 %})
+                                                                            ({{ fixture.final.match7.awayTeam.penalties|default_if_none:"?" }})
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -1035,17 +1056,20 @@
                                                     <div class="col-1 align-self-center">
                                                         {% with homeId=fixture.final.match7.homeTeam.team.id awayId=fixture.final.match7.awayTeam.team.id %}
                                                             {% url 'one_match' 'final' 7 homeId awayId  'FIFA'  'playoff' 'P' 1 as match %}
-                                                            <button type="button" class="btn btn-primary"
+                                                            <button type="button"
+                                                                    class="btn btn-primary"
                                                                     hx-get="{{ match }}"
                                                                     hx-trigger="click"
                                                                     hx-target="body"
                                                                     data-loading-disable
                                                                     {% if fixture.final.match7.played is True %}
                                                                     disabled {% endif %}>
-                                                                <div data-loading-aria-busy data-loading>
+                                                                <div data-loading-aria-busy
+                                                                     data-loading>
                                                                     <div class="spinner-border spinner-border-sm text-light "></div>
                                                                 </div>
-                                                                <div data-loading-aria-busy data-loading-class="d-none">
+                                                                <div data-loading-aria-busy
+                                                                     data-loading-class="d-none">
                                                                     <i class="fa-regular fa-futbol"></i>
                                                                 </div>
                                                             </button>
@@ -1081,7 +1105,7 @@
                                                                         </div>
                                                                         <div class="goal">
                                                                             {{ fixture.final.match8.homeTeam.goals|default_if_none:"?" }}
-                                                                            ({% firstof fixture.final.match8.homeTeam.penalties 0 %})
+                                                                            ({{ fixture.final.match8.homeTeam.penalties|default_if_none:"?" }})
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -1111,7 +1135,7 @@
                                                                         </div>
                                                                         <div class="goal">
                                                                             {{ fixture.final.match8.awayTeam.goals|default_if_none:"?" }}
-                                                                            ({% firstof fixture.final.match8.awayTeam.penalties 0 %})
+                                                                            ({{ fixture.final.match8.awayTeam.penalties|default_if_none:"?" }})
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -1124,17 +1148,20 @@
                                                     <div class="col-1 align-self-center">
                                                         {% with homeId=fixture.final.match8.homeTeam.team.id awayId=fixture.final.match8.awayTeam.team.id %}
                                                             {% url 'one_match' 'final' 8 homeId awayId  'FIFA'  'playoff' 'P' 1 as match %}
-                                                            <button type="button" class="btn btn-primary"
+                                                            <button type="button"
+                                                                    class="btn btn-primary"
                                                                     hx-get="{{ match }}"
                                                                     hx-trigger="click"
                                                                     hx-target="body"
                                                                     data-loading-disable
                                                                     {% if fixture.final.match8.played is True %}
                                                                     disabled {% endif %}>
-                                                                <div data-loading-aria-busy data-loading>
+                                                                <div data-loading-aria-busy
+                                                                     data-loading>
                                                                     <div class="spinner-border spinner-border-sm text-light "></div>
                                                                 </div>
-                                                                <div data-loading-aria-busy data-loading-class="d-none">
+                                                                <div data-loading-aria-busy
+                                                                     data-loading-class="d-none">
                                                                     <i class="fa-regular fa-futbol"></i>
                                                                 </div>
                                                             </button>
