@@ -1,6 +1,6 @@
 import random
 import time
-from utils import getTeamById, diferencia_alta, diferencia_extrema, diferencia_media
+from utils import getTeamById, diferencia_alta, diferencia_extrema, diferencia_media, diferencia_ultra
 
 
 def calcular_probabilidad_ganador(ranking_local, ranking_visitante):
@@ -16,6 +16,9 @@ def calcular_probabilidad_ganador(ranking_local, ranking_visitante):
         elif diferencia_extrema(ranking_local, ranking_visitante):
             probabilidad_local = 0.8  # Probabilidad de gol local más alta
             probabilidad_visitante = 0.2  # Probabilidad de gol visitante más baja
+        elif diferencia_ultra(ranking_local, ranking_visitante):
+            probabilidad_local = 0.9  # Probabilidad de gol local más alta
+            probabilidad_visitante = 0.1  # Probabilidad de gol visitante más baja
         else:
             probabilidad_local = 0.6  # Probabilidad de gol local más alta
             probabilidad_visitante = 0.4  # Probabilidad de gol visitante más baja
@@ -31,6 +34,9 @@ def calcular_probabilidad_ganador(ranking_local, ranking_visitante):
         elif diferencia_extrema(ranking_local, ranking_visitante):
             probabilidad_local = 0.2  # Probabilidad de gol local más alta
             probabilidad_visitante = 0.8  # Probabilidad de gol visitante más baja
+        elif diferencia_ultra(ranking_local, ranking_visitante):
+            probabilidad_local = 0.1  # Probabilidad de gol local más alta
+            probabilidad_visitante = 0.9  # Probabilidad de gol visitante más baja
         else:
             probabilidad_local = 0.4  # Probabilidad de gol local más alta
             probabilidad_visitante = 0.6  # Probabilidad de gol visitante más baja

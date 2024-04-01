@@ -495,4 +495,7 @@ def diferencia_alta(local, visita):
 
 
 def diferencia_extrema(local, visita):
-    return True if (abs(local - visita) > 30) else False
+    return True if ((abs(local - visita) > 30) and (abs(local - visita) < 71)) else False
+
+def diferencia_ultra(local, visita):
+    return True if (abs(local - visita) > 70) else False
