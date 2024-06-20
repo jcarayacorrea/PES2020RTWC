@@ -164,7 +164,7 @@ def simular_partido(equipo_local, equipo_visitante, extraTime):
                     array_pen_local.append("O")
                 else:
                     array_pen_local.append("X")
-                                
+
                 eventoVisita = random.choices([0, 1], [probabilidad_visitante, probabilidad_local])[0]
 
                 # Si el evento es un gol visitante
