@@ -147,6 +147,8 @@ def simular_partido(equipo_local, equipo_visitante, extraTime):
             count_penales = 0
             penales_local = 0
             penales_visita = 0
+            array_pen_local = []
+            array_pen_visita = []
             print('...::::: PENALES :::..')
             while penales == False:
                 # Generar un evento aleatorio de penales basado en las probabilidades de los equipos
@@ -159,12 +161,10 @@ def simular_partido(equipo_local, equipo_visitante, extraTime):
                     # Incrementar el tiempo transcurrido en 1 segundo
 
                     # Mostrar el evento en el partido
-                    print('Penal anotado {}  {} - {}'.format(nombre_local, penales_local,
-                                                             penales_visita))
+                    array_pen_local.append("O")
                 else:
-                    print('Penal fallado {}  {} - {}'.format(nombre_local, penales_local,
-                                                             penales_visita))
-                time.sleep(sleepTime)
+                    array_pen_local.append("X")
+                                
                 eventoVisita = random.choices([0, 1], [probabilidad_visitante, probabilidad_local])[0]
 
                 # Si el evento es un gol visitante
@@ -174,13 +174,13 @@ def simular_partido(equipo_local, equipo_visitante, extraTime):
                     # Incrementar el tiempo transcurrido en 1 segundo
 
                     # Mostrar el evento en el partido
-                    print('Penal anotado {} {} - {}'.format(nombre_visita, penales_local,
-                                                            penales_visita))
+                    array_pen_visita.append("O")
                 else:
-                    print('Penal fallado {}  {} - {}'.format(nombre_visita, penales_local,
-                                                             penales_visita))
+                    array_pen_visita.append("X")
 
                 # Si el evento es un sin gol
+                print('Penales {}  {}  {}'.format(nombre_local, array_pen_local[:5], penales_local))
+                print('Penales {}  {}  {}'.format(nombre_visita, array_pen_visita[:5], penales_visita))
                 count_penales += 1
                 if count_penales >= 5:
                     if penales_local != penales_visita:
