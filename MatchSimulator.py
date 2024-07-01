@@ -164,8 +164,10 @@ def simular_partido(equipo_local, equipo_visitante, extraTime):
                     array_pen_local.append("O")
                 else:
                     array_pen_local.append("X")
-                print('Penales {}  {}  {}'.format(nombre_local, *array_pen_local[-5:], penales_local))
 
+                print('Penales {}  Detalle->{}   --->{}'.format(nombre_local, array_pen_local[-5:], penales_local))
+
+                time.sleep(sleepTime)
                 eventoVisita = random.choices([0, 1], [probabilidad_visitante, probabilidad_local])[0]
 
                 # Si el evento es un gol visitante
@@ -180,7 +182,7 @@ def simular_partido(equipo_local, equipo_visitante, extraTime):
                     array_pen_visita.append("X")
 
                 # Si el evento es un sin gol
-                print('Penales {}  {}  {}'.format(nombre_visita, *array_pen_visita[-5:], penales_visita))
+                print('Penales {}  Detalle->{}   --->{}'.format(nombre_visita, array_pen_visita[-5:], penales_visita))
 
                 count_penales += 1
                 if count_penales >= 5:
