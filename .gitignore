@@ -12,3 +12,4 @@ PES2020RTWC/__pycache__/
 
 *.pyc
 docker/fixture-UEFA.json
+sudamerica/__pycache__/views.cpython-310.pyc
