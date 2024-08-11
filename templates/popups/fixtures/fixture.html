@@ -1575,14 +1575,12 @@
 
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-primary" onclick="playMatches()"
-                    hx-trigger="click"
-                    hx-target="#schedule-content"
-                    data-loading-disable>
-                <div data-loading-aria-busy data-loading>
-                    <div class="spinner-border spinner-border-sm text-light "></div>
+            <button id="btnExec" type="button" class="btn btn-primary" onclick="playMatches()">
+                <div  id="rotateOffDiv">
+                    <i class="fa-solid fa-arrows-rotate"></i>
                 </div>
-                <div  data-loading-aria-busy data-loading-class="d-none">
+
+                <div  id="rotateOnDiv">
                     <i class="fa-solid fa-arrows-rotate"></i>
                 </div>
 

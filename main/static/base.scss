@@ -285,6 +285,17 @@ h6 {
 
 
 
+#rotateOnDiv {
+   display: none;
+   animation: rotateanimation 250ms infinite;
+}
+
+@keyframes rotateanimation {
+ 100% {transform: rotate(360deg);}
+}
+
+
+
 
 
 
