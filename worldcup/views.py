@@ -85,14 +85,8 @@ def draw(teams):
     pool3 = teams[16:24]
     pool4 = teams[24:32]
     random.shuffle(pool1)
-    groups.get('A').insert(0, pool1[0])
-    groups.get('B').insert(0, pool1[1])
-    groups.get('C').insert(0, pool1[2])
-    groups.get('D').insert(0, pool1[3])
-    groups.get('E').insert(0, pool1[4])
-    groups.get('F').insert(0, pool1[5])
-    groups.get('G').insert(0, pool1[6])
-    groups.get('H').insert(0, pool1[7])
+    for key, team in zip(groups.keys(), pool1):
+        groups.get(key).append(team)
 
     pools = [pool2, pool3, pool4]
 
