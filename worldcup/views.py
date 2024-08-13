@@ -70,50 +70,61 @@ def playoffButton(request):
 
 
 def draw(teams):
+    groups = {
+        'A': [],
+        'B': [],
+        'C': [],
+        'D': [],
+        'E': [],
+        'F': [],
+        'G': [],
+        'H': []
+    }
     pool1 = teams[0:8]
     pool2 = teams[8:16]
     pool3 = teams[16:24]
     pool4 = teams[24:32]
     random.shuffle(pool1)
-    zoneA = [pool1[0]]
-    zoneB = [pool1[1]]
-    zoneC = [pool1[2]]
-    zoneD = [pool1[3]]
-    zoneE = [pool1[4]]
-    zoneF = [pool1[5]]
-    zoneG = [pool1[6]]
-    zoneH = [pool1[7]]
+    groups.get('A').insert(0, pool1[0])
+    groups.get('B').insert(0, pool1[1])
+    groups.get('C').insert(0, pool1[2])
+    groups.get('D').insert(0, pool1[3])
+    groups.get('E').insert(0, pool1[4])
+    groups.get('F').insert(0, pool1[5])
+    groups.get('G').insert(0, pool1[6])
+    groups.get('H').insert(0, pool1[7])
 
     pools = [pool2, pool3, pool4]
 
     for pool, i in zip(pools, range(2, 5)):
-       random.shuffle(pool)
-       for team in pool:
-         setTeamPosition(team, zoneA, zoneB, zoneC, zoneD, zoneE, zoneF, zoneG, zoneH, i - 1,
-         teamsCount=countTeams(team['conf_name'], getTeamsMainDraw()), maxLength=i)
-    return zoneA, zoneB, zoneC, zoneD, zoneE, zoneF, zoneG, zoneH
+        random.shuffle(pool)
+        for team in pool:
+            setTeamPosition(team, groups, i - 1, teamsCount=countTeams(team['conf_name'], getTeamsMainDraw()),
+                            maxLength=i)
+    return groups.get('A'), groups.get('B'), groups.get('C'), groups.get('D'), groups.get('E'), groups.get(
+        'F'), groups.get('G'), groups.get('H')
 
 
-def setTeamPosition(team, a, b, c, d, e, f, g, h, position, teamsCount, maxLength):
+def setTeamPosition(team, groups, position, teamsCount, maxLength):
     zones = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
-    if filterConfList(team['conf_name'], a, teamsCount) == True or len(a) == maxLength:
+    if filterConfList(team['conf_name'], groups.get('A'), teamsCount) == True or len(groups.get('A')) == maxLength:
         zones.remove('A')
-    if filterConfList(team['conf_name'], b, teamsCount) == True or len(b) == maxLength:
+    if filterConfList(team['conf_name'], groups.get('B'), teamsCount) == True or len(groups.get('B')) == maxLength:
         zones.remove('B')
-    if filterConfList(team['conf_name'], c, teamsCount) == True or len(c) == maxLength:
+    if filterConfList(team['conf_name'], groups.get('C'), teamsCount) == True or len(groups.get('C')) == maxLength:
         zones.remove('C')
-    if filterConfList(team['conf_name'], d, teamsCount) == True or len(d) == maxLength:
+    if filterConfList(team['conf_name'], groups.get('D'), teamsCount) == True or len(groups.get('D')) == maxLength:
         zones.remove('D')
-    if filterConfList(team['conf_name'], e, teamsCount) == True or len(e) == maxLength:
+    if filterConfList(team['conf_name'], groups.get('E'), teamsCount) == True or len(groups.get('E')) == maxLength:
         zones.remove('E')
-    if filterConfList(team['conf_name'], f, teamsCount) == True or len(f) == maxLength:
+    if filterConfList(team['conf_name'], groups.get('F'), teamsCount) == True or len(groups.get('F')) == maxLength:
         zones.remove('F')
-    if filterConfList(team['conf_name'], g, teamsCount) == True or len(g) == maxLength:
+    if filterConfList(team['conf_name'], groups.get('G'), teamsCount) == True or len(groups.get('G')) == maxLength:
         zones.remove('G')
-    if filterConfList(team['conf_name'], h, teamsCount) == True or len(h) == maxLength:
+    if filterConfList(team['conf_name'], groups.get('H'), teamsCount) == True or len(groups.get('H')) == maxLength:
         zones.remove('H')
 
-    insertTeam(team, random.choice(zones), position, a, b, c, d, e, f, g, h)
+    insertTeam(team, random.choice(zones), position, groups)
 
 
 def filterConfList(conf_name, list, count_teams):
@@ -127,24 +138,24 @@ def countTeams(conf_name, teamList):
     return len([team for team in teamList if conf_name == team['conf_name']])
 
 
-def insertTeam(team, zone, pos, a, b, c, d, e, f, g, h):
+def insertTeam(team, zone, pos, groups):
     match (zone):
         case 'A':
-            a.insert(pos, team)
+            groups.get('A').insert(pos, team)
         case 'B':
-            b.insert(pos, team)
+            groups.get('B').insert(pos, team)
         case 'C':
-            c.insert(pos, team)
+            groups.get('C').insert(pos, team)
         case 'D':
-            d.insert(pos, team)
+            groups.get('D').insert(pos, team)
         case 'E':
-            e.insert(pos, team)
+            groups.get('E').insert(pos, team)
         case 'F':
-            f.insert(pos, team)
+            groups.get('F').insert(pos, team)
         case 'G':
-            g.insert(pos, team)
+            groups.get('G').insert(pos, team)
         case 'H':
-            h.insert(pos, team)
+            groups.get('H').insert(pos, team)
 
 
 def playoffDraw(teams):
