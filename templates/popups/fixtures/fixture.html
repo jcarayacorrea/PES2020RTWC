@@ -1475,7 +1475,7 @@
                                                 {% url 'match_simulator' 10 1 homeId awayId  conf  round zone as match_10_1 %}
                                                 <button type="button" class="btn btn-primary "
                                                         hx-get="{{ match_10_1 }}"
-                                                        hx-trigger="click delay:9s"
+                                                        hx-trigger="click delay:8500s"
                                                         hx-target="#schedule-content"
                                                         data-loading-disable
                                                         {% if fixture.fixture10.match1.played is True %}
@@ -1544,7 +1544,7 @@
                                                 {% url 'match_simulator' 10 2 homeId awayId  conf  round zone as match_10_2 %}
                                                 <button type="button" class="btn btn-primary "
                                                         hx-get="{{ match_10_2 }}"
-                                                        hx-trigger="click delay:9s"
+                                                        hx-trigger="click delay:8500ms"
                                                         hx-target="#schedule-content"
                                                         data-loading-disable
                                                         {% if fixture.fixture10.match2.played is True %}
