@@ -3,7 +3,7 @@ import random
 from django.shortcuts import render, redirect
 
 from fixtures import getZoneData, createFixture
-from utils import updateStage, getTeams, getTeamsFirstRound, getTeamsFinalRound
+from utils import updateStage, getTeams, getTeamsFirstRound, getTeamsFinalRound, db_conexion, getTeamById
 
 
 # Create your views here.
@@ -12,10 +12,15 @@ def finalround(request):
     context['teams'] = getTeamsFinalRound(conf_name='OFC')
     zone1 = getZoneData('A', 'OFC', 'final')
     zone2 = getZoneData('B', 'OFC', 'final')
+    zoneMD = getZoneData('MD', 'OFC', 'final')
     if len(zone1['teams']) == 4:
         context['zone1'] = zone1['teams']
     if len(zone2['teams']) == 4:
         context['zone2'] = zone2['teams']
+
+
+    context['fixture'] = zoneMD['fixtures']
+
     return render(request, 'oceania/finalround.html', context)
 
 
@@ -88,3 +93,30 @@ def finalRoundDraw(teams):
     zone2 = [pool1[1], pool2[1], pool3[1], pool4[1]]
 
     return zone1, zone2
+
+def setHomeFinalTeam(request):
+    db = db_conexion()
+    teamId = request.GET.get('home')
+    team = getTeamById(teamId)
+    db.get_collection('Fixtures').update_many({'$and': [{'conf': 'OFC'}, {'zone': 'WC'}, {'round': 'first'}]},
+                                              {'$set': {
+                                                  'fixtures.mainDraw.match1.played': False,
+                                                  'fixtures.mainDraw.match1.homeTeam.team': team[0],
+                                                  'fixtures.mainDraw.match1.homeTeam.goals': None,
+                                                  'fixtures.mainDraw.match1.homeTeam.penalties': None
+                                              }})
+    return firstround(request)
+
+
+def setAwayFinalTeam(request):
+    db = db_conexion()
+    teamId = request.GET.get('away')
+    team = getTeamById(teamId)
+    db.get_collection('Fixtures').update_one({'$and': [{'conf': 'OFC'}, {'zone': 'WC'}, {'round': 'first'}]},
+                                             {'$set': {
+                                                 'fixtures.mainDraw.match1.played': False,
+                                                 'fixtures.mainDraw.match1.awayTeam.team': team[0],
+                                                 'fixtures.mainDraw.match1.awayTeam.goals': None,
+                                                 'fixtures.mainDraw.match1.awayTeam.penalties': None
+                                             }})
+    return firstround(request)

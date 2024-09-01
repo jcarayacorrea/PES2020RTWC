@@ -56,13 +56,12 @@ def playoffButton(request):
     if request.method == 'GET':
         context = {}
         context['teams'] = getTeamsPlayoff()
-        zone1, zone2, zone3, zone4, zone5 = playoffDraw(getTeamsPlayoff())
+        zone1, zone2, zone3,  = playoffDraw(getTeamsPlayoff())
         random.shuffle(zone1)
         random.shuffle(zone2)
         random.shuffle(zone3)
-        random.shuffle(zone4)
-        random.shuffle(zone5)
-        createPlayOffMatches(getTeamsPlayoff(), zone1, zone2, zone3, zone4, zone5)
+
+        createPlayOffMatches(getTeamsPlayoff(), zone1, zone2, zone3)
         playoffData = getZoneData('P', 'FIFA', 'playoff')
         context['fixture'] = playoffData['fixtures']
 
@@ -153,19 +152,17 @@ def insertTeam(team, zone, pos, groups):
 
 
 def playoffDraw(teams):
-    pool1 = teams[0:4]
-    pool2 = teams[4:8]
-    pool3 = teams[8:12]
-    pool4 = teams[12:16]
-    pool5 = teams[16:20]
+    pool1 = teams[0:6]
+    pool2 = teams[6:12]
+    pool3 = teams[12:18]
+
 
     random.shuffle(pool1)
     random.shuffle(pool2)
     random.shuffle(pool3)
-    random.shuffle(pool4)
-    random.shuffle(pool5)
 
-    return pool1, pool2, pool3, pool4, pool5
+
+    return pool1, pool2, pool3
 
 
 @register.filter

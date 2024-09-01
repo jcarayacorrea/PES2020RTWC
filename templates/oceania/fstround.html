@@ -9,7 +9,8 @@
     <div class="row p-4">
         <div class="col-6 g-8 offset-md-5">
             <button type="button" class="btn btn-primary" hx-get=" {% url 'oceania.firstround.draw' %}"
-                    hx-trigger="click" hx-target="body">Draw
+                    hx-trigger="click" hx-target="body" {% if teams|enableDrawButton:5 is True %} disabled {% endif %}>
+                Draw
             </button>
             <button type="button" class="btn btn-primary" hx-get=" {% url 'oceania.firstround' %}" hx-trigger="click"
                     hx-target="body">Clear
@@ -48,7 +49,7 @@
 
                     <div class="soccer-card-body overflow-auto">
 
-                       <div class="loading-grid" data-loading-aria-busy data-loading>
+                        <div class="loading-grid" data-loading-aria-busy data-loading>
                             <div class="display-6">Sorteando</div>
                             <div class="spinner-grow text-info"></div>
                             <div class="spinner-grow text-info"></div>

@@ -7,7 +7,7 @@
         <div class="row p-4">
             <div class="col-6 g-8 offset-md-5">
                 <button type="button" class="btn btn-primary" hx-get=" {% url 'worldcup.playoff.draw' %}"
-                        hx-trigger="click" hx-target="body" {% if teams|enableDrawButton:20 is True %}
+                        hx-trigger="click" hx-target="body" {% if teams|enableDrawButton:18 is True %}
                         disabled {% endif %}>Draw
                 </button>
                 <button type="button" class="btn btn-primary" hx-get=" {% url 'worldcup.playoff' %}" hx-trigger="click"
@@ -417,6 +417,188 @@
                                                                     hx-target="body"
                                                                     data-loading-disable
                                                                     {% if fixture.first.match4.played is True %}
+                                                                    disabled {% endif %}>
+                                                                <div data-loading-aria-busy data-loading>
+                                                                    <div class="spinner-border spinner-border-sm text-light "></div>
+                                                                </div>
+                                                                <div data-loading-aria-busy
+                                                                     data-loading-class="d-none">
+                                                                    <i class="fa-regular fa-futbol"></i>
+                                                                </div>
+                                                            </button>
+                                                        {% endwith %}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="p-2" data-loading-states>
+                                                <div class="row">
+                                                    <div class="col-3 w-75">
+                                                        <h6 class="h-6 text-center"> Match 5</h6>
+                                                        {% if fixture is None %}
+                                                            <div class="team-card">
+                                                                <div class="row form-check">
+
+                                                                    <div class="flag-config"></div>
+                                                                    <div class="name-config">
+                                                                        Team 9
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        {% else %}
+                                                            <div class="col">
+                                                                <div class="team-card-sm">
+                                                                    <div class="row ">
+                                                                        <div class="flag-config-sm">
+                                                                            {% rstonemtchhome fixture.first.match5 as homeborder %}
+                                                                            <img src="{{ fixture.first.match5.homeTeam.team.image_flag }}"
+                                                                                 class="img-card {{ homeborder }}">
+                                                                        </div>
+                                                                        <div class="name-config-sm">
+                                                                            {{ fixture.first.match5.homeTeam.team.nation_iso_code }}
+                                                                        </div>
+                                                                        <div class="goal">
+                                                                            {{ fixture.first.match5.homeTeam.goals|default_if_none:"?" }}
+                                                                            ({{ fixture.first.match5.homeTeam.penalties|default_if_none:"?" }})
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        {% endif %}
+                                                        {% if fixture is None %}
+                                                            <div class="team-card">
+                                                                <div class="row form-check">
+
+                                                                    <div class="flag-config"></div>
+                                                                    <div class="name-config">
+                                                                        Team 10
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% else %}
+                                                            <div class="col">
+                                                                <div class="team-card-sm">
+                                                                    <div class="row ">
+                                                                        <div class="flag-config-sm">
+                                                                            {% rstonemtchaway fixture.first.match5 as awayborder %}
+                                                                            <img src="{{ fixture.first.match5.awayTeam.team.image_flag }}"
+                                                                                 class="img-card {{ awayborder }}">
+                                                                        </div>
+                                                                        <div class="name-config-sm">
+                                                                            {{ fixture.first.match5.awayTeam.team.nation_iso_code }}
+                                                                        </div>
+                                                                        <div class="goal">
+                                                                            {{ fixture.first.match5.awayTeam.goals|default_if_none:"?" }}
+                                                                            ({{ fixture.first.match5.awayTeam.penalties|default_if_none:"?" }})
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+
+                                                        {% endif %}
+                                                    </div>
+                                                    <div class="col-1 align-self-center">
+                                                        {% with homeId=fixture.first.match5.homeTeam.team.id awayId=fixture.first.match5.awayTeam.team.id %}
+                                                            {% url 'one_match' 'first' 5 homeId awayId  'FIFA'  'playoff' 'P' 1 as match %}
+                                                            <button type="button" class="btn btn-primary"
+                                                                    hx-get="{{ match }}"
+                                                                    hx-trigger="click"
+                                                                    hx-target="body"
+                                                                    data-loading-disable
+                                                                    {% if fixture.first.match5.played is True %}
+                                                                    disabled {% endif %}>
+                                                                <div data-loading-aria-busy data-loading>
+                                                                    <div class="spinner-border spinner-border-sm text-light "></div>
+                                                                </div>
+                                                                <div data-loading-aria-busy
+                                                                     data-loading-class="d-none">
+                                                                    <i class="fa-regular fa-futbol"></i>
+                                                                </div>
+                                                            </button>
+                                                        {% endwith %}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="p-2" data-loading-states>
+                                                <div class="row">
+                                                    <div class="col-3 w-75">
+                                                        <h6 class="h-6 text-center"> Match 6</h6>
+                                                        {% if fixture is None %}
+                                                            <div class="team-card">
+                                                                <div class="row form-check">
+
+                                                                    <div class="flag-config"></div>
+                                                                    <div class="name-config">
+                                                                        Team 11
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        {% else %}
+                                                            <div class="col">
+                                                                <div class="team-card-sm">
+                                                                    <div class="row ">
+                                                                        <div class="flag-config-sm">
+                                                                            {% rstonemtchhome fixture.first.match6 as homeborder %}
+                                                                            <img src="{{ fixture.first.match6.homeTeam.team.image_flag }}"
+                                                                                 class="img-card {{ homeborder }}">
+                                                                        </div>
+                                                                        <div class="name-config-sm">
+                                                                            {{ fixture.first.match6.homeTeam.team.nation_iso_code }}
+                                                                        </div>
+                                                                        <div class="goal">
+                                                                            {{ fixture.first.match6.homeTeam.goals|default_if_none:"?" }}
+                                                                            ({{ fixture.first.match6.homeTeam.penalties|default_if_none:"?" }})
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        {% endif %}
+                                                        {% if fixture is None %}
+                                                            <div class="team-card">
+                                                                <div class="row form-check">
+
+                                                                    <div class="flag-config"></div>
+                                                                    <div class="name-config">
+                                                                        Team 12
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% else %}
+                                                            <div class="col">
+                                                                <div class="team-card-sm">
+                                                                    <div class="row ">
+                                                                        <div class="flag-config-sm">
+                                                                            {% rstonemtchaway fixture.first.match6 as awayborder %}
+                                                                            <img src="{{ fixture.first.match6.awayTeam.team.image_flag }}"
+                                                                                 class="img-card {{ awayborder }}">
+                                                                        </div>
+                                                                        <div class="name-config-sm">
+                                                                            {{ fixture.first.match6.awayTeam.team.nation_iso_code }}
+                                                                        </div>
+                                                                        <div class="goal">
+                                                                            {{ fixture.first.match6.awayTeam.goals|default_if_none:"?" }}
+                                                                            ({{ fixture.first.match6.awayTeam.penalties|default_if_none:"?" }})
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+
+                                                        {% endif %}
+                                                    </div>
+                                                    <div class="col-1 align-self-center">
+                                                        {% with homeId=fixture.first.match6.homeTeam.team.id awayId=fixture.first.match6.awayTeam.team.id %}
+                                                            {% url 'one_match' 'first' 6 homeId awayId  'FIFA'  'playoff' 'P' 1 as match %}
+                                                            <button type="button" class="btn btn-primary"
+                                                                    hx-get="{{ match }}"
+                                                                    hx-trigger="click"
+                                                                    hx-target="body"
+                                                                    data-loading-disable
+                                                                    {% if fixture.first.match6.played is True %}
                                                                     disabled {% endif %}>
                                                                 <div data-loading-aria-busy data-loading>
                                                                     <div class="spinner-border spinner-border-sm text-light "></div>
@@ -841,7 +1023,7 @@
 
 
                                                                 <div class="text-center">
-                                                                    Team 1None
+                                                                    Winner Match 5
                                                                 </div>
 
                                                             </div>
@@ -933,7 +1115,7 @@
 
 
                                                                 <div class="text-center">
-                                                                    Team 12
+                                                                  Winner Match 6
                                                                 </div>
 
                                                             </div>
@@ -986,189 +1168,6 @@
                                                 </div>
                                             </div>
 
-                                            <div class="p-2" data-loading-states>
-                                                <div class="row">
-                                                    <div class="col-3 w-75">
-                                                        {% if fixture is None %}
-                                                            <div class="team-card-sm">
-                                                                <div class="row form-check">
-
-                                                                    <div class="text-center">
-                                                                        Team 13
-                                                                    </div>
-
-                                                                </div>
-                                                            </div>
-                                                        {% else %}
-                                                            <div class="col">
-                                                                <div class="team-card-sm">
-                                                                    <div class="row ">
-                                                                        <div class="flag-config-sm">
-                                                                            {% rstonemtchhome fixture.final.match7 as homeborder %}
-                                                                            <img src="{{ fixture.final.match7.homeTeam.team.image_flag }}"
-                                                                                 class="img-card {{ homeborder }}">
-                                                                        </div>
-                                                                        <div class="name-config-sm">
-                                                                            {{ fixture.final.match7.homeTeam.team.nation_iso_code }}
-                                                                        </div>
-                                                                        <div class="goal">
-                                                                            {{ fixture.final.match7.homeTeam.goals|default_if_none:"?" }}
-                                                                            ({{ fixture.final.match7.homeTeam.penalties|default_if_none:"?" }})
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                            </div>
-                                                        {% endif %}
-                                                        {% if fixture.final.match7.awayTeam.team is None %}
-                                                            <div class="team-card-sm">
-
-
-                                                                <div class="text-center">
-                                                                    Team 14
-                                                                </div>
-
-                                                            </div>
-                                                        {% else %}
-                                                            <div class="col">
-                                                                <div class="team-card-sm">
-                                                                    <div class="row ">
-                                                                        <div class="flag-config-sm">
-                                                                            {% rstonemtchaway fixture.final.match7 as awayborder %}
-                                                                            <img src="{{ fixture.final.match7.awayTeam.team.image_flag }}"
-                                                                                 class="img-card {{ awayborder }}">
-                                                                        </div>
-                                                                        <div class="name-config-sm">
-                                                                            {{ fixture.final.match7.awayTeam.team.nation_iso_code }}
-                                                                        </div>
-                                                                        <div class="goal">
-                                                                            {{ fixture.final.match7.awayTeam.goals|default_if_none:"?" }}
-                                                                            ({{ fixture.final.match7.awayTeam.penalties|default_if_none:"?" }})
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                            </div>
-
-                                                        {% endif %}
-
-                                                    </div>
-                                                    <div class="col-1 align-self-center">
-                                                        {% with homeId=fixture.final.match7.homeTeam.team.id awayId=fixture.final.match7.awayTeam.team.id %}
-                                                            {% url 'one_match' 'final' 7 homeId awayId  'FIFA'  'playoff' 'P' 1 as match %}
-                                                            <button type="button"
-                                                                    class="btn btn-primary"
-                                                                    hx-get="{{ match }}"
-                                                                    hx-trigger="click"
-                                                                    hx-target="body"
-                                                                    data-loading-disable
-                                                                    {% if fixture.final.match7.played is True %}
-                                                                    disabled {% endif %}>
-                                                                <div data-loading-aria-busy
-                                                                     data-loading>
-                                                                    <div class="spinner-border spinner-border-sm text-light "></div>
-                                                                </div>
-                                                                <div data-loading-aria-busy
-                                                                     data-loading-class="d-none">
-                                                                    <i class="fa-regular fa-futbol"></i>
-                                                                </div>
-                                                            </button>
-                                                        {% endwith %}
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="p-2" data-loading-states>
-                                                <div class="row">
-                                                    <div class="col-3 w-75">
-                                                        {% if fixture is None %}
-                                                            <div class="team-card-sm">
-                                                                <div class="row form-check">
-
-                                                                    <div class="text-center">
-                                                                        Team 15
-                                                                    </div>
-
-                                                                </div>
-                                                            </div>
-                                                        {% else %}
-                                                            <div class="col">
-                                                                <div class="team-card-sm">
-                                                                    <div class="row ">
-                                                                        <div class="flag-config-sm">
-                                                                            {% rstonemtchhome fixture.final.match8 as homeborder %}
-                                                                            <img src="{{ fixture.final.match8.homeTeam.team.image_flag }}"
-                                                                                 class="img-card {{ homeborder }}">
-                                                                        </div>
-                                                                        <div class="name-config-sm">
-                                                                            {{ fixture.final.match8.homeTeam.team.nation_iso_code }}
-                                                                        </div>
-                                                                        <div class="goal">
-                                                                            {{ fixture.final.match8.homeTeam.goals|default_if_none:"?" }}
-                                                                            ({{ fixture.final.match8.homeTeam.penalties|default_if_none:"?" }})
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                            </div>
-                                                        {% endif %}
-                                                        {% if fixture.final.match8.awayTeam.team is None %}
-                                                            <div class="team-card-sm">
-
-
-                                                                <div class="text-center">
-                                                                    Team 16
-                                                                </div>
-
-                                                            </div>
-                                                        {% else %}
-                                                            <div class="col">
-                                                                <div class="team-card-sm">
-                                                                    <div class="row ">
-                                                                        <div class="flag-config-sm">
-                                                                            {% rstonemtchaway fixture.final.match8 as awayborder %}
-                                                                            <img src="{{ fixture.final.match8.awayTeam.team.image_flag }}"
-                                                                                 class="img-card {{ awayborder }}">
-                                                                        </div>
-                                                                        <div class="name-config-sm">
-                                                                            {{ fixture.final.match8.awayTeam.team.nation_iso_code }}
-                                                                        </div>
-                                                                        <div class="goal">
-                                                                            {{ fixture.final.match8.awayTeam.goals|default_if_none:"?" }}
-                                                                            ({{ fixture.final.match8.awayTeam.penalties|default_if_none:"?" }})
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                            </div>
-
-                                                        {% endif %}
-
-                                                    </div>
-                                                    <div class="col-1 align-self-center">
-                                                        {% with homeId=fixture.final.match8.homeTeam.team.id awayId=fixture.final.match8.awayTeam.team.id %}
-                                                            {% url 'one_match' 'final' 8 homeId awayId  'FIFA'  'playoff' 'P' 1 as match %}
-                                                            <button type="button"
-                                                                    class="btn btn-primary"
-                                                                    hx-get="{{ match }}"
-                                                                    hx-trigger="click"
-                                                                    hx-target="body"
-                                                                    data-loading-disable
-                                                                    {% if fixture.final.match8.played is True %}
-                                                                    disabled {% endif %}>
-                                                                <div data-loading-aria-busy
-                                                                     data-loading>
-                                                                    <div class="spinner-border spinner-border-sm text-light "></div>
-                                                                </div>
-                                                                <div data-loading-aria-busy
-                                                                     data-loading-class="d-none">
-                                                                    <i class="fa-regular fa-futbol"></i>
-                                                                </div>
-                                                            </button>
-                                                        {% endwith %}
-                                                    </div>
-                                                </div>
-                                            </div>
 
                                         </div>
                                     </div>

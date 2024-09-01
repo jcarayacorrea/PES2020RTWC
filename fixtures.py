@@ -192,19 +192,25 @@ def getZoneData(zone, conf, round):
     return listData[0]
 
 
-def createPlayOffMatches(teamList, seeds, pool1, pool2, pool3, pool4):
+def createPlayOffMatches(teamList, seeds, pool1, pool2):
     firstPhasefixture = {"first": {
-        "match1": {"homeTeam": {"team": pool3[0], "goals": None, "penalties": None},
-                   "awayTeam": {"team": pool4[0], "goals": None, "penalties": None}, "result": False,
+        "match1": {"homeTeam": {"team": pool1[0], "goals": None, "penalties": None},
+                   "awayTeam": {"team": pool2[0], "goals": None, "penalties": None}, "result": False,
                    "played": False},
-        "match2": {"homeTeam": {"team": pool3[1], "goals": None, "penalties": None},
-                   "awayTeam": {"team": pool4[1], "goals": None, "penalties": None}, "result": False,
+        "match2": {"homeTeam": {"team": pool1[1], "goals": None, "penalties": None},
+                   "awayTeam": {"team": pool2[1], "goals": None, "penalties": None}, "result": False,
                    "played": False},
-        "match3": {"homeTeam": {"team": pool3[2], "goals": None, "penalties": None},
-                   "awayTeam": {"team": pool4[2], "goals": None, "penalties": None}, "result": False,
+        "match3": {"homeTeam": {"team": pool1[2], "goals": None, "penalties": None},
+                   "awayTeam": {"team": pool2[2], "goals": None, "penalties": None}, "result": False,
                    "played": False},
-        "match4": {"homeTeam": {"team": pool3[3], "goals": None, "penalties": None},
-                   "awayTeam": {"team": pool4[3], "goals": None, "penalties": None}, "result": False,
+        "match4": {"homeTeam": {"team": pool1[3], "goals": None, "penalties": None},
+                   "awayTeam": {"team": pool2[3], "goals": None, "penalties": None}, "result": False,
+                   "played": False},
+        "match5": {"homeTeam": {"team": pool1[4], "goals": None, "penalties": None},
+                   "awayTeam": {"team": pool2[4], "goals": None, "penalties": None}, "result": False,
+                   "played": False},
+        "match6": {"homeTeam": {"team": pool1[5], "goals": None, "penalties": None},
+                   "awayTeam": {"team": pool2[5], "goals": None, "penalties": None}, "result": False,
                    "played": False}
     },
         "final": {
@@ -220,17 +226,11 @@ def createPlayOffMatches(teamList, seeds, pool1, pool2, pool3, pool4):
             "match4": {"homeTeam": {"team": seeds[3], "goals": None, "penalties": None},
                        "awayTeam": {"team": None, "goals": None, "penalties": None}, "result": False,
                        "played": False},
-            "match5": {"homeTeam": {"team": pool1[0], "goals": None, "penalties": None},
-                       "awayTeam": {"team": pool2[0], "goals": None, "penalties": None}, "result": False,
+            "match5": {"homeTeam": {"team": seeds[4], "goals": None, "penalties": None},
+                       "awayTeam": {"team": None, "goals": None, "penalties": None}, "result": False,
                        "played": False},
-            "match6": {"homeTeam": {"team": pool1[1], "goals": None, "penalties": None},
-                       "awayTeam": {"team": pool2[1], "goals": None, "penalties": None}, "result": False,
-                       "played": False},
-            "match7": {"homeTeam": {"team": pool1[2], "goals": None, "penalties": None},
-                       "awayTeam": {"team": pool2[2], "goals": None, "penalties": None}, "result": False,
-                       "played": False},
-            "match8": {"homeTeam": {"team": pool1[3], "goals": None, "penalties": None},
-                       "awayTeam": {"team": pool2[3], "goals": None, "penalties": None}, "result": False,
+            "match6": {"homeTeam": {"team": seeds[5], "goals": None, "penalties": None},
+                       "awayTeam": {"team": None, "goals": None, "penalties": None}, "result": False,
                        "played": False}
         }
 

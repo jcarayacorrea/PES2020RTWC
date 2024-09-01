@@ -8,7 +8,7 @@
     <div class="row p-4">
         <div class="col-6 g-8 offset-md-5">
             <button type="button" class="btn btn-primary" hx-get=" {% url 'africa.firstround.draw' %}"
-                    hx-trigger="click" hx-target="body">Draw
+                    hx-trigger="click" hx-target="body" {% if teams|enableDrawButton:12 is True %} disabled {% endif %}>Draw
             </button>
             <button type="button" class="btn btn-primary" hx-get=" {% url 'africa.firstround' %}" hx-trigger="click"
                     hx-target="body">Clear
