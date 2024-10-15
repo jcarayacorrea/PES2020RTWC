@@ -481,7 +481,7 @@ def saveExtraTimeResult(fixture, match, localGoals, awayGoals, localPenaltys, aw
                                                                       localGoals == awayGoals and localPenaltys < awayPenaltys) else False,
                                                               'fixtures.final.match6.played': True}})
 
-        case 'WC':
+        case 'wildCard':
             db.get_collection('Fixtures').update_many({'conf': conf, 'round': round, 'zone': zone},
                                                       {'$set': {
                                                           'fixtures.wildCard.match1.homeTeam.goals': localGoals,
