@@ -100,22 +100,10 @@ def draw(teams):
 
 def setTeamPosition(team, groups, position, teamsCount, maxLength):
     zones = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
-    if filterConfList(team['conf_name'], groups.get('A'), teamsCount) == True or len(groups.get('A')) == maxLength:
-        zones.remove('A')
-    if filterConfList(team['conf_name'], groups.get('B'), teamsCount) == True or len(groups.get('B')) == maxLength:
-        zones.remove('B')
-    if filterConfList(team['conf_name'], groups.get('C'), teamsCount) == True or len(groups.get('C')) == maxLength:
-        zones.remove('C')
-    if filterConfList(team['conf_name'], groups.get('D'), teamsCount) == True or len(groups.get('D')) == maxLength:
-        zones.remove('D')
-    if filterConfList(team['conf_name'], groups.get('E'), teamsCount) == True or len(groups.get('E')) == maxLength:
-        zones.remove('E')
-    if filterConfList(team['conf_name'], groups.get('F'), teamsCount) == True or len(groups.get('F')) == maxLength:
-        zones.remove('F')
-    if filterConfList(team['conf_name'], groups.get('G'), teamsCount) == True or len(groups.get('G')) == maxLength:
-        zones.remove('G')
-    if filterConfList(team['conf_name'], groups.get('H'), teamsCount) == True or len(groups.get('H')) == maxLength:
-        zones.remove('H')
+    for zone in zones.copy():
+        if filterConfList(team['conf_name'], groups.get(zone), teamsCount) == True or len(
+                groups.get(zone)) == maxLength:
+            zones.remove(zone)
 
     insertTeam(team, random.choice(zones), position, groups)
 

@@ -12,6 +12,7 @@ from fixtures import getZoneData
 from standings import getStandings
 from MatchSimulator import simular_partido
 from worldcup.views import playoff
+from oceania.views import finalround
 
 
 # Create your views here.
@@ -72,7 +73,8 @@ def sim_match(request, fixture, match, homeId, awayId, conf, round, zone, extraT
         return playoff(request)
     elif fixture == 'wildCard':
         return firstround(request)
-
+    elif fixture == 'mainDraw':
+        return finalround(request)
     return render(request, 'popups/fixtures/fixture.html', context)
 
 

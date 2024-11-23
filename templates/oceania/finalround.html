@@ -240,7 +240,7 @@
                                                 </select>
                                             </div>
                                             <div class="col-2 justify-content-center">
-                                                {% with homeId=fixture.mianDraw.match1.homeTeam.team.id awayId=fixture.mainDraw.match1.awayTeam.team.id %}
+                                                {% with homeId=fixture.mainDraw.match1.homeTeam.team.id awayId=fixture.mainDraw.match1.awayTeam.team.id %}
                                                     {% url 'one_match' 'mainDraw' 1 homeId awayId  'OFC'  'final' 'MD' 1 as match %}
                                                     <button type="button" class="btn btn-primary"
                                                             hx-get="{{ match }}"

@@ -98,25 +98,25 @@ def setHomeFinalTeam(request):
     db = db_conexion()
     teamId = request.GET.get('home')
     team = getTeamById(teamId)
-    db.get_collection('Fixtures').update_many({'$and': [{'conf': 'OFC'}, {'zone': 'WC'}, {'round': 'first'}]},
+    db.get_collection('Fixtures').update_many({'$and': [{'conf': 'OFC'}, {'zone': 'MD'}, {'round': 'final'}]},
                                               {'$set': {
                                                   'fixtures.mainDraw.match1.played': False,
                                                   'fixtures.mainDraw.match1.homeTeam.team': team[0],
                                                   'fixtures.mainDraw.match1.homeTeam.goals': None,
                                                   'fixtures.mainDraw.match1.homeTeam.penalties': None
                                               }})
-    return firstround(request)
+    return finalround(request)
 
 
 def setAwayFinalTeam(request):
     db = db_conexion()
     teamId = request.GET.get('away')
     team = getTeamById(teamId)
-    db.get_collection('Fixtures').update_one({'$and': [{'conf': 'OFC'}, {'zone': 'WC'}, {'round': 'first'}]},
+    db.get_collection('Fixtures').update_one({'$and': [{'conf': 'OFC'}, {'zone': 'MD'}, {'round': 'final'}]},
                                              {'$set': {
                                                  'fixtures.mainDraw.match1.played': False,
                                                  'fixtures.mainDraw.match1.awayTeam.team': team[0],
                                                  'fixtures.mainDraw.match1.awayTeam.goals': None,
                                                  'fixtures.mainDraw.match1.awayTeam.penalties': None
                                              }})
-    return firstround(request)
+    return finalround(request)
