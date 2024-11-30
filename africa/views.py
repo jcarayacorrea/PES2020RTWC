@@ -104,6 +104,9 @@ def firstRoundButton(request):
         context = {}
         context['teams'] = getTeamsFirstRound('CAF')
         zone1, zone2, zone3 = firstRoundDraw(getTeamsFirstRound('CAF'))
+        random.shuffle(zone1)
+        random.shuffle(zone2)
+        random.shuffle(zone3)
 
         createFixture(zone1, False, 'A', 'CAF', 'first')
         createFixture(zone2, False, 'B', 'CAF', 'first')
@@ -131,7 +134,7 @@ def firstRoundDraw(teams):
     zone2 = [pool1[1], pool2[1], pool3[1], pool4[1]]
     zone3 = [pool1[2], pool2[2], pool3[2], pool4[2]]
 
-    return random.shuffle(zone1), random.shuffle(zone2), random.shuffle(zone3)
+    return zone1, zone2, zone3
 
 
 def secondRoundButton(request):
@@ -139,6 +142,11 @@ def secondRoundButton(request):
         context = {}
         context['teams'] = getTeamsSecondRound('CAF')
         zone1, zone2, zone3, zone4, zone5 = secondRoundDraw(getTeamsSecondRound('CAF'))
+        random.shuffle(zone1)
+        random.shuffle(zone2)
+        random.shuffle(zone3)
+        random.shuffle(zone4)
+        random.shuffle(zone5)
 
         createFixture(zone1, True, 'A', 'CAF', 'second')
         createFixture(zone2, True, 'B', 'CAF', 'second')
@@ -171,8 +179,7 @@ def secondRoundDraw(teams):
     zone3 = [pool1[2], pool2[2], pool3[2], pool4[2]]
     zone4 = [pool1[3], pool2[3], pool3[3], pool4[3]]
     zone5 = [pool1[4], pool2[4], pool3[4], pool4[4]]
-    return random.shuffle(zone1), random.shuffle(zone2), random.shuffle(zone3), random.shuffle(zone4), random.shuffle(
-        zone5)
+    return zone1, zone2, zone3, zone4, zone5
 
 
 def thirdRoundButton(request):
@@ -180,6 +187,11 @@ def thirdRoundButton(request):
         context = {}
         context['teams'] = getTeamsThirdRound('CAF')
         zone1, zone2, zone3, zone4, zone5 = thirdRoundDraw(getTeamsThirdRound('CAF'))
+        random.shuffle(zone1)
+        random.shuffle(zone2)
+        random.shuffle(zone3)
+        random.shuffle(zone4)
+        random.shuffle(zone5)
 
         createFixture(zone1, True, 'A', 'CAF', 'third')
         createFixture(zone2, True, 'B', 'CAF', 'third')
@@ -212,8 +224,7 @@ def thirdRoundDraw(teams):
     zone3 = [pool1[2], pool2[2], pool3[2], pool4[2]]
     zone4 = [pool1[3], pool2[3], pool3[3], pool4[3]]
     zone5 = [pool1[4], pool2[4], pool3[4], pool4[4]]
-    return random.shuffle(zone1), random.shuffle(zone2), random.shuffle(zone3), random.shuffle(zone4), random.shuffle(
-        zone5)
+    return zone1, zone2, zone3, zone4, zone5
 
 
 def finalRoundButton(request):
@@ -221,6 +232,11 @@ def finalRoundButton(request):
         context = {}
         context['teams'] = getTeamsFinalRound('CAF')
         zone1, zone2, zone3, zone4, zone5 = finalRoundDraw(getTeamsFinalRound('CAF'))
+        random.shuffle(zone1)
+        random.shuffle(zone2)
+        random.shuffle(zone3)
+        random.shuffle(zone4)
+        random.shuffle(zone5)
 
         createFixture(zone1, True, 'A', 'CAF', 'final')
         createFixture(zone2, True, 'B', 'CAF', 'final')
@@ -256,5 +272,4 @@ def finalRoundDraw(teams):
     zone4 = [pool1[3], pool2[3], pool3[3], pool4[3], pool5[3]]
     zone5 = [pool1[4], pool2[4], pool3[4], pool4[4], pool5[4]]
 
-    return random.shuffle(zone1), random.shuffle(zone2), random.shuffle(zone3), random.shuffle(zone4), random.shuffle(
-        zone5)
+    return zone1, zone2, zone3, zone4, zone5

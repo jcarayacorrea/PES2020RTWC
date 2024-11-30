@@ -94,6 +94,7 @@ def firstround(request):
     if len(zone2['teams']) == 5:
         context['zone2'] = zone2['teams']
 
+
     context['fixture'] = zoneWC['fixtures']
 
     return render(request, 'europa/fstround.html', context)
@@ -116,7 +117,8 @@ def firstRoundButton(request):
         context = {}
         context['teams'] = getTeamsFirstRound('UEFA')
         zone1, zone2 = firstRoundDraw(getTeamsFirstRound('UEFA'))
-
+        random.shuffle(zone1)
+        random.shuffle(zone2)
         createFixture(zone1, False, 'A', 'UEFA', 'first')
         createFixture(zone2, False, 'B', 'UEFA', 'first')
         context['zone1'] = zone1
@@ -141,7 +143,7 @@ def firstRoundDraw(teams):
     zone1 = [pool1[0], pool2[0], pool3[0], pool4[0], pool5[0]]
     zone2 = [pool1[1], pool2[1], pool3[1], pool4[1], pool5[1]]
 
-    return random.shuffle(zone1), random.shuffle(zone2)
+    return zone1, zone2
 
 
 def secondRoundButton(request):
@@ -149,7 +151,12 @@ def secondRoundButton(request):
         context = {}
         context['teams'] = getTeamsSecondRound('UEFA')
         zone1, zone2, zone3, zone4, zone5, zone6 = secondRoundDraw(getTeamsSecondRound('UEFA'))
-
+        random.shuffle(zone1)
+        random.shuffle(zone2)
+        random.shuffle(zone3)
+        random.shuffle(zone4)
+        random.shuffle(zone5)
+        random.shuffle(zone6)
         createFixture(zone1, True, 'A', 'UEFA', 'second')
         createFixture(zone2, True, 'B', 'UEFA', 'second')
         createFixture(zone3, True, 'C', 'UEFA', 'second')
@@ -185,8 +192,7 @@ def secondRoundDraw(teams):
     zone5 = [pool1[4], pool2[4], pool3[4], pool4[4]]
     zone6 = [pool1[5], pool2[5], pool3[5], pool4[5]]
 
-    return random.shuffle(zone1), random.shuffle(zone2), random.shuffle(zone3), random.shuffle(zone4), random.shuffle(
-        zone5), random.shuffle(zone6)
+    return zone1, zone2, zone3, zone4, zone5, zone6
 
 
 def thirdRoundButton(request):
@@ -194,6 +200,14 @@ def thirdRoundButton(request):
         context = {}
         context['teams'] = getTeamsThirdRound('UEFA')
         zone1, zone2, zone3, zone4, zone5, zone6, zone7, zone8 = thirdRoundDraw(getTeamsThirdRound('UEFA'))
+        random.shuffle(zone1)
+        random.shuffle(zone2)
+        random.shuffle(zone3)
+        random.shuffle(zone4)
+        random.shuffle(zone5)
+        random.shuffle(zone6)
+        random.shuffle(zone7)
+        random.shuffle(zone8)
 
         createFixture(zone1, True, 'A', 'UEFA', 'third')
         createFixture(zone2, True, 'B', 'UEFA', 'third')
@@ -234,8 +248,7 @@ def thirdRoundDraw(teams):
     zone7 = [pool1[6], pool2[6], pool3[6]]
     zone8 = [pool1[7], pool2[7], pool3[7]]
 
-    return random.shuffle(zone1), random.shuffle(zone2), random.shuffle(zone3), random.shuffle(zone4), random.shuffle(
-        zone5), random.shuffle(zone6), random.shuffle(zone7), random.shuffle(zone8)
+    return zone1, zone2, zone3, zone4, zone5, zone6, zone7, zone8
 
 
 def finalRoundButton(request):
@@ -243,6 +256,10 @@ def finalRoundButton(request):
         context = {}
         context['teams'] = getTeamsFinalRound('UEFA')
         zone1, zone2, zone3, zone4 = finalRoundDraw(getTeamsFinalRound('UEFA'))
+        random.shuffle(zone1)
+        random.shuffle(zone2)
+        random.shuffle(zone3)
+        random.shuffle(zone4)
 
         createFixture(zone1, True, 'A', 'UEFA', 'final')
         createFixture(zone2, True, 'B', 'UEFA', 'final')
@@ -275,7 +292,7 @@ def finalRoundDraw(teams):
     zone3 = [pool1[2], pool2[2], pool3[2], pool4[2], pool5[2]]
     zone4 = [pool1[3], pool2[3], pool3[3], pool4[3], pool5[3]]
 
-    return random.shuffle(zone1), random.shuffle(zone2), random.shuffle(zone3), random.shuffle(zone4)
+    return zone1, zone2, zone3, zone4
 
 
 def setHomeWildCardTeam(request):
