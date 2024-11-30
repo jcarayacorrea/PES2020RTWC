@@ -50,7 +50,7 @@ def firstRoundButton(request):
         context = {}
         context['teams'] = getTeamsFirstRound('OFC')
         zone1 = firstRoundDraw(getTeamsFirstRound('OFC'))
-        random.shuffle(zone1)
+
         createFixture(zone1, False, 'A', 'OFC', 'first')
         context['zone1'] = zone1
 
@@ -60,7 +60,7 @@ def firstRoundButton(request):
 def firstRoundDraw(teams):
     zone1 = teams
 
-    return zone1
+    return random.sample(zone1)
 
 
 def finalRoundButton(request):
@@ -68,8 +68,7 @@ def finalRoundButton(request):
         context = {}
         context['teams'] = getTeamsFinalRound('OFC')
         zone1, zone2 = finalRoundDraw(getTeamsFinalRound('OFC'))
-        random.shuffle(zone1)
-        random.shuffle(zone2)
+
         createFixture(zone1, True, 'A', 'OFC', 'final')
         createFixture(zone2, True, 'B', 'OFC', 'final')
         context['zone1'] = zone1
@@ -92,7 +91,7 @@ def finalRoundDraw(teams):
     zone1 = [pool1[0], pool2[0], pool3[0], pool4[0]]
     zone2 = [pool1[1], pool2[1], pool3[1], pool4[1]]
 
-    return zone1, zone2
+    return random.shuffle(zone1), random.shuffle(zone2)
 
 def setHomeFinalTeam(request):
     db = db_conexion()

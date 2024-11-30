@@ -32,14 +32,6 @@ def maindrawButton(request):
         except:
             return maindrawButton(request)
 
-        random.shuffle(zoneA)
-        random.shuffle(zoneB)
-        random.shuffle(zoneC)
-        random.shuffle(zoneD)
-        random.shuffle(zoneE)
-        random.shuffle(zoneF)
-        random.shuffle(zoneG)
-        random.shuffle(zoneH)
         context['zoneA'] = zoneA
         context['zoneB'] = zoneB
         context['zoneC'] = zoneC
@@ -56,10 +48,7 @@ def playoffButton(request):
     if request.method == 'GET':
         context = {}
         context['teams'] = getTeamsPlayoff()
-        zone1, zone2, zone3,  = playoffDraw(getTeamsPlayoff())
-        random.shuffle(zone1)
-        random.shuffle(zone2)
-        random.shuffle(zone3)
+        zone1, zone2, zone3, = playoffDraw(getTeamsPlayoff())
 
         createPlayOffMatches(getTeamsPlayoff(), zone1, zone2, zone3)
         playoffData = getZoneData('P', 'FIFA', 'playoff')
@@ -94,8 +83,9 @@ def draw(teams):
         for team in pool:
             setTeamPosition(team, groups, i - 1, teamsCount=countTeams(team['conf_name'], getTeamsMainDraw()),
                             maxLength=i)
-    return groups.get('A'), groups.get('B'), groups.get('C'), groups.get('D'), groups.get('E'), groups.get(
-        'F'), groups.get('G'), groups.get('H')
+    return random.shuffle(groups.get('A')), random.shuffle(groups.get('B')), random.shuffle(
+        groups.get('C')), random.shuffle(groups.get('D')), random.shuffle(groups.get('E')), random.shuffle(
+        groups.get('F')), random.shuffle(groups.get('G')), random.shuffle(groups.get('H'))
 
 
 def setTeamPosition(team, groups, position, teamsCount, maxLength):
@@ -120,23 +110,7 @@ def countTeams(conf_name, teamList):
 
 
 def insertTeam(team, zone, pos, groups):
-    match (zone):
-        case 'A':
-            groups.get('A').insert(pos, team)
-        case 'B':
-            groups.get('B').insert(pos, team)
-        case 'C':
-            groups.get('C').insert(pos, team)
-        case 'D':
-            groups.get('D').insert(pos, team)
-        case 'E':
-            groups.get('E').insert(pos, team)
-        case 'F':
-            groups.get('F').insert(pos, team)
-        case 'G':
-            groups.get('G').insert(pos, team)
-        case 'H':
-            groups.get('H').insert(pos, team)
+    groups.get(zone).insert(pos, team)
 
 
 def playoffDraw(teams):
@@ -144,13 +118,7 @@ def playoffDraw(teams):
     pool2 = teams[6:12]
     pool3 = teams[12:18]
 
-
-    random.shuffle(pool1)
-    random.shuffle(pool2)
-    random.shuffle(pool3)
-
-
-    return pool1, pool2, pool3
+    return random.shuffle(pool1), random.shuffle(pool2), random.shuffle(pool3)
 
 
 @register.filter
