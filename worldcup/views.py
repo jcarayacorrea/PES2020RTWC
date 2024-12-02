@@ -56,7 +56,7 @@ def playoffButton(request):
     if request.method == 'GET':
         context = {}
         context['teams'] = getTeamsPlayoff()
-        zone1, zone2, zone3,  = playoffDraw(getTeamsPlayoff())
+        zone1, zone2, zone3, = playoffDraw(getTeamsPlayoff())
         random.shuffle(zone1)
         random.shuffle(zone2)
         random.shuffle(zone3)
@@ -120,23 +120,7 @@ def countTeams(conf_name, teamList):
 
 
 def insertTeam(team, zone, pos, groups):
-    match (zone):
-        case 'A':
-            groups.get('A').insert(pos, team)
-        case 'B':
-            groups.get('B').insert(pos, team)
-        case 'C':
-            groups.get('C').insert(pos, team)
-        case 'D':
-            groups.get('D').insert(pos, team)
-        case 'E':
-            groups.get('E').insert(pos, team)
-        case 'F':
-            groups.get('F').insert(pos, team)
-        case 'G':
-            groups.get('G').insert(pos, team)
-        case 'H':
-            groups.get('H').insert(pos, team)
+    groups.get(zone).insert(pos, team)
 
 
 def playoffDraw(teams):
@@ -144,11 +128,9 @@ def playoffDraw(teams):
     pool2 = teams[6:12]
     pool3 = teams[12:18]
 
-
     random.shuffle(pool1)
     random.shuffle(pool2)
     random.shuffle(pool3)
-
 
     return pool1, pool2, pool3
 
