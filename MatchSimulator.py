@@ -71,11 +71,11 @@ def simular_partido(equipo_local, equipo_visitante, extraTime):
     print('Comienza Partido  {}  - {} '.format(nombre_local, nombre_visita))
     while tiempo_transcurrido < 90:
         # Generar un evento aleatorio basado en las probabilidades de los equipos
-        evento = random.choices([0, 1, 2], [probabilidad_gol_local, probabilidad_gol_visita,
+        evento = random.choices(['L', 'V', '-'], [probabilidad_gol_local, probabilidad_gol_visita,
                                             1 - (probabilidad_gol_local - probabilidad_gol_visita)])[0]
 
         # Si el evento es un gol local
-        if evento == 0:
+        if evento == 'L':
             # Incrementar el marcador del equipo local
             goles_local += 1
             # Incrementar el tiempo transcurrido en 1 segundo
@@ -84,7 +84,7 @@ def simular_partido(equipo_local, equipo_visitante, extraTime):
             print('Gol {} ({}) {} - {}'.format(nombre_local, tiempo_transcurrido, goles_local, goles_visitante))
 
         # Si el evento es un gol visitante
-        elif evento == 1:
+        elif evento == 'V':
             # Incrementar el marcador del equipo visitante
             goles_visitante += 1
             # Incrementar el tiempo transcurrido en 1 segundo
@@ -110,11 +110,11 @@ def simular_partido(equipo_local, equipo_visitante, extraTime):
         penales_visita = None
         while tiempo_transcurrido < 120:
             # Generar un evento aleatorio basado en las probabilidades de los equipos
-            evento = random.choices([0, 1, 2], [probabilidad_gol_local, probabilidad_gol_visita,
+            evento = random.choices(['L', 'V', '-'], [probabilidad_gol_local, probabilidad_gol_visita,
                                                 1 - (probabilidad_gol_local - probabilidad_gol_visita)])[0]
 
             # Si el evento es un gol local
-            if evento == 0:
+            if evento == 'L':
                 # Incrementar el marcador del equipo local
                 goles_local += 1
                 # Incrementar el tiempo transcurrido en 1 segundo
@@ -123,7 +123,7 @@ def simular_partido(equipo_local, equipo_visitante, extraTime):
                 print('Gol {} ({}) {} - {}'.format(nombre_local, tiempo_transcurrido, goles_local, goles_visitante))
 
             # Si el evento es un gol visitante
-            elif evento == 1:
+            elif evento == 'V':
                 # Incrementar el marcador del equipo visitante
                 goles_visitante += 1
                 # Incrementar el tiempo transcurrido en 1 segundo
@@ -152,10 +152,10 @@ def simular_partido(equipo_local, equipo_visitante, extraTime):
             print('...::::: PENALES :::..')
             while penales == False:
                 # Generar un evento aleatorio de penales basado en las probabilidades de los equipos
-                eventoLocal = random.choices([0, 1], [probabilidad_local, probabilidad_visitante])[0]
+                eventoLocal = random.choices(['O', 'X'], [probabilidad_local, probabilidad_visitante])[0]
 
                 # Si el evento es un gol local
-                if eventoLocal == 0:
+                if eventoLocal == 'O':
                     # Incrementar el marcador del equipo local
                     penales_local += 1
                     # Incrementar el tiempo transcurrido en 1 segundo
@@ -168,10 +168,10 @@ def simular_partido(equipo_local, equipo_visitante, extraTime):
                 print('Penales {}   {}'.format(nombre_local, array_pen_local[-5:]))
 
                 time.sleep(sleepTime)
-                eventoVisita = random.choices([0, 1], [probabilidad_visitante, probabilidad_local])[0]
+                eventoVisita = random.choices(['O', 'X'], [probabilidad_visitante, probabilidad_local])[0]
 
                 # Si el evento es un gol visitante
-                if eventoVisita == 0:
+                if eventoVisita == 'O':
                     # Incrementar el marcador del equipo visitante
                     penales_visita += 1
                     # Incrementar el tiempo transcurrido en 1 segundo
