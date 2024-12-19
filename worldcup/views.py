@@ -128,4 +128,4 @@ def playoffDraw(teams):
 
 @register.filter
 def teamsByConf(dict, conf):
-    return countTeams(conf, dict);
+    return countTeams(conf, dict)
