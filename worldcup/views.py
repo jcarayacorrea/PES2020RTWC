@@ -27,41 +27,29 @@ def maindrawButton(request):
     if request.method == 'GET':
         context = {}
         context['teams'] = getTeamsMainDraw()
+
         try:
-            zoneA, zoneB, zoneC, zoneD, zoneE, zoneF, zoneG, zoneH = draw(getTeamsMainDraw())
+            zones = draw(getTeamsMainDraw())
         except:
             return maindrawButton(request)
 
-        random.shuffle(zoneA)
-        random.shuffle(zoneB)
-        random.shuffle(zoneC)
-        random.shuffle(zoneD)
-        random.shuffle(zoneE)
-        random.shuffle(zoneF)
-        random.shuffle(zoneG)
-        random.shuffle(zoneH)
-        context['zoneA'] = zoneA
-        context['zoneB'] = zoneB
-        context['zoneC'] = zoneC
-        context['zoneD'] = zoneD
-        context['zoneE'] = zoneE
-        context['zoneF'] = zoneF
-        context['zoneG'] = zoneG
-        context['zoneH'] = zoneH
+        for i, zone in enumerate(zones):
+            random.shuffle(zone)
+            context[f'zone{chr(65 + i)}'] = zone
 
         return render(request, 'worldcup/maindraw.html', context)
-
 
 def playoffButton(request):
     if request.method == 'GET':
         context = {}
-        context['teams'] = getTeamsPlayoff()
-        zone1, zone2, zone3, = playoffDraw(getTeamsPlayoff())
-        random.shuffle(zone1)
-        random.shuffle(zone2)
-        random.shuffle(zone3)
+        teams = getTeamsPlayoff()
+        context['teams'] = teams
 
-        createPlayOffMatches(getTeamsPlayoff(), zone1, zone2, zone3)
+        zones = playoffDraw(teams)
+        for zone in zones:
+            random.shuffle(zone)
+
+        createPlayOffMatches(teams, *zones)
         playoffData = getZoneData('P', 'FIFA', 'playoff')
         context['fixture'] = playoffData['fixtures']
 
@@ -124,15 +112,18 @@ def insertTeam(team, zone, pos, groups):
 
 
 def playoffDraw(teams):
-    pool1 = teams[0:6]
-    pool2 = teams[6:12]
-    pool3 = teams[12:18]
+    pools = []
+    num_pools = 3
+    teams_per_pool = 6
 
-    random.shuffle(pool1)
-    random.shuffle(pool2)
-    random.shuffle(pool3)
+    for i in range(num_pools):
+        start = i * teams_per_pool
+        end = start + teams_per_pool
+        pool = teams[start:end]
+        random.shuffle(pool)
+        pools.append(pool)
 
-    return pool1, pool2, pool3
+    return tuple(pools)
 
 
 @register.filter
