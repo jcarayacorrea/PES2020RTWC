@@ -1,99 +1,38 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block container %}
+
     <div id="header">
         <h1 class="h1 text-center">World Cup</h1>
         <h4 class="h4 text-center">Group Stage</h4>
-        <div class="row ">
-            <div class="col-conf">
-                <div class="group-card-conf">
-                    <div class="soccer-card-header">
-                        CONMEBOL
-                    </div>
-                    <div class="soccer-card-body text-center">
-                        <div class="h3">
-                            {{ teams|teamsByConf:'CONMEBOL' }}
-                        </div>
 
+        <div class="row">
+            {% for conf in confederations %}
+                <div class="col-conf">
+                    <div class="group-card-conf">
+                        <div class="soccer-card-header">{{ conf }}</div>
+                        <div class="soccer-card-body text-center">
+                            <div class="h3">
+                                {{ teams|teamsByConf:conf }}
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-conf ">
-                <div class="group-card-conf">
-                    <div class="soccer-card-header">
-                        UEFA
-                    </div>
-                    <div class="soccer-card-body text-center">
-                        <div class="h3">
-                            {{ teams|teamsByConf:'UEFA' }}
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-conf">
-                <div class="group-card-conf">
-                    <div class="soccer-card-header">
-                        CONCACAF
-                    </div>
-                    <div class="soccer-card-body text-center">
-                        <div class="h3">
-                            {{ teams|teamsByConf:'CONCACAF' }}
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-conf ">
-                <div class="group-card-conf">
-                    <div class="soccer-card-header">
-                        OFC
-                    </div>
-                    <div class="soccer-card-body text-center">
-                        <div class="h3">
-                            {{ teams|teamsByConf:'OFC' }}
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-conf ">
-                <div class="group-card-conf">
-                    <div class="soccer-card-header">
-                        CAF
-                    </div>
-                    <div class="soccer-card-body text-center">
-                        <div class="h3">
-                            {{ teams|teamsByConf:'CAF' }}
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-conf">
-                <div class="group-card-conf">
-                    <div class="soccer-card-header">
-                        AFC
-                    </div>
-                    <div class="soccer-card-body text-center">
-                        <div class="h3">
-                            {{ teams|teamsByConf:'AFC' }}
-                        </div>
-
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
+
         <div class="row p-4">
             <div class="col-6 g-8 offset-md-5">
-                <button type="button" class="btn btn-primary" hx-get=" {% url 'worldcup.draw' %}" hx-trigger="click"
-                        hx-target="body" {% if teams|enableDrawButton:32 is True  %} disabled {% endif %}>Draw
+                <button type="button" class="btn btn-primary"
+                        hx-get="{% url 'worldcup.draw' %}" hx-trigger="click" hx-target="body"
+                        {% if teams|enableDrawButton:32 is True %} disabled {% endif %}>Draw
                 </button>
-                <button type="button" class="btn btn-primary" hx-get=" {% url 'worldcup.maindraw' %}" hx-trigger="click"
-                        hx-target="body">Clear
+                <button type="button" class="btn btn-primary" hx-get="{% url 'worldcup.maindraw' %}"
+                        hx-trigger="click" hx-target="body">Clear
                 </button>
             </div>
         </div>
+
         <div class="row p-4">
             <div class="col-6 g-8 offset-10">
                 <button type="button" class="btn btn-primary" onclick="downloadImage('wc-maindraw')">
@@ -101,7 +40,6 @@
                 </button>
             </div>
         </div>
-
     </div>
 
     <div id="section">

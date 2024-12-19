@@ -12,6 +12,7 @@ from functools import reduce
 def maindraw(request):
     context = {}
     context['teams'] = getTeamsMainDraw()
+    context['confederations'] = ['CONMEBOL', 'UEFA', 'CONCACAF', 'OFC', 'CAF', 'AFC']
     return render(request, 'worldcup/maindraw.html', context)
 
 
