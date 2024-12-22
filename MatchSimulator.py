@@ -68,7 +68,7 @@ def simular_partido(equipo_local, equipo_visitante, extraTime):
 
     # Simular el tiempo transcurrido en el partido (90 segundos)
     tiempo_transcurrido = 0
-    print(':::::::Comienza Partido::::::::::  {}  - {} ******************************************'.format(nombre_local, nombre_visita))
+    print(':::::::Comienza Partido::::::::::  {}  - {} :::::::::::::::::::'.format(nombre_local, nombre_visita))
     while tiempo_transcurrido < 90:
         # Generar un evento aleatorio basado en las probabilidades de los equipos
         evento = random.choices(['L', 'V', '-'], [probabilidad_gol_local, probabilidad_gol_visita,
