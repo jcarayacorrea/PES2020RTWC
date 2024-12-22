@@ -68,7 +68,7 @@ def simular_partido(equipo_local, equipo_visitante, extraTime):
 
     # Simular el tiempo transcurrido en el partido (90 segundos)
     tiempo_transcurrido = 0
-    print(':::::::Comienza Partido::::::::::  {}  - {} :::::::::::::::::::'.format(nombre_local, nombre_visita))
+    print(':::::::Comienza Partido::::::::::  {}  - {} ::::::::::::::::::: \n'.format(nombre_local, nombre_visita))
     while tiempo_transcurrido < 90:
         # Generar un evento aleatorio basado en las probabilidades de los equipos
         evento = random.choices(['L', 'V', '-'], [probabilidad_gol_local, probabilidad_gol_visita,
@@ -81,7 +81,7 @@ def simular_partido(equipo_local, equipo_visitante, extraTime):
             # Incrementar el tiempo transcurrido en 1 segundo
             tiempo_transcurrido += 1
             # Mostrar el evento en el partido
-            print('Gol {} ({}) {} - {}'.format(nombre_local, tiempo_transcurrido, goles_local, goles_visitante))
+            print('Gol {} ({}) {} - {} \n'.format(nombre_local, tiempo_transcurrido, goles_local, goles_visitante))
 
         # Si el evento es un gol visitante
         elif evento == 'V':
@@ -90,21 +90,21 @@ def simular_partido(equipo_local, equipo_visitante, extraTime):
             # Incrementar el tiempo transcurrido en 1 segundo
             tiempo_transcurrido += 1
             # Mostrar el evento en el partido
-            print('Gol {} ({}) {} - {}'.format(nombre_visita, tiempo_transcurrido, goles_local, goles_visitante))
+            print('Gol {} ({}) {} - {} \n'.format(nombre_visita, tiempo_transcurrido, goles_local, goles_visitante))
 
         # Si el evento es un sin gol
         else:
             # Incrementar el tiempo transcurrido en 1 segundo
             tiempo_transcurrido += 1
             # Mostrar el evento en el partido
-            print('Minuto ({})'.format(tiempo_transcurrido))
+            print('Minuto ({}) \n'.format(tiempo_transcurrido))
 
         # Dormir el programa por 0.9 segundos para simular el tiempo real del partido
         time.sleep(sleepTime)
 
-    print(':::::::::::::::Fin del Partido:::::::::::::::::: ---------> {} {} - {} {}'.format(nombre_local, goles_local, goles_visitante, nombre_visita))
+    print(':::::::::::::::Fin del Partido:::::::::::::::::: ---------> {} {} - {} {} \n'.format(nombre_local, goles_local, goles_visitante, nombre_visita))
     if extraTime and goles_local == goles_visitante:
-        print('::::::::::::::Comienza Alargue::::::::::::::::: --------->  {} - {}'.format(nombre_local, nombre_visita))
+        print('::::::::::::::Comienza Alargue::::::::::::::::: --------->  {} - {} \n'.format(nombre_local, nombre_visita))
         tiempo_transcurrido = 90
         penales_local = None
         penales_visita = None
@@ -120,7 +120,7 @@ def simular_partido(equipo_local, equipo_visitante, extraTime):
                 # Incrementar el tiempo transcurrido en 1 segundo
                 tiempo_transcurrido += 1
                 # Mostrar el evento en el partido
-                print('Gol {} ({}) {} - {}'.format(nombre_local, tiempo_transcurrido, goles_local, goles_visitante))
+                print('Gol {} ({}) {} - {} \n'.format(nombre_local, tiempo_transcurrido, goles_local, goles_visitante))
 
             # Si el evento es un gol visitante
             elif evento == 'V':
@@ -129,18 +129,18 @@ def simular_partido(equipo_local, equipo_visitante, extraTime):
                 # Incrementar el tiempo transcurrido en 1 segundo
                 tiempo_transcurrido += 1
                 # Mostrar el evento en el partido
-                print('Gol {} ({}) {} - {}'.format(nombre_visita, tiempo_transcurrido, goles_local, goles_visitante))
+                print('Gol {} ({}) {} - {} \n'.format(nombre_visita, tiempo_transcurrido, goles_local, goles_visitante))
 
             # Si el evento es un sin gol
             else:
                 # Incrementar el tiempo transcurrido en 1 segundo
                 tiempo_transcurrido += 1
                 # Mostrar el evento en el partido
-                print('Minuto ({})'.format(tiempo_transcurrido))
+                print('Minuto ({}) \n'.format(tiempo_transcurrido))
 
             # Dormir el programa por 0.9 segundos para simular el tiempo real del partido
             time.sleep(sleepTime)
-        print(':::::::::::::::::::::Fin del Alargue:::::::::::::::: ---------> {} {} - {} {}'.format(nombre_local, goles_local, goles_visitante, nombre_visita))
+        print(':::::::::::::::::::::Fin del Alargue:::::::::::::::: ---------> {} {} - {} {} \n'.format(nombre_local, goles_local, goles_visitante, nombre_visita))
 
         if goles_local == goles_visitante:
             penales = False
@@ -149,7 +149,7 @@ def simular_partido(equipo_local, equipo_visitante, extraTime):
             penales_visita = 0
             array_pen_local = []
             array_pen_visita = []
-            print('................::::::::::::: PENALES ::::::::::::::::::::................')
+            print('................::::::::::::: PENALES ::::::::::::::::::::................ \n')
             while penales == False:
                 # Generar un evento aleatorio de penales basado en las probabilidades de los equipos
                 eventoLocal = random.choices(['O', 'X'], [probabilidad_local, probabilidad_visitante])[0]
@@ -165,7 +165,7 @@ def simular_partido(equipo_local, equipo_visitante, extraTime):
                 else:
                     array_pen_local.append("X")
 
-                print('Penales {}   {}'.format(nombre_local, array_pen_local[-5:]))
+                print('Penales {}   {} \n'.format(nombre_local, array_pen_local[-5:]))
 
                 time.sleep(sleepTime)
                 eventoVisita = random.choices(['O', 'X'], [probabilidad_visitante, probabilidad_local])[0]
@@ -182,7 +182,7 @@ def simular_partido(equipo_local, equipo_visitante, extraTime):
                     array_pen_visita.append("X")
 
                 # Si el evento es un sin gol
-                print('Penales {}   {}'.format(nombre_visita, array_pen_visita[-5:]))
+                print('Penales {}   {} \n'.format(nombre_visita, array_pen_visita[-5:]))
 
                 count_penales += 1
                 if count_penales >= 5:
@@ -191,7 +191,7 @@ def simular_partido(equipo_local, equipo_visitante, extraTime):
 
                 time.sleep(sleepTime)
 
-            print('::::::::::::::::::::::Fin Penales ::::::::::::::::::::: ---------> {} {} - {} {}'.format(nombre_local, penales_local if penales_local > 0 else 0,
+            print('::::::::::::::::::::::Fin Penales ::::::::::::::::::::: ---------> {} {} - {} {} \n'.format(nombre_local, penales_local if penales_local > 0 else 0,
                                                      penales_visita if penales_visita > 0 else 0, nombre_visita))
         return {'local': goles_local, 'penales_local': penales_local if penales_local is not None else None,
                 'visita': goles_visitante, 'penales_visita': penales_visita if penales_visita is not None else None}
