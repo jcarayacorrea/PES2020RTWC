@@ -282,6 +282,10 @@ h6 {
 
 }
 
+.mb-6 {
+  @extend .mb-5;
+  padding-bottom: 7.5%;
+}
 
 
 
