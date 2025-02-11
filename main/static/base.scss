@@ -298,7 +298,15 @@ h6 {
  100% {transform: rotate(360deg);}
 }
 
-
+@media (min-width: 1500px) {
+  .container-fluid {
+    padding-left: 25vw;
+    padding-right: 25vw;
+  }
+  .img-card {
+    max-width: 1.8rem;
+  }
+}
 
 
 
