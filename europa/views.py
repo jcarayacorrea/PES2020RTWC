@@ -24,7 +24,7 @@ def finalround(request):
         context['zone3'] = zone3['teams']
     if len(zone4['teams']) == 5:
         context['zone4'] = zone4['teams']
-    return render(request, 'europa/finalround.html', context)
+    return render(request, 'europa/../templates/asia/finalround.html', context)
 
 
 def thirdround(request):

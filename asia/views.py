@@ -34,8 +34,6 @@ def thirdround(request):
     zone4 = getZoneData('D', 'AFC', 'third')
     zone5 = getZoneData('E', 'AFC', 'third')
     zone6 = getZoneData('F', 'AFC', 'third')
-    zone7 = getZoneData('G', 'AFC', 'third')
-    zone8 = getZoneData('H', 'AFC', 'third')
 
     if len(zone1['teams']) == 3:
         context['zone1'] = zone1['teams']
@@ -49,10 +47,7 @@ def thirdround(request):
         context['zone5'] = zone5['teams']
     if len(zone6['teams']) == 3:
         context['zone6'] = zone6['teams']
-    if len(zone7['teams']) == 3:
-        context['zone7'] = zone7['teams']
-    if len(zone8['teams']) == 3:
-        context['zone8'] = zone8['teams']
+
     return render(request, 'asia/thrround.html', context)
 
 
@@ -191,8 +186,6 @@ def thirdRoundButton(request):
         createFixture(zone4, True, 'D', 'AFC', 'third')
         createFixture(zone5, True, 'E', 'AFC', 'third')
         createFixture(zone6, True, 'F', 'AFC', 'third')
-        createFixture(zone7, True, 'G', 'AFC', 'third')
-        createFixture(zone8, True, 'H', 'AFC', 'third')
 
         context['zone1'] = zone1
         context['zone2'] = zone2
@@ -207,24 +200,24 @@ def thirdRoundButton(request):
 
 
 def thirdRoundDraw(teams):
-    pool1 = [teams[0], teams[1], teams[2], teams[3], teams[4], teams[5], teams[6], teams[7]]
-    pool2 = [teams[8], teams[9], teams[10], teams[11], teams[12], teams[13], teams[14], teams[15]]
-    pool3 = [teams[16], teams[17], teams[18], teams[19], teams[20], teams[21], teams[22], teams[23]]
+    pool1 = teams[0:6]
+    pool2 = teams[6:12]
+    pool3 = teams[12:18]
+    pool4 = teams[18:24]
 
     random.shuffle(pool1)
     random.shuffle(pool2)
     random.shuffle(pool3)
+    random.shuffle(pool4)
 
-    zone1 = [pool1[0], pool2[0], pool3[0]]
-    zone2 = [pool1[1], pool2[1], pool3[1]]
-    zone3 = [pool1[2], pool2[2], pool3[2]]
-    zone4 = [pool1[3], pool2[3], pool3[3]]
-    zone5 = [pool1[4], pool2[4], pool3[4]]
-    zone6 = [pool1[5], pool2[5], pool3[5]]
-    zone7 = [pool1[6], pool2[6], pool3[6]]
-    zone8 = [pool1[7], pool2[7], pool3[7]]
+    zone1 = [pool1[0], pool2[0], pool3[0], pool4[0]]
+    zone2 = [pool1[1], pool2[1], pool3[1], pool4[1]]
+    zone3 = [pool1[2], pool2[2], pool3[2], pool4[2]]
+    zone4 = [pool1[3], pool2[3], pool3[3], pool4[3]]
+    zone5 = [pool1[4], pool2[4], pool3[4], pool4[4]]
+    zone6 = [pool1[5], pool2[5], pool3[5], pool4[5]]
 
-    return zone1, zone2, zone3, zone4, zone5, zone6, zone7, zone8
+    return zone1, zone2, zone3, zone4, zone5, zone6
 
 
 def finalRoundButton(request):
@@ -250,19 +243,21 @@ def finalRoundButton(request):
 
 
 def finalRoundDraw(teams):
-    pool1 = [teams[0], teams[1], teams[2], teams[3]]
-    pool2 = [teams[4], teams[5], teams[6], teams[7]]
-    pool3 = [teams[8], teams[9], teams[10], teams[11]]
-    pool4 = [teams[12], teams[13], teams[14], teams[15]]
+    pool1 = teams[0:4]
+    pool2 = teams[4:8]
+    pool3 = teams[8:12]
+    pool4 = teams[12:16]
+    pool5 = teams[16:20]
 
     random.shuffle(pool1)
     random.shuffle(pool2)
     random.shuffle(pool3)
     random.shuffle(pool4)
+    random.shuffle(pool5)
 
-    zone1 = [pool1[0], pool2[0], pool3[0], pool4[0]]
-    zone2 = [pool1[1], pool2[1], pool3[1], pool4[1]]
-    zone3 = [pool1[2], pool2[2], pool3[2], pool4[2]]
-    zone4 = [pool1[3], pool2[3], pool3[3], pool4[3]]
+    zone1 = [pool1[0], pool2[0], pool3[0], pool4[0], pool5[0]]
+    zone2 = [pool1[1], pool2[1], pool3[1], pool4[1], pool5[1]]
+    zone3 = [pool1[2], pool2[2], pool3[2], pool4[2], pool5[2]]
+    zone4 = [pool1[3], pool2[3], pool3[3], pool4[3], pool5[3]]
 
     return zone1, zone2, zone3, zone4

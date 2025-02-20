@@ -7,10 +7,10 @@
     </div>
     <div class="row p-4">
         <div class="col-6 g-8 offset-md-5">
-            <button type="button" class="btn btn-primary" hx-get=" {% url 'asia.thirdround.draw' %}"
+            <button type="button" class="btn btn-primary" hx-get=" {% url 'asia.secondround.draw' %}"
                     hx-trigger="click" hx-target="body" {% if teams|enableDrawButton:24 is True  %} disabled {% endif %}>Draw
             </button>
-            <button type="button" class="btn btn-primary" hx-get=" {% url 'asia.thirdround' %}" hx-trigger="click"
+            <button type="button" class="btn btn-primary" hx-get=" {% url 'asia.secondround' %}" hx-trigger="click"
                     hx-target="body">Clear
             </button>
         </div>
@@ -23,7 +23,7 @@
                     <div class="soccer-card-header ">Teams</div>
                     <div class="soccer-card-body overflow-scroll">
                         <div class="row g-1 ">
-                            <div class="offset-md-1">
+                            <div class=" offset-md-1">
                                 {% for team in teams %}
                                     <div class="team-card-list">
                                         <div class="row">
@@ -36,6 +36,7 @@
                                         </div>
                                     </div>
                                 {% endfor %}
+
                             </div>
                         </div>
                     </div>
@@ -61,7 +62,7 @@
                             <div class="row mb-5">
                                 <div class="col-md-5">
                                     <div class="group-card">
-                                        <div class="soccer-card-header">Zone A</div>
+                                        <div class="soccer-card-header">Group A</div>
                                         <div class="soccer-card-body offset-md-2">
                                             {% if zone1 is None %}
                                                 <div class="team-card">
@@ -88,6 +89,14 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <div class="team-card">
+                                                    <div class="row">
+                                                        <div class="flag-config"></div>
+                                                        <div class="name-config">
+                                                            A4
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             {% else %}
                                                 {% for team in zone1 %}
                                                     <div class="team-card">
@@ -105,7 +114,7 @@
                                         </div>
                                         <div class="row p-1">
                                             <div class="col g-1 offset-md-4">
-                                                {% url 'zones.fixtures' 'AFC' 'third' 'A' as fixtures %}
+                                                {% url 'zones.fixtures' 'AFC' 'second' 'A' as fixtures %}
                                                 <button type="button" class="btn btn-primary"
                                                         hx-get="{{ fixtures }} "
                                                         hx-trigger="click" hx-target="#schedule-content"
@@ -113,7 +122,7 @@
                                                         data-bs-target="#schedule">
                                                     <i class="fa-regular fa-calendar"></i>
                                                 </button>
-                                                {% url 'zones.standings' 'AFC' 'third' 'A' as standings %}
+                                                {% url 'zones.standings' 'AFC' 'second' 'A' as standings %}
                                                 <button type="button" class="btn btn-primary"
                                                         hx-get="{{ standings }}"
                                                         hx-trigger="click" hx-target="#stats-content"
@@ -129,7 +138,7 @@
                                 </div>
                                 <div class="col-md-5 offset-md-1">
                                     <div class="group-card">
-                                        <div class="soccer-card-header">Zone B</div>
+                                        <div class="soccer-card-header">Group B</div>
                                         <div class="soccer-card-body offset-md-2">
                                             {% if zone2 is None %}
                                                 <div class="team-card">
@@ -156,6 +165,14 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <div class="team-card">
+                                                    <div class="row">
+                                                        <div class="flag-config"></div>
+                                                        <div class="name-config">
+                                                            B4
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             {% else %}
                                                 {% for team in zone2 %}
                                                     <div class="team-card">
@@ -170,10 +187,11 @@
                                                     </div>
                                                 {% endfor %}
                                             {% endif %}
+
                                         </div>
                                         <div class="row p-1">
                                             <div class="col g-1 offset-md-4">
-                                                {% url 'zones.fixtures' 'AFC' 'third' 'B' as fixtures %}
+                                                {% url 'zones.fixtures' 'AFC' 'second' 'B' as fixtures %}
                                                 <button type="button" class="btn btn-primary"
                                                         hx-get="{{ fixtures }} "
                                                         hx-trigger="click" hx-target="#schedule-content"
@@ -181,7 +199,7 @@
                                                         data-bs-target="#schedule">
                                                     <i class="fa-regular fa-calendar"></i>
                                                 </button>
-                                                {% url 'zones.standings' 'AFC' 'third' 'B' as standings %}
+                                                {% url 'zones.standings' 'AFC' 'second' 'B' as standings %}
                                                 <button type="button" class="btn btn-primary"
                                                         hx-get="{{ standings }}"
                                                         hx-trigger="click" hx-target="#stats-content"
@@ -197,10 +215,10 @@
                                 </div>
                             </div>
 
-                            <div class="row mb-5">
-                                <div class="col-md-5">
+                            <div class="row">
+                                <div class="col-md-5 mb-5">
                                     <div class="group-card">
-                                        <div class="soccer-card-header">Zone C</div>
+                                        <div class="soccer-card-header">Group C</div>
                                         <div class="soccer-card-body offset-md-2">
                                             {% if zone3 is None %}
                                                 <div class="team-card">
@@ -227,6 +245,14 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <div class="team-card">
+                                                    <div class="row">
+                                                        <div class="flag-config"></div>
+                                                        <div class="name-config">
+                                                            C4
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             {% else %}
                                                 {% for team in zone3 %}
                                                     <div class="team-card">
@@ -244,7 +270,7 @@
                                         </div>
                                         <div class="row p-1">
                                             <div class="col g-1 offset-md-4">
-                                                {% url 'zones.fixtures' 'AFC' 'third' 'C' as fixtures %}
+                                                {% url 'zones.fixtures' 'AFC' 'second' 'C' as fixtures %}
                                                 <button type="button" class="btn btn-primary"
                                                         hx-get="{{ fixtures }} "
                                                         hx-trigger="click" hx-target="#schedule-content"
@@ -252,7 +278,7 @@
                                                         data-bs-target="#schedule">
                                                     <i class="fa-regular fa-calendar"></i>
                                                 </button>
-                                                {% url 'zones.standings' 'AFC' 'third' 'C' as standings %}
+                                                {% url 'zones.standings' 'AFC' 'second' 'C' as standings %}
                                                 <button type="button" class="btn btn-primary"
                                                         hx-get="{{ standings }}"
                                                         hx-trigger="click" hx-target="#stats-content"
@@ -268,7 +294,7 @@
                                 </div>
                                 <div class="col-md-5 offset-md-1">
                                     <div class="group-card">
-                                        <div class="soccer-card-header">Zone D</div>
+                                        <div class="soccer-card-header">Group D</div>
                                         <div class="soccer-card-body offset-md-2">
                                             {% if zone4 is None %}
                                                 <div class="team-card">
@@ -295,6 +321,14 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <div class="team-card">
+                                                    <div class="row">
+                                                        <div class="flag-config"></div>
+                                                        <div class="name-config">
+                                                            D4
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             {% else %}
                                                 {% for team in zone4 %}
                                                     <div class="team-card">
@@ -312,7 +346,7 @@
                                         </div>
                                         <div class="row p-1">
                                             <div class="col g-1 offset-md-4">
-                                                {% url 'zones.fixtures' 'AFC' 'third' 'D' as fixtures %}
+                                                {% url 'zones.fixtures' 'AFC' 'second' 'D' as fixtures %}
                                                 <button type="button" class="btn btn-primary"
                                                         hx-get="{{ fixtures }} "
                                                         hx-trigger="click" hx-target="#schedule-content"
@@ -320,7 +354,7 @@
                                                         data-bs-target="#schedule">
                                                     <i class="fa-regular fa-calendar"></i>
                                                 </button>
-                                                {% url 'zones.standings' 'AFC' 'third' 'D' as standings %}
+                                                {% url 'zones.standings' 'AFC' 'second' 'D' as standings %}
                                                 <button type="button" class="btn btn-primary"
                                                         hx-get="{{ standings }}"
                                                         hx-trigger="click" hx-target="#stats-content"
@@ -336,10 +370,10 @@
                                 </div>
                             </div>
 
-                            <div class="row mb-5">
+                            <div class="row">
                                 <div class="col-md-5">
                                     <div class="group-card">
-                                        <div class="soccer-card-header">Zone E</div>
+                                        <div class="soccer-card-header">Group E</div>
                                         <div class="soccer-card-body offset-md-2">
                                             {% if zone5 is None %}
                                                 <div class="team-card">
@@ -366,6 +400,14 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <div class="team-card">
+                                                    <div class="row">
+                                                        <div class="flag-config"></div>
+                                                        <div class="name-config">
+                                                            E4
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             {% else %}
                                                 {% for team in zone5 %}
                                                     <div class="team-card">
@@ -383,7 +425,7 @@
                                         </div>
                                         <div class="row p-1">
                                             <div class="col g-1 offset-md-4">
-                                                {% url 'zones.fixtures' 'AFC' 'third' 'E' as fixtures %}
+                                                {% url 'zones.fixtures' 'AFC' 'second' 'E' as fixtures %}
                                                 <button type="button" class="btn btn-primary"
                                                         hx-get="{{ fixtures }} "
                                                         hx-trigger="click" hx-target="#schedule-content"
@@ -391,7 +433,7 @@
                                                         data-bs-target="#schedule">
                                                     <i class="fa-regular fa-calendar"></i>
                                                 </button>
-                                                {% url 'zones.standings' 'AFC' 'third' 'E' as standings %}
+                                                {% url 'zones.standings' 'AFC' 'second' 'E' as standings %}
                                                 <button type="button" class="btn btn-primary"
                                                         hx-get="{{ standings }}"
                                                         hx-trigger="click" hx-target="#stats-content"
@@ -407,14 +449,14 @@
                                 </div>
                                 <div class="col-md-5 offset-md-1">
                                     <div class="group-card">
-                                        <div class="soccer-card-header">Zone F</div>
+                                        <div class="soccer-card-header">Group F</div>
                                         <div class="soccer-card-body offset-md-2">
-                                            {% if zone1 is None %}
+                                            {% if zone6 is None %}
                                                 <div class="team-card">
                                                     <div class="row">
                                                         <div class="flag-config"></div>
                                                         <div class="name-config">
-                                                            F1
+                                                            A1
                                                         </div>
                                                     </div>
                                                 </div>
@@ -422,7 +464,7 @@
                                                     <div class="row">
                                                         <div class="flag-config"></div>
                                                         <div class="name-config">
-                                                            F2
+                                                            A2
                                                         </div>
                                                     </div>
                                                 </div>
@@ -430,7 +472,15 @@
                                                     <div class="row">
                                                         <div class="flag-config"></div>
                                                         <div class="name-config">
-                                                            F3
+                                                            A3
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="team-card">
+                                                    <div class="row">
+                                                        <div class="flag-config"></div>
+                                                        <div class="name-config">
+                                                            A4
                                                         </div>
                                                     </div>
                                                 </div>
@@ -451,7 +501,7 @@
                                         </div>
                                         <div class="row p-1">
                                             <div class="col g-1 offset-md-4">
-                                                {% url 'zones.fixtures' 'AFC' 'third' 'F' as fixtures %}
+                                                {% url 'zones.fixtures' 'AFC' 'second' 'F' as fixtures %}
                                                 <button type="button" class="btn btn-primary"
                                                         hx-get="{{ fixtures }} "
                                                         hx-trigger="click" hx-target="#schedule-content"
@@ -459,7 +509,7 @@
                                                         data-bs-target="#schedule">
                                                     <i class="fa-regular fa-calendar"></i>
                                                 </button>
-                                                {% url 'zones.standings' 'AFC' 'third' 'F' as standings %}
+                                                {% url 'zones.standings' 'AFC' 'second' 'F' as standings %}
                                                 <button type="button" class="btn btn-primary"
                                                         hx-get="{{ standings }}"
                                                         hx-trigger="click" hx-target="#stats-content"
@@ -474,144 +524,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row mb-5">
-                                <div class="col-md-5">
-                                    <div class="group-card">
-                                        <div class="soccer-card-header">Zone G</div>
-                                        <div class="soccer-card-body offset-md-2">
-                                            {% if zone7 is None %}
-                                                <div class="team-card">
-                                                    <div class="row">
-                                                        <div class="flag-config"></div>
-                                                        <div class="name-config">
-                                                            F1
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="team-card">
-                                                    <div class="row">
-                                                        <div class="flag-config"></div>
-                                                        <div class="name-config">
-                                                            F2
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="team-card">
-                                                    <div class="row">
-                                                        <div class="flag-config"></div>
-                                                        <div class="name-config">
-                                                            F3
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            {% else %}
-                                                {% for team in zone7 %}
-                                                    <div class="team-card">
-                                                        <div class="row">
-                                                            <div class="flag-config">
-                                                                <img src="{{ team.image_flag }}" class="img-card">
-                                                            </div>
-                                                            <div class="name-config">
-                                                                {{ team.nation_iso_code }}
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                {% endfor %}
-                                            {% endif %}
-                                        </div>
-                                        <div class="row p-1">
-                                            <div class="col g-1 offset-md-4">
-                                                {% url 'zones.fixtures' 'AFC' 'third' 'G' as fixtures %}
-                                                <button type="button" class="btn btn-primary"
-                                                        hx-get="{{ fixtures }} "
-                                                        hx-trigger="click" hx-target="#schedule-content"
-                                                        data-bs-toggle="modal"
-                                                        data-bs-target="#schedule">
-                                                    <i class="fa-regular fa-calendar"></i>
-                                                </button>
-                                                {% url 'zones.standings' 'AFC' 'third' 'G' as standings %}
-                                                <button type="button" class="btn btn-primary"
-                                                        hx-get="{{ standings }}"
-                                                        hx-trigger="click" hx-target="#stats-content"
-                                                        data-bs-toggle="modal"
-                                                        data-bs-target="#standings">
-                                                    <i class="fa-solid fa-ranking-star"></i>
-                                                </button>
 
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-5 offset-md-1">
-                                    <div class="group-card">
-                                        <div class="soccer-card-header">Zone H</div>
-                                        <div class="soccer-card-body offset-md-2">
-                                            {% if zone8 is None %}
-                                                <div class="team-card">
-                                                    <div class="row">
-                                                        <div class="flag-config"></div>
-                                                        <div class="name-config">
-                                                            H1
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="team-card">
-                                                    <div class="row">
-                                                        <div class="flag-config"></div>
-                                                        <div class="name-config">
-                                                            H2
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="team-card">
-                                                    <div class="row">
-                                                        <div class="flag-config"></div>
-                                                        <div class="name-config">
-                                                            H3
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            {% else %}
-                                                {% for team in zone8 %}
-                                                    <div class="team-card">
-                                                        <div class="row">
-                                                            <div class="flag-config">
-                                                                <img src="{{ team.image_flag }}" class="img-card">
-                                                            </div>
-                                                            <div class="name-config">
-                                                                {{ team.nation_iso_code }}
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                {% endfor %}
-                                            {% endif %}
-                                        </div>
-                                        <div class="row p-1">
-                                            <div class="col g-1 offset-md-4">
-                                                {% url 'zones.fixtures' 'AFC' 'third' 'H' as fixtures %}
-                                                <button type="button" class="btn btn-primary"
-                                                        hx-get="{{ fixtures }} "
-                                                        hx-trigger="click" hx-target="#schedule-content"
-                                                        data-bs-toggle="modal"
-                                                        data-bs-target="#schedule">
-                                                    <i class="fa-regular fa-calendar"></i>
-                                                </button>
-                                                {% url 'zones.standings' 'AFC' 'third' 'H' as standings %}
-                                                <button type="button" class="btn btn-primary"
-                                                        hx-get="{{ standings }}"
-                                                        hx-trigger="click" hx-target="#stats-content"
-                                                        data-bs-toggle="modal"
-                                                        data-bs-target="#standings">
-                                                    <i class="fa-solid fa-ranking-star"></i>
-                                                </button>
-
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
 
 
