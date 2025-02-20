@@ -7,10 +7,10 @@
     </div>
     <div class="row p-4">
         <div class="col-6 g-8 offset-md-5">
-            <button type="button" class="btn btn-primary" hx-get=" {% url 'asia.secondround.draw' %}"
+            <button type="button" class="btn btn-primary" hx-get=" {% url 'asia.thirdround.draw' %}"
                     hx-trigger="click" hx-target="body" {% if teams|enableDrawButton:24 is True  %} disabled {% endif %}>Draw
             </button>
-            <button type="button" class="btn btn-primary" hx-get=" {% url 'asia.secondround' %}" hx-trigger="click"
+            <button type="button" class="btn btn-primary" hx-get=" {% url 'asia.thirdround' %}" hx-trigger="click"
                     hx-target="body">Clear
             </button>
         </div>
@@ -114,7 +114,7 @@
                                         </div>
                                         <div class="row p-1">
                                             <div class="col g-1 offset-md-4">
-                                                {% url 'zones.fixtures' 'AFC' 'second' 'A' as fixtures %}
+                                                {% url 'zones.fixtures' 'AFC' 'third' 'A' as fixtures %}
                                                 <button type="button" class="btn btn-primary"
                                                         hx-get="{{ fixtures }} "
                                                         hx-trigger="click" hx-target="#schedule-content"
@@ -122,7 +122,7 @@
                                                         data-bs-target="#schedule">
                                                     <i class="fa-regular fa-calendar"></i>
                                                 </button>
-                                                {% url 'zones.standings' 'AFC' 'second' 'A' as standings %}
+                                                {% url 'zones.standings' 'AFC' 'third' 'A' as standings %}
                                                 <button type="button" class="btn btn-primary"
                                                         hx-get="{{ standings }}"
                                                         hx-trigger="click" hx-target="#stats-content"
@@ -191,7 +191,7 @@
                                         </div>
                                         <div class="row p-1">
                                             <div class="col g-1 offset-md-4">
-                                                {% url 'zones.fixtures' 'AFC' 'second' 'B' as fixtures %}
+                                                {% url 'zones.fixtures' 'AFC' 'third' 'B' as fixtures %}
                                                 <button type="button" class="btn btn-primary"
                                                         hx-get="{{ fixtures }} "
                                                         hx-trigger="click" hx-target="#schedule-content"
@@ -199,7 +199,7 @@
                                                         data-bs-target="#schedule">
                                                     <i class="fa-regular fa-calendar"></i>
                                                 </button>
-                                                {% url 'zones.standings' 'AFC' 'second' 'B' as standings %}
+                                                {% url 'zones.standings' 'AFC' 'third' 'B' as standings %}
                                                 <button type="button" class="btn btn-primary"
                                                         hx-get="{{ standings }}"
                                                         hx-trigger="click" hx-target="#stats-content"
@@ -270,7 +270,7 @@
                                         </div>
                                         <div class="row p-1">
                                             <div class="col g-1 offset-md-4">
-                                                {% url 'zones.fixtures' 'AFC' 'second' 'C' as fixtures %}
+                                                {% url 'zones.fixtures' 'AFC' 'third' 'C' as fixtures %}
                                                 <button type="button" class="btn btn-primary"
                                                         hx-get="{{ fixtures }} "
                                                         hx-trigger="click" hx-target="#schedule-content"
@@ -278,7 +278,7 @@
                                                         data-bs-target="#schedule">
                                                     <i class="fa-regular fa-calendar"></i>
                                                 </button>
-                                                {% url 'zones.standings' 'AFC' 'second' 'C' as standings %}
+                                                {% url 'zones.standings' 'AFC' 'third' 'C' as standings %}
                                                 <button type="button" class="btn btn-primary"
                                                         hx-get="{{ standings }}"
                                                         hx-trigger="click" hx-target="#stats-content"
@@ -346,7 +346,7 @@
                                         </div>
                                         <div class="row p-1">
                                             <div class="col g-1 offset-md-4">
-                                                {% url 'zones.fixtures' 'AFC' 'second' 'D' as fixtures %}
+                                                {% url 'zones.fixtures' 'AFC' 'third' 'D' as fixtures %}
                                                 <button type="button" class="btn btn-primary"
                                                         hx-get="{{ fixtures }} "
                                                         hx-trigger="click" hx-target="#schedule-content"
@@ -354,7 +354,7 @@
                                                         data-bs-target="#schedule">
                                                     <i class="fa-regular fa-calendar"></i>
                                                 </button>
-                                                {% url 'zones.standings' 'AFC' 'second' 'D' as standings %}
+                                                {% url 'zones.standings' 'AFC' 'third' 'D' as standings %}
                                                 <button type="button" class="btn btn-primary"
                                                         hx-get="{{ standings }}"
                                                         hx-trigger="click" hx-target="#stats-content"
@@ -425,7 +425,7 @@
                                         </div>
                                         <div class="row p-1">
                                             <div class="col g-1 offset-md-4">
-                                                {% url 'zones.fixtures' 'AFC' 'second' 'E' as fixtures %}
+                                                {% url 'zones.fixtures' 'AFC' 'third' 'E' as fixtures %}
                                                 <button type="button" class="btn btn-primary"
                                                         hx-get="{{ fixtures }} "
                                                         hx-trigger="click" hx-target="#schedule-content"
@@ -433,7 +433,7 @@
                                                         data-bs-target="#schedule">
                                                     <i class="fa-regular fa-calendar"></i>
                                                 </button>
-                                                {% url 'zones.standings' 'AFC' 'second' 'E' as standings %}
+                                                {% url 'zones.standings' 'AFC' 'third' 'E' as standings %}
                                                 <button type="button" class="btn btn-primary"
                                                         hx-get="{{ standings }}"
                                                         hx-trigger="click" hx-target="#stats-content"
@@ -501,7 +501,7 @@
                                         </div>
                                         <div class="row p-1">
                                             <div class="col g-1 offset-md-4">
-                                                {% url 'zones.fixtures' 'AFC' 'second' 'F' as fixtures %}
+                                                {% url 'zones.fixtures' 'AFC' 'third' 'F' as fixtures %}
                                                 <button type="button" class="btn btn-primary"
                                                         hx-get="{{ fixtures }} "
                                                         hx-trigger="click" hx-target="#schedule-content"
@@ -509,7 +509,7 @@
                                                         data-bs-target="#schedule">
                                                     <i class="fa-regular fa-calendar"></i>
                                                 </button>
-                                                {% url 'zones.standings' 'AFC' 'second' 'F' as standings %}
+                                                {% url 'zones.standings' 'AFC' 'third' 'F' as standings %}
                                                 <button type="button" class="btn btn-primary"
                                                         hx-get="{{ standings }}"
                                                         hx-trigger="click" hx-target="#stats-content"
