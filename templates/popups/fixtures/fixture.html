@@ -10,13 +10,13 @@
         {% with delay=0 %}
             <div>
                 {% if fixture|getItem:'fixture1' is not None %}
-                    <div class="row mb-2">
+                    <div  class="row mb-2">
                         <div class="col-10 ">
                             <div class="card card-border offset-md-2">
                                 <div class="soccer-card-header">Fixture 1</div>
                                 <div class="soccer-card-body">
 
-                                    <div class="match-border" data-loading-states>
+                                    <div id="f1m1" class="match-border" data-loading-states>
 
                                         <div class="col-4">
                                             <div class="team-card-sm">
@@ -69,6 +69,7 @@
                                                 <button type="button" class="btn btn-primary "
                                                         hx-get="{{ match_1_1 }}"
                                                         hx-trigger="click delay:0s"
+                                                        
                                                         hx-target="#schedule-content"
                                                         data-loading-disable
                                                         {% if fixture.fixture1.match1.played is True %}
@@ -88,7 +89,7 @@
 
 
                                     {% if fixture.fixture1|getItem:'match2' is not None %}
-                                        <div class="match-border" data-loading-states>
+                                        <div id="f1m2" class="match-border" data-loading-states>
 
                                             <div class="col-4">
                                                 <div class="team-card-sm">
@@ -140,6 +141,7 @@
                                                             hx-get="{{ match_1_2 }}"
                                                             hx-trigger="click delay:0s"
                                                             hx-target="#schedule-content"
+                                                            
                                                             data-loading-disable
                                                             {% if fixture.fixture1.match2.played is True %}
                                                             disabled {% endif %}>
@@ -174,7 +176,7 @@
                                 <div class="soccer-card-header">Fixture 2</div>
                                 <div class="soccer-card-body">
 
-                                    <div class="match-border" data-loading-states>
+                                    <div id="f2m1" class="match-border" data-loading-states>
 
                                         <div class="col-4">
                                             <div class="team-card-sm">
@@ -228,6 +230,7 @@
                                                         hx-get="{{ match_2_1 }}"
                                                         hx-trigger="click delay:1s"
                                                         hx-target="#schedule-content"
+                                                        
                                                         data-loading-disable
                                                         {% if fixture.fixture2.match1.played is True %}
                                                         disabled {% endif %}>
@@ -244,7 +247,7 @@
                                     </div>
 
                                     {% if fixture.fixture2|getItem:'match2' is not None %}
-                                        <div class="match-border" data-loading-states>
+                                        <div id="f2m2" class="match-border" data-loading-states>
 
                                         <div class="col-4">
                                             <div class="team-card-sm">
@@ -298,6 +301,7 @@
                                                         hx-get="{{ match_2_2 }}"
                                                         hx-trigger="click delay:1s"
                                                         hx-target="#schedule-content"
+                                                        
                                                         data-loading-disable
                                                         {% if fixture.fixture2.match2.played is True %}
                                                         disabled {% endif %}>
@@ -331,7 +335,7 @@
                                 <div class="soccer-card-header">Fixture 3</div>
                                 <div class="soccer-card-body">
 
-                                    <div class="match-border" data-loading-states>
+                                    <div id="f3m1"class="match-border" data-loading-states>
 
                                         <div class="col-4">
                                             <div class="team-card-sm">
@@ -385,6 +389,7 @@
                                                         hx-get="{{ match_3_1 }}"
                                                         hx-trigger="click delay:2s"
                                                         hx-target="#schedule-content"
+                                                        
                                                         data-loading-disable
                                                         {% if fixture.fixture3.match1.played is True %}
                                                         disabled {% endif %}>
@@ -401,7 +406,7 @@
                                     </div>
 
                                     {% if fixture.fixture3|getItem:'match2' is not None %}
-                                        <div class="match-border" data-loading-states>
+                                        <div id="f3m2" class="match-border" data-loading-states>
 
                                             <div class="col-4">
                                                 <div class="team-card-sm">
@@ -455,6 +460,7 @@
                                                             hx-get="{{ match_3_2 }}"
                                                             hx-trigger="click delay:2s"
                                                             hx-target="#schedule-content"
+                                                            
                                                             data-loading-disable
                                                             {% if fixture.fixture3.match2.played is True %}
                                                             disabled {% endif %}>
@@ -488,7 +494,7 @@
                             <div class="card card-border offset-md-2">
                                 <div class="soccer-card-header">Fixture 4</div>
                                 <div class="soccer-card-body">
-                                    <div class="match-border" data-loading-states>
+                                    <div id="f4m1" class="match-border" data-loading-states>
 
                                         <div class="col-4">
                                             <div class="team-card-sm">
@@ -542,6 +548,7 @@
                                                         hx-get="{{ match_4_1 }}"
                                                         hx-trigger="click delay:3s"
                                                         hx-target="#schedule-content"
+                                                        
                                                         data-loading-disable
                                                         {% if fixture.fixture4.match1.played is True %}
                                                         disabled {% endif %}>
@@ -558,7 +565,7 @@
                                     </div>
 
                                     {% if fixture.fixture4|getItem:'match2' is not None %}
-                                        <div class="match-border" data-loading-states>
+                                        <div id="f4m2" class="match-border" data-loading-states>
 
                                             <div class="col-4">
                                                 <div class="team-card-sm">
@@ -612,6 +619,7 @@
                                                             hx-get="{{ match_4_2 }}"
                                                             hx-trigger="click delay:3s"
                                                             hx-target="#schedule-content"
+                                                            
                                                             data-loading-disable
                                                             {% if fixture.fixture4.match2.played is True %}
                                                             disabled {% endif %}>
@@ -645,7 +653,7 @@
                             <div class="card card-border offset-md-2">
                                 <div class="soccer-card-header">Fixture 5</div>
                                 <div class="soccer-card-body">
-                                    <div class="match-border" data-loading-states>
+                                    <div id="f5m1" class="match-border" data-loading-states>
 
                                         <div class="col-4">
                                             <div class="team-card-sm">
@@ -699,6 +707,7 @@
                                                         hx-get="{{ match_5_1 }}"
                                                         hx-trigger="click delay:4s"
                                                         hx-target="#schedule-content"
+                                                        
                                                         data-loading-disable
                                                         {% if fixture.fixture5.match1.played is True %}
                                                         disabled {% endif %}>
@@ -714,7 +723,7 @@
                                         </div>
                                     </div>
                                     {% if fixture.fixture5|getItem:'match2' is not None %}
-                                        <div class="match-border" data-loading-states>
+                                        <div id="f5m2" class="match-border" data-loading-states>
 
                                             <div class="col-4">
                                                 <div class="team-card-sm">
@@ -768,6 +777,7 @@
                                                             hx-get="{{ match_5_2 }}"
                                                             hx-trigger="click delay:4s"
                                                             hx-target="#schedule-content"
+                                                            
                                                             data-loading-disable
                                                             {% if fixture.fixture5.match2.played is True %}
                                                             disabled {% endif %}>
@@ -801,7 +811,7 @@
                             <div class="card card-border offset-md-2">
                                 <div class="soccer-card-header">Fixture 6</div>
                                 <div class="soccer-card-body">
-                                    <div class="match-border" data-loading-states>
+                                    <div id="f6m1" class="match-border" data-loading-states>
 
                                         <div class="col-4">
                                             <div class="team-card-sm">
@@ -855,6 +865,7 @@
                                                         hx-get="{{ match_6_1 }}"
                                                         hx-trigger="click delay:5s"
                                                         hx-target="#schedule-content"
+                                                        
                                                         data-loading-disable
                                                         {% if fixture.fixture6.match1.played is True %}
                                                         disabled {% endif %}>
@@ -871,7 +882,7 @@
                                     </div>
 
                                     {% if fixture.fixture6|getItem:'match2' is not None %}
-                                        <div class="match-border" data-loading-states>
+                                        <div  id="f6m2" class="match-border" data-loading-states>
 
                                             <div class="col-4">
                                                 <div class="team-card-sm">
@@ -925,6 +936,7 @@
                                                             hx-get="{{ match_6_2 }}"
                                                             hx-trigger="click delay:5s"
                                                             hx-target="#schedule-content"
+                                                            
                                                             data-loading-disable
                                                             {% if fixture.fixture6.match2.played is True %}
                                                             disabled {% endif %}>
@@ -958,7 +970,7 @@
                             <div class="card card-border offset-md-2">
                                 <div class="soccer-card-header">Fixture 7</div>
                                 <div class="soccer-card-body">
-                                    <div class="match-border" data-loading-states>
+                                    <div id="f7m1" class="match-border" data-loading-states>
 
                                         <div class="col-4">
                                             <div class="team-card-sm">
@@ -1012,6 +1024,7 @@
                                                         hx-get="{{ match_7_1 }}"
                                                         hx-trigger="click delay:6s"
                                                         hx-target="#schedule-content"
+                                                        
                                                         data-loading-disable
                                                         {% if fixture.fixture7.match1.played is True %}
                                                         disabled {% endif %}>
@@ -1027,7 +1040,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="match-border" data-loading-states>
+                                    <div id="f7m2" class="match-border" data-loading-states>
 
                                         <div class="col-4">
                                             <div class="team-card-sm">
@@ -1081,6 +1094,7 @@
                                                         hx-get="{{ match_7_2 }}"
                                                         hx-trigger="click delay:6s"
                                                         hx-target="#schedule-content"
+                                                        
                                                         data-loading-disable
                                                         {% if fixture.fixture7.match2.played is True %}
                                                         disabled {% endif %}>
@@ -1113,7 +1127,7 @@
                             <div class="card card-border offset-md-2">
                                 <div class="soccer-card-header">Fixture 8</div>
                                 <div class="soccer-card-body">
-                                    <div class="match-border" data-loading-states>
+                                    <div id="f8m1" class="match-border" data-loading-states>
 
                                         <div class="col-4">
                                             <div class="team-card-sm">
@@ -1167,6 +1181,7 @@
                                                         hx-get="{{ match_8_1 }}"
                                                         hx-trigger="click delay:7s"
                                                         hx-target="#schedule-content"
+                                                        
                                                         data-loading-disable
                                                         {% if fixture.fixture8.match1.played is True %}
                                                         disabled {% endif %}>
@@ -1182,7 +1197,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="match-border" data-loading-states>
+                                    <div id="f8m2" class="match-border" data-loading-states>
 
                                         <div class="col-4">
                                             <div class="team-card-sm">
@@ -1236,6 +1251,7 @@
                                                         hx-get="{{ match_8_2 }}"
                                                         hx-trigger="click delay:7s"
                                                         hx-target="#schedule-content"
+                                                        
                                                         data-loading-disable
                                                         {% if fixture.fixture8.match2.played is True %}
                                                         disabled {% endif %}>
@@ -1268,7 +1284,7 @@
                             <div class="card card-border offset-md-2">
                                 <div class="soccer-card-header">Fixture 9</div>
                                 <div class="soccer-card-body">
-                                    <div class="match-border" data-loading-states>
+                                    <div id="f9m1" class="match-border" data-loading-states>
 
                                         <div class="col-4">
                                             <div class="team-card-sm">
@@ -1322,6 +1338,7 @@
                                                         hx-get="{{ match_9_1 }}"
                                                         hx-trigger="click delay:8s"
                                                         hx-target="#schedule-content"
+                                                        
                                                         data-loading-disable
                                                         {% if fixture.fixture9.match1.played is True %}
                                                         disabled {% endif %}>
@@ -1337,7 +1354,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="match-border" data-loading-states>
+                                    <div id="f9m2" class="match-border" data-loading-states>
 
                                         <div class="col-4">
                                             <div class="team-card-sm">
@@ -1391,6 +1408,7 @@
                                                         hx-get="{{ match_9_2 }}"
                                                         hx-trigger="click delay:8s"
                                                         hx-target="#schedule-content"
+                                                        
                                                         data-loading-disable
                                                         {% if fixture.fixture9.match2.played is True %}
                                                         disabled {% endif %}>
@@ -1423,7 +1441,7 @@
                             <div class="card card-border offset-md-2">
                                 <div class="soccer-card-header">Fixture 10</div>
                                 <div class="soccer-card-body">
-                                    <div class="match-border" data-loading-states>
+                                    <div id="f10m1" class="match-border" data-loading-states>
 
                                         <div class="col-4">
                                             <div class="team-card-sm">
@@ -1477,6 +1495,7 @@
                                                         hx-get="{{ match_10_1 }}"
                                                         hx-trigger="click delay:8250ms"
                                                         hx-target="#schedule-content"
+                                                        
                                                         data-loading-disable
                                                         {% if fixture.fixture10.match1.played is True %}
                                                         disabled {% endif %}>
@@ -1492,7 +1511,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="match-border" data-loading-states>
+                                    <div id="f10m2" class="match-border" data-loading-states>
 
                                         <div class="col-4">
                                             <div class="team-card-sm">
@@ -1546,6 +1565,7 @@
                                                         hx-get="{{ match_10_2 }}"
                                                         hx-trigger="click delay:8250ms"
                                                         hx-target="#schedule-content"
+                                                         
                                                         data-loading-disable
                                                         {% if fixture.fixture10.match2.played is True %}
                                                         disabled {% endif %}>
