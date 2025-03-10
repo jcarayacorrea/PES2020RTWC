@@ -185,6 +185,11 @@ def simular_partido(equipo_local, equipo_visitante, extraTime):
                 print('Penales {}   {} \n'.format(nombre_visita, array_pen_visita[-5:]))
 
                 count_penales += 1
+                if count_penales > 2 and count_penales < 5:
+                    if (abs((5 - penales_local) - (5 - penales_visita))>(5 - count_penales)):
+                        penales = True
+
+
                 if count_penales >= 5:
                     if penales_local != penales_visita:
                         penales = True
