@@ -284,6 +284,7 @@ h6 {
 
 .mb-6 {
   @extend .mb-5;
+  padding-top: 5%;
   padding-bottom: 7.5%;
 }
 
@@ -305,6 +306,10 @@ h6 {
   }
   .img-card {
     max-width: 1.8rem;
+  }
+  .group-card-conf{
+    width: 5vw;
+    margin-left: 2rem;
   }
 }
 

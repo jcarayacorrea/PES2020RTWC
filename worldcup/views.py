@@ -28,6 +28,7 @@ def maindrawButton(request):
     if request.method == 'GET':
         context = {}
         context['teams'] = getTeamsMainDraw()
+        context['confederations'] = ['CONMEBOL', 'UEFA', 'CONCACAF', 'OFC', 'CAF', 'AFC']
 
         try:
             zones = draw(getTeamsMainDraw())
