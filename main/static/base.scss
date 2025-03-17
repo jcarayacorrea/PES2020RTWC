@@ -207,6 +207,7 @@ nav, .dropdown-menu, .card-header, {
   @extend .offset-md-1;
   height: 8vh;
   width: 10vw;
+  margin-left: 3rem;
 }
 
 .col-conf {
@@ -309,7 +310,7 @@ h6 {
   }
   .group-card-conf{
     width: 5vw;
-    margin-left: 2rem;
+    margin-left: 4rem;
   }
 }
 
