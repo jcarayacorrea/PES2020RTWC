@@ -296,6 +296,12 @@ h6 {
 
 .scr_style{
  justify-self: center;
+  padding: 0.25rem;
+}
+
+.col_im{
+  @extend .col-1;
+  margin: 0.2rem;
 }
 
 
