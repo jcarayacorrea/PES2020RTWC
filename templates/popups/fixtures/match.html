@@ -51,7 +51,7 @@
         {% url 'match_simulator' fixtureNum matchNum homeId awayId  conf  round zone 0 1 as matchsim %}
         <button type="button" class="btn btn-primary"
                 hx-get="{{ matchsim }}"
-                hx-trigger="click delay:{{ delay }}s"
+                hx-trigger="click delay:{{ delay }}ms"
                 hx-target="{{ target }}"
                 data-loading-disable
                 {% if match.played is True %}
