@@ -50,8 +50,9 @@ def standingsZone(request, conf, round, zone):
     return render(request, 'popups/standings/standings.html', context)
 
 
-def sim_match(request, fixture, match, homeId, awayId, conf, round, zone, extraTime=0):
+def sim_match(request, fixture, match, homeId, awayId, conf, round, zone, extraTime=0,singleLoad=0):
     extra = False if extraTime == 0 else True
+
     context = {}
     resultado = simular_partido(homeId, awayId, extra)
     if extraTime == 0:
@@ -63,6 +64,8 @@ def sim_match(request, fixture, match, homeId, awayId, conf, round, zone, extraT
                             resultado['penales_local'] if resultado.get('penales_local') else 0,
                             resultado['penales_visita'] if resultado.get('penales_visita') else 0, conf, round, zone,
                             homeTeam[0], awayTeam[0])
+    if singleLoad == 1:
+        return realoadMatches(request,zone, conf, round,fixture,match)
     fixtureDict = getZoneData(zone, conf, round)
     context['fixture'] = fixtureDict['fixtures']
     context['conf'] = conf
@@ -75,7 +78,7 @@ def sim_match(request, fixture, match, homeId, awayId, conf, round, zone, extraT
         return firstround(request)
     elif fixture == 'mainDraw':
         return finalround(request)
-    return render(request, 'popups/fixtures/fixture.html', context)
+    return fixtureZone(request,conf,round,zone)
 
 
 def downloadDraw(request):
@@ -84,6 +87,13 @@ def downloadDraw(request):
     if request.method == 'POST':
         body = request.body
         return FileResponse(html2png.screenshot(html_str=body, css_file=baseCSS, save_as='worldCup.png'))
+
+def realoadMatches(request,zone,conf,round,fixture,match):
+    context = {}
+    context['match'] = getMatchData(getZoneData(zone, conf, round), fixture, match)
+    return render(request,'popups/fixtures/match.html',context)
+def getMatchData(fixtureDict, fixture, match):
+    return fixtureDict['fixtures']['fixture'+str(fixture)]['match'+str(match)]
 
 
 @register.filter

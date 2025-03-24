@@ -6,7 +6,7 @@ urlpatterns = [
     path('api/teams/', views.teamListApi, name='api.teams'),
     path('fixtures/<str:conf>/<str:round>/<str:zone>', views.fixtureZone, name='zones.fixtures'),
     path('standings/<str:conf>/<str:round>/<str:zone>', views.standingsZone, name='zones.standings'),
-    path('match_simulator/<int:fixture>/<int:match>/<str:homeId>/<str:awayId>/<str:conf>/<str:round>/<str:zone>',
+    path('match_simulator/<int:fixture>/<int:match>/<str:homeId>/<str:awayId>/<str:conf>/<str:round>/<str:zone>/<int:extraTime>/<int:singleLoad>',
          views.sim_match,
          name='match_simulator'),
     path(

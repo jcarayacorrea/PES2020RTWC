@@ -1,0 +1,68 @@
+<div class="col-4">
+    <div class="team-card-sm">
+        <div class="row">
+            {% resultbghome match as homeborder %}
+            <div class="flag-config ">
+                <img src="{{ match.homeTeam.team.image_flag }}"
+                     class="img-card {{ homeborder }}">
+            </div>
+            <div class="name-config-sm">
+                {{ match.homeTeam.team.nation_iso_code }}
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="col-scr" data-loading-aria-busy data-loading>
+    <div id="progressBar">
+        <div class="progress">
+            <div class="match-progress-bar"
+                 role="progressbar" aria-label="Animated striped example"
+                 aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
+            ></div>
+        </div>
+    </div>
+</div>
+
+<div class="col-scr" data-loading-aria-busy data-loading-class="d-none">
+    <h4 class="scr_style">{{ match.homeTeam.goals|default_if_none:"?" }}
+        - {{ match.awayTeam.goals|default_if_none:"?" }}</h4>
+</div>
+
+
+<div class="col-4">
+    <div class="team-card-sm">
+        <div class="row">
+            {% resultbgaway match as awayborder %}
+            <div class="flag-config">
+                <img src="{{ match.awayTeam.team.image_flag }}"
+                     class="img-card {{ awayborder }}">
+            </div>
+            <div class="name-config-sm">
+                {{ match.awayTeam.team.nation_iso_code }}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col_im">
+    {% with homeId=match.homeTeam.team.id awayId=match.awayTeam.team.id %}
+        {% url 'match_simulator' fixtureNum matchNum homeId awayId  conf  round zone 0 1 as matchsim %}
+        <button type="button" class="btn btn-primary"
+                hx-get="{{ matchsim }}"
+                hx-trigger="click delay:{{ delay }}s"
+                hx-target="{{ target }}"
+                data-loading-disable
+                {% if match.played is True %}
+                disabled {% endif %}>
+            <div data-loading-aria-busy data-loading>
+                <div class="spinner-border spinner-border-sm text-light "></div>
+            </div>
+            <div data-loading-aria-busy data-loading-class="d-none">
+                <i class="fa-regular fa-futbol"></i>
+            </div>
+        </button>
+    {% endwith %}
+
+</div>
