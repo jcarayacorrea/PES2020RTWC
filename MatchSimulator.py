@@ -1,6 +1,6 @@
 import random
 import time
-from utils import medium_difference, high_difference, extreme_difference, ultra_difference
+from utils import medium_difference, high_difference, extreme_difference, ultra_difference, getTeamById
 
 SLEEP_TIME = 0.1
 GOAL = 'O'
@@ -121,12 +121,26 @@ def simulate_penalty_shots(probabilidad_local, probabilidad_visitante, nombre_lo
     return local_penalties, away_penalties
 
 
-def simular_partido(equipo_local, equipo_visitante, extraTime):
-    # code truncated for brevity...
-    goles_local, goles_visitante = simulate_match_time(90, probabilidad_gol_local, probabilidad_gol_visita,
-                                                       nombre_local, nombre_visita)
-    if extraTime == 1 and (goles_local == goles_visitante):
-        goles_local, goles_visitante = simulate_match_time(30, probabilidad_gol_local, probabilidad_gol_visita,
-                                                           nombre_local, nombre_visita)
-        if (goles_local == goles_visitante):
-            simulate_penalty_shots(probabilidad_local, probabilidad_visitante, nombre_local, nombre_visita)
+def simulate_match(home_team_id, away_team_id, is_extra_time):
+    home_team = getTeamById(home_team_id)
+    away_team = getTeamById(away_team_id)
+
+    home_probability, away_probability = calculate_winner_probability(home_team['fifa_nation_rank'],
+                                                                      away_team['fifa_nation_rank'])
+    home_goals, away_goals = simulate_match_time(90, home_probability, away_probability, home_team['nation_name'],
+                                                 away_team['nation_name'])
+
+    is_draw = home_goals == away_goals
+
+    if is_extra_time and is_draw:
+        home_goals, away_goals = simulate_extra_match(home_probability, away_probability, home_team, away_team,
+                                                      home_goals, away_goals)
+
+
+def simulate_extra_match(home_probability, away_probability, home_team, away_team, home_goals, away_goals):
+    home_goals, away_goals = simulate_match_time(30, home_probability, away_probability, home_team['nation_name'],
+                                                 away_team['nation_name'])
+    return home_goals, away_goals if home_goals != away_goals else simulate_penalty_shots(home_probability,
+                                                                                          away_probability,
+                                                                                          home_team['nation_name'],
+                                                                                          away_team['nation_name'])
