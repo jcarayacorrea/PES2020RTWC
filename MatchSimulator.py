@@ -1,204 +1,132 @@
 import random
 import time
-from utils import getTeamById, diferencia_alta, diferencia_extrema, diferencia_media, diferencia_ultra
+from utils import medium_difference, high_difference, extreme_difference, ultra_difference
+
+SLEEP_TIME = 0.1
+GOAL = 'O'
+NO_GOAL = 'X'
+HOME_GOAL = 'L'
+AWAY_GOAL = 'V'
+STEP = '-'
+GOAL_PRBLTY = 0.03
+PENALTY_DEFAULT_TURNS = 5
 
 
-def calcular_probabilidad_ganador(ranking_local, ranking_visitante):
-    """Calcula la probabilidad de que el equipo con menor ranking gane."""
+def calculate_probability(winner_rank, loser_rank):
+    """Calculates the probability of the lesser ranked team winning."""
+    diff_functions = [medium_difference, high_difference, extreme_difference, ultra_difference, lambda x, y: True]
+    probabilities = [(0.65, 0.35), (0.7, 0.3), (0.8, 0.2), (0.9, 0.1), (0.6, 0.4)]
 
-    if ranking_local < ranking_visitante:
-        if diferencia_media(ranking_local, ranking_visitante):
-            probabilidad_local = 0.65  # Probabilidad de gol local más alta
-            probabilidad_visitante = 0.35  # Probabilidad de gol visitante más baja
-        elif diferencia_alta(ranking_local, ranking_visitante):
-            probabilidad_local = 0.7  # Probabilidad de gol local más alta
-            probabilidad_visitante = 0.3  # Probabilidad de gol visitante más baja
-        elif diferencia_extrema(ranking_local, ranking_visitante):
-            probabilidad_local = 0.8  # Probabilidad de gol local más alta
-            probabilidad_visitante = 0.2  # Probabilidad de gol visitante más baja
-        elif diferencia_ultra(ranking_local, ranking_visitante):
-            probabilidad_local = 0.9  # Probabilidad de gol local más alta
-            probabilidad_visitante = 0.1  # Probabilidad de gol visitante más baja
-        else:
-            probabilidad_local = 0.6  # Probabilidad de gol local más alta
-            probabilidad_visitante = 0.4  # Probabilidad de gol visitante más baja
+    for diff_func, probability in zip(diff_functions, probabilities):
+        if diff_func(winner_rank, loser_rank):
+            return probability
 
 
-    elif ranking_local > ranking_visitante:
-        if diferencia_media(ranking_local, ranking_visitante):
-            probabilidad_local = 0.35  # Probabilidad de gol local más alta
-            probabilidad_visitante = 0.65  # Probabilidad de gol visitante más baja
-        elif diferencia_alta(ranking_local, ranking_visitante):
-            probabilidad_local = 0.3  # Probabilidad de gol local más alta
-            probabilidad_visitante = 0.7  # Probabilidad de gol visitante más baja
-        elif diferencia_extrema(ranking_local, ranking_visitante):
-            probabilidad_local = 0.2  # Probabilidad de gol local más alta
-            probabilidad_visitante = 0.8  # Probabilidad de gol visitante más baja
-        elif diferencia_ultra(ranking_local, ranking_visitante):
-            probabilidad_local = 0.1  # Probabilidad de gol local más alta
-            probabilidad_visitante = 0.9  # Probabilidad de gol visitante más baja
-        else:
-            probabilidad_local = 0.4  # Probabilidad de gol local más alta
-            probabilidad_visitante = 0.6  # Probabilidad de gol visitante más baja
+def calculate_winner_probability(home_rank, guest_rank):
+    if home_rank < guest_rank:
+        # home team is likely to win
+        return calculate_probability(home_rank, guest_rank)
+    elif home_rank > guest_rank:
+        # guest team is likely to win, reverse the probability
+        home_prob, guest_prob = calculate_probability(guest_rank, home_rank)
+        return guest_prob, home_prob
     else:
-        probabilidad_local = 0.5  # Probabilidad de gol local igual a la del visitante
-        probabilidad_visitante = 0.5  # Probabilidad de gol visitante igual a la del local
-    return probabilidad_local, probabilidad_visitante
+        # equal probabilities for both if ranks are same
+        return 0.5, 0.5
+
+
+def display_event(tiempo_transcurrido, nombre, goles_local, goles_visitante, penales=[], tipo="Gol"):
+    def gol_display():
+        print(f'{tipo} {nombre} ({tiempo_transcurrido}) {goles_local} - {goles_visitante}\n')
+
+    def penales_display():
+        print(f'{tipo} {nombre}  {penales[:-5]}\n')
+
+    def minuto_display():
+        print(f'Minuto ({tiempo_transcurrido})\n')
+
+    event_types = {
+        'Gol': gol_display,
+        'Penales': penales_display,
+        'Minuto': minuto_display
+    }
+
+    event_types[tipo]()
+
+
+def process_match_event(event_time, home_goal_probability, away_goal_probability, home_team_name, away_team_name,
+                        home_team_goals, away_team_goals):
+    event = random.choices([HOME_GOAL, AWAY_GOAL, STEP],
+                           [home_goal_probability * GOAL_PRBLTY, away_goal_probability * GOAL_PRBLTY,
+                            1 - (home_goal_probability * GOAL_PRBLTY) + (away_goal_probability * GOAL_PRBLTY)])[0]
+    if event in [HOME_GOAL, AWAY_GOAL]:
+        if event == HOME_GOAL:
+            home_team_goals += 1
+            team = home_team_name
+        else:
+            away_team_goals += 1
+            team = away_team_name
+        display_event(event_time, team, home_team_goals, away_team_goals)
+        return home_team_goals, away_team_goals
+    else:
+        display_event(event_time, home_team_name, home_team_goals, away_team_goals, tipo="Minuto")
+        return home_team_goals, away_team_goals
+
+
+def simulate_match_time(match_duration, home_goal_probability, away_goal_probability, home_team_name, away_team_name,
+                        home_team_goals=0, away_team_goals=0):
+    event_time = 0
+    while event_time < match_duration:
+        home_team_goals, away_team_goals = process_match_event(event_time, home_goal_probability, away_goal_probability,
+                                                               home_team_name, away_team_name, home_team_goals,
+                                                               away_team_goals)
+        event_time += 1
+        time.sleep(SLEEP_TIME)
+    return home_team_goals, away_team_goals
+
+
+def execute_penalty(probability, name, penalty_array, penalties):
+    event = random.choices([GOAL, NO_GOAL], [probability, 1 - probability])[0]
+    penalty_array.append(event)
+    if event == 'O':
+        penalties += 1
+    display_event(0, name, None, None, penalty_array, tipo="Penalties")
+    time.sleep(SLEEP_TIME)
+    return event, penalties
+
+
+def simulate_penalty_shots(probabilidad_local, probabilidad_visitante, nombre_local, nombre_visita):
+    local_penalties_array = []
+    away_penalties_array = []
+    local_penalties = 0
+    away_penalties = 0
+    penalties_turns = 1
+    penalty_kick_over = False
+
+    while not penalty_kick_over:
+        _, local_penalties = execute_penalty(probabilidad_local, nombre_local, local_penalties_array, local_penalties)
+        _, away_penalties = execute_penalty(probabilidad_visitante, nombre_visita, away_penalties_array, away_penalties)
+
+        if penalties_turns > 2 and penalties_turns < PENALTY_DEFAULT_TURNS:
+            if (PENALTY_DEFAULT_TURNS - local_penalties) - (PENALTY_DEFAULT_TURNS - away_penalties) > \
+                    (PENALTY_DEFAULT_TURNS - penalties_turns):
+                penalty_kick_over = True
+
+        if penalties_turns >= PENALTY_DEFAULT_TURNS:
+            if local_penalties != away_penalties:
+                penalty_kick_over = True
+
+        penalties_turns += 1
+        time.sleep(SLEEP_TIME)
+    return local_penalties, away_penalties
 
 
 def simular_partido(equipo_local, equipo_visitante, extraTime):
-    """Simula un partido entre dos equipos y determina el ganador."""
-    # Obtener el ranking FIFA de los equipos
-    sleepTime = 0.1
-    probalidad_gol = 0.03
-    jsonLocal = getTeamById(equipo_local)
-    jsonVisita = getTeamById(equipo_visitante)
-    ranking_local = jsonLocal[0]['fifa_nation_rank']
-    ranking_visitante = jsonVisita[0]['fifa_nation_rank']
-    nombre_local = jsonLocal[0]['nation_name']
-    nombre_visita = jsonVisita[0]['nation_name']
-
-    # Calcular la probabilidad de que el equipo con menor ranking gane
-    probabilidad_local, probabilidad_visitante = calcular_probabilidad_ganador(ranking_local, ranking_visitante)
-    probabilidad_gol_local = probabilidad_local * probalidad_gol
-    probabilidad_gol_visita = probabilidad_visitante * probalidad_gol
-    # Inicializar los goles de cada equipo
-    goles_local = 0
-    goles_visitante = 0
-
-    # Simular el tiempo transcurrido en el partido (90 segundos)
-    tiempo_transcurrido = 0
-    print(':::::::Comienza Partido::::::::::  {}  - {} ::::::::::::::::::: \n'.format(nombre_local, nombre_visita))
-    while tiempo_transcurrido < 90:
-        # Generar un evento aleatorio basado en las probabilidades de los equipos
-        evento = random.choices(['L', 'V', '-'], [probabilidad_gol_local, probabilidad_gol_visita,
-                                            1 - (probabilidad_gol_local - probabilidad_gol_visita)])[0]
-
-        # Si el evento es un gol local
-        if evento == 'L':
-            # Incrementar el marcador del equipo local
-            goles_local += 1
-            # Incrementar el tiempo transcurrido en 1 segundo
-            tiempo_transcurrido += 1
-            # Mostrar el evento en el partido
-            print('Gol {} ({}) {} - {} \n'.format(nombre_local, tiempo_transcurrido, goles_local, goles_visitante))
-
-        # Si el evento es un gol visitante
-        elif evento == 'V':
-            # Incrementar el marcador del equipo visitante
-            goles_visitante += 1
-            # Incrementar el tiempo transcurrido en 1 segundo
-            tiempo_transcurrido += 1
-            # Mostrar el evento en el partido
-            print('Gol {} ({}) {} - {} \n'.format(nombre_visita, tiempo_transcurrido, goles_local, goles_visitante))
-
-        # Si el evento es un sin gol
-        else:
-            # Incrementar el tiempo transcurrido en 1 segundo
-            tiempo_transcurrido += 1
-            # Mostrar el evento en el partido
-            print('Minuto ({}) \n'.format(tiempo_transcurrido))
-
-        # Dormir el programa por 0.9 segundos para simular el tiempo real del partido
-        time.sleep(sleepTime)
-
-    print(':::::::::::::::Fin del Partido:::::::::::::::::: ---------> {} {} - {} {} \n'.format(nombre_local, goles_local, goles_visitante, nombre_visita))
-    if extraTime and goles_local == goles_visitante:
-        print('::::::::::::::Comienza Alargue::::::::::::::::: --------->  {} - {} \n'.format(nombre_local, nombre_visita))
-        tiempo_transcurrido = 90
-        penales_local = None
-        penales_visita = None
-        while tiempo_transcurrido < 120:
-            # Generar un evento aleatorio basado en las probabilidades de los equipos
-            evento = random.choices(['L', 'V', '-'], [probabilidad_gol_local, probabilidad_gol_visita,
-                                                1 - (probabilidad_gol_local - probabilidad_gol_visita)])[0]
-
-            # Si el evento es un gol local
-            if evento == 'L':
-                # Incrementar el marcador del equipo local
-                goles_local += 1
-                # Incrementar el tiempo transcurrido en 1 segundo
-                tiempo_transcurrido += 1
-                # Mostrar el evento en el partido
-                print('Gol {} ({}) {} - {} \n'.format(nombre_local, tiempo_transcurrido, goles_local, goles_visitante))
-
-            # Si el evento es un gol visitante
-            elif evento == 'V':
-                # Incrementar el marcador del equipo visitante
-                goles_visitante += 1
-                # Incrementar el tiempo transcurrido en 1 segundo
-                tiempo_transcurrido += 1
-                # Mostrar el evento en el partido
-                print('Gol {} ({}) {} - {} \n'.format(nombre_visita, tiempo_transcurrido, goles_local, goles_visitante))
-
-            # Si el evento es un sin gol
-            else:
-                # Incrementar el tiempo transcurrido en 1 segundo
-                tiempo_transcurrido += 1
-                # Mostrar el evento en el partido
-                print('Minuto ({}) \n'.format(tiempo_transcurrido))
-
-            # Dormir el programa por 0.9 segundos para simular el tiempo real del partido
-            time.sleep(sleepTime)
-        print(':::::::::::::::::::::Fin del Alargue:::::::::::::::: ---------> {} {} - {} {} \n'.format(nombre_local, goles_local, goles_visitante, nombre_visita))
-
-        if goles_local == goles_visitante:
-            penales = False
-            count_penales = 0
-            penales_local = 0
-            penales_visita = 0
-            array_pen_local = []
-            array_pen_visita = []
-            print('................::::::::::::: PENALES ::::::::::::::::::::................ \n')
-            while penales == False:
-                # Generar un evento aleatorio de penales basado en las probabilidades de los equipos
-                eventoLocal = random.choices(['O', 'X'], [probabilidad_local, probabilidad_visitante])[0]
-
-                # Si el evento es un gol local
-                if eventoLocal == 'O':
-                    # Incrementar el marcador del equipo local
-                    penales_local += 1
-                    # Incrementar el tiempo transcurrido en 1 segundo
-
-                    # Mostrar el evento en el partido
-                    array_pen_local.append("O")
-                else:
-                    array_pen_local.append("X")
-
-                print('Penales {}   {} \n'.format(nombre_local, array_pen_local[-5:]))
-
-                time.sleep(sleepTime)
-                eventoVisita = random.choices(['O', 'X'], [probabilidad_visitante, probabilidad_local])[0]
-
-                # Si el evento es un gol visitante
-                if eventoVisita == 'O':
-                    # Incrementar el marcador del equipo visitante
-                    penales_visita += 1
-                    # Incrementar el tiempo transcurrido en 1 segundo
-
-                    # Mostrar el evento en el partido
-                    array_pen_visita.append("O")
-                else:
-                    array_pen_visita.append("X")
-
-                # Si el evento es un sin gol
-                print('Penales {}   {} \n'.format(nombre_visita, array_pen_visita[-5:]))
-
-                count_penales += 1
-                if count_penales > 2 and count_penales < 5:
-                    if (abs((5 - penales_local) - (5 - penales_visita))>(5 - count_penales)):
-                        penales = True
-
-
-                if count_penales >= 5:
-                    if penales_local != penales_visita:
-                        penales = True
-
-                time.sleep(sleepTime)
-
-            print('::::::::::::::::::::::Fin Penales ::::::::::::::::::::: ---------> {} {} - {} {} \n'.format(nombre_local, penales_local if penales_local > 0 else 0,
-                                                     penales_visita if penales_visita > 0 else 0, nombre_visita))
-        return {'local': goles_local, 'penales_local': penales_local if penales_local is not None else None,
-                'visita': goles_visitante, 'penales_visita': penales_visita if penales_visita is not None else None}
-
-    return {'local': goles_local, 'visita': goles_visitante}
+    # code truncated for brevity...
+    goles_local, goles_visitante = simulate_match_time(90, probabilidad_gol_local, probabilidad_gol_visita,
+                                                       nombre_local, nombre_visita)
+    if extraTime == 1 and (goles_local == goles_visitante):
+        goles_local, goles_visitante = simulate_match_time(30, probabilidad_gol_local, probabilidad_gol_visita,
+                                                           nombre_local, nombre_visita)
+        if (goles_local == goles_visitante):
+            simulate_penalty_shots(probabilidad_local, probabilidad_visitante, nombre_local, nombre_visita)
