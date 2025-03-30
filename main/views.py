@@ -7,78 +7,85 @@ from django.contrib.staticfiles import finders
 from html2image import Html2Image
 
 from europa.views import firstround
-from utils import getTeamsJSON, getQualyPlaces, getRoundPlaces, saveMatchResult, saveExtraTimeResult, getTeamById
+from utils import getTeamsJSON, getQualyPlaces, get_round_stages, saveMatchResult, saveExtraTimeResult, getTeamById
 from fixtures import getZoneData
 from standings import getStandings
-from MatchSimulator import simular_partido
+from MatchSimulator import simulate_match
 from worldcup.views import playoff
 from oceania.views import finalround
 
 
 # Create your views here.
 def index(request):
-    context = {}
-    teams = getTeamsJSON()
-    context['teams'] = teams
-    return render(request, 'main/index.html', context)
+    return render(request, 'main/index.html', {'teams': getTeamsJSON()})
 
 
-def teamListApi(request):
+def get_team_list(request):
     if request.method == 'GET':
-        data = getTeamsJSON()
+        try:
+            data = getTeamsJSON()
+        except Exception as e:
+            return JsonResponse({'error': str(e)}, status=500)
+
         return JsonResponse(data, safe=False)
 
 
 def fixtureZone(request, conf, round, zone):
-    context = {}
     fixtureDict = getZoneData(zone, conf, round)
-    context['fixture'] = fixtureDict['fixtures']
-    context['conf'] = conf
-    context['round'] = round
-    context['zone'] = zone
+    context = {
+        'fixture': fixtureDict['fixtures'],
+        'conf': conf,
+        'round': round,
+        'zone': zone
+    }
     return render(request, 'popups/fixtures/fixture.html', context)
+
+
+def bundle_teams(standings, placesList):
+    length = len(standings) + 1
+    bundled_teams = zip(standings, range(1, length), placesList)
+    return bundled_teams
 
 
 def standingsZone(request, conf, round, zone):
     context = {}
     placesDict = getQualyPlaces(conf)
-    placesList = getRoundPlaces(placesDict, round)
+    placesList = get_round_stages(placesDict, round)
     standings = getStandings(conf, round, zone)
-    lenght = len(standings) + 1
-    context['teams'] = zip(standings, range(1, lenght), placesList)
-
+    context['teams'] = bundle_teams(standings, placesList)
     return render(request, 'popups/standings/standings.html', context)
 
 
-def sim_match(request, fixture, match, homeId, awayId, conf, round, zone, extraTime=0,singleLoad=0):
-    extra = False if extraTime == 0 else True
-
-    context = {}
-    resultado = simular_partido(homeId, awayId, extra)
-    if extraTime == 0:
-        saveMatchResult(fixture, match, resultado['local'], resultado['visita'], conf, round, zone)
-    else:
-        homeTeam = getTeamById(homeId)
-        awayTeam = getTeamById(awayId)
-        saveExtraTimeResult(fixture, match, resultado['local'], resultado['visita'],
-                            resultado['penales_local'] if resultado.get('penales_local') else 0,
-                            resultado['penales_visita'] if resultado.get('penales_visita') else 0, conf, round, zone,
-                            homeTeam[0], awayTeam[0])
+def sim_match(request, match_info, conf, round, zone, extraTime=0, singleLoad=0):
+    resultado = simulate_match(match_info["homeId"], match_info["awayId"], extraTime != 0)
+    handle_match_results(match_info, resultado, conf, round, zone, extraTime != 0)
     if singleLoad == 1:
-        return realoadMatches(request,zone, conf, round,fixture,match)
+        return realoadMatches(request, zone, conf, round, match_info["fixture"], match_info["match"])
     fixtureDict = getZoneData(zone, conf, round)
-    context['fixture'] = fixtureDict['fixtures']
-    context['conf'] = conf
-    context['round'] = round
-    context['zone'] = zone
+    return handle_match_configuration(request, fixtureDict, match_info["fixture"], conf, round, zone)
 
-    if fixture == 'first' or fixture == 'final':
-        return playoff(request)
-    elif fixture == 'wildCard':
-        return firstround(request)
-    elif fixture == 'mainDraw':
-        return finalround(request)
-    return fixtureZone(request,conf,round,zone)
+
+def handle_match_results(match_info, resultado, conf, round, zone, is_extra):
+    if not is_extra:
+        saveMatchResult(match_info["fixture"], match_info["match"], resultado['local'], resultado['visita'], conf,
+                        round, zone)
+    else:
+        homeTeam = getTeamById(match_info["homeId"])
+        awayTeam = getTeamById(match_info["awayId"])
+        saveExtraTimeResult(match_info["fixture"], match_info["match"], resultado['local'], resultado['visita'],
+                            resultado.get('penales_local', 0),
+                            resultado.get('penales_visita', 0), conf, round, zone,
+                            homeTeam[0], awayTeam[0])
+
+
+def handle_match_configuration(request, fixture, conf, round, zone):
+    responses = {
+        'first': playoff,
+        'final': playoff,
+        'wildCard': firstround,
+        'mainDraw': finalround
+    }
+    return responses.get(fixture, fixtureZone)(request, conf, round, zone)
 
 
 def downloadDraw(request):
@@ -88,10 +95,11 @@ def downloadDraw(request):
         body = request.body
         return FileResponse(html2png.screenshot(html_str=body, css_file=baseCSS, save_as='worldCup.png'))
 
-def realoadMatches(request,zone,conf,round,fixture,match):
-    context = {}
-    context['match'] = getMatchData(getZoneData(zone, conf, round), fixture, match)
-    return render(request,'popups/fixtures/match.html',context)
+def render_match_data(request, zone_id, config, round_id, fixture_id, match_id):
+    zone_data = getZoneData(zone_id, config, round_id)
+    match_data = getMatchData(zone_data, fixture_id, match_id)
+    context = {'match': match_data}
+    return render(request, 'popups/fixtures/match.html', context)
 def getMatchData(fixtureDict, fixture, match):
     return fixtureDict['fixtures']['fixture'+str(fixture)]['match'+str(match)]
 

@@ -3,8 +3,8 @@ from . import views
 
 urlpatterns = [
     path('maindraw/', views.maindraw, name='worldcup.maindraw'),
-    path('maindraw/draw/', views.maindrawButton, name='worldcup.draw'),
+    path('maindraw/draw/', views.draw_main_button, name='worldcup.draw'),
     path('playoff/', views.playoff, name='worldcup.playoff'),
-    path('playoff/draw', views.playoffButton, name='worldcup.playoff.draw'),
+    path('playoff/draw', views.playoffDraw, name='worldcup.playoff.draw'),
 
 ]
