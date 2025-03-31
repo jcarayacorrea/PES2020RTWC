@@ -1,0 +1,13 @@
+<div class="team-card-sm">
+    <div class="row">
+        {% resultbghome match as homeborder %}
+        <div class="flag-config ">
+            <img src="{{ match.homeTeam.team.image_flag }}"
+                 class="img-card {{ homeborder }}">
+        </div>
+        <div class="name-config-sm">
+            {{ match.homeTeam.team.nation_iso_code }}
+        </div>
+
+    </div>
+</div>

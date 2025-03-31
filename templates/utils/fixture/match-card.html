@@ -1,17 +1,5 @@
 <div class="col-4">
-    <div class="team-card-sm">
-        <div class="row">
-            {% resultbghome match as homeborder %}
-            <div class="flag-config ">
-                <img src="{{ match.homeTeam.team.image_flag }}"
-                     class="img-card {{ homeborder }}">
-            </div>
-            <div class="name-config-sm">
-                {{ match.homeTeam.team.nation_iso_code }}
-            </div>
-
-        </div>
-    </div>
+  {% include "utils/fixture/home-card.html" with match=match %}
 </div>
 
 <div class="col-scr" data-loading-aria-busy data-loading>
@@ -32,18 +20,7 @@
 
 
 <div class="col-4">
-    <div class="team-card-sm">
-        <div class="row">
-            {% resultbgaway match as awayborder %}
-            <div class="flag-config">
-                <img src="{{ match.awayTeam.team.image_flag }}"
-                     class="img-card {{ awayborder }}">
-            </div>
-            <div class="name-config-sm">
-                {{ match.awayTeam.team.nation_iso_code }}
-            </div>
-        </div>
-    </div>
+  {% include "utils/fixture/away-card.html" with match=match %}
 </div>
 
 <div class="col_im">

@@ -1,0 +1,12 @@
+  <div class="team-card-sm">
+        <div class="row">
+            {% resultbgaway match as awayborder %}
+            <div class="flag-config">
+                <img src="{{ match.awayTeam.team.image_flag }}"
+                     class="img-card {{ awayborder }}">
+            </div>
+            <div class="name-config-sm">
+                {{ match.awayTeam.team.nation_iso_code }}
+            </div>
+        </div>
+    </div>

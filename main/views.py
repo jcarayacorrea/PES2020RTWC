@@ -99,7 +99,7 @@ def render_match_data(request, zone_id, config, round_id, fixture_id, match_id):
     zone_data = getZoneData(zone_id, config, round_id)
     match_data = getMatchData(zone_data, fixture_id, match_id)
     context = {'match': match_data}
-    return render(request, 'popups/fixtures/match.html', context)
+    return render(request, 'popups/fixtures/../templates/utils/fixture/match-card.html', context)
 def getMatchData(fixtureDict, fixture, match):
     return fixtureDict['fixtures']['fixture'+str(fixture)]['match'+str(match)]
 
