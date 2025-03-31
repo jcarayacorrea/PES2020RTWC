@@ -163,3 +163,7 @@ def rstonemtchaway(dict):
             else:
                 return 'lose'
     return ''
+
+@register.simple_tag
+def concat_string(*args):
+    return ''.join(args)

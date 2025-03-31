@@ -20,19 +20,7 @@
     <div id="section">
         <div class="row ">
             <div class="col-md-3">
-                <div class="container-card">
-                    <div class="soccer-card-header ">Teams</div>
-                    <div class="soccer-card-body overflow-scroll">
-                        <div class="row g-1 ">
-                            <div class="offset-md-1">
-                                {% for team in teams %}
-                                    {% include "utils/team-card.html" with team=team %}
-                                {% endfor %}
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
+               {% include "utils/list/team-list.html" with teams=teams %}
             </div>
             <div class="col-md-8">
                 <div class="container-card">
@@ -40,13 +28,8 @@
 
                     <div class="soccer-card-body overflow-scroll">
 
-                        <div class="loading-grid-playoff" data-loading-aria-busy data-loading>
-                            <div class="display-6">Sorteando</div>
-                            <div class="spinner-grow text-info"></div>
-                            <div class="spinner-grow text-info"></div>
-                            <div class="spinner-grow text-info"></div>
-                            <div class="spinner-grow text-info"></div>
-                            <div class="spinner-grow text-info"></div>
+                         <div class="loading-grid" data-loading-aria-busy data-loading>
+                            {% include "utils/loader/loader.html" %}
 
                         </div>
 

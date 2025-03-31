@@ -12,7 +12,7 @@ from functools import reduce
 def maindraw(request):
     teams = getTeamsMainDraw()
     confederations = ['CONMEBOL', 'UEFA', 'CONCACAF', 'OFC', 'CAF', 'AFC']
-    context = {'teams': teams, 'confederations': confederations}
+    context = {'teams': teams, 'confederations': confederations, 'range': ['1','2','3','4']}
 
     return render(request, 'worldcup/maindraw.html', context)
 
@@ -33,8 +33,8 @@ def playoff(request):
 def shuffle_teams_and_assign_to_context(zones):
     context = {}
     for i, zone in enumerate(zones):
-        random.shuffle(zone)
-        context[f'zone{chr(65 + i)}'] = zone
+        random.shuffle(zones.get(zone))
+        context[f'zone{chr(65 + i)}'] = zones.get(zone)
     return context
 
 
