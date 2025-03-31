@@ -1,0 +1,16 @@
+<div class="team-card-sm">
+    <div class="row ">
+        <div class="flag-config-sm">
+            {% rstonemtchaway match as awayborder %}
+            <img src="{{ match.awayTeam.team.image_flag }}"
+                 class="img-card {{ awayborder }}">
+        </div>
+        <div class="name-config-sm">
+            {{ match.awayTeam.team.nation_iso_code }}
+        </div>
+        <div class="goal">
+            {{ match.awayTeam.goals|default_if_none:"?" }}
+            ({{ match.awayTeam.penalties|default_if_none:"?" }})
+        </div>
+    </div>
+</div>

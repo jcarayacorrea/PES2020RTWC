@@ -1,0 +1,46 @@
+<div class="row">
+    <div class="col-3 w-75">
+        {% if matchNum is not None %}
+            <h6 class="h-6 text-center"> Match {{ matchNum }}</h6>
+        {% endif %}
+        {% if match is None %}
+            {% with i=1 %}
+                {% include "utils/playoff/team-card-empty.html" %}
+            {% endwith %}
+        {% else %}
+            <div class="col">
+                {% include "utils/playoff/home-card.html" %}
+            </div>
+        {% endif %}
+        {% if match is None %}
+            {% with i=2 %}
+                {% include "utils/playoff/team-card-empty.html" %}
+            {% endwith %}
+        {% else %}
+            <div class="col">
+                {% include "utils/playoff/away-card.html" %}
+
+            </div>
+
+        {% endif %}
+    </div>
+    <div class="col-1 align-self-center">
+        {% with homeId=match1homeTeam.team.id awayId=match.awayTeam.team.id %}
+            {% url 'one_match' phase 1 homeId awayId  'FIFA'  'playoff' 'P' 1 as match %}
+            <button type="button" class="btn btn-primary"
+                    hx-get="{{ match }}"
+                    hx-trigger="click"
+                    hx-target="body"
+                    data-loading-disable
+                    {% if match.played is True %}
+                    disabled {% endif %}>
+                <div data-loading-aria-busy data-loading>
+                    <div class="spinner-border spinner-border-sm text-light "></div>
+                </div>
+                <div data-loading-aria-busy data-loading-class="d-none">
+                    <i class="fa-regular fa-futbol"></i>
+                </div>
+            </button>
+        {% endwith %}
+    </div>
+</div>
