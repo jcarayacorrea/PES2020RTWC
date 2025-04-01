@@ -1,15 +1,20 @@
 <div class="group-card">
     <div class="soccer-card-header">Group {{ group }}</div>
     <div class="soccer-card-body offset-md-2">
-        {% if zone is None %}            
+        {% if zone is None %}
             {% for i in iterator %}
                 {% concat_string group i as position %}
-            	{% include "utils/groups/group-team-card.html" with group=group grouppos=position %}
-            {% endfor %}             
+                {% include "utils/groups/group-team-card.html" with group=group grouppos=position %}
+            {% endfor %}
         {% else %}
             {% for team in zone %}
                 {% include "utils/groups/group-team-card.html" with group=group team=team %}
             {% endfor %}
         {% endif %}
     </div>
+    {% if buttons %}
+        <div class="row p-1">
+            {% include "utils/groups/buttons.html" with conf=conf phase=phase group=group %}
+        </div>
+    {% endif %}
 </div>

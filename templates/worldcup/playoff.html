@@ -20,7 +20,9 @@
     <div id="section">
         <div class="row ">
             <div class="col-md-3">
-               {% include "utils/list/team-list.html" with teams=teams %}
+                <div class="container-card">
+                    {% include "utils/list/team-list.html" with teams=teams %}
+                </div>
             </div>
             <div class="col-md-8">
                 <div class="container-card">
@@ -28,7 +30,7 @@
 
                     <div class="soccer-card-body overflow-scroll">
 
-                         <div class="loading-grid" data-loading-aria-busy data-loading>
+                        <div class="loading-grid" data-loading-aria-busy data-loading>
                             {% include "utils/loader/loader.html" %}
 
                         </div>

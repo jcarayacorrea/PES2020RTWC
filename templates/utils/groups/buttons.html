@@ -1,0 +1,18 @@
+<div class="col g-1 offset-md-4">
+    {% url 'zones.fixtures' conf phase group as fixtures %}
+    <button type="button" class="btn btn-primary"
+            hx-get="{{ fixtures }} "
+            hx-trigger="click" hx-target="#schedule-content"
+            data-bs-toggle="modal"
+            data-bs-target="#schedule">
+        <i class="fa-regular fa-calendar"></i>
+    </button>
+    {% url 'zones.standings' conf phase group as standings %}
+    <button type="button" class="btn btn-primary"
+            hx-get="{{ standings }}"
+            hx-trigger="click" hx-target="#stats-content"
+            data-bs-toggle="modal"
+            data-bs-target="#standings">
+        <i class="fa-solid fa-ranking-star"></i>
+    </button>
+</div>
