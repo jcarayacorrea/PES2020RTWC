@@ -150,37 +150,25 @@ def saveMatchResult(fixture, match, localGoals, awayGoals, conf, round, zone):
     update_match_results(fixture, match, localGoals, awayGoals)
 
 
-def create_match_spec(match_num, localGoals, awayGoals, localPenaltys, awayPenaltys):
+def create_match_spec(phase, match_num, localGoals, awayGoals, localPenaltys, awayPenaltys):
     return {
-        f'fixtures.first.match{match_num}.homeTeam.goals': localGoals,
-        f'fixtures.first.match{match_num}.awayTeam.goals': awayGoals,
-        f'fixtures.first.match{match_num}.homeTeam.penalties': localPenaltys,
-        f'fixtures.first.match{match_num}.awayTeam.penalties': awayPenaltys,
-        f'fixtures.first.match{match_num}.homeTeam.result': localGoals > awayGoals or (
+        f'fixtures.{phase}.match{match_num}.homeTeam.goals': localGoals,
+        f'fixtures.{phase}.match{match_num}.awayTeam.goals': awayGoals,
+        f'fixtures.{phase}.match{match_num}.homeTeam.penalties': localPenaltys,
+        f'fixtures.{phase}.match{match_num}.awayTeam.penalties': awayPenaltys,
+        f'fixtures.{phase}.match{match_num}.homeTeam.result': localGoals > awayGoals or (
                 localGoals == awayGoals and localPenaltys > awayPenaltys),
-        f'fixtures.first.match{match_num}.awayTeam.result': localGoals < awayGoals or (
+        f'fixtures.{phase}.match{match_num}.awayTeam.result': localGoals < awayGoals or (
                 localGoals == awayGoals and localPenaltys < awayPenaltys),
-        f'fixtures.first.match{match_num}.played': True
+        f'fixtures.{phase}.match{match_num}.played': True
     }
 
 
-def create_final_match_spec(match_num, localGoals, awayGoals, localPenaltys, homeTeam, awayTeam):
-    return {
-        f'fixtures.final.match{match_num}.awayTeam.team': homeTeam if localGoals > awayGoals or (
-                localGoals == awayGoals and localPenaltys > awayPenaltys) else awayTeam
-    }
-
-
-def saveExtraTimeResult(fixture, match, localGoals, awayGoals, localPenaltys, awayPenaltys, conf, round, zone,
-                        homeTeam=None, awayTeam=None):
+def saveExtraTimeResult(phase, match, localGoals, awayGoals, localPenaltys, awayPenaltys, conf, round, zone):
     db = db_conexion()
-    if fixture == 'first':
-        match_spec = create_match_spec(match, localGoals, awayGoals, localPenaltys, awayPenaltys)
-        final_match_spec = create_final_match_spec(match, localGoals, awayGoals, localPenaltys, homeTeam, awayTeam)
-        db.get_collection('Fixtures').update_many(
-            {'conf': conf, 'round': round, 'zone': zone}, {'$set': match_spec})
-        db.get_collection('Fixtures').update_many(
-            {'conf': conf, 'round': round, 'zone': zone}, {'$set': final_match_spec})
+    final_match_spec = create_match_spec(phase, match, localGoals, awayGoals, localPenaltys, awayPenaltys)
+    db.get_collection('Fixtures').update_many(
+        {'conf': conf, 'round': round, 'zone': zone}, {'$set': final_match_spec})
 
 
 def is_difference_in_range(local_score, visitor_score, range_start, range_end):

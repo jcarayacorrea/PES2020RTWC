@@ -24,11 +24,11 @@
 
         {% endif %}
     </div>
-    <div class="col-1 align-self-center">
-        {% with homeId=match1homeTeam.team.id awayId=match.awayTeam.team.id %}
-            {% url 'one_match' phase 1 homeId awayId  'FIFA'  'playoff' 'P' 1 as match %}
+    <div class="playoff-button">
+        {% with homeId=match.homeTeam.team.id awayId=match.awayTeam.team.id %}
+            {% url 'one_match' phase matchNum homeId awayId  'FIFA'  'playoff' 'P' 1 as matchSim %}
             <button type="button" class="btn btn-primary"
-                    hx-get="{{ match }}"
+                    hx-get="{{ matchSim }}"
                     hx-trigger="click"
                     hx-target="body"
                     data-loading-disable

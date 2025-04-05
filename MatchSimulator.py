@@ -75,8 +75,8 @@ def process_match_event(event_time, home_goal_probability, away_goal_probability
 
 def simulate_match_time(match_duration, home_goal_probability, away_goal_probability, home_team_name, away_team_name,
                         home_team_goals=0, away_team_goals=0):
-    event_time = 0
-    while event_time < match_duration:
+    event_time = 1
+    while event_time <= match_duration:
         home_team_goals, away_team_goals = process_match_event(event_time, home_goal_probability, away_goal_probability,
                                                                home_team_name, away_team_name, home_team_goals,
                                                                away_team_goals)
@@ -102,6 +102,7 @@ def simulate_penalty_shots(probabilidad_local, probabilidad_visitante, nombre_lo
     away_penalties = 0
     penalties_turns = 1
     penalty_kick_over = False
+    print(f" PENALES {nombre_local} - {nombre_visita}")
 
     while not penalty_kick_over:
         _, local_penalties = execute_penalty(probabilidad_local, nombre_local, local_penalties_array, local_penalties)
@@ -124,23 +125,36 @@ def simulate_penalty_shots(probabilidad_local, probabilidad_visitante, nombre_lo
 def simulate_match(home_team_id, away_team_id, is_extra_time):
     home_team = getTeamById(home_team_id)
     away_team = getTeamById(away_team_id)
+    home_nation_name = home_team[0]['nation_name']
+    away_nation_name = away_team[0]['nation_name']
+    home_penalties = None
+    away_penalties = None
 
-    home_probability, away_probability = calculate_winner_probability(home_team['fifa_nation_rank'],
-                                                                      away_team['fifa_nation_rank'])
-    home_goals, away_goals = simulate_match_time(90, home_probability, away_probability, home_team['nation_name'],
-                                                 away_team['nation_name'])
+    home_probability, away_probability = calculate_winner_probability(home_team[0]['fifa_nation_rank'],
+                                                                      away_team[0]['fifa_nation_rank'])
+    print(f' INICIO DE PARTIDO {home_nation_name} - {away_nation_name}'.center(50, ':'))
+    home_goals, away_goals = simulate_match_time(90, home_probability, away_probability, home_team[0]['nation_name'],
+                                                 away_team[0]['nation_name'])
 
     is_draw = home_goals == away_goals
 
     if is_extra_time and is_draw:
-        home_goals, away_goals = simulate_extra_match(home_probability, away_probability, home_team, away_team,
-                                                      home_goals, away_goals)
+        print(f' TIEMPO EXTRA {home_nation_name} - {away_nation_name}'.center(100, ':'))
+        home_goals, away_goals, home_penalties, away_penalties = simulate_extra_match(home_probability,
+                                                                                      away_probability, home_team,
+                                                                                      away_team,
+                                                                                      home_goals, away_goals)
+    print(
+        f"FIN PARTIDO {home_nation_name} {home_goals} [{home_penalties}] - {away_nation_name} {away_goals} [{away_penalties}]".center(
+            100, ':'))
+    return {'local': home_goals, 'visita': away_goals, 'penales_local': home_penalties,
+            'penales_visita': away_penalties}
 
 
 def simulate_extra_match(home_probability, away_probability, home_team, away_team, home_goals, away_goals):
-    home_goals, away_goals = simulate_match_time(30, home_probability, away_probability, home_team['nation_name'],
-                                                 away_team['nation_name'])
+    home_goals, away_goals = simulate_match_time(30, home_probability, away_probability, home_team[0]['nation_name'],
+                                                 away_team[0]['nation_name'])
     return home_goals, away_goals if home_goals != away_goals else simulate_penalty_shots(home_probability,
                                                                                           away_probability,
-                                                                                          home_team['nation_name'],
-                                                                                          away_team['nation_name'])
+                                                                                          home_team[0]['nation_name'],
+                                                                                          away_team[0]['nation_name'])

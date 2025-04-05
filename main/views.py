@@ -56,11 +56,12 @@ def standingsZone(request, conf, round, zone):
     return render(request, 'popups/standings/standings.html', context)
 
 
-def sim_match(request, match_info, conf, round, zone, extraTime=0, singleLoad=0):
-    resultado = simulate_match(match_info["homeId"], match_info["awayId"], extraTime != 0)
+def sim_match(request, fixture, match, homeid, awayid, conf, round, zone, extraTime=0, singleLoad=0):
+    match_info = {'fixture': fixture, 'match': match, 'homeid': homeid, 'awayid': awayid};
+    resultado = simulate_match(homeid, awayid, extraTime != 0)
     handle_match_results(match_info, resultado, conf, round, zone, extraTime != 0)
     if singleLoad == 1:
-        return realoadMatches(request, zone, conf, round, match_info["fixture"], match_info["match"])
+        return render_match_data(request, zone, conf, round, match_info["fixture"], match_info["match"])
     fixtureDict = getZoneData(zone, conf, round)
     return handle_match_configuration(request, fixtureDict, match_info["fixture"], conf, round, zone)
 
@@ -70,8 +71,8 @@ def handle_match_results(match_info, resultado, conf, round, zone, is_extra):
         saveMatchResult(match_info["fixture"], match_info["match"], resultado['local'], resultado['visita'], conf,
                         round, zone)
     else:
-        homeTeam = getTeamById(match_info["homeId"])
-        awayTeam = getTeamById(match_info["awayId"])
+        homeTeam = getTeamById(match_info["homeid"])
+        awayTeam = getTeamById(match_info["awayid"])
         saveExtraTimeResult(match_info["fixture"], match_info["match"], resultado['local'], resultado['visita'],
                             resultado.get('penales_local', 0),
                             resultado.get('penales_visita', 0), conf, round, zone,
@@ -88,20 +89,23 @@ def handle_match_configuration(request, fixture, conf, round, zone):
     return responses.get(fixture, fixtureZone)(request, conf, round, zone)
 
 
-def downloadDraw(request):
+def downloadDraw(request, namefile):
     html2png = Html2Image()
     baseCSS = finders.find('base.scss')
     if request.method == 'POST':
         body = request.body
-        return FileResponse(html2png.screenshot(html_str=body, css_file=baseCSS, save_as='worldCup.png'))
+        return FileResponse(html2png.screenshot(html_str=body, css_file=baseCSS, save_as=f'{namefile}.png'))
+
 
 def render_match_data(request, zone_id, config, round_id, fixture_id, match_id):
     zone_data = getZoneData(zone_id, config, round_id)
     match_data = getMatchData(zone_data, fixture_id, match_id)
     context = {'match': match_data}
-    return render(request, 'popups/fixtures/../templates/utils/fixture/match-card.html', context)
+    return render(request, 'utils/fixture/match-card.html', context)
+
+
 def getMatchData(fixtureDict, fixture, match):
-    return fixtureDict['fixtures']['fixture'+str(fixture)]['match'+str(match)]
+    return fixtureDict['fixtures']['fixture' + str(fixture)]['match' + str(match)]
 
 
 @register.filter
@@ -119,50 +123,52 @@ def enableDrawButton(dict, length):
 @register.simple_tag
 def resultbghome(dict):
     if dict['played']:
-            if dict['homeTeam']['result'] is True and dict['awayTeam']['result'] is False:
-                return 'win'
-            elif dict['homeTeam']['result'] is False and dict['awayTeam']['result'] is True:
-                return 'lose'
-            else:
-                return 'draw'
+        if dict['homeTeam']['result'] is True and dict['awayTeam']['result'] is False:
+            return 'win'
+        elif dict['homeTeam']['result'] is False and dict['awayTeam']['result'] is True:
+            return 'lose'
+        else:
+            return 'draw'
     return 'non-played'
-
 
 
 @register.simple_tag
 def resultbgaway(dict):
     if dict['played']:
-            if dict['homeTeam']['result'] is False and dict['awayTeam']['result'] is True:
-                return 'win'
-            elif dict['homeTeam']['result'] is True and dict['awayTeam']['result'] is False:
-                return 'lose'
-            else:
-                return 'draw'
+        if dict['homeTeam']['result'] is False and dict['awayTeam']['result'] is True:
+            return 'win'
+        elif dict['homeTeam']['result'] is True and dict['awayTeam']['result'] is False:
+            return 'lose'
+        else:
+            return 'draw'
     return ''
+
 
 @register.simple_tag
 def rstonemtchhome(dict):
     if dict != '':
         if dict['played']:
             if (dict['homeTeam']['goals'] > dict['awayTeam']['goals']) or (
-                     (dict['homeTeam']['penalties'] is not None) and
+                    (dict['homeTeam']['penalties'] is not None) and
                     (dict['homeTeam']['penalties'] > dict['awayTeam']['penalties'])):
                 return 'win'
             else:
                 return 'lose'
     return ''
 
+
 @register.simple_tag
 def rstonemtchaway(dict):
     if dict != '':
         if dict['played']:
             if (dict['homeTeam']['goals'] < dict['awayTeam']['goals']) or (
-                     (dict['homeTeam']['penalties'] is not None) and
+                    (dict['homeTeam']['penalties'] is not None) and
                     (dict['homeTeam']['penalties'] < dict['awayTeam']['penalties'])):
                 return 'win'
             else:
                 return 'lose'
     return ''
+
 
 @register.simple_tag
 def concat_string(*args):

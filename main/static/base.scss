@@ -316,6 +316,12 @@ h6 {
   width: 3rem;
 }
 
+.playoff-button{
+  @extend .col-1;
+  @extend .align-self-center;
+  margin-top: 1rem;
+}
+
 #rotateOnDiv {
    display: none;
    animation: rotateanimation 250ms infinite;
