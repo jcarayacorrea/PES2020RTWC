@@ -13,8 +13,10 @@
         {% endif %}
     </div>
     {% if buttons %}
+        {% url 'zones.standings' conf round group as url_stand %}
+        {% url 'zones.fixtures' conf round group as url_fixt %}
         <div class="row p-1">
-            {% include "utils/groups/buttons.html" with conf=conf phase=phase group=group %}
+            {% include "utils/groups/buttons.html" with url_standings=url_stand url_fixtures=url_fixt %}
         </div>
     {% endif %}
 </div>

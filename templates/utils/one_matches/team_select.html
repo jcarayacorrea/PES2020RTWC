@@ -1,0 +1,13 @@
+<select name="home" class="form-select"
+        hx-get="{% url 'europa.homewildcard' %}"
+        hx-trigger="change"
+        hx-target="body">
+    <option selected>{{ selected_team }}</option>
+    {% if zone is not None %}
+        {% for team in zone1 %}            
+            <option value="{{ team.id }}">
+                {{ team.nation_name }}
+            </option>
+        {% endfor %}
+    {% endif %}
+</select>

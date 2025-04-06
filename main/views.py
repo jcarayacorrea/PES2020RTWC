@@ -48,11 +48,21 @@ def bundle_teams(standings, placesList):
 
 
 def standingsZone(request, conf, round, zone):
+    """
+    This function is responsible for assembling team standings for a given league round and zone.
+    It fetches qualifying places, round stages, standings and bundles them together for rendering.
+
+    :param request: HttpRequest object
+    :param league: league configuration
+    :param match_round: round of the match
+    :param zone: zone for the standings
+    """
     context = {}
-    placesDict = getQualyPlaces(conf)
-    placesList = get_round_stages(placesDict, round)
+    qualifying_places = getQualyPlaces(conf)
+    round_stages = get_round_stages(qualifying_places, round)
     standings = getStandings(conf, round, zone)
-    context['teams'] = bundle_teams(standings, placesList)
+    context['teams'] = bundle_teams(standings, round_stages)
+    # Render the standings template with the provided context
     return render(request, 'popups/standings/standings.html', context)
 
 

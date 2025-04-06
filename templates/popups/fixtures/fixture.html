@@ -1,13 +1,11 @@
 {% load static %}
 {% block modal %}
-    <div class="fixture-content">
+    <div id="main-fixture" class="fixture-content">
         <div class="modal-header">
             <h3 class="modal-title">Fixtures</h3>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div id="fixtures" class="fixture-body">
-
-
             <div>
                 {% if fixture|getItem:'fixture1' is not None %}
                     <div class="row mb-2">

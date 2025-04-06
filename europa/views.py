@@ -83,20 +83,17 @@ def secondround(request):
 
 
 def firstround(request):
-    context = {}
-    context['teams'] = getTeamsFirstRound(conf_name='UEFA')
-    zone1 = getZoneData('A', 'UEFA', 'first')
-    zone2 = getZoneData('B', 'UEFA', 'first')
-    zoneWC = getZoneData('WC', 'UEFA', 'first')
+    def get_team_data_for_zone(zone, round):
+        zone_data = getZoneData(zone, 'UEFA', round)
+        return zone_data['teams'] if len(zone_data['teams']) == 5 else None
 
-    if len(zone1['teams']) == 5:
-        context['zone1'] = zone1['teams']
-    if len(zone2['teams']) == 5:
-        context['zone2'] = zone2['teams']
-
-
-    context['fixture'] = zoneWC['fixtures']
-
+    context = {
+        'teams': getTeamsFirstRound('UEFA'),
+        'zone1': get_team_data_for_zone('A', 'first'),
+        'zone2': get_team_data_for_zone('B', 'first'),
+        'fixture': getZoneData('WC', 'UEFA', 'first')['fixtures'],
+        'range': ['1', '2', '3', '4','5']
+    }
     return render(request, 'europa/fstround.html', context)
 
 
@@ -112,18 +109,16 @@ def updateProgress(request, id, stage):
     return redirect('europa.teams')
 
 
-def firstRoundButton(request):
+def prepareFirstRoundMatch(request):
     if request.method == 'GET':
         context = {}
-        context['teams'] = getTeamsFirstRound('UEFA')
-        zone1, zone2 = firstRoundDraw(getTeamsFirstRound('UEFA'))
-        random.shuffle(zone1)
-        random.shuffle(zone2)
-        createFixture(zone1, False, 'A', 'UEFA', 'first')
-        createFixture(zone2, False, 'B', 'UEFA', 'first')
-        context['zone1'] = zone1
-        context['zone2'] = zone2
-
+        teams_for_match = getTeamsFirstRound('UEFA')
+        context['teams'] = teams_for_match
+        zones = firstRoundDraw(teams_for_match)
+        for zone_idx, zone in enumerate(zones, start=1):
+            random.shuffle(zone)
+            createFixture(zone, False, chr(ord('A') + zone_idx - 1), 'UEFA', 'first')
+            context[f'zone{zone_idx}'] = zone
         return firstround(request)
 
 
