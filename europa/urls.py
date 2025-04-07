@@ -11,7 +11,7 @@ urlpatterns = [
     path('firstround/', views.firstround, name='europa.firstround'),
     path('homewildcard/', views.setHomeWildCardTeam, name='europa.homewildcard'),
     path('awaywildcard/', views.setAwayWildCardTeam, name='europa.awaywildcard'),
-    path('firstround/draw/', views.prepareFirstRoundMatch, name='europa.firstround.draw'),
+    path('firstround/draw/', views.firstRoundButton, name='europa.firstround.draw'),
     path('teamlist/', views.teams, name='europa.teams'),
     path('teamlist/updateProgress/<str:id>/<str:stage>', views.updateProgress, name='europa.updateProgress')
 ]

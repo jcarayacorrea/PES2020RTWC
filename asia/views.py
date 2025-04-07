@@ -3,7 +3,7 @@ import random
 from django.shortcuts import render, redirect
 from utils import db_conexion, getTeams, updateStage, getTeamsFirstRound, getTeamsSecondRound, getTeamsThirdRound, \
     getTeamsFinalRound
-from fixtures import createFixture, getZoneData
+from fixtures import create_fixture, getZoneData
 
 
 # Create your views here.

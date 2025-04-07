@@ -1,178 +1,87 @@
 from utils import db_conexion
 
+def create_match(home_team, away_team):
+    return {
+        "homeTeam": {"team": home_team, "goals": None, "result": False},
+        "awayTeam": {"team": away_team, "goals": None, "result": False},
+        "played": False
+    }
 
-def createFixture(teams, homeAway, zone, conf, round):
-    fixtures = {}
+
+def create_fixture(teams, home_away_indicator, zone, conf, round):
+    matches_schedule = {}
     match len(teams):
         case 3:
-            if homeAway == True:
-                fixtures = {"fixture1": {"match1": {"homeTeam": {"team": teams[0], "goals": None, "result": False},
-                                                    "awayTeam": {"team": teams[1], "goals": None, "result": False},"played": False},
-                                         "byeTeam": teams[2]},
-                            "fixture2": {"match1": {"homeTeam": {"team": teams[2], "goals": None, "result": False},
-                                                    "awayTeam": {"team": teams[0], "goals": None, "result": False},"played": False},
-                                         "byeTeam": teams[1]},
-                            "fixture3": {"match1": {"homeTeam": {"team": teams[1], "goals": None, "result": False},
-                                                    "awayTeam": {"team": teams[2], "goals": None, "result": False},"played": False},
-                                         "byeTeam": teams[0]},
-                            "fixture4": {"match1": {"homeTeam": {"team": teams[1], "goals": None, "result": False},
-                                                    "awayTeam": {"team": teams[0], "goals": None, "result": False},"played": False},
-                                         "byeTeam": teams[2]},
-                            "fixture5": {"match1": {"homeTeam": {"team": teams[0], "goals": None, "result": False},
-                                                    "awayTeam": {"team": teams[2], "goals": None, "result": False},"played": False},
-                                         "byeTeam": teams[1]},
-                            "fixture6": {"match1": {"homeTeam": {"team": teams[2], "goals": None, "result": False},
-                                                    "awayTeam": {"team": teams[1], "goals": None, "result": False},"played": False},
-                                         "byeTeam": teams[0]},
-                            }
-
-            else:
-                fixtures = {"fixture1": {"match1": {"homeTeam": {"team": teams[0], "goals": None, "result": False},
-                                                    "awayTeam": {"team": teams[1], "goals": None, "result": False},"played": False},
-                                         "byeTeam": teams[2]},
-                            "fixture2": {"match1": {"homeTeam": {"team": teams[2], "goals": None, "result": False},
-                                                    "awayTeam": {"team": teams[0], "goals": None, "result": False},"played": False},
-                                         "byeTeam": teams[1]},
-                            "fixture3": {"match1": {"homeTeam": {"team": teams[1], "goals": None, "result": False},
-                                                    "awayTeam": {"team": teams[2], "goals": None, "result": False},"played": False},
-                                         "byeTeam": teams[0]},
-                            }
-
+            matches_schedule = {
+                "fixture1": {"match1": create_match(teams[0], teams[1]), "byeTeam": teams[2]},
+                "fixture2": {"match1": create_match(teams[2], teams[0]), "byeTeam": teams[1]},
+                "fixture3": {"match1": create_match(teams[1], teams[2]), "byeTeam": teams[0]},
+                "fixture4": {"match1": create_match(teams[1], teams[0]), "byeTeam": teams[2]},
+                "fixture5": {"match1": create_match(teams[0], teams[2]), "byeTeam": teams[1]},
+                "fixture6": {"match1": create_match(teams[2], teams[1]), "byeTeam": teams[0]},
+            } if home_away_indicator else {
+                "fixture1": {"match1": create_match(teams[0], teams[1]), "byeTeam": teams[2]},
+                "fixture2": {"match1": create_match(teams[2], teams[0]), "byeTeam": teams[1]},
+                "fixture3": {"match1": create_match(teams[1], teams[2]), "byeTeam": teams[0]},
+            }
         case 4:
-            if homeAway == True:
-                fixtures = {"fixture1": {"match1": {"homeTeam": {"team": teams[0], "goals": None, "result": False},
-                                                    "awayTeam": {"team": teams[1], "goals": None, "result": False},"played": False},
-                                         "match2": {"homeTeam": {"team": teams[2], "goals": None, "result": False},
-                                                    "awayTeam": {"team": teams[3], "goals": None, "result": False},"played": False},
-                                         "byeTeam": None},
-                            "fixture2": {"match1": {"homeTeam": {"team": teams[3], "goals": None, "result": False},
-                                                    "awayTeam": {"team": teams[0], "goals": None, "result": False},"played": False},
-                                         "match2": {"homeTeam": {"team": teams[1], "goals": None, "result": False},
-                                                    "awayTeam": {"team": teams[2], "goals": None, "result": False},"played": False},
-                                         "byeTeam": None},
-                            "fixture3": {"match1": {"homeTeam": {"team": teams[1], "goals": None, "result": False},
-                                                    "awayTeam": {"team": teams[3], "goals": None, "result": False},"played": False},
-                                         "match2": {"homeTeam": {"team": teams[0], "goals": None, "result": False},
-                                                    "awayTeam": {"team": teams[2], "goals": None, "result": False},"played": False},
-                                         "byeTeam": None},
-                            "fixture4": {"match1": {"homeTeam": {"team": teams[1], "goals": None, "result": False},
-                                                    "awayTeam": {"team": teams[0], "goals": None, "result": False},"played": False},
-                                         "match2": {"homeTeam": {"team": teams[3], "goals": None, "result": False},
-                                                    "awayTeam": {"team": teams[2], "goals": None, "result": False},"played": False},
-                                         "byeTeam": None},
-                            "fixture5": {"match1": {"homeTeam": {"team": teams[0], "goals": None, "result": False},
-                                                    "awayTeam": {"team": teams[3], "goals": None, "result": False},"played": False},
-                                         "match2": {"homeTeam": {"team": teams[2], "goals": None, "result": False},
-                                                    "awayTeam": {"team": teams[1], "goals": None, "result": False},"played": False},
-                                         "byeTeam": None},
-                            "fixture6": {"match1": {"homeTeam": {"team": teams[3], "goals": None, "result": False},
-                                                    "awayTeam": {"team": teams[1], "goals": None, "result": False},"played": False},
-                                         "match2": {"homeTeam": {"team": teams[2], "goals": None, "result": False},
-                                                    "awayTeam": {"team": teams[0], "goals": None, "result": False},"played": False},
-                                         "byeTeam": None}
-                            }
-
-            else:
-                fixtures = {"fixture1": {"match1": {"homeTeam": {"team": teams[0], "goals": None, "result": False},
-                                                    "awayTeam": {"team": teams[1], "goals": None, "result": False},"played": False},
-                                         "match2": {"homeTeam": {"team": teams[2], "goals": None, "result": False},
-                                                    "awayTeam": {"team": teams[3], "goals": None, "result": False},"played": False},
-                                         "byeTeam": None},
-                            "fixture2": {"match1": {"homeTeam": {"team": teams[3], "goals": None, "result": False},
-                                                    "awayTeam": {"team": teams[0], "goals": None, "result": False},"played": False},
-                                         "match2": {"homeTeam": {"team": teams[1], "goals": None, "result": False},
-                                                    "awayTeam": {"team": teams[2], "goals": None, "result": False},"played": False},
-                                         "byeTeam": None},
-                            "fixture3": {"match1": {"homeTeam": {"team": teams[1], "goals": None, "result": False},
-                                                    "awayTeam": {"team": teams[3], "goals": None, "result": False},"played": False},
-                                         "match2": {"homeTeam": {"team": teams[0], "goals": None, "result": False},
-                                                    "awayTeam": {"team": teams[2], "goals": None, "result": False},"played": False},
-                                         "byeTeam": None}
-                            }
+            matches_schedule = {
+                "fixture1": {"match1": create_match(teams[0], teams[1]), "match2": create_match(teams[2], teams[3]),
+                             "byeTeam": None},
+                "fixture2": {"match1": create_match(teams[3], teams[0]), "match2": create_match(teams[1], teams[2]),
+                             "byeTeam": None},
+                "fixture3": {"match1": create_match(teams[1], teams[3]), "match2": create_match(teams[0], teams[2]),
+                             "byeTeam": None},
+                "fixture4": {"match1": create_match(teams[1], teams[0]), "match2": create_match(teams[3], teams[2]),
+                             "byeTeam": None},
+                "fixture5": {"match1": create_match(teams[0], teams[3]), "match2": create_match(teams[2], teams[1]),
+                             "byeTeam": None},
+                "fixture6": {"match1": create_match(teams[3], teams[1]), "match2": create_match(teams[2], teams[0]),
+                             "byeTeam": None},
+            } if home_away_indicator else {
+                "fixture1": {"match1": create_match(teams[0], teams[1]), "match2": create_match(teams[2], teams[3]),
+                             "byeTeam": None},
+                "fixture2": {"match1": create_match(teams[3], teams[0]), "match2": create_match(teams[1], teams[2]),
+                             "byeTeam": None},
+                "fixture3": {"match1": create_match(teams[1], teams[3]), "match2": create_match(teams[0], teams[2]),
+                             "byeTeam": None}
+            }
         case 5:
-            if homeAway == True:
-                fixtures = {"fixture1": {"match1": {"homeTeam": {"team": teams[0], "goals": None, "result": False},
-                                                    "awayTeam": {"team": teams[1], "goals": None, "result": False},"played": False},
-                                         "match2": {"homeTeam": {"team": teams[2], "goals": None, "result": False},
-                                                    "awayTeam": {"team": teams[3], "goals": None, "result": False},"played": False},
-                                         "byeTeam": teams[4]},
-                            "fixture2": {"match1": {"homeTeam": {"team": teams[4], "goals": None, "result": False},
-                                                    "awayTeam": {"team": teams[0], "goals": None, "result": False},"played": False},
-                                         "match2": {"homeTeam": {"team": teams[1], "goals": None, "result": False},
-                                                    "awayTeam": {"team": teams[2], "goals": None, "result": False},"played": False},
-                                         "byeTeam": teams[3]},
-                            "fixture3": {"match1": {"homeTeam": {"team": teams[1], "goals": None, "result": False},
-                                                    "awayTeam": {"team": teams[4], "goals": None, "result": False},"played": False},
-                                         "match2": {"homeTeam": {"team": teams[3], "goals": None, "result": False},
-                                                    "awayTeam": {"team": teams[0], "goals": None, "result": False},"played": False},
-                                         "byeTeam": teams[2]},
-                            "fixture4": {"match1": {"homeTeam": {"team": teams[3], "goals": None, "result": False},
-                                                    "awayTeam": {"team": teams[1], "goals": None, "result": False},"played": False},
-                                         "match2": {"homeTeam": {"team": teams[2], "goals": None, "result": False},
-                                                    "awayTeam": {"team": teams[4], "goals": None, "result": False},"played": False},
-                                         "byeTeam": teams[0]},
-                            "fixture5": {"match1": {"homeTeam": {"team": teams[0], "goals": None, "result": False},
-                                                    "awayTeam": {"team": teams[2], "goals": None, "result": False},"played": False},
-                                         "match2": {"homeTeam": {"team": teams[4], "goals": None, "result": False},
-                                                    "awayTeam": {"team": teams[3], "goals": None, "result": False},"played": False},
-                                         "byeTeam": teams[1]},
-                            "fixture6": {"match1": {"homeTeam": {"team": teams[1], "goals": None, "result": False},
-                                                    "awayTeam": {"team": teams[0], "goals": None, "result": False},"played": False},
-                                         "match2": {"homeTeam": {"team": teams[3], "goals": None, "result": False},
-                                                    "awayTeam": {"team": teams[2], "goals": None, "result": False},"played": False},
-                                         "byeTeam": teams[4]},
-                            "fixture7": {"match1": {"homeTeam": {"team": teams[0], "goals": None, "result": False},
-                                                    "awayTeam": {"team": teams[4], "goals": None, "result": False},"played": False},
-                                         "match2": {"homeTeam": {"team": teams[2], "goals": None, "result": False},
-                                                    "awayTeam": {"team": teams[1], "goals": None, "result": False},"played": False},
-                                         "byeTeam": teams[3]},
-                            "fixture8": {"match1": {"homeTeam": {"team": teams[4], "goals": None, "result": False},
-                                                    "awayTeam": {"team": teams[1], "goals": None, "result": False},"played": False},
-                                         "match2": {"homeTeam": {"team": teams[0], "goals": None, "result": False},
-                                                    "awayTeam": {"team": teams[3], "goals": None, "result": False},"played": False},
-                                         "byeTeam": teams[2]},
-                            "fixture9": {"match1": {"homeTeam": {"team": teams[1], "goals": None, "result": False},
-                                                    "awayTeam": {"team": teams[3], "goals": None, "result": False},"played": False},
-                                         "match2": {"homeTeam": {"team": teams[4], "goals": None, "result": False},
-                                                    "awayTeam": {"team": teams[2], "goals": None, "result": False},"played": False},
-                                         "byeTeam": teams[0]},
-                            "fixture10": {"match1": {"homeTeam": {"team": teams[2], "goals": None, "result": False},
-                                                     "awayTeam": {"team": teams[0], "goals": None, "result": False},"played": False},
-                                          "match2": {"homeTeam": {"team": teams[3], "goals": None, "result": False},
-                                                     "awayTeam": {"team": teams[4], "goals": None, "result": False},"played": False},
-                                          "byeTeam": teams[1]}
+            matches_schedule = {
+                "fixture1": {"match1": create_match(teams[0], teams[1]), "match2": create_match(teams[2], teams[3]),
+                             "byeTeam": teams[4]},
+                "fixture2": {"match1": create_match(teams[4], teams[0]), "match2": create_match(teams[1], teams[2]),
+                             "byeTeam": teams[3]},
+                "fixture3": {"match1": create_match(teams[1], teams[4]), "match2": create_match(teams[3], teams[0]),
+                             "byeTeam": teams[2]},
+                "fixture4": {"match1": create_match(teams[3], teams[1]), "match2": create_match(teams[2], teams[4]),
+                             "byeTeam": teams[0]},
+                "fixture5": {"match1": create_match(teams[0], teams[2]), "match2": create_match(teams[4], teams[3]),
+                             "byeTeam": teams[1]},
+                "fixture6": {"match1": create_match(teams[1], teams[0]), "match2": create_match(teams[3], teams[2]),
+                             "byeTeam": teams[4]},
+                "fixture7": {"match1": create_match(teams[0], teams[4]), "match2": create_match(teams[2], teams[1]),
+                             "byeTeam": teams[3]},
+                "fixture8": {"match1": create_match(teams[4], teams[1]), "match2": create_match(teams[0], teams[3]),
+                             "byeTeam": teams[2]},
+                "fixture9": {"match1": create_match(teams[1], teams[3]), "match2": create_match(teams[4], teams[2]),
+                             "byeTeam": teams[0]},
+                "fixture10": {"match1": create_match(teams[2], teams[0]), "match2": create_match(teams[3], teams[4]),
+                              "byeTeam": teams[1]},
+            } if home_away_indicator else {
+                "fixture1": {"match1": create_match(teams[0], teams[1]), "match2": create_match(teams[2], teams[3]),
+                             "byeTeam": teams[4]},
+                "fixture2": {"match1": create_match(teams[4], teams[0]), "match2": create_match(teams[1], teams[2]),
+                             "byeTeam": teams[3]},
+                "fixture3": {"match1": create_match(teams[1], teams[4]), "match2": create_match(teams[3], teams[0]),
+                             "byeTeam": teams[2]},
+                "fixture4": {"match1": create_match(teams[3], teams[1]), "match2": create_match(teams[2], teams[4]),
+                             "byeTeam": teams[0]},
+                "fixture5": {"match1": create_match(teams[0], teams[2]), "match2": create_match(teams[4], teams[3]),
+                             "byeTeam": teams[1]},
+            }
+    updateFixture(teams, matches_schedule, zone, conf, round)
 
-                            }
-
-            else:
-                fixtures = {"fixture1": {"match1": {"homeTeam": {"team": teams[0], "goals": None, "result": False},
-                                                    "awayTeam": {"team": teams[1], "goals": None, "result": False},"played": False},
-                                         "match2": {"homeTeam": {"team": teams[2], "goals": None, "result": False},
-                                                    "awayTeam": {"team": teams[3], "goals": None, "result": False},"played": False},
-                                         "byeTeam": teams[4]},
-                            "fixture2": {"match1": {"homeTeam": {"team": teams[4], "goals": None, "result": False},
-                                                    "awayTeam": {"team": teams[0], "goals": None, "result": False},"played": False},
-                                         "match2": {"homeTeam": {"team": teams[1], "goals": None, "result": False},
-                                                    "awayTeam": {"team": teams[2], "goals": None, "result": False},"played": False},
-                                         "byeTeam": teams[3]},
-                            "fixture3": {"match1": {"homeTeam": {"team": teams[1], "goals": None, "result": False},
-                                                    "awayTeam": {"team": teams[4], "goals": None, "result": False},"played": False},
-                                         "match2": {"homeTeam": {"team": teams[3], "goals": None, "result": False},
-                                                    "awayTeam": {"team": teams[0], "goals": None, "result": False},"played": False},
-                                         "byeTeam": teams[2]},
-                            "fixture4": {"match1": {"homeTeam": {"team": teams[3], "goals": None, "result": False},
-                                                    "awayTeam": {"team": teams[1], "goals": None, "result": False},"played": False},
-                                         "match2": {"homeTeam": {"team": teams[2], "goals": None, "result": False},
-                                                    "awayTeam": {"team": teams[4], "goals": None, "result": False},"played": False},
-                                         "byeTeam": teams[0]},
-                            "fixture5": {"match1": {"homeTeam": {"team": teams[0], "goals": None, "result": False},
-                                                    "awayTeam": {"team": teams[2], "goals": None, "result": False},"played": False},
-                                         "match2": {"homeTeam": {"team": teams[4], "goals": None, "result": False},
-                                                    "awayTeam": {"team": teams[3], "goals": None, "result": False},"played": False},
-                                         "byeTeam": teams[1]},
-
-                            }
-    updateFixture(teams, fixtures, zone, conf, round)
 
 
 def updateFixture(teams, fixtures, zone, conf, round):

@@ -1,7 +1,8 @@
-from bson.json_util import dumps
 from pymongo import MongoClient
 
 
+GROUP_RANGE = ['1','2','3','4','5']
+GROUP_CODES = ['A','B','C','D','E','F','G','H']
 def db_conexion():
     client = MongoClient(host='192.168.1.101',
                          port=27017,
@@ -171,6 +172,7 @@ def saveExtraTimeResult(phase, match, localGoals, awayGoals, localPenaltys, away
         {'conf': conf, 'round': round, 'zone': zone}, {'$set': final_match_spec})
 
 
+
 def is_difference_in_range(local_score, visitor_score, range_start, range_end):
     difference = abs(local_score - visitor_score)
     return range_start < difference < range_end
@@ -190,3 +192,4 @@ def extreme_difference(local_score, visitor_score):
 
 def ultra_difference(local_score, visitor_score):
     return is_difference_in_range(local_score, visitor_score, 70, float('inf'))
+

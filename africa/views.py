@@ -1,9 +1,9 @@
-import random
 
 from django.shortcuts import render, redirect
-
-from fixtures import getZoneData, createFixture
-from utils import getTeams, updateStage, getTeamsFirstRound, getTeamsSecondRound, getTeamsThirdRound, getTeamsFinalRound
+from fixtures import getZoneData
+from utils import getTeams, updateStage, getTeamsFirstRound, getTeamsSecondRound, getTeamsThirdRound, \
+    getTeamsFinalRound
+from draw import round_draw
 
 
 # Create your views here.
@@ -68,7 +68,7 @@ def firstround(request):
     for i in range(3):
         zone_data = getZoneData(zones[i], 'CAF', 'first')
         context = add_zone_to_context_if_full('zone' + str(i + 1), zone_data, context)
-    context['range'] = ['1', '2', '3']
+    context['range'] = ['1', '2', '3','4']
     return render(request, 'africa/fstround.html', context)
 
 
@@ -88,10 +88,7 @@ def firstRoundButton(request):
     if request.method == 'GET':
         CONF_NAME = 'CAF'
 
-        def shuffle_and_create_fixture(zone, zone_letter):
-            random.shuffle(zone)
-            createFixture(zone, False, zone_letter, CONF_NAME, 'first')
-            return zone
+
 
         context = {'teams': getTeamsFirstRound(CONF_NAME)}
         zone1, zone2, zone3 = firstRoundDraw(getTeamsFirstRound(CONF_NAME))
@@ -138,20 +135,13 @@ def secondRoundButton(request):
         return secondround(request, context)
 
 
-import random
 
 
-def secondRoundDraw(teams):
-    pools = [teams[i:i + 5] for i in range(0, len(teams), 5)]
-    [random.shuffle(pool) for pool in pools]
-    zones = [[pool[j] for pool in pools] for j in range(5)]
-    return zones
 
 
-def shuffle_and_create_fixture(zone, group_char, confederation, round):
-    random.shuffle(zone)
-    createFixture(zone, True, group_char, confederation, round)
-    return zone
+
+
+
 
 
 def thirdRoundButton(request):
@@ -161,36 +151,11 @@ def thirdRoundButton(request):
     if request.method == 'GET':
         context = {}
         teams = getTeamsThirdRound(CONFEDERATION)
-        zone1, zone2, zone3, zone4, zone5 = thirdRoundDraw(teams)
-        context['zone1'] = shuffle_and_create_fixture(zone1, 'A', CONFEDERATION, ROUND)
-        context['zone2'] = shuffle_and_create_fixture(zone2, 'B', CONFEDERATION, ROUND)
-        context['zone3'] = shuffle_and_create_fixture(zone3, 'C', CONFEDERATION, ROUND)
-        context['zone4'] = shuffle_and_create_fixture(zone4, 'D', CONFEDERATION, ROUND)
-        context['zone5'] = shuffle_and_create_fixture(zone5, 'E', CONFEDERATION, ROUND)
+        zone1, zone2, zone3, zone4, zone5 = round_draw(teams)
+        for i, zone in enumerate(zones, 1):
+            shuffle_teams_and_create_fixture(zone, f'zone{i}', context)
 
         return thirdround(request)
-
-
-import random
-
-NUMBER_OF_TEAMS_IN_POOLS = 5
-NUMBER_OF_POOLS = 4
-
-
-def shuffle_teams(teams):
-    random.shuffle(teams)
-    return teams
-
-
-def thirdRoundDraw(teams):
-    pools = [shuffle_teams(teams[i:i + NUMBER_OF_TEAMS_IN_POOLS])
-             for i in range(0, NUMBER_OF_TEAMS_IN_POOLS * NUMBER_OF_POOLS, NUMBER_OF_TEAMS_IN_POOLS)]
-
-    zones = [[pool[i] for pool in pools] for i in range(NUMBER_OF_TEAMS_IN_POOLS)]
-
-    return zones
-
-
 def shuffle_teams_and_create_fixture(zone, zone_name, context, conf='CAF', round_='final'):
     random.shuffle(zone)
     createFixture(zone, True, zone_name, conf, round_)
@@ -202,19 +167,8 @@ def finalRoundButton(request):
         context = {}
         conf = 'CAF'
         context['teams'] = getTeamsFinalRound(conf)
-        zones = finalRoundDraw(getTeamsFinalRound(conf))
+        zones = round_draw(getTeamsFinalRound(conf))
         for i, zone in enumerate(zones, 1):
             shuffle_teams_and_create_fixture(zone, f'zone{i}', context)
         return finalround(request)
 
-
-def drawAndShuffleTeams(teams, start, end):
-    pool = teams[start:end]
-    random.shuffle(pool)
-    return pool
-
-
-def finalRoundDraw(teams):
-    pools = [drawAndShuffleTeams(teams, i, i + 5) for i in range(0, 25, 5)]
-    zones = [[pools[j][i] for j in range(5)] for i in range(5)]
-    return tuple(zones)

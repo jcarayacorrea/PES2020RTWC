@@ -2,7 +2,7 @@ import random
 
 from django.shortcuts import render, redirect
 
-from fixtures import getZoneData, createFixture
+from fixtures import getZoneData, create_fixture
 from utils import updateStage, getTeams, getTeamsFinalRound, getTeamsFirstRound
 
 
