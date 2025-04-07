@@ -9,76 +9,64 @@ from utils import getTeams, updateStage, getTeamsFinalRound, getTeamsThirdRound,
 
 # Create your views here.
 
+def get_valid_zone_data(zone_name):
+    zone_data = getZoneData(zone_name, 'UEFA', 'final')
+    if len(zone_data['teams']) == 5:
+        return zone_data['teams']
+    else:
+        return None
+
+
 def finalround(request):
     context = {}
     context['teams'] = getTeamsFinalRound(conf_name='UEFA')
-    zone1 = getZoneData('A', 'UEFA', 'final')
-    zone2 = getZoneData('B', 'UEFA', 'final')
-    zone3 = getZoneData('C', 'UEFA', 'final')
-    zone4 = getZoneData('D', 'UEFA', 'final')
-    if len(zone1['teams']) == 5:
-        context['zone1'] = zone1['teams']
-    if len(zone2['teams']) == 5:
-        context['zone2'] = zone2['teams']
-    if len(zone3['teams']) == 5:
-        context['zone3'] = zone3['teams']
-    if len(zone4['teams']) == 5:
-        context['zone4'] = zone4['teams']
+    for zone in ['A', 'B', 'C', 'D']:
+        zone_teams = get_valid_zone_data(zone)
+        if zone_teams is not None:
+            context[f'zone{zone}'] = zone_teams
+    context['range'] = ['1', '2', '3', '4','5']
     return render(request, 'europa/finalround.html', context)
+
+
+
+
+
+def _assign_teams_if_enough(context, zone_id, conf_name, round_number):
+    zone_data = getZoneData(zone_id, conf_name, round_number)
+    if len(zone_data['teams']) == 3:
+        context[f'zone{zone_id}'] = zone_data['teams']
+    return context
 
 
 def thirdround(request):
     context = {}
     context['teams'] = getTeamsThirdRound(conf_name='UEFA')
-    zone1 = getZoneData('A', 'UEFA', 'third')
-    zone2 = getZoneData('B', 'UEFA', 'third')
-    zone3 = getZoneData('C', 'UEFA', 'third')
-    zone4 = getZoneData('D', 'UEFA', 'third')
-    zone5 = getZoneData('E', 'UEFA', 'third')
-    zone6 = getZoneData('F', 'UEFA', 'third')
-    zone7 = getZoneData('G', 'UEFA', 'third')
-    zone8 = getZoneData('H', 'UEFA', 'third')
 
-    if len(zone1['teams']) == 3:
-        context['zone1'] = zone1['teams']
-    if len(zone2['teams']) == 3:
-        context['zone2'] = zone2['teams']
-    if len(zone3['teams']) == 3:
-        context['zone3'] = zone3['teams']
-    if len(zone4['teams']) == 3:
-        context['zone4'] = zone4['teams']
-    if len(zone5['teams']) == 3:
-        context['zone5'] = zone5['teams']
-    if len(zone6['teams']) == 3:
-        context['zone6'] = zone6['teams']
-    if len(zone7['teams']) == 3:
-        context['zone7'] = zone7['teams']
-    if len(zone8['teams']) == 3:
-        context['zone8'] = zone8['teams']
+    for zone_id in ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']:
+        context = _assign_teams_if_enough(context, zone_id, 'UEFA', 'third')
+    context['range'] = ['1', '2', '3']
     return render(request, 'europa/thrround.html', context)
+
+
+def get_zone_with_teams_of_size(zone_code, conf_name, round_name, team_size=4):
+    zone_data = getZoneData(zone_code, conf_name, round_name)
+    if len(zone_data['teams']) == team_size:
+        return zone_data['teams']
+    return None
 
 
 def secondround(request):
     context = {}
-    context['teams'] = getTeamsSecondRound(conf_name='UEFA')
-    zone1 = getZoneData('A', 'UEFA', 'second')
-    zone2 = getZoneData('B', 'UEFA', 'second')
-    zone3 = getZoneData('C', 'UEFA', 'second')
-    zone4 = getZoneData('D', 'UEFA', 'second')
-    zone5 = getZoneData('E', 'UEFA', 'second')
-    zone6 = getZoneData('F', 'UEFA', 'second')
-    if len(zone1['teams']) == 4:
-        context['zone1'] = zone1['teams']
-    if len(zone2['teams']) == 4:
-        context['zone2'] = zone2['teams']
-    if len(zone3['teams']) == 4:
-        context['zone3'] = zone3['teams']
-    if len(zone4['teams']) == 4:
-        context['zone4'] = zone4['teams']
-    if len(zone5['teams']) == 4:
-        context['zone5'] = zone5['teams']
-    if len(zone6['teams']) == 4:
-        context['zone6'] = zone6['teams']
+    conf_name = 'UEFA'
+    round_name = 'second'
+
+    context['teams'] = getTeamsSecondRound(conf_name=conf_name)
+
+    for zone_code in ['A', 'B', 'C', 'D', 'E', 'F']:
+        teams = get_zone_with_teams_of_size(zone_code, conf_name, round_name)
+        if teams is not None:
+            context[f'zone{zone_code}'] = teams
+    context['range'] = ['1', '2', '3', '4']
     return render(request, 'europa/sndround.html', context)
 
 
@@ -292,7 +280,7 @@ def finalRoundDraw(teams):
 
 def setHomeWildCardTeam(request):
     db = db_conexion()
-    teamId = request.GET.get('home')
+    teamId = request.GET.get('team')
     team = getTeamById(teamId)
     db.get_collection('Fixtures').update_many({'$and': [{'conf': 'UEFA'}, {'zone': 'WC'}, {'round': 'first'}]},
                                               {'$set': {
@@ -306,7 +294,7 @@ def setHomeWildCardTeam(request):
 
 def setAwayWildCardTeam(request):
     db = db_conexion()
-    teamId = request.GET.get('away')
+    teamId = request.GET.get('team')
     team = getTeamById(teamId)
     db.get_collection('Fixtures').update_one({'$and': [{'conf': 'UEFA'}, {'zone': 'WC'}, {'round': 'first'}]},
                                              {'$set': {

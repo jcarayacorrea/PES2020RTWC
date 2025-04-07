@@ -61,7 +61,7 @@ def standingsZone(request, conf, round, zone):
     qualifying_places = getQualyPlaces(conf)
     round_stages = get_round_stages(qualifying_places, round)
     standings = getStandings(conf, round, zone)
-    context['teams'] = bundle_teams(standings, round_stages)
+    context['zip'] = bundle_teams(standings, round_stages)
     # Render the standings template with the provided context
     return render(request, 'popups/standings/standings.html', context)
 

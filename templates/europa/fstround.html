@@ -28,14 +28,8 @@
 
                     <div class="soccer-card-body">
 
-                        <div class="loading-grid-25" data-loading-aria-busy data-loading>
-                            <div class="display-6">Sorteando</div>
-                            <div class="spinner-grow text-info"></div>
-                            <div class="spinner-grow text-info"></div>
-                            <div class="spinner-grow text-info"></div>
-                            <div class="spinner-grow text-info"></div>
-                            <div class="spinner-grow text-info"></div>
-
+                        <div class="loading-grid" data-loading-aria-busy data-loading>
+                            {% include "utils/loader/loader.html" %}
                         </div>
 
                         <div data-loading-aria-busy data-loading-class="d-none">
@@ -48,89 +42,11 @@
                                     {% endif %}
                                 </div>
                                 <div class="col-md-5 offset-md-1">
-                                    <div class="group-card">
-                                        <div class="soccer-card-header">Zone B</div>
-                                        <div class="soccer-card-body offset-md-2">
-                                            {% if zone2 is None %}
-                                                <div class="team-card">
-                                                    <div class="row">
-                                                        <div class="flag-config"></div>
-                                                        <div class="name-config">
-                                                            B1
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="team-card">
-                                                    <div class="row">
-                                                        <div class="flag-config"></div>
-                                                        <div class="name-config">
-                                                            B2
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="team-card">
-                                                    <div class="row">
-                                                        <div class="flag-config"></div>
-                                                        <div class="name-config">
-                                                            B3
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="team-card">
-                                                    <div class="row">
-                                                        <div class="flag-config"></div>
-                                                        <div class="name-config">
-                                                            B4
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="team-card">
-                                                    <div class="row">
-                                                        <div class="flag-config"></div>
-                                                        <div class="name-config">
-                                                            B5
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            {% else %}
-                                                {% for team in zone2 %}
-                                                    <div class="team-card">
-                                                        <div class="row">
-                                                            <div class="flag-config">
-                                                                <img src="{{ team.image_flag }}" class="img-card">
-                                                            </div>
-                                                            <div class="name-config">
-                                                                {{ team.nation_iso_code }}
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                {% endfor %}
-                                            {% endif %}
-
-                                        </div>
-                                        <div class="row p-1">
-                                            <div class="col g-1 offset-md-4">
-                                                {% url 'zones.fixtures' 'UEFA' 'first' 'B' as fixtures %}
-                                                <button type="button" class="btn btn-primary"
-                                                        hx-get="{{ fixtures }} "
-                                                        hx-trigger="click" hx-target="#schedule-content"
-                                                        data-bs-toggle="modal"
-                                                        data-bs-target="#schedule">
-                                                    <i class="fa-regular fa-calendar"></i>
-                                                </button>
-                                                {% url 'zones.standings' 'UEFA' 'first' 'B' as standings %}
-                                                <button type="button" class="btn btn-primary"
-                                                        hx-get="{{ standings }}"
-                                                        hx-trigger="click" hx-target="#stats-content"
-                                                        data-bs-toggle="modal"
-                                                        data-bs-target="#standings">
-                                                    <i class="fa-solid fa-ranking-star"></i>
-                                                </button>
-
-
-                                            </div>
-                                        </div>
-                                    </div>
+                                    {% if zone2 is not None %}
+                                        {% include "utils/groups/group-card.html" with conf="UEFA" round="first" group="B" zone=zone2 buttons=True %}
+                                    {% else %}
+                                        {% include "utils/groups/group-card.html" with group="B" iterator=range  buttons=False %}
+                                    {% endif %}
                                 </div>
                             </div>
                             <div class="row mb-5">
@@ -140,21 +56,7 @@
                                         <div class="soccer-card-body " data-loading-states>
                                             <div class="row mb-3">
                                                 <div class="col-5">
-                                                    <select name="home" class="form-select"
-                                                            hx-get="{% url 'europa.homewildcard' %}"
-                                                            hx-trigger="change"
-                                                            hx-target="body">
-                                                        {% if zone1 is None %}
-                                                            <option selected>Team 1</option>
-                                                        {% else %}
-                                                            <option selected>Team 1</option>
-                                                            {% for team in zone1 %}
-                                                                <option value="{{ team.id }}">
-                                                                    {{ team.nation_name }}
-                                                                </option>
-                                                            {% endfor %}
-                                                        {% endif %}
-                                                    </select>
+                                                   {% include "utils/one_matches/team_select.html" with zone=zone1 url_select='europa.homewildcard'  %}
                                                 </div>
                                                 <div class="col-2 justify-content-center">
                                                     {% with homeId=fixture.wildCard.match1.homeTeam.team.id awayId=fixture.wildCard.match1.awayTeam.team.id %}
@@ -172,45 +74,18 @@
                                                     {% endwith %}
                                                 </div>
                                                 <div class="col-5">
-                                                    <select name="away" class="form-select"
-                                                            hx-get="{% url 'europa.awaywildcard' %}"
-                                                            hx-trigger="change"
-                                                            hx-target="body">
-                                                        {% if zone2 is None %}
-                                                            <option selected>Team 2</option>
-                                                        {% else %}
-                                                            <option selected>Team 2</option>
-                                                            {% for team in zone2 %}
-                                                                <option value="{{ team.id }}">
-                                                                    {{ team.nation_name }}
-                                                                </option>
-                                                            {% endfor %}
-                                                        {% endif %}
-                                                    </select>
+                                                    {% include "utils/one_matches/team_select.html" with zone=zone2 url_select='europa.awaywildcard' %}
                                                 </div>
 
 
                                             </div>
                                             <div class="row mb-3">
                                                 <div class="col-4">
-                                                    <div class="team-card-sm">
-                                                        <div class="row">
-                                                            {% if fixture|getItem:'wildCard' is not None %}
-                                                                <div class="flag-config">
-                                                                    {% rstonemtchhome fixture.wildCard.match1 as homeborder %}
-                                                                    <img src="{{ fixture.wildCard.match1.homeTeam.team.image_flag }}"
-                                                                         class="img-card {{ homeborder }}">
-                                                                </div>
-                                                                <div class="name-config">
-                                                                    {{ fixture.wildCard.match1.homeTeam.team.nation_iso_code }}
-                                                                </div>
-                                                            {% else %}
-                                                                <div class="name-config">
-                                                                    Team 1
-                                                                </div>
-                                                            {% endif %}
-                                                        </div>
-                                                    </div>
+                                                    {% if fixture|getItem:'wildCard' is not None %}
+                                                        {% include 'utils/fixture/home-card.html' with match=fixture.wildCard.match1 %}
+                                                    {% else %}
+                                                        {% include 'utils/fixture/empty-card.html' with team='Team 1' %}
+                                                    {% endif %}
                                                 </div>
                                                 <div class="col-4" data-loading-aria-busy data-loading>
                                                     <div class="col-auto d-flex justify-content-center">
@@ -233,25 +108,11 @@
                                                 </div>
 
                                                 <div class="col-4">
-                                                    <div class="team-card-sm">
-                                                        <div class="row">
-                                                            {% if fixture|getItem:'wildCard' is not None %}
-                                                                <div class="flag-config">
-                                                                    {% rstonemtchaway fixture.wildCard.match1 as awayborder %}
-                                                                    <img src="{{ fixture.wildCard.match1.awayTeam.team.image_flag }}"
-                                                                         class="img-card {{ awayborder }}">
-                                                                </div>
-                                                                <div class="name-config">
-                                                                    {{ fixture.wildCard.match1.awayTeam.team.nation_iso_code }}
-                                                                </div>
+                                                    {% if fixture|getItem:'wildCard' is not None %}
+                                                               {% include 'utils/fixture/away-card.html' with match=fixture.wildCard.match1 %}
                                                             {% else %}
-                                                                <div class="name-config">
-                                                                    Team 2
-                                                                </div>
-
+                                                               {% include 'utils/fixture/empty-card.html' with team='Team 2'%}
                                                             {% endif %}
-                                                        </div>
-                                                    </div>
                                                 </div>
                                             </div>
 
