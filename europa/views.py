@@ -10,14 +10,6 @@ from utils import getTeams, updateStage, getTeamsFinalRound, getTeamsThirdRound,
 CONF_NAME = 'UEFA'
 # Create your views here.
 
-def get_valid_zone_data(zone_name):
-    zone_data = getZoneData(zone_name, 'UEFA', 'final')
-    if len(zone_data['teams']) == 5:
-        return zone_data['teams']
-    else:
-        return None
-
-
 def finalround(request):
     context = {}
     round_name = 'final'
