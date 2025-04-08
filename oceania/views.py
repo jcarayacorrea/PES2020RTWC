@@ -2,34 +2,39 @@ import random
 
 from django.shortcuts import render, redirect
 
+from draw import get_zone_with_teams_of_size, round_draw
 from fixtures import getZoneData, create_fixture
-from utils import updateStage, getTeams, getTeamsFirstRound, getTeamsFinalRound, db_conexion, getTeamById
+from utils import updateStage, getTeams, getTeamsFirstRound, getTeamsFinalRound, db_conexion, getTeamById, GROUP_CODES, \
+    GROUP_RANGE
+
+CONF_NAME = 'OFC'
 
 
 # Create your views here.
 def finalround(request):
     context = {}
-    context['teams'] = getTeamsFinalRound(conf_name='OFC')
-    zone1 = getZoneData('A', 'OFC', 'final')
-    zone2 = getZoneData('B', 'OFC', 'final')
-    zoneMD = getZoneData('MD', 'OFC', 'final')
-    if len(zone1['teams']) == 4:
-        context['zone1'] = zone1['teams']
-    if len(zone2['teams']) == 4:
-        context['zone2'] = zone2['teams']
-
-
-    context['fixture'] = zoneMD['fixtures']
+    round_name = 'final'
+    context['teams'] = getTeamsFinalRound(conf_name=CONF_NAME)
+    for zone_code in GROUP_CODES[0:2]:
+        teams = get_zone_with_teams_of_size(zone_code, CONF_NAME, round_name, team_size=4)
+        if teams is not None:
+            context[f'zone{zone_code}'] = teams
+    fixture = getZoneData('MD', 'OFC', 'final')
+    context['fixture'] = fixture['fixtures']
+    context['range'] = GROUP_RANGE[0:4]
 
     return render(request, 'oceania/finalround.html', context)
 
 
 def firstround(request):
     context = {}
-    context['teams'] = getTeamsFirstRound(conf_name='OFC')
-    zone1 = getZoneData('A', 'OFC', 'first')
-    if len(zone1['teams']) == 5:
-        context['zone1'] = zone1['teams']
+    round_name = 'first'
+    context['teams'] = getTeamsFirstRound(conf_name=CONF_NAME)
+    for zone_code in GROUP_CODES[0]:
+        teams = get_zone_with_teams_of_size(zone_code, CONF_NAME, round_name, team_size=5)
+        if teams is not None:
+            context[f'zone{zone_code}'] = teams
+    context['range'] = GROUP_RANGE
     return render(request, 'oceania/fstround.html', context)
 
 
@@ -48,55 +53,32 @@ def updateProgress(request, id, stage):
 def firstRoundButton(request):
     if request.method == 'GET':
         context = {}
-        context['teams'] = getTeamsFirstRound('OFC')
-        zone1 = firstRoundDraw(getTeamsFirstRound('OFC'))
-        random.shuffle(zone1)
-        createFixture(zone1, False, 'A', 'OFC', 'first')
-        context['zone1'] = zone1
-
+        teams_for_match = getTeamsFirstRound(CONF_NAME)
+        context['teams'] = teams_for_match
+        zones = round_draw(teams_for_match, pools_count=5, teams_per_pool=1)
+        for zone_idx, zone in enumerate(zones, start=1):
+            random.shuffle(zone)
+            create_fixture(zone, False, chr(ord('A') + zone_idx - 1), CONF_NAME, 'first')
+            context[f'zone{zone_idx}'] = zone
         return firstround(request)
-
-
-def firstRoundDraw(teams):
-    zone1 = teams
-
-    return zone1
 
 
 def finalRoundButton(request):
     if request.method == 'GET':
         context = {}
-        context['teams'] = getTeamsFinalRound('OFC')
-        zone1, zone2 = finalRoundDraw(getTeamsFinalRound('OFC'))
-        random.shuffle(zone1)
-        random.shuffle(zone2)
-        createFixture(zone1, True, 'A', 'OFC', 'final')
-        createFixture(zone2, True, 'B', 'OFC', 'final')
-        context['zone1'] = zone1
-        context['zone2'] = zone2
-
+        teams_for_match = getTeamsFinalRound(CONF_NAME)
+        context['teams'] = teams_for_match
+        zones = round_draw(teams_for_match, pools_count=4, teams_per_pool=2)
+        for zone_idx, zone in enumerate(zones, start=1):
+            random.shuffle(zone)
+            create_fixture(zone, False, chr(ord('A') + zone_idx - 1), CONF_NAME, 'final')
+            context[f'zone{zone_idx}'] = zone
         return finalround(request)
 
 
-def finalRoundDraw(teams):
-    pool1 = [teams[0], teams[1]]
-    pool2 = [teams[2], teams[3]]
-    pool3 = [teams[4], teams[5]]
-    pool4 = [teams[6], teams[7]]
-
-    random.shuffle(pool1)
-    random.shuffle(pool2)
-    random.shuffle(pool3)
-    random.shuffle(pool4)
-
-    zone1 = [pool1[0], pool2[0], pool3[0], pool4[0]]
-    zone2 = [pool1[1], pool2[1], pool3[1], pool4[1]]
-
-    return zone1, zone2
-
 def setHomeFinalTeam(request):
     db = db_conexion()
-    teamId = request.GET.get('home')
+    teamId = request.GET.get('team')
     team = getTeamById(teamId)
     db.get_collection('Fixtures').update_many({'$and': [{'conf': 'OFC'}, {'zone': 'MD'}, {'round': 'final'}]},
                                               {'$set': {
@@ -110,7 +92,7 @@ def setHomeFinalTeam(request):
 
 def setAwayFinalTeam(request):
     db = db_conexion()
-    teamId = request.GET.get('away')
+    teamId = request.GET.get('team')
     team = getTeamById(teamId)
     db.get_collection('Fixtures').update_one({'$and': [{'conf': 'OFC'}, {'zone': 'MD'}, {'round': 'final'}]},
                                              {'$set': {

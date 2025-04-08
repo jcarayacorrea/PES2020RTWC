@@ -56,7 +56,7 @@
                                         <div class="soccer-card-body " data-loading-states>
                                             <div class="row mb-3">
                                                 <div class="col-5">
-                                                   {% include "utils/one_matches/team_select.html" with zone=zone1 url_select='europa.homewildcard'  %}
+                                                   {% include "utils/one_matches/team_select.html" with zone=zoneA url_select='europa.homewildcard'  %}
                                                 </div>
                                                 <div class="col-2 justify-content-center">
                                                     {% with homeId=fixture.wildCard.match1.homeTeam.team.id awayId=fixture.wildCard.match1.awayTeam.team.id %}
@@ -74,7 +74,7 @@
                                                     {% endwith %}
                                                 </div>
                                                 <div class="col-5">
-                                                    {% include "utils/one_matches/team_select.html" with zone=zone2 url_select='europa.awaywildcard' %}
+                                                    {% include "utils/one_matches/team_select.html" with zone=zoneB url_select='europa.awaywildcard' %}
                                                 </div>
 
 

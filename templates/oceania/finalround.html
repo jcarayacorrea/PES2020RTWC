@@ -19,361 +19,125 @@
     </div>
 
     <div id="section">
+
         <div class="row ">
             <div class="col-md-3">
                 <div class="container-card">
-                    <div class="soccer-card-header ">Teams</div>
-                    <div class="soccer-card-body overflow-auto">
-                        <div class="row g-1 ">
-                            <div class="offset-md-1">
-                                {% for team in teams %}
-                                    <div class="team-card-list">
-                                        <div class="row">
-                                            <div class="flag-config">
-                                                <img src="{{ team.image_flag }}" class="img-card flag-circle">
-                                            </div>
-                                            <div class="name-config">
-                                                {{ team.nation_name }}
-                                            </div>
-                                        </div>
-                                    </div>
-                                {% endfor %}
-                            </div>
-                        </div>
-                    </div>
+                    {% include 'utils/list/team-list.html' with teams=teams %}
                 </div>
             </div>
             <div class="col-md-7 offset-md-1">
                 <div class="container-card">
                     <div class="soccer-card-header">Qualify Zones</div>
 
-                    <div class="soccer-card-body overflow-auto">
+                    <div class="soccer-card-body">
 
                         <div class="loading-grid" data-loading-aria-busy data-loading>
-                            <div class="display-6">Sorteando</div>
-                            <div class="spinner-grow text-info"></div>
-                            <div class="spinner-grow text-info"></div>
-                            <div class="spinner-grow text-info"></div>
-                            <div class="spinner-grow text-info"></div>
-                            <div class="spinner-grow text-info"></div>
-
+                            {% include "utils/loader/loader.html" %}
                         </div>
 
                         <div data-loading-aria-busy data-loading-class="d-none">
                             <div class="row mb-5">
                                 <div class="col-md-5">
-                                    <div class="card card-border offset-md-2">
-                                        <div class="soccer-card-header">Zone A</div>
-                                        <div class="soccer-card-body offset-md-2">
-                                            {% if zone1 is None %}
-                                                <div class="team-card">
-                                                    <div class="row">
-                                                        <div class="flag-config"></div>
-                                                        <div class="name-config">
-                                                            A1
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="team-card">
-                                                    <div class="row">
-                                                        <div class="flag-config"></div>
-                                                        <div class="name-config">
-                                                            A2
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="team-card">
-                                                    <div class="row">
-                                                        <div class="flag-config"></div>
-                                                        <div class="name-config">
-                                                            A3
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="team-card">
-                                                    <div class="row">
-                                                        <div class="flag-config"></div>
-                                                        <div class="name-config">
-                                                            A4
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            {% else %}
-                                                {% for team in zone1 %}
-                                                    <div class="team-card">
-                                                        <div class="row">
-                                                            <div class="flag-config">
-                                                                <img src="{{ team.image_flag }}" class="img-card">
-                                                            </div>
-                                                            <div class="name-config">
-                                                                {{ team.nation_iso_code }}
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                {% endfor %}
-                                            {% endif %}
-                                        </div>
-                                        <div class="row p-1">
-                                            <div class="col g-1 offset-md-4">
-                                                {% url 'zones.fixtures' 'OFC' 'final' 'A' as fixtures %}
-                                                <button type="button" class="btn btn-primary"
-                                                        hx-get="{{ fixtures }} "
-                                                        hx-trigger="click" hx-target="#schedule-content"
-                                                        data-bs-toggle="modal"
-                                                        data-bs-target="#schedule">
-                                                    <i class="fa-regular fa-calendar"></i>
-                                                </button>
-                                                {% url 'zones.standings' 'OFC' 'final' 'A' as standings %}
-                                                <button type="button" class="btn btn-primary"
-                                                        hx-get="{{ standings }}"
-                                                        hx-trigger="click" hx-target="#stats-content"
-                                                        data-bs-toggle="modal"
-                                                        data-bs-target="#standings">
-                                                    <i class="fa-solid fa-ranking-star"></i>
-                                                </button>
-
-
-                                            </div>
-                                        </div>
-                                    </div>
+                                    {% if zoneA is not None %}
+                                        {% include "utils/groups/group-card.html" with conf="OFC" round="first" group="A" zone=zoneA buttons=True %}
+                                    {% else %}
+                                        {% include "utils/groups/group-card.html" with group="A" iterator=range  buttons=False %}
+                                    {% endif %}
                                 </div>
                                 <div class="col-md-5 offset-md-1">
-                                    <div class="card card-border offset-md-2">
-                                        <div class="soccer-card-header">Zone B</div>
-                                        <div class="soccer-card-body offset-md-2">
-                                            {% if zone2 is None %}
-                                                <div class="team-card">
-                                                    <div class="row">
-                                                        <div class="flag-config"></div>
-                                                        <div class="name-config">
-                                                            B1
-                                                        </div>
-                                                    </div>
+                                    {% if zoneB is not None %}
+                                        {% include "utils/groups/group-card.html" with conf="OFC" round="first" group="B" zone=zoneB buttons=True %}
+                                    {% else %}
+                                        {% include "utils/groups/group-card.html" with group="B" iterator=range  buttons=False %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="row mb-5">
+                                <div class="col-10">
+                                    <div class="group-card">
+                                        <div class="soccer-card-header">Main Draw Match</div>
+                                        <div class="soccer-card-body " data-loading-states>
+                                            <div class="row mb-3">
+                                                <div class="col-5">
+                                                    {% include "utils/one_matches/team_select.html" with zone=zoneA url_select='oceania.homemainDraw' %}
                                                 </div>
-                                                <div class="team-card">
-                                                    <div class="row">
-                                                        <div class="flag-config"></div>
-                                                        <div class="name-config">
-                                                            B2
-                                                        </div>
-                                                    </div>
+                                                <div class="col-2 justify-content-center">
+                                                    {% with homeId=fixture.mainDraw.match1.homeTeam.team.id awayId=fixture.mainDraw.match1.awayTeam.team.id %}
+                                                        {% url 'one_match' 'mainDraw' 1 homeId awayId  'OFC'  'first' 'MD' 1 as match %}
+                                                        <button type="button" class="btn btn-primary"
+                                                                hx-get="{{ match }}"
+                                                                hx-trigger="click"
+                                                                hx-target="body"
+                                                                data-loading-disable
+                                                                {% if fixture.mainDraw.match1.played is True %}
+                                                                disabled {% endif %}
+                                                        >
+                                                            <i class="fa-regular fa-futbol"></i>
+                                                        </button>
+                                                    {% endwith %}
                                                 </div>
-                                                <div class="team-card">
-                                                    <div class="row">
-                                                        <div class="flag-config"></div>
-                                                        <div class="name-config">
-                                                            B3
-                                                        </div>
-                                                    </div>
+                                                <div class="col-5">
+                                                    {% include "utils/one_matches/team_select.html" with zone=zoneB url_select='oceania.awaymainDraw' %}
                                                 </div>
-                                                <div class="team-card">
-                                                    <div class="row">
-                                                        <div class="flag-config"></div>
-                                                        <div class="name-config">
-                                                            B4
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            {% else %}
-                                                {% for team in zone2 %}
-                                                    <div class="team-card">
-                                                        <div class="row">
-                                                            <div class="flag-config">
-                                                                <img src="{{ team.image_flag }}" class="img-card">
-                                                            </div>
-                                                            <div class="name-config">
-                                                                {{ team.nation_iso_code }}
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                {% endfor %}
-                                            {% endif %}
-
-                                        </div>
-                                        <div class="row p-1">
-                                            <div class="col g-1 offset-md-4">
-                                                {% url 'zones.fixtures' 'OFC' 'final' 'B' as fixtures %}
-                                                <button type="button" class="btn btn-primary"
-                                                        hx-get="{{ fixtures }} "
-                                                        hx-trigger="click" hx-target="#schedule-content"
-                                                        data-bs-toggle="modal"
-                                                        data-bs-target="#schedule">
-                                                    <i class="fa-regular fa-calendar"></i>
-                                                </button>
-                                                {% url 'zones.standings' 'OFC' 'final' 'B' as standings %}
-                                                <button type="button" class="btn btn-primary"
-                                                        hx-get="{{ standings }}"
-                                                        hx-trigger="click" hx-target="#stats-content"
-                                                        data-bs-toggle="modal"
-                                                        data-bs-target="#standings">
-                                                    <i class="fa-solid fa-ranking-star"></i>
-                                                </button>
 
 
                                             </div>
+                                            <div class="row mb-3">
+                                                <div class="col-4">
+                                                    {% if fixture|getItem:'mainDraw' is not None %}
+                                                        {% include 'utils/fixture/home-card.html' with match=fixture.mainDraw.match1 %}
+                                                    {% else %}
+                                                        {% include 'utils/fixture/empty-card.html' with team='Team 1' %}
+                                                    {% endif %}
+                                                </div>
+                                                <div class="col-4" data-loading-aria-busy data-loading>
+                                                    <div class="col-auto d-flex justify-content-center">
+                                                        <div class="spinner-border text-info" role="status">
+                                                            <span class="visually-hidden">Loading...</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-4 d-flex justify-content-center" data-loading-aria-busy
+                                                     data-loading-class="d-none">
+                                                    {% with homePenalties=fixture.mainDraw.match1.homeTeam.penalties awayPenalties=fixture.mainDraw.match1.awayTeam.penalties %}
+                                                        <h3>
+                                                            ({% firstof homePenalties 0 %}) {{ fixture.mainDraw.match1.homeTeam.goals|default_if_none:"?" }}
+                                                            - {{ fixture.mainDraw.match1.awayTeam.goals|default_if_none:"?" }}
+                                                            ({% firstof awayPenalties 0 %})</h3>
+                                                    {% endwith %}
+
+                                                </div>
+
+                                                <div class="col-4">
+                                                    {% if fixture|getItem:'mainDraw' is not None %}
+                                                        {% include 'utils/fixture/away-card.html' with match=fixture.mainDraw.match1 %}
+                                                    {% else %}
+                                                        {% include 'utils/fixture/empty-card.html' with team='Team 2' %}
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row mb-5">
-                            <div class="col-10">
-                                <div class="group-card">
-                                    <div class="soccer-card-header">Main Draw Match</div>
-                                    <div class="soccer-card-body " data-loading-states>
-                                        <div class="row mb-3">
-                                            <div class="col-5">
-                                                <select name="home" class="form-select"
-                                                        hx-get="{% url 'oceania.homemainDraw' %}"
-                                                        hx-trigger="change"
-                                                        hx-target="body">
-                                                    {% if zone1 is None %}
-                                                        <option selected>Team 1</option>
-                                                    {% else %}
-                                                        <option selected>Team 1</option>
-                                                        {% for team in zone1 %}
-                                                            <option value="{{ team.id }}">
-                                                                {{ team.nation_name }}
-                                                            </option>
-                                                        {% endfor %}
-                                                    {% endif %}
-                                                </select>
-                                            </div>
-                                            <div class="col-2 justify-content-center">
-                                                {% with homeId=fixture.mainDraw.match1.homeTeam.team.id awayId=fixture.mainDraw.match1.awayTeam.team.id %}
-                                                    {% url 'one_match' 'mainDraw' 1 homeId awayId  'OFC'  'final' 'MD' 1 as match %}
-                                                    <button type="button" class="btn btn-primary"
-                                                            hx-get="{{ match }}"
-                                                            hx-trigger="click"
-                                                            hx-target="body"
-                                                            data-loading-disable
-                                                            {% if fixture.mainDraw.match1.played is True %}
-                                                            disabled {% endif %}
-                                                    >
-                                                        <i class="fa-regular fa-futbol"></i>
-                                                    </button>
-                                                {% endwith %}
-                                            </div>
-                                            <div class="col-5">
-                                                <select name="away" class="form-select"
-                                                        hx-get="{% url 'oceania.awaymainDraw' %}"
-                                                        hx-trigger="change"
-                                                        hx-target="body">
-                                                    {% if zone2 is None %}
-                                                        <option selected>Team 2</option>
-                                                    {% else %}
-                                                        <option selected>Team 2</option>
-                                                        {% for team in zone2 %}
-                                                            <option value="{{ team.id }}">
-                                                                {{ team.nation_name }}
-                                                            </option>
-                                                        {% endfor %}
-                                                    {% endif %}
-                                                </select>
-                                            </div>
 
-
-                                        </div>
-                                        <div class="row mb-3">
-                                            <div class="col-4">
-                                                <div class="team-card-sm">
-                                                    <div class="row">
-                                                        {% if fixture|getItem:'mainDraw' is not None %}
-                                                            <div class="flag-config">
-                                                                {% rstonemtchhome fixture.mainDraw.match1 as homeborder %}
-                                                                <img src="{{ fixture.mainDraw.match1.homeTeam.team.image_flag }}"
-                                                                     class="img-card {{ homeborder }}">
-                                                            </div>
-                                                            <div class="name-config">
-                                                                {{ fixture.mainDraw.match1.homeTeam.team.nation_iso_code }}
-                                                            </div>
-                                                        {% else %}
-                                                            <div class="name-config">
-                                                                Team 1
-                                                            </div>
-                                                        {% endif %}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-4" data-loading-aria-busy data-loading>
-                                                <div class="col-auto d-flex justify-content-center">
-                                                    <div class="spinner-border text-info" role="status">
-                                                        <span class="visually-hidden">Loading...</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
-                                            <div class="col-4 d-flex justify-content-center" data-loading-aria-busy
-                                                 data-loading-class="d-none">
-                                                {% with homePenalties=fixture.mainDraw.match1.homeTeam.penalties awayPenalties=fixture.mainDraw.match1.awayTeam.penalties %}
-                                                    <h3>
-                                                        ({% firstof homePenalties 0 %}) {{ fixture.mainDraw.match1.homeTeam.goals|default_if_none:"?" }}
-                                                        - {{ fixture.mainDraw.match1.awayTeam.goals|default_if_none:"?" }}
-                                                        ({% firstof awayPenalties 0 %})</h3>
-                                                {% endwith %}
-
-                                            </div>
-
-                                            <div class="col-4">
-                                                <div class="team-card-sm">
-                                                    <div class="row">
-                                                        {% if fixture|getItem:'mainDraw' is not None %}
-                                                            <div class="flag-config">
-                                                                {% rstonemtchaway fixture.mainDraw.match1 as awayborder %}
-                                                                <img src="{{ fixture.mainDraw.match1.awayTeam.team.image_flag }}"
-                                                                     class="img-card {{ awayborder }}">
-                                                            </div>
-                                                            <div class="name-config">
-                                                                {{ fixture.mainDraw.match1.awayTeam.team.nation_iso_code }}
-                                                            </div>
-                                                        {% else %}
-                                                            <div class="name-config">
-                                                                Team 2
-                                                            </div>
-
-                                                        {% endif %}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-                                </div>
-                            </div>
                         </div>
 
 
                     </div>
-
-
                 </div>
 
             </div>
 
         </div>
 
+    
     </div>
 
-    <!-- Modals -->
-    <div id="schedule" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="Fixtures"
-         aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-scrollable">
-            <div class="modal-content">
-                <div id="schedule-content"></div>
-            </div>
-        </div>
-
-    </div>
-
-    <div id="standings" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="Standings"
-         aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div id="stats-content"></div>
-            </div>
-        </div>
-
-    </div>
+   
 {% endblock %}

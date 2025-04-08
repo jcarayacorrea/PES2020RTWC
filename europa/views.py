@@ -8,6 +8,8 @@ from utils import getTeams, updateStage, getTeamsFinalRound, getTeamsThirdRound,
     getTeamsFirstRound, db_conexion, getTeamById, GROUP_CODES, GROUP_RANGE
 
 CONF_NAME = 'UEFA'
+
+
 # Create your views here.
 
 def finalround(request):
@@ -15,7 +17,7 @@ def finalround(request):
     round_name = 'final'
     context['teams'] = getTeamsFinalRound(conf_name=CONF_NAME)
     for zone_code in GROUP_CODES[0:4]:
-        teams = get_zone_with_teams_of_size(zone_code, CONF_NAME, round_name,team_size=5)
+        teams = get_zone_with_teams_of_size(zone_code, CONF_NAME, round_name, team_size=5)
         if teams is not None:
             context[f'zone{zone_code}'] = teams
     context['range'] = GROUP_RANGE
@@ -33,6 +35,7 @@ def thirdround(request):
             context[f'zone{zone_code}'] = teams
     context['range'] = GROUP_RANGE[0:3]
     return render(request, 'europa/thrround.html', context)
+
 
 def secondround(request):
     context = {}
@@ -52,9 +55,11 @@ def firstround(request):
     round_name = 'first'
     context['teams'] = getTeamsFirstRound(conf_name=CONF_NAME)
     for zone_code in GROUP_CODES[0:2]:
-        teams = get_zone_with_teams_of_size(zone_code, CONF_NAME, round_name,team_size=5)
+        teams = get_zone_with_teams_of_size(zone_code, CONF_NAME, round_name, team_size=5)
         if teams is not None:
             context[f'zone{zone_code}'] = teams
+    fixture = getZoneData('WC', 'UEFA', 'first')
+    context['fixture'] = fixture['fixtures']
     context['range'] = GROUP_RANGE
     return render(request, 'europa/fstround.html', context)
 
@@ -110,8 +115,6 @@ def thirdRoundButton(request):
         return thirdround(request)
 
 
-
-
 def finalRoundButton(request):
     if request.method == 'GET':
         context = {}
@@ -123,6 +126,7 @@ def finalRoundButton(request):
             create_fixture(zone, True, chr(ord('A') + zone_idx - 1), 'UEFA', 'final')
             context[f'zone{zone_idx}'] = zone
         return finalround(request)
+
 
 def setHomeWildCardTeam(request):
     db = db_conexion()
