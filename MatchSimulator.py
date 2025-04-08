@@ -132,7 +132,7 @@ def simulate_match(home_team_id, away_team_id, is_extra_time):
 
     home_probability, away_probability = calculate_winner_probability(home_team[0]['fifa_nation_rank'],
                                                                       away_team[0]['fifa_nation_rank'])
-    print(f' INICIO DE PARTIDO {home_nation_name} - {away_nation_name}'.center(50, ':'))
+    print(f' INICIO DE PARTIDO {home_nation_name} - {away_nation_name}'.center(100, ':'))
     home_goals, away_goals = simulate_match_time(90, home_probability, away_probability, home_team[0]['nation_name'],
                                                  away_team[0]['nation_name'])
 

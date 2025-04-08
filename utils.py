@@ -109,11 +109,12 @@ def getQualyPlaces(conf):
 
 
 def get_stage_data(stage, places):
+    placesDict = places['places']
     stage_data = {
-        'first': places['places']['firstRound'],
-        'second': places['places']['secondRound'],
-        'third': places['places']['thirdRound'],
-        'final': places['places']['finalRound']
+        'first': places['places']['firstRound'] if 'firstRound' in placesDict.keys() is not None else [],
+        'second': places['places']['secondRound'] if 'secondRound' in placesDict.keys() is not None else [],
+        'third': places['places']['thirdRound'] if 'thirdRound' in placesDict.keys() is not None else [],
+        'final': places['places']['finalRound'] if 'finalRound' in placesDict.keys() is not None else []
     }
     return stage_data.get(stage)
 
