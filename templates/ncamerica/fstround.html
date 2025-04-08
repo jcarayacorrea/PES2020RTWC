@@ -40,14 +40,14 @@
                             <div class="row mb-5">
                                 <div class="col-md-5">
                                     {% if zoneA is not None %}
-                                        {% include "utils/groups/group-card.html" with conf="CAF" round="final" group="A" zone=zoneA buttons=True %}
+                                        {% include "utils/groups/group-card.html" with conf="CONCACAF" round="first" group="A" zone=zoneA buttons=True %}
                                     {% else %}
                                         {% include "utils/groups/group-card.html" with group="A" iterator=range  buttons=False %}
                                     {% endif %}
                                 </div>
                                 <div class="col-md-5 offset-md-1">
                                     {% if zoneB is not None %}
-                                        {% include "utils/groups/group-card.html" with conf="CAF" round="final" group="B" zone=zoneB buttons=True %}
+                                        {% include "utils/groups/group-card.html" with conf="CONCACAF" round="first" group="B" zone=zoneB buttons=True %}
                                     {% else %}
                                         {% include "utils/groups/group-card.html" with group="B" iterator=range  buttons=False %}
                                     {% endif %}
@@ -57,14 +57,14 @@
                             <div class="row">
                                 <div class="col-md-5 mb-5">
                                     {% if zoneC is not None %}
-                                        {% include "utils/groups/group-card.html" with conf="CAF" round="final" group="C" zone=zoneC buttons=True %}
+                                        {% include "utils/groups/group-card.html" with conf="CONCACAF" round="first" group="C" zone=zoneC buttons=True %}
                                     {% else %}
                                         {% include "utils/groups/group-card.html" with group="C" iterator=range  buttons=False %}
                                     {% endif %}
                                 </div>
                                 <div class="col-md-5 offset-md-1">
                                     {% if zoneD is not None %}
-                                        {% include "utils/groups/group-card.html" with conf="CAF" round="final" group="D" zone=zoneD buttons=True %}
+                                        {% include "utils/groups/group-card.html" with conf="CONCACAF" round="first" group="D" zone=zoneD buttons=True %}
                                     {% else %}
                                         {% include "utils/groups/group-card.html" with group="D" iterator=range  buttons=False %}
                                     {% endif %}
@@ -74,7 +74,7 @@
                             <div class="row">
                                 <div class="col-md-5  offset-sm-3">
                                     {% if zoneE is not None %}
-                                        {% include "utils/groups/group-card.html" with conf="CAF" round="final" group="E" zone=zoneE buttons=True %}
+                                        {% include "utils/groups/group-card.html" with conf="CONCACAF" round="first" group="E" zone=zoneE buttons=True %}
                                     {% else %}
                                         {% include "utils/groups/group-card.html" with group="E" iterator=range  buttons=False %}
                                     {% endif %}
@@ -90,27 +90,6 @@
 
             </div>
 
-        </div>
-    
-    </div>
-
-    <!-- Modals -->
-    <div id="schedule" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="Fixtures"
-         aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-scrollable">
-            <div class="modal-content">
-                <div id="schedule-content"></div>
-            </div>
-        </div>
-
-    </div>
-
-    <div id="standings" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="Standings"
-         aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div id="stats-content"></div>
-            </div>
         </div>
 
     </div>
