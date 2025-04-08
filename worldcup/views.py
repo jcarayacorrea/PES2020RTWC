@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.template.defaulttags import register
 from fixtures import createPlayOffMatches, getZoneData
-from utils import getTeamsMainDraw, getTeamsPlayoff
+from utils import getTeamsMainDraw, getTeamsPlayoff, GROUP_RANGE
 from functools import reduce
 
 
@@ -12,7 +12,7 @@ from functools import reduce
 def maindraw(request):
     teams = getTeamsMainDraw()
     confederations = ['CONMEBOL', 'UEFA', 'CONCACAF', 'OFC', 'CAF', 'AFC']
-    context = {'teams': teams, 'confederations': confederations, 'range': ['1','2','3','4']}
+    context = {'teams': teams, 'confederations': confederations, 'range': GROUP_RANGE[0:4]}
 
     return render(request, 'worldcup/maindraw.html', context)
 

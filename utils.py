@@ -70,20 +70,15 @@ def getTeamsMainDraw():
     listData = list(cursor)
     return listData
 
-
-def get_filter_conditions():
-    conf_name_or_condition = {"$or": [{"conf_name": "CONMEBOL"}, {"conf_name": "CONCACAF"}]}
-    stage_or_condition = {"$or": [{"stage.mainDraw": True}, {"stage.playoff": True}]}
-    combined_and_condition = {"$and": [conf_name_or_condition, stage_or_condition]}
-    return {"$or": [conf_name_or_condition, combined_and_condition]}
-
-
 def getTeamsCopaAmerica():
-    db = db_conexion()
-    filter_conditions = get_filter_conditions()
-    cursor = db.get_collection('Teams').find(filter_conditions).sort('fifa_nation_rank', 1)
-    listData = list(cursor)
-    return listData
+    database_connection = db_conexion()
+    find_condition = {'$or': [{'conf_name': 'CONMEBOL'}, {
+        '$and': [{'conf_name': 'CONCACAF'}, {'$or': [{'stage.mainDraw': True}, {'stage.playoff': True}]}]}]}
+    teams_cursor = database_connection.get_collection('Teams').find(find_condition).sort(
+        'fifa_nation_rank', 1)
+
+    return list(teams_cursor)
+
 
 
 def generateStageObj(stage):

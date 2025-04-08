@@ -4,7 +4,12 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from operator import itemgetter
-from utils import getTeams, updateStage, getTeamsCopaAmerica
+from utils import getTeams, updateStage, getTeamsCopaAmerica, GROUP_RANGE
+
+CONMEBOL_TEAMS = 2
+CONCACAF_TEAMS = 2
+REST_TEAMS = 10
+POOL_TEAMS = 4
 
 
 # Create your views here.
@@ -17,6 +22,7 @@ def teams(request):
 def copaAmerica(request):
     context = {}
     context['teams'] = getTeamsCopaAmerica()
+    context['range'] = GROUP_RANGE[0:4]
     return render(request, 'sudamerica/copaamerica.html', context)
 
 
@@ -28,42 +34,55 @@ def updateProgress(request, id, stage):
 
 def copaAmericaButton(request):
     if request.method == 'GET':
-        context = {}
-        context['teams'] = getTeamsCopaAmerica()
-        zone1, zone2, zone3, zone4 = copaAmericaDraw(getTeamsCopaAmerica())
-        random.shuffle(zone1)
-        random.shuffle(zone2)
-        random.shuffle(zone3)
-        random.shuffle(zone4)
-
-        context['zone1'] = zone1
-        context['zone2'] = zone2
-        context['zone3'] = zone3
-        context['zone4'] = zone4
+        teams = getTeamsCopaAmerica()
+        zones = copaAmericaDraw(teams)
+        for zone in zones:
+            random.shuffle(zone)
+        context = {
+            'teams': teams,
+            'zoneA': zones[0],
+            'zoneB': zones[1],
+            'zoneC': zones[2],
+            'zoneD': zones[3],
+        }
 
         return render(request, 'sudamerica/copaamerica.html', context)
 
 
+def extract_teams_by_federation(teams, federation):
+    return [team for team in teams if team['conf_name'] == federation]
+
+
+def create_zone(seed_list, *pools):
+    return [seed_list.pop(),
+            pools[0].pop(),
+            pools[1].pop(),
+            pools[2].pop()]
+
+
+def shuffle_list(*args):
+    for arg in args:
+        random.shuffle(arg)
+
+
 def copaAmericaDraw(teams):
-    sudamerica = [team for team in teams if team['conf_name'] == 'CONMEBOL']
-    ncamerica = [team for team in teams if team['conf_name'] == 'CONCACAF']
-    sudSeed = sudamerica[0:2]
-    ncSeed = ncamerica[0:2]
-    restTeams = sorted(sudamerica[2:10] + ncamerica[2:6], key=itemgetter('fifa_nation_rank'), reverse=False)
+    # Extract team lists by federation
+    sudamerica = extract_teams_by_federation(teams, 'CONMEBOL')
+    ncamerica = extract_teams_by_federation(teams, 'CONCACAF')
 
-    pool2 = restTeams[0:4]
-    pool3 = restTeams[4:8]
-    pool4 = restTeams[8:12]
+    # Create seed lists and rest of teams list
+    sudSeed, ncSeed = sudamerica[:CONMEBOL_TEAMS], ncamerica[:CONCACAF_TEAMS]
+    restTeams = sorted(sudamerica[CONMEBOL_TEAMS:REST_TEAMS] + ncamerica[CONCACAF_TEAMS:6],
+                       key=itemgetter('fifa_nation_rank'))
 
-    random.shuffle(sudSeed)
-    random.shuffle(ncSeed)
-    random.shuffle(pool2)
-    random.shuffle(pool3)
-    random.shuffle(pool4)
+    # Split restTeams into pools
+    pool2, pool3, pool4 = [restTeams[i: i + POOL_TEAMS] for i in range(0, len(restTeams), POOL_TEAMS)]
 
-    zone1 = [sudSeed[0], pool2[0], pool3[0], pool4[0]]
-    zone2 = [ncSeed[0], pool2[1], pool3[1], pool4[1]]
-    zone3 = [ncSeed[1], pool2[2], pool3[2], pool4[2]]
-    zone4 = [sudSeed[1], pool2[3], pool3[3], pool4[3]]
+    # Shuffle lists
+    shuffle_list(sudSeed, ncSeed, pool2, pool3, pool4)
+
+    # Creating zones
+    zone1, zone2 = create_zone(sudSeed, pool2, pool3, pool4), create_zone(ncSeed, pool2, pool3, pool4)
+    zone3, zone4 = create_zone(ncSeed, pool2, pool3, pool4), create_zone(sudSeed, pool2, pool3, pool4)
 
     return zone1, zone2, zone3, zone4
