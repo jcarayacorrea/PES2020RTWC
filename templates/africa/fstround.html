@@ -37,15 +37,15 @@
                         <div data-loading-aria-busy data-loading-class="d-none">
                             <div class="row mb-5">
                                 <div class="col-md-5">
-                                    {% if zone1 is not None %}
-                                        {% include "utils/groups/group-card.html" with conf="CAF" round="first" group="A" zone=zone1 buttons=True %}
+                                    {% if zoneA is not None %}
+                                        {% include "utils/groups/group-card.html" with conf="CAF" round="first" group="A" zone=zoneA buttons=True %}
                                     {% else %}
                                         {% include "utils/groups/group-card.html" with group="A" iterator=range  buttons=False %}
                                     {% endif %}
                                 </div>
                                 <div class="col-md-5 offset-md-1">
-                                    {% if zone2 is not None %}
-                                        {% include "utils/groups/group-card.html" with conf="CAF" round="first" group="B" zone=zone2 buttons=True %}
+                                    {% if zoneB is not None %}
+                                        {% include "utils/groups/group-card.html" with conf="CAF" round="first" group="B" zone=zoneB buttons=True %}
                                     {% else %}
                                         {% include "utils/groups/group-card.html" with group="B" iterator=range  buttons=False %}
                                     {% endif %}
@@ -54,8 +54,8 @@
 
                             <div class="row mb-5">
                                 <div class="col-md-5 offset-sm-3">
-                                    {% if zone3 is not None %}
-                                        {% include "utils/groups/group-card.html" with conf="CAF" round="first" group="C" zone=zone3 buttons=True %}
+                                    {% if zoneC is not None %}
+                                        {% include "utils/groups/group-card.html" with conf="CAF" round="first" group="C" zone=zoneC buttons=True %}
                                     {% else %}
                                         {% include "utils/groups/group-card.html" with group="C" iterator=range  buttons=False %}
                                     {% endif %}
