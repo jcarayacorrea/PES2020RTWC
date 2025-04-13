@@ -81,12 +81,9 @@ def handle_match_results(match_info, resultado, conf, round, zone, is_extra):
         saveMatchResult(match_info["fixture"], match_info["match"], resultado['local'], resultado['visita'], conf,
                         round, zone)
     else:
-        homeTeam = getTeamById(match_info["homeid"])
-        awayTeam = getTeamById(match_info["awayid"])
         saveExtraTimeResult(match_info["fixture"], match_info["match"], resultado['local'], resultado['visita'],
                             resultado.get('penales_local', 0),
-                            resultado.get('penales_visita', 0), conf, round, zone,
-                            homeTeam[0], awayTeam[0])
+                            resultado.get('penales_visita', 0), conf, round, zone)
 
 
 def handle_match_configuration(request, fixture, conf, round, zone):
@@ -116,8 +113,6 @@ def render_match_data(request, zone_id, config, round_id, fixture_id, match_id):
 
 def getMatchData(fixtureDict, fixture, match):
     return fixtureDict['fixtures']['fixture' + str(fixture)]['match' + str(match)]
-
-
 
 
 @register.filter

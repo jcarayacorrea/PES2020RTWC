@@ -40,14 +40,14 @@
                             <div class="row mb-5">
                                 <div class="col-md-5">
                                     {% if zoneA is not None %}
-                                        {% include "utils/groups/group-card.html" with conf="OFC" round="first" group="A" zone=zoneA buttons=True %}
+                                        {% include "utils/groups/group-card.html" with conf="OFC" round="final" group="A" zone=zoneA buttons=True %}
                                     {% else %}
                                         {% include "utils/groups/group-card.html" with group="A" iterator=range  buttons=False %}
                                     {% endif %}
                                 </div>
                                 <div class="col-md-5 offset-md-1">
                                     {% if zoneB is not None %}
-                                        {% include "utils/groups/group-card.html" with conf="OFC" round="first" group="B" zone=zoneB buttons=True %}
+                                        {% include "utils/groups/group-card.html" with conf="OFC" round="final" group="B" zone=zoneB buttons=True %}
                                     {% else %}
                                         {% include "utils/groups/group-card.html" with group="B" iterator=range  buttons=False %}
                                     {% endif %}
@@ -64,7 +64,7 @@
                                                 </div>
                                                 <div class="col-2 justify-content-center">
                                                     {% with homeId=fixture.mainDraw.match1.homeTeam.team.id awayId=fixture.mainDraw.match1.awayTeam.team.id %}
-                                                        {% url 'one_match' 'mainDraw' 1 homeId awayId  'OFC'  'first' 'MD' 1 as match %}
+                                                        {% url 'one_match' 'mainDraw' 1 homeId awayId  'OFC'  'final' 'MD' 1 as match %}
                                                         <button type="button" class="btn btn-primary"
                                                                 hx-get="{{ match }}"
                                                                 hx-trigger="click"
