@@ -72,8 +72,7 @@ def sim_match(request, fixture, match, homeid, awayid, conf, round, zone, extraT
     handle_match_results(match_info, resultado, conf, round, zone, extraTime != 0)
     if singleLoad == 1:
         return render_match_data(request, zone, conf, round, match_info["fixture"], match_info["match"])
-    fixtureDict = getZoneData(zone, conf, round)
-    return handle_match_configuration(request, fixtureDict, match_info["fixture"], conf, round, zone)
+    return handle_match_configuration(request, match_info["fixture"])
 
 
 def handle_match_results(match_info, resultado, conf, round, zone, is_extra):
@@ -83,17 +82,17 @@ def handle_match_results(match_info, resultado, conf, round, zone, is_extra):
     else:
         saveExtraTimeResult(match_info["fixture"], match_info["match"], resultado['local'], resultado['visita'],
                             resultado.get('penales_local', 0),
-                            resultado.get('penales_visita', 0), conf, round, zone)
+                            resultado.get('penales_visita', 0), conf, round, zone, match_info["homeid"],match_info["awayid"])
 
 
-def handle_match_configuration(request, fixture, conf, round, zone):
+def handle_match_configuration(request, fixture):
     responses = {
         'first': playoff,
         'final': playoff,
         'wildCard': firstround,
         'mainDraw': finalround
     }
-    return responses.get(fixture, fixtureZone)(request, conf, round, zone)
+    return responses.get(fixture, fixtureZone)(request)
 
 
 def downloadDraw(request, namefile):

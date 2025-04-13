@@ -129,6 +129,12 @@ def getTeamById(team):
     db = db_conexion()
     return list(db.get_collection('Teams').find({'id': team}))
 
+def update_one_match_result_db(conf,round,zone,spec):
+    db = db_conexion()
+    db.get_collection('Fixtures').update_many(
+        {'conf': conf, 'round': round, 'zone': zone}, {'$set': spec})
+
+
 
 def saveMatchResult(fixture, match, localGoals, awayGoals, conf, round, zone):
     db = db_conexion()
@@ -160,12 +166,21 @@ def create_match_spec(phase, match_num, localGoals, awayGoals, localPenaltys, aw
         f'fixtures.{phase}.match{match_num}.played': True
     }
 
+def move_winner_spec(phase,match_num,team):
+    return {
+        f'fixtures.{phase}.match{match_num}.awayTeam.team': team
+    }
 
-def saveExtraTimeResult(phase, match, localGoals, awayGoals, localPenaltys, awayPenaltys, conf, round, zone):
-    db = db_conexion()
+
+
+def saveExtraTimeResult(phase, match, localGoals, awayGoals, localPenaltys, awayPenaltys, conf, round, zone, homeid,awayid):
     final_match_spec = create_match_spec(phase, match, localGoals, awayGoals, localPenaltys, awayPenaltys)
-    db.get_collection('Fixtures').update_many(
-        {'conf': conf, 'round': round, 'zone': zone}, {'$set': final_match_spec})
+    update_one_match_result_db(conf, round, zone, final_match_spec)
+    if round == 'playoff' and phase == 'first':
+        winner_team = move_winner_spec('final', match, getTeamById(homeid)[0] if (localGoals > awayGoals or (
+                localGoals == awayGoals and localPenaltys > awayPenaltys)) else getTeamById(awayid)[0])
+        update_one_match_result_db(conf, round,zone, winner_team)
+
 
 
 
