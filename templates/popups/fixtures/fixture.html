@@ -40,7 +40,7 @@
                                     </div>
                                     {% if fixture.fixture2|getItem:'match2' is not None %}
                                         <div id="f2m2" class="match-border" data-loading-states>
-                                            {% include "popups/fixtures/../../utils/fixture/match-card.html" with target="#f2m2" match=fixture.fixture1.match2 fixtureNum=2 matchNum=2 delay=500 %}
+                                            {% include "popups/fixtures/../../utils/fixture/match-card.html" with target="#f2m2" match=fixture.fixture2.match2 fixtureNum=2 matchNum=2 delay=500 %}
                                         </div>
                                     {% endif %}
                                 </div>
