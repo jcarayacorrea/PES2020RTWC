@@ -4,7 +4,9 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from operator import itemgetter
-from utils import getTeams, updateStage, getTeamsCopaAmerica, GROUP_RANGE
+
+from Global_Variables import GROUP_RANGE
+from utils import getTeams, updateStage, getTeamsCopaAmerica
 
 CONMEBOL_TEAMS = 2
 CONCACAF_TEAMS = 2

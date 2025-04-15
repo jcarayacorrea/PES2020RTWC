@@ -2,10 +2,11 @@ import random
 
 from django.shortcuts import render, redirect
 
+from Global_Variables import GROUP_CODES, GROUP_RANGE
 from draw import round_draw, get_zone_with_teams_of_size
 from fixtures import getZoneData, create_fixture
 from utils import getTeams, updateStage, getTeamsFinalRound, getTeamsThirdRound, getTeamsSecondRound, \
-    getTeamsFirstRound, db_conexion, getTeamById, GROUP_CODES, GROUP_RANGE
+    getTeamsFirstRound, db_conexion, getTeamById
 
 CONF_NAME = 'UEFA'
 

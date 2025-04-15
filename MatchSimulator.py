@@ -1,16 +1,11 @@
 import random
 import time
+
+from Global_Variables import HOME_GOAL, AWAY_GOAL, GOAL_PRBLTY, STEP, SLEEP_TIME, GOAL, NO_GOAL, PENALTY_DEFAULT_TURNS, \
+    LOG_LENGTH
 from utils import medium_difference, high_difference, extreme_difference, ultra_difference, getTeamById
 
-SLEEP_TIME = 0.1
-GOAL = 'O'
-NO_GOAL = 'X'
-HOME_GOAL = 'L'
-AWAY_GOAL = 'V'
-STEP = '-'
-GOAL_PRBLTY = 0.03
-PENALTY_DEFAULT_TURNS = 5
-LOG_LENGTH = 200
+
 
 
 def calculate_probability(winner_rank, loser_rank):

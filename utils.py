@@ -1,8 +1,7 @@
 from pymongo import MongoClient
 
 
-GROUP_RANGE = ['1','2','3','4','5']
-GROUP_CODES = ['A','B','C','D','E','F','G','H']
+
 def db_conexion():
     client = MongoClient(host='192.168.1.101',
                          port=27017,

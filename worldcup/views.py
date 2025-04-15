@@ -3,8 +3,10 @@ import random
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.template.defaulttags import register
+
+from Global_Variables import GROUP_RANGE
 from fixtures import createPlayOffMatches, getZoneData
-from utils import getTeamsMainDraw, getTeamsPlayoff, GROUP_RANGE
+from utils import getTeamsMainDraw, getTeamsPlayoff
 from functools import reduce
 
 

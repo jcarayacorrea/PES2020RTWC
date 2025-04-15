@@ -1,0 +1,11 @@
+SLEEP_TIME = 0.1
+GOAL = 'O'
+NO_GOAL = 'X'
+HOME_GOAL = 'L'
+AWAY_GOAL = 'V'
+STEP = '-'
+GOAL_PRBLTY = 0.03
+PENALTY_DEFAULT_TURNS = 5
+LOG_LENGTH = 200
+GROUP_RANGE = ['1','2','3','4','5']
+GROUP_CODES = ['A','B','C','D','E','F','G','H']

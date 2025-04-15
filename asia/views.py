@@ -2,10 +2,11 @@ import random
 
 from django.shortcuts import render, redirect
 
+from Global_Variables import GROUP_CODES, GROUP_RANGE
 from draw import get_zone_with_teams_of_size, round_draw
-from utils import db_conexion, getTeams, updateStage, getTeamsFirstRound, getTeamsSecondRound, getTeamsThirdRound, \
-    getTeamsFinalRound, GROUP_CODES, GROUP_RANGE
-from fixtures import create_fixture, getZoneData
+from utils import  getTeams, updateStage, getTeamsFirstRound, getTeamsSecondRound, getTeamsThirdRound, \
+    getTeamsFinalRound
+from fixtures import create_fixture
 
 CONF_NAME = 'AFC'
 
