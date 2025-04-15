@@ -3,7 +3,7 @@
         {% if matchNum is not None %}
             <h6 class="h-6 text-center"> Match {{ matchNum }}</h6>
         {% endif %}
-        {% if match is None %}
+        {% if not match %}
             {% with i=1 %}
                 {% include "utils/playoff/team-card-empty.html" %}
             {% endwith %}
@@ -12,7 +12,7 @@
                 {% include "utils/playoff/home-card.html" %}
             </div>
         {% endif %}
-        {% if match is None %}
+        {% if not match %}
             {% with i=2 %}
                 {% include "utils/playoff/team-card-empty.html" %}
             {% endwith %}
