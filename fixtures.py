@@ -101,47 +101,24 @@ def getZoneData(zone, conf, round):
     return listData[0]
 
 
-def createPlayOffMatches(teamList, seeds, pool1, pool2):
-    firstPhasefixture = {"first": {
-        "match1": {"homeTeam": {"team": pool1[0], "goals": None, "penalties": None},
-                   "awayTeam": {"team": pool2[0], "goals": None, "penalties": None}, "result": False,
-                   "played": False},
-        "match2": {"homeTeam": {"team": pool1[1], "goals": None, "penalties": None},
-                   "awayTeam": {"team": pool2[1], "goals": None, "penalties": None}, "result": False,
-                   "played": False},
-        "match3": {"homeTeam": {"team": pool1[2], "goals": None, "penalties": None},
-                   "awayTeam": {"team": pool2[2], "goals": None, "penalties": None}, "result": False,
-                   "played": False},
-        "match4": {"homeTeam": {"team": pool1[3], "goals": None, "penalties": None},
-                   "awayTeam": {"team": pool2[3], "goals": None, "penalties": None}, "result": False,
-                   "played": False},
-        "match5": {"homeTeam": {"team": pool1[4], "goals": None, "penalties": None},
-                   "awayTeam": {"team": pool2[4], "goals": None, "penalties": None}, "result": False,
-                   "played": False},
-        "match6": {"homeTeam": {"team": pool1[5], "goals": None, "penalties": None},
-                   "awayTeam": {"team": pool2[5], "goals": None, "penalties": None}, "result": False,
-                   "played": False}
-    },
-        "final": {
-            "match1": {"homeTeam": {"team": seeds[0], "goals": None, "penalties": None},
-                       "awayTeam": {"team": None, "goals": None, "penalties": None}, "result": False,
-                       "played": False},
-            "match2": {"homeTeam": {"team": seeds[1], "goals": None, "penalties": None},
-                       "awayTeam": {"team": None, "goals": None, "penalties": None}, "result": False,
-                       "played": False},
-            "match3": {"homeTeam": {"team": seeds[2], "goals": None, "penalties": None},
-                       "awayTeam": {"team": None, "goals": None, "penalties": None}, "result": False,
-                       "played": False},
-            "match4": {"homeTeam": {"team": seeds[3], "goals": None, "penalties": None},
-                       "awayTeam": {"team": None, "goals": None, "penalties": None}, "result": False,
-                       "played": False},
-            "match5": {"homeTeam": {"team": seeds[4], "goals": None, "penalties": None},
-                       "awayTeam": {"team": None, "goals": None, "penalties": None}, "result": False,
-                       "played": False},
-            "match6": {"homeTeam": {"team": seeds[5], "goals": None, "penalties": None},
-                       "awayTeam": {"team": None, "goals": None, "penalties": None}, "result": False,
-                       "played": False}
-        }
-
+def create_match(team1, team2):
+    """Create a match dictionary object given two team names."""
+    return {
+        "homeTeam": {"team": team1, "goals": None, "penalties": None},
+        "awayTeam": {"team": team2, "goals": None, "penalties": None},
+        "result": False,
+        "played": False
     }
-    updateFixture(teamList, firstPhasefixture, 'P', 'FIFA', 'playoff')
+
+
+def createPlayOffMatches(teamList, seeds, pool1, pool2):
+    # defining initial match structure
+    match_structure = {"first": {}, "final": {}}
+
+    # loop through the elements of pool1 and pool2 to create matches
+    for i in range(6):
+        match_name = f"match{i + 1}"
+        match_structure["first"][match_name] = create_match(pool1[i], pool2[i])
+        match_structure["final"][match_name] = create_match(seeds[i], None)
+
+    updateFixture(teamList, match_structure, 'P', 'FIFA', 'playoff')

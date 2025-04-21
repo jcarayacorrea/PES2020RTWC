@@ -58,7 +58,6 @@ def preparePlayoffData():
     zones = playoffDraw(teams)
     for zone in zones:
         random.shuffle(zone)
-
     createPlayOffMatches(teams, *zones)
     zone_identifier = 'P'
     conf = 'FIFA'
