@@ -115,15 +115,15 @@ def draw(teams):
     for pool, i in zip(pools, range(2, 5)):
         random.shuffle(pool)
         for team in pool:
-            setTeamPosition(team, groups, i - 1, teamsCount=countTeams(team['conf_name'], getTeamsMainDraw()),
+            setTeamPosition(team, groups, i - 1, teamsCount=countTeams(team['conf_name'], teams),
                             maxLength=i)
     return groups.get('A'), groups.get('B'), groups.get('C'), groups.get('D'), groups.get('E'), groups.get(
         'F'), groups.get('G'), groups.get('H')
 
 
 def setTeamPosition(team, groups, position, teamsCount, maxLength):
-    zones = GROUP_CODES
-    for zone in zones.copy():
+    zones = GROUP_CODES.copy()
+    for zone in GROUP_CODES:
         if filterConfList(team['conf_name'], groups.get(zone), teamsCount) == True or len(
                 groups.get(zone)) == maxLength:
             zones.remove(zone)
