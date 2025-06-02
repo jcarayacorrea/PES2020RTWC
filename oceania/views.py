@@ -2,7 +2,7 @@ import random
 
 from django.shortcuts import render, redirect
 
-from Global_Variables import GROUP_RANGE, GROUP_CODES
+from Global_Variables import GROUP_RANGE, GROUP_KEYS
 from draw import get_zone_with_teams_of_size, round_draw
 from fixtures import getZoneData, create_fixture
 from utils import updateStage, getTeams, getTeamsFirstRound, getTeamsFinalRound, db_conexion, getTeamById
@@ -16,7 +16,7 @@ def finalround(request):
     context = {}
     round_name = 'final'
     context['teams'] = getTeamsFinalRound(conf_name=CONF_NAME)
-    for zone_code in GROUP_CODES[0:2]:
+    for zone_code in GROUP_KEYS[0:2]:
         teams = get_zone_with_teams_of_size(zone_code, CONF_NAME, round_name, team_size=4)
         if teams is not None:
             context[f'zone{zone_code}'] = teams
@@ -31,7 +31,7 @@ def firstround(request):
     context = {}
     round_name = 'first'
     context['teams'] = getTeamsFirstRound(conf_name=CONF_NAME)
-    for zone_code in GROUP_CODES[0]:
+    for zone_code in GROUP_KEYS[0]:
         teams = get_zone_with_teams_of_size(zone_code, CONF_NAME, round_name, team_size=5)
         if teams is not None:
             context[f'zone{zone_code}'] = teams

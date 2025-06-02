@@ -2,7 +2,7 @@ import random
 
 from django.shortcuts import render, redirect
 
-from Global_Variables import GROUP_CODES, GROUP_RANGE
+from Global_Variables import GROUP_KEYS, GROUP_RANGE
 from draw import get_zone_with_teams_of_size, round_draw
 from utils import  getTeams, updateStage, getTeamsFirstRound, getTeamsSecondRound, getTeamsThirdRound, \
     getTeamsFinalRound
@@ -16,7 +16,7 @@ def finalround(request):
     context = {}
     round_name = 'final'
     context['teams'] = getTeamsFinalRound(conf_name=CONF_NAME)
-    for zone_code in GROUP_CODES[0:4]:
+    for zone_code in GROUP_KEYS[0:4]:
         teams = get_zone_with_teams_of_size(zone_code, CONF_NAME, round_name, team_size=5)
         if teams is not None:
             context[f'zone{zone_code}'] = teams
@@ -29,7 +29,7 @@ def thirdround(request):
     round_name = 'third'
     context['teams'] = getTeamsThirdRound(conf_name=CONF_NAME)
 
-    for zone_code in GROUP_CODES[0:6]:
+    for zone_code in GROUP_KEYS[0:6]:
         teams = get_zone_with_teams_of_size(zone_code, CONF_NAME, round_name)
         if teams is not None:
             context[f'zone{zone_code}'] = teams
@@ -42,7 +42,7 @@ def secondround(request):
     round_name = 'second'
     context['teams'] = getTeamsSecondRound(conf_name=CONF_NAME)
 
-    for zone_code in GROUP_CODES[0:6]:
+    for zone_code in GROUP_KEYS[0:6]:
         teams = get_zone_with_teams_of_size(zone_code, CONF_NAME, round_name)
         if teams is not None:
             context[f'zone{zone_code}'] = teams
@@ -54,7 +54,7 @@ def firstround(request):
     context = {}
     round_name = 'first'
     context['teams'] = getTeamsFirstRound(conf_name=CONF_NAME)
-    for zone_code in GROUP_CODES[0]:
+    for zone_code in GROUP_KEYS[0]:
         teams = get_zone_with_teams_of_size(zone_code, CONF_NAME, round_name, team_size=4)
         if teams is not None:
             context[f'zone{zone_code}'] = teams

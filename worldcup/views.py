@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.template.defaulttags import register
 
-from Global_Variables import GROUP_RANGE, GROUP_CODES
+from Global_Variables import GROUP_RANGE, GROUP_KEYS
 from fixtures import createPlayOffMatches, getZoneData
 from utils import getTeamsMainDraw, getTeamsPlayoff
 from functools import reduce
@@ -122,8 +122,8 @@ def draw(teams):
 
 
 def setTeamPosition(team, groups, position, teamsCount, maxLength):
-    zones = GROUP_CODES.copy()
-    for zone in GROUP_CODES:
+    zones = GROUP_KEYS.copy()
+    for zone in GROUP_KEYS:
         if filterConfList(team['conf_name'], groups.get(zone), teamsCount) == True or len(
                 groups.get(zone)) == maxLength:
             zones.remove(zone)
