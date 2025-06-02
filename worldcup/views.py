@@ -92,9 +92,7 @@ def playoffDraw(teams):
 
 def draw(teams):
     groups = {'A': [], 'B': [], 'C': [], 'D': [], 'E': [], 'F': [], 'G': [], 'H': []}
-    poolSeed = teams[0:8]
-    random.shuffle(poolSeed)
-    for key, team in zip(groups.keys(), poolSeed):
+    for key, team in zip(groups.keys(), shuffleSeeds(teams[0:8])):
         groups.get(key).append(team)
 
     pools = [teams[8:16], teams[16:24], teams[24:32]]
@@ -102,20 +100,20 @@ def draw(teams):
     for pool, i in zip(pools, range(2, 5)):
         random.shuffle(pool)
         for team in pool:
-            setTeamPosition(team, groups, i - 1, teamsCount=countTeams(team['conf_name'], teams),
+            setTeamPosition(team, groups, teamsCount=countTeams(team['conf_name'], teams),
                             maxLength=i)
     return groups.get('A'), groups.get('B'), groups.get('C'), groups.get('D'), groups.get('E'), groups.get(
         'F'), groups.get('G'), groups.get('H')
 
 
-def setTeamPosition(team, groups, position, teamsCount, maxLength):
+def setTeamPosition(team, groups, teamsCount, maxLength):
     zones = GROUP_KEYS.copy()
     for zone in GROUP_KEYS:
         if filterConfList(team['conf_name'], groups.get(zone), teamsCount) == True or len(
                 groups.get(zone)) == maxLength:
             zones.remove(zone)
 
-    insertTeam(team, random.choice(zones), position, groups)
+    insertTeam(team, random.choice(zones), groups)
 
 
 def filterConfList(conf_name, list, count_teams):
@@ -129,10 +127,15 @@ def countTeams(conf_name, teamList):
     return len([team for team in teamList if conf_name == team['conf_name']])
 
 
-def insertTeam(team, zone, pos, groups):
-    groups.get(zone).insert(pos, team)
+def insertTeam(team, zone, groups):
+    groups.get(zone).append(team)
 
 
 @register.filter
 def teamsByConf(dict, conf):
     return countTeams(conf, dict)
+
+
+def shuffleSeeds(pool):
+    random.shuffle(pool)
+    return pool
