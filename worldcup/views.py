@@ -91,16 +91,7 @@ def playoffDraw(teams):
 
 
 def draw(teams):
-    groups = {
-        'A': [],
-        'B': [],
-        'C': [],
-        'D': [],
-        'E': [],
-        'F': [],
-        'G': [],
-        'H': []
-    }
+    groups = {'A': [], 'B': [], 'C': [], 'D': [], 'E': [], 'F': [], 'G': [], 'H': []}
     poolSeed = teams[0:8]
     random.shuffle(poolSeed)
     for key, team in zip(groups.keys(), poolSeed):
