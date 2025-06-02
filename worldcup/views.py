@@ -53,6 +53,7 @@ def draw_main_button(request):
             return draw_main_button(request)
         return render(request, 'worldcup/maindraw.html', context)
 
+
 def preparePlayoffData():
     teams = getTeamsPlayoff()
     zones = playoffDraw(teams)
@@ -74,9 +75,6 @@ def getPlayoffPage(request):
         return render(request, 'worldcup/playoff.html', context)
 
 
-
-
-
 def playoffDraw(teams):
     pools = []
     num_pools = 3
@@ -91,6 +89,7 @@ def playoffDraw(teams):
 
     return tuple(pools)
 
+
 def draw(teams):
     groups = {
         'A': [],
@@ -102,15 +101,12 @@ def draw(teams):
         'G': [],
         'H': []
     }
-    pool1 = teams[0:8]
-    pool2 = teams[8:16]
-    pool3 = teams[16:24]
-    pool4 = teams[24:32]
-    random.shuffle(pool1)
-    for key, team in zip(groups.keys(), pool1):
+    poolSeed = teams[0:8]
+    random.shuffle(poolSeed)
+    for key, team in zip(groups.keys(), poolSeed):
         groups.get(key).append(team)
 
-    pools = [pool2, pool3, pool4]
+    pools = [teams[8:16], teams[16:24], teams[24:32]]
 
     for pool, i in zip(pools, range(2, 5)):
         random.shuffle(pool)
@@ -144,8 +140,6 @@ def countTeams(conf_name, teamList):
 
 def insertTeam(team, zone, pos, groups):
     groups.get(zone).insert(pos, team)
-
-
 
 
 @register.filter
