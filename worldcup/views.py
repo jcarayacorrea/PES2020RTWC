@@ -92,12 +92,11 @@ def playoffDraw(teams):
 
 def draw(teams):
     groups = {'A': [], 'B': [], 'C': [], 'D': [], 'E': [], 'F': [], 'G': [], 'H': []}
-    for key, team in zip(groups.keys(), shufflePools(teams[0:8])):
+    for key, team in zip(groups.keys(), shuffleArray(teams[0:8])):
         groups.get(key).append(team)
 
-    pools = [shufflePools(teams[8:16]), shufflePools(teams[16:24]), shufflePools(teams[24:32])]
-
-    for pool, i in zip(pools, range(2, 5)):
+    for pool, i in zip([shuffleArray(teams[8:16]), shuffleArray(teams[16:24]), shuffleArray(teams[24:32])],
+                       range(2, 5)):
         for team in pool:
             setTeamPosition(team, groups, teamsCount=countTeams(team['conf_name'], teams),
                             maxLength=i)
@@ -111,7 +110,6 @@ def setTeamPosition(team, groups, teamsCount, maxLength):
         if filterConfList(team['conf_name'], groups.get(zone), teamsCount) == True or len(
                 groups.get(zone)) == maxLength:
             zones.remove(zone)
-
     insertTeam(team, random.choice(zones), groups)
 
 
@@ -135,6 +133,6 @@ def teamsByConf(dict, conf):
     return countTeams(conf, dict)
 
 
-def shufflePools(pool):
-    random.shuffle(pool)
-    return pool
+def shuffleArray(array):
+    random.shuffle(array)
+    return array
