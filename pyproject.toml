@@ -7,6 +7,14 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.10"
+django = "5.2.3"
+pymongo = "4.13.0"
+compress = "0.1.1"
+html2image = "2.0.7"
+libsass = "0.23.0"
+django-compressor = "4.5.1"
+django-libsass = "0.9"
+
 
 
 [build-system]

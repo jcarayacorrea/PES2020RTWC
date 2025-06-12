@@ -31,3 +31,8 @@ sudamerica/__pycache__/views.cpython-310.pyc
 main/__pycache__/views.cpython-310.pyc
 main/__pycache__/views.cpython-310.pyc
 *.pyc
+*.lock
+.idea/misc.xml
+.idea/PES2020RTWC.iml
+.idea/misc.xml
+.idea/PES2020RTWC.iml
