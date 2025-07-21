@@ -24,7 +24,7 @@
 </div>
 
 <div class="col_im">
-    {% with homeId=match.homeTeam.team.id awayId=match.awayTeam.team.id %}
+    {% with homeId=match.homeTeam.team.nation_iso_code awayId=match.awayTeam.team.nation_iso_code %}
         {% url 'match_simulator' fixtureNum matchNum homeId awayId  conf  round zone 0 1 as matchsim %}
         <button type="button" class="btn btn-primary"
                 hx-get="{{ matchsim }}"

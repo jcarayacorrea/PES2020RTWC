@@ -124,9 +124,9 @@ def get_round_stages(places_list, stage):
     return stage_list
 
 
-def getTeamById(team):
+def getTeamById(iso_code):
     db = db_conexion()
-    return list(db.get_collection('Teams').find({'id': team}))
+    return list(db.get_collection('Teams').find({'nation_iso_code': iso_code}))
 
 def update_one_match_result_db(conf,round,zone,spec):
     db = db_conexion()

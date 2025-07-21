@@ -121,10 +121,10 @@ def simulate_penalty_shots(probabilidad_local, probabilidad_visitante, nombre_lo
         time.sleep(SLEEP_TIME)
 
 
-def simulate_match(home_team_id, away_team_id, is_extra_time):
+def simulate_match(home_team_iso, away_team_iso, is_extra_time):
     match_data = {'home_goals': 0, 'away_goals': 0, 'home_penalties': None, 'away_penalties': None}
-    home_team = getTeamById(home_team_id)
-    away_team = getTeamById(away_team_id)
+    home_team = getTeamById(home_team_iso)
+    away_team = getTeamById(away_team_iso)
     home_nation_name = home_team[0]['nation_name']
     away_nation_name = away_team[0]['nation_name']
 
