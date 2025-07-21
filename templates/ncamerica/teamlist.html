@@ -56,7 +56,7 @@
                                         <div class="form-check form-check-inline">
                                             <input name="{{ team.nation_iso_code }}" class="form-check-input"
                                                    type="radio" value="mainDraw"
-                                                   onclick="changeTeamStage({{ team.id }},'mainDraw')"
+                                                   onclick="changeTeamStage('{{ team.nation_iso_code }}','mainDraw')"
                                                    {% if team.stage.mainDraw == True %}checked{% endif %}>
                                         </div>
                                     </td>
@@ -64,35 +64,35 @@
                                         <div class="form-check form-check-inline">
                                             <input name="{{ team.nation_iso_code }}" class="form-check-input"
                                                    type="radio" value="playoff"
-                                                   onclick="changeTeamStage({{ team.id }},'playoff')"
+                                                   onclick="changeTeamStage('{{ team.nation_iso_code }}','playoff')"
                                                    {% if team.stage.playoff == True %}checked{% endif %}>
                                         </div>
                                     </td>
                                     <td class="col-1">
                                         <div class="form-check form-check-inline">
                                             <input name="{{ team.nation_iso_code }}" class="form-check-input"
-                                                   type="radio" onclick="changeTeamStage({{ team.id }},'finalRound')"
+                                                   type="radio" onclick="changeTeamStage('{{ team.nation_iso_code }}','finalRound')"
                                                    {% if team.stage.finalRound == True %}checked{% endif %}>
                                         </div>
                                     </td>
                                     <td class="col-1">
                                         <div class="form-check form-check-inline">
                                             <input name="{{ team.nation_iso_code }}" class="form-check-input"
-                                                   type="radio" onclick="changeTeamStage({{ team.id }},'thirdRound')"
+                                                   type="radio" onclick="changeTeamStage('{{ team.nation_iso_code }}','thirdRound')"
                                                    {% if team.stage.thirdRound == True %}checked{% endif %} disabled>
                                         </div>
                                     </td>
                                     <td class="col-1">
                                         <div class="form-check form-check-inline">
                                             <input name="{{ team.nation_iso_code }}" class="form-check-input"
-                                                   type="radio" onclick="changeTeamStage({{ team.id }},'secondRound')"
+                                                   type="radio" onclick="changeTeamStage('{{ team.nation_iso_code }}','secondRound')"
                                                    {% if team.stage.secondRound == True %}checked{% endif %} disabled>
                                         </div>
                                     </td>
                                     <td class="col-1">
                                         <div class="form-check form-check-inline">
                                             <input name="{{ team.nation_iso_code }}" class="form-check-input"
-                                                   type="radio" onclick="changeTeamStage({{ team.id }},'firstRound')"
+                                                   type="radio" onclick="changeTeamStage('{{ team.nation_iso_code }}','firstRound')"
                                                    {% if team.stage.firstRound == True %}checked{% endif %}>
                                         </div>
                                     </td>

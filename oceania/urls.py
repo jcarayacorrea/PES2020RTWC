@@ -9,6 +9,6 @@ urlpatterns = [
     path('homemaindraw/', views.setHomeFinalTeam, name='oceania.homemainDraw'),
     path('awaymaindraw/', views.setAwayFinalTeam, name='oceania.awaymainDraw'),
     path('teamlist/', views.teams, name='oceania.teams'),
-    path('teamlist/updateProgress/<str:id>/<str:stage>', views.updateProgress, name='oceania.updateProgress')
+    path('teamlist/updateProgress/<str:code>/<str:stage>', views.updateProgress, name='oceania.updateProgress')
 
 ]

@@ -11,5 +11,5 @@ urlpatterns = [
     path('firstround/', views.firstround, name='asia.firstround'),
     path('firstround/draw/', views.firstRoundButton, name='asia.firstround.draw'),
     path('teamlist/', views.teams, name='asia.teams'),
-    path('teamlist/updateProgress/<str:id>/<str:stage>', views.updateProgress, name= 'asia.updateProgress')
+    path('teamlist/updateProgress/<str:code>/<str:stage>', views.updateProgress, name= 'asia.updateProgress')
 ]

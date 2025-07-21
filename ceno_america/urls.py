@@ -7,5 +7,5 @@ urlpatterns = [
     path('firstround/', views.firstround, name='cenoamerica.firstround'),
     path('firstround/draw/', views.firstRoundButton, name='cenoamerica.firstround.draw'),
     path('teamlist/', views.teams, name='cenoamerica.teams'),
-    path('teamlist/updateProgress/<str:id>/<str:stage>', views.updateProgress, name='cenoamerica.updateProgress')
+    path('teamlist/updateProgress/<str:code>/<str:stage>', views.updateProgress, name='cenoamerica.updateProgress')
 ]

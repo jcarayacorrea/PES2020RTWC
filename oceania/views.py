@@ -45,9 +45,9 @@ def teams(request):
     return render(request, 'oceania/teamlist.html', context)
 
 
-def updateProgress(request, id, stage):
+def updateProgress(request, code, stage):
     if request.method == 'POST':
-        updateStage(id, stage)
+        updateStage(code, stage)
     return redirect('oceania.teams')
 
 

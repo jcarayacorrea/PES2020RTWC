@@ -36,3 +36,4 @@ main/__pycache__/views.cpython-310.pyc
 .idea/PES2020RTWC.iml
 .idea/misc.xml
 .idea/PES2020RTWC.iml
+*.pyc

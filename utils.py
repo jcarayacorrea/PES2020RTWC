@@ -85,10 +85,10 @@ def generateStageObj(stage):
     return {stage_key: stage_key == stage for stage_key in stages}
 
 
-def updateStage(id, stage):
+def updateStage(iso_code, stage):
     db = db_conexion()
     stageObj = generateStageObj(stage)
-    idObj = {'id': id}
+    idObj = {'nation_iso_code': iso_code}
     db.get_collection('Teams').update_one(idObj, {'$set': {'stage': stageObj}})
 
 
