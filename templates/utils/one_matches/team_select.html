@@ -5,7 +5,7 @@
     <option selected>{{ selected_team }}</option>
     {% if zone is not None %}
         {% for team in zone %}            
-            <option value="{{ team.id }}">
+            <option value="{{ team.nation_iso_code }}">
                 {{ team.nation_name }}
             </option>
         {% endfor %}
