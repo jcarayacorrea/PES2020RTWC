@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect
 from Global_Variables import GROUP_KEYS, GROUP_RANGE
 from fixtures import getZoneData, create_fixture
 from utils import getTeams, updateStage, getTeamsFirstRound, getTeamsSecondRound, getTeamsThirdRound, \
-    getTeamsFinalRound
+    getTeamsFinalRound, filter_team
 from draw import round_draw, get_zone_with_teams_of_size
 
 CONF_NAME = 'CAF'
@@ -122,3 +122,6 @@ def finalRoundButton(request):
             create_fixture(zone, True, chr(ord('A') + zone_idx - 1), CONF_NAME, 'final')
             context[f'zone{zone_idx}'] = zone
         return finalround(request)
+
+def team_list_filter(text):
+    return filter_team(CONF_NAME,text)

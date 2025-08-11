@@ -1,7 +1,6 @@
 from pymongo import MongoClient
 
 
-
 def db_conexion():
     client = MongoClient(host='192.168.1.101',
                          port=27017,
@@ -69,6 +68,7 @@ def getTeamsMainDraw():
     listData = list(cursor)
     return listData
 
+
 def getTeamsCopaAmerica():
     database_connection = db_conexion()
     find_condition = {'$or': [{'conf_name': 'CONMEBOL'}, {
@@ -77,7 +77,6 @@ def getTeamsCopaAmerica():
         'fifa_nation_rank', 1)
 
     return list(teams_cursor)
-
 
 
 def generateStageObj(stage):
@@ -128,11 +127,11 @@ def getTeamById(iso_code):
     db = db_conexion()
     return list(db.get_collection('Teams').find({'nation_iso_code': iso_code}))
 
-def update_one_match_result_db(conf,round,zone,spec):
+
+def update_one_match_result_db(conf, round, zone, spec):
     db = db_conexion()
     db.get_collection('Fixtures').update_many(
         {'conf': conf, 'round': round, 'zone': zone}, {'$set': spec})
-
 
 
 def saveMatchResult(fixture, match, localGoals, awayGoals, conf, round, zone):
@@ -165,22 +164,21 @@ def create_match_spec(phase, match_num, localGoals, awayGoals, localPenaltys, aw
         f'fixtures.{phase}.match{match_num}.played': True
     }
 
-def move_winner_spec(phase,match_num,team):
+
+def move_winner_spec(phase, match_num, team):
     return {
         f'fixtures.{phase}.match{match_num}.awayTeam.team': team
     }
 
 
-
-def saveExtraTimeResult(phase, match, localGoals, awayGoals, localPenaltys, awayPenaltys, conf, round, zone, homeid,awayid):
+def saveExtraTimeResult(phase, match, localGoals, awayGoals, localPenaltys, awayPenaltys, conf, round, zone, homeid,
+                        awayid):
     final_match_spec = create_match_spec(phase, match, localGoals, awayGoals, localPenaltys, awayPenaltys)
     update_one_match_result_db(conf, round, zone, final_match_spec)
     if round == 'playoff' and phase == 'first':
         winner_team = move_winner_spec('final', match, getTeamById(homeid)[0] if (localGoals > awayGoals or (
                 localGoals == awayGoals and localPenaltys > awayPenaltys)) else getTeamById(awayid)[0])
-        update_one_match_result_db(conf, round,zone, winner_team)
-
-
+        update_one_match_result_db(conf, round, zone, winner_team)
 
 
 def is_difference_in_range(local_score, visitor_score, range_start, range_end):
@@ -203,3 +201,8 @@ def extreme_difference(local_score, visitor_score):
 def ultra_difference(local_score, visitor_score):
     return is_difference_in_range(local_score, visitor_score, 70, float('inf'))
 
+
+def filter_team(conf, textLike):
+    db = db_conexion()
+    return list(db.get_collection('Teams').find(
+        {'$and': [{'conf_name': conf}, {'nation_name': {'$regex': textLike, '$options': 'is'}}]}))
