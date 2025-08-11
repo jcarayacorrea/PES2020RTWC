@@ -9,7 +9,18 @@
         <div class="row ">
             <div class="col-md-8 offset-md-2">
                 <div class="team-list-container-card">
-                    <div class="soccer-card-header ">Teams</div>
+                    <div class="soccer-card-header ">
+                        <div class="row">
+                            <div class="col-3">
+                                <div class="form-group">
+                                    <input type="email" class="form-control" id="teamFilter"
+                                           aria-describedby="emailHelp" placeholder="Teams filter...">
+
+                                </div>
+                            </div>
+                            <div class="offset-md-2 col-2">Teams</div>
+                        </div>
+                    </div>
                     <div class="soccer-card-body overflow-scroll">
                         <table class="table overflow-scroll">
                             <tbody>
@@ -71,28 +82,32 @@
                                     <td class="col-1">
                                         <div class="form-check form-check-inline">
                                             <input name="{{ team.nation_iso_code }}" class="form-check-input"
-                                                   type="radio" onclick="changeTeamStage('{{ team.nation_iso_code }}','finalRound')"
+                                                   type="radio"
+                                                   onclick="changeTeamStage('{{ team.nation_iso_code }}','finalRound')"
                                                    {% if team.stage.finalRound == True %}checked{% endif %}>
                                         </div>
                                     </td>
                                     <td class="col-1">
                                         <div class="form-check form-check-inline">
                                             <input name="{{ team.nation_iso_code }}" class="form-check-input"
-                                                   type="radio" onclick="changeTeamStage('{{ team.nation_iso_code }}','thirdRound')"
+                                                   type="radio"
+                                                   onclick="changeTeamStage('{{ team.nation_iso_code }}','thirdRound')"
                                                    {% if team.stage.thirdRound == True %}checked{% endif %}>
                                         </div>
                                     </td>
                                     <td class="col-1">
                                         <div class="form-check form-check-inline">
                                             <input name="{{ team.nation_iso_code }}" class="form-check-input"
-                                                   type="radio" onclick="changeTeamStage('{{ team.nation_iso_code }}','secondRound')"
+                                                   type="radio"
+                                                   onclick="changeTeamStage('{{ team.nation_iso_code }}','secondRound')"
                                                    {% if team.stage.secondRound == True %}checked{% endif %}>
                                         </div>
                                     </td>
                                     <td class="col-1">
                                         <div class="form-check form-check-inline">
                                             <input name="{{ team.nation_iso_code }}" class="form-check-input"
-                                                   type="radio" onclick="changeTeamStage('{{ team.nation_iso_code }}','firstRound')"
+                                                   type="radio"
+                                                   onclick="changeTeamStage('{{ team.nation_iso_code }}','firstRound')"
                                                    {% if team.stage.firstRound == True %}checked{% endif %}>
                                         </div>
                                     </td>
