@@ -12,17 +12,20 @@
                     <div class="soccer-card-header ">
                         <div class="row">
                             <div class="col-3">
-                                <div class="form-group">
-                                    <input type="email" class="form-control" id="teamFilter"
-                                           aria-describedby="emailHelp" placeholder="Teams filter...">
-
+                                <div class="input-group mb-3">
+                                    <input class="form-control form-control-sm" type="search" onkeyup="searchTable()"
+                                           id="searchInput" placeholder="Search...">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text"><i
+                                                class="fa-solid fa-magnifying-glass"></i></span>
+                                    </div>
                                 </div>
                             </div>
                             <div class="offset-md-2 col-2">Teams</div>
                         </div>
                     </div>
                     <div class="soccer-card-body overflow-scroll">
-                        <table class="table overflow-scroll">
+                        <table id="tableTeams" class="table overflow-scroll">
                             <tbody>
                             <tr>
                                 <th class="col text-center">
