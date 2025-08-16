@@ -326,6 +326,9 @@ h6 {
    display: none;
    animation: rotateanimation 250ms infinite;
 }
+.input-group-text{
+  background-color: dodgerblue;
+}
 
 @keyframes rotateanimation {
  100% {transform: rotate(360deg);}
