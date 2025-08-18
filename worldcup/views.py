@@ -9,6 +9,10 @@ from fixtures import createPlayOffMatches, getZoneData
 from utils import getTeamsMainDraw, getTeamsPlayoff
 from functools import reduce
 
+GROUP_COUNT = len(GROUP_KEYS)
+MIN_TEAMS = 1
+MAX_TEAMS = 2
+
 
 # Create your views here.
 def maindraw(request):
@@ -115,7 +119,8 @@ def setTeamPosition(team, groups, teamsCount, maxLength):
 
 def filterConfList(conf_name, list, count_teams):
     count_conf = len([team for team in list if conf_name == team['conf_name']])
-    if (count_teams <= 8 and count_conf == 1) or (count_teams > 8 and count_conf == 2):
+    if (count_teams <= GROUP_COUNT and count_conf == MIN_TEAMS) or (
+            count_teams > GROUP_COUNT and count_conf == MAX_TEAMS):
         return True
     return False
 
