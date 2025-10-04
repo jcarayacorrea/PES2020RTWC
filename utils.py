@@ -1,12 +1,12 @@
 from pymongo import MongoClient
-
+from django.conf import settings
 
 def db_conexion():
-    client = MongoClient(host='192.168.1.101',
-                         port=27017,
-                         username='admin',
-                         password='mongo')
-    db = client['pesrtwc']
+    client = MongoClient(host=settings.MONGO_URL,
+                         port=settings.MONGO_PORT,
+                         username=settings.MONGO_USERNAME,
+                         password=settings.MONGO_PASSWORD)
+    db = client[settings.MONGO_DBNAME]
     return db
 
 

@@ -156,3 +156,10 @@ STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesSto
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# MONGO CONFIG
+MONGO_URL = '192.168.1.101'
+MONGO_PORT = 27017
+MONGO_USERNAME = 'admin'
+MONGO_PASSWORD = 'mongo'
+MONGO_DBNAME = 'pesrtwc'
