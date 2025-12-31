@@ -1,29 +1,29 @@
 db.Places.insertMany(
 [
   {
-
+    "_id": {"$oid": "68e044c6c019f26741d91201"},
     "conf": "AFC",
-    "places": {"firstRound":["Q", "Q", "X", "X"], "secondRound":["Q", "Q", "X", "X"], "thirdRound":["Q","Q", "X", "X"], "finalRound":["Q", "P", "X", "X","X"]}
+    "places": "{firstRound=[Q, Q, X, X], secondRound=[Q, Q, X, X], thirdRound=[Q, Q, X, X], finalRound=[Q, P, X, X, X]}"
   },
   {
-
+    "_id": {"$oid": "68e044c6c019f26741d91202"},
     "conf": "OFC",
-    "places": {"firstRound":["Q", "Q", "X", "X", "X"], "finalRound":["P", "X", "X", "X"]}
+    "places": "{firstRound=[Q, Q, X, X, X], finalRound=[P, X, X, X]}"
   },
   {
-
+    "_id": {"$oid": "68e044c6c019f26741d91203"},
     "conf": "CONCACAF",
-    "places": {"firstRound":["Q", "X", "X", "X", "X"], "finalRound":["Q", "P", "X", "X", "X"]}
+    "places": "{firstRound=[Q, X, X, X, X], finalRound=[Q, P, X, X, X]}"
   },
   {
-
+    "_id": {"$oid": "68e044c6c019f26741d91204"},
     "conf": "CAF",
-    "places": {"firstRound":["Q", "X", "X", "X"], "secondRound":["Q", "Q", "X", "X"], "thirdRound":["Q", "Q", "X", "X"], "finalRound":["Q", "P", "X", "X", "X"]}
+    "places": "{firstRound=[Q, X, X, X], secondRound=[Q, Q, X, X], thirdRound=[Q, Q, X, X], finalRound=[Q, P, X, X, X]}"
   },
   {
-
+    "_id": {"$oid": "68e044c6c019f26741d91205"},
     "conf": "UEFA",
-    "places": {"firstRound":["Q", "P", "X", "X", "X"], "secondRound":["Q", "Q", "X", "X"], "thirdRound":["Q", "X", "X"], "finalRound":["Q", "Q", "P", "X", "X"]}
+    "places": "{firstRound=[Q, Q, X, X, X], finalRound=[Q, P, X, X, X]}"
   }
 ]
 )
