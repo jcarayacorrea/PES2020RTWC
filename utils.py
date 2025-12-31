@@ -60,6 +60,12 @@ def getTeamsPlayoff():
     listData = list(cursor)
     return listData
 
+def getUEFATeamsPlayoff(conf_name):
+    db = db_conexion()
+    cursor = db.get_collection('Teams').find({'$and': [{'conf_name': conf_name}, {'stage.playoff': True}]}).sort(
+        'fifa_nation_rank', 1)
+    listData = list(cursor)
+    return listData
 
 def getTeamsMainDraw():
     db = db_conexion()

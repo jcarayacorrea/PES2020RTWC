@@ -1,21 +1,25 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block container %}
-    <h1 class="h1 text-center">European Qualifiers</h1>
-    <h4 class="h4 text-center">First Round</h4>
+    <div id="header">
+        <h1 class="h1 text-center">European Qualifiers</h1>
+        <h2 class="h3 text-center">First Round</h2>
+    </div>
     <div class="row p-4">
         <div class="col-6 g-8 offset-md-5">
             <button type="button" class="btn btn-primary" hx-get=" {% url 'europa.firstround.draw' %}"
-                    hx-trigger="click" hx-target="body" {% if teams|enableDrawButton:10 is True %} disabled {% endif %}>
+                    hx-trigger="click" hx-target="body" {% if teams|enableDrawButton:25 is True %} disabled {% endif %}>
                 Draw
             </button>
-            <button type="button" class="btn btn-primary" hx-get=" {% url 'europa.firstround' %}" hx-trigger="click"
+            <button type="button" class="btn btn-primary" hx-get=" {% url 'europa.firstround' %}"
+                    hx-trigger="click"
                     hx-target="body">Clear
             </button>
         </div>
     </div>
 
     <div id="section">
+
         <div class="row ">
             <div class="col-md-3">
                 <div class="container-card">
@@ -26,7 +30,7 @@
                 <div class="container-card">
                     <div class="soccer-card-header">Qualify Zones</div>
 
-                    <div class="soccer-card-body">
+                    <div class="soccer-card-body overflow-scroll">
 
                         <div class="loading-grid" data-loading-aria-busy data-loading>
                             {% include "utils/loader/loader.html" %}
@@ -49,76 +53,31 @@
                                     {% endif %}
                                 </div>
                             </div>
-                            <div class="row mb-5">
-                                <div class="col-10">
-                                    <div class="group-card">
-                                        <div class="soccer-card-header">Wild Card Match</div>
-                                        <div class="soccer-card-body " data-loading-states>
-                                            <div class="row mb-3">
-                                                <div class="col-5">
-                                                   {% include "utils/one_matches/team_select.html" with zone=zoneA url_select='europa.homewildcard'  %}
-                                                </div>
-                                                <div class="col-2 justify-content-center">
-                                                    {% with homeId=fixture.wildCard.match1.homeTeam.team.nation_iso_code awayId=fixture.wildCard.match1.awayTeam.team.nation_iso_code %}
-                                                        {% url 'one_match' 'wildCard' 1 homeId awayId  'UEFA'  'first' 'WC' 1 as match %}
-                                                        <button type="button" class="btn btn-primary"
-                                                                hx-get="{{ match }}"
-                                                                hx-trigger="click"
-                                                                hx-target="body"
-                                                                data-loading-disable
-                                                                {% if fixture.wildCard.match1.played is True %}
-                                                                disabled {% endif %}
-                                                        >
-                                                            <i class="fa-regular fa-futbol"></i>
-                                                        </button>
-                                                    {% endwith %}
-                                                </div>
-                                                <div class="col-5">
-                                                    {% include "utils/one_matches/team_select.html" with zone=zoneB url_select='europa.awaywildcard' %}
-                                                </div>
 
+                            <div class="row">
+                                <div class="col-md-5 mb-5">
+                                    {% if zoneC is not None %}
+                                        {% include "utils/groups/group-card.html" with conf="UEFA" round="first" group="C" zone=zoneC buttons=True %}
+                                    {% else %}
+                                        {% include "utils/groups/group-card.html" with group="C" iterator=range  buttons=False %}
+                                    {% endif %}
+                                </div>
+                                <div class="col-md-5 offset-md-1">
+                                    {% if zoneD is not None %}
+                                        {% include "utils/groups/group-card.html" with conf="UEFA" round="first" group="D" zone=zoneD buttons=True %}
+                                    {% else %}
+                                        {% include "utils/groups/group-card.html" with group="D" iterator=range  buttons=False %}
+                                    {% endif %}
+                                </div>
+                            </div>
 
-                                            </div>
-                                            <div class="row mb-3">
-                                                <div class="col-4">
-                                                    {% if fixture|getItem:'wildCard' is not None %}
-                                                        {% include 'utils/fixture/home-card.html' with match=fixture.wildCard.match1 %}
-                                                    {% else %}
-                                                        {% include 'utils/fixture/empty-card.html' with team='Team 1' %}
-                                                    {% endif %}
-                                                </div>
-                                                <div class="col-4" data-loading-aria-busy data-loading>
-                                                    <div class="col-auto d-flex justify-content-center">
-                                                        <div class="spinner-border text-info" role="status">
-                                                            <span class="visually-hidden">Loading...</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-
-                                                <div class="col-4 d-flex justify-content-center" data-loading-aria-busy
-                                                     data-loading-class="d-none">
-                                                    {% with homePenalties=fixture.wildCard.match1.homeTeam.penalties awayPenalties=fixture.wildCard.match1.awayTeam.penalties %}
-                                                        <h3>
-                                                            ({% firstof homePenalties 0 %}) {{ fixture.wildCard.match1.homeTeam.goals|default_if_none:"?" }}
-                                                            - {{ fixture.wildCard.match1.awayTeam.goals|default_if_none:"?" }}
-                                                            ({% firstof awayPenalties 0 %})</h3>
-                                                    {% endwith %}
-
-                                                </div>
-
-                                                <div class="col-4">
-                                                    {% if fixture|getItem:'wildCard' is not None %}
-                                                               {% include 'utils/fixture/away-card.html' with match=fixture.wildCard.match1 %}
-                                                            {% else %}
-                                                               {% include 'utils/fixture/empty-card.html' with team='Team 2'%}
-                                                            {% endif %}
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                    </div>
+                            <div class="row">
+                                <div class="col-md-5  offset-sm-3">
+                                    {% if zoneE is not None %}
+                                        {% include "utils/groups/group-card.html" with conf="UEFA" round="first" group="E" zone=zoneE buttons=True %}
+                                    {% else %}
+                                        {% include "utils/groups/group-card.html" with group="E" iterator=range  buttons=False %}
+                                    {% endif %}
                                 </div>
                             </div>
 
@@ -126,6 +85,7 @@
 
 
                     </div>
+
                 </div>
 
             </div>

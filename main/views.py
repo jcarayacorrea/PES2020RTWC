@@ -13,6 +13,7 @@ from standings import getStandings
 from MatchSimulator import simulate_match
 from worldcup.views import playoff
 from oceania.views import finalround
+from europa.views import euroPlayoff
 
 
 # Create your views here.
@@ -89,6 +90,7 @@ def handle_match_configuration(request, fixture):
     responses = {
         'first': playoff,
         'final': playoff,
+        'euro': euroPlayoff,
         'wildCard': firstround,
         'mainDraw': finalround
     }

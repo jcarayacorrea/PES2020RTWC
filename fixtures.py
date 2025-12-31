@@ -122,3 +122,15 @@ def createPlayOffMatches(teamList, seeds, pool1, pool2):
         match_structure["final"][match_name] = create_match(seeds[i], None)
 
     updateFixture(teamList, match_structure, 'P', 'FIFA', 'playoff')
+
+def createPlayOffMatchesUEFA(teamList, pool1, pool2):
+    # defining initial match structure
+    match_structure = { "euro": {}}
+
+    # loop through the elements of pool1 and pool2 to create matches
+    for i in range(4):
+        match_name = f"match{i + 1}"
+        match_structure["euro"][match_name] = create_match(pool1[i], pool2[i])
+
+
+    updateFixture(teamList, match_structure, 'P', 'UEFA', 'playoff')
