@@ -58,7 +58,7 @@ def firstRoundButton(request):
         zones = round_draw(teams_for_match, pools_count=5, teams_per_pool=5)
         for zone_idx, zone in enumerate(zones, start=1):
             random.shuffle(zone)
-            create_fixture(zone, False, chr(ord('A') + zone_idx - 1), 'UEFA', 'first')
+            create_fixture(zone, True, chr(ord('A') + zone_idx - 1), 'UEFA', 'first')
             context[f'zone{zone_idx}'] = zone
         return firstround(request)
 
