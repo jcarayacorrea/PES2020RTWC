@@ -6,6 +6,6 @@ AWAY_GOAL = 'V'
 STEP = '-'
 GOAL_PRBLTY = 0.03
 PENALTY_DEFAULT_TURNS = 5
-LOG_LENGTH = 200
+LOG_LENGTH = 140
 GROUP_RANGE = ['1','2','3','4','5']
 GROUP_KEYS = ['A','B','C','D','E','F','G','H']
