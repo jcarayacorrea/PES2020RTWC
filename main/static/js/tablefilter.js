@@ -1,25 +1,30 @@
-function searchTable() {
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("searchInput");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("tableTeams");
-  tr = table.getElementsByTagName("tr");
+/**
+ * Search and filter a table by a search input
+ */
+const searchTable = () => {
+    const input = document.getElementById("searchInput");
+    const table = document.getElementById("tableTeams");
+    if (!input || !table) return;
 
-  for (i = 0; i < tr.length; i++) {
-    // Skip header row if present
-    if (tr[i].getElementsByTagName("th").length > 0) {
-        continue;
+    const filter = input.value.toUpperCase();
+    const rows = table.querySelectorAll("tbody tr");
+
+    rows.forEach(row => {
+        // Skip rows that contain header cells
+        if (row.querySelector("th")) return;
+
+        const cells = Array.from(row.querySelectorAll("td"));
+        const matches = cells.some(td => 
+            td.textContent.toUpperCase().includes(filter)
+        );
+
+        row.style.display = matches ? "" : "none";
+    });
+};
+
+// Event listener for search input
+document.addEventListener('keyup', (event) => {
+    if (event.target.id === 'searchInput') {
+        searchTable();
     }
-    
-    let rowVisible = false;
-    td = tr[i].getElementsByTagName("td");
-    for (let j = 0; j < td.length; j++) {
-      txtValue = td[j].textContent || td[j].innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        rowVisible = true;
-        break; 
-      }
-    }
-    tr[i].style.display = rowVisible ? "" : "none";
-  }
-}
+});

@@ -18,17 +18,18 @@
         <link type="text/x-scss" rel="stylesheet" href="{% static 'fontawesome/css/regular.css' %}">
         <link type="text/x-scss" rel="stylesheet" href="{% static 'fontawesome/css/solid.css' %}">
     {% endcompress %}
-    <script src="{% static 'jquery/jquery-3.7.1.min.js' %}"></script>
-    <script src="{% static '/bootstrap5/js/bootstrap.bundle.js' %}"></script>
-    <script src="{% static 'js/ajax_calls.js' %}"></script>
-    <script src="{% static 'htmx/htmx.min.js' %}"></script>
-    <script src="{% static 'htmx/loading-states.js' %}"></script>
-    <script src="{% static 'html2canvas/html2canvas.min.js' %}"></script>
-    <script src="{% static 'js/downloadImage.js' %}"></script>
-    <script src="{% static 'js/playMatches.js' %}"></script>
-    <script src="{% static 'js/tablefilter.js' %}"></script>
-
-
+    {% compress js %}
+        <script src="{% static 'jquery/jquery-3.7.1.min.js' %}"></script>
+        <script src="{% static '/bootstrap5/js/bootstrap.bundle.js' %}"></script>
+        <script src="{% static 'htmx/htmx.min.js' %}"></script>
+        <script src="{% static 'htmx/loading-states.js' %}"></script>
+        <script src="{% static 'html2canvas/html2canvas.min.js' %}"></script>
+        <script src="{% static 'js/common.js' %}"></script>
+        <script src="{% static 'js/ajax_calls.js' %}"></script>
+        <script src="{% static 'js/downloadImage.js' %}"></script>
+        <script src="{% static 'js/playMatches.js' %}"></script>
+        <script src="{% static 'js/tablefilter.js' %}"></script>
+    {% endcompress %}
 </head>
 <body hx-ext="loading-states">
 
