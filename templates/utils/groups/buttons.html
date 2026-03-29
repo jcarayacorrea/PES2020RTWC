@@ -1,18 +1,18 @@
-<div class="col g-1 offset-md-4">    
-    <button type="button" class="btn btn-primary"
+<div class="col-12 d-flex justify-content-center gap-2 mt-2">    
+    <button type="button" class="btn btn-sm btn-outline-primary"
             hx-get="{{ url_fixtures }} "
             hx-trigger="click" 
             hx-target="#main-fixture"
             data-bs-toggle="modal"
             data-bs-target="#schedule">
-        <i class="fa-regular fa-calendar"></i>
+        <i class="fa-regular fa-calendar me-1"></i>Fixtures
     </button>    
-    <button type="button" class="btn btn-primary"
+    <button type="button" class="btn btn-sm btn-outline-primary"
             hx-get="{{ url_standings }}"
             hx-trigger="click"  
             hx-target="#main-standing"
             data-bs-toggle="modal"
             data-bs-target="#standings">
-        <i class="fa-solid fa-ranking-star"></i>
+        <i class="fa-solid fa-ranking-star me-1"></i>Standings
     </button>
 </div>

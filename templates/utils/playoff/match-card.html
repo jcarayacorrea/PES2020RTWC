@@ -23,18 +23,19 @@
     <div class="playoff-button">
         {% with homeId=match.homeTeam.team.nation_iso_code awayId=match.awayTeam.team.nation_iso_code %}
             {% url 'one_match' phase matchNum homeId awayId  conf  'playoff' 'P' 1 as matchSim %}
-            <button type="button" class="btn btn-primary"
+            <button type="button" class="btn btn-sm btn-primary"
                     hx-get="{{ matchSim }}"
                     hx-trigger="click"
                     hx-target="body"
                     data-loading-disable
                     {% if match.played is True %}
-                    disabled {% endif %}>
+                    disabled {% endif %}
+                    title="Play Match">
                 <div data-loading-aria-busy data-loading>
                     <div class="spinner-border spinner-border-sm text-light "></div>
                 </div>
                 <div data-loading-aria-busy data-loading-class="d-none">
-                    <i class="fa-regular fa-futbol"></i>
+                    <i class="fa-solid fa-play"></i>
                 </div>
             </button>
         {% endwith %}

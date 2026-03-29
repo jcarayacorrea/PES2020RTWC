@@ -69,15 +69,16 @@
                                                 <div class="col-2 d-flex align-items-center justify-content-center">
                                                     {% with homeId=fixture.mainDraw.match1.homeTeam.team.nation_iso_code awayId=fixture.mainDraw.match1.awayTeam.team.nation_iso_code %}
                                                         {% url 'one_match' 'mainDraw' 1 homeId awayId  'OFC'  'final' 'MD' 1 as match %}
-                                                        <button type="button" class="btn btn-primary"
+                                                        <button type="button" class="btn btn-sm btn-primary"
                                                                 hx-get="{{ match }}"
                                                                 hx-trigger="click"
                                                                 hx-target="body"
                                                                 data-loading-disable
                                                                 {% if fixture.mainDraw.match1.played is True %}
                                                                 disabled {% endif %}
+                                                                title="Play Match"
                                                         >
-                                                            <i class="fa-regular fa-futbol"></i>
+                                                            <i class="fa-solid fa-play"></i>
                                                         </button>
                                                     {% endwith %}
                                                 </div>

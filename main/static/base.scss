@@ -501,7 +501,6 @@ h6 {
 
 #rotateOnDiv {
    display: none;
-   animation: rotateanimation 250ms infinite;
 }
 .form-select {
   border-color: $primary;
@@ -524,9 +523,6 @@ h6 {
   color: $soccer-text-light;
 }
 
-@keyframes rotateanimation {
- 100% {transform: rotate(360deg);}
-}
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {

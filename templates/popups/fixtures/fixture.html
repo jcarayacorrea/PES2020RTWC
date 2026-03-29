@@ -213,19 +213,21 @@
             </div>
         </div>
 
-        <div class="modal-footer">
-            <button id="btnExec" type="button" class="btn btn-primary">
+        <div class="modal-footer d-flex justify-content-center gap-3">
+            <button id="btnExec" type="button" class="btn btn-primary px-4 py-2 fw-bold">
                 <div id="rotateOffDiv">
-                    <i class="fa-solid fa-arrows-rotate"></i>
+                    <i class="fa-solid fa-play me-2"></i>Play All Matches
                 </div>
 
                 <div id="rotateOnDiv">
-                    <i class="fa-solid fa-arrows-rotate"></i>
+                    <i class="fa-solid fa-arrows-rotate me-2 fa-spin-pulse"></i>Playing...
                 </div>
 
             </button>
 
-            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-outline-secondary px-4 py-2" data-bs-dismiss="modal">
+                <i class="fa-solid fa-xmark me-2"></i>Close
+            </button>
         </div>
     </div>
 {% endblock %}

@@ -28,18 +28,19 @@
 <div class="col_im">
     {% with homeId=match.homeTeam.team.nation_iso_code awayId=match.awayTeam.team.nation_iso_code %}
         {% url 'match_simulator' fixtureNum matchNum homeId awayId  conf  round zone 0 1 as matchsim %}
-        <button type="button" class="btn btn-primary"
+        <button type="button" class="btn btn-sm btn-primary"
                 hx-get="{{ matchsim }}"
                 hx-trigger="click delay:{{ delay }}ms"
                 hx-target="{{ target }}"
                 data-loading-disable
                 {% if match.played is True %}
-                disabled {% endif %}>
+                disabled {% endif %}
+                title="Play Match">
             <div data-loading-aria-busy data-loading>
                 <div class="spinner-border spinner-border-sm text-light "></div>
             </div>
             <div data-loading-aria-busy data-loading-class="d-none">
-                <i class="fa-regular fa-futbol"></i>
+                <i class="fa-solid fa-play"></i>
             </div>
         </button>
     {% endwith %}
