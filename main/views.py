@@ -62,7 +62,7 @@ def standings_zone(request: HttpRequest, conf: str, round_name: str, zone: str) 
     return render(request, 'popups/standings/standings.html', context)
 
 
-def sim_match(request: HttpRequest, fixture: int, match: int, home_id: str, away_id: str, 
+def sim_match(request: HttpRequest, fixture: Any, match: int, home_id: str, away_id: str, 
               conf: str, round_name: str, zone: str, extra_time: int = 0, single_load: int = 0) -> HttpResponse:
     """Simulates a match and updates the database."""
     match_info = {'fixture': fixture, 'match': match, 'homeid': home_id, 'awayid': away_id}
@@ -85,7 +85,7 @@ def handle_match_results(match_info: Dict[str, Any], resultado: Dict[str, Any],
         )
     else:
         save_extra_time_result(
-            "first" if round_name == 'playoff' else "mainDraw", # This logic might need refinement based on actual usage
+            match_info["fixture"],
             match_info["match"], resultado['local'], resultado['visita'],
             resultado.get('penales_local', 0),
             resultado.get('penales_visita', 0), 
