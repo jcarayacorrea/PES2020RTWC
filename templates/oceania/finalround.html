@@ -11,11 +11,11 @@
         <div class="col-12 d-flex justify-content-center align-items-center">
             <div class="d-flex gap-3">
                 <button type="button" class="btn btn-primary px-4 py-2 fw-bold" hx-get="{% url 'oceania.finalround.draw' %}"
-                        hx-trigger="click" hx-target="body" {% if teams|enable_draw_button:8 is True %} disabled {% endif %}>
+                        hx-trigger="click" hx-target="body" data-loading-disable {% if teams|enable_draw_button:8 is True %} disabled {% endif %}>
                     <i class="fa-solid fa-shuffle me-2"></i>Draw
                 </button>
                 <button type="button" class="btn btn-outline-secondary px-4 py-2" hx-get="{% url 'oceania.finalround' %}" hx-trigger="click"
-                        hx-target="body">
+                        hx-target="body" data-loading-disable>
                     <i class="fa-solid fa-rotate-left me-2"></i>Clear
                 </button>
             </div>
@@ -36,7 +36,7 @@
 
                     <div class="soccer-card-body">
 
-                        <div class="loading-grid" data-loading-aria-busy data-loading>
+                        <div class="loading-grid" data-loading-aria-busy data-loading="flex">
                             {% include "utils/loader/loader.html" %}
                         </div>
 
@@ -72,8 +72,7 @@
                                                         <button type="button" class="btn btn-sm btn-primary"
                                                                 hx-get="{{ match }}"
                                                                 hx-trigger="click"
-                                                                hx-target="body"
-                                                                data-loading-disable
+                                                                hx-target="body" data-loading-disable
                                                                 {% if fixture.mainDraw.match1.played is True %}
                                                                 disabled {% endif %}
                                                                 title="Play Match"
@@ -96,7 +95,7 @@
                                                         {% include 'utils/fixture/empty-card.html' with team='Team 1' %}
                                                     {% endif %}
                                                 </div>
-                                                <div class="col-4" data-loading-aria-busy data-loading>
+                                                <div class="col-4" data-loading-aria-busy data-loading="flex">
                                                     <div class="col-auto d-flex justify-content-center">
                                                         <div class="spinner-border text-info" role="status">
                                                             <span class="visually-hidden">Loading...</span>

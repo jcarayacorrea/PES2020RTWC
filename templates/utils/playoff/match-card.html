@@ -26,12 +26,11 @@
             <button type="button" class="btn btn-sm btn-primary"
                     hx-get="{{ matchSim }}"
                     hx-trigger="click"
-                    hx-target="body"
-                    data-loading-disable
+                    hx-target="body" data-loading-disable
                     {% if match.played is True %}
                     disabled {% endif %}
                     title="Play Match">
-                <div data-loading-aria-busy data-loading>
+                <div data-loading-aria-busy data-loading="flex">
                     <div class="spinner-border spinner-border-sm text-light "></div>
                 </div>
                 <div data-loading-aria-busy data-loading-class="d-none">

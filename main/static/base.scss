@@ -52,6 +52,44 @@ h2 {
   text-align: center;
 }
 
+// Global List Styles
+ul:not(.navbar-nav):not(.dropdown-menu):not(.list-inline):not(.pagination):not(.dropdown-menu-dark) {
+  padding-left: 0;
+  list-style: none;
+  margin-bottom: 1.5rem;
+
+  li {
+    position: relative;
+    padding-left: 1.75rem;
+    margin-bottom: 0.75rem;
+    color: $soccer-border;
+    transition: all 0.2s ease;
+    line-height: 1.6;
+
+    &::before {
+      content: '\f1e3'; // fa-futbol
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      position: absolute;
+      left: 0;
+      top: 0.25rem;
+      color: rgba($primary, 0.6);
+      font-size: 0.85rem;
+      transition: all 0.3s ease;
+    }
+
+    &:hover {
+      color: darken($primary, 20%);
+      transform: translateX(5px);
+      
+      &::before {
+        transform: rotate(180deg);
+        color: $primary;
+      }
+    }
+  }
+}
+
 #header {
   margin-bottom: 2rem;
   padding-bottom: 0.5rem;
@@ -88,14 +126,15 @@ h2 {
   .nav-link {
     color: rgba($soccer-text-light, 0.9) !important;
     font-weight: 500;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 1.25rem;
     transition: all 0.3s ease;
+    border-radius: 0.5rem;
 
     @include media-breakpoint-up(lg) {
-      border-bottom: 2px solid transparent;
+      margin: 0 0.1rem;
       &:hover, &.active {
         color: $soccer-text-light !important;
-        border-bottom-color: $soccer-draw;
+        background-color: rgba(white, 0.15);
       }
     }
 
@@ -134,18 +173,23 @@ h2 {
   
   .dropdown-item {
     color: $soccer-border;
-    padding: 0.6rem 1.5rem;
+    padding: 0.7rem 1.5rem;
     transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
     
     &:hover {
-      background-color: rgba($primary, 0.1);
+      background-color: rgba($primary, 0.08);
       color: $primary;
-      padding-left: 1.75rem;
+      padding-left: 1.85rem;
+      box-shadow: inset 4px 0 0 $primary;
     }
     
     &:active {
       background-color: $primary;
       color: white;
+      box-shadow: none;
     }
   }
 }
@@ -305,9 +349,6 @@ h2 {
   opacity: 1
 }
 
-[data-loading] {
-  display: none;
-}
 
 .table-container {
   max-height: 72vh;
@@ -474,23 +515,22 @@ h2 {
   margin: 0.5rem;
 }
 
-.loading-grid {
-  @extend .col-auto;
-  @extend .offset-md-3;
-  margin-top: 25vh;
+.tracking-wider {
+  letter-spacing: 0.15em;
 }
 
-
-.loading-grid-playoff {
-  @extend .col-auto;
-  @extend .offset-md-5;
-  padding-top: 30%;
+.loading-grid, .loading-grid-playoff, .loading-grid-25 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 40vh;
+  width: 100%;
+  margin: 0 auto;
 }
 
-.loading-grid-25 {
-  @extend .col-auto;
-  @extend .offset-md-5;
-  padding-top: 25%;
+[data-loading] {
+  display: none;
 }
 
 .fixture-content {
@@ -577,10 +617,12 @@ h6 {
 
 .spinner-loading{
   @extend .spinner-border;
-  @extend .text-dark;
+  color: $primary;
   margin-top: 0.3rem;
-  height: 3rem;
-  width: 3rem;
+  height: 4rem;
+  width: 4rem;
+  border-width: 0.25em;
+  opacity: 0.8;
 }
 
 .playoff-button{
@@ -645,15 +687,17 @@ h6 {
   .dropdown-item {
     transition: all 0.2s ease;
     border-bottom: 1px solid rgba(0,0,0,0.05);
+    padding: 0.75rem 1.25rem;
     
     &:last-child {
       border-bottom: none;
     }
 
     &:hover {
-      background-color: rgba($primary, 0.1);
+      background-color: rgba($primary, 0.08);
       color: $primary;
-      padding-left: 1.25rem;
+      padding-left: 1.5rem;
+      box-shadow: inset 4px 0 0 $primary;
     }
   }
 }

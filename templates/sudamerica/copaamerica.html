@@ -10,12 +10,12 @@
         <div class="col-12 d-flex justify-content-center align-items-center">
             <div class="d-flex gap-3">
                 <button type="button" class="btn btn-primary px-4 py-2 fw-bold" hx-get="{% url 'sudamerica.copaamerica.draw' %}"
-                        hx-trigger="click" hx-target="body" {% if teams|enable_draw_button:16 is True %} disabled {% endif %}>
+                        hx-trigger="click" hx-target="body" data-loading-disable {% if teams|enable_draw_button:16 is True %} disabled {% endif %}>
                     <i class="fa-solid fa-shuffle me-2"></i>Draw
                 </button>
                 <button type="button" class="btn btn-outline-secondary px-4 py-2" hx-get="{% url 'sudamerica.copaamerica' %}"
                         hx-trigger="click"
-                        hx-target="body">
+                        hx-target="body" data-loading-disable>
                     <i class="fa-solid fa-rotate-left me-2"></i>Clear
                 </button>
                 <button type="button" class="btn btn-outline-primary px-4 py-2"
@@ -42,7 +42,7 @@
 
                     <div class="soccer-card-body h-75">
 
-                        <div class="loading-grid" data-loading-aria-busy data-loading>
+                        <div class="loading-grid" data-loading-aria-busy data-loading="flex">
                             {% include "utils/loader/loader.html" %}
 
                         </div>

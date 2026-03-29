@@ -34,7 +34,7 @@
                             type="button"
                             hx-get="{% url url_select %}"
                             hx-vals='{"team": "{{ team.nation_iso_code }}"}'
-                            hx-target="body">
+                            hx-target="body" data-loading-disable>
                         {% if team.image_flag %}
                             <img src="{{ team.image_flag }}" class="img-card flag-circle me-3" style="width: 28px; height: 18px; min-width: 28px; object-fit: cover;" alt="{{ team.nation_name }}">
                         {% else %}

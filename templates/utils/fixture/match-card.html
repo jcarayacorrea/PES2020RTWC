@@ -2,7 +2,7 @@
   {% include "utils/fixture/home-card.html" with match=match %}
 </div>
 
-<div class="col-scr" data-loading-aria-busy data-loading>
+<div class="col-scr" data-loading-aria-busy data-loading="flex">
     <div id="progressBar">
         <div class="progress">
             <div class="match-progress-bar"
@@ -36,7 +36,7 @@
                 {% if match.played is True %}
                 disabled {% endif %}
                 title="Play Match">
-            <div data-loading-aria-busy data-loading>
+            <div data-loading-aria-busy data-loading="flex">
                 <div class="spinner-border spinner-border-sm text-light "></div>
             </div>
             <div data-loading-aria-busy data-loading-class="d-none">
