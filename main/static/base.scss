@@ -26,6 +26,50 @@ html, body {
   overflow: hidden;
 }
 
+// Global Typography Styles
+h1 {
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.015em;
+  color: darken($primary, 20%);
+  margin-top: 1.5rem;
+  margin-bottom: 0.25rem;
+  text-align: center;
+  position: relative;
+  
+  @media (max-width: 768px) {
+    font-size: 1.75rem;
+  }
+}
+
+h2 {
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: $soccer-border;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+  text-align: center;
+}
+
+#header {
+  margin-bottom: 2rem;
+  padding-bottom: 0.5rem;
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: $soccer-draw;
+    border-radius: 2px;
+  }
+}
+
 // Navbar Styles
 .navbar {
   background: linear-gradient(135deg, $primary 0%, darken($primary, 15%) 100%);

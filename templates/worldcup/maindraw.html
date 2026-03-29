@@ -4,10 +4,11 @@
 {% block container %}
 
     <div id="header">
-        <h1 class="h1 text-center">World Cup</h1>
-        <h4 class="h4 text-center">Group Stage</h4>
+        <h1>World Cup</h1>
+        <h2>Group Stage</h2>
+    </div>
 
-        <div class="row justify-content-center g-2 mb-4">
+    <div class="row justify-content-center g-2 mb-4">
             {% for conf in confederations %}
                 <div class="col-conf">
                     <div class="group-card-conf">
@@ -45,9 +46,8 @@
                 </div>
             </div>
         </div>
-    </div>
 
-    <div id="section">
+        <div id="section">
         <div class="row p-2">
             <div class="col-md-3">
                 <div class="container-card-wc">
