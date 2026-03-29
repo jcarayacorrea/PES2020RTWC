@@ -265,8 +265,54 @@ html, body {
   display: none;
 }
 
-.table {
-  max-height: 70vh;
+.table-container {
+  max-height: 72vh;
+  overflow: auto;
+  position: relative;
+  border-radius: 0 0 0.5rem 0.5rem;
+  background-color: white;
+
+  @media (max-width: 768px) {
+    max-height: 60vh;
+  }
+
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba($primary, 0.2);
+    border-radius: 10px;
+    
+    &:hover {
+      background: rgba($primary, 0.3);
+    }
+  }
+
+  table {
+    margin-bottom: 0;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    
+    thead {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background-color: #f8f9fa; // Match table-light background
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      
+      th {
+        border-bottom: 2px solid #dee2e6;
+        background-color: inherit;
+      }
+    }
+  }
 }
 
 .popup {

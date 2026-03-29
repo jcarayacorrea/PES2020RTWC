@@ -1,116 +1,80 @@
 {% load static %}
 {% block modal_content %}
-    <div id="main-standing">
-        <div class="modal-header">
-            <h5 class="modal-title">Standings</h5>
+    <div id="main-standing" class="standing-content">
+        <div class="modal-header border-0 pb-0">
+            <h3 class="modal-title fw-bold text-primary">
+                <i class="fa-solid fa-ranking-star me-2"></i>Group Standings
+            </h3>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
-            <div class="row ">
-                <div class="col-12">
-                    <div class="card card-border">
-                        <div class="soccer-card-header ">Teams</div>
-
-                        <div class="soccer-card-body overflow-scroll mh-75">
-
-                            <table class="table">
-                                <thead>
-                                <tr>
-                                    <th class="col text-center">
-                                        Pos
-                                    </th>
-                                    <th class="col text-center">
-                                        Name
-                                    </th>
-                                    {% comment %}<th class="col">
-                                    PJ
-                                </th>{% endcomment %}
-                                    <th class="col">
-                                        Pts.
-                                    </th>
-                                    <th class="col">
-                                        GF
-                                    </th>
-                                    <th class="col">
-                                        GC
-                                    </th>
-                                    <th class="col">
-                                        GL
-                                    </th>
-                                    <th class="col">
-                                        GV
-                                    </th>
-                                    <th class="col">
-                                        Dif.
-                                    </th>
-                                </tr>
-                                </thead>
-
-                                <tbody>
-                                {% for team, i, p in zip %}
-                                    <tr>
+        <div class="modal-body p-4">
+            <div class="card shadow-sm border-0 overflow-hidden">
+                <div class="table-container">
+                    <table class="table table-hover align-middle mb-0 text-center">
+                        <thead class="table-light">
+                            <tr>
+                                <th style="width: 60px;">Pos</th>
+                                <th class="text-start ps-4">Team</th>
+                                <th title="Points">Pts</th>
+                                <th title="Goals For">GF</th>
+                                <th title="Goals Against">GA</th>
+                                <th title="Home Goals">HG</th>
+                                <th title="Away Goals">AG</th>
+                                <th title="Goal Difference">GD</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for team, i, p in zip %}
+                            <tr>
+                                <td>
+                                    {% if p == 'Q' %}
+                                        <span class="badge bg-success rounded-circle shadow-sm" style="width: 28px; height: 28px; line-height: 18px;">{{ i }}</span>
+                                    {% elif p == 'P' %}
+                                        <span class="badge bg-warning text-dark rounded-circle shadow-sm" style="width: 28px; height: 28px; line-height: 18px;">{{ i }}</span>
+                                    {% else %}
+                                        <span class="fw-bold text-muted">{{ i }}</span>
+                                    {% endif %}
+                                </td>
+                                <td class="text-start ps-4">
+                                    <div class="d-flex align-items-center">
+                                        <div class="me-3">
+                                            {% if team.team.image_flag %}
+                                                <img src="{{ team.team.image_flag }}" class="img-card flag-circle shadow-sm border" alt="{{ team.team.nation_name }}" style="width: 28px; height: 28px;">
+                                            {% else %}
+                                                <div class="img-card flag-circle shadow-sm d-flex align-items-center justify-content-center bg-light border" style="width: 28px; height: 28px;">
+                                                    <i class="fa-solid fa-flag text-secondary opacity-50 small"></i>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                        <span class="fw-bold text-dark">{{ team.team.nation_name }}</span>
                                         {% if p == 'Q' %}
-
-                                            <td class="bg-success col-1 text-center">
-                                                <h5>{{ i }}</h5>
-                                            </td>
+                                            <i class="fa-solid fa-circle-check text-success ms-2 small" title="Qualified"></i>
                                         {% elif p == 'P' %}
-                                            <td class=" bg-warning col-1 text-center">
-                                                <h5>{{ i }}</h5>
-                                            </td>
-                                        {% else %}
-                                            <td class="col-1 text-center">
-                                                <h5>{{ i }}</h5>
-                                            </td>
+                                            <i class="fa-solid fa-circle-right text-warning ms-2 small" title="Playoff"></i>
                                         {% endif %}
-                                        <td class="col-6">
-                                            <div class="row align-items-center">
-                                                <div class="flag-config-table">
-                                                    {% if team.team.image_flag %}
-                                                        <img src="{{ team.team.image_flag }}" class="img-card" alt="{{ team.team.nation_name }}">
-                                                    {% else %}
-                                                        <div class="img-card d-flex align-items-center justify-content-center bg-light">
-                                                            <i class="fa-solid fa-flag text-secondary opacity-50"></i>
-                                                        </div>
-                                                    {% endif %}
-                                                </div>
-                                                <div class="name-config-table">
-                                                    {{ team.team.nation_name }}
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="col-1">
-                                            <h5>{{ team.points }}</h5>
-                                        </td>
-                                        <td class="col-1">
-                                            {{ team.favor }}
-                                        </td>
-                                        <td class="col-1">
-                                            {{ team.against }}
-                                        </td>
-                                        <td class="col-1">
-                                            {{ team.local }}
-                                        </td>
-                                        <td class="col-1">
-                                            {{ team.away }}
-                                        </td>
-                                        <td class="col-1">
-                                            {{ team.difference }}
-                                        </td>
-                                    </tr>
-                                {% endfor %}
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                                    </div>
+                                </td>
+                                <td><span class="fw-bold text-primary">{{ team.points }}</span></td>
+                                <td>{{ team.favor }}</td>
+                                <td>{{ team.against }}</td>
+                                <td>{{ team.local }}</td>
+                                <td>{{ team.away }}</td>
+                                <td>
+                                    <span class="{% if team.difference > 0 %}text-success{% elif team.difference < 0 %}text-danger{% endif %} fw-bold">
+                                        {{ team.difference|default:"0" }}
+                                    </span>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
-        <div class="modal-footer d-flex justify-content-center">
-            <button type="button" class="btn btn-outline-secondary px-4 py-2" data-bs-dismiss="modal">
+        <div class="modal-footer border-0 d-flex justify-content-center pb-4 pt-0">
+            <button type="button" class="btn btn-outline-secondary px-5 py-2 rounded-pill shadow-sm" data-bs-dismiss="modal">
                 <i class="fa-solid fa-xmark me-2"></i>Close
             </button>
         </div>
-
     </div>
 {% endblock %}

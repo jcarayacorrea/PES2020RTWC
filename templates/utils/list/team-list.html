@@ -1,6 +1,9 @@
-<div class="soccer-card-header">Teams</div>
-<div class="soccer-card-body overflow-auto">
-    <div class="row g-1">
+<div class="soccer-card-header d-flex align-items-center justify-content-center gap-2">
+    <i class="fa-solid fa-users"></i>
+    <span>Teams</span>
+</div>
+<div class="soccer-card-body overflow-auto p-3">
+    <div class="row g-2">
         <div class="col-12">
             {% for team in teams %}
                 {% include "utils/team-card.html" with team=team %}

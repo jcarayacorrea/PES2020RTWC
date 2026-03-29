@@ -1,142 +1,121 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block container %}
-    <div id="header">
-        <h1 class="h1 text-center">Asian Qualifying</h1>
-        <h2 class="h3 text-center">Teams List</h2>
+    <div id="header" class="mb-4 mt-3">
+        <h1 class="h1 text-center fw-bold">Asian Qualifying</h1>
+        <h2 class="h4 text-center text-muted">Manage Team Competition Stages</h2>
     </div>
     <div id="section">
-        <div class="row ">
-            <div class="col-md-8 offset-md-2">
-                <div class="team-list-container-card">
-                    <div class="soccer-card-header ">
-                        <div class="row">
-                            <div class="col-3">
-                                <div class="input-group mb-3">
-                                    <input class="form-control form-control-sm" type="search" onkeyup="searchTable()"
-                                           id="searchInput" placeholder="Search...">
-                                    <div class="input-group-append">
-                                        <span class="input-group-text"><i
-                                                class="fa-solid fa-magnifying-glass"></i></span>
-                                    </div>
-                                </div>
+        <div class="row">
+            <div class="col-md-11 mx-auto">
+                <div class="team-list-container-card shadow-lg border-0">
+                    <div class="soccer-card-header d-flex align-items-center justify-content-between px-4 py-3">
+                        <div class="d-flex align-items-center gap-2">
+                            <i class="fa-solid fa-list-check"></i>
+                            <span class="mb-0 h5 fw-bold text-uppercase">Team Management</span>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="input-group input-group-sm shadow-sm">
+                                <span class="input-group-text bg-white border-end-0 text-primary">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                </span>
+                                <input class="form-control border-start-0 ps-0" type="search" onkeyup="searchTable()"
+                                       id="searchInput" placeholder="Search teams...">
                             </div>
-                            <div class="offset-md-2 col-2">Teams</div>
                         </div>
                     </div>
-                    <div class="soccer-card-body overflow-scroll">
-                        <table id="tableTeams" class="table overflow-scroll">
-                            <thead>
-                            <tr>
-                                <th class="col text-center">
-                                    Name
-                                </th>
-                                <th class="col">
-                                    Draw
-                                </th>
-                                <th class="col">
-                                    Playoff
-                                </th>
-                                <th class="col">
-                                    F Rnd.
-                                </th>
-                                <th class="col">
-                                    3 Rnd.
-                                </th>
-                                <th class="col">
-                                    2 Rnd.
-                                </th>
-                                <th class="col">
-                                    1 Rnd.
-                                </th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {% for team in teams %}
-                                <tr>
-                                    <td class="col-5">
-                                        <div class="row">
-                                            <div class="flag-config-table">
-                                                {% if team.image_flag %}
-                                                    <img src="{{ team.image_flag }}" class="img-card" alt="{{ team.nation_name }}">
-                                                {% else %}
-                                                    <div class="img-card d-flex align-items-center justify-content-center bg-light">
-                                                        <i class="fa-solid fa-flag text-secondary opacity-50"></i>
-                                                    </div>
-                                                {% endif %}
+                    <div class="soccer-card-body p-0">
+                        <div class="table-container">
+                            <table id="tableTeams" class="table table-hover align-middle mb-0 text-center">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th class="text-start ps-4">Team Name</th>
+                                        <th style="width: 80px;">Draw</th>
+                                        <th style="width: 80px;">Playoff</th>
+                                        <th style="width: 80px;">Final Rnd.</th>
+                                        <th style="width: 80px;">3rd Rnd.</th>
+                                        <th style="width: 80px;">2nd Rnd.</th>
+                                        <th style="width: 80px;">1st Rnd.</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {% for team in teams %}
+                                    <tr>
+                                        <td class="text-start ps-4">
+                                            <div class="d-flex align-items-center">
+                                                <div class="me-3">
+                                                    {% if team.image_flag %}
+                                                        <img src="{{ team.image_flag }}" class="img-card flag-circle shadow-sm border" alt="{{ team.nation_name }}" style="width: 32px; height: 32px;">
+                                                    {% else %}
+                                                        <div class="img-card flag-circle shadow-sm d-flex align-items-center justify-content-center bg-light border" style="width: 32px; height: 32px;">
+                                                            <i class="fa-solid fa-flag text-secondary opacity-50 small"></i>
+                                                        </div>
+                                                    {% endif %}
+                                                </div>
+                                                <div>
+                                                    <div class="fw-bold text-dark">{{ team.nation_name }}</div>
+                                                    {% if team.stage.mainDraw %}
+                                                        <span class="badge bg-success opacity-75" style="font-size: 0.65rem;">MAIN DRAW</span>
+                                                    {% endif %}
+                                                </div>
                                             </div>
-                                            <div class="name-config-table">
-                                                {{ team.nation_name }}
-                                            </div>
-                                            <div class="name-config-table">
-                                                {{ team.stage.maindraw }}
-                                            </div>
-                                        </div>
-
-                                    </td>
-                                    <td class="col-1">
-                                        <div class="form-check form-check-inline">
-                                            <input name="{{ team.nation_iso_code }}" class="form-check-input"
+                                        </td>
+                                        <td>
+                                            <input name="{{ team.nation_iso_code }}" class="form-check-input border-primary shadow-none"
                                                    type="radio" value="mainDraw"
-                                                   onclick="changeTeamStage('{{ team.nation_iso_code }}','mainDraw')"
+                                                   data-action="change-team-stage"
+                                                   data-team-code="{{ team.nation_iso_code }}"
+                                                   data-stage="mainDraw"
                                                    {% if team.stage.mainDraw == True %}checked{% endif %}>
-                                        </div>
-                                    </td>
-                                    <td class="col-1">
-                                        <div class="form-check form-check-inline">
-                                            <input name="{{ team.nation_iso_code }}" class="form-check-input"
+                                        </td>
+                                        <td>
+                                            <input name="{{ team.nation_iso_code }}" class="form-check-input border-primary shadow-none"
                                                    type="radio" value="playoff"
-                                                   onclick="changeTeamStage('{{ team.nation_iso_code }}','playoff')"
+                                                   data-action="change-team-stage"
+                                                   data-team-code="{{ team.nation_iso_code }}"
+                                                   data-stage="playoff"
                                                    {% if team.stage.playoff == True %}checked{% endif %}>
-                                        </div>
-                                    </td>
-                                    <td class="col-1">
-                                        <div class="form-check form-check-inline">
-                                            <input name="{{ team.nation_iso_code }}" class="form-check-input"
+                                        </td>
+                                        <td>
+                                            <input name="{{ team.nation_iso_code }}" class="form-check-input border-primary shadow-none"
                                                    type="radio"
-                                                   onclick="changeTeamStage('{{ team.nation_iso_code }}','finalRound')"
+                                                   data-action="change-team-stage"
+                                                   data-team-code="{{ team.nation_iso_code }}"
+                                                   data-stage="finalRound"
                                                    {% if team.stage.finalRound == True %}checked{% endif %}>
-                                        </div>
-                                    </td>
-                                    <td class="col-1">
-                                        <div class="form-check form-check-inline">
-                                            <input name="{{ team.nation_iso_code }}" class="form-check-input"
+                                        </td>
+                                        <td>
+                                            <input name="{{ team.nation_iso_code }}" class="form-check-input border-primary shadow-none"
                                                    type="radio"
-                                                   onclick="changeTeamStage('{{ team.nation_iso_code }}','thirdRound')"
+                                                   data-action="change-team-stage"
+                                                   data-team-code="{{ team.nation_iso_code }}"
+                                                   data-stage="thirdRound"
                                                    {% if team.stage.thirdRound == True %}checked{% endif %}>
-                                        </div>
-                                    </td>
-                                    <td class="col-1">
-                                        <div class="form-check form-check-inline">
-                                            <input name="{{ team.nation_iso_code }}" class="form-check-input"
+                                        </td>
+                                        <td>
+                                            <input name="{{ team.nation_iso_code }}" class="form-check-input border-primary shadow-none"
                                                    type="radio"
-                                                   onclick="changeTeamStage('{{ team.nation_iso_code }}','secondRound')"
+                                                   data-action="change-team-stage"
+                                                   data-team-code="{{ team.nation_iso_code }}"
+                                                   data-stage="secondRound"
                                                    {% if team.stage.secondRound == True %}checked{% endif %}>
-                                        </div>
-                                    </td>
-                                    <td class="col-1">
-                                        <div class="form-check form-check-inline">
-                                            <input name="{{ team.nation_iso_code }}" class="form-check-input"
+                                        </td>
+                                        <td>
+                                            <input name="{{ team.nation_iso_code }}" class="form-check-input border-primary shadow-none"
                                                    type="radio"
-                                                   onclick="changeTeamStage('{{ team.nation_iso_code }}','firstRound')"
+                                                   data-action="change-team-stage"
+                                                   data-team-code="{{ team.nation_iso_code }}"
+                                                   data-stage="firstRound"
                                                    {% if team.stage.firstRound == True %}checked{% endif %}>
-                                        </div>
-                                    </td>
-                                </tr>
-
-                            {% endfor %}
-
-
-                            </tbody>
-
-                        </table>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
-    </div>
-    </div>
-
 {% endblock %}
