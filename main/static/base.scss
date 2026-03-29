@@ -517,6 +517,57 @@ h6 {
   background: rgba(0, 0, 0, 0.3);
 }
 
+/* Custom Combobox Styles */
+.custom-dropdown-menu {
+  max-height: 300px;
+  overflow-y: auto;
+  border: 1px solid rgba($primary, 0.2);
+  border-radius: 0.75rem !important;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1) !important;
+  animation: dropdown-fade-in 0.2s ease-out;
+
+  .dropdown-item {
+    transition: all 0.2s ease;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &:hover {
+      background-color: rgba($primary, 0.1);
+      color: $primary;
+      padding-left: 1.25rem;
+    }
+  }
+}
+
+.team-select-button {
+  background-image: none !important;
+  border-color: rgba($primary, 0.5);
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    border-color: $primary;
+    background-color: rgba($primary, 0.02);
+  }
+
+  &.dropdown-toggle::after {
+    margin-left: auto;
+    color: $primary;
+    transition: transform 0.3s ease;
+  }
+  
+  &.show.dropdown-toggle::after {
+    transform: rotate(180deg);
+  }
+}
+
+@keyframes dropdown-fade-in {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 @media (min-width: 1500px) {
   .container-fluid {
     padding-left: 20vw;
