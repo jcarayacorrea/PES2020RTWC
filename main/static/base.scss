@@ -146,7 +146,7 @@ ul:not(.navbar-nav):not(.dropdown-menu):not(.list-inline):not(.pagination):not(.
 }
 
 #header {
-  margin-bottom: 2rem;
+  margin-bottom: 1.25rem;
   padding-bottom: 0.5rem;
   position: relative;
   
@@ -568,21 +568,21 @@ ul:not(.navbar-nav):not(.dropdown-menu):not(.list-inline):not(.pagination):not(.
   @extend .card;
   @extend .card-border;
   height: 75vh;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1), 0 4px 10px rgba(0,0,0,0.05);
 }
 
 .container-card-wc {
   @extend .card;
   @extend .card-border;
   height: 70vh;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1), 0 4px 10px rgba(0,0,0,0.05);
 }
 
 .team-list-container-card {
   @extend .card;
   @extend .card-border;
   max-height: 70vh;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1), 0 4px 10px rgba(0,0,0,0.05);
 }
 
 
