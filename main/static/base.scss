@@ -500,7 +500,7 @@ h2 {
 
 .fixture-body {
   @extend .modal-body;
-  overflow-y: scroll !important;
+  overflow-y: auto !important;
 
 }
 

@@ -10,12 +10,12 @@
     <div class="row mb-4">
         <div class="col-12 d-flex justify-content-center align-items-center">
             <div class="d-flex gap-3">
-                <button type="button" class="btn btn-primary px-4 py-2 fw-bold" hx-get=" {% url 'asia.firstround.draw' %}"
+                <button type="button" class="btn btn-primary px-4 py-2 fw-bold" hx-get="{% url 'asia.firstround.draw' %}"
                         hx-trigger="click" hx-target="body" data-loading-target="#loading"
                         {% if teams|enable_draw_button:4 is True %} disabled {% endif %}>
                     <i class="fa-solid fa-shuffle me-2"></i>Draw
                 </button>
-                <button type="button" class="btn btn-outline-secondary px-4 py-2" hx-get=" {% url 'asia.firstround' %}" hx-trigger="click"
+                <button type="button" class="btn btn-outline-secondary px-4 py-2" hx-get="{% url 'asia.firstround' %}" hx-trigger="click"
                         hx-target="body">
                     <i class="fa-solid fa-rotate-left me-2"></i>Clear
                 </button>

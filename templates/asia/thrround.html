@@ -9,11 +9,11 @@
     <div class="row mb-4">
         <div class="col-12 d-flex justify-content-center align-items-center">
             <div class="d-flex gap-3">
-                <button type="button" class="btn btn-primary px-4 py-2 fw-bold" hx-get=" {% url 'asia.thirdround.draw' %}"
+                <button type="button" class="btn btn-primary px-4 py-2 fw-bold" hx-get="{% url 'asia.thirdround.draw' %}"
                         hx-trigger="click" hx-target="body" {% if teams|enable_draw_button:24 is True %} disabled {% endif %}>
                     <i class="fa-solid fa-shuffle me-2"></i>Draw
                 </button>
-                <button type="button" class="btn btn-outline-secondary px-4 py-2" hx-get=" {% url 'asia.thirdround' %}" hx-trigger="click"
+                <button type="button" class="btn btn-outline-secondary px-4 py-2" hx-get="{% url 'asia.thirdround' %}" hx-trigger="click"
                         hx-target="body">
                     <i class="fa-solid fa-rotate-left me-2"></i>Clear
                 </button>
@@ -32,7 +32,7 @@
                 <div class="container-card">
                     <div class="soccer-card-header">Qualify Zones</div>
 
-                    <div class="soccer-card-body overflow-scroll">
+                    <div class="soccer-card-body overflow-auto">
 
                         <div class="loading-grid" data-loading-aria-busy data-loading>
                             {% include "utils/loader/loader.html" %}
@@ -56,8 +56,8 @@
                                 </div>
                             </div>
 
-                            <div class="row">
-                                <div class="col-12 col-md-6 mb-3 mb-5">
+                            <div class="row g-3 mb-5">
+                                <div class="col-12 col-md-6 mb-3">
                                     {% if zoneC is not None %}
                                         {% include "utils/groups/group-card.html" with conf="AFC" round="third" group="C" zone=zoneC buttons=True %}
                                     {% else %}
@@ -73,7 +73,7 @@
                                 </div>
                             </div>
 
-                            <div class="row">
+                            <div class="row g-3 mb-5">
                                 <div class="col-12 col-md-6 mb-3">
                                     {% if zoneE is not None %}
                                         {% include "utils/groups/group-card.html" with conf="AFC" round="third" group="E" zone=zoneE buttons=True %}
