@@ -57,7 +57,13 @@
                                     <td class="col-5">
                                         <div class="row">
                                             <div class="flag-config-table">
-                                                <img src="{{ team.image_flag }}" class="img-card">
+                                                {% if team.image_flag %}
+                                                    <img src="{{ team.image_flag }}" class="img-card" alt="{{ team.nation_name }}">
+                                                {% else %}
+                                                    <div class="img-card d-flex align-items-center justify-content-center bg-light">
+                                                        <i class="fa-solid fa-flag text-secondary opacity-50"></i>
+                                                    </div>
+                                                {% endif %}
                                             </div>
                                             <div class="name-config-table">
                                                 {{ team.nation_name }}

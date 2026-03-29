@@ -1,7 +1,13 @@
 <div class="team-card-list">
     <div class="row g-0 align-items-center">
         <div class="col-4 d-flex justify-content-center">
-            <img src="{{ team.image_flag }}" class="img-card flag-circle my-1">
+            {% if team.image_flag %}
+                <img src="{{ team.image_flag }}" class="img-card flag-circle my-1">
+            {% else %}
+                <div class="img-card flag-circle my-1 d-flex align-items-center justify-content-center bg-light">
+                    <i class="fa-solid fa-flag text-secondary opacity-50"></i>
+                </div>
+            {% endif %}
         </div>
         <div class="col-8">
             <div class="name-config text-start m-0">

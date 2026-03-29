@@ -9,8 +9,14 @@
             </div>
         </div>
         <div class="col-4 d-flex justify-content-center">
-            <img src="{{ match.homeTeam.team.image_flag }}"
-                 class="img-card {{ homeborder }} my-1">
+            {% if match.homeTeam.team.image_flag %}
+                <img src="{{ match.homeTeam.team.image_flag }}"
+                     class="img-card {{ homeborder }} my-1" alt="{{ match.homeTeam.team.nation_name }}">
+            {% else %}
+                <div class="img-card {{ homeborder }} my-1 d-flex align-items-center justify-content-center bg-light">
+                    <i class="fa-solid fa-flag text-secondary opacity-50"></i>
+                </div>
+            {% endif %}
         </div>
     </div>
 </div>
