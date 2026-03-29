@@ -1,73 +1,50 @@
-import random
-
+from typing import List, Dict, Any
 from django.shortcuts import render, redirect
+from django.http import HttpRequest, HttpResponse
 
 from Global_Variables import GROUP_KEYS, GROUP_RANGE
-from draw import get_zone_with_teams_of_size, round_draw
-from fixtures import getZoneData, create_fixture
-from utils import updateStage, getTeams, getTeamsFinalRound, getTeamsFirstRound
+from main.services import ConfederationService
 
 CONF_NAME = 'CONCACAF'
+service = ConfederationService(CONF_NAME)
 
 
-# Create your views here.
-def finalround(request):
-    context = {}
-    round_name = 'final'
-    context['teams'] = getTeamsFinalRound(conf_name=CONF_NAME)
-    for zone_code in GROUP_KEYS[0:3]:
-        teams = get_zone_with_teams_of_size(zone_code, CONF_NAME, round_name, team_size=5)
-        if teams is not None:
-            context[f'zone{zone_code}'] = teams
-    context['range'] = GROUP_RANGE
+def final_round(request: HttpRequest) -> HttpResponse:
+    """Renders the final round state for CONCACAF."""
+    context = service.get_round_context('final', GROUP_KEYS[0:3], team_size=5, group_range=GROUP_RANGE)
     return render(request, 'ncamerica/finalround.html', context)
 
 
-def firstround(request):
-    context = {}
-    round_name = 'first'
-    context['teams'] = getTeamsFirstRound(conf_name=CONF_NAME)
-    for zone_code in GROUP_KEYS[0:5]:
-        teams = get_zone_with_teams_of_size(zone_code, CONF_NAME, round_name, team_size=5)
-        if teams is not None:
-            context[f'zone{zone_code}'] = teams
-    context['range'] = GROUP_RANGE
+def first_round(request: HttpRequest) -> HttpResponse:
+    """Renders the first round state for CONCACAF."""
+    context = service.get_round_context('first', GROUP_KEYS[0:5], team_size=5, group_range=GROUP_RANGE)
     return render(request, 'ncamerica/fstround.html', context)
 
 
-def teams(request):
-    context = {}
-    context['teams'] = getTeams(conf_name='CONCACAF')
+def teams(request: HttpRequest) -> HttpResponse:
+    """Renders the list of CONCACAF teams."""
+    context = {'teams': service.get_all_teams()}
     return render(request, 'ncamerica/teamlist.html', context)
 
 
-def updateProgress(request, code, stage):
+def update_progress(request: HttpRequest, code: str, stage: str) -> HttpResponse:
+    """Updates the stage progress for a team."""
     if request.method == 'POST':
-        updateStage(code, stage)
+        service.update_team_progress(code, stage)
     return redirect('ncamerica.teams')
 
 
-def firstRoundButton(request):
+def first_round_button(request: HttpRequest) -> HttpResponse:
+    """Generates the draw and fixtures for the first round."""
     if request.method == 'GET':
-        context = {}
-        teams_for_match = getTeamsFirstRound(CONF_NAME)
-        context['teams'] = teams_for_match
-        zones = round_draw(teams_for_match, pools_count=5, teams_per_pool=5)
-        for zone_idx, zone in enumerate(zones, start=1):
-            random.shuffle(zone)
-            create_fixture(zone, True, chr(ord('A') + zone_idx - 1), CONF_NAME, 'first')
-            context[f'zone{zone_idx}'] = zone
-    return firstround(request)
+        service.perform_draw('first', pools_count=5, teams_per_pool=5, home_away=True)
+        return first_round(request)
+    return redirect('ncamerica.fstround')
 
 
-def finalRoundButton(request):
+def final_round_button(request: HttpRequest) -> HttpResponse:
+    """Generates the draw and fixtures for the final round."""
     if request.method == 'GET':
-        context = {}
-        teams_for_match = getTeamsFinalRound(CONF_NAME)
-        context['teams'] = teams_for_match
-        zones = round_draw(teams_for_match, pools_count=5, teams_per_pool=3)
-        for zone_idx, zone in enumerate(zones, start=1):
-            random.shuffle(zone)
-            create_fixture(zone, True, chr(ord('A') + zone_idx - 1), CONF_NAME, 'final')
-            context[f'zone{zone_idx}'] = zone
-        return finalround(request)
+        service.perform_draw('final', pools_count=5, teams_per_pool=3, home_away=True)
+        return final_round(request)
+    return redirect('ncamerica.finalround')

@@ -123,13 +123,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "staticfiles"),
-]
-
-STATICFILES_FINDERS = [
-    'compressor.finders.CompressorFinder'
-]
+STATICFILES_DIRS = []
 
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -138,7 +132,7 @@ STATICFILES_FINDERS = [
 ]
 STATIC_URL = '/static/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, '../main/static/')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_collected')
 
 
 # COMPRESS CONFIG

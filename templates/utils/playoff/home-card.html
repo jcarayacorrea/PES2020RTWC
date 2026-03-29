@@ -1,6 +1,8 @@
+{% load core_tags %}
+
 <div class="team-card-sm">
     <div class="row g-0 align-items-center">
-        {% rstonemtchhome match as homeborder %}
+        {% result_one_match_home match as homeborder %}
         <div class="col-3 d-flex justify-content-center">
             <img src="{{ match.homeTeam.team.image_flag }}"
                  class="img-card {{ homeborder }} my-1">

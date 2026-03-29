@@ -1,9 +1,11 @@
+{% load core_tags %}
+
 <div class="group-card">
     <div class="soccer-card-header">Group {{ group }}</div>
     <div class="soccer-card-body">
         {% if zone is None %}
             {% for i in iterator %}
-                {% concat_string group i as position %}
+                {% concat_strings group i as position %}
                 {% include "utils/groups/group-team-card.html" with group=group grouppos=position %}
             {% endfor %}
         {% else %}

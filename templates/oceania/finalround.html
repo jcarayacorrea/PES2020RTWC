@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load core_tags %}
 {% load static %}
 {% block container %}
     <div id="header">
@@ -9,7 +10,7 @@
     <div class="row p-4 justify-content-center">
         <div class="col-auto d-flex gap-2">
             <button type="button" class="btn btn-primary" hx-get=" {% url 'oceania.finalround.draw' %}"
-                    hx-trigger="click" hx-target="body" {% if teams|enableDrawButton:8 is True %} disabled {% endif %}>
+                    hx-trigger="click" hx-target="body" {% if teams|enable_draw_button:8 is True %} disabled {% endif %}>
                 Draw
             </button>
             <button type="button" class="btn btn-primary" hx-get=" {% url 'oceania.finalround' %}" hx-trigger="click"
@@ -85,7 +86,7 @@
                                             </div>
                                             <div class="row mb-3">
                                                 <div class="col-4">
-                                                    {% if fixture|getItem:'mainDraw' is not None %}
+                                                    {% if fixture|get_item:'mainDraw' is not None %}
                                                         {% include 'utils/fixture/home-card.html' with match=fixture.mainDraw.match1 %}
                                                     {% else %}
                                                         {% include 'utils/fixture/empty-card.html' with team='Team 1' %}
@@ -112,7 +113,7 @@
                                                 </div>
 
                                                 <div class="col-4">
-                                                    {% if fixture|getItem:'mainDraw' is not None %}
+                                                    {% if fixture|get_item:'mainDraw' is not None %}
                                                         {% include 'utils/fixture/away-card.html' with match=fixture.mainDraw.match1 %}
                                                     {% else %}
                                                         {% include 'utils/fixture/empty-card.html' with team='Team 2' %}

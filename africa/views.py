@@ -1,127 +1,83 @@
-import random
-
+from typing import List, Dict, Any
 from django.shortcuts import render, redirect
+from django.http import HttpRequest, HttpResponse
 
 from Global_Variables import GROUP_KEYS, GROUP_RANGE
-from fixtures import getZoneData, create_fixture
-from utils import getTeams, updateStage, getTeamsFirstRound, getTeamsSecondRound, getTeamsThirdRound, \
-    getTeamsFinalRound, filter_team
-from draw import round_draw, get_zone_with_teams_of_size
+from main.services import ConfederationService
 
 CONF_NAME = 'CAF'
+service = ConfederationService(CONF_NAME)
 
 
-# Create your views here.
-
-def finalround(request):
-    context = {}
-    round_name = 'final'
-    context['teams'] = getTeamsFinalRound(conf_name=CONF_NAME)
-    for zone_code in GROUP_KEYS[0:5]:
-        teams = get_zone_with_teams_of_size(zone_code, CONF_NAME, round_name, team_size=5)
-        if teams is not None:
-            context[f'zone{zone_code}'] = teams
-    context['range'] = GROUP_RANGE
+def final_round(request: HttpRequest) -> HttpResponse:
+    """Renders the final round state for CAF."""
+    context = service.get_round_context('final', GROUP_KEYS[0:5], team_size=5, group_range=GROUP_RANGE)
     return render(request, 'africa/finalround.html', context)
 
 
-def thirdround(request):
-    context = {}
-    round_name = 'third'
-    context['teams'] = getTeamsThirdRound(conf_name=CONF_NAME)
-    for zone_code in GROUP_KEYS[0:5]:
-        teams = get_zone_with_teams_of_size(zone_code, CONF_NAME, round_name, team_size=4)
-        if teams is not None:
-            context[f'zone{zone_code}'] = teams
-    context['range'] = GROUP_RANGE[0:4]
+def third_round(request: HttpRequest) -> HttpResponse:
+    """Renders the third round state for CAF."""
+    context = service.get_round_context('third', GROUP_KEYS[0:5], team_size=4, group_range=GROUP_RANGE[0:4])
     return render(request, 'africa/thrround.html', context)
 
 
-def secondround(request):
-    context = {}
-    round_name = 'second'
-    context['teams'] = getTeamsSecondRound(conf_name=CONF_NAME)
-    for zone_code in GROUP_KEYS[0:5]:
-        teams = get_zone_with_teams_of_size(zone_code, CONF_NAME, round_name, team_size=4)
-        if teams is not None:
-            context[f'zone{zone_code}'] = teams
-    context['range'] = GROUP_RANGE[0:4]
+def second_round(request: HttpRequest) -> HttpResponse:
+    """Renders the second round state for CAF."""
+    context = service.get_round_context('second', GROUP_KEYS[0:5], team_size=4, group_range=GROUP_RANGE[0:4])
     return render(request, 'africa/sndround.html', context)
 
 
-def firstround(request):
-    context = {}
-    round_name = 'first'
-    context['teams'] = getTeamsFirstRound(conf_name=CONF_NAME)
-    for zone_code in GROUP_KEYS[0:3]:
-        teams = get_zone_with_teams_of_size(zone_code, CONF_NAME, round_name, team_size=4)
-        if teams is not None:
-            context[f'zone{zone_code}'] = teams
-    context['range'] = GROUP_RANGE[0:4]
+def first_round(request: HttpRequest) -> HttpResponse:
+    """Renders the first round state for CAF."""
+    context = service.get_round_context('first', GROUP_KEYS[0:3], team_size=4, group_range=GROUP_RANGE[0:4])
     return render(request, 'africa/fstround.html', context)
 
 
-def teams(request):
-    context = {}
-    context['teams'] = getTeams(conf_name='CAF')
+def teams(request: HttpRequest) -> HttpResponse:
+    """Renders the list of CAF teams."""
+    context = {'teams': service.get_all_teams()}
     return render(request, 'africa/teamlist.html', context)
 
 
-def updateProgress(request, code, stage):
+def update_progress(request: HttpRequest, code: str, stage: str) -> HttpResponse:
+    """Updates the stage progress for a team."""
     if request.method == 'POST':
-        updateStage(code, stage)
+        service.update_team_progress(code, stage)
     return redirect('africa.teams')
 
 
-def firstRoundButton(request):
+def first_round_button(request: HttpRequest) -> HttpResponse:
+    """Generates the draw and fixtures for the first round."""
     if request.method == 'GET':
-        context = {}
-        teams_for_match = getTeamsFirstRound(CONF_NAME)
-        context['teams'] = teams_for_match
-        zones = round_draw(teams_for_match, pools_count=4, teams_per_pool=3)
-        for zone_idx, zone in enumerate(zones, start=1):
-            random.shuffle(zone)
-            create_fixture(zone, False, chr(ord('A') + zone_idx - 1), CONF_NAME, 'first')
-            context[f'zone{zone_idx}'] = zone
-        return firstround(request)
+        service.perform_draw('first', pools_count=4, teams_per_pool=3, home_away=False)
+        return first_round(request)
+    return redirect('africa.fstround')
 
 
-def secondRoundButton(request):
+def second_round_button(request: HttpRequest) -> HttpResponse:
+    """Generates the draw and fixtures for the second round."""
     if request.method == 'GET':
-        context = {}
-        teams_for_match = getTeamsSecondRound(CONF_NAME)
-        context['teams'] = teams_for_match
-        zones = round_draw(teams_for_match, pools_count=4, teams_per_pool=5)
-        for zone_idx, zone in enumerate(zones, start=1):
-            random.shuffle(zone)
-            create_fixture(zone, True, chr(ord('A') + zone_idx - 1), CONF_NAME, 'second')
-            context[f'zone{zone_idx}'] = zone
-        return secondround(request)
+        service.perform_draw('second', pools_count=4, teams_per_pool=5, home_away=True)
+        return second_round(request)
+    return redirect('africa.sndround')
 
 
-def thirdRoundButton(request):
+def third_round_button(request: HttpRequest) -> HttpResponse:
+    """Generates the draw and fixtures for the third round."""
     if request.method == 'GET':
-        context = {}
-        teams_for_match = getTeamsThirdRound(CONF_NAME)
-        context['teams'] = teams_for_match
-        zones = round_draw(teams_for_match, pools_count=4, teams_per_pool=5)
-        for zone_idx, zone in enumerate(zones, start=1):
-            random.shuffle(zone)
-            create_fixture(zone, True, chr(ord('A') + zone_idx - 1), CONF_NAME, 'third')
-            context[f'zone{zone_idx}'] = zone
-        return thirdround(request)
+        service.perform_draw('third', pools_count=4, teams_per_pool=5, home_away=True)
+        return third_round(request)
+    return redirect('africa.thrround')
 
-def finalRoundButton(request):
+
+def final_round_button(request: HttpRequest) -> HttpResponse:
+    """Generates the draw and fixtures for the final round."""
     if request.method == 'GET':
-        context = {}
-        teams_for_match = getTeamsFinalRound(CONF_NAME)
-        context['teams'] = teams_for_match
-        zones = round_draw(teams_for_match, pools_count=5, teams_per_pool=5)
-        for zone_idx, zone in enumerate(zones, start=1):
-            random.shuffle(zone)
-            create_fixture(zone, True, chr(ord('A') + zone_idx - 1), CONF_NAME, 'final')
-            context[f'zone{zone_idx}'] = zone
-        return finalround(request)
+        service.perform_draw('final', pools_count=5, teams_per_pool=5, home_away=True)
+        return final_round(request)
+    return redirect('africa.finalround')
 
-def team_list_filter(text):
-    return filter_team(CONF_NAME,text)
+
+def team_list_filter(text: str) -> List[Dict[str, Any]]:
+    """Filters CAF teams by name."""
+    return service.filter_teams(text)

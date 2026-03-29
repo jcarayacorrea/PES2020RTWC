@@ -1,105 +1,93 @@
-import random
-
+from typing import List, Dict, Any
 from django.shortcuts import render, redirect
+from django.http import HttpRequest, HttpResponse
 
 from Global_Variables import GROUP_RANGE, GROUP_KEYS
-from draw import get_zone_with_teams_of_size, round_draw
-from fixtures import getZoneData, create_fixture
-from utils import updateStage, getTeams, getTeamsFirstRound, getTeamsFinalRound, db_conexion, getTeamById
-
+from main.services import ConfederationService
+from fixtures import get_zone_data
+from utils import db_conexion, get_team_by_id
 
 CONF_NAME = 'OFC'
+service = ConfederationService(CONF_NAME)
 
 
-# Create your views here.
-def finalround(request):
-    context = {}
-    round_name = 'final'
-    context['teams'] = getTeamsFinalRound(conf_name=CONF_NAME)
-    for zone_code in GROUP_KEYS[0:2]:
-        teams = get_zone_with_teams_of_size(zone_code, CONF_NAME, round_name, team_size=4)
-        if teams is not None:
-            context[f'zone{zone_code}'] = teams
-    fixture = getZoneData('MD', 'OFC', 'final')
+def final_round(request: HttpRequest) -> HttpResponse:
+    """Renders the final round state for OFC."""
+    context = service.get_round_context('final', GROUP_KEYS[0:2], team_size=4, group_range=GROUP_RANGE[0:4])
+    fixture = get_zone_data('MD', 'OFC', 'final')
     context['fixture'] = fixture['fixtures']
-    context['range'] = GROUP_RANGE[0:4]
 
     return render(request, 'oceania/finalround.html', context)
 
 
-def firstround(request):
-    context = {}
-    round_name = 'first'
-    context['teams'] = getTeamsFirstRound(conf_name=CONF_NAME)
-    for zone_code in GROUP_KEYS[0]:
-        teams = get_zone_with_teams_of_size(zone_code, CONF_NAME, round_name, team_size=5)
-        if teams is not None:
-            context[f'zone{zone_code}'] = teams
-    context['range'] = GROUP_RANGE
+def first_round(request: HttpRequest) -> HttpResponse:
+    """Renders the first round state for OFC."""
+    context = service.get_round_context('first', GROUP_KEYS[0:1], team_size=5, group_range=GROUP_RANGE)
     return render(request, 'oceania/fstround.html', context)
 
 
-def teams(request):
-    context = {}
-    context['teams'] = getTeams(conf_name='OFC')
+def teams(request: HttpRequest) -> HttpResponse:
+    """Renders the list of OFC teams."""
+    context = {'teams': service.get_all_teams()}
     return render(request, 'oceania/teamlist.html', context)
 
 
-def updateProgress(request, code, stage):
+def update_progress(request: HttpRequest, code: str, stage: str) -> HttpResponse:
+    """Updates the stage progress for a team."""
     if request.method == 'POST':
-        updateStage(code, stage)
+        service.update_team_progress(code, stage)
     return redirect('oceania.teams')
 
 
-def firstRoundButton(request):
+def first_round_button(request: HttpRequest) -> HttpResponse:
+    """Generates the draw and fixtures for the first round."""
     if request.method == 'GET':
-        context = {}
-        teams_for_match = getTeamsFirstRound(CONF_NAME)
-        context['teams'] = teams_for_match
-        zones = round_draw(teams_for_match, pools_count=5, teams_per_pool=1)
-        for zone_idx, zone in enumerate(zones, start=1):
-            random.shuffle(zone)
-            create_fixture(zone, False, chr(ord('A') + zone_idx - 1), CONF_NAME, 'first')
-            context[f'zone{zone_idx}'] = zone
-        return firstround(request)
+        service.perform_draw('first', pools_count=5, teams_per_pool=1, home_away=False)
+        return first_round(request)
+    return redirect('oceania.fstround')
 
 
-def finalRoundButton(request):
+def final_round_button(request: HttpRequest) -> HttpResponse:
+    """Generates the draw and fixtures for the final round."""
     if request.method == 'GET':
-        context = {}
-        teams_for_match = getTeamsFinalRound(CONF_NAME)
-        context['teams'] = teams_for_match
-        zones = round_draw(teams_for_match, pools_count=4, teams_per_pool=2)
-        for zone_idx, zone in enumerate(zones, start=1):
-            random.shuffle(zone)
-            create_fixture(zone, True, chr(ord('A') + zone_idx - 1), CONF_NAME, 'final')
-            context[f'zone{zone_idx}'] = zone
-        return finalround(request)
+        service.perform_draw('final', pools_count=4, teams_per_pool=2, home_away=True)
+        return final_round(request)
+    return redirect('oceania.finalround')
 
 
-def setHomeFinalTeam(request):
+def set_home_final_team(request: HttpRequest) -> HttpResponse:
+    """Manually sets the home team for the OFC final."""
     db = db_conexion()
-    teamId = request.GET.get('team')
-    team = getTeamById(teamId)
-    db.get_collection('Fixtures').update_many({'$and': [{'conf': 'OFC'}, {'zone': 'MD'}, {'round': 'final'}]},
-                                              {'$set': {
-                                                  'fixtures.mainDraw.match1.played': False,
-                                                  'fixtures.mainDraw.match1.homeTeam.team': team[0],
-                                                  'fixtures.mainDraw.match1.homeTeam.goals': None,
-                                                  'fixtures.mainDraw.match1.homeTeam.penalties': None
-                                              }})
-    return finalround(request)
+    team_id = request.GET.get('team')
+    if not team_id:
+        return redirect('oceania.finalround')
+    team = get_team_by_id(team_id)
+    db.get_collection('Fixtures').update_many(
+        {'conf': 'OFC', 'zone': 'MD', 'round': 'final'},
+        {'$set': {
+            'fixtures.mainDraw.match1.played': False,
+            'fixtures.mainDraw.match1.homeTeam.team': team[0],
+            'fixtures.mainDraw.match1.homeTeam.goals': None,
+            'fixtures.mainDraw.match1.homeTeam.penalties': None
+        }}
+    )
+    return final_round(request)
 
 
-def setAwayFinalTeam(request):
+def set_away_final_team(request: HttpRequest) -> HttpResponse:
+    """Manually sets the away team for the OFC final."""
     db = db_conexion()
-    teamId = request.GET.get('team')
-    team = getTeamById(teamId)
-    db.get_collection('Fixtures').update_one({'$and': [{'conf': 'OFC'}, {'zone': 'MD'}, {'round': 'final'}]},
-                                             {'$set': {
-                                                 'fixtures.mainDraw.match1.played': False,
-                                                 'fixtures.mainDraw.match1.awayTeam.team': team[0],
-                                                 'fixtures.mainDraw.match1.awayTeam.goals': None,
-                                                 'fixtures.mainDraw.match1.awayTeam.penalties': None
-                                             }})
-    return finalround(request)
+    team_id = request.GET.get('team')
+    if not team_id:
+        return redirect('oceania.finalround')
+    team = get_team_by_id(team_id)
+    db.get_collection('Fixtures').update_one(
+        {'conf': 'OFC', 'zone': 'MD', 'round': 'final'},
+        {'$set': {
+            'fixtures.mainDraw.match1.played': False,
+            'fixtures.mainDraw.match1.awayTeam.team': team[0],
+            'fixtures.mainDraw.match1.awayTeam.goals': None,
+            'fixtures.mainDraw.match1.awayTeam.penalties': None
+        }}
+    )
+    return final_round(request)

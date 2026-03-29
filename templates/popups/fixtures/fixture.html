@@ -1,3 +1,5 @@
+{% load core_tags %}
+
 {% load static %}
 {% block modal %}
     <div id="main-fixture" class="fixture-content">
@@ -7,7 +9,7 @@
         </div>
         <div id="fixtures" class="fixture-body">
             <div>
-                {% if fixture|getItem:'fixture1' is not None %}
+                {% if fixture|get_item:'fixture1' is not None %}
                     <div class="row mb-2">
                         <div class="col-12">
                             <div class="card card-border">
@@ -16,7 +18,7 @@
                                     <div id="f1m1" class="match-border" data-loading-states>
                                         {% include "popups/fixtures/../../utils/fixture/match-card.html" with target="#f1m1" match=fixture.fixture1.match1 fixtureNum=1 matchNum=1 delay=0 %}
                                     </div>
-                                    {% if fixture.fixture1|getItem:'match2' is not None %}
+                                    {% if fixture.fixture1|get_item:'match2' is not None %}
                                         <div id="f1m2" class="match-border" data-loading-states>
                                             {% include "popups/fixtures/../../utils/fixture/match-card.html" with target="#f1m2" match=fixture.fixture1.match2 fixtureNum=1 matchNum=2 delay=0 %}
                                         </div>
@@ -29,7 +31,7 @@
                     </div>
                 {% endif %}
 
-                {% if fixture|getItem:'fixture2' is not None %}
+                {% if fixture|get_item:'fixture2' is not None %}
                     <div class="row mb-2">
                         <div class="col-12">
                             <div class="card card-border">
@@ -38,7 +40,7 @@
                                     <div id="f2m1" class="match-border" data-loading-states>
                                         {% include "popups/fixtures/../../utils/fixture/match-card.html" with target="#f2m1" match=fixture.fixture2.match1 fixtureNum=2 matchNum=1 delay=500 %}
                                     </div>
-                                    {% if fixture.fixture2|getItem:'match2' is not None %}
+                                    {% if fixture.fixture2|get_item:'match2' is not None %}
                                         <div id="f2m2" class="match-border" data-loading-states>
                                             {% include "popups/fixtures/../../utils/fixture/match-card.html" with target="#f2m2" match=fixture.fixture2.match2 fixtureNum=2 matchNum=2 delay=500 %}
                                         </div>
@@ -49,7 +51,7 @@
                     </div>
                 {% endif %}
 
-                {% if fixture|getItem:'fixture3' is not None %}
+                {% if fixture|get_item:'fixture3' is not None %}
                     <div class="row mb-2">
                         <div class="col-12">
                             <div class="card card-border">
@@ -58,7 +60,7 @@
                                     <div id="f3m1" class="match-border" data-loading-states>
                                         {% include "popups/fixtures/../../utils/fixture/match-card.html" with target="#f3m1" match=fixture.fixture3.match1 fixtureNum=3 matchNum=1 delay=1000 %}
                                     </div>
-                                    {% if fixture.fixture3|getItem:'match2' is not None %}
+                                    {% if fixture.fixture3|get_item:'match2' is not None %}
                                         <div id="f3m2" class="match-border" data-loading-states>
                                             {% include "popups/fixtures/../../utils/fixture/match-card.html" with target="#f3m2" match=fixture.fixture3.match2 fixtureNum=3 matchNum=2 delay=1000 %}
                                         </div>
@@ -69,7 +71,7 @@
                     </div>
                 {% endif %}
 
-                {% if fixture|getItem:'fixture4' is not None %}
+                {% if fixture|get_item:'fixture4' is not None %}
                     <div class="row mb-2">
                         <div class="col-12">
                             <div class="card card-border">
@@ -78,7 +80,7 @@
                                     <div id="f4m1" class="match-border" data-loading-states>
                                         {% include "popups/fixtures/../../utils/fixture/match-card.html" with target="#f4m1" match=fixture.fixture4.match1 fixtureNum=4 matchNum=1 delay=1500 %}
                                     </div>
-                                    {% if fixture.fixture4|getItem:'match2' is not None %}
+                                    {% if fixture.fixture4|get_item:'match2' is not None %}
                                         <div id="f4m2" class="match-border" data-loading-states>
                                             {% include "popups/fixtures/../../utils/fixture/match-card.html" with target="#f4m2" match=fixture.fixture4.match2 fixtureNum=4 matchNum=2 delay=1500 %}
                                         </div>
@@ -89,7 +91,7 @@
                     </div>
                 {% endif %}
 
-                {% if fixture|getItem:'fixture5' is not None %}
+                {% if fixture|get_item:'fixture5' is not None %}
                     <div class="row mb-2">
                         <div class="col-12">
                             <div class="card card-border">
@@ -98,7 +100,7 @@
                                     <div id="f5m1" class="match-border" data-loading-states>
                                         {% include "popups/fixtures/../../utils/fixture/match-card.html" with target="#f5m1" match=fixture.fixture5.match1 fixtureNum=5 matchNum=1 delay=2000 %}
                                     </div>
-                                    {% if fixture.fixture5|getItem:'match2' is not None %}
+                                    {% if fixture.fixture5|get_item:'match2' is not None %}
                                         <div id="f5m2" class="match-border" data-loading-states>
                                             {% include "popups/fixtures/../../utils/fixture/match-card.html" with target="#f5m2" match=fixture.fixture5.match2 fixtureNum=5 matchNum=2 delay=2000 %}
                                         </div>
@@ -109,7 +111,7 @@
                     </div>
                 {% endif %}
 
-                {% if fixture|getItem:'fixture6' is not None %}
+                {% if fixture|get_item:'fixture6' is not None %}
                     <div class="row mb-2">
                         <div class="col-12">
                             <div class="card card-border">
@@ -118,7 +120,7 @@
                                     <div id="f6m1" class="match-border" data-loading-states>
                                         {% include "popups/fixtures/../../utils/fixture/match-card.html" with target="#f6m1" match=fixture.fixture6.match1 fixtureNum=6 matchNum=1 delay=2500 %}
                                     </div>
-                                    {% if fixture.fixture6|getItem:'match2' is not None %}
+                                    {% if fixture.fixture6|get_item:'match2' is not None %}
                                         <div id="f6m2" class="match-border" data-loading-states>
                                             {% include "popups/fixtures/../../utils/fixture/match-card.html" with target="#f6m2" match=fixture.fixture6.match2 fixtureNum=6 matchNum=2 delay=2500 %}
                                         </div>
@@ -129,7 +131,7 @@
                     </div>
                 {% endif %}
 
-                {% if fixture|getItem:'fixture7' is not None %}
+                {% if fixture|get_item:'fixture7' is not None %}
                     <div class="row mb-2">
                         <div class="col-12">
                             <div class="card card-border">
@@ -138,7 +140,7 @@
                                     <div id="f7m1" class="match-border" data-loading-states>
                                         {% include "popups/fixtures/../../utils/fixture/match-card.html" with target="#f7m1" match=fixture.fixture7.match1 fixtureNum=7 matchNum=1 delay=3000 %}
                                     </div>
-                                    {% if fixture.fixture7|getItem:'match2' is not None %}
+                                    {% if fixture.fixture7|get_item:'match2' is not None %}
                                         <div id="f7m2" class="match-border" data-loading-states>
                                             {% include "popups/fixtures/../../utils/fixture/match-card.html" with target="#f7m2" match=fixture.fixture7.match2 fixtureNum=7 matchNum=2 delay=3000 %}
                                         </div>
@@ -149,7 +151,7 @@
                     </div>
                 {% endif %}
 
-                {% if fixture|getItem:'fixture8' is not None %}
+                {% if fixture|get_item:'fixture8' is not None %}
                     <div class="row mb-2">
                         <div class="col-12">
                             <div class="card card-border">
@@ -158,7 +160,7 @@
                                     <div id="f8m1" class="match-border" data-loading-states>
                                         {% include "popups/fixtures/../../utils/fixture/match-card.html" with target="#f8m1" match=fixture.fixture8.match1 fixtureNum=8 matchNum=1 delay=3500 %}
                                     </div>
-                                    {% if fixture.fixture8|getItem:'match2' is not None %}
+                                    {% if fixture.fixture8|get_item:'match2' is not None %}
                                         <div id="f8m2" class="match-border" data-loading-states>
                                             {% include "popups/fixtures/../../utils/fixture/match-card.html" with target="#f8m2" match=fixture.fixture8.match2 fixtureNum=8 matchNum=2 delay=3500 %}
                                         </div>
@@ -169,7 +171,7 @@
                     </div>
                 {% endif %}
 
-                {% if fixture|getItem:'fixture9' is not None %}
+                {% if fixture|get_item:'fixture9' is not None %}
                     <div class="row mb-2">
                         <div class="col-12">
                             <div class="card card-border">
@@ -178,7 +180,7 @@
                                     <div id="f9m1" class="match-border" data-loading-states>
                                         {% include "popups/fixtures/../../utils/fixture/match-card.html" with target="#f9m1" match=fixture.fixture9.match1 fixtureNum=9 matchNum=1 delay=4000 %}
                                     </div>
-                                    {% if fixture.fixture9|getItem:'match2' is not None %}
+                                    {% if fixture.fixture9|get_item:'match2' is not None %}
                                         <div id="f9m2" class="match-border" data-loading-states>
                                             {% include "popups/fixtures/../../utils/fixture/match-card.html" with target="#f9m2" match=fixture.fixture9.match2 fixtureNum=9 matchNum=2 delay=4000 %}
                                         </div>
@@ -189,7 +191,7 @@
                     </div>
                 {% endif %}
 
-                {% if fixture|getItem:'fixture10' is not None %}
+                {% if fixture|get_item:'fixture10' is not None %}
                     <div class="row mb-2">
                         <div class="col-12">
                             <div class="card card-border">
@@ -198,7 +200,7 @@
                                     <div id="f10m1" class="match-border" data-loading-states>
                                         {% include "popups/fixtures/../../utils/fixture/match-card.html" with target="#f10m1" match=fixture.fixture10.match1 fixtureNum=10 matchNum=1 delay=4500 %}
                                     </div>
-                                    {% if fixture.fixture10|getItem:'match2' is not None %}
+                                    {% if fixture.fixture10|get_item:'match2' is not None %}
                                         <div id="f10m2" class="match-border" data-loading-states>
                                             {% include "popups/fixtures/../../utils/fixture/match-card.html" with target="#f10m2" match=fixture.fixture10.match2 fixtureNum=10 matchNum=2 delay=4500 %}
                                         </div>

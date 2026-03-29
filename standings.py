@@ -1,120 +1,95 @@
-from fixtures import getZoneData
+from typing import List, Dict, Any
 from operator import itemgetter
+from fixtures import get_zone_data
+
+def get_standings(conf: str, round_name: str, zone: str) -> List[Dict[str, Any]]:
+    """Calculates and returns standings for a given zone."""
+    fixture_data = get_zone_data(zone, conf, round_name)
+    teams = fixture_data['teams']
+    
+    # Extract matches from the nested fixture structure
+    all_matches = []
+    fixtures_dict = fixture_data.get('fixtures', {})
+    for fix_key in fixtures_dict:
+        fix = fixtures_dict[fix_key]
+        if isinstance(fix, dict):
+            for match_key in ['match1', 'match2']:
+                match_data = fix.get(match_key)
+                if match_data:
+                    all_matches.append(match_data)
+                
+    return create_standings(all_matches, teams)
 
 
-def getStandings(conf, round, zone):
-    context = {}
-    groupStandings = []
-    fixture = getZoneData(zone, conf, round)
-    teams = fixture['teams']
-    fixtureList = fixtureArray(fixture['fixtures'])
-    return createStandings(fixtureList, teams)
-
-
-def createStandings(list, teams):
-    teamsList = []
+def create_standings(matches: List[Dict[str, Any]], teams: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    """Processes matches to generate a sorted list of team standings."""
+    standings = []
     for team in teams:
-        teamObj = {}
-        teamId = team['nation_iso_code']
-        teamObj['team'] = team
-        points, matches = countPoints(teamId, list)
-        golFavor, golContra, golLocal, golVisita, diff = goaldifference(teamId, list)
-        teamObj['points'] = points
-        teamObj['matches'] = matches
-        teamObj['favor'] = golFavor
-        teamObj['against'] = golContra
-        teamObj['local'] = golLocal
-        teamObj['away'] = golVisita
-        teamObj['difference'] = diff
-        teamsList.append(teamObj)
-
-    return sorted(teamsList, key=itemgetter('points', 'difference', 'favor', 'away'), reverse=True)
-
-
-def countPoints(teamId, list):
-    points = 0
-    matches = 0
-    for item in list:
-        if item is not None:
-            if item.get('match1') is not None:
-                if item['match1']['played'] == True:
-                    matches += 1
-                    if item['match1']['homeTeam']['team']['nation_iso_code'] == teamId:
-                        if item['match1']['homeTeam']['result'] == True and item['match1']['awayTeam'][
-                            'result'] == False:
-                            points += 3
-                        elif item['match1']['homeTeam']['result'] == False and item['match1']['awayTeam'][
-                            'result'] == False:
-                            points += 1
-                    if item['match1']['awayTeam']['team']['nation_iso_code'] == teamId:
-                        if item['match1']['awayTeam']['result'] == True and item['match1']['homeTeam'][
-                            'result'] == False:
-                            points += 3
-                        elif item['match1']['awayTeam']['result'] == False and item['match1']['homeTeam'][
-                            'result'] == False:
-                            points += 1
-
-            if item.get('match2') is not None:
-                if item['match2']['played'] == True:
-                    matches += 1
-                    if item['match2']['homeTeam']['team']['nation_iso_code'] == teamId:
-                        if item['match2']['homeTeam']['result'] == True and item['match2']['awayTeam'][
-                            'result'] == False:
-                            points += 3
-                        elif item['match2']['homeTeam']['result'] == False and item['match2']['awayTeam'][
-                            'result'] == False:
-                            points += 1
-                    if item['match2']['awayTeam']['team']['nation_iso_code'] == teamId:
-                        if item['match2']['awayTeam']['result'] == True and item['match2']['homeTeam'][
-                            'result'] == False:
-                            points += 3
-                        elif item['match2']['awayTeam']['result'] == False and item['match2']['homeTeam'][
-                            'result'] == False:
-                            points += 1
-    return points, matches
+        team_id = team['nation_iso_code']
+        stats = calculate_team_stats(team_id, matches)
+        team_entry = {
+            'team': team,
+            'points': stats['points'],
+            'matches': stats['played'],
+            'favor': stats['goals_for'],
+            'against': stats['goals_against'],
+            'local': stats['goals_home'],
+            'away': stats['goals_away'],
+            'difference': stats['goals_for'] - stats['goals_against']
+        }
+        standings.append(team_entry)
+        
+    return sorted(standings, key=itemgetter('points', 'difference', 'favor', 'away'), reverse=True)
 
 
-def goaldifference(teamId, list):
-    localGoalsF = 0
-    awayGoalsF = 0
-    localGoalsC = 0
-    awayGoalsC = 0
-    for item in list:
-        if item is not None:
-            if item.get('match1') is not None:
-                if item['match1']['played'] == True:
-
-                    if item['match1']['homeTeam']['team']['nation_iso_code'] == teamId:
-                        localGoalsF += item['match1']['homeTeam']['goals']
-                        localGoalsC += item['match1']['awayTeam']['goals']
-                    if item['match1']['awayTeam']['team']['nation_iso_code'] == teamId:
-                        awayGoalsF += item['match1']['awayTeam']['goals']
-                        awayGoalsC += item['match1']['homeTeam']['goals']
-
-            if item.get('match2') is not None:
-                if item['match2']['played'] == True:
-                    if item['match2']['homeTeam']['team']['nation_iso_code'] == teamId:
-                        localGoalsF += item['match2']['homeTeam']['goals']
-                        localGoalsC += item['match2']['awayTeam']['goals']
-                    if item['match2']['awayTeam']['team']['nation_iso_code'] == teamId:
-                        awayGoalsF += item['match1']['awayTeam']['goals']
-                        awayGoalsC += item['match1']['homeTeam']['goals']
-    teamGoalsF = localGoalsF + awayGoalsF
-    teamGoalsC = localGoalsC + awayGoalsC
-    return teamGoalsF, teamGoalsC, localGoalsF, awayGoalsF, (teamGoalsF - teamGoalsC)
-
-
-def fixtureArray(fixtures):
-    fixtureList = []
-    fixtureList.append(fixtures.get('fixture1'))
-    fixtureList.append(fixtures.get('fixture2'))
-    fixtureList.append(fixtures.get('fixture3'))
-    fixtureList.append(fixtures.get('fixture4'))
-    fixtureList.append(fixtures.get('fixture5'))
-    fixtureList.append(fixtures.get('fixture6'))
-    fixtureList.append(fixtures.get('fixture7'))
-    fixtureList.append(fixtures.get('fixture8'))
-    fixtureList.append(fixtures.get('fixture9'))
-    fixtureList.append(fixtures.get('fixture10'))
-
-    return fixtureList
+def calculate_team_stats(team_id: str, matches: List[Dict[str, Any]]) -> Dict[str, int]:
+    """Aggregates match results for a specific team."""
+    stats = {
+        'points': 0,
+        'played': 0,
+        'goals_for': 0,
+        'goals_against': 0,
+        'goals_home': 0,
+        'goals_away': 0
+    }
+    
+    for match in matches:
+        if not match.get('played'):
+            continue
+            
+        home_team = match['homeTeam']
+        away_team = match['awayTeam']
+        
+        # Guard against missing team info
+        if not home_team.get('team') or not away_team.get('team'):
+            continue
+            
+        home_id = home_team['team']['nation_iso_code']
+        away_id = away_team['team']['nation_iso_code']
+        
+        h_goals = home_team.get('goals') or 0
+        a_goals = away_team.get('goals') or 0
+        
+        if home_id == team_id:
+            stats['played'] += 1
+            stats['goals_for'] += h_goals
+            stats['goals_against'] += a_goals
+            stats['goals_home'] += h_goals
+            
+            if h_goals > a_goals:
+                stats['points'] += 3
+            elif h_goals == a_goals:
+                stats['points'] += 1
+                
+        elif away_id == team_id:
+            stats['played'] += 1
+            stats['goals_for'] += a_goals
+            stats['goals_against'] += h_goals
+            stats['goals_away'] += a_goals
+            
+            if a_goals > h_goals:
+                stats['points'] += 3
+            elif a_goals == h_goals:
+                stats['points'] += 1
+                
+    return stats

@@ -1,99 +1,84 @@
-import random
-
+from typing import List, Dict, Any, Tuple
 from django.shortcuts import render, redirect
+from django.http import HttpRequest, HttpResponse
 
 from Global_Variables import GROUP_KEYS, GROUP_RANGE
-from draw import round_draw, get_zone_with_teams_of_size
-from fixtures import getZoneData, create_fixture, createPlayOffMatches, createPlayOffMatchesUEFA
-from utils import getTeams, updateStage, getTeamsFinalRound, getUEFATeamsPlayoff, \
-    getTeamsFirstRound, db_conexion, getTeamById
+from main.services import ConfederationService
+from fixtures import create_playoff_matches_uefa, get_zone_data
+from utils import get_uefa_teams_playoff
+import random
 
 CONF_NAME = 'UEFA'
+service = ConfederationService(CONF_NAME)
 
 
-# Create your views here.
-
-def finalround(request):
-    context = {}
-    round_name = 'final'
-    context['teams'] = getTeamsFinalRound(conf_name=CONF_NAME)
-    for zone_code in GROUP_KEYS:
-        teams = get_zone_with_teams_of_size(zone_code, CONF_NAME, round_name, team_size=5)
-        if teams is not None:
-            context[f'zone{zone_code}'] = teams
-    context['range'] = GROUP_RANGE
+def final_round(request: HttpRequest) -> HttpResponse:
+    """Renders the final round state for UEFA."""
+    context = service.get_round_context('final', GROUP_KEYS, team_size=5, group_range=GROUP_RANGE)
     return render(request, 'europa/finalround.html', context)
 
 
-
-def firstround(request):
-    context = {}
-    round_name = 'first'
-    context['teams'] = getTeamsFirstRound(conf_name=CONF_NAME)
-    for zone_code in GROUP_KEYS[0:5]:
-        teams = get_zone_with_teams_of_size(zone_code, CONF_NAME, round_name, team_size=5)
-        if teams is not None:
-            context[f'zone{zone_code}'] = teams
-    context['range'] = GROUP_RANGE
+def first_round(request: HttpRequest) -> HttpResponse:
+    """Renders the first round state for UEFA."""
+    context = service.get_round_context('first', GROUP_KEYS[0:5], team_size=5, group_range=GROUP_RANGE)
     return render(request, 'europa/fstround.html', context)
 
 
-def teams(request):
-    context = {}
-    context['teams'] = getTeams(conf_name='UEFA')
+def teams(request: HttpRequest) -> HttpResponse:
+    """Renders the list of UEFA teams."""
+    context = {'teams': service.get_all_teams()}
     return render(request, 'europa/teamlist.html', context)
 
 
-def updateProgress(request, code, stage):
+def update_progress(request: HttpRequest, code: str, stage: str) -> HttpResponse:
+    """Updates the stage progress for a team."""
     if request.method == 'POST':
-        updateStage(code, stage)
+        service.update_team_progress(code, stage)
     return redirect('europa.teams')
 
 
-def firstRoundButton(request):
+def first_round_button(request: HttpRequest) -> HttpResponse:
+    """Generates the draw and fixtures for the first round."""
     if request.method == 'GET':
-        context = {}
-        teams_for_match = getTeamsFirstRound('UEFA')
-        context['teams'] = teams_for_match
-        zones = round_draw(teams_for_match, pools_count=5, teams_per_pool=5)
-        for zone_idx, zone in enumerate(zones, start=1):
-            random.shuffle(zone)
-            create_fixture(zone, True, chr(ord('A') + zone_idx - 1), 'UEFA', 'first')
-            context[f'zone{zone_idx}'] = zone
-        return firstround(request)
+        service.perform_draw('first', pools_count=5, teams_per_pool=5, home_away=True)
+        return first_round(request)
+    return redirect('europa.fstround')
 
 
-def finalRoundButton(request):
+def final_round_button(request: HttpRequest) -> HttpResponse:
+    """Generates the draw and fixtures for the final round."""
     if request.method == 'GET':
-        context = {}
-        teams_for_match = getTeamsFinalRound('UEFA')
-        context['teams'] = teams_for_match
-        zones = round_draw(teams_for_match, pools_count=5, teams_per_pool=8)
-        for zone_idx, zone in enumerate(zones, start=1):
-            random.shuffle(zone)
-            create_fixture(zone, True, chr(ord('A') + zone_idx - 1), 'UEFA', 'final')
-            context[f'zone{zone_idx}'] = zone
-        return finalround(request)
+        service.perform_draw('final', pools_count=5, teams_per_pool=8, home_away=True)
+        return final_round(request)
+    return redirect('europa.finalround')
 
 
-def euroPlayoff(request):
-    context = getPlayOffContextData()
+def euro_playoff(request: HttpRequest) -> HttpResponse:
+    """Renders the UEFA playoff state."""
+    context = get_playoff_context_data()
     return render(request, 'europa/playoff.html', context)
 
-def getPlayoffPage(request):
+
+def get_playoff_page(request: HttpRequest) -> HttpResponse:
+    """Generates a new UEFA playoff draw and renders the page."""
     if request.method == 'GET':
-        playoffTeams, playoffFixtures = preparePlayoffData()
-        context = {'teams': playoffTeams, 'fixture': playoffFixtures}
+        playoff_teams, playoff_fixtures = prepare_playoff_data()
+        context = {'teams': playoff_teams, 'fixture': playoff_fixtures}
         return render(request, 'europa/playoff.html', context)
+    return redirect('europa.playoff')
 
-def getPlayOffContextData():
-    context = {}
-    context['teams'] = getUEFATeamsPlayoff('UEFA')
-    playoffData = getZoneData('P', 'UEFA', 'playoff')
-    context['fixture'] = playoffData['fixtures']
-    return context
 
-def playoffDraw(teams):
+def get_playoff_context_data() -> Dict[str, Any]:
+    """Helper to prepare context data for the playoff page."""
+    playoff_data = get_zone_data('P', CONF_NAME, 'playoff')
+    return {
+        'teams': get_uefa_teams_playoff(CONF_NAME),
+        'fixture': playoff_data['fixtures']
+    }
+
+
+def playoff_draw(teams: List[Dict[str, Any]]) -> Tuple[List[Dict[str, Any]], ...]:
+    """Splits playoff teams into pools."""
     pools = []
     num_pools = 2
     teams_per_pool = 4
@@ -107,16 +92,16 @@ def playoffDraw(teams):
 
     return tuple(pools)
 
-def preparePlayoffData():
-    teams = getUEFATeamsPlayoff('UEFA')
-    zones = playoffDraw(teams)
+
+def prepare_playoff_data() -> Tuple[List[Dict[str, Any]], Any]:
+    """Simulates the UEFA playoff draw and saves it to the database."""
+    teams = get_uefa_teams_playoff(CONF_NAME)
+    zones = playoff_draw(teams)
     for zone in zones:
         random.shuffle(zone)
-    createPlayOffMatchesUEFA(teams, *zones)
-    zone_identifier = 'P'
-    round_type = 'playoff'
-    playoffData = getZoneData(zone_identifier, CONF_NAME, round_type)
+    create_playoff_matches_uefa(teams, *zones)
+    playoff_data = get_zone_data('P', CONF_NAME, 'playoff')
 
-    return teams, playoffData['fixtures']
+    return teams, playoff_data['fixtures']
 
 

@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load core_tags %}
 {% load static %}
 {% block container %}
 
@@ -13,7 +14,7 @@
                         <div class="soccer-card-header">{{ conf }}</div>
                         <div class="soccer-card-body text-center">
                             <div class="h3">
-                                {{ teams|teamsByConf:conf }}
+                                {{ teams|teams_by_conf:conf }}
                             </div>
                         </div>
                     </div>
@@ -25,7 +26,7 @@
             <div class="col-12 d-flex justify-content-center gap-2">
                 <button type="button" class="btn btn-primary"
                         hx-get="{% url 'worldcup.draw' %}" hx-trigger="click" hx-target="body"
-                        {% if teams|enableDrawButton:32 is True %} disabled {% endif %}>Draw
+                        {% if teams|enable_draw_button:32 is True %} disabled {% endif %}>Draw
                 </button>
                 <button type="button" class="btn btn-primary" hx-get="{% url 'worldcup.maindraw' %}"
                         hx-trigger="click" hx-target="body">Clear

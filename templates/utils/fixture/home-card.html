@@ -1,6 +1,8 @@
+{% load core_tags %}
+
 <div class="team-card-sm">
     <div class="row g-0 align-items-center">
-        {% resultbghome match as homeborder %}
+        {% result_bg_home match as homeborder %}
         <div class="col-8">
             <div class="name-config-sm m-0 justify-content-end text-end">
                 {{ match.homeTeam.team.nation_name }}

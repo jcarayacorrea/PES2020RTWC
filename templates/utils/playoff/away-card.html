@@ -1,6 +1,8 @@
+{% load core_tags %}
+
 <div class="team-card-sm">
     <div class="row g-0 align-items-center">
-        {% rstonemtchaway match as awayborder %}
+        {% result_one_match_away match as awayborder %}
         <div class="col-3 d-flex justify-content-center">
             <img src="{{ match.awayTeam.team.image_flag }}"
                  class="img-card {{ awayborder }} my-1">

@@ -3,8 +3,8 @@ from . import views
 
 urlpatterns = [
     path('teamlist/', views.teams, name='sudamerica.teams'),
-    path('teamlist/updateProgress/<str:code>/<str:stage>', views.updateProgress, name= 'sudamerica.updateProgress'),
-    path('copaamerica/', views.copaAmerica, name='sudamerica.copaamerica'),
-    path('copaamerica/draw/', views.copaAmericaButton, name='sudamerica.copaamerica.draw'),
+    path('teamlist/updateProgress/<str:code>/<str:stage>', views.update_progress, name='sudamerica.updateProgress'),
+    path('copaamerica/', views.copa_america, name='sudamerica.copaamerica'),
+    path('copaamerica/draw/', views.copa_america_button, name='sudamerica.copaamerica.draw'),
 ]
 
