@@ -284,19 +284,37 @@ html, body {
   @extend .progress-bar-striped;
   @extend .progress-bar-animated;
   width: 0%;
-  animation: progressAnimation;
-  animation-duration: 10s;
-  animation-delay: 300ms;
+  animation: progressAnimation 10s linear 300ms forwards, progress-bar-stripes 1s linear infinite;
+  background-image: 
+    linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent),
+    linear-gradient(90deg, darken($primary, 10%) 0%, $primary 100%);
+  background-size: 1rem 1rem, auto;
+  border-radius: 20px;
+  position: relative;
+  overflow: visible;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
 @keyframes progressAnimation {
-  from {
-    width: 0
-  }
-  to {
-    width: 100%
-  }
+  from { width: 0; }
+  to { width: 100%; }
+}
 
+@keyframes ballRotate {
+  from { transform: translateY(-50%) rotate(0deg); }
+  to { transform: translateY(-50%) rotate(360deg); }
+}
+
+.progress-ball {
+  position: absolute;
+  right: -5px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.1rem;
+  color: white;
+  text-shadow: 0 0 5px rgba(0,0,0,0.5);
+  animation: ballRotate 1s linear infinite;
+  z-index: 2;
 }
 
 .container-card {
@@ -451,8 +469,16 @@ h6 {
   margin: 0.2rem;
 }
 
-#progressBar{
+#progressBar {
   padding-top: 0.5rem;
+  .progress {
+    height: 14px;
+    background-color: rgba($primary, 0.1);
+    border-radius: 20px;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+    overflow: visible;
+    border: 1px solid rgba($primary, 0.2);
+  }
 }
 
 .spinner-loading{
