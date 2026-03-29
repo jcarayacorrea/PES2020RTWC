@@ -5,8 +5,8 @@
         <h1 class="h1 text-center">Asian Qualifiers</h1>
         <h2 class="h3 text-center">Final Round</h2>
     </div>
-    <div class="row p-4">
-        <div class="col-6 g-8 offset-md-5">
+    <div class="row g-3 p-4 justify-content-center">
+        <div class="col-auto">
             <button type="button" class="btn btn-primary" hx-get=" {% url 'asia.finalround.draw' %}"
                     hx-trigger="click" hx-target="body" {% if teams|enableDrawButton:20 is True %} disabled {% endif %}>
                 Draw
@@ -19,13 +19,13 @@
 
     <div id="section">
 
-        <div class="row ">
-            <div class="col-md-3">
+        <div class="row g-3 ">
+            <div class="col-12 col-lg-3">
                 <div class="container-card">
                     {% include 'utils/list/team-list.html' with teams=teams %}
                 </div>
             </div>
-            <div class="col-md-7 offset-md-1">
+            <div class="col-12 col-lg-9">
                 <div class="container-card">
                     <div class="soccer-card-header">Qualify Zones</div>
 
@@ -36,15 +36,15 @@
                         </div>
 
                         <div data-loading-aria-busy data-loading-class="d-none">
-                            <div class="row mb-5">
-                                <div class="col-md-5">
+                            <div class="row g-3 mb-5">
+                                <div class="col-12 col-md-6 mb-3">
                                     {% if zoneA is not None %}
                                         {% include "utils/groups/group-card.html" with conf="AFC" round="final" group="A" zone=zoneA buttons=True %}
                                     {% else %}
                                         {% include "utils/groups/group-card.html" with group="A" iterator=range  buttons=False %}
                                     {% endif %}
                                 </div>
-                                <div class="col-md-5 offset-md-1">
+                                <div class="col-12 col-md-6 mb-3">
                                     {% if zoneB is not None %}
                                         {% include "utils/groups/group-card.html" with conf="AFC" round="final" group="B" zone=zoneB buttons=True %}
                                     {% else %}
@@ -53,15 +53,15 @@
                                 </div>
                             </div>
 
-                            <div class="row mb-5">
-                                <div class="col-md-5">
+                            <div class="row g-3 mb-5">
+                                <div class="col-12 col-md-6 mb-3">
                                     {% if zoneC is not None %}
                                         {% include "utils/groups/group-card.html" with conf="AFC" round="final" group="C" zone=zoneC buttons=True %}
                                     {% else %}
                                         {% include "utils/groups/group-card.html" with group="C" iterator=range  buttons=False %}
                                     {% endif %}
                                 </div>
-                                <div class="col-md-5 offset-md-1">
+                                <div class="col-12 col-md-6 mb-3">
                                     {% if zoneD is not None %}
                                         {% include "utils/groups/group-card.html" with conf="AFC" round="final" group="D" zone=zoneD buttons=True %}
                                     {% else %}

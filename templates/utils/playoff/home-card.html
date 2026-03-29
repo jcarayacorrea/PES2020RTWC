@@ -1,16 +1,20 @@
 <div class="team-card-sm">
-    <div class="row ">
-        <div class="flag-config-sm">
-            {% rstonemtchhome match as homeborder %}
+    <div class="row g-0 align-items-center">
+        {% rstonemtchhome match as homeborder %}
+        <div class="col-3 d-flex justify-content-center">
             <img src="{{ match.homeTeam.team.image_flag }}"
-                 class="img-card {{ homeborder }}">
+                 class="img-card {{ homeborder }} my-1">
         </div>
-        <div class="name-config-sm">
-            {{ match.homeTeam.team.nation_iso_code }}
+        <div class="col-6">
+            <div class="name-config-sm m-0">
+                {{ match.homeTeam.team.nation_name }}
+            </div>
         </div>
-        <div class="goal">
-            {{ match.homeTeam.goals|default_if_none:"?" }}
-            ({{ match.homeTeam.penalties|default_if_none:"?" }})
+        <div class="col-3">
+            <div class="goal m-0 text-center">
+                {{ match.homeTeam.goals|default_if_none:"?" }}
+                <small>({{ match.homeTeam.penalties|default_if_none:"?" }})</small>
+            </div>
         </div>
     </div>
 </div>

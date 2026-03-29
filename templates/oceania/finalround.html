@@ -2,12 +2,12 @@
 {% load static %}
 {% block container %}
     <div id="header">
-        <h1 class="h1 text-center">Ocenic Qualifiers</h1>
+        <h1 class="h1 text-center">Oceanic Qualifiers</h1>
         <h2 class="h3 text-center">Final Round</h2>
     </div>
 
-    <div class="row p-4">
-        <div class="col-6 g-8 offset-md-5">
+    <div class="row p-4 justify-content-center">
+        <div class="col-auto d-flex gap-2">
             <button type="button" class="btn btn-primary" hx-get=" {% url 'oceania.finalround.draw' %}"
                     hx-trigger="click" hx-target="body" {% if teams|enableDrawButton:8 is True %} disabled {% endif %}>
                 Draw
@@ -53,16 +53,16 @@
                                     {% endif %}
                                 </div>
                             </div>
-                            <div class="row mb-5">
+                            <div class="row mb-5 justify-content-center">
                                 <div class="col-10">
                                     <div class="group-card">
                                         <div class="soccer-card-header">Main Draw Match</div>
                                         <div class="soccer-card-body " data-loading-states>
                                             <div class="row mb-3">
                                                 <div class="col-5">
-                                                    {% include "utils/one_matches/team_select.html" with zone=zoneA url_select='oceania.homemainDraw' %}
+                                                    {% include "utils/one_matches/team_select.html" with zone=zoneA url_select='oceania.homemainDraw' selected_team=fixture.mainDraw.match1.homeTeam.team.nation_name label="Home Team" %}
                                                 </div>
-                                                <div class="col-2 justify-content-center">
+                                                <div class="col-2 d-flex align-items-center justify-content-center">
                                                     {% with homeId=fixture.mainDraw.match1.homeTeam.team.nation_iso_code awayId=fixture.mainDraw.match1.awayTeam.team.nation_iso_code %}
                                                         {% url 'one_match' 'mainDraw' 1 homeId awayId  'OFC'  'final' 'MD' 1 as match %}
                                                         <button type="button" class="btn btn-primary"
@@ -78,7 +78,7 @@
                                                     {% endwith %}
                                                 </div>
                                                 <div class="col-5">
-                                                    {% include "utils/one_matches/team_select.html" with zone=zoneB url_select='oceania.awaymainDraw' %}
+                                                    {% include "utils/one_matches/team_select.html" with zone=zoneB url_select='oceania.awaymainDraw' selected_team=fixture.mainDraw.match1.awayTeam.team.nation_name label="Away Team" %}
                                                 </div>
 
 

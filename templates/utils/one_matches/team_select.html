@@ -1,13 +1,20 @@
-<select name="team" class="form-select"
-        hx-get=" {% url url_select %}"
-        hx-trigger="change"
-        hx-target="body">
-    <option selected>{{ selected_team }}</option>
-    {% if zone is not None %}
-        {% for team in zone %}            
-            <option value="{{ team.nation_iso_code }}">
-                {{ team.nation_name }}
-            </option>
-        {% endfor %}
-    {% endif %}
-</select>
+<div class="input-group">
+    <span class="input-group-text">
+        <i class="fa-solid fa-users"></i>
+    </span>
+    <select name="team" class="form-select"
+            hx-get=" {% url url_select %}"
+            hx-trigger="change"
+            hx-target="body">
+        {% if not selected_team %}
+            <option value="" disabled selected>{% firstof label "Select Team" %}</option>
+        {% endif %}
+        {% if zone is not None %}
+            {% for team in zone %}
+                <option value="{{ team.nation_iso_code }}" {% if selected_team == team.nation_name %}selected{% endif %}>
+                    {{ team.nation_name }}
+                </option>
+            {% endfor %}
+        {% endif %}
+    </select>
+</div>

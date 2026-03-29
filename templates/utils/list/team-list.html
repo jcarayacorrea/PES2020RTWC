@@ -1,11 +1,10 @@
-<div class="soccer-card-header ">Teams</div>
-<div class="soccer-card-body overflow-scroll">
-    <div class="row g-1 ">
-        <div class="offset-md-1">
+<div class="soccer-card-header">Teams</div>
+<div class="soccer-card-body overflow-auto">
+    <div class="row g-1">
+        <div class="col-12">
             {% for team in teams %}
                 {% include "utils/team-card.html" with team=team %}
             {% endfor %}
-
         </div>
     </div>
 </div>
