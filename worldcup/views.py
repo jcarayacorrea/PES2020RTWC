@@ -36,11 +36,12 @@ def playoff(request):
     return render(request, 'worldcup/playoff.html', context)
 
 
-def shuffle_teams_and_assign_to_context(zones):
+def shuffle_teams_and_assign_to_context(groups):
     context = {}
-    for i in range(len(zones)):
-        random.shuffle(zones[i])
-        context[f'zone{chr(65 + i)}'] = zones[i]
+    for i, zone_key in enumerate(GROUP_KEYS):
+        zone_teams = groups[zone_key]
+        random.shuffle(zone_teams)
+        context[f'zone{zone_key}'] = zone_teams
     return context
 
 
@@ -49,12 +50,21 @@ def draw_main_button(request):
         confederations = ['CONMEBOL', 'UEFA', 'CONCACAF', 'OFC', 'CAF', 'AFC']
         teams = getTeamsMainDraw()
         context = {'teams': teams, 'confederations': confederations}
-        try:
-            zones = draw(teams)
-            zone_context = shuffle_teams_and_assign_to_context(zones)
-            context.update(zone_context)
-        except:
-            return draw_main_button(request)
+        
+        # Iterative retry instead of recursion to avoid potential RecursionError
+        max_attempts = 100
+        for _ in range(max_attempts):
+            try:
+                groups = draw(teams)
+                zone_context = shuffle_teams_and_assign_to_context(groups)
+                context.update(zone_context)
+                break
+            except (ValueError, IndexError):
+                continue
+        else:
+            # If it fails after max_attempts, we should probably handle it gracefully
+            return HttpResponse("Failed to generate a valid draw after multiple attempts", status=500)
+            
         return render(request, 'worldcup/maindraw.html', context)
 
 
@@ -95,34 +105,51 @@ def playoffDraw(teams):
 
 
 def draw(teams):
-    groups = {'A': [], 'B': [], 'C': [], 'D': [], 'E': [], 'F': [], 'G': [], 'H': []}
-    for key, team in zip(groups.keys(), shuffleArray(teams[0:8])):
-        groups.get(key).append(team)
+    groups = {key: [] for key in GROUP_KEYS}
+    
+    # Pool 1: Seeded teams (first 8)
+    for key, team in zip(GROUP_KEYS, shuffleArray(teams[0:8])):
+        groups[key].append(team)
 
-    for pool, i in zip([shuffleArray(teams[8:16]), shuffleArray(teams[16:24]), shuffleArray(teams[24:32])],
-                       range(2, 5)):
-        for team in pool:
-            setTeamPosition(team, groups, teamsCount=countTeams(team['conf_name'], teams),
-                            maxLength=i)
-    return groups.get('A'), groups.get('B'), groups.get('C'), groups.get('D'), groups.get('E'), groups.get(
-        'F'), groups.get('G'), groups.get('H')
+    # Pools 2, 3, 4 (teams 8-15, 16-23, 24-31)
+    pools = [teams[8:16], teams[16:24], teams[24:32]]
+    for pool_idx, pool in enumerate(pools):
+        shuffled_pool = shuffleArray(pool)
+        max_length = pool_idx + 2
+        for team in shuffled_pool:
+            setTeamPosition(
+                team, 
+                groups, 
+                teams_count=countTeams(team['conf_name'], teams),
+                max_length=max_length
+            )
+            
+    return groups
 
 
-def setTeamPosition(team, groups, teamsCount, maxLength):
-    zones = GROUP_KEYS.copy()
+def setTeamPosition(team, groups, teams_count, max_length):
+    available_zones = []
     for zone in GROUP_KEYS:
-        if filterConfList(team['conf_name'], groups.get(zone), teamsCount) == True or len(
-                groups.get(zone)) == maxLength:
-            zones.remove(zone)
-    insertTeam(team, random.choice(zones), groups)
+        is_conf_limit_reached = filterConfList(team['conf_name'], groups[zone], teams_count)
+        is_group_full = len(groups[zone]) == max_length
+        
+        if not is_conf_limit_reached and not is_group_full:
+            available_zones.append(zone)
+            
+    if not available_zones:
+        # Raising an error to trigger a retry in draw_main_button
+        raise ValueError(f"No available zones for team {team.get('name')} from {team['conf_name']}")
+        
+    chosen_zone = random.choice(available_zones)
+    groups[chosen_zone].append(team)
 
 
-def filterConfList(conf_name, list, count_teams):
-    count_conf = len([team for team in list if conf_name == team['conf_name']])
-    if (count_teams <= GROUP_COUNT and count_conf == MIN_TEAMS) or (
-            count_teams > GROUP_COUNT and count_conf == MAX_TEAMS):
-        return True
-    return False
+def filterConfList(conf_name, group_list, total_teams_in_conf):
+    count_in_group = len([team for team in group_list if team['conf_name'] == conf_name])
+    if total_teams_in_conf <= GROUP_COUNT:
+        return count_in_group >= MIN_TEAMS
+    else:
+        return count_in_group >= MAX_TEAMS
 
 
 def countTeams(conf_name, teamList):
