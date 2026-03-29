@@ -6,15 +6,18 @@
         <h1 class="h1 text-center">European Qualifiers</h1>
         <h2 class="h3 text-center">Final Round</h2>
     </div>
-    <div class="row p-4">
-        <div class="col-6 g-8 offset-md-5">
-            <button type="button" class="btn btn-primary" hx-get=" {% url 'europa.finalround.draw' %}"
-                    hx-trigger="click" hx-target="body" {% if teams|enable_draw_button:40 is True %} disabled {% endif %}>
-                Draw
-            </button>
-            <button type="button" class="btn btn-primary" hx-get=" {% url 'europa.finalround' %}" hx-trigger="click"
-                    hx-target="body">Clear
-            </button>
+    <div class="row mb-4">
+        <div class="col-12 d-flex justify-content-center align-items-center">
+            <div class="d-flex gap-3">
+                <button type="button" class="btn btn-primary px-4 py-2 fw-bold" hx-get=" {% url 'europa.finalround.draw' %}"
+                        hx-trigger="click" hx-target="body" {% if teams|enable_draw_button:40 is True %} disabled {% endif %}>
+                    <i class="fa-solid fa-shuffle me-2"></i>Draw
+                </button>
+                <button type="button" class="btn btn-outline-secondary px-4 py-2" hx-get=" {% url 'europa.finalround' %}" hx-trigger="click"
+                        hx-target="body">
+                    <i class="fa-solid fa-rotate-left me-2"></i>Clear
+                </button>
+            </div>
         </div>
     </div>
 

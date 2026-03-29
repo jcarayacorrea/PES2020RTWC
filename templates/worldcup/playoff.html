@@ -5,17 +5,21 @@
     <div id="header">
         <h1 class="h1 text-center">World Cup</h1>
         <h4 class="h4 text-center">Playoffs</h4>
-        <div class="row p-4">
-            <div class="col-6 g-8 offset-md-5">
-                <button type="button" class="btn btn-primary" hx-get=" {% url 'worldcup.playoff.draw' %}"
+    <div class="row mb-4">
+        <div class="col-12 d-flex justify-content-center align-items-center">
+            <div class="d-flex gap-3">
+                <button type="button" class="btn btn-primary px-4 py-2 fw-bold" hx-get=" {% url 'worldcup.playoff.draw' %}"
                         hx-trigger="click" hx-target="body" {% if teams|enable_draw_button:18 is True %}
-                        disabled {% endif %}>Draw
+                        disabled {% endif %}>
+                    <i class="fa-solid fa-shuffle me-2"></i>Draw
                 </button>
-                <button type="button" class="btn btn-primary" hx-get=" {% url 'worldcup.playoff' %}" hx-trigger="click"
-                        hx-target="body">Clear
+                <button type="button" class="btn btn-outline-secondary px-4 py-2" hx-get=" {% url 'worldcup.playoff' %}" hx-trigger="click"
+                        hx-target="body">
+                    <i class="fa-solid fa-rotate-left me-2"></i>Clear
                 </button>
             </div>
         </div>
+    </div>
     </div>
 
     <div id="section">
