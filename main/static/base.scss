@@ -289,7 +289,7 @@ html, body {
     linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent),
     linear-gradient(90deg, darken($primary, 10%) 0%, $primary 100%);
   background-size: 1rem 1rem, auto;
-  border-radius: 20px;
+  border-radius: 10px;
   position: relative;
   overflow: visible;
   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
@@ -310,7 +310,7 @@ html, body {
   right: -5px;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 1.1rem;
+  font-size: 0.8rem;
   color: white;
   text-shadow: 0 0 5px rgba(0,0,0,0.5);
   animation: ballRotate 1s linear infinite;
@@ -470,11 +470,15 @@ h6 {
 }
 
 #progressBar {
-  padding-top: 0.5rem;
+  padding-top: 0.3rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
   .progress {
-    height: 14px;
+    height: 10px;
+    width: 75%;
     background-color: rgba($primary, 0.1);
-    border-radius: 20px;
+    border-radius: 10px;
     box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
     overflow: visible;
     border: 1px solid rgba($primary, 0.2);
