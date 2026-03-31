@@ -986,6 +986,37 @@ h6 {
   }
 }
 
+/* UI Enhancement Utilities */
+.transition-all {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-shadow {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1) !important;
+    transform: translateY(-3px);
+  }
+}
+
+.fixture-card {
+  @extend .card;
+  border-radius: 0.75rem !important;
+  overflow: hidden;
+  border: none !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  
+  .soccer-card-header {
+    background: linear-gradient(135deg, $primary 0%, darken($primary, 10%) 100%);
+    border: none;
+    padding: 0.6rem 1rem;
+    font-size: 0.85rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
 
 
 
