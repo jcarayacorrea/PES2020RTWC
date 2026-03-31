@@ -42,10 +42,8 @@
                         </div>
 
                         <div data-loading-aria-busy data-loading-class="d-none">
-
-                            <div class="row mb-5">
-
-                                <div class="col-md-5 offset-md-3">
+                            <div class="row g-3 mb-5 justify-content-center">
+                                <div class="col-12 col-md-6 mb-3">
                                     {% if zoneA is not None %}
                                         {% include "utils/groups/group-card.html" with conf="OFC" round="first" group="A" zone=zoneA buttons=True %}
                                     {% else %}
@@ -53,7 +51,6 @@
                                     {% endif %}
                                 </div>
                             </div>
-
                         </div>
 
 

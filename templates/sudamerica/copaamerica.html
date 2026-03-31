@@ -50,15 +50,15 @@
                         </div>
 
                         <div data-loading-aria-busy data-loading-class="d-none">
-                            <div class="row mb-5">
-                                <div class="col-md-5">
+                            <div class="row g-3 mb-5">
+                                <div class="col-12 col-md-6 mb-3">
                                     {% if zoneA is not None %}
                                         {% include "utils/groups/group-card.html" with group="A" zone=zoneA buttons=False %}
                                     {% else %}
                                         {% include "utils/groups/group-card.html" with group="A" iterator=range  buttons=False %}
                                     {% endif %}
                                 </div>
-                                <div class="col-md-5 offset-md-1">
+                                <div class="col-12 col-md-6 mb-3">
                                     {% if zoneB is not None %}
                                         {% include "utils/groups/group-card.html" with group="B" zone=zoneB buttons=False %}
                                     {% else %}
@@ -67,15 +67,15 @@
                                 </div>
                             </div>
 
-                            <div class="row mb-5">
-                                <div class="col-md-5">
+                            <div class="row g-3 mb-5">
+                                <div class="col-12 col-md-6 mb-3">
                                     {% if zoneC is not None %}
                                         {% include "utils/groups/group-card.html" with group="C" zone=zoneC buttons=False %}
                                     {% else %}
                                         {% include "utils/groups/group-card.html" with group="C" iterator=range buttons=False %}
                                     {% endif %}
                                 </div>
-                                <div class="col-md-5 offset-md-1">
+                                <div class="col-12 col-md-6 mb-3">
                                     {% if zoneD is not None %}
                                         {% include "utils/groups/group-card.html" with group="D" zone=zoneD buttons=False %}
                                     {% else %}

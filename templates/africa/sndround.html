@@ -42,15 +42,15 @@
                         </div>
 
                         <div data-loading-aria-busy data-loading-class="d-none">
-                            <div class="row mb-5 justify-content-center">
-                                <div class="col-md-5">
+                            <div class="row g-3 mb-5">
+                                <div class="col-12 col-md-6 mb-3">
                                     {% if zoneA is not None %}
                                         {% include "utils/groups/group-card.html" with conf="CAF" round="second" group="A" zone=zoneA buttons=True %}
                                     {% else %}
                                         {% include "utils/groups/group-card.html" with group="A" iterator=range  buttons=False %}
                                     {% endif %}
                                 </div>
-                                <div class="col-md-5">
+                                <div class="col-12 col-md-6 mb-3">
                                     {% if zoneB is not None %}
                                         {% include "utils/groups/group-card.html" with conf="CAF" round="second" group="B" zone=zoneB buttons=True %}
                                     {% else %}
@@ -59,15 +59,15 @@
                                 </div>
                             </div>
 
-                            <div class="row mb-5 justify-content-center">
-                                <div class="col-md-5">
+                            <div class="row g-3 mb-5">
+                                <div class="col-12 col-md-6 mb-3">
                                     {% if zoneC is not None %}
                                         {% include "utils/groups/group-card.html" with conf="CAF" round="second" group="C" zone=zoneC buttons=True %}
                                     {% else %}
                                         {% include "utils/groups/group-card.html" with group="C" iterator=range  buttons=False %}
                                     {% endif %}
                                 </div>
-                                <div class="col-md-5">
+                                <div class="col-12 col-md-6 mb-3">
                                     {% if zoneD is not None %}
                                         {% include "utils/groups/group-card.html" with conf="CAF" round="second" group="D" zone=zoneD buttons=True %}
                                     {% else %}
@@ -76,8 +76,8 @@
                                 </div>
                             </div>
 
-                            <div class="row justify-content-center">
-                                <div class="col-md-5">
+                            <div class="row g-3 justify-content-center">
+                                <div class="col-12 col-md-6 mb-3">
                                     {% if zoneE is not None %}
                                         {% include "utils/groups/group-card.html" with conf="CAF" round="second" group="E" zone=zoneE buttons=True %}
                                     {% else %}
