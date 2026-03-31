@@ -31,12 +31,12 @@
                 </div>
             </div>
             <div class="col-md-7 offset-md-1">
-                <div class="container-card-wc">
+                <div class="container-card-wc" style="height: auto; overflow: visible;">
                     <div class="soccer-card-header">
                         <i class="fa-solid fa-trophy me-2"></i>Qualify Zones
                     </div>
 
-                    <div class="soccer-card-body overflow-auto">
+                    <div class="soccer-card-body overflow-visible" style="overflow: visible;">
 
                         <div class="loading-grid" data-loading-aria-busy data-loading="flex">
                             {% include "utils/loader/loader.html" %}
@@ -61,9 +61,9 @@
                             </div>
                             <div class="row mb-5 justify-content-center">
                                 <div class="col-10">
-                                    <div class="group-card">
+                                    <div class="group-card" style="overflow: visible;">
                                         <div class="soccer-card-header">Main Draw Match</div>
-                                        <div class="soccer-card-body " data-loading-states>
+                                        <div class="soccer-card-body overflow-visible" data-loading-states style="overflow: visible;">
                                             <div class="row mb-3">
                                                 <div class="col-5">
                                                     {% include "utils/one_matches/team_select.html" with zone=zoneA url_select='oceania.homemainDraw' selected_team=fixture.mainDraw.match1.homeTeam.team.nation_name label="Home Team" %}
