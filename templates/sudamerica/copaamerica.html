@@ -32,15 +32,17 @@
     <div id="section">
         <div class="row ">
             <div class="col-md-3">
-                <div class="container-card">
+                <div class="container-card-wc">
                     {% include "utils/list/team-list.html" with teams=teams %}
                 </div>
             </div>
             <div class="col-md-7 offset-md-1">
-                <div id="copa-america" class="container-card">
-                    <div class="soccer-card-header">Draw</div>
+                <div id="copa-america" class="container-card-wc">
+                    <div class="soccer-card-header">
+                        <i class="fa-solid fa-trophy me-2"></i>Draw
+                    </div>
 
-                    <div class="soccer-card-body h-75">
+                    <div class="soccer-card-body overflow-auto h-75">
 
                         <div class="loading-grid" data-loading-aria-busy data-loading="flex">
                             {% include "utils/loader/loader.html" %}

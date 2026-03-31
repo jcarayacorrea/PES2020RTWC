@@ -26,15 +26,17 @@
 
         <div class="row ">
             <div class="col-md-3">
-                <div class="container-card">
+                <div class="container-card-wc">
                     {% include 'utils/list/team-list.html' with teams=teams %}
                 </div>
             </div>
             <div class="col-md-7 offset-md-1">
-                <div class="container-card">
-                    <div class="soccer-card-header">Qualify Zones</div>
+                <div class="container-card-wc">
+                    <div class="soccer-card-header">
+                        <i class="fa-solid fa-trophy me-2"></i>Qualify Zones
+                    </div>
 
-                    <div class="soccer-card-body">
+                    <div class="soccer-card-body overflow-auto">
 
                         <div class="loading-grid" data-loading-aria-busy data-loading="flex">
                             {% include "utils/loader/loader.html" %}
@@ -95,24 +97,28 @@
                                                         {% include 'utils/fixture/empty-card.html' with team='Team 1' %}
                                                     {% endif %}
                                                 </div>
-                                                <div class="col-4" data-loading-aria-busy data-loading="flex">
-                                                    <div class="col-auto d-flex justify-content-center">
-                                                        <div class="spinner-border text-info" role="status">
-                                                            <span class="visually-hidden">Loading...</span>
-                                                        </div>
+                                                <div class="col-4 text-center">
+                                                    <div data-loading-aria-busy data-loading="flex" class="justify-content-center align-items-center">
+                                                       <h3 class="m-0 scr_style">
+                                                            <span class="penalty-score opacity-25">( )</span>
+                                                            <i class="fa-solid fa-futbol fa-spin text-info mx-2"></i>
+                                                            <span class="penalty-score opacity-25">( )</span>
+                                                        </h3>
                                                     </div>
-                                                </div>
 
 
-                                                <div class="col-4 d-flex justify-content-center" data-loading-aria-busy
-                                                     data-loading-class="d-none">
-                                                    {% with homePenalties=fixture.mainDraw.match1.homeTeam.penalties awayPenalties=fixture.mainDraw.match1.awayTeam.penalties %}
-                                                        <h3>
-                                                            ({% firstof homePenalties 0 %}) {{ fixture.mainDraw.match1.homeTeam.goals|default_if_none:"?" }}
-                                                            - {{ fixture.mainDraw.match1.awayTeam.goals|default_if_none:"?" }}
-                                                            ({% firstof awayPenalties 0 %})</h3>
-                                                    {% endwith %}
+                                                    <div data-loading-aria-busy data-loading-class="d-none" class="d-flex justify-content-center">
+                                                        {% with homePenalties=fixture.mainDraw.match1.homeTeam.penalties awayPenalties=fixture.mainDraw.match1.awayTeam.penalties %}
+                                                            <h3 class="m-0 scr_style">
+                                                                <span class="penalty-score">({% firstof homePenalties 0 %})</span>
+                                                                {{ fixture.mainDraw.match1.homeTeam.goals|default_if_none:"?" }}
+                                                                <span class="opacity-25 mx-1">-</span>
+                                                                {{ fixture.mainDraw.match1.awayTeam.goals|default_if_none:"?" }}
+                                                                <span class="penalty-score">({% firstof awayPenalties 0 %})</span>
+                                                            </h3>
+                                                        {% endwith %}
 
+                                                    </div>
                                                 </div>
 
                                                 <div class="col-4">

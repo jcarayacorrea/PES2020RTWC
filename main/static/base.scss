@@ -23,19 +23,20 @@ $soccer-text-light: #f5f5f5; // WhiteSmoke
 html, body {
   margin: 0;
   height: 100%;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 // Global Typography Styles
 h1 {
   font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: -0.015em;
-  color: darken($primary, 20%);
+  letter-spacing: -0.025em;
+  color: darken($primary, 25%);
   margin-top: 1.5rem;
   margin-bottom: 0.25rem;
   text-align: center;
   position: relative;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
   
   @media (max-width: 768px) {
     font-size: 1.75rem;
@@ -43,26 +44,28 @@ h1 {
 }
 
 h2 {
-  font-weight: 300;
+  font-weight: 400;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: $soccer-border;
+  letter-spacing: 0.25em;
+  color: lighten($soccer-border, 5%);
   margin-bottom: 2rem;
-  font-size: 1rem;
+  font-size: 0.9rem;
   text-align: center;
+  opacity: 0.8;
 }
 
 // Search Input Styles
 .soccer-search-input-group {
-  transition: all 0.2s ease-in-out;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: 50rem !important;
   background-color: #fff;
   overflow: hidden;
-  border: 1px solid rgba($primary, 0.2);
+  border: 2px solid rgba($primary, 0.1);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.03);
 
   &:hover {
     border-color: rgba($primary, 0.4);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+    box-shadow: 0 6px 15px rgba($primary, 0.1) !important;
   }
 
   &:focus-within {
@@ -276,14 +279,21 @@ ul:not(.navbar-nav):not(.dropdown-menu):not(.list-inline):not(.pagination):not(.
   @extend .card-header;
   @extend .card-title;
   @extend .text-center;
-  font-weight: bold;
+  background: linear-gradient(135deg, $primary 0%, darken($primary, 15%) 100%);
+  color: white;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
+  padding: 0.4rem 0.5rem;
+  font-size: 0.8rem;
+  border-bottom: 2px solid rgba(0,0,0,0.1);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
 }
 
 .soccer-card-body {
   @extend .card-body;
-  padding: 1rem;
+  padding: 0.75rem;
+  background-color: rgba(white, 0.5);
 }
 
 .flag-config {
@@ -313,9 +323,11 @@ ul:not(.navbar-nav):not(.dropdown-menu):not(.list-inline):not(.pagination):not(.
   @extend .col-auto;
   @extend .d-flex;
   @extend .align-items-center;
-  padding: 0.25rem;
-  font-weight: 500;
-  color: $soccer-border;
+  padding: 0.1rem 0.25rem;
+  font-weight: 600;
+  color: darken($soccer-border, 20%);
+  font-size: 0.9rem;
+  transition: color 0.2s ease;
 }
 
 .name-config-sm {
@@ -324,7 +336,8 @@ ul:not(.navbar-nav):not(.dropdown-menu):not(.list-inline):not(.pagination):not(.
   @extend .align-items-center;
   padding: 0.15rem;
   font-size: 0.85rem;
-  color: $soccer-border;
+  font-weight: 500;
+  color: darken($soccer-border, 10%);
 }
 
 
@@ -336,7 +349,13 @@ ul:not(.navbar-nav):not(.dropdown-menu):not(.list-inline):not(.pagination):not(.
 
 .flag-circle {
   @extend .rounded-circle;
-
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+  border: 1.5px solid white;
+  transition: transform 0.2s ease;
+  
+  &:hover {
+    transform: scale(1.1);
+  }
 }
 
 .team-card {
@@ -361,15 +380,20 @@ ul:not(.navbar-nav):not(.dropdown-menu):not(.list-inline):not(.pagination):not(.
   @extend .card;
   @extend .col-11;
   @extend .mx-auto;
-  @extend .mb-1;
-  border-color: $soccer-border;
-  border-style: solid;
-  border-width: 1px;
-  transition: all 0.2s ease-in-out;
+  @extend .mb-2;
+  border-radius: 0.5rem;
+  border: 1px solid rgba($primary, 0.1);
+  background: white;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   
   &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transform: translateX(5px);
+    border-color: $primary;
+    box-shadow: 0 5px 15px rgba($primary, 0.1);
+    
+    .name-config {
+      color: $primary;
+    }
   }
 }
 
@@ -564,24 +588,34 @@ ul:not(.navbar-nav):not(.dropdown-menu):not(.list-inline):not(.pagination):not(.
   z-index: 2;
 }
 
-.container-card {
+.container-card, .container-card-wc {
   @extend .card;
   @extend .card-border;
-  height: 75vh;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1), 0 4px 10px rgba(0,0,0,0.05);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  border-radius: 1rem !important;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  .soccer-card-body {
+    flex: 1;
+    overflow-y: auto;
+  }
+}
+
+.container-card {
+  height: 65vh;
 }
 
 .container-card-wc {
-  @extend .card;
-  @extend .card-border;
-  height: 70vh;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1), 0 4px 10px rgba(0,0,0,0.05);
+  height: 60vh;
 }
 
 .team-list-container-card {
   @extend .card;
   @extend .card-border;
-  max-height: 70vh;
+  max-height: 60vh;
   box-shadow: 0 10px 25px rgba(0,0,0,0.1), 0 4px 10px rgba(0,0,0,0.05);
 }
 
@@ -590,12 +624,20 @@ ul:not(.navbar-nav):not(.dropdown-menu):not(.list-inline):not(.pagination):not(.
   @extend .card;
   @extend .card-border;
   height: 100%;
+  border-radius: 0.75rem !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.1);
+  }
+
   .soccer-card-body {
-    padding: 0.75rem 0.5rem;
+    padding: 0.6rem 0.4rem;
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
+    background-color: white;
   }
 }
 
@@ -603,37 +645,49 @@ ul:not(.navbar-nav):not(.dropdown-menu):not(.list-inline):not(.pagination):not(.
   @extend .card;
   @extend .card-border;
   height: auto;
-  min-width: 120px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  transition: all 0.2s ease;
+  min-width: 110px;
+  border-radius: 0.75rem !important;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    transform: scale(1.05) translateY(-5px);
+    box-shadow: 0 12px 25px rgba($primary, 0.15);
+    border-color: $primary;
   }
 
   .soccer-card-header {
-    font-size: 0.8rem;
-    padding: 0.4rem 0.5rem;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
   }
 
   .soccer-card-body {
-    padding: 0.5rem;
+    padding: 0.35rem;
     .h3 {
       margin-bottom: 0;
-      font-size: 1.5rem;
+      font-size: 1.25rem;
     }
   }
 }
 
 .col-conf {
   @extend .col-auto;
-  margin: 0.5rem;
+  margin: 0.25rem;
 }
 
-.tracking-wider {
-  letter-spacing: 0.15em;
+.tracking-widest {
+  letter-spacing: 0.2em;
 }
+
+@keyframes dotPulse {
+  0% { opacity: 0.2; }
+  50% { opacity: 1; }
+  100% { opacity: 0.2; }
+}
+
+.dot-1 { animation: dotPulse 1.5s infinite linear; }
+.dot-2 { animation: dotPulse 1.5s infinite linear 0.5s; }
+.dot-3 { animation: dotPulse 1.5s infinite linear 1s; }
 
 .loading-grid, .loading-grid-playoff, .loading-grid-25 {
   display: flex;
@@ -696,18 +750,63 @@ h6 {
 
 .goal {
   @extend .col-auto;
-  padding: 0.3rem;
-  font-weight: bold;
+  padding: 0.2rem 0.6rem;
+  font-weight: 800;
+  color: darken($primary, 25%);
+  background: rgba($primary, 0.04);
+  border-radius: 6px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.04);
+  border: 1px solid rgba($primary, 0.08);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2rem;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    background: rgba($primary, 0.08);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  }
 }
 
 .col-scr{
   @extend .col-2;
   margin: 0.05rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .scr_style{
- justify-self: center;
-  padding: 0.25rem;
+  justify-self: center;
+  padding: 0.35rem 0.85rem;
+  font-weight: 900;
+  color: darken($primary, 35%);
+  letter-spacing: 2px;
+  background: linear-gradient(to bottom, #ffffff, #f8f9fa);
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08), inset 0 0 0 1px rgba($primary, 0.1);
+  border: 1px solid rgba($primary, 0.15);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    border-color: rgba($primary, 0.3);
+  }
+}
+
+.penalty-score {
+  font-size: 0.7em;
+  font-weight: 600;
+  opacity: 0.5;
+  color: $soccer-border;
+  vertical-align: middle;
 }
 
 .col_im{
@@ -739,6 +838,41 @@ h6 {
   width: 4rem;
   border-width: 0.25em;
   opacity: 0.8;
+}
+
+.btn-primary {
+  border-radius: 50rem;
+  box-shadow: 0 4px 10px rgba($primary, 0.3);
+  transition: all 0.3s ease;
+  border: none;
+  background: linear-gradient(to right, $primary, darken($primary, 10%));
+  
+  &:hover:not(:disabled) {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 6px 15px rgba($primary, 0.4);
+    background: linear-gradient(to right, lighten($primary, 5%), darken($primary, 5%));
+  }
+  
+  &:active:not(:disabled) {
+    transform: translateY(0) scale(0.98);
+  }
+}
+
+.btn-outline-primary {
+  border-radius: 50rem;
+  border-width: 2px;
+  transition: all 0.3s ease;
+  
+  &:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba($primary, 0.2);
+  }
+}
+
+.btn-outline-secondary {
+  border-radius: 50rem;
+  border-width: 2px;
+  transition: all 0.3s ease;
 }
 
 .playoff-button{
@@ -793,12 +927,13 @@ h6 {
 
 /* Custom Combobox Styles */
 .custom-dropdown-menu {
-  max-height: 300px;
+  max-height: 400px;
   overflow-y: auto;
   border: 1px solid rgba($primary, 0.2);
   border-radius: 0.75rem !important;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1) !important;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2) !important;
   animation: dropdown-fade-in 0.2s ease-out;
+  z-index: 1060;
 
   .dropdown-item {
     transition: all 0.2s ease;

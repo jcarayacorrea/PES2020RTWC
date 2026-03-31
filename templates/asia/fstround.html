@@ -26,13 +26,15 @@
     <div id="section">
         <div class="row g-3 ">
             <div class="col-12 col-lg-3">
-                <div class="container-card">
+                <div class="container-card-wc">
                     {% include 'utils/list/team-list.html' with teams=teams %}
                 </div>
             </div>
             <div class="col-12 col-lg-9">
-                <div class="container-card">
-                    <div class="soccer-card-header">Qualify Zones</div>
+                <div class="container-card-wc">
+                    <div class="soccer-card-header">
+                        <i class="fa-solid fa-trophy me-2"></i>Qualify Zones
+                    </div>
 
                     <div class="soccer-card-body overflow-auto">
                         <div class="loading-grid" data-loading-aria-busy data-loading="flex">

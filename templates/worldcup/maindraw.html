@@ -8,7 +8,7 @@
         <h2>Group Stage</h2>
     </div>
 
-    <div class="row justify-content-center g-2 mb-3">
+    <div class="row justify-content-center g-2 mb-2">
             {% for conf in confederations %}
                 <div class="col-conf">
                     <div class="group-card-conf">
@@ -23,7 +23,7 @@
             {% endfor %}
         </div>
 
-        <div class="row mb-3">
+        <div class="row mb-1">
             <div class="col-12 d-flex justify-content-center align-items-center">
                 <div class="d-flex gap-3">
                     <button type="button" class="btn btn-primary btn-sm px-3 py-1 fw-bold"
@@ -48,15 +48,17 @@
         </div>
 
         <div id="section">
-        <div class="row p-2">
+        <div class="row p-1">
             <div class="col-md-3">
                 <div class="container-card-wc">
                     {% include "utils/list/team-list.html" with teams=teams %}
                 </div>
             </div>
-            <div class="col-md-8 offset-md-1">
+            <div class="col-md-9">
                 <div id="wc-maindraw" class="container-card-wc">
-                    <div class="soccer-card-header">Main Draw</div>
+                    <div class="soccer-card-header">
+                        <i class="fa-solid fa-trophy me-2"></i>Main Draw
+                    </div>
 
                     <div class="soccer-card-body overflow-auto">
 
@@ -66,63 +68,65 @@
                         </div>
 
                         <div data-loading-aria-busy data-loading-class="d-none">
-                            <div class="row g-4 mb-4">
-                                <div class="col-md-6">
+                            <div class="row g-2 mb-2">
+                                <div class="col-md-3">
                                     {% if zoneA is not None %}
                                         {% include "utils/groups/group-card.html" with group="A" zone=zoneA buttons=False %}
                                     {% else %}
                                         {% include "utils/groups/group-card.html" with group="A" iterator=range  buttons=False %}
                                     {% endif %}
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-3">
                                     {% if zoneB is not None %}
                                         {% include "utils/groups/group-card.html" with group="B" zone=zoneB buttons=False %}
                                     {% else %}
                                         {% include "utils/groups/group-card.html" with group="B" iterator=range buttons=False %}
                                     {% endif %}
                                 </div>
-                            </div>
-                            <div class="row g-4 mb-4">
-                                <div class="col-md-6">
+                                <div class="col-md-3">
                                     {% if zoneC is not None %}
                                         {% include "utils/groups/group-card.html" with group="C" zone=zoneC buttons=False %}
                                     {% else %}
                                         {% include "utils/groups/group-card.html" with group="C" iterator=range buttons=False %}
-                                    {% endif %}                                </div>
-                                <div class="col-md-6">
+                                    {% endif %}
+                                </div>
+                                <div class="col-md-3">
                                     {% if zoneD is not None %}
                                         {% include "utils/groups/group-card.html" with group="D" zone=zoneD buttons=False %}
                                     {% else %}
                                         {% include "utils/groups/group-card.html" with group="D" iterator=range buttons=False %}
-                                    {% endif %}                                </div>
+                                    {% endif %}
+                                </div>
                             </div>
-                            <div class="row g-4 mb-4">
-                                <div class="col-md-6">
+                            <div class="row g-2 mb-2">
+                                <div class="col-md-3">
                                     {% if zoneE is not None %}
                                         {% include "utils/groups/group-card.html" with group="E" zone=zoneE buttons=False %}
                                     {% else %}
                                         {% include "utils/groups/group-card.html" with group="E" iterator=range buttons=False %}
-                                    {% endif %}                                </div>
-                                <div class="col-md-6">
+                                    {% endif %}
+                                </div>
+                                <div class="col-md-3">
                                     {% if zoneF is not None %}
                                         {% include "utils/groups/group-card.html" with group="F" zone=zoneF buttons=False %}
                                     {% else %}
                                         {% include "utils/groups/group-card.html" with group="F" iterator=range buttons=False %}
-                                    {% endif %}                                </div>
-                            </div>
-                            <div class="row g-4 mb-4">
-                                <div class="col-md-6">
+                                    {% endif %}
+                                </div>
+                                <div class="col-md-3">
                                     {% if zoneG is not None %}
                                         {% include "utils/groups/group-card.html" with group="G" zone=zoneG buttons=False %}
                                     {% else %}
                                         {% include "utils/groups/group-card.html" with group="G" iterator=range buttons=False %}
-                                    {% endif %}                                </div>
-                                <div class="col-md-6">
+                                    {% endif %}
+                                </div>
+                                <div class="col-md-3">
                                     {% if zoneH is not None %}
                                         {% include "utils/groups/group-card.html" with group="H" zone=zoneH buttons=False %}
                                     {% else %}
                                         {% include "utils/groups/group-card.html" with group="H" iterator=range buttons=False %}
-                                    {% endif %}                                </div>
+                                    {% endif %}
+                                </div>
                             </div>
 
                         </div>

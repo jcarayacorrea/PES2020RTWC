@@ -21,7 +21,7 @@
         <div class="col-3">
             <div class="goal m-0 text-center">
                 {{ match.awayTeam.goals|default_if_none:"?" }}
-                <small>({{ match.awayTeam.penalties|default_if_none:"?" }})</small>
+                <span class="penalty-score">({% firstof match.awayTeam.penalties 0 %})</span>
             </div>
         </div>
     </div>
