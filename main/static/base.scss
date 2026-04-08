@@ -623,7 +623,15 @@ ul:not(.navbar-nav):not(.dropdown-menu):not(.list-inline):not(.pagination):not(.
 .group-card {
   @extend .card;
   @extend .card-border;
+  width: 100%;
+  max-width: 22rem;
+  min-height: 18.25rem;
   height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
   border-radius: 0.75rem !important;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   
@@ -633,11 +641,23 @@ ul:not(.navbar-nav):not(.dropdown-menu):not(.list-inline):not(.pagination):not(.
   }
 
   .soccer-card-body {
+    flex: 1;
     padding: 0.6rem 0.4rem;
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
     background-color: white;
+  }
+
+  > .row {
+    margin-top: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .group-card {
+    max-width: 100%;
+    min-height: 17.5rem;
   }
 }
 
@@ -1016,7 +1036,6 @@ h6 {
     align-items: center;
   }
 }
-
 
 
 
