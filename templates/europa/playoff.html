@@ -3,7 +3,7 @@
 {% load static %}
 {% block container %}
     <div id="header">
-        <h1>World Cup</h1>
+        <h1>European</h1>
         <h2>Playoffs</h2>
     </div>
 
@@ -47,7 +47,7 @@
                             <div class="row mb-5">
                                 <div class="col-md-6">
                                     <div class="card card-border offset-md-2">
-                                        <div class="soccer-card-header">First Stage</div>
+                                        <div class="soccer-card-header">Playoff Matches</div>
                                         <div class="soccer-card-body">
                                             <div class="p-2" data-loading-states>
                                                 {% include "utils/playoff/match-card.html" with match=fixture.euro.match1 matchNum=1 phase='euro' home_empty="Team 1" away_empty="Team 2" conf="UEFA" %}
