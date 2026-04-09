@@ -1,15 +1,19 @@
 <div class="team-card">
     <div class="row g-0 align-items-center">
-        <div class="col-4 d-flex justify-content-center">
+        <div class="col-3 d-flex justify-content-center">
             {% if team.image_flag %}
-                <img src="{{ team.image_flag }}" class="img-card my-1" alt="{{ team.nation_name }}">
+                <div class="flag-wrapper">
+                    <img src="{{ team.image_flag }}" class="img-card my-1" alt="{{ team.nation_name }}">
+                </div>
             {% else %}
-                <div class="img-card my-1 d-flex align-items-center justify-content-center bg-light">
-                    <i class="fa-solid fa-flag text-secondary opacity-50"></i>
+                <div class="flag-wrapper">
+                    <div class="img-card my-1 d-flex align-items-center justify-content-center bg-light">
+                        <i class="fa-solid fa-flag text-secondary opacity-50"></i>
+                    </div>
                 </div>
             {% endif %}
         </div>
-        <div class="col-8">
+        <div class="col-9">
             <div class="name-config m-0 text-start">
                 {% firstof team.nation_name grouppos %}
             </div>

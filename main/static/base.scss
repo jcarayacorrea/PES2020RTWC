@@ -1,7 +1,13 @@
-// Required
+// ============================================
+// IMPORTS
+// ============================================
 @import "bootstrap5/scss/functions";
 
-// 1. Variable Overrides
+// ============================================
+// DESIGN TOKENS & VARIABLES
+// ============================================
+
+// Brand Colors
 $primary: #1e90ff !default; // DodgerBlue
 $card-cap-bg: $primary !default;
 $card-border-color: $primary !default;
@@ -9,35 +15,167 @@ $dropdown-bg: $primary !default;
 $navbar-light-bg: $primary !default;
 $navbar-dark-bg: $primary !default;
 
-// Soccer specific variables
+// Soccer-specific Colors
 $soccer-win: #89ffb7;
 $soccer-lose: #ff8989;
 $soccer-draw: #faff89;
 $soccer-border: #708090; // SlateGray
 $soccer-text-light: #f5f5f5; // WhiteSmoke
 
-// 2. Required Bootstrap
+// Spacing Scale
+$spacing-xs: 0.15rem;
+$spacing-sm: 0.25rem;
+$spacing-md: 0.5rem;
+$spacing-lg: 0.75rem;
+$spacing-xl: 1rem;
+$spacing-2xl: 1.5rem;
+$spacing-3xl: 2rem;
+
+// Border Radius Scale
+$radius-sm: 0.4rem;
+$radius-md: 0.5rem;
+$radius-lg: 0.75rem;
+$radius-xl: 1rem;
+$radius-full: 50rem;
+
+// Shadow Scale
+$shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+$shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+$shadow-lg: 0 6px 20px rgba(0, 0, 0, 0.12);
+$shadow-xl: 0 10px 30px rgba(0, 0, 0, 0.15);
+
+// Transition Scale
+$transition-fast: 0.2s ease;
+$transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+$transition-slow: 0.5s ease-in-out;
+
+// Z-index Scale
+$z-index-dropdown: 1060;
+$z-index-sticky: 10;
+$z-index-overlay: 2;
+
+// Bootstrap Import
 @import "bootstrap5/scss/bootstrap";
 
-// 3. Custom Styles
+// ============================================
+// MIXINS
+// ============================================
+
+// Card hover effect mixin
+@mixin card-hover($translateY: -2px, $shadow: $shadow-lg) {
+  transition: all $transition-base;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY($translateY);
+    box-shadow: $shadow;
+  }
+}
+
+// Interactive element mixin
+@mixin interactive-element($scale: 1.05) {
+  transition: all $transition-base;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale($scale);
+  }
+}
+
+// Border with gradient mixin
+@mixin gradient-border($position: left, $width: 3px, $opacity: 0) {
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    #{$position}: 0;
+    top: 0;
+    bottom: 0;
+    width: $width;
+    background: linear-gradient(to bottom, $primary, darken($primary, 15%));
+    opacity: $opacity;
+    transition: opacity $transition-base;
+  }
+
+  &:hover::before {
+    opacity: 1;
+  }
+}
+
+// Flexbox center mixin
+@mixin flex-center($direction: row) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: $direction;
+}
+
+// Text truncate mixin
+@mixin truncate($lines: 1) {
+  @if $lines == 1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  } @else {
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+// Gradient background mixin
+@mixin gradient-bg($direction: 135deg, $color: $primary, $darken-amount: 15%) {
+  background: linear-gradient($direction, $color 0%, darken($color, $darken-amount) 100%);
+}
+
+// Custom scrollbar mixin
+@mixin custom-scrollbar($width: 6px, $color: rgba($primary, 0.2)) {
+  &::-webkit-scrollbar {
+    width: $width;
+    height: $width;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $color;
+    border-radius: 10px;
+
+    &:hover {
+      background: darken($color, 10%);
+    }
+  }
+}
+
+// ============================================
+// BASE STYLES
+// ============================================
+
 html, body {
   margin: 0;
   height: 100%;
   overflow-x: hidden;
 }
 
-// Global Typography Styles
+// ============================================
+// TYPOGRAPHY
+// ============================================
+
 h1 {
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: -0.025em;
   color: darken($primary, 25%);
-  margin-top: 1.5rem;
-  margin-bottom: 0.25rem;
+  margin-top: $spacing-2xl;
+  margin-bottom: $spacing-sm;
   text-align: center;
   position: relative;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
-  
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.05);
+
   @media (max-width: 768px) {
     font-size: 1.75rem;
   }
@@ -48,20 +186,28 @@ h2 {
   text-transform: uppercase;
   letter-spacing: 0.25em;
   color: lighten($soccer-border, 5%);
-  margin-bottom: 2rem;
+  margin-bottom: $spacing-3xl;
   font-size: 0.9rem;
   text-align: center;
   opacity: 0.8;
 }
 
-// Search Input Styles
+h6 {
+  font-size: 0.75rem;
+}
+
+// ============================================
+// FORMS & INPUTS
+// ============================================
+
+// Search Input Component
 .soccer-search-input-group {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  border-radius: 50rem !important;
-  background-color: #fff;
+  transition: all $transition-base;
+  border-radius: $radius-full !important;
+  background-color: white;
   overflow: hidden;
   border: 2px solid rgba($primary, 0.1);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
 
   &:hover {
     border-color: rgba($primary, 0.4);
@@ -71,6 +217,10 @@ h2 {
   &:focus-within {
     border-color: $primary;
     box-shadow: 0 0 0 0.25rem rgba($primary, 0.15) !important;
+
+    .input-group-text {
+      transform: scale(1.1);
+    }
   }
 
   .input-group-text {
@@ -78,17 +228,13 @@ h2 {
     border: none !important;
     padding-left: 1.25rem !important;
     color: $primary !important;
-    transition: transform 0.2s ease;
-  }
-
-  &:focus-within .input-group-text {
-    transform: scale(1.1);
+    transition: transform $transition-fast;
   }
 
   .form-control {
     border: none !important;
     box-shadow: none !important;
-    padding-left: 0.5rem !important;
+    padding-left: $spacing-md !important;
     padding-right: 1.25rem !important;
     font-size: 0.95rem;
     height: 40px;
@@ -98,30 +244,54 @@ h2 {
       color: #adb5bd;
       font-weight: 400;
       opacity: 0.7;
-      transition: all 0.2s ease;
+      transition: all $transition-fast;
     }
 
-    &:focus {
-      &::placeholder {
-        opacity: 0.4;
-        transform: translateX(8px);
-      }
+    &:focus::placeholder {
+      opacity: 0.4;
+      transform: translateX(8px);
     }
   }
 }
 
-// Global List Styles
+// Form Select
+.form-select {
+  border-color: $primary;
+  cursor: pointer;
+  transition: all $transition-fast;
+
+  &:focus {
+    border-color: darken($primary, 10%);
+    box-shadow: 0 0 0 0.25rem rgba($primary, 0.25);
+  }
+
+  &:hover {
+    background-color: rgba($primary, 0.05);
+  }
+}
+
+// Input Group Text
+.input-group-text {
+  background-color: $primary;
+  border-color: $primary;
+  color: $soccer-text-light;
+}
+
+// ============================================
+// LISTS
+// ============================================
+
 ul:not(.navbar-nav):not(.dropdown-menu):not(.list-inline):not(.pagination):not(.dropdown-menu-dark) {
   padding-left: 0;
   list-style: none;
-  margin-bottom: 1.5rem;
+  margin-bottom: $spacing-2xl;
 
   li {
     position: relative;
     padding-left: 1.75rem;
-    margin-bottom: 0.75rem;
+    margin-bottom: $spacing-lg;
     color: $soccer-border;
-    transition: all 0.2s ease;
+    transition: all $transition-fast;
     line-height: 1.6;
 
     &::before {
@@ -130,16 +300,16 @@ ul:not(.navbar-nav):not(.dropdown-menu):not(.list-inline):not(.pagination):not(.
       font-weight: 900;
       position: absolute;
       left: 0;
-      top: 0.25rem;
+      top: $spacing-sm;
       color: rgba($primary, 0.6);
       font-size: 0.85rem;
-      transition: all 0.3s ease;
+      transition: all $transition-base;
     }
 
     &:hover {
       color: darken($primary, 20%);
       transform: translateX(5px);
-      
+
       &::before {
         transform: rotate(180deg);
         color: $primary;
@@ -148,11 +318,15 @@ ul:not(.navbar-nav):not(.dropdown-menu):not(.list-inline):not(.pagination):not(.
   }
 }
 
+// ============================================
+// LAYOUT
+// ============================================
+
 #header {
   margin-bottom: 1.25rem;
-  padding-bottom: 0.5rem;
+  padding-bottom: $spacing-md;
   position: relative;
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -166,16 +340,30 @@ ul:not(.navbar-nav):not(.dropdown-menu):not(.list-inline):not(.pagination):not(.
   }
 }
 
-// Navbar Styles
+#rotateOnDiv {
+  display: none;
+}
+
+@media (min-width: 1500px) {
+  .container-fluid {
+    padding-left: 20vw;
+    padding-right: 20vw;
+  }
+}
+
+// ============================================
+// NAVIGATION
+// ============================================
+
 .navbar {
-  background: linear-gradient(135deg, $primary 0%, darken($primary, 15%) 100%);
-  padding: 0.75rem 1rem;
-  
+  @include gradient-bg(135deg, $primary, 15%);
+  padding: $spacing-lg $spacing-xl;
+
   .navbar-brand {
     font-size: 1.5rem;
     color: $soccer-text-light !important;
-    transition: color 0.3s ease;
-    
+    transition: color $transition-base;
+
     &:hover {
       color: $soccer-draw !important;
     }
@@ -184,13 +372,15 @@ ul:not(.navbar-nav):not(.dropdown-menu):not(.list-inline):not(.pagination):not(.
   .nav-link {
     color: rgba($soccer-text-light, 0.9) !important;
     font-weight: 500;
-    padding: 0.5rem 1.25rem;
-    transition: all 0.3s ease;
-    border-radius: 0.5rem;
+    padding: $spacing-md 1.25rem;
+    transition: all $transition-base;
+    border-radius: $radius-md;
 
     @include media-breakpoint-up(lg) {
       margin: 0 0.1rem;
-      &:hover, &.active {
+
+      &:hover,
+      &.active {
         color: $soccer-text-light !important;
         background-color: rgba(white, 0.15);
       }
@@ -203,23 +393,25 @@ ul:not(.navbar-nav):not(.dropdown-menu):not(.list-inline):not(.pagination):not(.
 
   .navbar-toggler {
     border: none;
+
     &:focus {
       box-shadow: none;
     }
   }
 }
 
+// Dropdown Menu
 .dropdown-menu {
   background-color: white;
   border: none;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-  border-radius: 0.5rem;
-  margin-top: 0.5rem;
-  display: block; // Keep display block for animation logic
+  box-shadow: $shadow-xl;
+  border-radius: $radius-md;
+  margin-top: $spacing-md;
+  display: block;
   visibility: hidden;
   opacity: 0;
   transform: translateY(-10px);
-  transition: all 0.3s ease;
+  transition: all $transition-base;
   pointer-events: none;
 
   &.show {
@@ -228,22 +420,22 @@ ul:not(.navbar-nav):not(.dropdown-menu):not(.list-inline):not(.pagination):not(.
     transform: translateY(0);
     pointer-events: auto;
   }
-  
+
   .dropdown-item {
     color: $soccer-border;
     padding: 0.7rem 1.5rem;
-    transition: all 0.2s ease;
+    transition: all $transition-fast;
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    
+    gap: $spacing-lg;
+
     &:hover {
       background-color: rgba($primary, 0.08);
       color: $primary;
       padding-left: 1.85rem;
       box-shadow: inset 4px 0 0 $primary;
     }
-    
+
     &:active {
       background-color: $primary;
       color: white;
@@ -251,6 +443,59 @@ ul:not(.navbar-nav):not(.dropdown-menu):not(.list-inline):not(.pagination):not(.
     }
   }
 }
+
+// Custom Dropdown Menu
+.custom-dropdown-menu {
+  max-height: 400px;
+  overflow-y: auto;
+  border: 1px solid rgba($primary, 0.2);
+  border-radius: $radius-lg !important;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2) !important;
+  animation: dropdown-fade-in 0.2s ease-out;
+  z-index: $z-index-dropdown;
+
+  .dropdown-item {
+    transition: all $transition-fast;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    padding: $spacing-lg 1.25rem;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &:hover {
+      background-color: rgba($primary, 0.08);
+      color: $primary;
+      padding-left: 1.5rem;
+      box-shadow: inset 4px 0 0 $primary;
+    }
+  }
+}
+
+.team-select-button {
+  background-image: none !important;
+  border-color: rgba($primary, 0.5);
+  transition: all $transition-fast;
+
+  &:hover {
+    border-color: $primary;
+    background-color: rgba($primary, 0.02);
+  }
+
+  &.dropdown-toggle::after {
+    margin-left: auto;
+    color: $primary;
+    transition: transform $transition-base;
+  }
+
+  &.show.dropdown-toggle::after {
+    transform: rotate(180deg);
+  }
+}
+
+// ============================================
+// CARDS
+// ============================================
 
 .card-header {
   background-color: $primary;
@@ -266,42 +511,39 @@ ul:not(.navbar-nav):not(.dropdown-menu):not(.list-inline):not(.pagination):not(.
   border-style: solid;
 }
 
-
-.img-card {
-  @extend .img-border;
-  width: 2.25rem;
-  height: 1.5rem;
-  object-fit: cover;
-}
-
-
+// Soccer Card Components
 .soccer-card-header {
   @extend .card-header;
   @extend .card-title;
   @extend .text-center;
-  background: linear-gradient(135deg, $primary 0%, darken($primary, 15%) 100%);
+  @include gradient-bg(135deg, $primary, 15%);
   color: white;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 1.5px;
-  padding: 0.4rem 0.5rem;
+  padding: 0.4rem $spacing-md;
   font-size: 0.8rem;
-  border-bottom: 2px solid rgba(0,0,0,0.1);
-  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .soccer-card-body {
   @extend .card-body;
-  padding: 0.75rem;
+  padding: $spacing-lg;
   background-color: rgba(white, 0.5);
 }
 
+// ============================================
+// FLAG & TEAM COMPONENTS
+// ============================================
+
+// Flag Configurations
 .flag-config {
   @extend .col-auto;
   @extend .d-flex;
   @extend .align-items-center;
   @extend .justify-content-center;
-  padding: 0.25rem;
+  padding: $spacing-sm;
 }
 
 .flag-config-sm {
@@ -309,9 +551,8 @@ ul:not(.navbar-nav):not(.dropdown-menu):not(.list-inline):not(.pagination):not(.
   @extend .d-flex;
   @extend .align-items-center;
   @extend .justify-content-center;
-  padding: 0.15rem;
+  padding: $spacing-xs;
 }
-
 
 .flag-config-table {
   @extend .m-1;
@@ -319,60 +560,127 @@ ul:not(.navbar-nav):not(.dropdown-menu):not(.list-inline):not(.pagination):not(.
   @extend .justify-content-center;
 }
 
+.flag-circle {
+  @extend .rounded-circle;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  border: 1.5px solid white;
+  transition: transform $transition-fast;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+// Flag Images & Borders
+.img-card {
+  @extend .img-border;
+  width: 2.75rem;
+  height: 1.85rem;
+  object-fit: cover;
+  box-shadow: $shadow-sm;
+  transition: all $transition-base;
+}
+
+.img-border {
+  border-color: transparent;
+  border-radius: $radius-sm;
+  border-style: solid;
+  border-width: 2.5px;
+}
+
+.flag-wrapper {
+  position: relative;
+  display: inline-block;
+  padding: $spacing-xs;
+  transition: all $transition-base;
+
+  &:hover {
+    transform: scale(1.15);
+
+    .img-card {
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+    }
+  }
+}
+
+.flag-wrapper-sm {
+  position: relative;
+  display: inline-block;
+  padding: 0.1rem;
+  transition: all $transition-base;
+
+  &:hover {
+    transform: scale(1.1);
+
+    .img-card {
+      box-shadow: $shadow-md;
+    }
+  }
+}
+
+// Match Result Borders
+.lose {
+  @extend .img-border;
+  border-color: $soccer-lose;
+}
+
+.win {
+  @extend .img-border;
+  border-color: $soccer-win;
+}
+
+.draw {
+  @extend .img-border;
+  border-color: $soccer-draw;
+}
+
+// Team Name Configurations
 .name-config {
   @extend .col-auto;
   @extend .d-flex;
   @extend .align-items-center;
-  padding: 0.1rem 0.25rem;
+  padding: 0.1rem $spacing-sm;
   font-weight: 600;
   color: darken($soccer-border, 20%);
   font-size: 0.9rem;
-  transition: color 0.2s ease;
+  transition: color $transition-fast;
 }
 
 .name-config-sm {
   @extend .col-auto;
   @extend .d-flex;
   @extend .align-items-center;
-  padding: 0.15rem;
+  padding: $spacing-xs;
   font-size: 0.85rem;
   font-weight: 500;
   color: darken($soccer-border, 10%);
 }
 
-
 .name-config-table {
   @extend .m-1;
   @extend .col-auto;
-  @extend .text-center
+  @extend .text-center;
 }
 
-.flag-circle {
-  @extend .rounded-circle;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
-  border: 1.5px solid white;
-  transition: transform 0.2s ease;
-  
-  &:hover {
-    transform: scale(1.1);
-  }
-}
-
+// Team Card Components
 .team-card {
   @extend .card;
   @extend .col-11;
   @extend .mx-auto;
   @extend .mb-1;
-  border-color: $soccer-border;
+  border-color: rgba($soccer-border, 0.2);
   border-style: solid;
   border-width: 1px;
   background-color: rgba(white, 0.9);
-  transition: all 0.2s ease-in-out;
-  
+  @include card-hover(-2px, $shadow-lg);
+
   &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     background-color: white;
+    border-color: rgba($primary, 0.3);
+
+    .name-config {
+      color: $primary;
+    }
   }
 }
 
@@ -381,16 +689,17 @@ ul:not(.navbar-nav):not(.dropdown-menu):not(.list-inline):not(.pagination):not(.
   @extend .col-11;
   @extend .mx-auto;
   @extend .mb-2;
-  border-radius: 0.5rem;
+  border-radius: $radius-md;
   border: 1px solid rgba($primary, 0.1);
   background: white;
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  
+  transition: all $transition-base;
+  cursor: pointer;
+
   &:hover {
     transform: translateX(5px);
     border-color: $primary;
     box-shadow: 0 5px 15px rgba($primary, 0.1);
-    
+
     .name-config {
       color: $primary;
     }
@@ -401,16 +710,19 @@ ul:not(.navbar-nav):not(.dropdown-menu):not(.list-inline):not(.pagination):not(.
   @extend .card;
   @extend .col-12;
   @extend .mb-1;
-  border-color: $soccer-border;
+  border-color: rgba($soccer-border, 0.2);
   border-style: solid;
   border-width: 1px;
   background-color: rgba(white, 0.95);
-  transition: all 0.2s ease-in-out;
-  
+  @include card-hover(-1px, $shadow-md);
+
   &:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
     background-color: white;
+    border-color: rgba($primary, 0.25);
+
+    .name-config-sm {
+      color: $primary;
+    }
   }
 }
 
@@ -738,15 +1050,74 @@ ul:not(.navbar-nav):not(.dropdown-menu):not(.list-inline):not(.pagination):not(.
   @extend .row;
   @extend .g-0;
   @extend .align-items-center;
-  @extend .border-info;
   @extend .mb-2;
+  border: 2px solid rgba($primary, 0.15);
+  border-radius: 0.75rem;
+  padding: 0.75rem 0.5rem;
+  background: linear-gradient(to right, rgba(white, 0.5), rgba($primary, 0.02), rgba(white, 0.5));
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(to bottom, $primary, darken($primary, 15%));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  &:hover {
+    border-color: rgba($primary, 0.35);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    transform: translateX(3px);
+    background: linear-gradient(to right, rgba(white, 0.8), rgba($primary, 0.04), rgba(white, 0.8));
+
+    &::before {
+      opacity: 1;
+    }
+  }
 }
 
 .img-border {
   border-color: transparent;
-  border-radius: 0.5rem;
+  border-radius: 0.4rem;
   border-style: solid;
-  border-width: 2px;
+  border-width: 2.5px;
+}
+
+.flag-wrapper {
+  position: relative;
+  display: inline-block;
+  padding: 0.15rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    transform: scale(1.15);
+
+    .img-card {
+      box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+    }
+  }
+}
+
+.flag-wrapper-sm {
+  position: relative;
+  display: inline-block;
+  padding: 0.1rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    transform: scale(1.1);
+
+    .img-card {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+  }
 }
 
 .lose {
@@ -860,29 +1231,33 @@ h6 {
   opacity: 0.8;
 }
 
+// ============================================
+// BUTTONS
+// ============================================
+
 .btn-primary {
-  border-radius: 50rem;
+  border-radius: $radius-full;
   box-shadow: 0 4px 10px rgba($primary, 0.3);
-  transition: all 0.3s ease;
+  transition: all $transition-base;
   border: none;
   background: linear-gradient(to right, $primary, darken($primary, 10%));
-  
+
   &:hover:not(:disabled) {
     transform: translateY(-2px) scale(1.02);
     box-shadow: 0 6px 15px rgba($primary, 0.4);
     background: linear-gradient(to right, lighten($primary, 5%), darken($primary, 5%));
   }
-  
+
   &:active:not(:disabled) {
     transform: translateY(0) scale(0.98);
   }
 }
 
 .btn-outline-primary {
-  border-radius: 50rem;
+  border-radius: $radius-full;
   border-width: 2px;
-  transition: all 0.3s ease;
-  
+  transition: all $transition-base;
+
   &:hover:not(:disabled) {
     transform: translateY(-2px);
     box-shadow: 0 4px 10px rgba($primary, 0.2);
@@ -890,43 +1265,21 @@ h6 {
 }
 
 .btn-outline-secondary {
-  border-radius: 50rem;
+  border-radius: $radius-full;
   border-width: 2px;
-  transition: all 0.3s ease;
+  transition: all $transition-base;
 }
 
-.playoff-button{
+.playoff-button {
   @extend .col-1;
   @extend .align-self-center;
-  margin-top: 1rem;
+  margin-top: $spacing-xl;
 }
 
-#rotateOnDiv {
-   display: none;
-}
-.form-select {
-  border-color: $primary;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
+// ============================================
+// SCROLLBAR
+// ============================================
 
-  &:focus {
-    border-color: darken($primary, 10%);
-    box-shadow: 0 0 0 0.25rem rgba($primary, 0.25);
-  }
-
-  &:hover {
-    background-color: rgba($primary, 0.05);
-  }
-}
-
-.input-group-text {
-  background-color: $primary;
-  border-color: $primary;
-  color: $soccer-text-light;
-}
-
-
-/* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -939,84 +1292,46 @@ h6 {
 ::-webkit-scrollbar-thumb {
   background: rgba(0, 0, 0, 0.2);
   border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 0, 0, 0.3);
-}
-
-/* Custom Combobox Styles */
-.custom-dropdown-menu {
-  max-height: 400px;
-  overflow-y: auto;
-  border: 1px solid rgba($primary, 0.2);
-  border-radius: 0.75rem !important;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.2) !important;
-  animation: dropdown-fade-in 0.2s ease-out;
-  z-index: 1060;
-
-  .dropdown-item {
-    transition: all 0.2s ease;
-    border-bottom: 1px solid rgba(0,0,0,0.05);
-    padding: 0.75rem 1.25rem;
-    
-    &:last-child {
-      border-bottom: none;
-    }
-
-    &:hover {
-      background-color: rgba($primary, 0.08);
-      color: $primary;
-      padding-left: 1.5rem;
-      box-shadow: inset 4px 0 0 $primary;
-    }
-  }
-}
-
-.team-select-button {
-  background-image: none !important;
-  border-color: rgba($primary, 0.5);
-  transition: all 0.2s ease-in-out;
 
   &:hover {
-    border-color: $primary;
-    background-color: rgba($primary, 0.02);
-  }
-
-  &.dropdown-toggle::after {
-    margin-left: auto;
-    color: $primary;
-    transition: transform 0.3s ease;
-  }
-  
-  &.show.dropdown-toggle::after {
-    transform: rotate(180deg);
+    background: rgba(0, 0, 0, 0.3);
   }
 }
+
+// ============================================
+// ANIMATIONS & KEYFRAMES
+// ============================================
 
 @keyframes dropdown-fade-in {
-  from { opacity: 0; transform: translateY(-5px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@media (min-width: 1500px) {
-  .container-fluid {
-    padding-left: 20vw;
-    padding-right: 20vw;
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-/* UI Enhancement Utilities */
+// ============================================
+// UTILITY CLASSES
+// ============================================
+
 .transition-all {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all $transition-base;
 }
 
 .hover-shadow {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all $transition-base;
+
   &:hover {
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1) !important;
     transform: translateY(-3px);
   }
+}
+
+.tracking-widest {
+  letter-spacing: 0.2em;
 }
 
 .fixture-card {
