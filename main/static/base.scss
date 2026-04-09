@@ -579,13 +579,31 @@ ul:not(.navbar-nav):not(.dropdown-menu):not(.list-inline):not(.pagination):not(.
   object-fit: cover;
   box-shadow: $shadow-sm;
   transition: all $transition-base;
+  position: relative;
+
+  // Enhanced flag border with inner glow effect
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow: inset 0 0 0 1px rgba(white, 0.3);
+    pointer-events: none;
+    transition: opacity $transition-base;
+  }
+
+  &:hover::after {
+    opacity: 0.7;
+  }
 }
 
 .img-border {
   border-color: transparent;
   border-radius: $radius-sm;
   border-style: solid;
-  border-width: 2.5px;
+  border-width: 3px;
+  background: linear-gradient(135deg, rgba(white, 0.1), transparent);
+  backdrop-filter: blur(2px);
 }
 
 .flag-wrapper {
@@ -594,11 +612,33 @@ ul:not(.navbar-nav):not(.dropdown-menu):not(.list-inline):not(.pagination):not(.
   padding: $spacing-xs;
   transition: all $transition-base;
 
+  // Subtle glow on wrapper
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    background: radial-gradient(circle at center,
+      rgba($primary, 0.15),
+      transparent 70%);
+    border-radius: $radius-md;
+    opacity: 0;
+    transition: opacity $transition-base;
+    z-index: -1;
+  }
+
   &:hover {
-    transform: scale(1.15);
+    transform: scale(1.15) translateY(-2px);
+
+    &::before {
+      opacity: 1;
+    }
 
     .img-card {
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+      box-shadow:
+        0 6px 20px rgba(0, 0, 0, 0.25),
+        0 0 20px rgba($primary, 0.2),
+        inset 0 0 0 1px rgba(white, 0.5);
+      border-width: 3.5px;
     }
   }
 }
@@ -609,29 +649,114 @@ ul:not(.navbar-nav):not(.dropdown-menu):not(.list-inline):not(.pagination):not(.
   padding: 0.1rem;
   transition: all $transition-base;
 
+  // Subtle glow on wrapper
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    background: radial-gradient(circle at center,
+      rgba($primary, 0.12),
+      transparent 70%);
+    border-radius: $radius-md;
+    opacity: 0;
+    transition: opacity $transition-base;
+    z-index: -1;
+  }
+
   &:hover {
-    transform: scale(1.1);
+    transform: scale(1.1) translateY(-1px);
+
+    &::before {
+      opacity: 1;
+    }
 
     .img-card {
-      box-shadow: $shadow-md;
+      box-shadow:
+        0 4px 16px rgba(0, 0, 0, 0.2),
+        0 0 15px rgba($primary, 0.15),
+        inset 0 0 0 1px rgba(white, 0.4);
+      border-width: 3.5px;
     }
   }
 }
 
-// Match Result Borders
+// Match Result Borders - Enhanced with glow effects
 .lose {
   @extend .img-border;
   border-color: $soccer-lose;
+  box-shadow:
+    0 2px 8px rgba($soccer-lose, 0.3),
+    inset 0 0 0 1px rgba($soccer-lose, 0.2),
+    0 0 15px rgba($soccer-lose, 0.15);
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: inherit;
+    background: linear-gradient(135deg,
+      rgba($soccer-lose, 0.2),
+      rgba($soccer-lose, 0.05));
+    z-index: -1;
+    opacity: 0;
+    transition: opacity $transition-base;
+  }
+
+  &:hover::before {
+    opacity: 1;
+  }
 }
 
 .win {
   @extend .img-border;
   border-color: $soccer-win;
+  box-shadow:
+    0 2px 8px rgba($soccer-win, 0.35),
+    inset 0 0 0 1px rgba($soccer-win, 0.25),
+    0 0 15px rgba($soccer-win, 0.2);
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: inherit;
+    background: linear-gradient(135deg,
+      rgba($soccer-win, 0.25),
+      rgba($soccer-win, 0.05));
+    z-index: -1;
+    opacity: 0;
+    transition: opacity $transition-base;
+  }
+
+  &:hover::before {
+    opacity: 1;
+  }
 }
 
 .draw {
   @extend .img-border;
   border-color: $soccer-draw;
+  box-shadow:
+    0 2px 8px rgba($soccer-draw, 0.4),
+    inset 0 0 0 1px rgba($soccer-draw, 0.3),
+    0 0 15px rgba($soccer-draw, 0.25);
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: inherit;
+    background: linear-gradient(135deg,
+      rgba($soccer-draw, 0.3),
+      rgba($soccer-draw, 0.05));
+    z-index: -1;
+    opacity: 0;
+    transition: opacity $transition-base;
+  }
+
+  &:hover::before {
+    opacity: 1;
+  }
 }
 
 // Team Name Configurations
