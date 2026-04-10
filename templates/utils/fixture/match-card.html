@@ -3,10 +3,10 @@
 </div>
 
 <div class="col-scr text-center">
-    <div data-loading-aria-busy data-loading="flex" class="justify-content-center align-items-center">
-        <h5 class="scr_style mb-0">
-             <i class="fa-solid fa-futbol fa-spin text-info"></i>
-        </h5>
+    <div data-loading-aria-busy data-loading="flex" class="justify-content-center align-items-center mb-2">
+        <div class="progress-loader progress-loader-indeterminate progress-loader-sm" style="width: 60px;">
+            <div class="progress-loader-bar"></div>
+        </div>
     </div>
     <div data-loading-aria-busy data-loading-class="d-none">
         <h5 class="scr_style mb-0 fw-bold">
@@ -34,7 +34,9 @@
                 disabled {% endif %}
                 title="Play Match">
             <div data-loading-aria-busy data-loading="flex">
-                <div class="spinner-border spinner-border-sm text-light "></div>
+                <div class="progress-loader progress-loader-indeterminate progress-loader-sm" style="width: 24px; height: 3px;">
+                    <div class="progress-loader-bar"></div>
+                </div>
             </div>
             <div data-loading-aria-busy data-loading-class="d-none">
                 <i class="fa-solid fa-play"></i>

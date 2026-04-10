@@ -1424,8 +1424,226 @@ h6 {
 }
 
 // ============================================
+// PROGRESS BAR LOADER
+// ============================================
+
+.progress-loader {
+  width: 100%;
+  height: 8px;
+  background: linear-gradient(to right,
+    rgba($primary, 0.1),
+    rgba($primary, 0.15),
+    rgba($primary, 0.1));
+  border-radius: $radius-full;
+  overflow: hidden;
+  position: relative;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.06);
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(white, 0.2) 50%,
+      transparent 100%);
+    animation: shimmer 2s infinite;
+  }
+}
+
+.progress-loader-bar {
+  height: 100%;
+  background: linear-gradient(90deg,
+    $primary 0%,
+    lighten($primary, 8%) 50%,
+    $primary 100%);
+  border-radius: inherit;
+  position: relative;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow:
+    0 0 10px rgba($primary, 0.4),
+    inset 0 1px 0 rgba(white, 0.3);
+
+  &::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 12px;
+    background: linear-gradient(135deg,
+      lighten($primary, 15%) 0%,
+      $primary 100%);
+    border-radius: 50%;
+    box-shadow:
+      0 0 8px rgba($primary, 0.6),
+      0 0 4px rgba(white, 0.4) inset;
+    animation: pulse-glow 1.5s ease-in-out infinite;
+  }
+}
+
+// Indeterminate loader variant
+.progress-loader-indeterminate {
+  .progress-loader-bar {
+    width: 40% !important;
+    animation: indeterminate-slide 1.5s cubic-bezier(0.65, 0.05, 0.36, 1) infinite;
+  }
+}
+
+// Size variants
+.progress-loader-sm {
+  height: 4px;
+
+  .progress-loader-bar::after {
+    width: 8px;
+    height: 8px;
+  }
+}
+
+.progress-loader-lg {
+  height: 12px;
+
+  .progress-loader-bar::after {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+// Color variants
+.progress-loader-success {
+  background: linear-gradient(to right,
+    rgba($soccer-win, 0.15),
+    rgba($soccer-win, 0.25),
+    rgba($soccer-win, 0.15));
+
+  .progress-loader-bar {
+    background: linear-gradient(90deg,
+      $soccer-win 0%,
+      lighten($soccer-win, 8%) 50%,
+      $soccer-win 100%);
+    box-shadow:
+      0 0 10px rgba($soccer-win, 0.4),
+      inset 0 1px 0 rgba(white, 0.3);
+
+    &::after {
+      background: linear-gradient(135deg,
+        lighten($soccer-win, 15%) 0%,
+        $soccer-win 100%);
+      box-shadow:
+        0 0 8px rgba($soccer-win, 0.6),
+        0 0 4px rgba(white, 0.4) inset;
+    }
+  }
+}
+
+.progress-loader-warning {
+  background: linear-gradient(to right,
+    rgba($soccer-draw, 0.15),
+    rgba($soccer-draw, 0.25),
+    rgba($soccer-draw, 0.15));
+
+  .progress-loader-bar {
+    background: linear-gradient(90deg,
+      $soccer-draw 0%,
+      lighten($soccer-draw, 8%) 50%,
+      $soccer-draw 100%);
+    box-shadow:
+      0 0 10px rgba($soccer-draw, 0.4),
+      inset 0 1px 0 rgba(white, 0.3);
+
+    &::after {
+      background: linear-gradient(135deg,
+        lighten($soccer-draw, 15%) 0%,
+        $soccer-draw 100%);
+      box-shadow:
+        0 0 8px rgba($soccer-draw, 0.6),
+        0 0 4px rgba(white, 0.4) inset;
+    }
+  }
+}
+
+.progress-loader-danger {
+  background: linear-gradient(to right,
+    rgba($soccer-lose, 0.15),
+    rgba($soccer-lose, 0.25),
+    rgba($soccer-lose, 0.15));
+
+  .progress-loader-bar {
+    background: linear-gradient(90deg,
+      $soccer-lose 0%,
+      lighten($soccer-lose, 8%) 50%,
+      $soccer-lose 100%);
+    box-shadow:
+      0 0 10px rgba($soccer-lose, 0.4),
+      inset 0 1px 0 rgba(white, 0.3);
+
+    &::after {
+      background: linear-gradient(135deg,
+        lighten($soccer-lose, 15%) 0%,
+        $soccer-lose 100%);
+      box-shadow:
+        0 0 8px rgba($soccer-lose, 0.6),
+        0 0 4px rgba(white, 0.4) inset;
+    }
+  }
+}
+
+// With label/percentage display
+.progress-loader-wrapper {
+  width: 100%;
+
+  .progress-loader-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: $spacing-sm;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: darken($soccer-border, 20%);
+
+    .progress-loader-text {
+      color: darken($primary, 15%);
+    }
+
+    .progress-loader-percentage {
+      color: $primary;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+  }
+}
+
+// ============================================
 // ANIMATIONS & KEYFRAMES
 // ============================================
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow:
+      0 0 8px rgba($primary, 0.6),
+      0 0 4px rgba(white, 0.4) inset;
+  }
+  50% {
+    box-shadow:
+      0 0 15px rgba($primary, 0.9),
+      0 0 6px rgba(white, 0.6) inset;
+  }
+}
+
+@keyframes indeterminate-slide {
+  0% {
+    left: -40%;
+  }
+  100% {
+    left: 100%;
+  }
+}
 
 @keyframes dropdown-fade-in {
   from {
