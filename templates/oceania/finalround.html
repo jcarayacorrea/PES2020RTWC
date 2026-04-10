@@ -104,23 +104,27 @@
                                                 </div>
                                                 <div class="col-4 text-center">
                                                     <div data-loading-aria-busy data-loading="flex" class="justify-content-center align-items-center">
-                                                       <h3 class="m-0 scr_style">
-                                                            <span class="penalty-score opacity-25">( )</span>
+                                                       <h4 class="scr_style mb-0 fw-bold py-1 px-1">
+                                                            <span class="penalty-score opacity-25" style="font-size: 0.6em;">( )</span>
                                                             <i class="fa-solid fa-futbol fa-spin text-info mx-2"></i>
-                                                            <span class="penalty-score opacity-25">( )</span>
-                                                        </h3>
+                                                            <span class="penalty-score opacity-25" style="font-size: 0.6em;">( )</span>
+                                                        </h4>
                                                     </div>
 
 
                                                     <div data-loading-aria-busy data-loading-class="d-none" class="d-flex justify-content-center">
-                                                        {% with homePenalties=fixture.mainDraw.match1.homeTeam.penalties awayPenalties=fixture.mainDraw.match1.awayTeam.penalties %}
-                                                            <h3 class="m-0 scr_style">
-                                                                <span class="penalty-score">({% firstof homePenalties 0 %})</span>
-                                                                {{ fixture.mainDraw.match1.homeTeam.goals|default_if_none:"?" }}
+                                                        {% with homeGoals=fixture.mainDraw.match1.homeTeam.goals awayGoals=fixture.mainDraw.match1.awayTeam.goals homePenalties=fixture.mainDraw.match1.homeTeam.penalties awayPenalties=fixture.mainDraw.match1.awayTeam.penalties %}
+                                                            <h4 class="scr_style mb-0 fw-bold py-1 px-1">
+                                                                {{ homeGoals|default_if_none:"?" }}
+                                                                {% if homePenalties is not None or awayPenalties is not None %}
+                                                                    <span class="penalty-score" style="font-size: 0.6em;">({% firstof homePenalties 0 %})</span>
+                                                                {% endif %}
                                                                 <span class="opacity-25 mx-1">-</span>
-                                                                {{ fixture.mainDraw.match1.awayTeam.goals|default_if_none:"?" }}
-                                                                <span class="penalty-score">({% firstof awayPenalties 0 %})</span>
-                                                            </h3>
+                                                                {% if homePenalties is not None or awayPenalties is not None %}
+                                                                    <span class="penalty-score" style="font-size: 0.6em;">({% firstof awayPenalties 0 %})</span>
+                                                                {% endif %}
+                                                                {{ awayGoals|default_if_none:"?" }}
+                                                            </h4>
                                                         {% endwith %}
 
                                                     </div>
