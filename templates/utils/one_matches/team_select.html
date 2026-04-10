@@ -13,9 +13,9 @@
                 {% for team in zone %}
                     {% if selected_team == team.nation_name %}
                         {% if team.image_flag %}
-                            <img src="{{ team.image_flag }}" class="img-card flag-circle me-2" style="width: 24px; height: 16px; min-width: 24px; object-fit: cover;" alt="{{ team.nation_name }}">
+                            <img src="{{ team.image_flag }}" class="img-card flag-circle me-2" alt="{{ team.nation_name }}">
                         {% else %}
-                            <div class="img-card flag-circle me-2 d-flex align-items-center justify-content-center bg-light" style="width: 24px; height: 16px; min-width: 24px;">
+                            <div class="img-card flag-circle me-2 d-flex align-items-center justify-content-center bg-light">
                                 <i class="fa-solid fa-flag text-secondary opacity-50" style="font-size: 10px;"></i>
                             </div>
                         {% endif %}
@@ -37,9 +37,9 @@
                             hx-vals='{"team": "{{ team.nation_iso_code }}"}'
                             hx-target="body" data-loading-disable>
                         {% if team.image_flag %}
-                            <img src="{{ team.image_flag }}" class="img-card flag-circle me-3" style="width: 28px; height: 18px; min-width: 28px; object-fit: cover;" alt="{{ team.nation_name }}">
+                            <img src="{{ team.image_flag }}" class="img-card flag-circle me-3" alt="{{ team.nation_name }}">
                         {% else %}
-                            <div class="img-card flag-circle me-3 d-flex align-items-center justify-content-center bg-light" style="width: 28px; height: 18px; min-width: 28px;">
+                            <div class="img-card flag-circle me-3 d-flex align-items-center justify-content-center bg-light">
                                 <i class="fa-solid fa-flag text-secondary opacity-50" style="font-size: 12px;"></i>
                             </div>
                         {% endif %}
