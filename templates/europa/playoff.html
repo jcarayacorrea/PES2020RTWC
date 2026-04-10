@@ -13,11 +13,21 @@
                 <button type="button" class="btn btn-primary px-4 py-2 fw-bold" hx-get="{% url 'europa.playoff.draw' %}"
                         hx-trigger="click" hx-target="body" data-loading-disable {% if teams|enable_draw_button:8 is True %}
                         disabled {% endif %}>
-                    <i class="fa-solid fa-shuffle me-2"></i>Draw
+                    <div data-loading-aria-busy data-loading="flex" class="justify-content-center align-items-center">
+                        <div class="button-spinner me-2"></div>Draw
+                    </div>
+                    <div data-loading-aria-busy data-loading-class="d-none">
+                        <i class="fa-solid fa-shuffle me-2"></i>Draw
+                    </div>
                 </button>
                 <button type="button" class="btn btn-outline-secondary px-4 py-2" hx-get="{% url 'europa.playoff' %}" hx-trigger="click"
                         hx-target="body" data-loading-disable>
-                    <i class="fa-solid fa-rotate-left me-2"></i>Clear
+                    <div data-loading-aria-busy data-loading="flex" class="justify-content-center align-items-center">
+                        <div class="button-spinner me-2" style="border-top-color: var(--bs-secondary);"></div>Clear
+                    </div>
+                    <div data-loading-aria-busy data-loading-class="d-none">
+                        <i class="fa-solid fa-rotate-left me-2"></i>Clear
+                    </div>
                 </button>
             </div>
         </div>
@@ -44,21 +54,21 @@
                         </div>
 
                         <div data-loading-aria-busy data-loading-class="d-none">
-                            <div class="row mb-5">
+                            <div class="row mb-5 justify-content-center">
                                 <div class="col-md-6">
-                                    <div class="card card-border offset-md-2">
+                                    <div class="card card-border">
                                         <div class="soccer-card-header">Playoff Matches</div>
-                                        <div class="soccer-card-body">
-                                            <div class="p-2" data-loading-states>
+                                        <div class="soccer-card-body p-3">
+                                            <div class="match-border mb-3" data-loading-states>
                                                 {% include "utils/playoff/match-card.html" with match=fixture.euro.match1 matchNum=1 phase='euro' home_empty="Team 1" away_empty="Team 2" conf="UEFA" %}
                                             </div>
-                                            <div class="p-2" data-loading-states>
+                                            <div class="match-border mb-3" data-loading-states>
                                                 {% include "utils/playoff/match-card.html" with match=fixture.euro.match2 matchNum=2 phase='euro' home_empty="Team 3" away_empty="Team 4" conf="UEFA" %}
                                             </div>
-                                            <div class="p-2" data-loading-states>
+                                            <div class="match-border mb-3" data-loading-states>
                                                 {% include "utils/playoff/match-card.html" with match=fixture.euro.match3 matchNum=3 phase='euro' home_empty="Team 5" away_empty="Team 6" conf="UEFA" %}
                                             </div>
-                                            <div class="p-2" data-loading-states>
+                                            <div class="match-border mb-0" data-loading-states>
                                                 {% include "utils/playoff/match-card.html" with match=fixture.euro.match4 matchNum=4 phase='euro' home_empty="Team 7" away_empty="Team 8" conf="UEFA" %}
                                             </div>
 

@@ -1,42 +1,72 @@
-<div class="row">
-    <div class="col-3 w-75">
-        {% if matchNum is not None %}
-            <h6 class="h-6 text-center"> Match {{ matchNum }}</h6>
-        {% endif %}
-        {% if not match %}            
-                {% include "utils/playoff/team-card-empty.html" with desc=home_empty %}           
+<div class="row g-0 align-items-center">
+<div class="col-4 pe-1">
+        {% if not match %}
+            {% include "utils/playoff/team-card-empty.html" with desc=home_empty %}
         {% else %}
-            <div class="col">
-                {% include "utils/playoff/home-card.html" %}
-            </div>
-        {% endif %}
-        {% if not match %}            
-                {% include "utils/playoff/team-card-empty.html" with desc=away_empty %}           
-        {% else %}
-            <div class="col">
-                {% include "utils/playoff/away-card.html" %}
-
-            </div>
-
+            {% include "utils/playoff/home-card.html" %}
         {% endif %}
     </div>
-    <div class="playoff-button">
+
+    <div class="col-3 text-center px-0">
+        <div data-loading-aria-busy data-loading="flex" class="justify-content-center align-items-center">
+            <div class="progress-loader progress-loader-indeterminate progress-loader-sm" style="width: 30px;">
+                <div class="progress-loader-bar"></div>
+            </div>
+        </div>
+        <div data-loading-aria-busy data-loading-class="d-none">
+            <h6 class="scr_style mb-0 fw-bold small py-1 px-1">
+                {{ match.homeTeam.goals|default_if_none:"?" }}
+                {% if match.homeTeam.penalties is not None or match.awayTeam.penalties is not None %}
+                    <span class="penalty-score" style="font-size: 0.6em;">({{ match.homeTeam.penalties|default:0 }})</span>
+                {% endif %}
+                <span class="opacity-25">-</span>
+                {% if match.homeTeam.penalties is not None or match.awayTeam.penalties is not None %}
+                    <span class="penalty-score" style="font-size: 0.6em;">({{ match.awayTeam.penalties|default:0 }})</span>
+                {% endif %}
+                {{ match.awayTeam.goals|default_if_none:"?" }}
+            </h6>
+        </div>
+    </div>
+
+<div class="col-4 ps-1">
+        {% if not match %}
+            <div class="team-card-sm">
+                <div class="row g-0 align-items-center">
+                    <div class="col-5 d-flex justify-content-center">
+                        <div class="flag-wrapper-sm">
+                            <div class="img-card my-1 d-flex align-items-center justify-content-center bg-light">
+                                <i class="fa-solid fa-flag text-secondary opacity-50"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-7">
+                        <div class="name-config-sm m-0 justify-content-start text-start fw-bold" style="font-size: 0.75rem;">
+                            {{ away_empty }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            {% include "utils/playoff/away-card.html" %}
+        {% endif %}
+    </div>
+
+    <div class="col-1 d-flex justify-content-center">
         {% with homeId=match.homeTeam.team.nation_iso_code awayId=match.awayTeam.team.nation_iso_code %}
             {% url 'one_match' phase matchNum homeId awayId  conf  'playoff' 'P' 1 as matchSim %}
-            <button type="button" class="btn btn-sm btn-primary"
+            <button type="button" class="btn btn-sm btn-primary p-0"
                     hx-get="{{ matchSim }}"
                     hx-trigger="click"
                     hx-target="body" data-loading-disable
-                    {% if match.played is True %}
+                    {% if not match or match.played is True %}
                     disabled {% endif %}
-                    title="Play Match">
-                <div data-loading-aria-busy data-loading="flex">
-                    <div class="progress-loader progress-loader-indeterminate progress-loader-sm" style="width: 24px; height: 3px;">
-                        <div class="progress-loader-bar"></div>
-                    </div>
+                    title="Play Match"
+                    style="width: 24px; height: 24px; min-width: 24px;">
+                <div data-loading-aria-busy data-loading="flex" class="justify-content-center align-items-center">
+                    <div class="button-spinner spinner-sm"></div>
                 </div>
                 <div data-loading-aria-busy data-loading-class="d-none">
-                    <i class="fa-solid fa-play"></i>
+                    <i class="fa-solid fa-play" style="font-size: 0.7rem;"></i>
                 </div>
             </button>
         {% endwith %}

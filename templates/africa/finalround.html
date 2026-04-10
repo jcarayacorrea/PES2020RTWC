@@ -11,11 +11,21 @@
             <div class="d-flex gap-3">
                 <button type="button" class="btn btn-primary px-4 py-2 fw-bold" hx-get="{% url 'africa.finalround.draw' %}"
                         hx-trigger="click" hx-target="body" data-loading-disable {% if teams|enable_draw_button:25 is True %} disabled {% endif %}>
-                    <i class="fa-solid fa-shuffle me-2"></i>Draw
+                    <div data-loading-aria-busy data-loading="flex" class="justify-content-center align-items-center">
+                        <div class="button-spinner me-2"></div>Draw
+                    </div>
+                    <div data-loading-aria-busy data-loading-class="d-none">
+                        <i class="fa-solid fa-shuffle me-2"></i>Draw
+                    </div>
                 </button>
                 <button type="button" class="btn btn-outline-secondary px-4 py-2" hx-get="{% url 'africa.finalround' %}" hx-trigger="click"
                         hx-target="body" data-loading-disable>
-                    <i class="fa-solid fa-rotate-left me-2"></i>Clear
+                    <div data-loading-aria-busy data-loading="flex" class="justify-content-center align-items-center">
+                        <div class="button-spinner me-2" style="border-top-color: var(--bs-secondary);"></div>Clear
+                    </div>
+                    <div data-loading-aria-busy data-loading-class="d-none">
+                        <i class="fa-solid fa-rotate-left me-2"></i>Clear
+                    </div>
                 </button>
             </div>
         </div>

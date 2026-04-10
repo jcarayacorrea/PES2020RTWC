@@ -79,7 +79,12 @@
                                                                 disabled {% endif %}
                                                                 title="Play Match"
                                                         >
-                                                            <i class="fa-solid fa-play"></i>
+                                                            <div data-loading-aria-busy data-loading="flex" class="justify-content-center align-items-center">
+                                                                <div class="button-spinner spinner-sm"></div>
+                                                            </div>
+                                                            <div data-loading-aria-busy data-loading-class="d-none">
+                                                                <i class="fa-solid fa-play"></i>
+                                                            </div>
                                                         </button>
                                                     {% endwith %}
                                                 </div>
