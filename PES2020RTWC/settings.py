@@ -25,10 +25,7 @@ SECRET_KEY = 'django-insecure-qz53dm4g)()9f$e$uuz)xm^)@bu@3n6v0#upb7d4-lw&_p11kd
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    'localhost',
-    '127.0.0.1'
-]
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
 
 
 
@@ -152,8 +149,12 @@ STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesSto
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # MONGO CONFIG
-MONGO_URL = '192.168.1.101'
-MONGO_PORT = 27017
-MONGO_USERNAME = 'admin'
-MONGO_PASSWORD = 'mongo'
-MONGO_DBNAME = 'pesrtwc'
+MONGO_URL = os.environ.get('MONGO_HOST', '127.0.0.1')
+MONGO_PORT = int(os.environ.get('MONGO_PORT', 27017))
+MONGO_USERNAME = os.environ.get('MONGO_USER', 'admin')
+MONGO_PASSWORD = os.environ.get('MONGO_PASS', 'mongo')
+MONGO_DBNAME = os.environ.get('MONGO_DB', 'pesrtwc')
+
+MONGO_URI = os.environ.get('MONGO_URI')
+if not MONGO_URI:
+    MONGO_URI = f"mongodb://{MONGO_USERNAME}:{MONGO_PASSWORD}@{MONGO_URL}:{MONGO_PORT}/{MONGO_DBNAME}?authSource=admin"

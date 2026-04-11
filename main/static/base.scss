@@ -1051,6 +1051,17 @@ ul:not(.navbar-nav):not(.dropdown-menu):not(.list-inline):not(.pagination):not(.
   height: 60vh;
 }
 
+.main-draw-div, .qualify-zones-div {
+  .img-card {
+    width: 3.2rem !important;
+    height: 2.1rem !important;
+  }
+  .flag-circle {
+    width: 2.8rem !important;
+    height: 2.8rem !important;
+  }
+}
+
 .team-list-container-card {
   @extend .card;
   @extend .card-border;
@@ -1680,6 +1691,140 @@ h6 {
 }
 
 // ============================================
+// ============================================
+// FLAG DISPLAY MODES (NEW)
+// ============================================
+
+// 1. Glassmorphism
+.flag-glass {
+  background: rgba(255, 255, 255, 0.2) !important;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+// 2. Neumorphic
+.flag-neumorphic {
+  background: #f0f0f0 !important;
+  border-radius: 12px !important;
+  box-shadow: 6px 6px 12px #cbcbcb, -6px -6px 12px #ffffff !important;
+  border: none !important;
+}
+
+// 3. Elevated Hover
+.flag-elevated {
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+  &:hover {
+    transform: translateY(-8px) scale(1.05) !important;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2) !important;
+  }
+}
+
+// 4. Shield Shape
+.flag-shield {
+  clip-path: polygon(0% 0%, 100% 0%, 100% 80%, 50% 100%, 0% 80%) !important;
+  object-fit: cover !important;
+}
+
+// 5. Hexagonal
+.flag-hex {
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%) !important;
+  object-fit: cover !important;
+}
+
+// 6. Orb (Glossy Circle)
+.flag-orb {
+  border-radius: 50% !important;
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset -5px -5px 15px rgba(0,0,0,0.4), 5px 5px 15px rgba(0,0,0,0.2) !important;
+}
+
+// 7. National Glow
+.flag-glow {
+  box-shadow: 0 0 15px rgba($primary, 0.5) !important;
+  transition: box-shadow 0.3s ease !important;
+  &:hover {
+    box-shadow: 0 0 25px rgba($primary, 0.8) !important;
+  }
+}
+
+// 8. Gradient Border (Gold/Champion)
+.flag-gradient-border {
+  padding: 3px;
+  background: linear-gradient(135deg, #ffd700, #b8860b) !important;
+  border-radius: 8px !important;
+  display: inline-block;
+  img {
+    border-radius: 5px !important;
+    display: block;
+  }
+}
+
+// 9. Retro Polaroid
+.flag-polaroid {
+  padding: 5px 5px 15px 5px !important;
+  background: white !important;
+  border: 1px solid #ddd !important;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1) !important;
+  transform: rotate(-2deg);
+  transition: transform 0.3s ease !important;
+  &:hover {
+    transform: rotate(0deg) scale(1.1);
+  }
+}
+
+// 10. Isometric
+.flag-isometric {
+  transform: perspective(500px) rotateY(-15deg) rotateX(5deg) !important;
+  transition: transform 0.3s !important;
+  &:hover {
+    transform: perspective(500px) rotateY(0deg) rotateX(0deg) !important;
+  }
+}
+
+// 11. Minimalist
+.flag-minimalist {
+  border-radius: 0 !important;
+  border: 2px solid #333 !important;
+  box-shadow: 4px 4px 0px #333 !important;
+}
+
+// 12. Pill
+.flag-pill {
+  border-radius: 50px !important;
+  object-fit: cover !important;
+}
+
+// 13. Banner style
+.flag-banner {
+  width: 100% !important;
+  height: 100% !important;
+  opacity: 0.15 !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  z-index: 0 !important;
+  object-fit: cover !important;
+}
+
+// 14. Dual-tone
+.flag-dualtone {
+  filter: grayscale(100%) sepia(50%) hue-rotate(300deg) !important;
+  transition: filter 0.3s !important;
+  &:hover {
+    filter: none !important;
+  }
+}
+
+// 15. 3D Tilt
+.flag-tilt {
+  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1) !important;
+  &:hover {
+    transform: perspective(1000px) rotateX(10deg) rotateY(-10deg) translateZ(20px) !important;
+  }
+}
+
 // UTILITY CLASSES
 // ============================================
 

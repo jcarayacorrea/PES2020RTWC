@@ -5,10 +5,7 @@ from django.conf import settings
 
 def db_conexion() -> Database:
     """Establishes a connection to the MongoDB database."""
-    client: MongoClient = MongoClient(host=settings.MONGO_URL,
-                                     port=settings.MONGO_PORT,
-                                     username=settings.MONGO_USERNAME,
-                                     password=settings.MONGO_PASSWORD)
+    client: MongoClient = MongoClient(settings.MONGO_URI)
     return client[settings.MONGO_DBNAME]
 
 

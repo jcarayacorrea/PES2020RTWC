@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb_pes
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=mongo
+      - MONGO_INITDB_DATABASE=pesrtwc
+    volumes:
+      - mongo_data:/data/db
+      - ./database:/init-data:ro
+      - ./mongo-init.sh:/docker-entrypoint-initdb.d/init.sh:ro
+    restart: unless-stopped
+
+  app:
+    build: .
+    container_name: django_app
+    ports:
+      - "8000:8000"
+    environment:
+      - MONGO_URI=mongodb://admin:mongo@mongodb:27017/pesrtwc?authSource=admin
+      - ALLOWED_HOSTS=localhost,127.0.0.1,app
+    depends_on:
+      - mongodb
+    restart: always
+
+volumes:
+  mongo_data:

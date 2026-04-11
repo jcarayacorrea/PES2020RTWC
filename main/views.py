@@ -24,6 +24,11 @@ def index(request: HttpRequest) -> HttpResponse:
     return render(request, 'main/index.html', {'teams': get_teams_json()})
 
 
+def flag_showcase(request: HttpRequest) -> HttpResponse:
+    """Renders the flag display modes showcase page."""
+    return render(request, 'main/flag_showcase.html')
+
+
 def get_team_list(request: HttpRequest) -> JsonResponse:
     """Returns a JSON list of all teams."""
     if request.method == 'GET':

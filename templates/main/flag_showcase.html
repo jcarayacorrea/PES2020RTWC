@@ -1,0 +1,203 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block container %}
+<div id="header">
+    <h1>Flag Display Modes</h1>
+    <p class="text-muted">Choose the best style for your project</p>
+</div>
+
+<div class="container py-5">
+    <div class="row g-4">
+        <!-- 1. Glassmorphism -->
+        <div class="col-md-4 col-lg-3 text-center">
+            <div class="p-3 border rounded bg-light h-100">
+                <h5 class="mb-3">1. Glassmorphism</h5>
+                <div class="d-flex justify-content-center align-items-center mb-3" style="height: 100px;">
+                    <img src="https://flagcdn.com/w320/qa.png" class="flag-glass" style="width: 80px; height: 50px; object-fit: cover;">
+                </div>
+                <p class="small text-muted">Modern frosted glass look with subtle transparency.</p>
+                <code>.flag-glass</code>
+            </div>
+        </div>
+
+        <!-- 2. Neumorphic -->
+        <div class="col-md-4 col-lg-3 text-center">
+            <div class="p-3 border rounded bg-light h-100">
+                <h5 class="mb-3">2. Neumorphic</h5>
+                <div class="d-flex justify-content-center align-items-center mb-3" style="height: 100px;">
+                    <img src="https://flagcdn.com/w320/br.png" class="flag-neumorphic" style="width: 80px; height: 50px; object-fit: cover;">
+                </div>
+                <p class="small text-muted">Soft UI style with extruded depth effects.</p>
+                <code>.flag-neumorphic</code>
+            </div>
+        </div>
+
+        <!-- 3. Elevated -->
+        <div class="col-md-4 col-lg-3 text-center">
+            <div class="p-3 border rounded bg-light h-100">
+                <h5 class="mb-3">3. Elevated</h5>
+                <div class="d-flex justify-content-center align-items-center mb-3" style="height: 100px;">
+                    <img src="https://flagcdn.com/w320/ar.png" class="flag-elevated" style="width: 80px; height: 50px; object-fit: cover;">
+                </div>
+                <p class="small text-muted">Floats up with a deep shadow on hover.</p>
+                <code>.flag-elevated</code>
+            </div>
+        </div>
+
+        <!-- 4. Shield -->
+        <div class="col-md-4 col-lg-3 text-center">
+            <div class="p-3 border rounded bg-light h-100">
+                <h5 class="mb-3">4. Shield</h5>
+                <div class="d-flex justify-content-center align-items-center mb-3" style="height: 100px;">
+                    <img src="https://flagcdn.com/w320/es.png" class="flag-shield" style="width: 60px; height: 70px;">
+                </div>
+                <p class="small text-muted">Classic football crest / shield shape.</p>
+                <code>.flag-shield</code>
+            </div>
+        </div>
+
+        <!-- 5. Hexagonal -->
+        <div class="col-md-4 col-lg-3 text-center">
+            <div class="p-3 border rounded bg-light h-100">
+                <h5 class="mb-3">5. Hexagonal</h5>
+                <div class="d-flex justify-content-center align-items-center mb-3" style="height: 100px;">
+                    <img src="https://flagcdn.com/w320/fr.png" class="flag-hex" style="width: 70px; height: 70px;">
+                </div>
+                <p class="small text-muted">Modern geometric hexagonal cut.</p>
+                <code>.flag-hex</code>
+            </div>
+        </div>
+
+        <!-- 6. Orb -->
+        <div class="col-md-4 col-lg-3 text-center">
+            <div class="p-3 border rounded bg-light h-100">
+                <h5 class="mb-3">6. Orb (Glossy)</h5>
+                <div class="d-flex justify-content-center align-items-center mb-3" style="height: 100px;">
+                    <img src="https://flagcdn.com/w320/de.png" class="flag-orb" style="width: 70px; height: 70px; object-fit: cover;">
+                </div>
+                <p class="small text-muted">3D glossy sphere effect with highlights.</p>
+                <code>.flag-orb</code>
+            </div>
+        </div>
+
+        <!-- 7. National Glow -->
+        <div class="col-md-4 col-lg-3 text-center">
+            <div class="p-3 border rounded bg-light h-100">
+                <h5 class="mb-3">7. National Glow</h5>
+                <div class="d-flex justify-content-center align-items-center mb-3" style="height: 100px;">
+                    <img src="https://flagcdn.com/w320/jp.png" class="flag-glow" style="width: 80px; height: 50px; object-fit: cover;">
+                </div>
+                <p class="small text-muted">Vibrant outer glow reflecting team spirit.</p>
+                <code>.flag-glow</code>
+            </div>
+        </div>
+
+        <!-- 8. Gradient Border -->
+        <div class="col-md-4 col-lg-3 text-center">
+            <div class="p-3 border rounded bg-light h-100">
+                <h5 class="mb-3">8. Champion Gold</h5>
+                <div class="d-flex justify-content-center align-items-center mb-3" style="height: 100px;">
+                    <div class="flag-gradient-border">
+                        <img src="https://flagcdn.com/w320/it.png" style="width: 80px; height: 50px; object-fit: cover;">
+                    </div>
+                </div>
+                <p class="small text-muted">Premium gold gradient border for winners.</p>
+                <code>.flag-gradient-border</code>
+            </div>
+        </div>
+
+        <!-- 9. Polaroid -->
+        <div class="col-md-4 col-lg-3 text-center">
+            <div class="p-3 border rounded bg-light h-100">
+                <h5 class="mb-3">9. Retro Polaroid</h5>
+                <div class="d-flex justify-content-center align-items-center mb-3" style="height: 100px;">
+                    <img src="https://flagcdn.com/w320/gb.png" class="flag-polaroid" style="width: 70px; height: 50px; object-fit: cover;">
+                </div>
+                <p class="small text-muted">Vintage photo look with a slight tilt.</p>
+                <code>.flag-polaroid</code>
+            </div>
+        </div>
+
+        <!-- 10. Isometric -->
+        <div class="col-md-4 col-lg-3 text-center">
+            <div class="p-3 border rounded bg-light h-100">
+                <h5 class="mb-3">10. Isometric</h5>
+                <div class="d-flex justify-content-center align-items-center mb-3" style="height: 100px;">
+                    <img src="https://flagcdn.com/w320/pt.png" class="flag-isometric" style="width: 80px; height: 50px; object-fit: cover;">
+                </div>
+                <p class="small text-muted">3D perspective view, flattens on hover.</p>
+                <code>.flag-isometric</code>
+            </div>
+        </div>
+
+        <!-- 11. Minimalist -->
+        <div class="col-md-4 col-lg-3 text-center">
+            <div class="p-3 border rounded bg-light h-100">
+                <h5 class="mb-3">11. Minimalist</h5>
+                <div class="d-flex justify-content-center align-items-center mb-3" style="height: 100px;">
+                    <img src="https://flagcdn.com/w320/be.png" class="flag-minimalist" style="width: 80px; height: 50px; object-fit: cover;">
+                </div>
+                <p class="small text-muted">Sharp edges with a thick retro shadow.</p>
+                <code>.flag-minimalist</code>
+            </div>
+        </div>
+
+        <!-- 12. Pill -->
+        <div class="col-md-4 col-lg-3 text-center">
+            <div class="p-3 border rounded bg-light h-100">
+                <h5 class="mb-3">12. Pill Shaped</h5>
+                <div class="d-flex justify-content-center align-items-center mb-3" style="height: 100px;">
+                    <img src="https://flagcdn.com/w320/nl.png" class="flag-pill" style="width: 90px; height: 45px; object-fit: cover;">
+                </div>
+                <p class="small text-muted">Modern extra-rounded "pill" aesthetics.</p>
+                <code>.flag-pill</code>
+            </div>
+        </div>
+
+        <!-- 13. Dual-tone -->
+        <div class="col-md-4 col-lg-3 text-center">
+            <div class="p-3 border rounded bg-light h-100">
+                <h5 class="mb-3">13. Dual-Tone</h5>
+                <div class="d-flex justify-content-center align-items-center mb-3" style="height: 100px;">
+                    <img src="https://flagcdn.com/w320/hr.png" class="flag-dualtone" style="width: 80px; height: 50px; object-fit: cover;">
+                </div>
+                <p class="small text-muted">Stylized color filter that reveals on hover.</p>
+                <code>.flag-dualtone</code>
+            </div>
+        </div>
+
+        <!-- 14. 3D Tilt -->
+        <div class="col-md-4 col-lg-3 text-center">
+            <div class="p-3 border rounded bg-light h-100">
+                <h5 class="mb-3">14. 3D Dynamic Tilt</h5>
+                <div class="d-flex justify-content-center align-items-center mb-3" style="height: 100px;">
+                    <img src="https://flagcdn.com/w320/mx.png" class="flag-tilt" style="width: 80px; height: 50px; object-fit: cover;">
+                </div>
+                <p class="small text-muted">Reacts dynamically to hover with 3D rotation.</p>
+                <code>.flag-tilt</code>
+            </div>
+        </div>
+
+        <!-- 15. Card Banner (Demonstration) -->
+        <div class="col-md-4 col-lg-3 text-center">
+            <div class="p-3 border rounded bg-light h-100 position-relative overflow-hidden">
+                <img src="https://flagcdn.com/w320/us.png" class="flag-banner">
+                <div class="position-relative z-index-1">
+                    <h5 class="mb-3">15. Background Banner</h5>
+                    <div class="d-flex justify-content-center align-items-center mb-3" style="height: 50px;">
+                        <span class="badge bg-primary">USA</span>
+                    </div>
+                    <p class="small text-dark">Flag acts as a faded watermark background.</p>
+                    <code>.flag-banner</code>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-5 p-4 bg-dark text-white rounded">
+        <h3>How to apply?</h3>
+        <p>You can use these classes in your templates by adding them to the flag <code>&lt;img&gt;</code> tag or a wrapper <code>&lt;div&gt;</code>. Most are designed as utility classes that work alongside existing styles.</p>
+    </div>
+</div>
+{% endblock %}
