@@ -44,10 +44,10 @@
                                             <div class="d-flex align-items-center">
                                                 <div class="me-3">
                                                     {% if team.image_flag %}
-                                                        <img src="{{ team.image_flag }}" class="img-card flag-circle shadow-sm border" alt="{{ team.nation_name }}" style="width: 32px; height: 32px;">
+                                                        <img src="{{ team.image_flag }}" class="img-card flag-circle shadow-sm" alt="{{ team.nation_name }}" style="width: 32px; height: 32px;">
                                                     {% else %}
-                                                        <div class="img-card flag-circle shadow-sm d-flex align-items-center justify-content-center bg-light border" style="width: 32px; height: 32px;">
-                                                            <i class="fa-solid fa-flag text-secondary opacity-50 small"></i>
+                                                        <div class="img-card flag-circle flag-missing shadow-sm" style="width: 32px; height: 32px;">
+                                                            <i class="fa-solid fa-flag small"></i>
                                                         </div>
                                                     {% endif %}
                                                 </div>

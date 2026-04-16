@@ -7,6 +7,10 @@
 // DESIGN TOKENS & VARIABLES
 // ============================================
 
+// Typography
+$font-heading: 'Bebas Neue', 'Impact', 'Arial Narrow', sans-serif;
+$font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
 // Brand Colors
 $primary: #8A1538 !default; // Qatar Maroon
 $primary-dark: #580822 !default; // Darker Qatar Maroon
@@ -161,6 +165,16 @@ html, body {
   margin: 0;
   height: 100%;
   overflow-x: hidden;
+  font-family: $font-body;
+  background-color: #f0f2f5;
+  background-image:
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 40px,
+      rgba($primary, 0.012) 40px,
+      rgba($primary, 0.012) 41px
+    );
 }
 
 // ============================================
@@ -168,30 +182,34 @@ html, body {
 // ============================================
 
 h1 {
-  font-weight: 800;
+  font-family: $font-heading;
+  font-weight: 400;
+  font-size: 3.75rem;
   text-transform: uppercase;
-  letter-spacing: -0.025em;
+  letter-spacing: 0.04em;
   color: $primary;
   margin-top: $spacing-2xl;
-  margin-bottom: $spacing-sm;
+  margin-bottom: $spacing-xs;
   text-align: center;
   position: relative;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.05);
+  line-height: 1;
+  text-shadow: 2px 3px 6px rgba(0, 0, 0, 0.08);
 
   @media (max-width: 768px) {
-    font-size: 1.75rem;
+    font-size: 2.5rem;
   }
 }
 
 h2 {
-  font-weight: 400;
+  font-family: $font-body;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.25em;
+  letter-spacing: 0.3em;
   color: lighten($soccer-border, 5%);
   margin-bottom: $spacing-3xl;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   text-align: center;
-  opacity: 0.8;
+  opacity: 0.65;
 }
 
 h6 {
@@ -326,7 +344,8 @@ ul:not(.navbar-nav):not(.dropdown-menu):not(.list-inline):not(.pagination):not(.
 
 #header {
   margin-bottom: 1.25rem;
-  padding-bottom: $spacing-md;
+  padding-top: $spacing-sm;
+  padding-bottom: $spacing-lg;
   position: relative;
 
   &::after {
@@ -335,15 +354,22 @@ ul:not(.navbar-nav):not(.dropdown-menu):not(.list-inline):not(.pagination):not(.
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 60px;
+    width: 100px;
     height: 3px;
-    background-color: $primary-light;
+    background: linear-gradient(to right, transparent, $primary-light, $primary, $primary-light, transparent);
     border-radius: 2px;
+    opacity: 0.7;
   }
 }
 
 #rotateOnDiv {
   display: none;
+}
+
+#container {
+  padding-top: 1.5rem;
+  padding-bottom: 2rem;
+  min-height: calc(100vh - 62px);
 }
 
 @media (min-width: 1500px) {
@@ -360,9 +386,24 @@ ul:not(.navbar-nav):not(.dropdown-menu):not(.list-inline):not(.pagination):not(.
 .navbar {
   @include gradient-bg(135deg, $primary, 15%);
   padding: $spacing-lg $spacing-xl;
+  position: relative;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.25);
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(to right, transparent 0%, rgba($soccer-draw, 0.6) 30%, rgba(white, 0.4) 50%, rgba($soccer-draw, 0.6) 70%, transparent 100%);
+    pointer-events: none;
+  }
 
   .navbar-brand {
-    font-size: 1.5rem;
+    font-family: $font-heading;
+    font-size: 1.6rem;
+    letter-spacing: 0.06em;
     color: white !important;
     transition: color $transition-base;
 
@@ -519,20 +560,21 @@ ul:not(.navbar-nav):not(.dropdown-menu):not(.list-inline):not(.pagination):not(.
   @extend .card-title;
   @extend .text-center;
   @include gradient-bg(135deg, $primary, 15%);
+  font-family: $font-heading;
   color: white;
-  font-weight: 800;
+  font-weight: 400;
   text-transform: uppercase;
-  letter-spacing: 1.5px;
-  padding: 0.4rem $spacing-md;
-  font-size: 0.8rem;
+  letter-spacing: 2px;
+  padding: 0.45rem $spacing-md;
+  font-size: 0.95rem;
   border-bottom: 2px solid rgba(0, 0, 0, 0.1);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
 }
 
 .soccer-card-body {
   @extend .card-body;
   padding: $spacing-lg;
-  background-color: rgba(white, 0.5);
+  background-color: white;
 }
 
 // ============================================
@@ -563,13 +605,16 @@ ul:not(.navbar-nav):not(.dropdown-menu):not(.list-inline):not(.pagination):not(.
 }
 
 .flag-circle {
-  @extend .rounded-circle;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  border-radius: 50% !important;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   border: 1.5px solid white;
   transition: transform $transition-fast;
 
   &:hover {
     transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   }
 }
 
@@ -579,9 +624,10 @@ ul:not(.navbar-nav):not(.dropdown-menu):not(.list-inline):not(.pagination):not(.
   width: 2.75rem;
   height: 1.85rem;
   object-fit: cover;
-  box-shadow: $shadow-sm;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
   transition: all $transition-base;
   position: relative;
+  border: 1px solid rgba(0,0,0,0.08);
 
   // Enhanced flag border with inner glow effect
   &::after {
@@ -589,13 +635,19 @@ ul:not(.navbar-nav):not(.dropdown-menu):not(.list-inline):not(.pagination):not(.
     position: absolute;
     inset: 0;
     border-radius: inherit;
-    box-shadow: inset 0 0 0 1px rgba(white, 0.3);
+    box-shadow: inset 0 0 0 1px rgba(white, 0.25);
     pointer-events: none;
     transition: opacity $transition-base;
   }
 
-  &:hover::after {
-    opacity: 0.7;
+  &:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transform: translateY(-1px);
+    
+    &::after {
+      opacity: 0.8;
+      box-shadow: inset 0 0 0 1px rgba(white, 0.4);
+    }
   }
 }
 
@@ -1030,9 +1082,10 @@ ul:not(.navbar-nav):not(.dropdown-menu):not(.list-inline):not(.pagination):not(.
 .container-card, .container-card-wc {
   @extend .card;
   @extend .card-border;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12), 0 2px 8px rgba($primary, 0.06);
   border-radius: 1rem !important;
   border: none;
+  background-color: white;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -1066,7 +1119,8 @@ ul:not(.navbar-nav):not(.dropdown-menu):not(.list-inline):not(.pagination):not(.
   @extend .card;
   @extend .card-border;
   max-height: 60vh;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1), 0 4px 10px rgba(0,0,0,0.05);
+  background-color: white;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1), 0 2px 8px rgba($primary, 0.06);
 }
 
 
@@ -1083,11 +1137,13 @@ ul:not(.navbar-nav):not(.dropdown-menu):not(.list-inline):not(.pagination):not(.
   flex-direction: column;
   overflow: hidden;
   border-radius: 0.75rem !important;
+  background-color: white;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08), 0 1px 4px rgba($primary, 0.05);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  
+
   &:hover {
     transform: translateY(-5px);
-    box-shadow: 0 12px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 14px 28px rgba(0,0,0,0.12), 0 4px 12px rgba($primary, 0.08);
   }
 
   .soccer-card-body {
@@ -1117,7 +1173,8 @@ ul:not(.navbar-nav):not(.dropdown-menu):not(.list-inline):not(.pagination):not(.
   height: auto;
   min-width: 110px;
   border-radius: 0.75rem !important;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  background-color: white;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08), 0 1px 4px rgba($primary, 0.05);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover {
@@ -1309,11 +1366,13 @@ h6 {
 
 .scr_style{
   justify-self: center;
-  padding: 0.35rem 0.85rem;
-  font-weight: 900;
-  color: darken($primary, 35%);
-  letter-spacing: 2px;
-  background: linear-gradient(to bottom, #ffffff, #f8f9fa);
+  padding: 0.3rem 0.75rem;
+  font-family: $font-heading;
+  font-weight: 400;
+  font-size: 1.15rem;
+  color: darken($primary, 30%);
+  letter-spacing: 4px;
+  background: linear-gradient(to bottom, #ffffff, #f5f6f7);
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08), inset 0 0 0 1px rgba($primary, 0.1);
   border: 1px solid rgba($primary, 0.15);
@@ -1322,7 +1381,7 @@ h6 {
   justify-content: center;
   gap: 0.35rem;
   transition: all 0.3s ease;
-  
+
   &:hover {
     transform: translateY(-1px);
     box-shadow: 0 6px 15px rgba(0,0,0,0.1);
@@ -1428,11 +1487,11 @@ h6 {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba($primary, 0.22);
   border-radius: 10px;
 
   &:hover {
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba($primary, 0.38);
   }
 }
 
@@ -1864,36 +1923,84 @@ h6 {
 }
 
 // ============================================
-// EMPTY FLAG PLACEHOLDER
+// EMPTY & MISSING FLAG PLACEHOLDERS
 // ============================================
 
-.flag-empty {
-  width: 100%;
-  height: 2.1rem;
+.flag-empty, .flag-missing {
+  width: 2.75rem;
+  height: 1.85rem;
   border-radius: $radius-sm;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, rgba($primary, 0.04), rgba($primary, 0.09));
-  border: 1.5px dashed rgba($primary, 0.28);
-  animation: flag-empty-pulse 2.8s ease-in-out infinite;
+  background: linear-gradient(135deg, rgba($primary, 0.05) 0%, rgba($primary, 0.12) 100%);
+  border: 1.5px dashed rgba($primary, 0.3);
+  position: relative;
+  overflow: hidden;
+  transition: all $transition-base;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.03);
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transform: translateX(-100%);
+    animation: flag-shimmer 2.5s infinite;
+  }
 
   i {
-    color: rgba($primary, 0.38);
-    font-size: 0.78rem;
+    color: rgba($primary, 0.45);
+    font-size: 0.8rem;
+    z-index: 1;
+    filter: drop-shadow(0 1px 2px rgba(0,0,0,0.08));
+  }
+}
+
+.flag-empty {
+  animation: flag-empty-pulse 3s ease-in-out infinite;
+}
+
+.flag-missing {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-style: solid; // Explicitly solid
+
+  i {
+    color: #adb5bd;
+  }
+
+  &::before {
+    display: none; // No shimmer for missing but known team
+  }
+}
+
+.flag-circle {
+  &.flag-empty, &.flag-missing {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50% !important;
   }
 }
 
 @keyframes flag-empty-pulse {
   0%, 100% {
-    opacity: 0.6;
-    border-color: rgba($primary, 0.18);
-    background: linear-gradient(135deg, rgba($primary, 0.03), rgba($primary, 0.07));
+    transform: scale(1);
+    border-color: rgba($primary, 0.2);
+    background: linear-gradient(135deg, rgba($primary, 0.04) 0%, rgba($primary, 0.08) 100%);
+    box-shadow: 0 0 0 rgba($primary, 0);
   }
   50% {
-    opacity: 1;
-    border-color: rgba($primary, 0.42);
-    background: linear-gradient(135deg, rgba($primary, 0.06), rgba($primary, 0.12));
+    transform: scale(1.02);
+    border-color: rgba($primary, 0.45);
+    background: linear-gradient(135deg, rgba($primary, 0.08) 0%, rgba($primary, 0.15) 100%);
+    box-shadow: 0 0 12px rgba($primary, 0.1);
+  }
+}
+
+@keyframes flag-shimmer {
+  100% {
+    transform: translateX(100%);
   }
 }
 
