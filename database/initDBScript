@@ -10,7 +10,7 @@ db.Teams.find({conf_name:"CONMEBOL"}).sort({fifa_nation_rank: 1}).map((team)=>{
 });
 
 //UEFA
-db.Teams.find({conf_name:"UEFA"}).sort({fifa_nation_rank: 1}).limit(12).map((team)=>{
+db.Teams.find({conf_name:"UEFA"}).sort({fifa_nation_rank: 1}).limit(30).map((team)=>{
     let stage = {
         firstRound: false,
         secondRound: false,
@@ -19,25 +19,7 @@ db.Teams.find({conf_name:"UEFA"}).sort({fifa_nation_rank: 1}).limit(12).map((tea
     }
     db.Teams.updateOne({nation_iso_code: team.nation_iso_code},{$set:{stage:stage}})
 });
-db.Teams.find({conf_name:"UEFA"}).sort({fifa_nation_rank: 1}).skip(12).limit(12).map((team)=>{
-    let stage = {
-        firstRound: false,
-        secondRound: false,
-        thirdRound: true,
-        finalRound: false
-    }
-    db.Teams.updateOne({nation_iso_code: team.nation_iso_code},{$set:{stage:stage}})
-});
-db.Teams.find({conf_name:"UEFA"}).sort({fifa_nation_rank: 1}).skip(24).limit(21).map((team)=>{
-    let stage = {
-        firstRound: false,
-        secondRound: true,
-        thirdRound: false,
-        finalRound: false
-    }
-    db.Teams.updateOne({nation_iso_code: team.nation_iso_code},{$set:{stage:stage}})
-});
-db.Teams.find({conf_name:"UEFA"}).sort({fifa_nation_rank: -1}).limit(10).map((team)=>{
+db.Teams.find({conf_name:"UEFA"}).sort({fifa_nation_rank: -1}).limit(25).map((team)=>{
     let stage = {
         firstRound: true,
         secondRound: false,
