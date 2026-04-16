@@ -1851,7 +1851,7 @@ h6 {
   overflow: hidden;
   border: none !important;
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  
+
   .soccer-card-header {
     background: linear-gradient(135deg, $primary 0%, darken($primary, 10%) 100%);
     border: none;
@@ -1861,6 +1861,59 @@ h6 {
     justify-content: space-between;
     align-items: center;
   }
+}
+
+// ============================================
+// EMPTY FLAG PLACEHOLDER
+// ============================================
+
+.flag-empty {
+  width: 100%;
+  height: 2.1rem;
+  border-radius: $radius-sm;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba($primary, 0.04), rgba($primary, 0.09));
+  border: 1.5px dashed rgba($primary, 0.28);
+  animation: flag-empty-pulse 2.8s ease-in-out infinite;
+
+  i {
+    color: rgba($primary, 0.38);
+    font-size: 0.78rem;
+  }
+}
+
+@keyframes flag-empty-pulse {
+  0%, 100% {
+    opacity: 0.6;
+    border-color: rgba($primary, 0.18);
+    background: linear-gradient(135deg, rgba($primary, 0.03), rgba($primary, 0.07));
+  }
+  50% {
+    opacity: 1;
+    border-color: rgba($primary, 0.42);
+    background: linear-gradient(135deg, rgba($primary, 0.06), rgba($primary, 0.12));
+  }
+}
+
+.name-empty {
+  color: rgba($soccer-border, 0.55) !important;
+  font-style: italic;
+  letter-spacing: 0.02em;
+}
+
+.match-num-badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.15rem 0.55rem;
+  border-radius: 50rem;
+  background-color: rgba($primary, 0.1);
+  color: rgba($primary, 0.75);
+  border: 1px solid rgba($primary, 0.18);
 }
 
 
