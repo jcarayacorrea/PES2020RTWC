@@ -1,6 +1,6 @@
 <p class="mb-2 text-center"><span class="match-num-badge">Match {{ matchNum }}</span></p>
 <div class="row g-0 align-items-center">
-<div class="col-4 pe-1">
+    <div class="col-4 pe-1">
         {% if not match %}
             {% include "utils/playoff/team-card-empty.html" with desc=home_empty %}
         {% else %}
@@ -18,28 +18,33 @@
             <h6 class="scr_style mb-0 fw-bold small py-1 px-1">
                 {{ match.homeTeam.goals|default_if_none:"?" }}
                 {% if match.homeTeam.penalties is not None or match.awayTeam.penalties is not None %}
-                    <span class="penalty-score" style="font-size: 0.6em;">({{ match.homeTeam.penalties|default:0 }})</span>
+                    <span class="penalty-score"
+                          style="font-size: 0.6em;">({{ match.homeTeam.penalties|default:0 }})</span>
                 {% endif %}
                 <span class="opacity-25">-</span>
                 {% if match.homeTeam.penalties is not None or match.awayTeam.penalties is not None %}
-                    <span class="penalty-score" style="font-size: 0.6em;">({{ match.awayTeam.penalties|default:0 }})</span>
+                    <span class="penalty-score"
+                          style="font-size: 0.6em;">({{ match.awayTeam.penalties|default:0 }})</span>
                 {% endif %}
                 {{ match.awayTeam.goals|default_if_none:"?" }}
             </h6>
         </div>
     </div>
 
-<div class="col-4 ps-1">
+    <div class="col-4 ps-1">
         {% if not match %}
             <div class="team-card-sm">
                 <div class="row g-0 align-items-center">
                     <div class="col-5 px-1 py-1">
-                        <div class="flag-empty">
-                            <i class="fa-solid fa-flag"></i>
+                        <div class="flag-wrapper">
+                            <div class="img-card flag-missing my-1">
+                                <i class="fa-solid fa-flag"></i>
+                            </div>
                         </div>
                     </div>
                     <div class="col-7">
-                        <div class="name-config-sm name-empty m-0 justify-content-start text-start fw-bold" style="font-size: 0.75rem;">
+                        <div class="name-config-sm name-empty m-0 justify-content-start text-start fw-bold"
+                             style="font-size: 0.75rem;">
                             {{ away_empty }}
                         </div>
                     </div>
