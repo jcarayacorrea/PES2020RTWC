@@ -23,6 +23,7 @@
             {% endfor %}
         </div>
 
+        {% if teams|length == 32 %}
         <div class="row justify-content-center g-2 mb-2">
             <div class="col-conf">
                 <div class="group-card-conf">
@@ -89,6 +90,7 @@
                 </div>
             </div>
         </div>
+        {% endif %}
 
         <div class="row mb-1">
             <div class="col-12 d-flex justify-content-center align-items-center">
