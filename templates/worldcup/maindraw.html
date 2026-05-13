@@ -23,6 +23,73 @@
             {% endfor %}
         </div>
 
+        <div class="row justify-content-center g-2 mb-2">
+            <div class="col-conf">
+                <div class="group-card-conf">
+                    <div class="soccer-card-header">Pool 1</div>
+                    <div class="soccer-card-body text-center d-flex flex-wrap justify-content-center gap-1">
+                        {% for team in teams|slice:":8" %}
+                            {% if team.image_flag %}
+                                <img src="{{ team.image_flag }}" class="img-card flag-circle" alt="{{ team.nation_name }}" style="width: 1.5rem; height: 1.5rem;">
+                            {% else %}
+                                <div class="img-card flag-circle d-flex align-items-center justify-content-center bg-light" style="width: 1.5rem; height: 1.5rem;">
+                                    <i class="fa-solid fa-flag text-secondary opacity-50" style="font-size: 0.6rem;"></i>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-conf">
+                <div class="group-card-conf">
+                    <div class="soccer-card-header">Pool 2</div>
+                    <div class="soccer-card-body text-center d-flex flex-wrap justify-content-center gap-1">
+                        {% for team in teams|slice:"8:16" %}
+                            {% if team.image_flag %}
+                                <img src="{{ team.image_flag }}" class="img-card flag-circle" alt="{{ team.nation_name }}" style="width: 1.5rem; height: 1.5rem;">
+                            {% else %}
+                                <div class="img-card flag-circle d-flex align-items-center justify-content-center bg-light" style="width: 1.5rem; height: 1.5rem;">
+                                    <i class="fa-solid fa-flag text-secondary opacity-50" style="font-size: 0.6rem;"></i>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-conf">
+                <div class="group-card-conf">
+                    <div class="soccer-card-header">Pool 3</div>
+                    <div class="soccer-card-body text-center d-flex flex-wrap justify-content-center gap-1">
+                        {% for team in teams|slice:"16:24" %}
+                            {% if team.image_flag %}
+                                <img src="{{ team.image_flag }}" class="img-card flag-circle" alt="{{ team.nation_name }}" style="width: 1.5rem; height: 1.5rem;">
+                            {% else %}
+                                <div class="img-card flag-circle d-flex align-items-center justify-content-center bg-light" style="width: 1.5rem; height: 1.5rem;">
+                                    <i class="fa-solid fa-flag text-secondary opacity-50" style="font-size: 0.6rem;"></i>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-conf">
+                <div class="group-card-conf">
+                    <div class="soccer-card-header">Pool 4</div>
+                    <div class="soccer-card-body text-center d-flex flex-wrap justify-content-center gap-1">
+                        {% for team in teams|slice:"24:" %}
+                            {% if team.image_flag %}
+                                <img src="{{ team.image_flag }}" class="img-card flag-circle" alt="{{ team.nation_name }}" style="width: 1.5rem; height: 1.5rem;">
+                            {% else %}
+                                <div class="img-card flag-circle d-flex align-items-center justify-content-center bg-light" style="width: 1.5rem; height: 1.5rem;">
+                                    <i class="fa-solid fa-flag text-secondary opacity-50" style="font-size: 0.6rem;"></i>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="row mb-1">
             <div class="col-12 d-flex justify-content-center align-items-center">
                 <div class="d-flex gap-3">
