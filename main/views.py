@@ -68,7 +68,7 @@ def standings_zone(request: HttpRequest, conf: str, round_name: str, zone: str) 
 
 
 def sim_match(request: HttpRequest, fixture: Any, match: int, home_id: str, away_id: str, 
-              conf: str, round_name: str, zone: str, extra_time: int = 0, single_load: int = 0) -> HttpResponse:
+              conf: str, round_name: str, zone: str, extra_time: int = 0, single_load: int = 1) -> HttpResponse:
     """Simulates a match and updates the database."""
     match_info = {'fixture': fixture, 'match': match, 'homeid': home_id, 'awayid': away_id}
     resultado = simulate_match(home_id, away_id, extra_time != 0)
@@ -130,10 +130,18 @@ def download_draw(request: HttpRequest, filename: str) -> HttpResponse:
 
 def render_match_data(request: HttpRequest, zone_id: str, conf: str, round_id: str, 
                       fixture_id: int, match_id: int) -> HttpResponse:
-    """Renders a single match card."""
+    """Renders a single match card for HTMX partial update."""
     zone_data = get_zone_data(zone_id, conf, round_id)
     match_data = get_match_data_from_dict(zone_data, fixture_id, match_id)
-    context = {'match': match_data}
+    context = {
+        'match': match_data,
+        'fixtureNum': fixture_id,
+        'matchNum': match_id,
+        'conf': conf,
+        'round': round_id,
+        'zone': zone_id,
+        'delay': 0,
+    }
     return render(request, 'utils/fixture/match-card.html', context)
 
 

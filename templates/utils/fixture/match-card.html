@@ -4,12 +4,12 @@
     </div>
 
     <div class="col-3 text-center">
-        <div data-loading-aria-busy data-loading="flex" class="justify-content-center align-items-center mb-1">
+        <div class="match-loading d-none justify-content-center align-items-center mb-1">
             <div class="progress-loader progress-loader-indeterminate progress-loader-sm" style="width: 40px;">
                 <div class="progress-loader-bar"></div>
             </div>
         </div>
-        <div data-loading-aria-busy data-loading-class="d-none">
+        <div class="match-score">
             <h5 class="scr_style mb-0 fw-bold small">
                 {{ match.homeTeam.goals|default_if_none:"?" }}
                 <span class="opacity-25">-</span>
@@ -25,23 +25,14 @@
     <div class="col-1 d-flex justify-content-center">
         {% with homeId=match.homeTeam.team.nation_iso_code awayId=match.awayTeam.team.nation_iso_code %}
             {% url 'match_simulator' fixtureNum matchNum homeId awayId  conf  round zone 0 1 as matchsim %}
-            <button type="button" class="btn btn-sm btn-primary p-0"
-                    hx-get="{{ matchsim }}"
-                    hx-trigger="click delay:{{ delay }}ms"
-                    hx-target="{{ target }}"
-                    data-loading-disable
+            <button type="button" class="btn btn-sm btn-primary p-0 match-play-btn"
+                    data-sim-url="{{ matchsim }}"
                     {% if match.played is True %}
                     disabled {% endif %}
                     title="Play Match"
                     style="width: 24px; height: 24px; min-width: 24px;">
-                <div data-loading-aria-busy data-loading="flex" class="justify-content-center align-items-center">
-                    <div class="button-spinner spinner-sm"></div>
-                </div>
-                <div data-loading-aria-busy data-loading-class="d-none">
-                    <i class="fa-solid fa-play" style="font-size: 0.7rem;"></i>
-                </div>
+                <i class="fa-solid fa-play" style="font-size: 0.7rem;"></i>
             </button>
         {% endwith %}
     </div>
 </div>
-
