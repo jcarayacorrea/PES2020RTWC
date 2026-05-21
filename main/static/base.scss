@@ -1584,6 +1584,31 @@ h6 {
   }
 }
 
+// Continuous loader variant - smooth sweeping gradient
+.progress-loader-continuous {
+  background: linear-gradient(90deg,
+    rgba($primary, 0.08),
+    rgba($primary, 0.12),
+    rgba($primary, 0.08));
+
+  .progress-loader-bar {
+    width: 100% !important;
+    background: linear-gradient(90deg,
+      transparent 0%,
+      $primary 40%,
+      lighten($primary, 10%) 50%,
+      $primary 60%,
+      transparent 100%);
+    background-size: 200% 100%;
+    animation: continuous-sweep 1.8s ease-in-out infinite;
+    box-shadow: 0 0 12px rgba($primary, 0.3);
+
+    &::after {
+      display: none;
+    }
+  }
+}
+
 // Size variants
 .progress-loader-sm {
   height: 4px;
@@ -1735,6 +1760,15 @@ h6 {
   }
   100% {
     left: 100%;
+  }
+}
+
+@keyframes continuous-sweep {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
   }
 }
 
