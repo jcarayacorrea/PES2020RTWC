@@ -112,6 +112,7 @@ def simulate_penalty_shots(home_prob: float, away_prob: float, home_name: str, a
         match_data['away_penalties'] = execute_penalty(
             away_prob, away_name, away_penalties_array, match_data['away_penalties']
         )
+        time.sleep(0.025)
 
         # Standard best-of-5 logic
         if 2 < turns < PENALTY_DEFAULT_TURNS:
