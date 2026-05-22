@@ -1,5 +1,5 @@
 from typing import List, Dict, Any, Optional
-from utils import db_conexion
+from db import db_conexion
 
 def create_match(home_team: Dict[str, Any], away_team: Optional[Dict[str, Any]]) -> Dict[str, Any]:
     """Creates a match dictionary object."""

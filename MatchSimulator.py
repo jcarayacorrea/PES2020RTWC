@@ -3,7 +3,7 @@ import time
 from typing import Dict, List, Optional, Tuple, Any
 
 from Global_Variables import (
-    HOME_GOAL, AWAY_GOAL, GOAL_PRBLTY, STEP, SLEEP_TIME, GOAL, NO_GOAL, 
+    HOME_GOAL, AWAY_GOAL, GOAL_PRBLTY, STEP, GOAL, NO_GOAL, 
     PENALTY_DEFAULT_TURNS, LOG_LENGTH
 )
 from utils import (
@@ -68,7 +68,8 @@ def process_match_event(event_time: int, home_prob: float, away_prob: float,
         display_event(event_time, away_name, home_goals, away_goals)
     else:
         display_event(event_time, home_name, home_goals, away_goals, event_type="Minute")
-        
+    
+    time.sleep(0.05)
     return home_goals, away_goals
 
 
@@ -80,7 +81,6 @@ def simulate_match_time(start_time: int, duration: int, home_prob: float, away_p
             event_time, home_prob, away_prob, home_name, away_name,
             match_data['home_goals'], match_data['away_goals']
         )
-        time.sleep(SLEEP_TIME)
 
 
 def execute_penalty(probability: float, name: str, penalty_array: List[str], current_penalties: int) -> int:
@@ -90,7 +90,6 @@ def execute_penalty(probability: float, name: str, penalty_array: List[str], cur
     if event == GOAL:
         current_penalties += 1
     display_event(0, name, None, None, penalty_array, event_type="Penalties")
-    time.sleep(SLEEP_TIME)
     return current_penalties
 
 
@@ -128,7 +127,6 @@ def simulate_penalty_shots(home_prob: float, away_prob: float, home_name: str, a
                 penalty_kick_over = True
 
         turns += 1
-        time.sleep(SLEEP_TIME)
 
 
 def simulate_match(home_iso: str, away_iso: str, is_extra_time: bool) -> Dict[str, Any]:

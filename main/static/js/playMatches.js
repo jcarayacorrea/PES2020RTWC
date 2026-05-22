@@ -50,8 +50,8 @@ const playMatches = async () => {
     const rotateOffDiv = document.getElementById('rotateOffDiv');
 
     if (btnExec) btnExec.disabled = true;
-    if (rotateOnDiv) rotateOnDiv.style.display = "block";
-    if (rotateOffDiv) rotateOffDiv.style.display = "none";
+    if (rotateOnDiv) rotateOnDiv.classList.remove('d-none');
+    if (rotateOffDiv) rotateOffDiv.classList.add('d-none');
 
     const fixtureCards = document.querySelectorAll('#fixtures .fixture-card');
     const totalFixtures = fixtureCards.length;
@@ -68,8 +68,8 @@ const playMatches = async () => {
     }
 
     if (btnExec) btnExec.disabled = false;
-    if (rotateOnDiv) rotateOnDiv.style.display = "none";
-    if (rotateOffDiv) rotateOffDiv.style.display = "block";
+    if (rotateOnDiv) rotateOnDiv.classList.add('d-none');
+    if (rotateOffDiv) rotateOffDiv.classList.remove('d-none');
 };
 
 // Event delegation for all button clicks

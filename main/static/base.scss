@@ -15,11 +15,8 @@ $font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans
 $primary: #8A1538 !default; // Qatar Maroon
 $primary-dark: #580822 !default; // Darker Qatar Maroon
 $primary-light: #B01E4D !default; // Lighter Qatar Maroon
-$card-cap-bg: $primary !default;
-$card-border-color: $primary !default;
-$dropdown-bg: $primary !default;
-$navbar-light-bg: $primary !default;
-$navbar-dark-bg: $primary !default;
+$card-cap-bg: $primary;
+$card-border-color: $primary;
 
 // Soccer-specific Colors
 $soccer-win: #89ffb7;
@@ -59,6 +56,27 @@ $transition-slow: 0.5s ease-in-out;
 $z-index-dropdown: 1060;
 $z-index-sticky: 10;
 $z-index-overlay: 2;
+
+// CSS Custom Properties for runtime theming
+:root {
+  --color-primary: #{$primary};
+  --color-primary-dark: #{$primary-dark};
+  --color-primary-light: #{$primary-light};
+  --color-win: #{$soccer-win};
+  --color-lose: #{$soccer-lose};
+  --color-draw: #{$soccer-draw};
+  --color-border: #{$soccer-border};
+  --color-text-light: #{$soccer-text-light};
+  --font-heading: #{$font-heading};
+  --font-body: #{$font-body};
+  --radius-sm: #{$radius-sm};
+  --radius-md: #{$radius-md};
+  --radius-lg: #{$radius-lg};
+  --shadow-sm: #{$shadow-sm};
+  --shadow-md: #{$shadow-md};
+  --shadow-lg: #{$shadow-lg};
+  --transition-base: #{$transition-base};
+}
 
 // Bootstrap Import
 @import "bootstrap5/scss/bootstrap";
@@ -222,7 +240,7 @@ h6 {
 
 // Search Input Component
 .soccer-search-input-group {
-  transition: all $transition-base;
+  transition: box-shadow $transition-base, border-color $transition-base;
   border-radius: $radius-full !important;
   background-color: white;
   overflow: hidden;
@@ -301,7 +319,7 @@ h6 {
 // LISTS
 // ============================================
 
-ul:not(.navbar-nav):not(.dropdown-menu):not(.list-inline):not(.pagination):not(.dropdown-menu-dark) {
+ul.list-unstyled, ul:not([class]) {
   padding-left: 0;
   list-style: none;
   margin-bottom: $spacing-2xl;
@@ -360,10 +378,6 @@ ul:not(.navbar-nav):not(.dropdown-menu):not(.list-inline):not(.pagination):not(.
     border-radius: 2px;
     opacity: 0.7;
   }
-}
-
-#rotateOnDiv {
-  display: none;
 }
 
 #container {
@@ -492,8 +506,8 @@ ul:not(.navbar-nav):not(.dropdown-menu):not(.list-inline):not(.pagination):not(.
   max-height: 400px;
   overflow-y: auto;
   border: 1px solid rgba($primary, 0.2);
-  border-radius: $radius-lg !important;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2) !important;
+  border-radius: $radius-lg;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
   animation: dropdown-fade-in 0.2s ease-out;
   z-index: $z-index-dropdown;
 
@@ -516,7 +530,7 @@ ul:not(.navbar-nav):not(.dropdown-menu):not(.list-inline):not(.pagination):not(.
 }
 
 .team-select-button {
-  background-image: none !important;
+  background-image: none;
   border-color: rgba($primary, 0.5);
   transition: all $transition-fast;
 
@@ -605,7 +619,7 @@ ul:not(.navbar-nav):not(.dropdown-menu):not(.list-inline):not(.pagination):not(.
 }
 
 .flag-circle {
-  border-radius: 50% !important;
+  border-radius: 50%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
@@ -734,14 +748,14 @@ ul:not(.navbar-nav):not(.dropdown-menu):not(.list-inline):not(.pagination):not(.
   }
 }
 
-// Match Result Borders - Enhanced with glow effects
-.lose {
+// Match Result Borders
+@mixin result-border($color, $alpha-border: 0.3, $alpha-glow: 0.15, $alpha-bg: 0.2) {
   @extend .img-border;
-  border-color: $soccer-lose;
+  border-color: $color;
   box-shadow:
-    0 2px 8px rgba($soccer-lose, 0.3),
-    inset 0 0 0 1px rgba($soccer-lose, 0.2),
-    0 0 15px rgba($soccer-lose, 0.15);
+    0 2px 8px rgba($color, $alpha-border),
+    inset 0 0 0 1px rgba($color, $alpha-border * 0.66),
+    0 0 15px rgba($color, $alpha-glow);
 
   &::before {
     content: '';
@@ -749,8 +763,8 @@ ul:not(.navbar-nav):not(.dropdown-menu):not(.list-inline):not(.pagination):not(.
     inset: -3px;
     border-radius: inherit;
     background: linear-gradient(135deg,
-      rgba($soccer-lose, 0.2),
-      rgba($soccer-lose, 0.05));
+      rgba($color, $alpha-bg),
+      rgba($color, $alpha-bg * 0.25));
     z-index: -1;
     opacity: 0;
     transition: opacity $transition-base;
@@ -761,57 +775,9 @@ ul:not(.navbar-nav):not(.dropdown-menu):not(.list-inline):not(.pagination):not(.
   }
 }
 
-.win {
-  @extend .img-border;
-  border-color: $soccer-win;
-  box-shadow:
-    0 2px 8px rgba($soccer-win, 0.35),
-    inset 0 0 0 1px rgba($soccer-win, 0.25),
-    0 0 15px rgba($soccer-win, 0.2);
-
-  &::before {
-    content: '';
-    position: absolute;
-    inset: -3px;
-    border-radius: inherit;
-    background: linear-gradient(135deg,
-      rgba($soccer-win, 0.25),
-      rgba($soccer-win, 0.05));
-    z-index: -1;
-    opacity: 0;
-    transition: opacity $transition-base;
-  }
-
-  &:hover::before {
-    opacity: 1;
-  }
-}
-
-.draw {
-  @extend .img-border;
-  border-color: $soccer-draw;
-  box-shadow:
-    0 2px 8px rgba($soccer-draw, 0.4),
-    inset 0 0 0 1px rgba($soccer-draw, 0.3),
-    0 0 15px rgba($soccer-draw, 0.25);
-
-  &::before {
-    content: '';
-    position: absolute;
-    inset: -3px;
-    border-radius: inherit;
-    background: linear-gradient(135deg,
-      rgba($soccer-draw, 0.3),
-      rgba($soccer-draw, 0.05));
-    z-index: -1;
-    opacity: 0;
-    transition: opacity $transition-base;
-  }
-
-  &:hover::before {
-    opacity: 1;
-  }
-}
+.lose { @include result-border($soccer-lose); }
+.win { @include result-border($soccer-win, 0.35, 0.2, 0.25); }
+.draw { @include result-border($soccer-draw, 0.4, 0.25, 0.3); }
 
 // Team Name Configurations
 .name-config {
@@ -1083,7 +1049,7 @@ ul:not(.navbar-nav):not(.dropdown-menu):not(.list-inline):not(.pagination):not(.
   @extend .card;
   @extend .card-border;
   box-shadow: 0 8px 32px rgba(0,0,0,0.12), 0 2px 8px rgba($primary, 0.06);
-  border-radius: 1rem !important;
+  border-radius: 1rem;
   border: none;
   background-color: white;
   display: flex;
@@ -1106,12 +1072,12 @@ ul:not(.navbar-nav):not(.dropdown-menu):not(.list-inline):not(.pagination):not(.
 
 .main-draw-div, .qualify-zones-div {
   .img-card {
-    width: 2.5rem !important;
-    height: 2.1rem !important;
+    width: 2.5rem;
+    height: 2.1rem;
   }
   .flag-circle {
-    width: 2.8rem !important;
-    height: 2.8rem !important;
+    width: 2.8rem;
+    height: 2.8rem;
   }
 }
 
@@ -1136,10 +1102,10 @@ ul:not(.navbar-nav):not(.dropdown-menu):not(.list-inline):not(.pagination):not(.
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  border-radius: 0.75rem !important;
+  border-radius: $radius-lg;
   background-color: white;
   box-shadow: 0 4px 16px rgba(0,0,0,0.08), 0 1px 4px rgba($primary, 0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform $transition-base, box-shadow $transition-base;
 
   &:hover {
     transform: translateY(-5px);
@@ -1172,10 +1138,10 @@ ul:not(.navbar-nav):not(.dropdown-menu):not(.list-inline):not(.pagination):not(.
   @extend .card-border;
   height: auto;
   min-width: 110px;
-  border-radius: 0.75rem !important;
+  border-radius: $radius-lg;
   background-color: white;
   box-shadow: 0 4px 14px rgba(0,0,0,0.08), 0 1px 4px rgba($primary, 0.05);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform $transition-base, box-shadow $transition-base;
 
   &:hover {
     transform: scale(1.05) translateY(-5px);
@@ -1237,8 +1203,7 @@ ul:not(.navbar-nav):not(.dropdown-menu):not(.list-inline):not(.pagination):not(.
 
 .fixture-body {
   @extend .modal-body;
-  overflow-y: auto !important;
-
+  overflow-y: auto;
 }
 
 .match-border {
@@ -1247,10 +1212,10 @@ ul:not(.navbar-nav):not(.dropdown-menu):not(.list-inline):not(.pagination):not(.
   @extend .align-items-center;
   @extend .mb-2;
   border: 2px solid rgba($primary, 0.15);
-  border-radius: 0.75rem;
-  padding: 0.75rem 0.5rem;
+  border-radius: $radius-lg;
+  padding: $spacing-lg $spacing-md;
   background: linear-gradient(to right, rgba(white, 0.5), rgba($primary, 0.02), rgba(white, 0.5));
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all $transition-base;
   position: relative;
   overflow: hidden;
 
@@ -1263,7 +1228,7 @@ ul:not(.navbar-nav):not(.dropdown-menu):not(.list-inline):not(.pagination):not(.
     width: 3px;
     background: linear-gradient(to bottom, $primary, darken($primary, 15%));
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity $transition-fast;
   }
 
   &:hover {
@@ -1276,62 +1241,6 @@ ul:not(.navbar-nav):not(.dropdown-menu):not(.list-inline):not(.pagination):not(.
       opacity: 1;
     }
   }
-}
-
-.img-border {
-  border-color: transparent;
-  border-radius: 0.4rem;
-  border-style: solid;
-  border-width: 2.5px;
-}
-
-.flag-wrapper {
-  position: relative;
-  display: inline-block;
-  padding: 0.15rem;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-
-  &:hover {
-    transform: scale(1.15);
-
-    .img-card {
-      box-shadow: 0 4px 16px rgba(0,0,0,0.25);
-    }
-  }
-}
-
-.flag-wrapper-sm {
-  position: relative;
-  display: inline-block;
-  padding: 0.1rem;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-
-  &:hover {
-    transform: scale(1.1);
-
-    .img-card {
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    }
-  }
-}
-
-.lose {
-  @extend .img-border;
-  border-color: $soccer-lose;
-}
-
-.win {
-  @extend .img-border;
-  border-color: $soccer-win;
-}
-
-.draw {
-  @extend .img-border;
-  border-color: $soccer-draw;
-}
-
-h6 {
-  font-size: 0.75rem;
 }
 
 .goal {
@@ -1380,7 +1289,7 @@ h6 {
   align-items: center;
   justify-content: center;
   gap: 0.35rem;
-  transition: all 0.3s ease;
+  transition: transform $transition-fast, box-shadow $transition-fast, border-color $transition-fast;
 
   &:hover {
     transform: translateY(-1px);
@@ -1579,7 +1488,7 @@ h6 {
 // Indeterminate loader variant
 .progress-loader-indeterminate {
   .progress-loader-bar {
-    width: 40% !important;
+    width: 40%;
     animation: indeterminate-slide 1.5s cubic-bezier(0.65, 0.05, 0.36, 1) infinite;
   }
 }
@@ -1592,7 +1501,7 @@ h6 {
     rgba($primary, 0.08));
 
   .progress-loader-bar {
-    width: 100% !important;
+    width: 100%;
     background: linear-gradient(90deg,
       transparent 0%,
       $primary 40%,
@@ -1756,10 +1665,10 @@ h6 {
 
 @keyframes indeterminate-slide {
   0% {
-    left: -40%;
+    transform: translateX(-40%);
   }
   100% {
-    left: 100%;
+    transform: translateX(250%);
   }
 }
 
@@ -1784,84 +1693,84 @@ h6 {
 }
 
 // ============================================
+// FLAG DISPLAY MODES
 // ============================================
-// FLAG DISPLAY MODES (NEW)
-// ============================================
+// Applied alongside .img-card or .flag-circle; source order provides override.
 
 // 1. Glassmorphism
 .flag-glass {
-  background: rgba(255, 255, 255, 0.2) !important;
+  background: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 // 2. Neumorphic
 .flag-neumorphic {
-  background: #f0f0f0 !important;
-  border-radius: 12px !important;
-  box-shadow: 6px 6px 12px #cbcbcb, -6px -6px 12px #ffffff !important;
-  border: none !important;
+  background: #f0f0f0;
+  border-radius: 12px;
+  box-shadow: 6px 6px 12px #cbcbcb, -6px -6px 12px #ffffff;
+  border: none;
 }
 
 // 3. Elevated Hover
 .flag-elevated {
-  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   &:hover {
-    transform: translateY(-8px) scale(1.05) !important;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2) !important;
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
   }
 }
 
 // 4. Shield Shape
 .flag-shield {
-  clip-path: polygon(0% 0%, 100% 0%, 100% 80%, 50% 100%, 0% 80%) !important;
-  object-fit: cover !important;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 80%, 50% 100%, 0% 80%);
+  object-fit: cover;
 }
 
 // 5. Hexagonal
 .flag-hex {
-  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%) !important;
-  object-fit: cover !important;
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  object-fit: cover;
 }
 
 // 6. Orb (Glossy Circle)
 .flag-orb {
-  border-radius: 50% !important;
+  border-radius: 50%;
   position: relative;
   overflow: hidden;
-  box-shadow: inset -5px -5px 15px rgba(0,0,0,0.4), 5px 5px 15px rgba(0,0,0,0.2) !important;
+  box-shadow: inset -5px -5px 15px rgba(0,0,0,0.4), 5px 5px 15px rgba(0,0,0,0.2);
 }
 
 // 7. National Glow
 .flag-glow {
-  box-shadow: 0 0 15px rgba($primary, 0.5) !important;
-  transition: box-shadow 0.3s ease !important;
+  box-shadow: 0 0 15px rgba($primary, 0.5);
+  transition: box-shadow 0.3s ease;
   &:hover {
-    box-shadow: 0 0 25px rgba($primary, 0.8) !important;
+    box-shadow: 0 0 25px rgba($primary, 0.8);
   }
 }
 
 // 8. Gradient Border (Gold/Champion)
 .flag-gradient-border {
   padding: 3px;
-  background: linear-gradient(135deg, #ffd700, #b8860b) !important;
-  border-radius: 8px !important;
+  background: linear-gradient(135deg, #ffd700, #b8860b);
+  border-radius: 8px;
   display: inline-block;
   img {
-    border-radius: 5px !important;
+    border-radius: 5px;
     display: block;
   }
 }
 
 // 9. Retro Polaroid
 .flag-polaroid {
-  padding: 5px 5px 15px 5px !important;
-  background: white !important;
-  border: 1px solid #ddd !important;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1) !important;
+  padding: 5px 5px 15px 5px;
+  background: white;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   transform: rotate(-2deg);
-  transition: transform 0.3s ease !important;
+  transition: transform 0.3s ease;
   &:hover {
     transform: rotate(0deg) scale(1.1);
   }
@@ -1869,52 +1778,52 @@ h6 {
 
 // 10. Isometric
 .flag-isometric {
-  transform: perspective(500px) rotateY(-15deg) rotateX(5deg) !important;
-  transition: transform 0.3s !important;
+  transform: perspective(500px) rotateY(-15deg) rotateX(5deg);
+  transition: transform 0.3s;
   &:hover {
-    transform: perspective(500px) rotateY(0deg) rotateX(0deg) !important;
+    transform: perspective(500px) rotateY(0deg) rotateX(0deg);
   }
 }
 
 // 11. Minimalist
 .flag-minimalist {
-  border-radius: 0 !important;
-  border: 2px solid #333 !important;
-  box-shadow: 4px 4px 0px #333 !important;
+  border-radius: 0;
+  border: 2px solid #333;
+  box-shadow: 4px 4px 0px #333;
 }
 
 // 12. Pill
 .flag-pill {
-  border-radius: 50px !important;
-  object-fit: cover !important;
+  border-radius: 50px;
+  object-fit: cover;
 }
 
 // 13. Banner style
 .flag-banner {
-  width: 100% !important;
-  height: 100% !important;
-  opacity: 0.15 !important;
-  position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  z-index: 0 !important;
-  object-fit: cover !important;
+  width: 100%;
+  height: 100%;
+  opacity: 0.15;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  object-fit: cover;
 }
 
 // 14. Dual-tone
 .flag-dualtone {
-  filter: grayscale(100%) sepia(50%) hue-rotate(300deg) !important;
-  transition: filter 0.3s !important;
+  filter: grayscale(100%) sepia(50%) hue-rotate(300deg);
+  transition: filter 0.3s;
   &:hover {
-    filter: none !important;
+    filter: none;
   }
 }
 
 // 15. 3D Tilt
 .flag-tilt {
-  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1) !important;
+  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
   &:hover {
-    transform: perspective(1000px) rotateX(10deg) rotateY(-10deg) translateZ(20px) !important;
+    transform: perspective(1000px) rotateX(10deg) rotateY(-10deg) translateZ(20px);
   }
 }
 
@@ -1929,21 +1838,17 @@ h6 {
   transition: all $transition-base;
 
   &:hover {
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1) !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     transform: translateY(-3px);
   }
 }
 
-.tracking-widest {
-  letter-spacing: 0.2em;
-}
-
 .fixture-card {
   @extend .card;
-  border-radius: 0.75rem !important;
+  border-radius: $radius-lg;
   overflow: hidden;
-  border: none !important;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  border: none;
+  box-shadow: $shadow-sm;
 
   .soccer-card-header {
     background: linear-gradient(135deg, $primary 0%, darken($primary, 10%) 100%);
@@ -2013,22 +1918,16 @@ h6 {
   &.flag-empty, &.flag-missing {
     width: 2.5rem;
     height: 2.5rem;
-    border-radius: 50% !important;
+    border-radius: 50%;
   }
 }
 
 @keyframes flag-empty-pulse {
   0%, 100% {
     transform: scale(1);
-    border-color: rgba($primary, 0.2);
-    background: linear-gradient(135deg, rgba($primary, 0.04) 0%, rgba($primary, 0.08) 100%);
-    box-shadow: 0 0 0 rgba($primary, 0);
   }
   50% {
     transform: scale(1.02);
-    border-color: rgba($primary, 0.45);
-    background: linear-gradient(135deg, rgba($primary, 0.08) 0%, rgba($primary, 0.15) 100%);
-    box-shadow: 0 0 12px rgba($primary, 0.1);
   }
 }
 
@@ -2039,7 +1938,7 @@ h6 {
 }
 
 .name-empty {
-  color: rgba($soccer-border, 0.55) !important;
+  color: rgba($soccer-border, 0.55);
   font-style: italic;
   letter-spacing: 0.02em;
 }

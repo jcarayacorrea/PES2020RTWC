@@ -10,7 +10,7 @@
         <div class="col-12 d-flex justify-content-center align-items-center">
             <div class="d-flex gap-3">
                 <button type="button" class="btn btn-primary px-4 py-2 fw-bold" hx-get="{% url 'asia.secondround.draw' %}"
-                        hx-trigger="click" hx-target="body" data-loading-disable {% if teams|enable_draw_button:24 is True %} disabled {% endif %}>
+                        hx-trigger="click" hx-target="body" data-loading-disable {% if teams|disable_draw_button:24 is True %} disabled {% endif %}>
                     <i class="fa-solid fa-shuffle me-2"></i>Draw
                 </button>
                 <button type="button" class="btn btn-outline-secondary px-4 py-2" hx-get="{% url 'asia.secondround' %}" hx-trigger="click"

@@ -16,8 +16,8 @@ def get_item(dictionary: Dict[Any, Any], key: Any) -> Any:
 
 
 @register.filter
-def enable_draw_button(team_list: List[Any], target_length: int) -> bool:
-    """Determines if the draw button should be enabled."""
+def disable_draw_button(team_list: List[Any], target_length: int) -> bool:
+    """Determines if the draw button should be disabled (True when count doesn't match)."""
     return len(team_list) != target_length
 
 

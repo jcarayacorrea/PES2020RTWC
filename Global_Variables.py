@@ -1,4 +1,3 @@
-SLEEP_TIME: float = 0.1
 GOAL: str = 'O'
 NO_GOAL: str = 'X'
 HOME_GOAL: str = 'L'

@@ -57,9 +57,9 @@
 
     <div class="col-1 d-flex justify-content-center">
         {% with homeId=match.homeTeam.team.nation_iso_code awayId=match.awayTeam.team.nation_iso_code %}
-            {% url 'one_match' phase matchNum homeId awayId  conf  'playoff' 'P' 1 as matchSim %}
+            {% url 'match_simulator' as sim_url %}
             <button type="button" class="btn btn-sm btn-primary p-0"
-                    hx-get="{{ matchSim }}"
+                    hx-get="{{ sim_url }}?fixture={{ phase }}&match={{ matchNum }}&home={{ homeId }}&away={{ awayId }}&conf={{ conf }}&round=playoff&zone=P&extra=1"
                     hx-trigger="click"
                     hx-target="body" data-loading-disable
                     {% if not match or match.played is True %}

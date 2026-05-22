@@ -11,7 +11,7 @@
         <div class="col-12 d-flex justify-content-center align-items-center">
             <div class="d-flex gap-3">
                 <button type="button" class="btn btn-primary px-4 py-2 fw-bold" hx-get="{% url 'oceania.finalround.draw' %}"
-                        hx-trigger="click" hx-target="body" data-loading-disable {% if teams|enable_draw_button:8 is True %} disabled {% endif %}>
+                        hx-trigger="click" hx-target="body" data-loading-disable {% if teams|disable_draw_button:8 is True %} disabled {% endif %}>
                     <i class="fa-solid fa-shuffle me-2"></i>Draw
                 </button>
                 <button type="button" class="btn btn-outline-secondary px-4 py-2" hx-get="{% url 'oceania.finalround' %}" hx-trigger="click"
@@ -70,9 +70,9 @@
                                                 </div>
                                                 <div class="col-2 d-flex align-items-center justify-content-center">
                                                     {% with homeId=fixture.mainDraw.match1.homeTeam.team.nation_iso_code awayId=fixture.mainDraw.match1.awayTeam.team.nation_iso_code %}
-                                                        {% url 'one_match' 'mainDraw' 1 homeId awayId  'OFC'  'final' 'MD' 1 as match %}
+                                                        {% url 'match_simulator' as sim_url %}
                                                         <button type="button" class="btn btn-sm btn-primary"
-                                                                hx-get="{{ match }}"
+                                                                hx-get="{{ sim_url }}?fixture=mainDraw&match=1&home={{ homeId }}&away={{ awayId }}&conf=OFC&round=final&zone=MD&extra=1"
                                                                 hx-trigger="click"
                                                                 hx-target="body" data-loading-disable
                                                                 {% if fixture.mainDraw.match1.played is True %}

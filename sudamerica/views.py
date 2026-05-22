@@ -7,10 +7,13 @@ from django.shortcuts import render, redirect
 
 from Global_Variables import GROUP_RANGE
 from utils import get_teams_copa_america
-from main.services import ConfederationService
+from main.services import get_service
 
 CONF_NAME = 'CONMEBOL'
-service = ConfederationService(CONF_NAME)
+
+
+def _service():
+    return get_service(CONF_NAME)
 
 CONMEBOL_SEEDS_COUNT = 2
 CONCACAF_SEEDS_COUNT = 2
@@ -20,7 +23,7 @@ POOL_SIZE = 4
 
 def teams(request: HttpRequest) -> HttpResponse:
     """Renders the list of CONMEBOL teams."""
-    context = {'teams': service.get_all_teams()}
+    context = {'teams': _service().get_all_teams()}
     return render(request, 'sudamerica/teamlist.html', context)
 
 
@@ -36,8 +39,8 @@ def copa_america(request: HttpRequest) -> HttpResponse:
 def update_progress(request: HttpRequest, code: str, stage: str) -> HttpResponse:
     """Updates the stage progress for a team."""
     if request.method == 'POST':
-        service.update_team_progress(code, stage)
-    return redirect('sudamerica.finalround')
+        _service().update_team_progress(code, stage)
+    return redirect('sudamerica.teams')
 
 
 def copa_america_button(request: HttpRequest) -> HttpResponse:

@@ -1,22 +1,20 @@
-import string
-from typing import List, Dict, Any, Optional
+from typing import List, Dict, Any
 
 from django.http import JsonResponse, FileResponse, HttpRequest, HttpResponse
 from django.shortcuts import render
 from django.contrib.staticfiles import finders
 from html2image import Html2Image
 
-from europa.views import first_round
 from utils import (
-    get_teams_json, get_qualy_places, get_round_stages, 
-    save_match_result, save_extra_time_result, get_team_by_id
+    get_teams_json, get_qualy_places, get_round_stages,
+    save_match_result, save_extra_time_result
 )
 from fixtures import get_zone_data
 from standings import get_standings
 from MatchSimulator import simulate_match
-from worldcup.views import playoff
-from oceania.views import final_round
-from europa.views import euro_playoff
+from worldcup.views import playoff as worldcup_playoff
+from europa.views import euro_playoff, first_round as euro_first_round
+from oceania.views import final_round as oceania_final_round
 
 
 def index(request: HttpRequest) -> HttpResponse:
@@ -67,25 +65,45 @@ def standings_zone(request: HttpRequest, conf: str, round_name: str, zone: str) 
     return render(request, 'popups/standings/standings.html', context)
 
 
-def sim_match(request: HttpRequest, fixture: Any, match: int, home_id: str, away_id: str, 
-              conf: str, round_name: str, zone: str, extra_time: int = 0, single_load: int = 1) -> HttpResponse:
-    """Simulates a match and updates the database."""
+def sim_match(request: HttpRequest) -> HttpResponse:
+    """Simulates a match via GET parameters and updates the database."""
+    fixture = request.GET.get('fixture')
+    match = int(request.GET.get('match', 0))
+    home_id = request.GET.get('home', '')
+    away_id = request.GET.get('away', '')
+    conf = request.GET.get('conf', '')
+    round_name = request.GET.get('round', '')
+    zone = request.GET.get('zone', '')
+    extra_time = request.GET.get('extra', '0') == '1'
+    single_load = request.GET.get('load', '1') == '1'
+
     match_info = {'fixture': fixture, 'match': match, 'homeid': home_id, 'awayid': away_id}
-    resultado = simulate_match(home_id, away_id, extra_time != 0)
-    handle_match_results(match_info, resultado, conf, round_name, zone, extra_time != 0)
-    
-    if single_load == 1:
+    resultado = simulate_match(home_id, away_id, extra_time)
+    handle_match_results(match_info, resultado, conf, round_name, zone, extra_time)
+
+    if single_load:
         return render_match_data(request, zone, conf, round_name, fixture, match)
-    return handle_match_configuration(request, str(fixture))
+
+    responses = {
+        'first': worldcup_playoff,
+        'final': worldcup_playoff,
+        'euro': euro_playoff,
+        'wildCard': euro_first_round,
+        'mainDraw': oceania_final_round,
+    }
+    handler = responses.get(str(fixture))
+    if handler:
+        return handler(request)
+    return render_match_data(request, zone, conf, round_name, fixture, match)
 
 
-def handle_match_results(match_info: Dict[str, Any], resultado: Dict[str, Any], 
+def handle_match_results(match_info: Dict[str, Any], resultado: Dict[str, Any],
                          conf: str, round_name: str, zone: str, is_extra: bool) -> None:
     """Saves match results to the database."""
     if not is_extra:
         save_match_result(
-            match_info["fixture"], match_info["match"], 
-            resultado['local'], resultado['visita'], 
+            match_info["fixture"], match_info["match"],
+            resultado['local'], resultado['visita'],
             conf, round_name, zone
         )
     else:
@@ -93,39 +111,25 @@ def handle_match_results(match_info: Dict[str, Any], resultado: Dict[str, Any],
             match_info["fixture"],
             match_info["match"], resultado['local'], resultado['visita'],
             resultado.get('penales_local', 0),
-            resultado.get('penales_visita', 0), 
-            conf, round_name, zone, 
+            resultado.get('penales_visita', 0),
+            conf, round_name, zone,
             match_info["homeid"], match_info["awayid"]
         )
 
 
-def handle_match_configuration(request: HttpRequest, fixture_type: str) -> HttpResponse:
-    """Redirects to the appropriate view after a match is simulated."""
-    responses = {
-        'first': playoff,
-        'final': playoff,
-        'euro': euro_playoff,
-        'wildCard': first_round,
-        'mainDraw': final_round
-    }
-    # Fallback to fixture_zone if type not in map
-    if fixture_type in responses:
-        return responses[fixture_type](request)
-    # This part is a bit tricky since fixture_zone needs more params. 
-    # Original code had `responses.get(fixture, fixtureZone)(request)`
-    return render(request, 'main/index.html') # Default fallback
-
-
-def download_draw(request: HttpRequest, filename: str) -> HttpResponse:
+def download_draw(request: HttpRequest) -> HttpResponse:
     """Generates and returns a PNG screenshot of the draw."""
+    from uuid import uuid4
+    if request.method != 'POST':
+        return HttpResponse(status=405)
     html2png = Html2Image()
     base_css = finders.find('base.scss')
-    if request.method == 'POST':
-        body = request.body.decode('utf-8')
-        # Note: screenshot returns a list of paths
-        paths = html2png.screenshot(html_str=body, css_file=base_css, save_as=f'{filename}.png')
-        return FileResponse(open(paths[0], 'rb'))
-    return HttpResponse(status=405)
+    if not base_css:
+        return HttpResponse('base.scss not found', status=500)
+    body = request.body.decode('utf-8')
+    filename = f'draw_{uuid4().hex}'
+    paths = html2png.screenshot(html_str=body, css_file=base_css, save_as=f'{filename}.png')
+    return FileResponse(open(paths[0], 'rb'))
 
 
 def render_match_data(request: HttpRequest, zone_id: str, conf: str, round_id: str, 
@@ -147,4 +151,6 @@ def render_match_data(request: HttpRequest, zone_id: str, conf: str, round_id: s
 
 def get_match_data_from_dict(fixture_dict: Dict[str, Any], fixture_num: int, match_num: int) -> Any:
     """Helper to extract match data from the nested fixture dictionary."""
-    return fixture_dict['fixtures'][f'fixture{fixture_num}'][f'match{match_num}']
+    fixtures = fixture_dict['fixtures']
+    key = f'fixture{fixture_num}' if str(fixture_num).isdigit() else str(fixture_num)
+    return fixtures[key][f'match{match_num}']

@@ -3,44 +3,47 @@ from django.shortcuts import render, redirect
 from django.http import HttpRequest, HttpResponse
 
 from Global_Variables import GROUP_KEYS, GROUP_RANGE
-from main.services import ConfederationService
+from main.services import get_service
 from fixtures import create_playoff_matches_uefa, get_zone_data
 from utils import get_uefa_teams_playoff
 import random
 
 CONF_NAME = 'UEFA'
-service = ConfederationService(CONF_NAME)
+
+
+def _service():
+    return get_service(CONF_NAME)
 
 
 def final_round(request: HttpRequest) -> HttpResponse:
     """Renders the final round state for UEFA."""
-    context = service.get_round_context('final', GROUP_KEYS, team_size=5, group_range=GROUP_RANGE)
+    context = _service().get_round_context('final', GROUP_KEYS, team_size=5, group_range=GROUP_RANGE)
     return render(request, 'europa/finalround.html', context)
 
 
 def first_round(request: HttpRequest) -> HttpResponse:
     """Renders the first round state for UEFA."""
-    context = service.get_round_context('first', GROUP_KEYS[0:5], team_size=5, group_range=GROUP_RANGE)
+    context = _service().get_round_context('first', GROUP_KEYS[0:5], team_size=5, group_range=GROUP_RANGE)
     return render(request, 'europa/fstround.html', context)
 
 
 def teams(request: HttpRequest) -> HttpResponse:
     """Renders the list of UEFA teams."""
-    context = {'teams': service.get_all_teams()}
+    context = {'teams': _service().get_all_teams()}
     return render(request, 'europa/teamlist.html', context)
 
 
 def update_progress(request: HttpRequest, code: str, stage: str) -> HttpResponse:
     """Updates the stage progress for a team."""
     if request.method == 'POST':
-        service.update_team_progress(code, stage)
+        _service().update_team_progress(code, stage)
     return redirect('europa.teams')
 
 
 def first_round_button(request: HttpRequest) -> HttpResponse:
     """Generates the draw and fixtures for the first round."""
     if request.method == 'GET':
-        service.perform_draw('first', pools_count=5, teams_per_pool=5, home_away=True)
+        _service().perform_draw('first', pools_count=5, teams_per_pool=5, home_away=True)
         return first_round(request)
     return redirect('europa.fstround')
 
@@ -48,7 +51,7 @@ def first_round_button(request: HttpRequest) -> HttpResponse:
 def final_round_button(request: HttpRequest) -> HttpResponse:
     """Generates the draw and fixtures for the final round."""
     if request.method == 'GET':
-        service.perform_draw('final', pools_count=5, teams_per_pool=8, home_away=True)
+        _service().perform_draw('final', pools_count=5, teams_per_pool=8, home_away=True)
         return final_round(request)
     return redirect('europa.finalround')
 
