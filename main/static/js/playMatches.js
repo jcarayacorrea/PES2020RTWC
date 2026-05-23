@@ -72,6 +72,29 @@ const playMatches = async () => {
     if (rotateOffDiv) rotateOffDiv.classList.remove('d-none');
 };
 
+/**
+ * Play all matches within a stage card container
+ */
+const playStageMatches = async (button) => {
+    const card = button.closest('.card.card-border');
+    if (!card) return;
+
+    const stage = button.getAttribute('data-playall-stage');
+    const offEl = card.querySelector(`[data-playall-off="${stage}"]`);
+    const onEl = card.querySelector(`[data-playall-on="${stage}"]`);
+
+    button.disabled = true;
+    if (onEl) onEl.classList.remove('d-none');
+    if (offEl) offEl.classList.add('d-none');
+
+    const buttons = card.querySelectorAll('.match-play-btn:not([disabled])');
+    await Promise.all(Array.from(buttons).map(btn => playMatch(btn)));
+
+    button.disabled = false;
+    if (onEl) onEl.classList.add('d-none');
+    if (offEl) offEl.classList.remove('d-none');
+};
+
 // Event delegation for all button clicks
 document.addEventListener('click', (event) => {
     const playBtn = event.target.closest('.match-play-btn');
@@ -82,5 +105,10 @@ document.addEventListener('click', (event) => {
     const allBtn = event.target.closest('#btnExec');
     if (allBtn) {
         playMatches();
+        return;
+    }
+    const stageBtn = event.target.closest('[data-playall-stage]');
+    if (stageBtn) {
+        playStageMatches(stageBtn);
     }
 });

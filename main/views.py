@@ -82,6 +82,8 @@ def sim_match(request: HttpRequest) -> HttpResponse:
     handle_match_results(match_info, resultado, conf, round_name, zone, extra_time)
 
     if single_load:
+        if extra_time:
+            return render_playoff_match_data(request, zone, conf, round_name, fixture, match)
         return render_match_data(request, zone, conf, round_name, fixture, match)
 
     responses = {
@@ -147,6 +149,22 @@ def render_match_data(request: HttpRequest, zone_id: str, conf: str, round_id: s
         'delay': 0,
     }
     return render(request, 'utils/fixture/match-card.html', context)
+
+
+def render_playoff_match_data(request: HttpRequest, zone_id: str, conf: str, round_id: str,
+                              fixture_id: str, match_id: int) -> HttpResponse:
+    """Renders a single playoff match card for JS fetch partial update."""
+    zone_data = get_zone_data(zone_id, conf, round_id)
+    match_data = get_match_data_from_dict(zone_data, fixture_id, match_id)
+    context = {
+        'match': match_data,
+        'matchNum': match_id,
+        'phase': fixture_id,
+        'conf': conf,
+        'home_empty': f'Team {match_id * 2 - 1}',
+        'away_empty': f'Team {match_id * 2}',
+    }
+    return render(request, 'utils/playoff/match-card.html', context)
 
 
 def get_match_data_from_dict(fixture_dict: Dict[str, Any], fixture_num: int, match_num: int) -> Any:

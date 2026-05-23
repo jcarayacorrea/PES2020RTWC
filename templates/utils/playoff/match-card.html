@@ -1,6 +1,6 @@
 <p class="mb-2 text-center"><span class="match-num-badge">Match {{ matchNum }}</span></p>
 <div class="row g-0 align-items-center">
-    <div class="col-4 pe-1">
+    <div class="col-3 pe-1">
         {% if not match %}
             {% include "utils/playoff/team-card-empty.html" with desc=home_empty %}
         {% else %}
@@ -8,13 +8,13 @@
         {% endif %}
     </div>
 
-    <div class="col-3 text-center px-0">
-        <div data-loading-aria-busy data-loading="flex" class="justify-content-center align-items-center">
-            <div class="progress-loader progress-loader-indeterminate progress-loader-sm" style="width: 30px;">
+    <div class="col-4 text-center px-0">
+        <div class="match-loading d-none justify-content-center align-items-center mb-1">
+            <div class="progress-loader progress-loader-continuous progress-loader-sm" style="width: 40px;">
                 <div class="progress-loader-bar"></div>
             </div>
         </div>
-        <div data-loading-aria-busy data-loading-class="d-none">
+        <div class="match-score">
             <h6 class="scr_style mb-0 fw-bold small py-1 px-1">
                 {{ match.homeTeam.goals|default_if_none:"?" }}
                 {% if match.homeTeam.penalties is not None or match.awayTeam.penalties is not None %}
@@ -31,15 +31,13 @@
         </div>
     </div>
 
-    <div class="col-4 ps-1">
+    <div class="col-3 ps-1">
         {% if not match %}
             <div class="team-card-sm">
                 <div class="row g-0 align-items-center">
-                    <div class="col-5 px-1 py-1">
-                        <div class="flag-wrapper">
-                            <div class="img-card flag-missing my-1">
-                                <i class="fa-solid fa-flag"></i>
-                            </div>
+                    <div class="flag-wrapper-sm col-5 px-1 py-1 d-flex justify-content-center">
+                        <div class="img-card flag-missing my-1">
+                            <i class="fa-solid fa-flag"></i>
                         </div>
                     </div>
                     <div class="col-7">
@@ -55,23 +53,16 @@
         {% endif %}
     </div>
 
-    <div class="col-1 d-flex justify-content-center">
+    <div class="col-2 d-flex justify-content-center">
         {% with homeId=match.homeTeam.team.nation_iso_code awayId=match.awayTeam.team.nation_iso_code %}
             {% url 'match_simulator' as sim_url %}
-            <button type="button" class="btn btn-sm btn-primary p-0"
-                    hx-get="{{ sim_url }}?fixture={{ phase }}&match={{ matchNum }}&home={{ homeId }}&away={{ awayId }}&conf={{ conf }}&round=playoff&zone=P&extra=1"
-                    hx-trigger="click"
-                    hx-target="body" data-loading-disable
+            <button type="button" class="btn btn-sm btn-primary p-0 match-play-btn"
+                    data-sim-url="{{ sim_url }}?fixture={{ phase }}&match={{ matchNum }}&home={{ homeId }}&away={{ awayId }}&conf={{ conf }}&round=playoff&zone={{ zone|default:'P' }}&extra=1"
                     {% if not match or match.played is True %}
                     disabled {% endif %}
                     title="Play Match"
                     style="width: 24px; height: 24px; min-width: 24px;">
-                <div data-loading-aria-busy data-loading="flex" class="justify-content-center align-items-center">
-                    <div class="button-spinner spinner-sm"></div>
-                </div>
-                <div data-loading-aria-busy data-loading-class="d-none">
-                    <i class="fa-solid fa-play" style="font-size: 0.7rem;"></i>
-                </div>
+                <i class="fa-solid fa-play" style="font-size: 0.7rem;"></i>
             </button>
         {% endwith %}
     </div>

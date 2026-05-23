@@ -8,19 +8,17 @@
                 {{ match.homeTeam.team.nation_iso_code }}
             </div>
         </div>
-        <div class="col-5 d-flex justify-content-center">
-            {% if match.homeTeam.team.image_flag %}
-                <div class="flag-wrapper-sm">
-                    <img src="{{ match.homeTeam.team.image_flag }}"
-                         class="img-card {{ homeborder }} my-1" alt="{{ match.homeTeam.team.nation_name }}">
+        {% if match.homeTeam.team.image_flag %}
+            <div class="flag-wrapper-sm col-5 d-flex justify-content-center">
+                <img src="{{ match.homeTeam.team.image_flag }}"
+                     class="img-card {{ homeborder }} my-1" alt="{{ match.homeTeam.team.nation_name }}">
+            </div>
+        {% else %}
+            <div class="flag-wrapper-sm col-5 d-flex justify-content-center">
+                <div class="img-card {{ homeborder }} flag-missing my-1">
+                    <i class="fa-solid fa-flag"></i>
                 </div>
-            {% else %}
-                <div class="flag-wrapper-sm">
-                    <div class="img-card {{ homeborder }} flag-missing my-1">
-                        <i class="fa-solid fa-flag"></i>
-                    </div>
-                </div>
-            {% endif %}
-        </div>
+            </div>
+        {% endif %}
     </div>
 </div>

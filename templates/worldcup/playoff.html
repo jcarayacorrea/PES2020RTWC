@@ -64,8 +64,14 @@
                                             <div class="match-border mb-3" data-loading-states>
                                                 {% include "utils/playoff/match-card.html" with match=fixture.first.match5 matchNum=5 phase='first' home_empty="Team 9" away_empty="Team 10" conf="FIFA" %}
                                             </div>
-                                            <div class="match-border mb-0" data-loading-states>
+                                            <div class="match-border mb-3" data-loading-states>
                                                 {% include "utils/playoff/match-card.html" with match=fixture.first.match6 matchNum=6 phase='first' home_empty="Team 11" away_empty="Team 12" conf="FIFA" %}
+                                            </div>
+                                            <div class="text-center">
+                                                <button type="button" class="btn btn-primary btn-sm px-3 py-1 fw-bold" data-playall-stage="first">
+                                                    <span data-playall-off="first"><i class="fa-solid fa-play me-2"></i>Play All Matches</span>
+                                                    <span class="d-none" data-playall-on="first"><i class="fa-solid fa-arrows-rotate me-2 fa-spin-pulse"></i>Playing...</span>
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -89,8 +95,14 @@
                                             <div class="match-border mb-3" data-loading-states>
                                                 {% include "utils/playoff/match-card.html" with match=fixture.final.match5 matchNum=5  phase='final' home_empty="Seed 5" away_empty=" Match 5" conf="FIFA" %}
                                             </div>
-                                            <div class="match-border mb-0" data-loading-states>
+                                            <div class="match-border mb-3" data-loading-states>
                                                 {% include "utils/playoff/match-card.html" with match=fixture.final.match6 matchNum=6  phase='final' home_empty="Seed 6" away_empty=" Match 6" conf="FIFA" %}
+                                            </div>
+                                            <div class="text-center">
+                                                <button type="button" class="btn btn-primary btn-sm px-3 py-1 fw-bold" data-playall-stage="final">
+                                                    <span data-playall-off="final"><i class="fa-solid fa-play me-2"></i>Play All Matches</span>
+                                                    <span class="d-none" data-playall-on="final"><i class="fa-solid fa-arrows-rotate me-2 fa-spin-pulse"></i>Playing...</span>
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
