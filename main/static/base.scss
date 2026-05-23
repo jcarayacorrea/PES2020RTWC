@@ -12,18 +12,18 @@ $font-heading: 'Bebas Neue', 'Impact', 'Arial Narrow', sans-serif;
 $font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
 // Brand Colors
-$primary: #8A1538 !default; // Qatar Maroon
-$primary-dark: #580822 !default; // Darker Qatar Maroon
-$primary-light: #B01E4D !default; // Lighter Qatar Maroon
+$primary: #8A1538 !default;
+$primary-dark: #580822 !default;
+$primary-light: #B01E4D !default;
 $card-cap-bg: $primary;
 $card-border-color: $primary;
 
 // Soccer-specific Colors
 $soccer-win: #89ffb7;
 $soccer-lose: #ff8989;
-$soccer-draw: #EAD08C; // Qatar Gold/Sand
-$soccer-border: #708090; // SlateGray
-$soccer-text-light: #f5f5f5; // WhiteSmoke
+$soccer-draw: #EAD08C;
+$soccer-border: #708090;
+$soccer-text-light: #f5f5f5;
 
 // Spacing Scale
 $spacing-xs: 0.15rem;
@@ -52,6 +52,9 @@ $transition-fast: 0.2s ease;
 $transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 $transition-slow: 0.5s ease-in-out;
 
+// Component Sizing
+$input-height: 40px;
+
 // Z-index Scale
 $z-index-dropdown: 1060;
 $z-index-sticky: 10;
@@ -76,6 +79,15 @@ $z-index-overlay: 2;
   --shadow-md: #{$shadow-md};
   --shadow-lg: #{$shadow-lg};
   --transition-base: #{$transition-base};
+  --spacing-xs: #{$spacing-xs};
+  --spacing-sm: #{$spacing-sm};
+  --spacing-md: #{$spacing-md};
+  --spacing-lg: #{$spacing-lg};
+  --spacing-xl: #{$spacing-xl};
+  --spacing-2xl: #{$spacing-2xl};
+  --spacing-3xl: #{$spacing-3xl};
+  --z-index-dropdown: #{$z-index-dropdown};
+  --z-index-sticky: #{$z-index-sticky};
 }
 
 // Bootstrap Import
@@ -85,7 +97,7 @@ $z-index-overlay: 2;
 // MIXINS
 // ============================================
 
-// Card hover effect mixin
+// Card hover effect
 @mixin card-hover($translateY: -2px, $shadow: $shadow-lg) {
   transition: all $transition-base;
   cursor: pointer;
@@ -96,7 +108,7 @@ $z-index-overlay: 2;
   }
 }
 
-// Interactive element mixin
+// Interactive element scale on hover
 @mixin interactive-element($scale: 1.05) {
   transition: all $transition-base;
   cursor: pointer;
@@ -106,7 +118,7 @@ $z-index-overlay: 2;
   }
 }
 
-// Border with gradient mixin
+// Gradient border accent on one side
 @mixin gradient-border($position: left, $width: 3px, $opacity: 0) {
   position: relative;
 
@@ -127,7 +139,7 @@ $z-index-overlay: 2;
   }
 }
 
-// Flexbox center mixin
+// Flexbox centering
 @mixin flex-center($direction: row) {
   display: flex;
   align-items: center;
@@ -135,7 +147,7 @@ $z-index-overlay: 2;
   flex-direction: $direction;
 }
 
-// Text truncate mixin
+// Multi-line text truncation
 @mixin truncate($lines: 1) {
   @if $lines == 1 {
     overflow: hidden;
@@ -149,12 +161,12 @@ $z-index-overlay: 2;
   }
 }
 
-// Gradient background mixin
+// Gradient background
 @mixin gradient-bg($direction: 135deg, $color: $primary, $darken-amount: 15%) {
   background: linear-gradient($direction, $color 0%, darken($color, $darken-amount) 100%);
 }
 
-// Custom scrollbar mixin
+// Custom scrollbar
 @mixin custom-scrollbar($width: 6px, $color: rgba($primary, 0.2)) {
   &::-webkit-scrollbar {
     width: $width;
@@ -174,6 +186,100 @@ $z-index-overlay: 2;
     }
   }
 }
+
+// Flag wrapper with hover glow effect
+@mixin flag-wrapper($padding, $inset, $hover-scale, $translate-y, $glow-intensity: 0.15, $shadow...) {
+  position: relative;
+  display: inline-block;
+  padding: $padding;
+  transition: all $transition-base;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: $inset;
+    background: radial-gradient(circle at center,
+      rgba($primary, $glow-intensity),
+      transparent 70%);
+    border-radius: $radius-md;
+    opacity: 0;
+    transition: opacity $transition-base;
+    z-index: -1;
+  }
+
+  &:hover {
+    transform: scale($hover-scale) translateY($translate-y);
+
+    &::before {
+      opacity: 1;
+    }
+
+    .img-card {
+      box-shadow: $shadow;
+      border-width: 3.5px;
+    }
+  }
+}
+
+// Result border with colored glow
+@mixin result-border($color, $alpha-border: 0.3, $alpha-glow: 0.15, $alpha-bg: 0.2) {
+  @extend .img-border;
+  border-color: $color;
+  box-shadow:
+    0 2px 8px rgba($color, $alpha-border),
+    inset 0 0 0 1px rgba($color, $alpha-border * 0.66),
+    0 0 15px rgba($color, $alpha-glow);
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: inherit;
+    background: linear-gradient(135deg,
+      rgba($color, $alpha-bg),
+      rgba($color, $alpha-bg * 0.25));
+    z-index: -1;
+    opacity: 0;
+    transition: opacity $transition-base;
+  }
+
+  &:hover::before {
+    opacity: 1;
+  }
+}
+
+// Progress loader color variant
+@mixin progress-loader-color($color) {
+  background: linear-gradient(to right,
+    rgba($color, 0.15),
+    rgba($color, 0.25),
+    rgba($color, 0.15));
+
+  .progress-loader-bar {
+    background: linear-gradient(90deg,
+      $color 0%,
+      lighten($color, 8%) 50%,
+      $color 100%);
+    box-shadow:
+      0 0 10px rgba($color, 0.4),
+      inset 0 1px 0 rgba(white, 0.3);
+
+    &::after {
+      background: linear-gradient(135deg,
+        lighten($color, 15%) 0%,
+        $color 100%);
+      box-shadow:
+        0 0 8px rgba($color, 0.6),
+        0 0 4px rgba(white, 0.4) inset;
+    }
+  }
+}
+
+$progress-loader-colors: (
+  "success": $soccer-win,
+  "warning": $soccer-draw,
+  "danger": $soccer-lose,
+);
 
 // ============================================
 // BASE STYLES
@@ -238,10 +344,9 @@ h6 {
 // FORMS & INPUTS
 // ============================================
 
-// Search Input Component
 .soccer-search-input-group {
   transition: box-shadow $transition-base, border-color $transition-base;
-  border-radius: $radius-full !important;
+  border-radius: $radius-full;
   background-color: white;
   overflow: hidden;
   border: 2px solid rgba($primary, 0.1);
@@ -249,12 +354,12 @@ h6 {
 
   &:hover {
     border-color: rgba($primary, 0.4);
-    box-shadow: 0 6px 15px rgba($primary, 0.1) !important;
+    box-shadow: 0 6px 15px rgba($primary, 0.1);
   }
 
   &:focus-within {
     border-color: $primary;
-    box-shadow: 0 0 0 0.25rem rgba($primary, 0.15) !important;
+    box-shadow: 0 0 0 0.25rem rgba($primary, 0.15);
 
     .input-group-text {
       transform: scale(1.1);
@@ -262,21 +367,21 @@ h6 {
   }
 
   .input-group-text {
-    background-color: transparent !important;
-    border: none !important;
-    padding-left: 1.25rem !important;
-    color: $primary !important;
+    background-color: transparent;
+    border: none;
+    padding-left: 1.25rem;
+    color: $primary;
     transition: transform $transition-fast;
   }
 
   .form-control {
-    border: none !important;
-    box-shadow: none !important;
-    padding-left: $spacing-md !important;
-    padding-right: 1.25rem !important;
+    border: none;
+    box-shadow: none;
+    padding-left: $spacing-md;
+    padding-right: 1.25rem;
     font-size: 0.95rem;
-    height: 40px;
-    background-color: transparent !important;
+    height: $input-height;
+    background-color: transparent;
 
     &::placeholder {
       color: #adb5bd;
@@ -292,7 +397,6 @@ h6 {
   }
 }
 
-// Form Select
 .form-select {
   border-color: $primary;
   cursor: pointer;
@@ -308,7 +412,6 @@ h6 {
   }
 }
 
-// Input Group Text
 .input-group-text {
   background-color: $primary;
   border-color: $primary;
@@ -333,7 +436,7 @@ ul.list-unstyled, ul:not([class]) {
     line-height: 1.6;
 
     &::before {
-      content: '\f1e3'; // fa-futbol
+      content: '\f1e3';
       font-family: 'Font Awesome 6 Free';
       font-weight: 900;
       position: absolute;
@@ -418,16 +521,16 @@ ul.list-unstyled, ul:not([class]) {
     font-family: $font-heading;
     font-size: 1.6rem;
     letter-spacing: 0.06em;
-    color: white !important;
+    color: white;
     transition: color $transition-base;
 
     &:hover {
-      color: $soccer-draw !important;
+      color: $soccer-draw;
     }
   }
 
   .nav-link {
-    color: rgba($soccer-text-light, 0.9) !important;
+    color: rgba($soccer-text-light, 0.9);
     font-weight: 500;
     padding: $spacing-md 1.25rem;
     transition: all $transition-base;
@@ -438,13 +541,13 @@ ul.list-unstyled, ul:not([class]) {
 
       &:hover,
       &.active {
-        color: $soccer-text-light !important;
+        color: $soccer-text-light;
         background-color: rgba(white, 0.15);
       }
     }
 
     &:hover {
-      color: $soccer-text-light !important;
+      color: $soccer-text-light;
     }
   }
 
@@ -457,7 +560,6 @@ ul.list-unstyled, ul:not([class]) {
   }
 }
 
-// Dropdown Menu
 .dropdown-menu {
   background-color: white;
   border: none;
@@ -501,7 +603,6 @@ ul.list-unstyled, ul:not([class]) {
   }
 }
 
-// Custom Dropdown Menu
 .custom-dropdown-menu {
   max-height: 400px;
   overflow-y: auto;
@@ -568,7 +669,6 @@ ul.list-unstyled, ul:not([class]) {
   border-style: solid;
 }
 
-// Soccer Card Components
 .soccer-card-header {
   @extend .card-header;
   @extend .card-title;
@@ -595,7 +695,6 @@ ul.list-unstyled, ul:not([class]) {
 // FLAG & TEAM COMPONENTS
 // ============================================
 
-// Flag Configurations
 .flag-config {
   @extend .col-auto;
   @extend .d-flex;
@@ -632,7 +731,6 @@ ul.list-unstyled, ul:not([class]) {
   }
 }
 
-// Flag Images & Borders
 .img-card {
   @extend .img-border;
   width: 2.75rem;
@@ -643,7 +741,6 @@ ul.list-unstyled, ul:not([class]) {
   position: relative;
   border: 1px solid rgba(0,0,0,0.08);
 
-  // Enhanced flag border with inner glow effect
   &::after {
     content: '';
     position: absolute;
@@ -657,7 +754,7 @@ ul.list-unstyled, ul:not([class]) {
   &:hover {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     transform: translateY(-1px);
-    
+
     &::after {
       opacity: 0.8;
       box-shadow: inset 0 0 0 1px rgba(white, 0.4);
@@ -675,111 +772,35 @@ ul.list-unstyled, ul:not([class]) {
 }
 
 .flag-wrapper {
-  position: relative;
-  display: inline-block;
-  padding: $spacing-xs;
-  transition: all $transition-base;
-
-  // Subtle glow on wrapper
-  &::before {
-    content: '';
-    position: absolute;
-    inset: -4px;
-    background: radial-gradient(circle at center,
-      rgba($primary, 0.15),
-      transparent 70%);
-    border-radius: $radius-md;
-    opacity: 0;
-    transition: opacity $transition-base;
-    z-index: -1;
-  }
-
-  &:hover {
-    transform: scale(1.15) translateY(-2px);
-
-    &::before {
-      opacity: 1;
-    }
-
-    .img-card {
-      box-shadow:
-        0 6px 20px rgba(0, 0, 0, 0.25),
-        0 0 20px rgba($primary, 0.2),
-        inset 0 0 0 1px rgba(white, 0.5);
-      border-width: 3.5px;
-    }
-  }
+  @include flag-wrapper(
+    $spacing-xs,
+    -4px,
+    1.15,
+    -2px,
+    0.15,
+    0 6px 20px rgba(0, 0, 0, 0.25),
+    0 0 20px rgba($primary, 0.2),
+    inset 0 0 0 1px rgba(white, 0.5)
+  );
 }
 
 .flag-wrapper-sm {
-  position: relative;
-  display: inline-block;
-  padding: 0.1rem;
-  transition: all $transition-base;
-
-  // Subtle glow on wrapper
-  &::before {
-    content: '';
-    position: absolute;
-    inset: -3px;
-    background: radial-gradient(circle at center,
-      rgba($primary, 0.12),
-      transparent 70%);
-    border-radius: $radius-md;
-    opacity: 0;
-    transition: opacity $transition-base;
-    z-index: -1;
-  }
-
-  &:hover {
-    transform: scale(1.1) translateY(-1px);
-
-    &::before {
-      opacity: 1;
-    }
-
-    .img-card {
-      box-shadow:
-        0 4px 16px rgba(0, 0, 0, 0.2),
-        0 0 15px rgba($primary, 0.15),
-        inset 0 0 0 1px rgba(white, 0.4);
-      border-width: 3.5px;
-    }
-  }
-}
-
-// Match Result Borders
-@mixin result-border($color, $alpha-border: 0.3, $alpha-glow: 0.15, $alpha-bg: 0.2) {
-  @extend .img-border;
-  border-color: $color;
-  box-shadow:
-    0 2px 8px rgba($color, $alpha-border),
-    inset 0 0 0 1px rgba($color, $alpha-border * 0.66),
-    0 0 15px rgba($color, $alpha-glow);
-
-  &::before {
-    content: '';
-    position: absolute;
-    inset: -3px;
-    border-radius: inherit;
-    background: linear-gradient(135deg,
-      rgba($color, $alpha-bg),
-      rgba($color, $alpha-bg * 0.25));
-    z-index: -1;
-    opacity: 0;
-    transition: opacity $transition-base;
-  }
-
-  &:hover::before {
-    opacity: 1;
-  }
+  @include flag-wrapper(
+    0.1rem,
+    -3px,
+    1.1,
+    -1px,
+    0.12,
+    0 4px 16px rgba(0, 0, 0, 0.2),
+    0 0 15px rgba($primary, 0.15),
+    inset 0 0 0 1px rgba(white, 0.4)
+  );
 }
 
 .lose { @include result-border($soccer-lose); }
 .win { @include result-border($soccer-win, 0.35, 0.2, 0.25); }
 .draw { @include result-border($soccer-draw, 0.4, 0.25, 0.3); }
 
-// Team Name Configurations
 .name-config {
   @extend .col-auto;
   @extend .d-flex;
@@ -807,7 +828,6 @@ ul.list-unstyled, ul:not([class]) {
   @extend .text-center;
 }
 
-// Team Card Components
 .team-card {
   @extend .card;
   @extend .col-11;
@@ -871,7 +891,6 @@ ul.list-unstyled, ul:not([class]) {
   }
 }
 
-
 .htmx-indicator {
   opacity: 0;
   transition: opacity 500ms ease-in;
@@ -885,7 +904,6 @@ ul.list-unstyled, ul:not([class]) {
   opacity: 1
 }
 
-
 .table-container {
   max-height: 72vh;
   overflow: auto;
@@ -897,40 +915,24 @@ ul.list-unstyled, ul:not([class]) {
     max-height: 60vh;
   }
 
-  &::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: rgba($primary, 0.2);
-    border-radius: 10px;
-    
-    &:hover {
-      background: rgba($primary, 0.3);
-    }
-  }
+  @include custom-scrollbar(6px, rgba($primary, 0.2));
 
   table {
     margin-bottom: 0;
     width: 100%;
     border-collapse: separate;
     border-spacing: 0;
-    
+
     thead {
       position: sticky;
       top: 0;
       z-index: 10;
       background-color: #ffffff;
       box-shadow: 0 4px 12px -5px rgba(0, 0, 0, 0.1);
-      
+
       th {
-        border-top: none !important;
-        border-bottom: 2px solid rgba($primary, 0.12) !important;
+        border-top: none;
+        border-bottom: 2px solid rgba($primary, 0.12);
         background-color: #ffffff;
         padding: 1.25rem 0.75rem;
         font-size: 0.75rem;
@@ -954,7 +956,7 @@ ul.list-unstyled, ul:not([class]) {
           cursor: help;
           text-decoration: underline dotted rgba($primary, 0.3);
           text-underline-offset: 4px;
-          
+
           &:hover {
             color: $primary;
             text-decoration-color: $primary;
@@ -966,15 +968,15 @@ ul.list-unstyled, ul:not([class]) {
     tbody {
       tr {
         transition: all 0.2s ease;
-        
+
         &:hover {
-          background-color: rgba($primary, 0.02) !important;
-          
+          background-color: rgba($primary, 0.02);
+
           td {
             color: $primary;
           }
         }
-        
+
         td {
           padding: 1rem 0.75rem;
           border-bottom: 1px solid rgba(0,0,0,0.04);
@@ -1013,7 +1015,7 @@ ul.list-unstyled, ul:not([class]) {
   @extend .progress-bar-animated;
   width: 0%;
   animation: progressAnimation 10s linear 300ms forwards, progress-bar-stripes 1s linear infinite;
-  background-image: 
+  background-image:
     linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent),
     linear-gradient(90deg, darken($primary, 10%) 0%, $primary 100%);
   background-size: 1rem 1rem, auto;
@@ -1021,16 +1023,6 @@ ul.list-unstyled, ul:not([class]) {
   position: relative;
   overflow: visible;
   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
-
-@keyframes progressAnimation {
-  from { width: 0; }
-  to { width: 100%; }
-}
-
-@keyframes ballRotate {
-  from { transform: translateY(-50%) rotate(0deg); }
-  to { transform: translateY(-50%) rotate(360deg); }
 }
 
 .progress-ball {
@@ -1046,7 +1038,6 @@ ul.list-unstyled, ul:not([class]) {
 }
 
 .container-card, .container-card-wc {
-  @extend .card;
   @extend .card-border;
   box-shadow: 0 8px 32px rgba(0,0,0,0.12), 0 2px 8px rgba($primary, 0.06);
   border-radius: 1rem;
@@ -1088,7 +1079,6 @@ ul.list-unstyled, ul:not([class]) {
   background-color: white;
   box-shadow: 0 8px 32px rgba(0,0,0,0.1), 0 2px 8px rgba($primary, 0.06);
 }
-
 
 .group-card {
   @extend .card;
@@ -1172,12 +1162,6 @@ ul.list-unstyled, ul:not([class]) {
   letter-spacing: 0.2em;
 }
 
-@keyframes dotPulse {
-  0% { opacity: 0.2; }
-  50% { opacity: 1; }
-  100% { opacity: 0.2; }
-}
-
 .dot-1 { animation: dotPulse 1.5s infinite linear; }
 .dot-2 { animation: dotPulse 1.5s infinite linear 0.5s; }
 .dot-3 { animation: dotPulse 1.5s infinite linear 1s; }
@@ -1257,7 +1241,7 @@ ul.list-unstyled, ul:not([class]) {
   justify-content: center;
   min-width: 2rem;
   transition: all 0.2s ease;
-  
+
   &:hover {
     background: rgba($primary, 0.08);
     transform: translateY(-1px);
@@ -1383,7 +1367,7 @@ ul.list-unstyled, ul:not([class]) {
 }
 
 // ============================================
-// SCROLLBAR
+// SCROLLBAR (Global)
 // ============================================
 
 ::-webkit-scrollbar {
@@ -1405,7 +1389,7 @@ ul.list-unstyled, ul:not([class]) {
 }
 
 // ============================================
-// PROGRESS BAR LOADER
+// PROGRESS LOADER
 // ============================================
 
 .button-spinner {
@@ -1423,10 +1407,6 @@ ul.list-unstyled, ul:not([class]) {
     height: 0.95rem;
     border-width: 1.5px;
   }
-}
-
-@keyframes button-spin {
-  to { transform: rotate(360deg); }
 }
 
 .progress-loader {
@@ -1485,7 +1465,6 @@ ul.list-unstyled, ul:not([class]) {
   }
 }
 
-// Indeterminate loader variant
 .progress-loader-indeterminate {
   .progress-loader-bar {
     width: 40%;
@@ -1493,7 +1472,6 @@ ul.list-unstyled, ul:not([class]) {
   }
 }
 
-// Continuous loader variant - smooth sweeping gradient
 .progress-loader-continuous {
   background: linear-gradient(90deg,
     rgba($primary, 0.08),
@@ -1518,7 +1496,6 @@ ul.list-unstyled, ul:not([class]) {
   }
 }
 
-// Size variants
 .progress-loader-sm {
   height: 4px;
 
@@ -1537,86 +1514,12 @@ ul.list-unstyled, ul:not([class]) {
   }
 }
 
-// Color variants
-.progress-loader-success {
-  background: linear-gradient(to right,
-    rgba($soccer-win, 0.15),
-    rgba($soccer-win, 0.25),
-    rgba($soccer-win, 0.15));
-
-  .progress-loader-bar {
-    background: linear-gradient(90deg,
-      $soccer-win 0%,
-      lighten($soccer-win, 8%) 50%,
-      $soccer-win 100%);
-    box-shadow:
-      0 0 10px rgba($soccer-win, 0.4),
-      inset 0 1px 0 rgba(white, 0.3);
-
-    &::after {
-      background: linear-gradient(135deg,
-        lighten($soccer-win, 15%) 0%,
-        $soccer-win 100%);
-      box-shadow:
-        0 0 8px rgba($soccer-win, 0.6),
-        0 0 4px rgba(white, 0.4) inset;
-    }
+@each $name, $color in $progress-loader-colors {
+  .progress-loader-#{$name} {
+    @include progress-loader-color($color);
   }
 }
 
-.progress-loader-warning {
-  background: linear-gradient(to right,
-    rgba($soccer-draw, 0.15),
-    rgba($soccer-draw, 0.25),
-    rgba($soccer-draw, 0.15));
-
-  .progress-loader-bar {
-    background: linear-gradient(90deg,
-      $soccer-draw 0%,
-      lighten($soccer-draw, 8%) 50%,
-      $soccer-draw 100%);
-    box-shadow:
-      0 0 10px rgba($soccer-draw, 0.4),
-      inset 0 1px 0 rgba(white, 0.3);
-
-    &::after {
-      background: linear-gradient(135deg,
-        lighten($soccer-draw, 15%) 0%,
-        $soccer-draw 100%);
-      box-shadow:
-        0 0 8px rgba($soccer-draw, 0.6),
-        0 0 4px rgba(white, 0.4) inset;
-    }
-  }
-}
-
-.progress-loader-danger {
-  background: linear-gradient(to right,
-    rgba($soccer-lose, 0.15),
-    rgba($soccer-lose, 0.25),
-    rgba($soccer-lose, 0.15));
-
-  .progress-loader-bar {
-    background: linear-gradient(90deg,
-      $soccer-lose 0%,
-      lighten($soccer-lose, 8%) 50%,
-      $soccer-lose 100%);
-    box-shadow:
-      0 0 10px rgba($soccer-lose, 0.4),
-      inset 0 1px 0 rgba(white, 0.3);
-
-    &::after {
-      background: linear-gradient(135deg,
-        lighten($soccer-lose, 15%) 0%,
-        $soccer-lose 100%);
-      box-shadow:
-        0 0 8px rgba($soccer-lose, 0.6),
-        0 0 4px rgba(white, 0.4) inset;
-    }
-  }
-}
-
-// With label/percentage display
 .progress-loader-wrapper {
   width: 100%;
 
@@ -1645,6 +1548,22 @@ ul.list-unstyled, ul:not([class]) {
 // ANIMATIONS & KEYFRAMES
 // ============================================
 
+@keyframes progressAnimation {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes ballRotate {
+  from { transform: translateY(-50%) rotate(0deg); }
+  to { transform: translateY(-50%) rotate(360deg); }
+}
+
+@keyframes dotPulse {
+  0% { opacity: 0.2; }
+  50% { opacity: 1; }
+  100% { opacity: 0.2; }
+}
+
 @keyframes shimmer {
   0% { transform: translateX(-100%); }
   100% { transform: translateX(200%); }
@@ -1664,32 +1583,31 @@ ul.list-unstyled, ul:not([class]) {
 }
 
 @keyframes indeterminate-slide {
-  0% {
-    transform: translateX(-40%);
-  }
-  100% {
-    transform: translateX(250%);
-  }
+  0% { transform: translateX(-40%); }
+  100% { transform: translateX(250%); }
 }
 
 @keyframes continuous-sweep {
-  0% {
-    background-position: 200% 0;
-  }
-  100% {
-    background-position: -200% 0;
-  }
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
 }
 
 @keyframes dropdown-fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(-5px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes button-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes flag-empty-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+
+@keyframes flag-shimmer {
+  100% { transform: translateX(100%); }
 }
 
 // ============================================
@@ -1827,6 +1745,7 @@ ul.list-unstyled, ul:not([class]) {
   }
 }
 
+// ============================================
 // UTILITY CLASSES
 // ============================================
 
@@ -1903,14 +1822,14 @@ ul.list-unstyled, ul:not([class]) {
 .flag-missing {
   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
   border: 1px solid rgba(0, 0, 0, 0.12);
-  border-style: solid; // Explicitly solid
+  border-style: solid;
 
   i {
     color: #adb5bd;
   }
 
   &::before {
-    display: none; // No shimmer for missing but known team
+    display: none;
   }
 }
 
@@ -1919,21 +1838,6 @@ ul.list-unstyled, ul:not([class]) {
     width: 2.5rem;
     height: 2.5rem;
     border-radius: 50%;
-  }
-}
-
-@keyframes flag-empty-pulse {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.02);
-  }
-}
-
-@keyframes flag-shimmer {
-  100% {
-    transform: translateX(100%);
   }
 }
 
@@ -1955,8 +1859,3 @@ ul.list-unstyled, ul:not([class]) {
   color: rgba($primary, 0.75);
   border: 1px solid rgba($primary, 0.18);
 }
-
-
-
-
-
