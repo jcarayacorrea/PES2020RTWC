@@ -88,7 +88,13 @@ const playStageMatches = async (button) => {
     if (offEl) offEl.classList.add('d-none');
 
     const buttons = card.querySelectorAll('.match-play-btn:not([disabled])');
-    await Promise.all(Array.from(buttons).map(btn => playMatch(btn)));
+    const btnArray = Array.from(buttons);
+    for (let i = 0; i < btnArray.length; i++) {
+        await playMatch(btnArray[i]);
+        if (i < btnArray.length - 1) {
+            await new Promise(resolve => setTimeout(resolve, 1000));
+        }
+    }
 
     button.disabled = false;
     if (onEl) onEl.classList.add('d-none');
