@@ -11,7 +11,7 @@
         <div class="d-flex align-items-center overflow-hidden">
             {% if selected_team %}
                 {% for team in zone %}
-                    {% if selected_team == team.nation_name %}
+                    {% if selected_team == team.nation_iso_code %}
                         {% if team.image_flag %}
                             <img src="{{ team.image_flag }}" class="img-card flag-circle me-2" alt="{{ team.nation_name }}">
                         {% else %}
@@ -19,7 +19,7 @@
                                 <i class="fa-solid fa-flag text-secondary opacity-50" style="font-size: 10px;"></i>
                             </div>
                         {% endif %}
-                        <span class="text-truncate fw-bold">{{ team.nation_name }}</span>
+                        <span class="text-truncate fw-bold">{{ team.nation_iso_code }}</span>
                     {% endif %}
                 {% endfor %}
             {% else %}
@@ -43,7 +43,7 @@
                                 <i class="fa-solid fa-flag text-secondary opacity-50" style="font-size: 12px;"></i>
                             </div>
                         {% endif %}
-                        <span class="fw-medium">{{ team.nation_name }}</span>
+                        <span class="fw-medium">{{ team.nation_iso_code }}</span>
                     </button>
                 </li>
             {% endfor %}

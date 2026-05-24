@@ -82,6 +82,8 @@ def sim_match(request: HttpRequest) -> HttpResponse:
     handle_match_results(match_info, resultado, conf, round_name, zone, extra_time)
 
     if single_load:
+        if fixture == 'mainDraw':
+            return render_playoff_match_data(request, zone, conf, round_name, fixture, match)
         if extra_time:
             return render_playoff_match_data(request, zone, conf, round_name, fixture, match)
         return render_match_data(request, zone, conf, round_name, fixture, match)
@@ -163,6 +165,8 @@ def render_playoff_match_data(request: HttpRequest, zone_id: str, conf: str, rou
         'conf': conf,
         'home_empty': f'Team {match_id * 2 - 1}',
         'away_empty': f'Team {match_id * 2}',
+        'zone': zone_id,
+        'round': round_id,
     }
     return render(request, 'utils/playoff/match-card.html', context)
 

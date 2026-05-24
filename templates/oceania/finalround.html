@@ -59,84 +59,22 @@
                                     {% endif %}
                                 </div>
                             </div>
-                            <div class="row mb-5">
-                                <div class="col-12">
+                            <div class="row mb-5 justify-content-center">
+                                <div class="col-md-8">
                                     <div class="group-card" style="overflow: visible; max-width: 100%;">
                                         <div class="soccer-card-header">Main Draw Match</div>
                                         <div class="soccer-card-body overflow-visible" data-loading-states style="overflow: visible;">
                                             <div class="row mb-3">
                                                 <div class="col-5">
-                                                    {% include "utils/one_matches/team_select.html" with zone=zoneA url_select='oceania.homemainDraw' selected_team=fixture.mainDraw.match1.homeTeam.team.nation_name label="Home Team" %}
+                                                    {% include "utils/one_matches/team_select.html" with zone=zoneA url_select='oceania.homemainDraw' selected_team=fixture.mainDraw.match1.homeTeam.team.nation_iso_code label="Home Team" %}
                                                 </div>
-                                                <div class="col-2 d-flex align-items-center justify-content-center">
-                                                    {% with homeId=fixture.mainDraw.match1.homeTeam.team.nation_iso_code awayId=fixture.mainDraw.match1.awayTeam.team.nation_iso_code %}
-                                                        {% url 'match_simulator' as sim_url %}
-                                                        <button type="button" class="btn btn-sm btn-primary"
-                                                                hx-get="{{ sim_url }}?fixture=mainDraw&match=1&home={{ homeId }}&away={{ awayId }}&conf=OFC&round=final&zone=MD&extra=1"
-                                                                hx-trigger="click"
-                                                                hx-target="body" data-loading-disable
-                                                                {% if fixture.mainDraw.match1.played is True %}
-                                                                disabled {% endif %}
-                                                                title="Play Match"
-                                                        >
-                                                            <div data-loading-aria-busy data-loading="flex" class="justify-content-center align-items-center">
-                                                                <div class="button-spinner spinner-sm"></div>
-                                                            </div>
-                                                            <div data-loading-aria-busy data-loading-class="d-none">
-                                                                <i class="fa-solid fa-play"></i>
-                                                            </div>
-                                                        </button>
-                                                    {% endwith %}
-                                                </div>
+                                                <div class="col-2"></div>
                                                 <div class="col-5">
-                                                    {% include "utils/one_matches/team_select.html" with zone=zoneB url_select='oceania.awaymainDraw' selected_team=fixture.mainDraw.match1.awayTeam.team.nation_name label="Away Team" %}
+                                                    {% include "utils/one_matches/team_select.html" with zone=zoneB url_select='oceania.awaymainDraw' selected_team=fixture.mainDraw.match1.awayTeam.team.nation_iso_code label="Away Team" %}
                                                 </div>
-
-
                                             </div>
-                                            <div class="row mb-3">
-                                                <div class="col-4">
-                                                    {% if fixture|get_item:'mainDraw' is not None %}
-                                                        {% include 'utils/fixture/home-card.html' with match=fixture.mainDraw.match1 %}
-                                                    {% else %}
-                                                        {% include 'utils/fixture/empty-card.html' with team='Team 1' %}
-                                                    {% endif %}
-                                                </div>
-                                                <div class="col-4 text-center">
-                                                    <div data-loading-aria-busy data-loading="flex" class="justify-content-center align-items-center">
-                                                       <h4 class="scr_style mb-0 fw-bold py-1 px-1">
-                                                            <span class="penalty-score opacity-25" style="font-size: 0.6em;">( )</span>
-                                                            <i class="fa-solid fa-futbol fa-spin text-info mx-2"></i>
-                                                            <span class="penalty-score opacity-25" style="font-size: 0.6em;">( )</span>
-                                                        </h4>
-                                                    </div>
-
-
-                                                    <div data-loading-aria-busy data-loading-class="d-none" class="d-flex justify-content-center">
-                                                        {% with homeGoals=fixture.mainDraw.match1.homeTeam.goals awayGoals=fixture.mainDraw.match1.awayTeam.goals homePenalties=fixture.mainDraw.match1.homeTeam.penalties awayPenalties=fixture.mainDraw.match1.awayTeam.penalties %}
-                                                            <h4 class="scr_style mb-0 fw-bold py-1 px-1">
-                                                                {{ homeGoals|default_if_none:"?" }}
-                                                                {% if homePenalties is not None or awayPenalties is not None %}
-                                                                    <span class="penalty-score" style="font-size: 0.6em;">({% firstof homePenalties 0 %})</span>
-                                                                {% endif %}
-                                                                <span class="opacity-25 mx-1">-</span>
-                                                                {% if homePenalties is not None or awayPenalties is not None %}
-                                                                    <span class="penalty-score" style="font-size: 0.6em;">({% firstof awayPenalties 0 %})</span>
-                                                                {% endif %}
-                                                                {{ awayGoals|default_if_none:"?" }}
-                                                            </h4>
-                                                        {% endwith %}
-
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-4">
-                                                    {% if fixture|get_item:'mainDraw' is not None %}
-                                                        {% include 'utils/fixture/away-card.html' with match=fixture.mainDraw.match1 %}
-                                                    {% else %}
-                                                        {% include 'utils/fixture/empty-card.html' with team='Team 2' %}
-                                                    {% endif %}
-                                                </div>
+                                            <div id="match-cards" class="match-border" data-loading-states>
+                                                {% include "utils/playoff/match-card.html" with match=fixture.mainDraw.match1 matchNum=1 phase='mainDraw' conf='OFC' home_empty="Team 1" away_empty="Team 2" zone='MD' round='final' %}
                                             </div>
 
                                         </div>

@@ -1,4 +1,3 @@
-<p class="mb-2 text-center"><span class="match-num-badge">Match {{ matchNum }}</span></p>
 <div class="row g-0 align-items-center">
     <div class="col-3 pe-1">
         {% if not match %}
@@ -57,7 +56,7 @@
         {% with homeId=match.homeTeam.team.nation_iso_code awayId=match.awayTeam.team.nation_iso_code %}
             {% url 'match_simulator' as sim_url %}
             <button type="button" class="btn btn-sm btn-primary p-0 match-play-btn"
-                    data-sim-url="{{ sim_url }}?fixture={{ phase }}&match={{ matchNum }}&home={{ homeId }}&away={{ awayId }}&conf={{ conf }}&round=playoff&zone={{ zone|default:'P' }}&extra=1"
+                    data-sim-url="{{ sim_url }}?fixture={{ phase }}&match={{ matchNum }}&home={{ homeId }}&away={{ awayId }}&conf={{ conf }}&round={{ round|default:'playoff' }}&zone={{ zone|default:'P' }}&extra=1"
                     {% if not match or match.played is True %}
                     disabled {% endif %}
                     title="Play Match"
