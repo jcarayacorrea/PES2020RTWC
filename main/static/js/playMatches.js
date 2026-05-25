@@ -99,6 +99,10 @@ const playStageMatches = async (button) => {
     button.disabled = false;
     if (onEl) onEl.classList.add('d-none');
     if (offEl) offEl.classList.remove('d-none');
+
+    if (stage === 'first') {
+        location.reload();
+    }
 };
 
 // Event delegation for all button clicks
